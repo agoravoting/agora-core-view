@@ -1,17 +1,22 @@
-angular.module('agoraCoreView', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'home']);
+angular.module('agoraCoreView', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'home', 'panel']);
 
 angular.module('agoraCoreView').config(function($stateProvider, $urlRouterProvider) {
 
     /* Add New States Above */
-    $urlRouterProvider.otherwise('/home');
-
+    $urlRouterProvider
+            .otherwise('/home');
 
     $stateProvider
-        .state('home', {
-            url: '/home',
-            templateUrl: 'home/home.html',
-            controller: "HomeController"
-        });
+            .state('panel', {
+                url: '/panel',
+                templateUrl: 'panel/panel.html',
+                controller: "PanelController"
+            })
+            .state('home', {
+                url: '/home',
+                templateUrl: 'home/home.html',
+                controller: "HomeController"
+            });
 
 });
 
