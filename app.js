@@ -10,7 +10,7 @@ angular.module('agoraCoreView').config(function($stateProvider, $urlRouterProvid
             .state('panel', {
                 url: '/panel',
                 templateUrl: 'panel/panel.html',
-                controller: "PanelController"
+//                controller: "PanelController"
             })
             .state('home', {
                 url: '/home',
