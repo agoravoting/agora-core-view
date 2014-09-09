@@ -10,7 +10,7 @@ and open the template in the editor.
 
    <ol>
        <li ng-repeat="election in elections.objects">
-           {{election.pretty_name}}
+           <a ui-sref="election({ id: election.id })">{{election.pretty_name}}</a>
        </li>
    </ol>
    
