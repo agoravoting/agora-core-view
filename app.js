@@ -1,4 +1,4 @@
-angular.module('agoraCoreView', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'home', 'panel']);
+angular.module('agoraCoreView', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'home', 'panel', 'election']);
 
 angular.module('agoraCoreView').config(function($stateProvider, $urlRouterProvider) {
 
@@ -7,9 +7,14 @@ angular.module('agoraCoreView').config(function($stateProvider, $urlRouterProvid
             .otherwise('/home');
 
     $stateProvider
+            .state('election', {
+                url: '/election/:id',
+                templateUrl: 'election/election.html'
+//                controller: "ElectionController"
+            })
             .state('panel', {
                 url: '/panel',
-                templateUrl: 'panel/panel.html',
+                templateUrl: 'panel/panel.html'
 //                controller: "PanelController"
             })
             .state('home', {
