@@ -1,6 +1,9 @@
 angular.module('agoraCoreView', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'home', 'panel', 'election']);
 
-angular.module('agoraCoreView').config(function($stateProvider, $urlRouterProvider) {
+angular.module('agoraCoreView').config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
     /* Add New States Above */
     $urlRouterProvider

@@ -7,13 +7,8 @@ angular.module('home').config(function($stateProvider) {
     
 });
 
-//angular.module('home').config(['$httpProvider', function($httpProvider) {
-//        $httpProvider.defaults.useXDomain = true;
-//        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-//    }
-//]);
-
 angular.module('home').controller('HomeController', ['$scope', '$http', '$state', function($scope, $http, $state){
+
 
         $scope.submit = function(form) {
             $http({
