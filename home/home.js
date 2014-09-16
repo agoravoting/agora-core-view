@@ -7,7 +7,7 @@ angular.module('home').config(function($stateProvider) {
     
 });
 
-angular.module('home').controller('HomeController', ['$scope', '$http', '$state', function($scope, $http, $state){
+angular.module('home').controller('HomeController', function($scope, $http, $state, $log) {
 
 
         $scope.submit = function(form) {
@@ -21,7 +21,7 @@ angular.module('home').controller('HomeController', ['$scope', '$http', '$state'
             })
                     .success(function(data, status, headers, config) {
                         $state.go('panel');
-                        if (status == '200') {
+                        if (status === '200') {
 //                            $scope.messages = 'Welcome ' + $scope.identification;
 //                            $scope.identification = null;
 //                            $scope.password = null;
@@ -45,4 +45,4 @@ angular.module('home').controller('HomeController', ['$scope', '$http', '$state'
             }
         };
 
-    }]);
+    });

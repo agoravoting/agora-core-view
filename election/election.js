@@ -22,9 +22,9 @@ angular.module('election', ['ngResource'])
                 ElectionService.query({electionId: $scope.id}).$promise.then(function(election) {
                     $scope.election = election;
                     
-                    if ($scope.election.election_type == "ONE_CHOICE") {
+                    if ($scope.election.election_type === "ONE_CHOICE") {
                         $scope.inputtype = "radio";
-                    } else if ($scope.election.election_type == "MULTIPLE_CHOICE") {
+                    } else if ($scope.election.election_type === "MULTIPLE_CHOICE") {
                         $scope.inputtype = "checkbox";
                     }
                 });
@@ -41,7 +41,7 @@ angular.module('election', ['ngResource'])
                     })
                             .success(function(data, status, headers, config) {
 //                                $state.go('panel');
-                                if (status == '200') {
+                                if (status === '200') {
 //                            $scope.messages = 'Welcome ' + $scope.identification;
 //                            $scope.identification = null;
 //                            $scope.password = null;
