@@ -1,4 +1,5 @@
 dist
+temp_data
 bower_components
 node_modules
 temp

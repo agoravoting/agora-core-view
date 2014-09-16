@@ -1,44 +1,36 @@
-angular.module('agoraCoreView', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'home', 'panel', 'election']);
+angular.module('agoraCoreView',
+               ['ui.bootstrap',
+                'ui.utils',
+                'ui.router',
+                'ngAnimate',
+                'home',
+                'avConfig',
+                'avBooth',
+              ]);
 
-angular.module('agoraCoreView').config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-
-    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-
+angular.module('agoraCoreView').config(
+  function($stateProvider, $urlRouterProvider, $httpProvider) {
+    
     /* Add New States Above */
-    $urlRouterProvider
-            .otherwise('/home');
-
     $stateProvider
-            .state('election', {
-                url: '/election/:id',
-                templateUrl: 'election/election.html'
-//                controller: "ElectionController"
-            })
-            .state('panel', {
-                url: '/panel',
-                templateUrl: 'panel/panel.html'
-//                controller: "PanelController"
-            })
-            .state('home', {
-                url: '/home',
-                templateUrl: 'home/home.html',
-                controller: "HomeController"
-            });
-
+      .state('home', {
+        url: '/election/:id/vote/:hash/:message',
+        templateUrl: 'avBooth/booth.html',
+        controller: "BoothController"
+      });
 });
 
 angular.module('agoraCoreView').run(function($rootScope) {
 
-    $rootScope.safeApply = function(fn) {
-        var phase = $rootScope.$$phase;
-        if (phase === '$apply' || phase === '$digest') {
-            if (fn && (typeof(fn) === 'function')) {
-                fn();
-            }
-        } else {
-            this.$apply(fn);
-        }
-    };
+  $rootScope.safeApply = function(fn) {
+    var phase = $rootScope.$$phase;
+    if (phase === '$apply' || phase === '$digest') {
+      if (fn && (typeof(fn) === 'function')) {
+        fn();
+      }
+    } else {
+      this.$apply(fn);
+    }
+  };
 
 });

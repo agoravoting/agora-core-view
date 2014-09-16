@@ -45,4 +45,4 @@ angular.module('home').controller('HomeController', function($scope, $http, $sta
             }
         };
 
-    });
+});

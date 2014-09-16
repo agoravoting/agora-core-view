@@ -1,0 +1,8 @@
+<p>Esto será una cabina de votación con los datos:</p>
+<ul>
+  <li>Election id: {{ electionId }}</li>
+  <li>HMAC hash: {{ hmacHash }}</li>
+  <li>HMAC message: {{ hmacMessage }}</li>
+  <li>Election API url: {{ baseUrl }}election/{{ electionId }}</li>
+</ul>
+<av-booth election-url="{{baseUrl}}election/{{electionId}}"></booth>
