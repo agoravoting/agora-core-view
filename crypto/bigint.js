@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /*
  * This software incorporates components derived from the
  * Secure Remote Password JavaScript demo developed by
@@ -30,3 +31,4 @@ BigInt.fromInt = function(i) {
 };
 
 BigInt.use_applet = false;
+/* jshint ignore:end */

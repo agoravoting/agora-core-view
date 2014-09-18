@@ -1,4 +1,4 @@
-
+/* jshint ignore:start */
 //
 // inspired by George Danezis, rewritten by Ben Adida.
 //
@@ -591,3 +591,4 @@ ElGamal.fiatshamir_dlog_challenge_generator = function(commitment) {
   // return new BigInt(hex_sha256(commitment.toJSONObject()), 16);
   return new BigInt(hex_sha256(commitment.toString()), 16);
 };
+/* jshint ignore:end */

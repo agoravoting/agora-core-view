@@ -1,4 +1,4 @@
-
+/* jshint ignore:start */
 /*
  * John Resig's Class Inheritance
  */
@@ -63,3 +63,4 @@
     return Class;
   };
 })();
+/* jshint ignore:end */

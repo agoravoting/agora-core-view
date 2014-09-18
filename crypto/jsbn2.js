@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 // Copyright (c) 2005-2009  Tom Wu
 // All Rights Reserved.
 // See "LICENSE" for details.
@@ -646,3 +647,4 @@ BigInteger.prototype.isProbablePrime = bnIsProbablePrime;
 // int hashCode()
 // long longValue()
 // static BigInteger valueOf(long val)
+/* jshint ignore:end */

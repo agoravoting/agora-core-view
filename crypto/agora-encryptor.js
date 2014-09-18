@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /*
   adapted from the singleton pattern (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
 
@@ -24,8 +25,8 @@ var AgoraEncryptor = (function() {
 
   function _init(publicKeyJson) {
     // private members
-    var publicKeyJson = publicKeyJson;
-    var publicKey = ElGamal.PublicKey.fromJSONObject(publicKeyJson);
+    var publicKeyJsonCopy = publicKeyJson;
+    var publicKey = ElGamal.PublicKey.fromJSONObject(publicKeyJsonCopy);
 
     // public interface
     return {
@@ -60,7 +61,7 @@ var AgoraEncryptor = (function() {
         return ctext.verifyPlaintextProof(proof, ElGamal.fiatshamir_dlog_challenge_generator);
       }
     };
-  };
+  }
 
   return {
     init: function(publicKeyJson) {
@@ -69,3 +70,4 @@ var AgoraEncryptor = (function() {
   };
 
 })();
+/* jshint ignore:end */

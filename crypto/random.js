@@ -1,4 +1,4 @@
-
+/* jshint ignore:start */
 /*
  * Random Number generation, now uses the glue to Java
  */
@@ -32,3 +32,4 @@ Random.getRandomInteger = function(max) {
   return BigInt._from_java_object(random).mod(max);
 };
 
+/* jshint ignore:end */

@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /* A JavaScript implementation of the Secure Hash Standard
  * Version 0.3 Copyright Angel Marin 2003-2004 - http://anmar.eu.org/
  * Distributed under the BSD License
@@ -142,3 +143,4 @@ function binb2b64 (binarray) {
 function hex_sha256(s){return binb2hex(core_sha256(str2binb(s),s.length * chrsz));}
 function b64_sha256(s){return binb2b64(core_sha256(str2binb(s),s.length * chrsz));}
 function str_sha256(s){return binb2str(core_sha256(str2binb(s),s.length * chrsz));}
+/* jshint ignore:end */
