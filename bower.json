@@ -15,12 +15,12 @@
     "angular-ui-router": "~0.2",
     "angular-animate": "~1.2",
     "angular-resource": "~1.2",
-    "angular-cookies": "~1.2",
     "angular-mocks": "~1.2",
     "angular-ui-utils": "~0.1",
     "angular-bootstrap": "~0.10",
     "moment": "~2.5",
     "less.js": "~1.6",
-    "font-awesome": "~4.0"
+    "font-awesome": "~4.0",
+    "ng-i18next": "0.3.5",
   }
 }
