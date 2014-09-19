@@ -1,4 +1,3 @@
-/* jshint ignore:start */
 describe("EncryptAnswerService tests", function() {
   var group = {
     "g":"27257469383433468307851821232336029008797963446516266868278476598991619799718416119050669032044861635977216445034054414149795443466616532657735624478207460577590891079795564114912418442396707864995938563067755479563850474870766067031326511471051504594777928264027177308453446787478587442663554203039337902473879502917292403539820877956251471612701203572143972352943753791062696757791667318486190154610777475721752749567975013100844032853600120195534259802017090281900264646220781224136443700521419393245058421718455034330177739612895494553069450438317893406027741045575821283411891535713793639123109933196544017309147",
@@ -19,7 +18,10 @@ describe("EncryptAnswerService tests", function() {
     var plaintext = Math.floor(Math.random() * 10000) + 1
     console.log(plaintext);
 
-    var params = new ElGamal.Params(BigInt.fromInt(group.p), BigInt.fromInt(group.q), BigInt.fromInt(group.g));
+    var params = new EncryptAnswerService.ElGamal.Params(
+      BigInt.fromInt(group.p),
+      BigInt.fromInt(group.q),
+      BigInt.fromInt(group.g));
     // generate private and public keys
     var secret = params.generate();
     // encrypt
@@ -30,12 +32,16 @@ describe("EncryptAnswerService tests", function() {
     expect(encryptor.verifyPlaintextProof(encrypted)).toBe(true);
 
     // verify decryption works
-    var ctext = new ElGamal.Ciphertext(BigInt.fromInt(encrypted.alpha), BigInt.fromInt(encrypted.beta), secret.pk);
-    var decrypted = secret.decryptAndProve(ctext, ElGamal.fiatshamir_dlog_challenge_generator);
+    var ctext = new EncryptAnswerService.ElGamal.Ciphertext(
+      BigInt.fromInt(encrypted.alpha),
+      BigInt.fromInt(encrypted.beta),
+      secret.pk);
+    var decrypted = secret.decryptAndProve(
+      ctext,
+      EncryptAnswerService.ElGamal.fiatshamir_dlog_challenge_generator);
     var plaintextDecrypted = decrypted.plaintext.getPlaintext().intValue()
 
     expect(plaintextDecrypted).toBe(plaintext);
     console.log(plaintextDecrypted);
   }));
 });
-/* jshint ignore:end */

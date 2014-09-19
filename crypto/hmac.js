@@ -9,7 +9,7 @@
  * MACs in order to avoid timing side-channels.
  */
 
-angular.module('avCrypto', [])
+angular.module('avCrypto')
   .service('HmacService', function() {
     var lib;
     /* jshint ignore:start */

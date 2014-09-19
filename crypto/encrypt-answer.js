@@ -21,7 +21,7 @@
   sjcl.js
 */
 
-angular.module('avCrypto', [])
+angular.module('avCrypto')
   .service('EncryptAnswerService', function() {
     function _init(publicKeyJson) {
       // private members
@@ -66,7 +66,8 @@ angular.module('avCrypto', [])
     return {
       init: function(publicKeyJson) {
         return _init(publicKeyJson);
-      }
+      },
+      ElGamal: ElGamal
     };
   });
 /* jshint ignore:end */
