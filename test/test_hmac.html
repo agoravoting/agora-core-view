@@ -1,7 +1,23 @@
-<p ng-if="hmacIsValid">
-Hmac is valid! HmacService.hmac(key("{{key}}"), message("{{message}}")) == provided-hmac("{{hmac}}")
-</p>
+<div ng-if="hmacIsValid">
+  <h2>Hmac is valid!</h2>
+  <p>HmacService.hmac(key("{{key}}"), message("{{message}}")) <br/>==<br/> provided-hmac("{{hmac}}")</p>
+</div>
 
-<p ng-if="!hmacIsValid">
-Hmac is NOT valid! HmacService.hmac(key("{{key}}"), message("{{message}}")) = calculated-hmac("{{calculatedHmac}}") != provided-hmac("{{hmac}}")
-</p>
+<div ng-if="!hmacIsValid">
+  <h2>Hmac is NOT valid!</h2>
+  <p>HmacService.hmac(key("{{key}}"), message("{{message}}")) = <br/>calculated-hmac("{{calculatedHmac}}") != provided-hmac("{{hmac}}")</p>
+</div>
+
+<h3>Data:</h3>
+<ul>
+  <li><strong>key</strong>: "<u>{{key}}</u>"</li>
+  <li><strong>message</strong>: "<u>{{message}}</u>" {{messageInvalid}}<br/>
+    <ul>
+      <li><strong>timestamp</strong> (unix timestamp, uint32): "<u>{{timestamp}}</u>" ({{timeago}})</li>
+      <li><strong>voter id</strong> (identifies the voter, string): "<u>{{voterId}}</u>"</li>
+      <li><strong>election id</strong> (election id, number): "<u>{{electionId}}</u>"</li>
+    </ul>
+  </li>
+  <li><strong>provided hmac</strong>: "<u>{{hmac}}</u>"</li>
+  <li><strong>calculated hmac</strong><span ng-if="hmacIsValid"> (matches provided hmac!)</span>: "<u>{{calculatedHmac}}</u>"</li>
+</ul>
