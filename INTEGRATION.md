@@ -41,9 +41,9 @@ Proponemos que en el botón se haga referencia a Agora Voting, por ejemplo
 "Vota con Agora Voting" o "Vota" y el logo de Agora Voting dentro del botón (os
 lo pasaremos si usáis ese método).  Más allá de eso, es también recomendable
 decirle al usuario qué se va a votar, por ejemplo poner una línea antes del botón
-que diga "Hay una votación en curso ¡participa!" y luego se muestre una lista
-con cada votación, con el título de la votación y el botón de votar. Eso
-permitirá que en el caso de que dos votaciones en algún momento se solapen en
+que diga algo tipo "Hay una votación en curso ¡participa!" y luego se muestre
+una lista con cada votación, con el título de la votación y el botón de votar. 
+Eso permitirá que en el caso de que dos votaciones en algún momento se solapen en
 tiempos, la aplicación esté ya diseñada para soportarlo.
 
 Por cierto, que cuando hablamos de que dos votaciones se solapen, no nos
@@ -111,8 +111,9 @@ generar dichos credenciales.
 
 Los credenciales tienen dos componentes, un mensaje y un hash, y se generan
 mediante un procedimiento llamado "HMAC". El funcionamiento y propiedades de
-seguridad de los sistemas de autenticación de tipo HMAC están explicados más
-detalladamente en la wikipedia [1] y escapan del ámbito de este documento.
+seguridad de los [sistemas de autenticación de tipo HMAC están explicados más
+detalladamente en la wikipedia](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code) 
+y escapan del ámbito de este documento.
 
 Aquí nos basta con decir HMAC es un procedimiento estándar criptográfico, que
 en nuestro caso lo utilizamos para transmitir de forma segura y autenticada un
@@ -132,13 +133,13 @@ un mensaje válido podría ser:
 
 Por tanto hay, separados por el símbolo ":", tres datos dentro del mensaje:
 
-1. voter-id
+**voter-id**
 Es una cadena de texto que sirve a Agora Voting como identificador del votante.
 Hay varias consideraciones importantes en el voter-id:
 * El voter-id debe ser siempre el mismo para cada votante en cada votación. Es decir, que si un votante vota dos veces en una misma votación, el voter-id será el mismo. Esto es muy importante, porque el voter-id es la forma en que Agora Voting buscará si el votante votó anteriormente, y de esa manera Agora Voting decide si debe guardar el voto como un nuevo voto o sobreescribir el voto anterior del votante.
 * Por seguridad, para evitar transmitir ninguna información adicional acerca del votante más allá de un identificador único, el voter id debe ser un hash de un identificador interno único del votante. Por ejemplo, el número de afiliado o el id de usuario. Recomendamos especialmente que el identificador interno no sea el número de DNI, porque hay números de DNIs duplicados y por tanto no cumple con el requisito de ser único. Sugerimos usar SHA-256 como función de hash, y evitar SHA-1 o MD5 por motivos de seguridad. Además recomendamos que no se haga directamente el hash del id, sino que se haga el hash del id más un salt. El salt debe ser otra clave secreta, que sólo sepa Podemos, y así se protege ante ataques que desvelen el id utilizado. También es recomendable que el salt varíe para cada votación, de esa manera en cada votación el voter-id para un mismo votante será diferente, disminuyendo así al mínimo necesario la información desvelada mediante el voter-id.
 
-2. election-id
+**election-id**
 Es el id de la votación. Es necesario incluirlo para que el mensaje, que está
 autenticado, asocie el voter-id a una votación específica, y así no pueda usarse
 el mismo mensaje para diferentes votaciones, en el caso de que se diera el caso
@@ -147,10 +148,10 @@ de que haya dos votaciones simultánea.
 El id de la votación lo proveerá Agora Voting para cada votación, y será un
 número entero.
 
-3. timestamp
+**timestamp**
 Es la fecha en la que se ha generado el mensaje, en formato de "UNIX
 timestamp", esto es, un entero con el número de segundos desde el 1 de enero de
-1970 [4].
+1970 ([más información](http://en.wikipedia.org/wiki/Unix_time)).
 
 El mensaje incluye el timestamp como forma de poder calcular una fecha de
 caducidad de dicho mensaje autenticado, como hemos explicado anteriormente. Por
@@ -161,10 +162,11 @@ de que el cálculo de expiración sea posible.
 #### 4.2 El hash
 
 El hash (igual que el mensaje) se se genera en el servidor mediante el
-procedimiento HMAC con SHA256, definido más detalladamente en el U.S. Federal
-Information Processing Standards Publication 198 [2]. En [3] se encuentra un
-ejemplo de cómo generar un código HMAC en el lenguaje de programación Go, y en
-otros lenguajes es similarmente parecido.
+procedimiento HMAC con SHA256, definido más detalladamente en el 
+[U.S. Federal Information Processing Standards Publication 198](http://csrc.nist.gov/publications/fips/fips198-1/FIPS-198-1_final.pdf). 
+[Aquí se encuentra un ejemplo](http://play.golang.org/p/maZxXZFON-) de cómo
+generar un código HMAC en el lenguaje de programación Go, y en otros
+lenguajes es similarmente parecido.
 
 #### 4.3 Consideraciones adicionales
 
@@ -218,8 +220,3 @@ con el servidor.
 En este último paso, la aplicación ya sólo tiene que abrir dicho enlace en un
 navegador, que aparezca en primer plano, y a partir de ahí termina la labor de
 integración que detalla esta lista de pasos.
-
-[1] http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
-[2] http://csrc.nist.gov/publications/fips/fips198-1/FIPS-198-1_final.pdf
-[3] http://play.golang.org/p/maZxXZFON-
-[4] http://en.wikipedia.org/wiki/Unix_time
