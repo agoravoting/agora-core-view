@@ -19,7 +19,7 @@ var avConfigData = {
   },
 };
 
-angular.module('avConfig', ['ngResource'])
-  .factory('ConfigService', function($resource) {
+angular.module('avConfig', [])
+  .factory('ConfigService', function() {
       return avConfigData;
   });

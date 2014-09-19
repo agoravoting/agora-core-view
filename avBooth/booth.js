@@ -7,7 +7,7 @@ angular.module('avBooth').config(function($stateProvider) {
 angular.module('avBooth').controller('BoothController',
   function($scope, $stateParams, ConfigService) {
     $scope.electionId = $stateParams.id;
-    $scope.hmacHash = $stateParams.hash;
+    $scope.hmacHash = $stateParams.hmac;
     $scope.hmacMessage = $stateParams.message;    
     $scope.baseUrl = ConfigService.baseUrl;
 });
