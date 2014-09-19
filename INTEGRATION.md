@@ -184,9 +184,9 @@ generación de dicho enlace.
 
 Es por ello que explicamos en este paso cómo se generará dicho enlace. El enlace
 será una URL que aun no funciona, pero que ya podemos decir que probablemente
-para la primera votación tendrá el formato siguiente:
+tendrá el formato siguiente:
 
-    http://agoravoting.github.io/agora-core-view/dist#/election/:id/vote/:hash/:message
+    https://vota.podemos.info/agora/#/election/:id/vote/:hash/:message
 
 En dicho enlace, :id es el id de la votación, :message el mensaje de
 autenticación, y :hash el código HMAC de autenticación, explicados
@@ -198,7 +198,7 @@ enlace. Por ello, para poder trabajar en paralelo ambas partes, hemos generado
 una URL donde podéis hacer pruebas y ver si estáis generando bien los enlaces.
 Esta url tiene el siguiente formato:
 
-    http://agoravoting.github.io/agora-core-view/dist#/test_hmac/:key/:hash/:message
+    http://agoravoting.org/agora-core-view/dist#/test_hmac/:key/:hash/:message
 
 Donde :key es la clave secreta (la que sería compartida de forma secreta entre
 Agora Voting y Podemos, que aquí es pública y parte de la URL porque es sólo
@@ -209,7 +209,7 @@ bien el hash en base a una clave y un mensaje dados, sino que además analiza el
 formato del mensaje para comprobar también si su estructura es correcta. El
 siguiente es un ejemplo de una url generada correctamente:
 
-    http://agoravoting.github.io/agora-core-view/dist#/test_hmac/whatever-password-123/ff66424d7d77607bbfe78209e407df6fff31abe214a1fe3b3a7dd82600ec0000/8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1:1411130040
+    http://agoravoting.org/agora-core-view/dist#/test_hmac/whatever-password-123/ff66424d7d77607bbfe78209e407df6fff31abe214a1fe3b3a7dd82600ec0000/8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1:1411130040
 
 ### 5. La aplicación abre en un navegador el enlace autenticado a la cabina de votación
 
