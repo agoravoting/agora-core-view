@@ -7,6 +7,7 @@ angular.module('agoraCoreView',
                 'home',
                 'avConfig',
                 'avBooth',
+                'avTest',
                 'avCrypto',
               ]);
 
@@ -24,13 +25,19 @@ angular.module('jm.i18next').config(function ($i18nextProvider) {
 
 angular.module('agoraCoreView').config(
   function($stateProvider, $urlRouterProvider, $httpProvider) {
-    
+
     /* Add New States Above */
     $stateProvider
       .state('home', {
-        url: '/election/:id/vote/:hash/:message',
+        url: '/election/:id/vote/:hmac/:message',
         templateUrl: 'avBooth/booth.html',
         controller: "BoothController"
+      });
+    $stateProvider
+      .state('test-hmac', {
+        url: '/test_hmac/:key/:hmac/:message',
+        templateUrl: 'test/test_hmac.html',
+        controller: "TestHmacController"
       });
 });
 

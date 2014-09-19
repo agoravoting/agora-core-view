@@ -1,0 +1,7 @@
+<p ng-if="hmacIsValid">
+Hmac is valid! HmacService.hmac(key("{{key}}"), message("{{message}}")) == provided-hmac("{{hmac}}")
+</p>
+
+<p ng-if="!hmacIsValid">
+Hmac is NOT valid! HmacService.hmac(key("{{key}}"), message("{{message}}")) = calculated-hmac("{{calculatedHmac}}") != provided-hmac("{{hmac}}")
+</p>
