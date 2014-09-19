@@ -6,6 +6,8 @@ describe("EncryptAnswerService tests", function() {
   };
 
   var EncryptAnswerService;
+  var ElGamal = EncryptAnswerService.ElGamal;
+  var BigInt = EncryptAnswerService.BigInt;
 
   beforeEach(module("avCrypto"));
 
@@ -15,10 +17,10 @@ describe("EncryptAnswerService tests", function() {
 
   it("should encrypt and prove plaintext knowledge", inject(function() {
     // random plaintext in arbitrary range
-    var plaintext = Math.floor(Math.random() * 10000) + 1
+    var plaintext = Math.floor(Math.random() * 10000) + 1;
     console.log(plaintext);
 
-    var params = new EncryptAnswerService.ElGamal.Params(
+    var params = new ElGamal.Params(
       BigInt.fromInt(group.p),
       BigInt.fromInt(group.q),
       BigInt.fromInt(group.g));
@@ -32,14 +34,14 @@ describe("EncryptAnswerService tests", function() {
     expect(encryptor.verifyPlaintextProof(encrypted)).toBe(true);
 
     // verify decryption works
-    var ctext = new EncryptAnswerService.ElGamal.Ciphertext(
+    var ctext = new ElGamal.Ciphertext(
       BigInt.fromInt(encrypted.alpha),
       BigInt.fromInt(encrypted.beta),
       secret.pk);
     var decrypted = secret.decryptAndProve(
       ctext,
-      EncryptAnswerService.ElGamal.fiatshamir_dlog_challenge_generator);
-    var plaintextDecrypted = decrypted.plaintext.getPlaintext().intValue()
+      ElGamal.fiatshamir_dlog_challenge_generator);
+    var plaintextDecrypted = decrypted.plaintext.getPlaintext().intValue();
 
     expect(plaintextDecrypted).toBe(plaintext);
     console.log(plaintextDecrypted);

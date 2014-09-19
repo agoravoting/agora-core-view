@@ -105,7 +105,8 @@ module.exports = function (grunt) {
       read: {
         options: {
           read:[
-            {selector:'script[data-concat!="false"]',attribute:'src',writeto:'appjs'},
+            {selector:'script[class="app"]',attribute:'src',writeto:'appjs'},
+            {selector:'script[class="lib"]',attribute:'src',writeto:'libjs'},
             {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
           ]
         },
@@ -115,7 +116,9 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<script src="app.full.min.js"></script>'},
+            {selector:'body',html:'<script src="lib.min.js"></script>'},
+            {selector:'body',html:'<script src="avConfig.js"></script>'},
+            {selector:'body',html:'<script src="app.min.js"></script>'},
             {selector:'head',html:'<link rel="stylesheet" href="app.full.min.css">'}
           ]
         },
@@ -127,24 +130,31 @@ module.exports = function (grunt) {
       main: {
         src:['temp/app.css','<%= dom_munger.data.appcss %>'],
         dest:'dist/app.full.min.css'
-      }
+      },
     },
     concat: {
       main: {
-        src: ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
-        dest: 'temp/app.full.js'
+        files: {
+          'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
+          'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
+          'dist/avConfig.js': ['avConfig.js']
+        }
       }
     },
-    ngmin: {
+    ngAnnotate: {
       main: {
-        src:'temp/app.full.js',
-        dest: 'temp/app.full.js'
+        files: {
+        'temp/app.js':['temp/app.js'],
+        'temp/lib.js': ['temp/lib.js']
+        }
       }
     },
     uglify: {
       main: {
-        src: 'temp/app.full.js',
-        dest:'dist/app.full.min.js'
+        files: {
+          'dist/app.min.js': 'temp/app.js',
+          'dist/lib.min.js': 'temp/lib.js'
+        }
       }
     },
     htmlmin: {
@@ -177,6 +187,8 @@ module.exports = function (grunt) {
         frameworks: ['jasmine'],
         files: [  //this files data is also updated in the watch handler, if updated change there too
           '<%= dom_munger.data.appjs %>',
+          'avConfig.js',
+          '<%= dom_munger.data.libjs %>',
           'bower_components/angular-mocks/angular-mocks.js',
           createFolderGlobs('*-spec.js')
         ],
@@ -194,7 +206,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('build',['jshint','clean:before','less','dom_munger','ngtemplates','cssmin','concat','ngmin','uglify','copy','htmlmin','imagemin','clean:after']);
+  grunt.registerTask('build',['jshint','clean:before','less','dom_munger','ngtemplates','cssmin','concat','ngAnnotate','uglify','copy','htmlmin','imagemin','clean:after']);
   grunt.registerTask('serve', ['dom_munger:read','jshint','connect', 'watch']);
   grunt.registerTask('test',['dom_munger:read','karma:all_tests']);
 
@@ -219,6 +231,8 @@ module.exports = function (grunt) {
       if (grunt.file.exists(spec)) {
         var files = [].concat(grunt.config('dom_munger.data.appjs'));
         files.push('bower_components/angular-mocks/angular-mocks.js');
+        files.push('avConfig.js');
+        files.concat(grunt.config('dom_munger.data.libjs'));
         files.push(spec);
         grunt.config('karma.options.files', files);
         tasksToRun.push('karma:during_watch');

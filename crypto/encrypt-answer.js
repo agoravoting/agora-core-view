@@ -67,7 +67,8 @@ angular.module('avCrypto')
       init: function(publicKeyJson) {
         return _init(publicKeyJson);
       },
-      ElGamal: ElGamal
+      ElGamal: ElGamal,
+      BigInt: BigInt
     };
   });
 /* jshint ignore:end */

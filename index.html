@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="agoraCoreView">
+<html ng-app="agora-core-view">
 <head>
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,51 +9,50 @@
 <body>
 
   <!-- Livereload script for development only (stripped during dist build) -->
-  <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+  <script src="http://localhost:35729/livereload.js"></script>
 
   <!-- JS from Bower Components -->
-  <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
-  <script src="bower_components/jquery/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/moment/moment.js"></script>
-  <script src="bower_components/angular-moment/angular-moment.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
-  <script src="bower_components/i18next/i18next.js"></script>
-  <script src="bower_components/ng-i18next/dist/ng-i18next.js"></script>
+  <script src="bower_components/less.js/dist/less-1.6.2.js"></script>
+  <script src="bower_components/jquery/jquery.js" class="lib"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js" class="lib"></script>
+  <script src="bower_components/underscore/underscore.js" class="lib"></script>
+  <script src="bower_components/angular/angular.js" class="lib"></script>
+  <script src="bower_components/moment/moment.js" class="lib"></script>
+  <script src="bower_components/angular-moment/angular-moment.js" class="lib"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js" class="lib"></script>
+  <script src="bower_components/angular-animate/angular-animate.js" class="lib"></script>
+  <script src="bower_components/angular-resource/angular-resource.js" class="lib"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js" class="lib"></script>
+  <script src="bower_components/angular-ui-utils/ui-utils.js" class="lib"></script>
+  <script src="bower_components/i18next/i18next.js" class="lib"></script>
+  <script src="bower_components/ng-i18next/dist/ng-i18next.js" class="lib"></script>
   <!-- Add New Bower Component JS Above -->
 
   <!-- Configuration file JS -->
-  <script src="config.js" data-concat="false"></script>
+  <script src="avConfig.js"></script>
 
   <!-- Crypto library JS -->
-  <script src="crypto/crypto.js"></script>
-  <script src="crypto/encrypt-answer.js"></script>
-  <script src="crypto/hmac.js"></script>
-  <script src="crypto/jsbn.js"></script>
-  <script src="crypto/jsbn2.js"></script>
-  <script src="crypto/bigint.js"></script>
-  <script src="crypto/class.js"></script>
-  <script src="crypto/elgamal.js"></script>
-  <script src="crypto/random.js"></script>
-  <script src="crypto/sha1.js"></script>
-  <script src="crypto/sha2.js"></script>
-  <script src="crypto/sjcl.js"></script>
+  <script src="crypto/crypto.js" class="app"></script>
+  <script src="crypto/encrypt-answer.js" class="app"></script>
+  <script src="crypto/hmac.js" class="app"></script>
+  <script src="crypto/jsbn.js" class="app"></script>
+  <script src="crypto/jsbn2.js" class="app"></script>
+  <script src="crypto/bigint.js" class="app"></script>
+  <script src="crypto/class.js" class="app"></script>
+  <script src="crypto/elgamal.js" class="app"></script>
+  <script src="crypto/random.js" class="app"></script>
+  <script src="crypto/sha1.js" class="app"></script>
+  <script src="crypto/sha2.js" class="app"></script>
+  <script src="crypto/sjcl.js" class="app"></script>
 
   <!-- Main App JS -->
-  <script src="app.js"></script>
-  <script src="home/home.js"></script>
-  <script src="panel/panel.js"></script>
-  <script src="election/election.js"></script>
-  <script src="avBooth/booth.js"></script>
-  <script src="avBooth/booth-directive/booth-directive.js"></script>
-
-  <script src="test/test_hmac.js"></script>
+  <script src="app.js" class="app"></script>
+  <script src="home/home.js" class="app"></script>
+  <script src="panel/panel.js" class="app"></script>
+  <script src="election/election.js" class="app"></script>
+  <script src="avBooth/booth.js" class="app"></script>
+  <script src="avBooth/booth-directive/booth-directive.js" class="app"></script>
+  <script src="test/test_hmac.js" class="app"></script>
   <!-- Add New Component JS Above -->
 
   <div>

@@ -1,4 +1,4 @@
-angular.module('agoraCoreView',
+angular.module('agora-core-view',
                ['ui.bootstrap',
                 'ui.utils',
                 'ui.router',
@@ -24,7 +24,7 @@ angular.module('jm.i18next').config(function ($i18nextProvider) {
   };
 });
 
-angular.module('agoraCoreView').config(
+angular.module('agora-core-view').config(
   function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     /* Add New States Above */
@@ -42,7 +42,7 @@ angular.module('agoraCoreView').config(
       });
 });
 
-angular.module('agoraCoreView').run(function($rootScope) {
+angular.module('agora-core-view').run(function($rootScope) {
 
   $rootScope.safeApply = function(fn) {
     var phase = $rootScope.$$phase;
