@@ -7,6 +7,7 @@ angular.module('agoraCoreView',
                 'home',
                 'avConfig',
                 'avBooth',
+                'avCrypto',
               ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {

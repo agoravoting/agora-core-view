@@ -6,7 +6,15 @@ describe("Agora Encryptor tests", function() {
     "q":"24792774508736884642868649594982829646677044143456685966902090450389126928108831401260556520412635107010557472033959413182721740344201744439332485685961403243832055703485006331622597516714353334475003356107214415133930521931501335636267863542365051534250347372371067531454567272385185891163945756520887249904654258635354225185183883072436706698802915430665330310171817147030511296815138402638418197652072758525915640803066679883309656829521003317945389314422254112846989412579196000319352105328237736727287933765675623872956765501985588170384171812463052893055840132089533980513123557770728491280124996262883108653723"
   };
 
-  it("should encrypt and prove plaintext knowledge", function() {
+  var EncryptAnswerService;
+
+  beforeEach(module("avCrypto"));
+
+  beforeEach(inject(function (_EncryptAnswerService_) {
+    EncryptAnswerService = _EncryptAnswerService_;
+  }));
+
+  it("should encrypt and prove plaintext knowledge", inject(function() {
     // random plaintext in arbitrary range
     var plaintext = Math.floor(Math.random() * 10000) + 1
     console.log(plaintext);
@@ -15,7 +23,7 @@ describe("Agora Encryptor tests", function() {
     // generate private and public keys
     var secret = params.generate();
     // encrypt
-    var encryptor = AgoraEncryptor.init(secret.pk.toJSONObject());
+    var encryptor = EncryptAnswerService.init(secret.pk.toJSONObject());
     var encrypted = encryptor.encryptAnswer(plaintext);
 
     // verify plaintext proof
@@ -28,6 +36,6 @@ describe("Agora Encryptor tests", function() {
 
     expect(plaintextDecrypted).toBe(plaintext);
     console.log(plaintextDecrypted);
-  });
+  }));
 });
 /* jshint ignore:end */
