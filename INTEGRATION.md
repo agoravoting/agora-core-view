@@ -11,9 +11,10 @@ La principal y más importante forma de integración es la inclusión, dentro de
 la aplicación móvil de Podemos, de un botón que al pincharlo abra en un
 navegador web la cabina de votación para votar.
 
-El botón para votar entendemos que Podemos se encargará de manual activar y
-desactivar su aparición según si hay alguna votación activa, y además también
-se encargará de generar un enlace específico para la votacion en curso.
+Entendemos que Podemos se encargará de activar y desactivar la aparición del
+botón de votar en su aplicación según si hay alguna votación activa, y además también
+se encargará de generar un enlace específico para la votacion en curso, de la
+forma que se detalla en este documento.
 
 El enlace que se genera servirá para autenticar al votante, y es una forma
 segura de comunicación entre Podemos y Agora Voting de la identidad del votante.
