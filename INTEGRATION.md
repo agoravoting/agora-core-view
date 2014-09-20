@@ -126,7 +126,7 @@ la validez del mensaje ante Agora Voting.
 #### 4.1 El mensaje
 
 El mensaje será por tanto es generado por el servidor de la aplicación y tiene
-el siguiente formato: "<voter-id>:<election-id>:<timestamp>". Por ejemplo,
+el siguiente formato: "```<voter-id>:<election-id>:<timestamp>```". Por ejemplo,
 un mensaje válido podría ser:
 
     8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1:1411130040
