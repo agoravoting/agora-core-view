@@ -1,15 +1,24 @@
-$(document).ready(function () {
-  $('[data-toggle="offcanvas"]').click(function () {
-    $('.row-offcanvas').toggleClass('active');
-  });
-});
 
 $(document).ready(function () {
-  $('.navbar-collapse').on('shown.bs.collapse', function () {
+  /* always collapsed navbar max height to 70% */
+  $(window).resize(function() {
     windowHeight = $(window).innerHeight();
-    $('.persiana').css('min-height', windowHeight);
+    $('nav .collapse').css('max-height', windowHeight*0.70);
   });
-  $('.navbar-collapse').on('hidden.bs.collapse', function () {
-    $('.persiana').css('min-height', "15px");
+
+  /* only show one navbar-collapse each time and change the chevron position */
+  $('#selected-options').on('show.bs.collapse', function () {
+    $("#search-options.in").collapse('hide');
+    $(".navbar-brand .glyphicon").attr(
+      "class", "glyphicon glyphicon-chevron-up white");
+  });
+
+  $('#selected-options').on('hide.bs.collapse', function () {
+    $(".navbar-brand .glyphicon").attr(
+      "class", "glyphicon glyphicon-chevron-down white");
+  });
+
+  $('#search-options').on('show.bs.collapse', function () {
+    $("#selected-options.in").collapse('hide');
   });
 });
