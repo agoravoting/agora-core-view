@@ -1,2 +1,10 @@
-<p>booth directive working! and the election url is "{{ electionUrl }}"</p>
-<p ng-i18next="app.name"></p>
+<div ng-if="status == statusEnum.receiving">
+  <p>booth directive working! and the election url is "{{ electionUrl }}". Loading..</p>
+</div>
+<div ng-if="status == statusEnum.errorLoading">
+  <p>booth directive working! and the election url is "{{ electionUrl }}", but there was an error loading it</p>
+</div>
+<div ng-if="status == statusEnum.loaded">
+  <p>booth directive working! and the election url is "{{ electionUrl }}", Election loaded!</p>
+  <p ng-i18next="app.name"></p>
+</div>

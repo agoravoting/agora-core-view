@@ -1,16 +1,17 @@
-angular.module('agora-core-view',
-               ['ui.bootstrap',
-                'ui.utils',
-                'ui.router',
-                'jm.i18next',
-                'ngAnimate',
-                'angularMoment',
-                'home',
-                'avConfig',
-                'avBooth',
-                'avTest',
-                'avCrypto',
-              ]);
+angular.module(
+  'agora-core-view',
+  ['ui.bootstrap',
+  'ui.utils',
+  'ui.router',
+  'jm.i18next',
+  'ngAnimate',
+  'ngResource',
+  'angularMoment',
+  'avConfig',
+  'avBooth',
+  'avTest',
+  'avCrypto',
+]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {
   // note that we do not send the language: by default, it will try the language
@@ -27,9 +28,9 @@ angular.module('jm.i18next').config(function ($i18nextProvider) {
 angular.module('agora-core-view').config(
   function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    /* Add New States Above */
+    /* App states and urls are defined here */
     $stateProvider
-      .state('home', {
+      .state('booth', {
         url: '/election/:id/vote/:hmac/:message',
         templateUrl: 'avBooth/booth.html',
         controller: "BoothController"

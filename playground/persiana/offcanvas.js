@@ -2,7 +2,7 @@
 $(document).ready(function () {
   /* always collapsed navbar max height to 70% */
   $(window).resize(function() {
-    windowHeight = $(window).innerHeight();
+    var windowHeight = $(window).innerHeight();
     $('nav .collapse').css('max-height', windowHeight*0.70);
   });
 

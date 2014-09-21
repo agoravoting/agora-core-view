@@ -5,9 +5,10 @@ angular.module('avBooth').config(function($stateProvider) {
 });
 
 angular.module('avBooth').controller('BoothController',
-  function($scope, $stateParams, ConfigService) {
+  function($scope, $stateParams, $filter, ConfigService) {
     $scope.electionId = $stateParams.id;
     $scope.hmacHash = $stateParams.hmac;
     $scope.hmacMessage = $stateParams.message;    
     $scope.baseUrl = ConfigService.baseUrl;
+    $scope.config = $filter('json')(ConfigService);
 });
