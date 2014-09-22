@@ -1,7 +1,14 @@
+/*
+ * Busy indicator directive.
+ *
+ * Receives via transclude the text to show in the indicator, if any.
+ */
 angular.module('avBooth')
   .directive('avBusy', function($resource, $window) {
 
     function link(scope, element, attrs) {
+      // moves the title on top of the busy indicator
+      // TODO: integrate it better with ng-i18next
       scope.onResize = function() {
         console.log("resizing!");
         var title = element.find(".avb-busy-title");
