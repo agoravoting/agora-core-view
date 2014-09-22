@@ -1,29 +1,34 @@
-.avb-busy-loading {
+.avb-busy-title {
+  width: 100%;
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -34px;
-  margin-left: -100px;
-  width: 300px;
-  height: 150px;
-  color: white;
-  border-radius: 7px;
-  background-color: #009CDF;
-  text-align: center;
-}
-
-.avb-busy-loading .title {
+  margin-top: -100px;
+  color: black;
+  font-size: 14pt;
+  line-height: 16pt;
   padding: 10px;
 }
 
-.avb-busy-loading .loading-gear {
-  display: block;
-  width: 41px;
-  margin-left: 130px;
-  clear: both;
-  height: 60px;
-  background-image: url('/img/loading.gif');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #009CDF;
+@media (min-width: 400px) {
+  .avb-busy-title {
+    max-width: 350px;
+  }
+}
+
+.avb-busy-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 7px;
+    background-image: url('/img/loading.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #009CDF;
 }
