@@ -105,8 +105,8 @@ module.exports = function (grunt) {
       read: {
         options: {
           read:[
-            {selector:'script[class="app"]',attribute:'src',writeto:'appjs'},
             {selector:'script[class="lib"]',attribute:'src',writeto:'libjs'},
+            {selector:'script[class="app"]',attribute:'src',writeto:'appjs'},
             {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
           ]
         },
@@ -135,8 +135,8 @@ module.exports = function (grunt) {
     concat: {
       main: {
         files: {
-          'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
+          'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
           'dist/avConfig.js': ['avConfig.js']
         }
       }
@@ -186,9 +186,10 @@ module.exports = function (grunt) {
       options: {
         frameworks: ['jasmine'],
         files: [  //this files data is also updated in the watch handler, if updated change there too
-          '<%= dom_munger.data.appjs %>',
-          'avConfig.js',
           '<%= dom_munger.data.libjs %>',
+          'avConfig.js',
+          '<%= dom_munger.data.appjs %>',
+          '<%= ngtemplates.main.dest %>',
           'bower_components/angular-mocks/angular-mocks.js',
           createFolderGlobs('*-spec.js')
         ],
@@ -229,10 +230,11 @@ module.exports = function (grunt) {
 
       //if the spec exists then lets run it
       if (grunt.file.exists(spec)) {
-        var files = [].concat(grunt.config('dom_munger.data.appjs'));
+        var files = [].concat(grunt.config('dom_munger.data.libjs'));
         files.push('bower_components/angular-mocks/angular-mocks.js');
         files.push('avConfig.js');
-        files.concat(grunt.config('dom_munger.data.libjs'));
+        files.concat(grunt.config('dom_munger.data.appjs'));
+        files.concat(grunt.config('ngtemplates.main.dest'));
         files.push(spec);
         grunt.config('karma.options.files', files);
         tasksToRun.push('karma:during_watch');

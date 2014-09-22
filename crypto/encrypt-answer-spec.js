@@ -6,13 +6,15 @@ describe("EncryptAnswerService tests", function() {
   };
 
   var EncryptAnswerService;
-  var ElGamal = EncryptAnswerService.ElGamal;
-  var BigInt = EncryptAnswerService.BigInt;
+  var ElGamal;
+  var BigInt;
 
   beforeEach(module("avCrypto"));
 
   beforeEach(inject(function (_EncryptAnswerService_) {
     EncryptAnswerService = _EncryptAnswerService_;
+    ElGamal = EncryptAnswerService.ElGamal;
+    BigInt = EncryptAnswerService.BigInt;
   }));
 
   it("should encrypt and prove plaintext knowledge", inject(function() {
