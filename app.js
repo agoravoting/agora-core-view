@@ -41,6 +41,7 @@ angular.module('agora-core-view').config(
         templateUrl: 'test/test_hmac.html',
         controller: "TestHmacController"
       });
+
 });
 
 angular.module('agora-core-view').run(function($rootScope) {

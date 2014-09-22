@@ -1,20 +1,35 @@
 angular.module('avBooth')
-  .directive('avBooth', function($resource) {
+  .directive('avBooth', function($resource, $location) {
     // possible values of the election status scope variable
     var statusEnum = {
-      receiving: 0,
-      loaded: 1,
-      errorLoading: 2
+      receivingElection: 'receivingElection',
+      loadedElection: 'loadedElection',
+      errorLoadingElection: 'errorLoadingElection'
     };
 
     // similar to a "directive controller"
     function link(scope, element, attrs) {
+
+      // override status if in debug mode and it's provided via query param
+      function setStatus(newStatus) {
+        if (!scope.config.debug || $location.search()['status'] == null) {
+          console.log("setting status to " + newStatus);
+          scope.status = newStatus;
+        } else {
+          console.log("status override: not setting status to " + newStatus);
+          scope.status = $location.search()['status'];
+        }
+      }
+
       // init scope vars
       angular.extend(scope, {
         election: null,
-        status: statusEnum.receiving,
-        statusEnum: statusEnum
+        setStatus: setStatus,
+        statusEnum: statusEnum,
+        // convert config to JSON
+        config: angular.fromJson(scope.configStr)
       });
+      setStatus(statusEnum.receivingElection);
 
       // load election on background
       $resource(scope.electionUrl, {}, {'get': {method: 'GET'}})
@@ -23,19 +38,20 @@ angular.module('avBooth')
         // on success
         .then(function(value) {
           scope.election = value;
-//           scope.status = statusEnum.loaded;
+          scope.setStatus(statusEnum.loadedElection);
         },
         // on error
         function (error) {
-          scope.status = statusEnum.errorLoading;
+          scope.setStatus(statusEnum.errorLoadingElection);
         });
     }
+
 
     return {
       restrict: 'E',
       scope: {
         electionUrl: '@electionUrl',
-        config: '@config'
+        configStr: '@config'
       },
       link: link,
       templateUrl: 'avBooth/booth-directive/booth-directive.html'

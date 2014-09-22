@@ -9,10 +9,13 @@ var avConfigData = {
   // 'https://foo/api/v3/' and always ends in '/'.
   baseUrl: "/temp_data/",
 
-  // The default language of the application
+  // default language of the application
   language: "es",
 
-  // Contact data where users can reach to a human when they need it
+  // if we are in debug mode or not
+  debug: true,
+
+  // contact data where users can reach to a human when they need it
   contact: {
     email: "contact@example.com",
     twitter: "agoravoting"
