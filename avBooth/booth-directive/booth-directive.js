@@ -3,7 +3,7 @@ angular.module('avBooth')
     // possible values of the election status scope variable
     var statusEnum = {
       receivingElection: 'receivingElection',
-      loadedElection: 'loadedElection',
+      startScreen: 'startScreen',
       errorLoadingElection: 'errorLoadingElection'
     };
 
@@ -32,18 +32,24 @@ angular.module('avBooth')
       setStatus(statusEnum.receivingElection);
 
       // load election on background
-      $resource(scope.electionUrl, {}, {'get': {method: 'GET'}})
-        .get()
-        .$promise
-        // on success
-        .then(function(value) {
-          scope.election = value;
-          scope.setStatus(statusEnum.loadedElection);
-        },
-        // on error
-        function (error) {
+      try {
+        $resource(scope.electionUrl, {}, {'get': {method: 'GET'}})
+          .get()
+          .$promise
+          // on success
+          .then(function(value) {
+            scope.election = value;
+            scope.setStatus(statusEnum.startScreen);
+          },
+          // on error, like parse error or 404
+          function (error) {
+            scope.setStatus(statusEnum.errorLoadingElection);
+          });
+
+      // the electionUrl might throw an exception
+      } catch (error) {
           scope.setStatus(statusEnum.errorLoadingElection);
-        });
+      }
     }
 
 

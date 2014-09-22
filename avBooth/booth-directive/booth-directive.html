@@ -1,10 +1,8 @@
 <av-busy ng-if="status == statusEnum.receivingElection">
   <p ng-i18next="avBooth.loadingElectionTitle"></p>
-</avBusy>
+</av-busy>
 <div ng-if="status == statusEnum.errorLoadingElection">
   <p>booth directive working! and the election url is "{{electionUrl}}", but there was an error loading it</p>
 </div>
-<div ng-if="status == statusEnum.loadedElection">
-  <p>booth directive working! and the election url is "{{electionUrl}}", Election loaded!</p>
-  <p ng-i18next="app.name"></p>
-</div>
+<av-start-screen ng-if="status == statusEnum.startScreen">
+</av-start-screen>
