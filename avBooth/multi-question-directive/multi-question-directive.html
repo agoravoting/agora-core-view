@@ -1,0 +1,76 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-header container-fluid">
+    <div class="row">
+      <div class="col-xs-8 col-md-10" data-toggle="collapse" data-target="#selected-options">
+        <a class="navbar-brand" href="#">
+          <span class="white">Selected: 3</span>
+          <span class="glyphicon glyphicon-chevron-down white"></span>
+        </a>
+      </div>
+      <div class="col-xs-4 col-md-2" data-toggle="collapse" data-target="#search-options">
+        <button type="button" class="white navbar-toggle">
+          Filter
+          <span class="glyphicon glyphicon-search white"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-collapse collapse" id="search-options">
+    <ul class="nav navbar-nav">
+      <li>
+        <input type="search" class="form-control" placeholder="Search" />
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-collapse collapse" id="selected-options">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+{{question}}
+
+<ol>
+    <li ng-repeat="answer in answers">
+        {{answer}}
+    </li>
+</ol>
+   
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="ie10-viewport-bug-workaround.js"></script>
+
+    <script src="offcanvas.js"></script>
