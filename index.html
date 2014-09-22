@@ -7,6 +7,23 @@
   <link href="app.less" type="text/css" rel="stylesheet/less">
 </head>
 <body>
+  <style type="text/css">
+  .avb-start-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 7px;
+    background-image: url('img/loading.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #009CDF;
+  }
+  </style>
 
   <!-- Livereload script for development only (stripped during dist build) -->
   <script src="http://localhost:35729/livereload.js"></script>
@@ -55,6 +72,8 @@
 
   <div>
     <!-- MAIN CONTENT -->
+    <div id="angular-preloading" class="avb-start-loading">
+    </div>
     <div id="content">
       <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
       <div ui-view>
