@@ -17,13 +17,13 @@ angular.module('avBooth')
       });
 
       // load election on background
-      $resource(scope.electionUrl, {}, {'query': {method: 'GET'}})
-        .query({electionId: scope.electionUrl})
+      $resource(scope.electionUrl, {}, {'get': {method: 'GET'}})
+        .get()
         .$promise
         // on success
         .then(function(value) {
           scope.election = value;
-          scope.status = statusEnum.loaded;
+//           scope.status = statusEnum.loaded;
         },
         // on error
         function (error) {

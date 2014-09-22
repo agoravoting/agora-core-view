@@ -1,5 +1,8 @@
 {
   "app": {
-    "name": "Agora Voting [es]"
+    "name2": "Agora Voting [es]"
+  },
+  "avBooth": {
+    "loadingElectionTitle": "Cargando votación, un momento por favor.."
   }
 }
