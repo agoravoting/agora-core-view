@@ -3,6 +3,15 @@
     "name2": "Agora Voting [es]"
   },
   "avBooth": {
-    "loadingElectionTitle": "Cargando votación, un momento por favor.."
+    "loadingElectionTitle": "Cargando votación, un momento por favor..",
+    "stepNumber": "paso __num__ de __total__",
+    "startVoting": "Comenzar a votar",
+    "stepsToVote": "Debes seguir estos pasos para emitir tu voto:",
+    "selectOptionsTitle": "1. Selecciona tus opciones",
+    "selectOptionsText": "Responde a las preguntas de la votación que se presentan una a una. Configurarás así las preferencias de tu papeleta.",
+    "reviewOptionsTitle": "2. Revisa tu papeleta",
+    "reviewOptionsText": "Te mostraremos el contenido de tu papeleta para que puedas revisarla. Estarás a tiempo de cambiar las respuestas si quieres.",
+    "encryptAndEmitBallotTitle": "3. Emite tu voto",
+    "encryptAndEmitBallotText": "Antes de enviar tu voto, la cabina tardará unos segundos mientras lo cifra. De esa forma, se mantendrá el secreto del voto. Al terminar, obtendrás un localizador con el que verificar que tu voto fue debidamente registrado."
   }
 }

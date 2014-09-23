@@ -2,9 +2,9 @@
 <html ng-app="agora-core-view">
 <head>
   <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="utf-8">
-  <link href="app.less" type="text/css" rel="stylesheet/less">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+  <link href="app.less" type="text/css" rel="stylesheet/less" />
 </head>
 <body>
   <style type="text/css">
@@ -61,12 +61,14 @@
   <!-- Configuration file JS -->
   <script src="avConfig.js"></script>
 
-  <!-- Crypto library JS -->
+  <!-- Main App JS -->
+  <script src="avUi/avUi.js" class="app"></script>
+  <script src="avUi/affix-bottom-directive/affix-bottom-directive.js" class="app"></script>
+
   <script src="crypto/crypto.js" class="app"></script>
   <script src="crypto/encrypt-answer.js" class="app"></script>
   <script src="crypto/hmac.js" class="app"></script>
 
-  <!-- Main App JS -->
   <script src="app.js" class="app"></script>
   <script src="avBooth/booth.js" class="app"></script>
   <script src="avBooth/busy-directive/busy-directive.js" class="app"></script>
@@ -81,11 +83,12 @@
   <!-- Add New Component JS Above -->
 
   <div>
-    <!-- MAIN CONTENT -->
+    <!-- Shown while loading -->
     <div id="angular-preloading" class="avb-start-loading">
     </div>
+    <!-- Main content -->
     <div id="content">
-      <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+      <!-- This is where angular injects its content -->
       <div ui-view>
       </div>
     </div>

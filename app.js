@@ -8,6 +8,7 @@ angular.module(
   'ngResource',
   'angularMoment',
   'avConfig',
+  'avUi',
   'avBooth',
   'avTest',
   'avCrypto',
@@ -18,7 +19,7 @@ angular.module('jm.i18next').config(function ($i18nextProvider) {
   // supported by the web browser
   $i18nextProvider.options = {
     useCookie: false,
-    useLocalStorage: true,
+    useLocalStorage: false,
     fallbackLng: 'en',
     resGetPath: '/locales/__lng__.json',
     defaultLoadingValue: '' // ng-i18next option, *NOT* directly supported by i18next

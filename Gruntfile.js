@@ -94,7 +94,24 @@ module.exports = function (grunt) {
       main: {
         files: [
           {src: ['img/**'], dest: 'dist/'},
-          {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/',filter:'isFile',expand:true}
+          {src: ['temp_data/**'], dest: 'dist/'},
+          {
+            expand: true,
+            cwd: 'bower_components/bootstrap/fonts/',
+            src: ['**'],
+            dest: 'dist/fonts/'
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/bootstrap/fonts/',
+            src: ['**'],
+            dest: 'dist/fonts/'
+          },
+          {
+            src: ['locales/**'],
+            dest: 'dist/'
+          },
+//           {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/',filter:'isFile',expand:true}
           //{src: ['bower_components/angular-ui-utils/ui-utils-ieshiv.min.js'], dest: 'dist/'},
           //{src: ['bower_components/select2/*.png','bower_components/select2/*.gif'], dest:'dist/css/',flatten:true,expand:true},
           //{src: ['bower_components/angular-mocks/angular-mocks.js'], dest: 'dist/'}
@@ -216,7 +233,8 @@ module.exports = function (grunt) {
 
     var tasksToRun = [];
 
-    if (filepath.lastIndexOf('.js') !== -1 && filepath.lastIndexOf('.js') === filepath.length - 3) {
+    if ((filepath.lastIndexOf('.json') !== -1 && filepath.lastIndexOf('.json') === filepath.length - 5) ||
+        (filepath.lastIndexOf('.js') !== -1 && filepath.lastIndexOf('.js') === filepath.length - 3)) {
 
       //lint the changed js file
       grunt.config('jshint.main.src', filepath);
