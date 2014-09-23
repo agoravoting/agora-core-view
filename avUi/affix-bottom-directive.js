@@ -22,11 +22,6 @@ angular.module('avUi')
       if (instance.affixed === affix) {
         return;
       }
-      var data = {
-        affix: instance.affix,
-        totH: document.body.scrollHeight + elHeight,
-        windowH: window.innerHeight
-      };
 
       instance.affix = affix;
 
