@@ -1,6 +1,7 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar start-screen navbar-default navbar-fixed-top" av-affix-top=".avb-content" role="navigation">
   <div class="container">
     <div class="pull-left" ng-i18next="[avBooth.stepNumber]({num:0,total:3})">
+    hola
     </div>
     <div class="pull-right">
       <span class="glyphicon glyphicon-question-sign"></span>
@@ -8,20 +9,21 @@
   </div>
 </nav>
 
-<div class="content avb-content">
+<div class="content avb-content start-screen">
   <div class="container">
+    <p ng-i18next="avBooth.stepsToVote"></p>
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <h2 ng-i18next="avBooth.selectOptionsTitle"></h2>
-        <p  ng-i18next="avBooth.selectOptionsText"></p>
+        <h3 class="text-brand-success" ng-i18next="avBooth.selectOptionsTitle"></h3>
+        <p ng-i18next="avBooth.selectOptionsText"></p>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <h2 ng-i18next="avBooth.reviewOptionsTitle"></h2>
-        <p  ng-i18next="avBooth.reviewOptionsText"></p>
+        <h3 class="text-brand-success" ng-i18next="avBooth.reviewOptionsTitle"></h3>
+        <p ng-i18next="avBooth.reviewOptionsText"></p>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <h2 ng-i18next="avBooth.encryptAndEmitBallotTitle"></h2>
-        <p  ng-i18next="avBooth.encryptAndEmitBallotText"></p>
+        <h3 class="text-brand-success" ng-i18next="avBooth.encryptAndEmitBallotTitle"></h3>
+        <p ng-i18next="avBooth.encryptAndEmitBallotText"></p>
       </div>
     </div>
     <div class="row" av-affix-bottom>

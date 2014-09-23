@@ -7,22 +7,28 @@
  *    make space for it giving some bottom margin in its parent element.
  */
 angular.module('avUi')
-  .directive('avAffixBottom', function($window) {
+  .directive('avAffixBottom', function($window, $timeout) {
     var affixBottomClass = "affix-bottom";
 
     var checkPosition = function(instance, el, options) {
 
       var affix = false;
-      if(document.body.scrollHeight > window.innerHeight) {
+      var elHeight = $(el).height();
+
+      if (document.body.scrollHeight + elHeight > window.innerHeight) {
         affix = affixBottomClass;
       }
 
       if (instance.affixed === affix) {
         return;
       }
-      console.log("checkPosition " + affix);
+      var data = {
+        affix: instance.affix,
+        totH: document.body.scrollHeight + elHeight,
+        windowH: window.innerHeight
+      };
 
-      instance.affixed = affix;
+      instance.affix = affix;
 
       if (!affix) {
         el.removeClass(affixBottomClass);
@@ -31,7 +37,7 @@ angular.module('avUi')
         el.addClass(affixBottomClass);
 
         // add bottom-margin automatically
-        $(el).parent().css("margin-bottom", $(el).height());
+        $(el).parent().css("margin-bottom", elHeight + "px");
       }
 
     };
@@ -39,17 +45,27 @@ angular.module('avUi')
     return {
       restrict: 'EAC',
       link: function(scope, iElement, iAttrs) {
+        // instance saves state between calls to checkPosition
         var instance = {
-          affixed: false,
+          affix: false,
           defaultBottomMargin: iElement.css("margin-bottom")
         };
 
-        checkPosition(instance, iElement, iAttrs);
+        // timeout is used with callCheckPos so that we do not create too many
+        // calls to checkPosition, at most one per 100ms
+        var timeout;
 
-        angular.element($window).bind('resize', function() {
-          checkPosition(instance, iElement, iAttrs);
-        });
+        function callCheckPos() {
+          timeout = $timeout(function() {
+            $timeout.cancel(timeout);
+            checkPosition(instance, iElement, iAttrs);
+          }, 100);
+        }
+        callCheckPos();
 
+        // watch for window resizes and element resizes too
+        angular.element($window).bind('resize', callCheckPos);
+        angular.element(iElement).bind('resize', callCheckPos);
       }
     };
 

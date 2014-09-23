@@ -5,6 +5,10 @@
 
 @fa-font-path: "bower_components/font-awesome/fonts";
 
+/* Global Config */
+@av-primary: #009CDF;
+/* End Global Config */
+
 /* Component LESS */
 @import "avBooth/booth-directive/booth-directive.less";
 @import "avBooth/busy-directive/busy-directive.less";
@@ -14,7 +18,13 @@
 /* Required for Angular UI Bootstrap */
 .nav, .pagination, .carousel a { cursor: pointer; }
 
+/* Global LESS */
 .btn-plain {
   border-radius: 0;
   border: 0;
 }
+
+.text-brand-success {
+  color: @brand-success;
+}
+/* End Global LESS */
