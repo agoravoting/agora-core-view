@@ -59,8 +59,9 @@ angular.module('avUi')
         callCheckPos();
 
         // watch for window resizes and element resizes too
-        angular.element($window).bind('resize', callCheckPos);
-        angular.element(iElement).bind('resize', callCheckPos);
+        angular.element($window).on('resize', callCheckPos);
+        angular.element(document.body).on('resize', callCheckPos);
+        angular.element(iElement).on('resize', callCheckPos);
       }
     };
 

@@ -20,7 +20,7 @@ angular.module('avUi')
     var checkCollapse = function(instance, el, options) {
       var maxHeight = angular.element(instance.maxHeightSelector).css("max-height");
       var jel = angular.element(el);
-      var height = jel.height();
+      var height = jel[0].scrollHeight;
 
       if (maxHeight.indexOf("px") === -1) {
         console.log("invalid non-pixels max-height for " + instance.maxHeightSelector);
@@ -31,11 +31,21 @@ angular.module('avUi')
 
       // make sure it's collapsed if it should
       if (height > maxHeight) {
+        // already collapsed
+        if (instance.isCollapsed) {
+          return;
+        }
+        instance.isCollapsed = true;
         jel.addClass("collapsed");
         angular.element(instance.toggleSelector).removeClass("hidden in");
 
       // removed collapsed and hide toggle otherwise
       } else {
+        // already not collapsed
+        if (!instance.isCollapsed) {
+          return;
+        }
+        instance.isCollapsed = false;
         jel.removeClass("collapsed");
         angular.element(instance.toggleSelector).addClass("hidden");
       }
@@ -63,7 +73,7 @@ angular.module('avUi')
       restrict: 'EAC',
       link: function(scope, iElement, iAttrs) {
         var instance = {
-          isCollapsed: true,
+          isCollapsed: false,
           maxHeightSelector: iAttrs.avCollapsing,
           toggleSelector: iAttrs.toggleSelector
         };
