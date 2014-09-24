@@ -10,5 +10,6 @@ angular.module('avBooth').controller('BoothController',
     $scope.hmacHash = $stateParams.hmac;
     $scope.hmacMessage = $stateParams.message;    
     $scope.baseUrl = ConfigService.baseUrl;
+    $scope.contact = ConfigService.contact;
     $scope.config = $filter('json')(ConfigService);
 });
