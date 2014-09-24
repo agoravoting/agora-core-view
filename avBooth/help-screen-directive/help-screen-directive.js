@@ -1,7 +1,7 @@
 /*
- * Start screen directive.
+ * Help screen directive.
  *
- * Shows the steps to the user.
+ * Shows the contact data.
  */
 angular.module('avBooth')
   .directive('avHelpScreen', function() {  
