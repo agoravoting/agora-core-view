@@ -1,0 +1,87 @@
+av-booth {
+  .navbar-fixed-top {
+    border: none;
+    background-color: @av-primary;
+    color: @btn-primary-color;
+    padding: 5px;
+    min-height: 30px;
+  }
+
+
+  .avb-top-navbar {
+    margin-top: -3px;
+  }
+
+  .unfixed-top-height {
+    max-height: 150px;
+  }
+
+  .navbar-unfixed-top {
+    border: none;
+    background-color: @av-primary;
+    color: @btn-primary-color;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    transition: all .8s ease;
+
+    &.collapsed {
+      max-height: 150px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  .wrapper-unfixed:after {
+    display: block;
+    position: relative;
+    bottom: 30px;
+    width: 100%;
+    height: 30px;
+    content: " ";
+    background: linear-gradient(to bottom, rgba(0,156,223,0) 0%,rgba(0,156,223,1) 100%);
+  }
+
+  #avb-toggle {
+    z-index: 101;
+    margin-top: -50px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  #avb-toggle span {
+    color: white;
+    cursor: pointer;
+    transform: rotate(90deg);
+  }
+
+  #avb-toggle.in span {
+    transform: rotate(-90deg);
+  }
+
+  .avb-content {
+    margin-top: -30px;
+    padding-top: 15px;
+  }
+
+  .start-screen {
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  .affix-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@media(min-width: @screen-sm-min) {
+  av-booth .avb-top-navbar {
+    margin-top: 5px;
+  }
+}
