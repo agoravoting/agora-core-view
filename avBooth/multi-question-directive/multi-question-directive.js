@@ -51,6 +51,6 @@ angular.module('avBooth')
       restrict: 'E',
       scope: {},
       link: link,
-      templateUrl: 'avBooth/multiquestion-directive/multi-question-directive.html'
+      templateUrl: 'avBooth/multi-question-directive/multi-question-directive.html'
     };
   });
