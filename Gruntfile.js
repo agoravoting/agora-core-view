@@ -80,6 +80,14 @@ module.exports = function (grunt) {
         }
       }
     },
+    autoprefixer: {
+      options: {
+        browsers: ['ie >= 8', 'ff > 4', 'last 8 versions']
+      },
+      main: {
+        src: 'temp/app.css'
+      }
+    },
     ngtemplates: {
       main: {
         options: {
@@ -224,7 +232,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('build',['jshint','clean:before','less','dom_munger','ngtemplates','cssmin','concat','ngAnnotate','uglify','copy','htmlmin','imagemin','clean:after']);
+  grunt.registerTask('build',['jshint','clean:before','less','autoprefixer','dom_munger','ngtemplates','cssmin','concat','ngAnnotate','uglify','copy','htmlmin','imagemin','clean:after']);
   grunt.registerTask('serve', ['dom_munger:read','jshint','connect', 'watch']);
   grunt.registerTask('test',['dom_munger:read','karma:all_tests']);
 
