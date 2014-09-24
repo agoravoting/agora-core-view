@@ -4,7 +4,7 @@
   },
   "avBooth": {
     "loadingElectionTitle": "Loading election, please wait..",
-    "stepNumber": "step __num__ of __total__",
+    "stepNumber": "step %s of %s",
     "startVoting": "Start Voting",
     "stepsToVote": "You need to follow these steps to cast your ballot:",
     "selectOptionsTitle": "1. Select your options",

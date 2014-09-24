@@ -4,7 +4,7 @@
   },
   "avBooth": {
     "loadingElectionTitle": "Cargando votación, un momento por favor..",
-    "stepNumber": "paso __num__ de __total__",
+    "stepNumber": "paso %s de %s",
     "startVoting": "Empezar a votar",
     "stepsToVote": "Seguirás estos pasos para emitir tu voto:",
     "selectOptionsTitle": "1. Selecciona tus opciones",
