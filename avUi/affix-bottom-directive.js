@@ -5,6 +5,11 @@
  * b) if the page has scroll, the bottom of the page is not completely (or at
  *    all) being shown, so we set the affixed element the class affix-bottom and
  *    make space for it giving some bottom margin in its parent element.
+ *
+ * As an optional trigger to the settings of the affix-bottom, you can also set
+ * the data-force-affix-width attribute in the affixed element to a number of
+ * pixels. If this attribute is set and the window width is less than this,
+ * automatically the element will be affixed.
  */
 angular.module('avUi')
   .directive('avAffixBottom', function($window, $timeout) {
@@ -15,7 +20,8 @@ angular.module('avUi')
       var affix = false;
       var elHeight = $(el).height();
 
-      if (document.body.scrollHeight + elHeight > window.innerHeight) {
+      if ((document.body.scrollHeight + elHeight > window.innerHeight) ||
+          (instance.forceAffixWidth && window.innerWidth < instance.forceAffixWidth)) {
         affix = affixBottomClass;
       }
 
@@ -43,7 +49,8 @@ angular.module('avUi')
         // instance saves state between calls to checkPosition
         var instance = {
           affix: false,
-          defaultBottomMargin: iElement.css("margin-bottom")
+          defaultBottomMargin: iElement.css("margin-bottom"),
+          forceAffixWidth: iAttrs.forceAffixWidth
         };
 
         // timeout is used with callCheckPos so that we do not create too many
