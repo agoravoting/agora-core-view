@@ -30,6 +30,7 @@ angular.module('avUi')
 
         // watch for window resizes and element resizes too
         angular.element(iElement).bind('resize', updateMarginTimeout);
+        angular.element($window).bind('resize', updateMarginTimeout);
       }
     };
 

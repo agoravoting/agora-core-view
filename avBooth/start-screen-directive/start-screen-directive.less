@@ -4,10 +4,12 @@ av-booth {
     background-color: @av-primary;
     color: @btn-primary-color;
     padding: 5px;
+    min-height: 30px;
+  }
 
-    .avb-top-navbar {
-      margin-top: 5px;
-    }
+
+  .avb-top-navbar {
+    margin-top: -3px;
   }
 
   .unfixed-top-height {
@@ -75,5 +77,11 @@ av-booth {
     left: 0;
     right: 0;
     bottom: 0;
+  }
+}
+
+@media(min-width: @screen-sm-min) {
+  av-booth .avb-top-navbar {
+    margin-top: 5px;
   }
 }
