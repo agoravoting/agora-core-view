@@ -4,10 +4,10 @@
  * Shows a question and its possible answers to the user.
  */
 angular.module('avBooth')
-  .directive('avMultiQuestion', function($scope) {
+  .directive('avMultiQuestion', function() {
     
-    $scope.question = $scope.election.question;
-    $scope.answers = $scope.election.answers;
+//     $scope.question = $scope.election.question;
+//     $scope.answers = $scope.election.answers;
     
     /* For third party libs, it's recommended to use a directive 
      * and jQuery/jqLite within the directive */

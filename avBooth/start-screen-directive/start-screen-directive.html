@@ -1,13 +1,29 @@
-<nav class="navbar start-screen navbar-default navbar-fixed-top" av-affix-top=".avb-content" role="navigation">
+<nav class="navbar start-screen navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
   <div class="container">
-    <div class="pull-left" ng-i18next="[avBooth.stepNumber]({num:0,total:3})">
-    hola
+    <div class="row avb-top-navbar">
+      <div class="pull-left" ng-i18next="[avBooth.stepNumber]({num:0,total:3})">
+      paso 1 de 3
+      </div>
+      <div class="pull-right">
+        <span class="glyphicon glyphicon-question-sign"></span>
+      </div>
     </div>
-    <div class="pull-right">
-      <span class="glyphicon glyphicon-question-sign"></span>
+    <div>
     </div>
   </div>
 </nav>
+
+<div class="wrapper-unfixed">
+  <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="#avb-toggle">
+    <div class="hidden unfixed-top-height"></div>
+    <h1>Asamblea Ciudadana: elige tu forma de representación</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices tincidunt ipsum in laoreet. Integer interdum ex eget odio commodo vulputate. Mauris tristique congue elit at gravida. Fusce in libero a eros luctus auctor. Vestibulum tellus mi, vehicula non nisi sed, lobortis tempus diam. Donec laoreet, enim quis blandit consectetur, elit neque dapibus sapien, eu faucibus nunc nibh eget dui. Duis elementum nisl ac nunc mattis ullamcorper. Vestibulum at ipsum nulla. Proin interdum metus vitae consectetur porta.</p>
+  </div>
+</div>
+
+<div id="avb-toggle" class="text-center item-block">
+  <span class="glyphicon glyphicon-play"></span>
+</div>
 
 <div class="content avb-content start-screen">
   <div class="container">

@@ -3,6 +3,57 @@ av-booth {
     border: none;
     background-color: @av-primary;
     color: @btn-primary-color;
+    padding: 5px;
+
+    .avb-top-navbar {
+      margin-top: 5px;
+    }
+  }
+
+  .unfixed-top-height {
+    max-height: 150px;
+  }
+
+  .navbar-unfixed-top {
+    border: none;
+    background-color: @av-primary;
+    color: @btn-primary-color;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    transition: all .8s ease;
+
+    &.collapsed {
+      max-height: 150px;
+    }
+  }
+
+  .wrapper-unfixed:after {
+    display: block;
+    position: relative;
+    bottom: 30px;
+    width: 100%;
+    height: 30px;
+    content: " ";
+    background: linear-gradient(to bottom, rgba(0,156,223,0) 0%,rgba(0,156,223,1) 100%);
+  }
+
+  #avb-toggle {
+    z-index: 101;
+    margin-top: -50px;
+    width: 100%;
+  }
+
+  #avb-toggle span {
+    display: block;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transform: rotate(90deg);
+  }
+
+  #avb-toggle.in span {
+    transform: rotate(-90deg);
   }
 
   .avb-content {

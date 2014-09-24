@@ -5,8 +5,8 @@
   "avBooth": {
     "loadingElectionTitle": "Cargando votación, un momento por favor..",
     "stepNumber": "paso __num__ de __total__",
-    "startVoting": "Comenzar a votar",
-    "stepsToVote": "Debes seguir estos pasos para emitir tu voto:",
+    "startVoting": "Empezar a votar",
+    "stepsToVote": "Seguirás estos pasos para emitir tu voto:",
     "selectOptionsTitle": "1. Selecciona tus opciones",
     "selectOptionsText": "Responde a las preguntas de la votación que se presentan una a una. Configurarás así las preferencias de tu papeleta.",
     "reviewOptionsTitle": "2. Revisa tu papeleta",
