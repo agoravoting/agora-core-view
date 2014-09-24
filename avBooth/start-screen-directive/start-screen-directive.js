@@ -7,7 +7,6 @@ angular.module('avBooth')
   .directive('avStartScreen', function() {
     return {
       restrict: 'E',
-      scope: {},
       templateUrl: 'avBooth/start-screen-directive/start-screen-directive.html'
     };
   });
