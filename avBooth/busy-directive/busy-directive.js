@@ -8,8 +8,7 @@ angular.module('avBooth')
 
     function link(scope, element, attrs) {
       // moves the title on top of the busy indicator
-      // TODO: integrate it better with ng-i18next
-      scope.onResize = function() {
+      scope.updateTitle = function() {
         console.log("resizing!");
         var title = element.find(".avb-busy-title");
 
@@ -18,7 +17,11 @@ angular.module('avBooth')
         var marginLeft = - title.width()/2;
         title.attr("style", "margin-top: " + marginTop + "px; margin-left: " + marginLeft + "px");
       };
-      scope.onResize();
+
+      scope.$watch(attrs.title, function() {
+        scope.updateTitle();
+      });
+
     }
     return {
       restrict: 'E',
