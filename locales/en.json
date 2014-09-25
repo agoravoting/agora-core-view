@@ -5,6 +5,8 @@
   "avBooth": {
     "loadingElectionTitle": "Loading election, please wait..",
     "stepNumber": "step %s of %s",
+    "stepAndQuestionNumber": "step %s of %s, question %s of %s",
+    "continueButton": "Continue",
     "startVoting": "Start Voting",
     "stepsToVote": "You need to follow these steps to cast your ballot:",
     "selectOptionsTitle": "1. Select your options",

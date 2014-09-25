@@ -4,19 +4,15 @@
       <div class="pull-left" ng-i18next="[i18next]({sprintf:['1','3']})avBooth.stepNumber">
       </div>
       <div class="pull-right">
-        <span class="glyphicon glyphicon-question-sign" ng-click="isCollapsed = !isCollapsed"></span>
-          <div collapse="!isCollapsed">
-            <div class="well well-lg"><av-help-screen></av-help-screen></div> 
-          </div>
+        <span class="glyphicon glyphicon-question-sign"></span>
       </div>
     </div>
-    <div>
-    </div>
+
   </div>
 </nav>
 
 <div class="wrapper-unfixed">
-  <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="#avb-toggle">
+  <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="av-start-screen #avb-toggle">
     <div class="container">
       <div class="hidden unfixed-top-height"></div>
       <h1>{{election.pretty_name}}</h1>
@@ -50,6 +46,7 @@
       <button
         class="btn btn-block btn-lg btn-success btn-plain"
         ng-i18next="avBooth.startVoting"
+        ng-click="next()"
         id="start-voting-btn">
       </button>
     </div>

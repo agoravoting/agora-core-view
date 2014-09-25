@@ -1,63 +1,40 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-header container-fluid">
-    <div class="row">
-      <div class="col-xs-8 col-md-10" data-toggle="collapse" data-target="#selected-options">
-        <a class="navbar-brand" href="#">
-          <span class="white">Selected: 3</span>
-          <span class="glyphicon glyphicon-chevron-down white"></span>
-        </a>
+<nav class="navbar start-screen navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
+  <div class="container">
+    <div class="row avb-top-navbar">
+      <div class="pull-left"
+        ng-i18next="[i18next]({sprintf:['2','3', statusData.questionNum+1, election.questions.length]})avBooth.stepAndQuestionNumber">
       </div>
-      <div class="col-xs-4 col-md-2" data-toggle="collapse" data-target="#search-options">
-        <button type="button" class="white navbar-toggle">
-          Filter
-          <span class="glyphicon glyphicon-search white"></span>
-        </button>
+      <div class="pull-right">
+        <span class="glyphicon glyphicon-question-sign"></span>
       </div>
     </div>
-  </div>
-  <div class="navbar-collapse collapse" id="search-options">
-    <ul class="nav navbar-nav">
-      <li>
-        <input type="search" class="form-control" placeholder="Search" />
-      </li>
-    </ul>
-  </div>
-  <div class="navbar-collapse collapse" id="selected-options">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+
   </div>
 </nav>
 
+<div class="wrapper-unfixed">
+  <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="av-multi-question #avb-toggle">
+    <div class="container">
+      <div class="hidden unfixed-top-height"></div>
+      <h1>{{statusData.question.question}}</h1>
+      <p>{{statusData.question.description}}</p>
+    </div>
+  </div>
+</div>
 
-{{question}}
+<div id="avb-toggle" class="text-center item-block hidden">
+  <span class="glyphicon glyphicon-play"></span>
+</div>
 
-<ol>
-  <li ng-repeat="answer in answers">
-    {{answer}}
-  </li>
-</ol>
+<div class="content avb-content">
+  <div class="container">
+    <div class="row" av-affix-bottom data-force-affix-width="768">
+      <button
+        class="btn btn-block btn-lg btn-success btn-plain"
+        ng-i18next="avBooth.continueButton"
+        ng-click="next()"
+        id="start-voting-btn">
+      </button>
+    </div>
+  </div>
+</div>
