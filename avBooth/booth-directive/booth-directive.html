@@ -1,10 +1,11 @@
-<avb-busy ng-if="status == statusEnum.receivingElection">
-  <p ng-i18next="avBooth.loadingElectionTitle"></p>
-</avb-busy>
-<div ng-if="status == statusEnum.errorLoadingElection">
-  <p>booth directive working! and the election url is "{{electionUrl}}", but there was an error loading it</p>
+<div kcd-recompile="stateChange">
+  <avb-busy ng-if="state == stateEnum.receivingElection">
+    <p ng-i18next="avBooth.loadingElectionTitle"></p>
+  </avb-busy>
+  <avb-error-screen ng-if="state == stateEnum.errorScreen">
+  </avb-error-screen>
+  <avb-start-screen ng-if="state == stateEnum.startScreen">
+  </avb-start-screen>
+  <avb-multi-question ng-if="state == stateEnum.multiQuestion">
+  </avb-multi-question>
 </div>
-<avb-start-screen ng-if="status == statusEnum.startScreen">
-</avb-start-screen>
-<avb-multi-question ng-if="status == statusEnum.multiQuestion">
-</avb-multi-question>

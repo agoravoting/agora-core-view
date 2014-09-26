@@ -1,9 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
   <div class="container">
     <div class="row avb-top-navbar">
-      <div class="pull-left"
-        ng-i18next="[i18next]({sprintf:['2','3', stateData.questionNum+1, election.questions.length]})avBooth.stepAndQuestionNumber">
-      </div>
       <div class="pull-right">
         <span class="glyphicon glyphicon-question-sign"></span>
       </div>
@@ -16,8 +13,7 @@
   <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="avb-multi-question #avb-toggle">
     <div class="container">
       <div class="hidden unfixed-top-height"></div>
-      <h1>{{stateData.question.question}}</h1>
-      <p>{{stateData.question.description}}</p>
+      <h1 ng-i18next="avBooth.helpTitle"></h1>
     </div>
   </div>
 </div>
@@ -28,12 +24,8 @@
 
 <div class="content avb-content">
   <div class="container">
-    <div class="row" av-affix-bottom data-force-affix-width="768">
-      <button
-        class="btn btn-block btn-lg btn-success btn-plain"
-        ng-i18next="avBooth.continueButton"
-        ng-click="next()">
-      </button>
-    </div>
+    <p>{{statusData.error}}</p>
+    <span ng-i18next="[html:i18next]({email: {{config.contact.email}}, error: {{stateData.error}} })avBooth.errorHtml">
+    </span>
   </div>
 </div>

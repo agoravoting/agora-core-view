@@ -14,6 +14,9 @@
     "reviewOptionsTitle": "2. Revisa tu papeleta",
     "reviewOptionsText": "Te mostraremos el contenido de tu papeleta para que puedas revisarla. Estarás a tiempo de cambiar las respuestas si quieres.",
     "encryptAndEmitBallotTitle": "3. Emite tu voto",
-    "encryptAndEmitBallotText": "Antes de enviar tu voto, la cabina tardará unos segundos mientras lo cifra. De esa forma, se mantendrá el secreto del voto. Al terminar, obtendrás un localizador con el que verificar que tu voto fue debidamente registrado."
+    "encryptAndEmitBallotText": "Antes de enviar tu voto, la cabina tardará unos segundos mientras lo cifra. De esa forma, se mantendrá el secreto del voto. Al terminar, obtendrás un localizador con el que verificar que tu voto fue debidamente registrado.",
+
+    "errorTitle": "Oops. Ocurrió algo inesperado",
+    "errorHtml": "<p>Ocurrió el siguiente problema: \"__error__\". Te sugerimos que contactes con nosotros y nos cuentes lo que ha pasado. Puedes enviarnos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>"
   }
 }

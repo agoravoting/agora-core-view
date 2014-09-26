@@ -4,73 +4,83 @@ angular.module('avBooth')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
 
-      // possible values of the election status scope variable
-      var statusEnum = {
+      // possible values of the election state scope variable
+      var stateEnum = {
         receivingElection: 'receivingElection',
-        errorLoadingElection: 'errorLoadingElection',
+        errorScreen: 'errorScreen',
         startScreen: 'startScreen',
-        multiQuestion: 'multiQuestion',
+        multiQuestion: 'multiQuestion'
       };
 
-      // override status if in debug mode and it's provided via query param
-      function setStatus(newStatus) {
-        if (!scope.config.debug || $location.search()['status'] == null) {
-          console.log("setting status to " + newStatus);
-          scope.status = newStatus;
+      // override state if in debug mode and it's provided via query param
+      function setState(newState, newStateData) {
+        if (!scope.config.debug || $location.search()['state'] == null) {
+          console.log("setting state to " + newState);
+          scope.state = newState;
+          scope.stateData = newStateData;
+          scope.stateChange++;
         } else {
-          console.log("status override: not setting status to " + newStatus);
-          scope.status = $location.search()['status'];
+          console.log("state override: not setting state to " + newState);
+          scope.state = $location.search()['state'];
         }
       }
 
       // given a question number, looks at the question type and tells the
-      // correct status to set, so that the associated directive correctly shows
+      // correct state to set, so that the associated directive correctly shows
       // the given question
-      function nextQuestionStatus(questionNum) {
+      function nextQuestionState(questionNum) {
         var question = scope.election.questions[questionNum];
         var map = {
-          "MEEK-STV": "multiQuestion"
+          "MEEK-STV": stateEnum.multiQuestion
         };
         return map[question.tally_type];
       }
 
-      // changes status to the next one, calculating it and setting some scope
+      // changes state to the next one, calculating it and setting some scope
       // vars
       function next() {
-        var questionStates = ["multiQuestion"];
-        if (scope.status === 'startScreen')
+        var questionStates = [stateEnum.multiQuestion];
+        if (scope.state === stateEnum.startScreen)
         {
-          scope.statusData.question = scope.election.questions[0];
-          scope.statusData.questionNum = 0;
-          scope.statusData.isLastQuestion = (scope.election.questions.length === 1);
-          scope.status = nextQuestionStatus(0);
+          scope.setState(nextQuestionState(0), {
+            question: scope.election.questions[0],
+            questionNum: 0,
+            isLastQuestion: (scope.election.questions.length === 1)
+          });
 
-        } else if (scope.statusData.isLastQuestion)
+        } else if (scope.stateData.isLastQuestion)
         {
-          // TODO: go to review step
-          console.log("TODO: go to review");
+          showError("review screen still not implemented");
 
-        } else if (_.contains(questionStates, scope.status) &&
-                   !scope.statusData.isLastQuestion)
+        } else if (_.contains(questionStates, scope.state) &&
+                   !scope.stateData.isLastQuestion)
         {
-          scope.statusData.questionNum++;
-          var n = scope.statusData.questionNum;
-          scope.statusData.question = scope.election.questions[n];
-          scope.statusData.isLastQuestion = (scope.election.questions.length === n + 1);
-          scope.status = nextQuestionStatus(n);
+          var n = scope.stateData.questionNum + 1;
+          scope.setState(nextQuestionState(n), {
+            questionNum: scope.stateData.questionNum + 1,
+            question: scope.election.questions[n],
+            isLastQuestion: scope.election.questions.length === n + 1
+          });
         }
+      }
+
+      // shows the error string
+      function showError(error) {
+        scope.setState(stateEnum.errorScreen, {error: error});
       }
 
       // init scope vars
       angular.extend(scope, {
         election: null,
-        setStatus: setStatus,
-        statusEnum: statusEnum,
+        setState: setState,
+        stateEnum: stateEnum,
+        stateChange: 0,
+        showError: showError,
         next: next,
 
-        // statusData stores information used by the directive being shown.
-        // Its content depends on the current status.
-        statusData: {},
+        // stateData stores information used by the directive being shown.
+        // Its content depends on the current state.
+        stateData: {},
 
         // contains the clear text of the ballot. It's a list with an element
         // per question.
@@ -82,7 +92,7 @@ angular.module('avBooth')
         // convert config to JSON
         config: angular.fromJson(scope.configStr)
       });
-      setStatus(statusEnum.receivingElection);
+      setState(stateEnum.receivingElection);
 
       // load election on background
       try {
@@ -92,16 +102,16 @@ angular.module('avBooth')
           // on success
           .then(function(value) {
             scope.election = value;
-            scope.setStatus(statusEnum.startScreen);
+            scope.setState(stateEnum.startScreen, {});
           },
           // on error, like parse error or 404
           function (error) {
-            scope.setStatus(statusEnum.errorLoadingElection);
+            showError("error loading the election");
           });
 
       // the electionUrl might throw an exception
       } catch (error) {
-          scope.setStatus(statusEnum.errorLoadingElection);
+          showError("error loading the election");
       }
     }
 
