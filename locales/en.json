@@ -17,6 +17,6 @@
     "encryptAndEmitBallotText": "When you proceeed to cast your vote, the voting booth will take some seconds to encrypt it. This way the secrecy of the vote will be preserved. Once the is cast you'll receive a tracker id, that you can use to verify that your ballot was correctly registered.",
 
     "helpTitle": "Oops. Something unexpected happened",
-    "helpHtml": "<p>The following problem occurred: '__error__'. Please contact us and tell us what happened.. You can send an email to us at <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>"
+    "helpHtml": "<p>The following problem occurred: __error__. </p></p>Please contact us and tell us what happened. You can send an email to us at <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>"
   }
 }

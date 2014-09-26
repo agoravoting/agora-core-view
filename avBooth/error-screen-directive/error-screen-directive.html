@@ -1,9 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
   <div class="container">
     <div class="row avb-top-navbar">
-      <div class="pull-right">
-        <span class="glyphicon glyphicon-question-sign"></span>
-      </div>
     </div>
 
   </div>
@@ -25,7 +22,7 @@
 <div class="content avb-content">
   <div class="container">
     <p>{{statusData.error}}</p>
-    <span ng-i18next="[html:i18next]({email: {{config.contact.email}}, error: {{stateData.error}} })avBooth.errorHtml">
+    <span ng-i18next="[html:i18next]({email: config.contact.email, error: stateData.error})avBooth.errorHtml">
     </span>
   </div>
 </div>
