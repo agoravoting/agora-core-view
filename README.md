@@ -34,11 +34,19 @@ angular services, modules, directives, etc.
 
 # Testing (E2E)
 
+Setup
 First, make sure you environment is up-to-date. The following packages are needed
     protractor
     grunt-protractor-runner
 
-To run a test, type in
+Run the following command  (first time only)
+    webdriver-manager update 
+
+End to end testing
+To run a test, type in 
+
+    grunt serve
+    webdriver-manager start
     protractor e2e.conf.js
 
 To add more tests, edit the config file e2e.conf.js
