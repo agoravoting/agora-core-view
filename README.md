@@ -32,4 +32,17 @@ https://github.com/cgross/generator-cg-angular , take a look at the README.md
 file in there for more information about the structure and how to create new
 angular services, modules, directives, etc.
 
+# Testing (E2E)
+
+First, make sure you environment is up-to-date. The following packages are needed
+    protractor
+    grunt-protractor-runner
+
+To run a test, type in
+    protractor e2e.conf.js
+
+To add more tests, edit the config file e2e.conf.js
+
+Note: ATM, Protractor isn't completely integrated with Grunt, so grunt test will fail.
+
 
