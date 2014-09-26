@@ -1,10 +1,8 @@
 /* jshint ignore:start */
 describe("affix-bottom-directive tests", function () {
 
-  var url = 'http://localhost:9001/#/election/:id/vote/:hash/:message';
-
   beforeEach(function () {
-    browser.get(url);
+    browser.get('/#/election/:id/vote/:hash/:message');
   });
 
   it("affix-bottom is present", function () {
