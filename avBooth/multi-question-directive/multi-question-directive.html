@@ -28,6 +28,21 @@
 
 <div class="content avb-content">
   <div class="container">
+    <div class="row">
+      <div class="visible-xs col-xs-12">
+        small device
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <h4 class="hidden-xs text-brand-success" ng-i18next="avBooth.questionAvailableOptionsTitle"></h3>
+      </div>
+      <div class="hidden-xs col-sm-6">
+        <h4 class="text-brand-success" ng-i18next="avBooth.questionSelectedOptionsTitle"></h3>
+        <p>
+          <span ng-i18next="avBooth.noOptionsSelected"></span>
+          <span ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"></span>
+        </p>
+      </div>
+    </div>
     <div class="row" av-affix-bottom data-force-affix-width="768">
       <button
         class="btn btn-block btn-lg btn-success btn-plain"

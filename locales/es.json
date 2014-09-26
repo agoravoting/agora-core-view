@@ -17,6 +17,11 @@
     "encryptAndEmitBallotText": "Antes de enviar tu voto, la cabina tardará unos segundos mientras lo cifra. De esa forma, se mantendrá el secreto del voto. Al terminar, obtendrás un localizador con el que verificar que tu voto fue debidamente registrado.",
 
     "errorTitle": "Oops. Ocurrió algo inesperado",
-    "errorHtml": "<p>Ocurrió el siguiente problema: __error__.</p></p>Te sugerimos que contactes con nosotros y nos cuentes lo que ha pasado. Puedes enviarnos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>"
+    "errorHtml": "<p>Ocurrió el siguiente problema: __error__.</p></p>Te sugerimos que contactes con nosotros y nos cuentes lo que ha pasado. Puedes enviarnos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
+
+    "questionSelectedOptionsTitle": "opciones seleccionadas",
+    "questionAvailableOptionsTitle": "opciones disponibles",
+    "noOptionsSelected": "Ninguna opción seleccionada todavía.",
+    "numOptionsLimits": "Selecciona entre __min__ y __max__ opciones."
   }
 }
