@@ -4,7 +4,7 @@
  * Shows the steps to the user.
  */
 angular.module('avBooth')
-  .directive('avStartScreen', function() {    
+  .directive('avbStartScreen', function() {
     return {
       restrict: 'E',
       scope: true,
