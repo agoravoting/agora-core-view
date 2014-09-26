@@ -7,9 +7,12 @@ av-booth {
     min-height: 30px;
   }
 
-
   .avb-top-navbar {
     margin-top: -3px;
+
+    .glyphicon.glyphicon-question-sign {
+      cursor: pointer;
+    }
   }
 
   .unfixed-top-height {
@@ -57,7 +60,12 @@ av-booth {
     transform: rotate(90deg);
   }
 
-  #avb-toggle.in span {
+  .avb-toggle-span {
+    cursor: pointer;
+    transform: rotate(90deg);
+  }
+
+  #avb-toggle.in span, .avb-toggle-span.in {
     transform: rotate(-90deg);
   }
 

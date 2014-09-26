@@ -21,7 +21,12 @@
 
     "questionSelectedOptionsTitle": "selected options",
     "questionAvailableOptionsTitle": "available options",
-    "noOptionsSelected": "You haven't selected any option yet.",
-    "numOptionsLimits": "Select between __min__ and __max__ options."
+    "numOptionsSelected_plural_0": "No options selected yet.",
+    "numOptionsSelected_plural_1": "1 option selected.",
+    "numOptionsSelected_plural": "__count__ options selected.",
+    "numOptionsLimits": "Select between __min__ and __max__ options.",
+    "filterOptionsPlaceholder": "filter..",
+    "noResults": "no results found..",
+    "numSelectedOptionsSmall": "__count__ selected"
   }
 }

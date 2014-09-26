@@ -17,10 +17,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+Source: https://github.com/kentcdodds/kcd-angular
 Copyright (c) 2014 Kent C. Dodds kent+github@doddsfamily.us
  */
 
-angular.module('avUi').directive('kcdRecompile', function($compile, $parse) {
+angular.module('avUi').directive('avRecompile', function($compile, $parse) {
   'use strict';
   function getElementAsHtml(el) {
     return angular.element('<a></a>').append(el.clone()).html();

@@ -1,0 +1,10 @@
+<div class="col-xs-12">
+  <ul>
+    <li ng-repeat="option in options | filter:filter" class="animate-repeat">
+      {{option.value}}
+    </li>
+    <li class="animate-repeat" ng-if="(options | filter:filter).length == 0">
+      <span ng-i18next="avBooth.noResults"></span>
+    </li>
+  </ul>
+</div>

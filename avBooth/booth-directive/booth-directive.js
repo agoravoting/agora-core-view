@@ -45,7 +45,8 @@ angular.module('avBooth')
           scope.setState(nextQuestionState(0), {
             question: scope.election.questions[0],
             questionNum: 0,
-            isLastQuestion: (scope.election.questions.length === 1)
+            isLastQuestion: (scope.election.questions.length === 1),
+            filter: ""
           });
 
         } else if (scope.stateData.isLastQuestion)
@@ -59,7 +60,8 @@ angular.module('avBooth')
           scope.setState(nextQuestionState(n), {
             questionNum: scope.stateData.questionNum + 1,
             question: scope.election.questions[n],
-            isLastQuestion: scope.election.questions.length === n + 1
+            isLastQuestion: scope.election.questions.length === n + 1,
+            filter: ""
           });
         }
       }
@@ -102,6 +104,9 @@ angular.module('avBooth')
           // on success
           .then(function(value) {
             scope.election = value;
+            // initialize ballotClearText as a list of lists
+            scope.ballotClearText = _.map(
+              scope.election.question, function () { return []; });
             scope.setState(stateEnum.startScreen, {});
           },
           // on error, like parse error or 404
