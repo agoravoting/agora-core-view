@@ -4,7 +4,7 @@
  * Shows the contact data.
  */
 angular.module('avBooth')
-  .directive('avHelpScreen', function() {  
+  .directive('avbHelpScreen', function() {
     return {
       restrict: 'E',
       templateUrl: 'avBooth/help-screen-directive/help-screen-directive.html'

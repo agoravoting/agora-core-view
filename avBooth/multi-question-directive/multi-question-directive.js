@@ -14,6 +14,29 @@ angular.module('avBooth')
             return element.selected > -1;
           }).length;
       };
+
+      // questionNext calls to scope.next() if user selected enough options.
+      // If not, then it flashes the #selectMoreOptsWarning div so that user
+      // notices.
+      scope.questionNext = function() {
+        var origColor = $("#selectMoreOptsWarning").css("background-color");
+        if (scope.numSelectedOptions() < scope.stateData.question.min) {
+          var selector = $("#selectMoreOptsWarning");
+          var color = selector.css("color");
+          selector
+            .css("background-color", "#d9534f")
+            .css("color", "white")
+            .fadeOut(0)
+            .fadeIn(200, 'swing', function()
+              {
+                $("#selectMoreOptsWarning")
+                  .css('background-color',"#FFFFFF")
+                  .css('color', color);
+              });
+        } else {
+          scope.next();
+        }
+      };
     };
 
     return {

@@ -31,6 +31,11 @@
     "selectMoreOpts": "Select at least __min__ options.",
     "maxSelectedLimitReached": "Maximum number of selected options reached (__max__). To select an option, deselect another first.",
 
-    "removeSelectedItem": "remove"
+    "removeSelectedItem": "remove",
+
+    "helpTitle": "Help",
+    "helpText": "",
+    "helpDescription": "<p>This is the description</p>",
+    "goBack": "Go back to booth"
   }
 }

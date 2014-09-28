@@ -29,6 +29,11 @@
     "selectMoreOpts": "Debes seleccionar al menos __min__ opciones.",
     "maxSelectedLimitReached": "No puedes seleccionar más opciones (máximo __max__). Para seleccionar una opción, deselecciona otra primero.",
 
-    "removeSelectedItem": "eliminar"
+    "removeSelectedItem": "eliminar",
+
+    "helpTitle": "Ayuda",
+    "helpText": "",
+    "helpDescription": "<p>Esta es la descripción</p>",
+    "goBack": "Volver a la cabina"
   }
 }

@@ -6,7 +6,10 @@
         ng-i18next="[i18next]({sprintf:['2','3', stateData.questionNum+1, election.questions.length]})avBooth.stepAndQuestionNumber">
       </div>
       <div class="pull-right">
-        <span class="glyphicon glyphicon-question-sign"></span>
+        <span
+          class="glyphicon glyphicon-question-sign"
+          ng-click="launchHelp()">
+        </span>
       </div>
     </div>
 
@@ -91,6 +94,7 @@
       <p>
         <span
           class="text-brand-warning"
+          id="selectMoreOptsWarning"
           ng-i18next="[i18next]({min: stateData.question.min})avBooth.selectMoreOpts"
           ng-if="numSelectedOptions() < stateData.question.min">
         </span>
@@ -111,7 +115,7 @@
       <button
         class="btn btn-block btn-lg btn-success btn-plain"
         ng-i18next="avBooth.continueButton"
-        ng-click="numSelectedOptions() >= stateData.question.min && next()">
+        ng-click="questionNext()">
       </button>
     </div>
   </div>

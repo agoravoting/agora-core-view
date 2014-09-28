@@ -8,6 +8,7 @@ angular.module('avBooth')
       var stateEnum = {
         receivingElection: 'receivingElection',
         errorScreen: 'errorScreen',
+        helpScreen: 'helpScreen',
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion'
       };
@@ -71,6 +72,25 @@ angular.module('avBooth')
         scope.setState(stateEnum.errorScreen, {error: error});
       }
 
+      function launchHelp() {
+        scope.setState(stateEnum.helpScreen, {
+          oldState: {
+            name: scope.state,
+            data: angular.copy(scope.stateData)
+          }});
+      }
+
+      function backFromHelp() {
+        if (scope.state !== stateEnum.helpScreen) {
+          console.log("error, calling to backFromHelp in another state");
+          return;
+        }
+
+        scope.setState(
+          scope.stateData.oldState.name,
+          scope.stateData.oldState.data);
+      }
+
       // init scope vars
       angular.extend(scope, {
         election: null,
@@ -78,6 +98,8 @@ angular.module('avBooth')
         stateEnum: stateEnum,
         stateChange: 0,
         showError: showError,
+        launchHelp: launchHelp,
+        backFromHelp: backFromHelp,
         next: next,
 
         // stateData stores information used by the directive being shown.
