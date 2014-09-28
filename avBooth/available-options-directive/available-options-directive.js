@@ -25,8 +25,9 @@ angular.module('avBooth')
               return element.selected > -1;
             }).length;
 
-            // can't select more
+            // can't select more, flash info
             if (numSelected === scope.max) {
+              $("#maxSelectedLimitReached").flash("white", "#0081B9", 200);
               return;
             }
 
