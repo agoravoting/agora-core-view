@@ -1,0 +1,42 @@
+avb-detailed-option {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  padding-left: 15px;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+
+  .show-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .show-remove {
+    display: none;
+    padding: 0 10px;
+    position: absolute;
+    background-color: @brand-danger;
+    top: 0;
+    right: 0;
+  }
+
+  &.selected {
+    color: white;
+    background-color: @av-primary;
+  }
+
+  &.selected:hover {
+    background-color: @brand-danger;
+
+    .show-remove {
+      color: white;
+      display: block !important;
+    }
+  }
+
+  &:hover {
+    background-color: @gray-lighter;
+  }
+}

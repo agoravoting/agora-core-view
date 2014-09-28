@@ -31,9 +31,9 @@
   <div class="container">
     <div class="row">
       <!-- only shown if in mobile: a row with selected opts and filter -->
-      <div class="visible-xs col-xs-12 small-selected">
+      <div class="visible-xs col-xs-12 small-selected padded">
         <div class="pull-left">
-          <h4 class="text-brand-success" ng-i18next="[i18next]({count: ballotClearText[stateData.questionNum].length})avBooth.numSelectedOptionsSmall"></h4>
+          <h4 class="text-brand-success" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numSelectedOptionsSmall"></h4>
           <span class="text-brand-success glyphicon glyphicon-play avb-toggle-span"></span>
         </div>
         <div class="pull-right filter-input">
@@ -52,7 +52,7 @@
 
       <!-- show available options and filter -->
       <div class="col-xs-12 col-sm-6">
-        <div class="pull-left hidden-xs">
+        <div class="pull-left padded-left hidden-xs">
           <h4 class="text-brand-success" ng-i18next="avBooth.questionAvailableOptionsTitle"></h3>
         </div>
         <div class="pull-right filter-input hidden-xs">
@@ -67,24 +67,23 @@
         </div>
         <avb-available-options
           sortable="true"
+          layout="election.questions[stateData.questionNum].layout"
           max="election.questions[stateData.questionNum].max"
           min="election.questions[stateData.questionNum].min"
-          selection="ballotClearText[stateData.questionNum]"
           options="election.questions[stateData.questionNum].answers"
           filter="{{stateData.filter}}">
         <avb-available-options>
       </div>
 
       <!-- show selected options -->
-      <div class="hidden-xs col-sm-6">
+      <div class="hidden-xs col-sm-6 padded">
         <h4 class="text-brand-success" ng-i18next="avBooth.questionSelectedOptionsTitle"></h3>
         <p>
-          <span ng-i18next="[i18next]({count: ballotClearText[stateData.questionNum].length})avBooth.numOptionsSelected"></span>
+          <span ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numOptionsSelected"></span>
           <span ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"></span>
         </p>
         <avb-selected-options
           sortable="true"
-          selection="ballotClearText[stateData.questionNum]"
           options="election.questions[stateData.questionNum].answers">
         <avb-selected-options>
       </div>

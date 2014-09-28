@@ -21,13 +21,12 @@
 
     "questionSelectedOptionsTitle": "opciones seleccionadas",
     "questionAvailableOptionsTitle": "opciones disponibles",
-    "numOptionsSelected": "Ninguna opción seleccionada todavía.",
-    "numOptionsSelected_plural_1": "1 opción seleccionada",
-    "numOptionsSelected_plural": "__count__ opciones seleccionadas",
+    "numOptionsSelected": "__count__ opciones seleccionadas.",
     "numOptionsLimits": "Selecciona entre __min__ y __max__ opciones.",
     "filterOptionsPlaceholder": "filtrar..",
     "noResults": "la búsqueda no produjo resultados..",
-    "numSelectedOptionsSmall_plural_1": "1 selecionada",
-    "numSelectedOptionsSmall": "__count__ seleccionadas"
+    "numSelectedOptionsSmall": "__count__ seleccionadas",
+
+    "removeSelectedItem": "eliminar"
   }
 }

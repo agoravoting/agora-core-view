@@ -7,6 +7,13 @@ angular.module('avBooth')
   .directive('avbMultiQuestion', function() {
 
     var link = function(scope, element, attrs) {
+      scope.numSelectedOptions = function () {
+        return _.filter(
+          scope.election.questions[scope.stateData.questionNum].answers,
+          function (element) {
+            return element.selected > -1;
+          }).length;
+      };
     };
 
     return {

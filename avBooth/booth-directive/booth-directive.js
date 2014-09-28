@@ -106,7 +106,7 @@ angular.module('avBooth')
             scope.election = value;
             // initialize ballotClearText as a list of lists
             scope.ballotClearText = _.map(
-              scope.election.question, function () { return []; });
+              scope.election.questions, function () { return []; });
             scope.setState(stateEnum.startScreen, {});
           },
           // on error, like parse error or 404
