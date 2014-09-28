@@ -1,7 +1,7 @@
 /*
  * Available Options directive.
  *
- * Lists the available options for a question.
+ * Lists the available options for a question, allowing to change selection.
  */
 angular.module('avBooth')
   .directive('avbAvailableOptions', function() {
@@ -14,13 +14,23 @@ angular.module('avBooth')
           }
         });
 
+        /*
+         * Toggles selection, if possible.
+         */
         scope.toggleSelectItem = function(option) {
           if (option.selected > -1) {
             option.selected = -1;
           } else {
-            option.selected = _.filter(scope.options, function (element) {
+            var numSelected = _.filter(scope.options, function (element) {
               return element.selected > -1;
             }).length;
+
+            // can't select more
+            if (numSelected === scope.max) {
+              return;
+            }
+
+            option.selected = numSelected;
           }
         };
     };

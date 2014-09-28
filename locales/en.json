@@ -28,6 +28,8 @@
     "filterOptionsPlaceholder": "filter..",
     "noResults": "no results found..",
     "numSelectedOptionsSmall": "__count__ selected",
+    "selectMoreOpts": "Select at least __min__ options.",
+    "maxSelectedLimitReached": "Maximum number of selected options reached (__max__). To select an option, deselect another first.",
 
     "removeSelectedItem": "remove"
   }

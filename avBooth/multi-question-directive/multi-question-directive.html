@@ -66,7 +66,6 @@
           <span class="glyphicon glyphicon-search"></span>
         </div>
         <avb-available-options
-          sortable="true"
           layout="election.questions[stateData.questionNum].layout"
           max="election.questions[stateData.questionNum].max"
           min="election.questions[stateData.questionNum].min"
@@ -77,13 +76,11 @@
 
       <!-- show selected options -->
       <div class="hidden-xs col-sm-6 padded">
-        <h4 class="text-brand-success" ng-i18next="avBooth.questionSelectedOptionsTitle"></h3>
-        <p>
-          <span ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numOptionsSelected"></span>
-          <span ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"></span>
-        </p>
+        <h4 class="text-brand-success padded-left" ng-i18next="avBooth.questionSelectedOptionsTitle"></h3>
         <avb-selected-options
-          sortable="true"
+          layout="election.questions[stateData.questionNum].layout"
+          max="election.questions[stateData.questionNum].max"
+          min="election.questions[stateData.questionNum].min"
           options="election.questions[stateData.questionNum].answers">
         <avb-selected-options>
       </div>
@@ -91,10 +88,30 @@
 
     <!-- next button -->
     <div class="row" av-affix-bottom data-force-affix-width="768">
+      <p>
+        <span
+          class="text-brand-warning"
+          ng-i18next="[i18next]({min: stateData.question.min})avBooth.selectMoreOpts"
+          ng-if="numSelectedOptions() < stateData.question.min">
+        </span>
+        <span
+          class="text-brand-primary"
+          ng-i18next="[i18next]({max: stateData.question.max})avBooth.maxSelectedLimitReached"
+          ng-if="numSelectedOptions() === stateData.question.max">
+        </span>
+        <span
+          ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numOptionsSelected"
+          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
+        </span>
+        <span
+          ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"
+          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
+        </span>
+      </p>
       <button
         class="btn btn-block btn-lg btn-success btn-plain"
         ng-i18next="avBooth.continueButton"
-        ng-click="next()">
+        ng-click="numSelectedOptions() >= stateData.question.min && next()">
       </button>
     </div>
   </div>
