@@ -116,7 +116,18 @@ angular.module('avBooth')
         // convert config to JSON
         config: angular.fromJson(scope.configStr)
       });
-      setState(stateEnum.receivingElection);
+
+      // execute pre-check first
+      if (attrs.preCheck) {
+        var ret = scope.preCheck();
+        if (ret !== null) {
+          showError(ret);
+          return;
+        }
+      }
+
+
+      setState(stateEnum.receivingElection, {});
 
       // load election on background
       try {
@@ -147,7 +158,11 @@ angular.module('avBooth')
       restrict: 'E',
       scope: {
         electionUrl: '@electionUrl',
-        configStr: '@config'
+        configStr: '@config',
+
+        // optional function to be called before anything, that will return null
+        // if there's no error, or the error to be shown if there was some
+        preCheck: '&'
       },
       link: link,
       templateUrl: 'avBooth/booth-directive/booth-directive.html'

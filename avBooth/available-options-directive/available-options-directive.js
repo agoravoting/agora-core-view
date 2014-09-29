@@ -39,10 +39,23 @@ angular.module('avBooth')
     return {
       restrict: 'E',
       scope: {
+        // max number of selected options allowed
         max: '=',
+
+        // min number of selected options allowed
         min: '=',
+
+        // list of options
         options: '=',
+
+        // layout, changes the way the options are rendered
         layout: '=',
+
+        // only if max is 1 and autoSelectAnother is true, then selecting
+        // an option automatically removes any previous selection if any.
+        autoSelectAnother: '=',
+
+        // text used to filter the shown options
         filter: '@'
       },
       link: link,

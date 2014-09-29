@@ -19,7 +19,7 @@
     "helpTitle": "Oops. Something unexpected happened",
     "helpHtml": "<p>The following problem occurred: __error__. </p></p>Please contact us and tell us what happened. You can send an email to us at <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
 
-    "questionSelectedOptionsTitle": "selected options",
+    "questionSelectedOptionsTitle": "selected options (__count__)",
     "questionAvailableOptionsTitle": "available options",
     "numOptionsSelected_plural_0": "No options selected yet.",
     "numOptionsSelected": "1 option selected.",
@@ -36,6 +36,8 @@
     "helpTitle": "Help",
     "helpText": "",
     "helpDescription": "<p>This is the description</p>",
-    "goBack": "Go back to booth"
+    "goBack": "Go back to booth",
+
+    "errorElectionUrl": "The introduced address has an erroneous format"
   }
 }

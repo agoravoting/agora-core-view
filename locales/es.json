@@ -19,12 +19,12 @@
     "errorTitle": "Oops. Ocurrió algo inesperado",
     "errorHtml": "<p>Ocurrió el siguiente problema: __error__.</p></p>Te sugerimos que contactes con nosotros y nos cuentes lo que ha pasado. Puedes enviarnos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
 
-    "questionSelectedOptionsTitle": "opciones seleccionadas",
+    "questionSelectedOptionsTitle": "opciones seleccionadas (__count__)",
     "questionAvailableOptionsTitle": "opciones disponibles",
     "numOptionsSelected": "__count__ opciones seleccionadas.",
     "numOptionsLimits": "Selecciona entre __min__ y __max__ opciones.",
     "filterOptionsPlaceholder": "filtrar..",
-    "noResults": "la búsqueda no produjo resultados..",
+    "noResults": "el filtro no produjo resultados.",
     "numSelectedOptionsSmall": "__count__ seleccionadas",
     "selectMoreOpts": "Debes seleccionar al menos __min__ opciones.",
     "maxSelectedLimitReached": "No puedes seleccionar más opciones (máximo __max__). Para seleccionar una opción, deselecciona otra primero.",
@@ -34,6 +34,8 @@
     "helpTitle": "Ayuda",
     "helpText": "",
     "helpDescription": "<p>Esta es la descripción</p>",
-    "goBack": "Volver a la cabina"
+    "goBack": "Volver a la cabina",
+
+    "errorElectionUrl": "La dirección introducida tiene un formato erróneo"
   }
 }

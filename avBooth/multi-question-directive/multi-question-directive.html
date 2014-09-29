@@ -79,7 +79,7 @@
 
       <!-- show selected options -->
       <div class="hidden-xs col-sm-6 padded">
-        <h4 class="text-brand-success padded-left" ng-i18next="avBooth.questionSelectedOptionsTitle"></h3>
+        <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h3>
         <avb-selected-options
           layout="election.questions[stateData.questionNum].layout"
           max="election.questions[stateData.questionNum].max"
