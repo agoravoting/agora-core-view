@@ -6,8 +6,7 @@ describe("affix-top-directive tests", function () {
   });
 
   it("navbar-unfixed-top is present", function () {
-    // FIX-ME
-    expect(element(by.css('.navbar-unfixed-top')).isPresent()).toBe(true);
+    expect(element(by.xpath('//nav[@av-affix-top=".navbar-unfixed-top"]')).isPresent()).toBe(true);
   });
 
 });
