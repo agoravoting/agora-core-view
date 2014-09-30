@@ -32,25 +32,39 @@ https://github.com/cgross/generator-cg-angular , take a look at the README.md
 file in there for more information about the structure and how to create new
 angular services, modules, directives, etc.
 
+# Unit testing
+
+To execute the unit tests, run:
+
+    grunt test
+
 # Testing (E2E)
 
-Setup
-First, make sure you environment is up-to-date. The following packages are needed
-    protractor
-    grunt-protractor-runner
+End to end testing executes tests in a browser instance. It requires a set of
+dependencies that are updated in package.json (protractor related), so if you
+executed npm install it should be fine.
 
-Run the following command  (first time only)
-    webdriver-manager update 
+Additionally, you should assure that you have an updated global protractor
+installed. To do so, you can execute the following commands as root:
 
-End to end testing
-To run a test, type in 
+    npm install webdriver-manager
+    webdriver-manager update
+
+Now we're ready to execute the E2E tests. To do so, you need to launch three
+commands in three different terminals. The first one launches in background an
+http server serving the static app in background. To do so, execute:
 
     grunt serve
+
+In another terminal, execute selenium web driver, the web browser where the
+tests will be executed:
+
     webdriver-manager start
+
+NOTE: do not press <enter> key in this terminal after executing this command
+unless you want to stop the web driver.
+
+In a third terminal, we will launch the E2E unit tests:
+
     protractor e2e.conf.js
-
-To add more tests, edit the config file e2e.conf.js
-
-Note: ATM, Protractor isn't completely integrated with Grunt, so grunt test will fail.
-
 
