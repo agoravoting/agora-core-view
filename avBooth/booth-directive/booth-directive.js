@@ -30,12 +30,21 @@ angular.module('avBooth')
       // given a question number, looks at the question type and tells the
       // correct state to set, so that the associated directive correctly shows
       // the given question
-      function goToQuestion(questionNum) {
-        var question = scope.election.questions[questionNum];
+      function goToQuestion(n, reviewMode) {
+        var question = scope.election.questions[n];
         var map = {
-          "MEEK-STV": stateEnum.multiQuestion
+          "MEEK-STV": stateEnum.multiQuestion,
+          "APPROVAL": stateEnum.multiQuestion
         };
-        return map[question.tally_type];
+        var nextState = map[question.tally_type];
+
+        scope.setState(nextState, {
+          question: scope.election.questions[n],
+          questionNum: n,
+          isLastQuestion: (scope.election.questions.length === n + 1),
+          reviewMode: reviewMode,
+          filter: ""
+        });
       }
 
       // changes state to the next one, calculating it and setting some scope
@@ -44,27 +53,16 @@ angular.module('avBooth')
         var questionStates = [stateEnum.multiQuestion];
         if (scope.state === stateEnum.startScreen)
         {
-          scope.setState(goToQuestion(0), {
-            question: scope.election.questions[0],
-            questionNum: 0,
-            isLastQuestion: (scope.election.questions.length === 1),
-            filter: ""
-          });
+          goToQuestion(0, false);
 
-        } else if (scope.stateData.isLastQuestion)
+        } else if (scope.stateData.isLastQuestion || scope.stateData.reviewMode)
         {
           scope.setState(stateEnum.reviewScreen, {});
 
         } else if (_.contains(questionStates, scope.state) &&
                    !scope.stateData.isLastQuestion)
         {
-          var n = scope.stateData.questionNum + 1;
-          scope.setState(goToQuestion(n), {
-            questionNum: scope.stateData.questionNum + 1,
-            question: scope.election.questions[n],
-            isLastQuestion: scope.election.questions.length === n + 1,
-            filter: ""
-          });
+          goToQuestion(scope.stateData.questionNum + 1, false);
         }
       }
 
@@ -101,6 +99,7 @@ angular.module('avBooth')
         showError: showError,
         launchHelp: launchHelp,
         backFromHelp: backFromHelp,
+        goToQuestion: goToQuestion,
         next: next,
 
         // stateData stores information used by the directive being shown.
