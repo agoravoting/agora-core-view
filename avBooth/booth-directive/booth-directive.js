@@ -29,7 +29,7 @@ angular.module('avBooth')
       // given a question number, looks at the question type and tells the
       // correct state to set, so that the associated directive correctly shows
       // the given question
-      function nextQuestionState(questionNum) {
+      function goToQuestion(questionNum) {
         var question = scope.election.questions[questionNum];
         var map = {
           "MEEK-STV": stateEnum.multiQuestion
@@ -43,7 +43,7 @@ angular.module('avBooth')
         var questionStates = [stateEnum.multiQuestion];
         if (scope.state === stateEnum.startScreen)
         {
-          scope.setState(nextQuestionState(0), {
+          scope.setState(goToQuestion(0), {
             question: scope.election.questions[0],
             questionNum: 0,
             isLastQuestion: (scope.election.questions.length === 1),
@@ -58,7 +58,7 @@ angular.module('avBooth')
                    !scope.stateData.isLastQuestion)
         {
           var n = scope.stateData.questionNum + 1;
-          scope.setState(nextQuestionState(n), {
+          scope.setState(goToQuestion(n), {
             questionNum: scope.stateData.questionNum + 1,
             question: scope.election.questions[n],
             isLastQuestion: scope.election.questions.length === n + 1,
