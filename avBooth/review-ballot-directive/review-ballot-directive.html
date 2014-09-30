@@ -1,0 +1,33 @@
+<div
+  class="question padded"
+  ng-repeat="question in election.questions"
+  ng-click="true">
+  <h3 class="text-brand-success">
+    {{$index + 1}}. {{question.question}}
+    <div class="pull-right">
+      <span class="glyphicon glyphicon-edit"></span>
+    </div>
+  </h3>
+  <ul ng-if="!_.contains(['MEEK-STV'], question.tally_type)">
+    <li
+      ng-repeat="answer in question.answers | avbSelectedOptions"
+      class="animate-repeat selected-answer">
+      {{answer.value}}
+    </li>
+    <li
+      ng-if="(question.answers | avbSelectedOptions).length == 0"
+      ng-i18next="avBooth.emptyAnswer">
+    </li>
+  </ul>
+  <ol ng-if="_.contains(['MEEK-STV'], question.tally_type)">
+    <li
+      ng-repeat="answer in question.answers | avbSelectedOptions"
+      class="animate-repeat selected-answer">
+      {{answer.value}}
+    </li>
+    <li
+      ng-if="(question.answers | avbSelectedOptions).length == 0"
+      ng-i18next="avBooth.emptyAnswer">
+    </li>
+  </ol>
+</div>

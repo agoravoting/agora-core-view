@@ -37,6 +37,11 @@
     "helpDescription": "<p>Esta es la descripción</p>",
     "goBack": "Volver a la cabina",
 
-    "errorElectionUrl": "La dirección introducida tiene un formato erróneo"
+    "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
+    "reviewYourBallotTitle": "Revisa tu papeleta",
+    "reviewYourBallotText": "Antes de emitir tu voto, por favor revisa el contenido de tu papeleta",
+    "encryptAndCastTheBallot": "Cifra y envia el voto",
+    "changeAnswerToQuestion": "cambiar",
+    "emptyAnswer": "<sin respuesta>"
   }
 }

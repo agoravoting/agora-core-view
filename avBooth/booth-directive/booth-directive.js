@@ -10,7 +10,8 @@ angular.module('avBooth')
         errorScreen: 'errorScreen',
         helpScreen: 'helpScreen',
         startScreen: 'startScreen',
-        multiQuestion: 'multiQuestion'
+        multiQuestion: 'multiQuestion',
+        reviewScreen: 'reviewScreen'
       };
 
       // override state if in debug mode and it's provided via query param
@@ -52,7 +53,7 @@ angular.module('avBooth')
 
         } else if (scope.stateData.isLastQuestion)
         {
-          showError("review screen still not implemented");
+          scope.setState(stateEnum.reviewScreen, {});
 
         } else if (_.contains(questionStates, scope.state) &&
                    !scope.stateData.isLastQuestion)

@@ -40,10 +40,4 @@ angular.module('avBooth')
       link: link,
       templateUrl: 'avBooth/selected-options-directive/selected-options-directive.html'
     };
-  }).filter('avbSelectedOptions', function() {
-    return function(optionList) {
-      return _.filter(optionList, function (option) {
-        return option.selected > -1;
-      });
-    };
   });

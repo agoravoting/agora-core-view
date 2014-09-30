@@ -39,6 +39,9 @@
     "helpDescription": "<p>This is the description</p>",
     "goBack": "Go back to booth",
 
-    "errorElectionUrl": "The introduced address has an erroneous format"
+    "errorElectionUrl": "The introduced address has an erroneous format",
+    "reviewYourBallotTitle": "Review your ballot",
+    "reviewYourBallotText": "Before casting your vote, please review the content of your ballot",
+    "encryptAndCastTheBallot": "Encrypt and cast your ballot"
   }
 }

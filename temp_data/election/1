@@ -50,7 +50,7 @@
       },
       {
         "a":"ballot/question",
-        "question":"2. ¿Cual es el equipo que quieres elegir para que organice la Asamblea Ciudadana de otoño?",
+        "question":"¿Cual es el equipo que quieres elegir para que organice la Asamblea Ciudadana de otoño?",
         "description": "ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices tincidunt ipsum in laoreet. Integer interdum ex eget odio commodo vulputate. Mauris tristique congue elit at gravida. Fusce in libero a eros luctus auctor. Vestibulum tellus mi, vehicula non nisi sed, lobortis tempus diam.",
         "layout":"primary",
         "tally_type":"MEEK-STV",
