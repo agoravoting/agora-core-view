@@ -4,7 +4,8 @@ exports.config = {
   frameworks: ['jasmine'],
   specs: [
     'avUi/affix-bottom-directive-spec.js',
-    'avUi/affix-top-directive-spec.js'
+    'avUi/affix-top-directive-spec.js',
+    'avUi/collapsing-directive-spec.js'
   ],
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
