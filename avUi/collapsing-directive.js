@@ -15,7 +15,6 @@
  */
 angular.module('avUi')
   .directive('avCollapsing', function($window, $timeout) {
-    var affixBottomClass = "affix-bottom";
 
     var checkCollapse = function(instance, el, options) {
       var maxHeight = angular.element(instance.maxHeightSelector).css("max-height");
