@@ -41,6 +41,8 @@
     "errorElectionUrl": "The introduced address has an erroneous format",
     "reviewYourBallotTitle": "Review your ballot",
     "reviewYourBallotText": "Before casting your vote, please review the content of your ballot",
-    "encryptAndCastTheBallot": "Encrypt and cast your ballot"
+    "encryptAndCastTheBallot": "Encrypt and cast your ballot",
+
+    "statusEncryptingQuestion": "Encrypting answers to question __questionNum__ (__percentage__% completed)"
   }
 }

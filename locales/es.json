@@ -41,6 +41,8 @@
     "reviewYourBallotText": "Antes de emitir tu voto, por favor revisa el contenido de tu papeleta",
     "encryptAndCastTheBallot": "Cifra y envia el voto",
     "changeAnswerToQuestion": "cambiar",
-    "emptyAnswer": "<sin respuesta>"
+    "emptyAnswer": "<sin respuesta>",
+
+    "statusEncryptingQuestion": "Cifrando respuestas a la pregunta __questionNum__ (__percentage__% completado)"
   }
 }

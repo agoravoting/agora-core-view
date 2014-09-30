@@ -11,7 +11,8 @@ angular.module('avBooth')
         helpScreen: 'helpScreen',
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion',
-        reviewScreen: 'reviewScreen'
+        reviewScreen: 'reviewScreen',
+        castingBallotScreen: 'castingBallotScreen'
       };
 
       // override state if in debug mode and it's provided via query param
@@ -54,6 +55,10 @@ angular.module('avBooth')
         if (scope.state === stateEnum.startScreen)
         {
           goToQuestion(0, false);
+
+        } else if (scope.state === stateEnum.reviewScreen)
+        {
+          scope.setState(stateEnum.castingBallotScreen, {});
 
         } else if (scope.stateData.isLastQuestion || scope.stateData.reviewMode)
         {
