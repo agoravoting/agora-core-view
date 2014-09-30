@@ -21,3 +21,4 @@ describe("HmacService tests", function() {
     expect(HmacService.equal(hash, key)).toBe(false);
   }));
 });
+/* jshint ignore:end */

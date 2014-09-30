@@ -31,9 +31,12 @@ angular.module('avCrypto')
       // public interface
       return {
 
-        encryptAnswer: function(plain_answer) {
+        // randomness argument is optional, used just for unit testing really
+        encryptAnswer: function(plain_answer, randomness) {
           var plaintext = new ElGamal.Plaintext(BigInt.fromInt(plain_answer), publicKey, true);
-          var randomness = Random.getRandomInteger(publicKey.q);
+          if (!randomness) {
+            randomness = Random.getRandomInteger(publicKey.q);
+          }
           var ctext = ElGamal.encrypt(publicKey, plaintext, randomness);
           // obtains proof of plaintext knowledge (schnorr protocol)
           var proof = plaintext.proveKnowledge(ctext.alpha, randomness, ElGamal.fiatshamir_dlog_challenge_generator);

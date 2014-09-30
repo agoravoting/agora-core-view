@@ -4,7 +4,7 @@
  * Shown while the ballot is being encrypted and sent.
  */
 angular.module('avBooth')
-  .directive('avbCastingBallotScreen', function($i18next) {
+  .directive('avbCastingBallotScreen', function($i18next, CastBallotService) {
 
     function link(scope, element, attrs) {
       // moves the title on top of the busy indicator
@@ -17,10 +17,59 @@ angular.module('avBooth')
         titleEl.attr("style", "margin-top: " + marginTop + "px; margin-left: " + marginLeft + "px");
       };
 
-      scope.updateTitle($i18next(
-        "avBooth.statusEncryptingQuestion",
-        {questionNum: 1, percentage: 50}));
-      scope.percentCompleted = 50;
+      // function that receives updates from the cast ballot service and shows
+      // them to the user
+      function statusUpdateFunc(status, options) {
+        if (status === "encryptingQuestion") {
+          scope.updateTitle($i18next(
+            "avBooth.statusEncryptingQuestion",
+            {
+              questionNum: options.questionNum,
+              percentage: options.percentageCompleted
+            }));
+          scope.percentCompleted = options.percentageCompleted;
+
+        } else if (status === "verifyingQuestion") {
+          scope.updateTitle($i18next(
+            "avBooth.statusVerifyingQuestion",
+            {
+              questionNum: options.questionNum,
+              percentage: options.percentageCompleted
+            }));
+          scope.percentCompleted = options.percentageCompleted;
+
+        } else if (status === "sendingBallot") {
+          scope.updateTitle($i18next(
+            "avBooth.sendingBallot",
+            {percentage: options.percentageCompleted}));
+          scope.percentCompleted = options.percentageCompleted;
+        }
+      }
+
+      CastBallotService({
+        election: scope.election,
+        statusUpdate: statusUpdateFunc,
+
+        // on success, we show the next screen (which is the success-screen
+        // directive)
+        success: function() {
+          scope.updateTitle($i18next("avBooth.ballotCast", {percentage: 100}));
+          scope.percentCompleted = 100;
+          scope.next();
+        },
+
+        // on error, try to deal with it
+        error: function (status, message) {
+          if (status === "couldntSendBallot") {
+            // TODO show "try again" button somehow. hopefully, without having
+            // to encrypt again the ballot
+            scope.showError("error sending the ballot");
+          } else {
+            scope.showError("unknown error casting th ballot");
+          }
+        },
+        verify: true
+      });
     }
 
     return {
