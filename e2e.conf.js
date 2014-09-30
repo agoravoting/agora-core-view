@@ -5,7 +5,8 @@ exports.config = {
   specs: [
     'avUi/affix-bottom-directive-webspec.js',
     'avUi/affix-top-directive-webspec.js',
-    'avUi/collapsing-directive-webspec.js'
+    'avUi/collapsing-directive-webspec.js',
+    'test/dynamic-directive-webspec.js'
   ],
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000

@@ -86,7 +86,12 @@
   <script src="avBooth/review-screen-directive/review-screen-directive.js" class="app"></script>
   <script src="avBooth/selected-options-directive/selected-options-directive.js" class="app"></script>
   <script src="avBooth/start-screen-directive/start-screen-directive.js" class="app"></script>
+  <script src="test/test.js" class="app"></script>
+  <!-- for security, we do not include the dynamic directive in the app,
+       so in the compiled app e2e tests are not expected work. -->
+  <script src="test/dynamic-directive.js"></script>
   <script src="test/test_hmac.js" class="app"></script>
+  <script src="test/unit_test_e2e.js" class="app"></script>
 
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="ie10-viewport-bug-workaround.js"></script>

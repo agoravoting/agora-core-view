@@ -42,6 +42,12 @@ angular.module('agora-core-view').config(
         templateUrl: 'test/test_hmac.html',
         controller: "TestHmacController"
       });
+    $stateProvider
+      .state('unit-test-e2e', {
+        url: '/unit-test-e2e',
+        templateUrl: 'test/unit_test_e2e.html',
+        controller: "UnitTestE2EController"
+      });
 
 });
 
