@@ -19,3 +19,5 @@ describe("collapsing-directive tests", function () {
   });
 
 });
+
+/* jshint ignore:end */

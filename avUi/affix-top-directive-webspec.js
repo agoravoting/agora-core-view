@@ -10,3 +10,5 @@ describe("affix-top-directive tests", function () {
   });
 
 });
+
+/* jshint ignore:end */
