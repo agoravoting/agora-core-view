@@ -1,12 +1,16 @@
 /*
  * Help screen directive.
- *
- * Shows the contact data.
  */
 angular.module('avBooth')
-  .directive('avbHelpScreen', function() {
+  .directive('avbHelpScreen', function(ConfigService) {
+
+    function link(scope, element, attrs) {
+        scope.helpInfo = ConfigService.help.info;
+    }
+
     return {
       restrict: 'E',
+      link: link,
       templateUrl: 'avBooth/help-screen-directive/help-screen-directive.html'
     };
   });

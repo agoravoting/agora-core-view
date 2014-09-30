@@ -34,7 +34,6 @@
 
     "helpTitle": "Ayuda",
     "helpText": "",
-    "helpDescription": "<p>Esta es la descripción</p>",
     "goBack": "Volver a la cabina",
 
     "errorElectionUrl": "La dirección introducida tiene un formato erróneo",

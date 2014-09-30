@@ -36,7 +36,6 @@
 
     "helpTitle": "Help",
     "helpText": "",
-    "helpDescription": "<p>This is the description</p>",
     "goBack": "Go back to booth",
 
     "errorElectionUrl": "The introduced address has an erroneous format",

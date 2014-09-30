@@ -6,6 +6,7 @@ angular.module(
   'jm.i18next',
   'ngAnimate',
   'ngResource',
+  'ngSanitize',
   'angularMoment',
   'avConfig',
   'avUi',

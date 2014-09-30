@@ -20,6 +20,10 @@ var avConfigData = {
     email: "contact@example.com",
     twitter: "agoravoting"
   },
+
+  help: {
+    info:"<p>To contact us, send an email to <a href=\"mailto:contacto@example.com\">contacto@example.com</a>.</p>"
+  }
 };
 
 angular.module('avConfig', [])
