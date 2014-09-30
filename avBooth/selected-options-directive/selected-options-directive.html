@@ -5,4 +5,8 @@
     ng-class="{selected: option.selected > -1}"
     ng-click="toggleSelectItem(option)">
   </avb-detailed-selected-option>
+  <div
+    ng-if="(options | avbSelectedOptions).length == 0"
+    ng-i18next="avBooth.noOptionsSelected">
+  </div>
 </div>

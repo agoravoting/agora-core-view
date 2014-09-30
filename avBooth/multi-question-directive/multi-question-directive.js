@@ -7,6 +7,8 @@ angular.module('avBooth')
   .directive('avbMultiQuestion', function() {
 
     var link = function(scope, element, attrs) {
+      scope.stateData.affixIsSet = false;
+      scope.stateData.affixDropDownShown = false;
       scope.numSelectedOptions = function () {
         return _.filter(
           scope.election.questions[scope.stateData.questionNum].answers,

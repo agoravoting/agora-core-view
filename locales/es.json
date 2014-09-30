@@ -22,6 +22,7 @@
     "questionSelectedOptionsTitle": "opciones seleccionadas (__count__)",
     "questionAvailableOptionsTitle": "opciones disponibles",
     "numOptionsSelected": "__count__ opciones seleccionadas.",
+    "noOptionsSelected": "Ninguna opción seleccionada.",
     "numOptionsLimits": "Selecciona entre __min__ y __max__ opciones.",
     "filterOptionsPlaceholder": "filtrar..",
     "noResults": "el filtro no produjo resultados.",

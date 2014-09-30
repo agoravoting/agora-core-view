@@ -34,12 +34,20 @@
   <div class="container">
     <div class="row">
       <!-- only shown if in mobile: a row with selected opts and filter -->
-      <div class="visible-xs col-xs-12 small-selected padded">
-        <div class="pull-left">
+      <div
+        class="visible-xs col-xs-12 small-selected padded"
+        ng-class="{dropdown: stateData.affixDropDownShown}">
+        <div
+          class="pull-left"
+          ng-click="stateData.affixDropDownShown = !stateData.affixDropDownShown">
           <h4 class="text-brand-success" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numSelectedOptionsSmall"></h4>
-          <span class="text-brand-success glyphicon glyphicon-play avb-toggle-span"></span>
+          <span
+            class="text-brand-success glyphicon glyphicon-play avb-toggle-span">
+            </span>
         </div>
-        <div class="pull-right filter-input">
+        <div
+          class="pull-right filter-input"
+          ng-class="{hidden: stateData.affixDropDownShown}">
           <div class="pull-right filter-input">
             <input type="text"
               class="filter-input"
@@ -73,12 +81,15 @@
           max="election.questions[stateData.questionNum].max"
           min="election.questions[stateData.questionNum].min"
           options="election.questions[stateData.questionNum].answers"
-          filter="{{stateData.filter}}">
+          filter="{{stateData.filter}}"
+          ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
         <avb-available-options>
       </div>
 
       <!-- show selected options -->
-      <div class="hidden-xs col-sm-6 padded">
+      <div
+        class="col-xs-12 col-sm-6 padded"
+        ng-class="{hidden: stateData.affixIsSet && !stateData.affixDropDownShown, affixedSelection: stateData.affixIsSet}">
         <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h3>
         <avb-selected-options
           layout="election.questions[stateData.questionNum].layout"
@@ -90,7 +101,7 @@
     </div>
 
     <!-- next button -->
-    <div class="row" av-affix-bottom data-force-affix-width="768">
+    <div class="row" av-affix-bottom="stateData.affixIsSet" data-force-affix-width="768">
       <p>
         <span
           class="text-brand-warning"

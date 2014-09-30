@@ -12,10 +12,10 @@
  * automatically the element will be affixed.
  */
 angular.module('avUi')
-  .directive('avAffixBottom', function($window, $timeout) {
+  .directive('avAffixBottom', function($window, $timeout, $parse) {
     var affixBottomClass = "affix-bottom";
 
-    var checkPosition = function(instance, el, options) {
+    var checkPosition = function(scope, instance, el, options) {
 
       var affix = false;
       var elHeight = $(el).height();
@@ -30,6 +30,7 @@ angular.module('avUi')
       }
 
       instance.affix = affix;
+      instance.setIsAffix(scope, affix);
 
       if (!affix) {
         el.removeClass(affixBottomClass);
@@ -49,9 +50,17 @@ angular.module('avUi')
         // instance saves state between calls to checkPosition
         var instance = {
           affix: false,
+          getIsAffix: null,
+          setIsAffix: angular.noop,
           defaultBottomMargin: iElement.css("margin-bottom"),
           forceAffixWidth: iAttrs.forceAffixWidth
         };
+
+
+        if (iAttrs.avAffixBottom.length > 0) {
+          instance.getIsAffix = $parse(iAttrs.avAffixBottom);
+          instance.setIsAffix = instance.getIsAffix.assign;
+        }
 
         // timeout is used with callCheckPos so that we do not create too many
         // calls to checkPosition, at most one per 100ms
@@ -60,7 +69,7 @@ angular.module('avUi')
         function callCheckPos() {
           timeout = $timeout(function() {
             $timeout.cancel(timeout);
-            checkPosition(instance, iElement, iAttrs);
+            checkPosition(scope, instance, iElement, iAttrs);
           }, 100);
         }
         callCheckPos();

@@ -16,8 +16,16 @@ avb-multi-question {
     }
   }
 
+  .affixedSelection {
+    background-color: @brand-success;
+    color: white !important;
+    h4 {
+      display: none;
+    }
+  }
+
   .small-selected {
-    margin-top: -18px;
+    margin-top: -15px;
 
     .filter-input span {
       margin-right: 0;
@@ -26,6 +34,36 @@ avb-multi-question {
     h4 {
       display: inline-block;
       clear: none;
+      margin-top: 7px;
+    }
+
+    &.dropdown {
+      background-color: @brand-success;
+      color: white;
+
+      .pull-left {
+        h4, span.text-brand-success, .show-value {
+          color: white;
+        }
+
+        span.glyphicon-play {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    .pull-left {
+      cursor: pointer;
+      display: block;
+
+      &:hover {
+        background-color: #6AD46A;
+        color: white;
+
+        h4, span.text-brand-success {
+          color: white;
+        }
+      }
     }
   }
 }

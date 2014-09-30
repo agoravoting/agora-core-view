@@ -24,6 +24,7 @@
     "numOptionsSelected_plural_0": "No options selected yet.",
     "numOptionsSelected": "1 option selected.",
     "numOptionsSelected_plural_2": "__count__ options selected.",
+    "noOptionsSelected": "No option selected.",
     "numOptionsLimits": "Select between __min__ and __max__ options.",
     "filterOptionsPlaceholder": "filter..",
     "noResults": "no results found..",
