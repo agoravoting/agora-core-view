@@ -1,4 +1,14 @@
 /* jshint ignore:start */
+/*
+ * Tests the presence of affix-bottom on different resolutions and
+ * data-force-affix-width values;
+ * 
+ * Resolutions: 320x480, 600x800, 768x1024, 720x1280 and 1080x1920.
+ * data-foce-affix-width: 568, 768 and 868.
+ * 
+ * affix-bottom should be present if 
+ * data-force-affix-width > browser.manage().window().width)
+ */
 describe("affix-bottom-directive tests", function () {
 
   var html;
