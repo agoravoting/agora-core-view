@@ -7,7 +7,7 @@
  * data-foce-affix-width: 568, 768 and 868.
  * 
  * affix-bottom should be present if 
- * data-force-affix-width > browser.manage().window().width)
+ * data-force-affix-width > browser.manage().window().width
  */
 describe("affix-bottom-directive tests", function () {
 
