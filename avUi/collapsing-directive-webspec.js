@@ -12,7 +12,7 @@ describe("collapsing-directive tests", function () {
   });
   
   it("avb-help-screen is displayed on click", function () {
-    var el = element(by.css('.glyphicon'), ('.glyphicon-question-sign'));
+    var el = element(by.css('.glyphicon-question-sign'));
     expect(element(by.xpath('//avb-help-screen')).isPresent()).toBe(false);
     el.click();
     expect(element(by.xpath('//avb-help-screen')).isPresent()).toBe(true);    
