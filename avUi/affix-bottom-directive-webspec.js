@@ -17,7 +17,7 @@ describe("affix-bottom-directive tests", function () {
       var browserHeight;
       switch (i) {
         case 0:
-          browserWidth = 320
+          browserWidth = 320;
           browserHeight = 480;
           break;
         case 1:
@@ -66,7 +66,6 @@ describe("affix-bottom-directive tests", function () {
       expect(element(by.css('.affix-bottom')).isPresent()).toBe(false);
     }
   });
-
 
 });
 
