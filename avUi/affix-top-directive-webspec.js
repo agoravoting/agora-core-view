@@ -2,11 +2,18 @@
 describe("affix-top-directive tests", function () {
 
   beforeEach(function () {
-    browser.get('/#/election/1/vote/ff66424d7d77607bbfe78209e407df6fff31abe214a1fe3b3a7dd82600ec0000/8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1:1411130040');
+//    var html = '<nav av-affix-top style="height: 40px;"></nav>';
+    var html = '<style>' + 
+            '.navbar-fixed-top {min-height: 40px;}' +
+            '.navbar-unfixed-top {margin: 0;}' +
+            '</style>' + 
+            '<nav class="navbar-fixed-top" av-affix-top=".navbar-unfixed-top"></nav>';
+    browser.get('/#/unit-test-e2e?html=' + encodeURIComponent(html));
   });
 
-  it("navbar-unfixed-top is present", function () {
-    expect(element(by.xpath('//nav[@av-affix-top=".navbar-unfixed-top"]')).isPresent()).toBe(true);
+  it("margin-top is present", function () {
+    browser.manage().window().setSize(320, 480);
+    expect(element(by.xpath('//nav[contains(@navbar-unfixed-top, margin-top)]')).isPresent()).toBe(true);
   });
 
 });
