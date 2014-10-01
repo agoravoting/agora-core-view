@@ -123,7 +123,7 @@ angular.module('avCrypto')
               return n + 1; });
 
             if (question !== undefined) {
-              possibleAnswers = _.pluck(question.answer, "id");
+              possibleAnswers = _.pluck(question.answers, "id");
             }
 
             // TODO do a test with specific input and output values
@@ -144,16 +144,16 @@ angular.module('avCrypto')
                     }
                 }
                 // check encode -> decode pipe doesn't modify the ballot
-                var encodedAnswer = this.encodeQuestionAnswer(answer);
-                var decodedAnswer = stringify(this.decodeQuestionAnswer(encodedAnswer));
+                var encodedAnswer = multi.encode(answer);
+                var decodedAnswer = stringify(multi.decode(encodedAnswer));
                 if (stringify(answer) !== decodedAnswer) {
                     return false;
                 }
               }
 
               // test blank vote
-              var encoded = this.encodeQuestionAnswer([]);
-              var decoded = stringify(this.decodeQuestionAnswer(encoded));
+              var encoded = multi.encode([]);
+              var decoded = stringify(multi.decode(encoded));
               if (stringify([]) !== decoded) {
                   return false;
               }
@@ -172,7 +172,7 @@ angular.module('avCrypto')
         return _.contains(codec.validCodecs, requestedCodec);
       });
 
-      if (!foundCodec.length) {
+      if (!foundCodec) {
         throw "unknown answer encoding service requested: " + requestedCodec;
       }
 

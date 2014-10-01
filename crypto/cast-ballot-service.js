@@ -40,14 +40,15 @@
         statusUpdate: function () (status, options) { .. },
         success: function (resultData) { },
         error: function (status, message) {},
-        verify: true
+        verify: true,
+        delay: 100 // in milliseconds
       );
 */
 
 angular.module('avCrypto')
   .service('CastBallotService', function(ConfigService, EncryptAnswerService,
-    moment, SjclService, DeterministicJsonStringifyService,
-    AnswerEncoderService)
+    moment, SjclService, DeterministicJsonStringifyService, ElGamalService,
+    AnswerEncoderService, $timeout)
   {
     var stringify = DeterministicJsonStringifyService;
 
@@ -159,6 +160,7 @@ angular.module('avCrypto')
           codec = AnswerEncoderService(question.tally_type, question.answers.length);
           if (!codec.sanityCheck(data.election.questions[i])) {
             sanitized = false;
+            break;
           }
         }
       } catch(e) {
@@ -173,10 +175,14 @@ angular.module('avCrypto')
         return;
       }
 
-
-      // for each question answers, do encrypt
-      for (i = 0; i < numQuestions; i++) {
-
+      i = 0;
+      // encrypt question one by one, with timeouts in the middle to give time
+      // to other things (like browser ui) to update
+      function encryptNextQuestion() {
+        if (i > numQuestions) {
+          sendBallot();
+          return;
+        }
         // initialization
         question = data.election.questions[i];
         percent = Math.floor(
@@ -197,7 +203,7 @@ angular.module('avCrypto')
         );
 
         // do the encryption. This takes time!
-        var pk = EncryptAnswerService.ElGamal.PublicKey.fromJSONObject(data.election.pubkeys[i]);
+        var pk = ElGamalService.PublicKey.fromJSONObject(data.election.pubkeys[i]);
         var encryptor = EncryptAnswerService.init(pk);
 
         // we always verify plaintext just to be sure, because it takes very
@@ -229,20 +235,27 @@ angular.module('avCrypto')
             return;
           }
         }
+        i += 1;
+        $timeout(encryptNextQuestion, data.delay);
       }
 
-      // ballot generated
-      var ballot = formatBallot(data.election, answers);
+      // launch first in the chain
+      $timeout(encryptNextQuestion, data.delay);
 
-      // generate ballot hash
-      var ballotHash = hashObject(ballot);
+      function sendBallot() {
+        // ballot generated
+        var ballot = formatBallot(data.election, answers);
 
-      data.statusUpdate(
-        "sendingBallot",
-        {
-          ballotHash: ballotHash,
-          ballot: angular.copy(ballot)
-        }
-      );
+        // generate ballot hash
+        var ballotHash = hashObject(ballot);
+
+        data.statusUpdate(
+          "sendingBallot",
+          {
+            ballotHash: ballotHash,
+            ballot: angular.copy(ballot)
+          }
+        );
+      }
     };
   });
