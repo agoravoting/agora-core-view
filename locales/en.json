@@ -43,6 +43,7 @@
     "reviewYourBallotText": "Before casting your vote, please review the content of your ballot",
     "encryptAndCastTheBallot": "Encrypt and cast your ballot",
 
+    "statusExecutingSanityChecks": "Verifying that the web browser is able to encode the ballot, please wait (__percentage__% completed)",
     "statusEncryptingQuestion": "Encrypting answers to question __questionNum__, please wait (__percentage__% completed)",
     "statusVerifyingQuestion": "Verifying the encrypted answers to question __questionNum__, please wait (__percentage__% completed)",
     "sendingBallot": "Sending the ballot to the server, please wait (__percentage__% completed)"

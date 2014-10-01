@@ -20,7 +20,15 @@ angular.module('avBooth')
       // function that receives updates from the cast ballot service and shows
       // them to the user
       function statusUpdateFunc(status, options) {
-        if (status === "encryptingQuestion") {
+        if (status === "sanityChecks") {
+          scope.updateTitle($i18next(
+            "avBooth.statusExecutingSanityChecks",
+            {
+              percentage: options.percentageCompleted
+            }));
+          scope.percentCompleted = options.percentageCompleted;
+
+        } else if (status === "encryptingQuestion") {
           scope.updateTitle($i18next(
             "avBooth.statusEncryptingQuestion",
             {
@@ -61,11 +69,11 @@ angular.module('avBooth')
         // on error, try to deal with it
         error: function (status, message) {
           if (status === "couldntSendBallot") {
-            // TODO show "try again" button somehow. hopefully, without having
-            // to encrypt again the ballot
-            scope.showError("error sending the ballot");
+            // TODO show "try again" button somehow if it's a network problem.
+            // hopefully, without having to encrypt again the ballot
+            scope.showError("error sending the ballot. " + message);
           } else {
-            scope.showError("unknown error casting th ballot");
+            scope.showError("unknown error casting th ballot. "  + message);
           }
         },
         verify: true

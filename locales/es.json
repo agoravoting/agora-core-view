@@ -43,6 +43,7 @@
     "changeAnswerToQuestion": "cambiar",
     "emptyAnswer": "<sin respuesta>",
 
+    "statusExecutingSanityChecks": "Verificando que el navegador es capaz de codificar el voto, por favor espera (__percentage__% completado)",
     "statusEncryptingQuestion": "Cifrando respuestas a la pregunta __questionNum__, por favor espera (__percentage__% completado)",
     "statusVerifyingQuestion": "Verificando el cifrado de las respuestas a la pregunta __questionNum__, por favor espera (__percentage__% completado)",
     "sendingBallot": "Enviando la papeleta cifrada al servidor, por favor espera (__percentage__% completado)"
