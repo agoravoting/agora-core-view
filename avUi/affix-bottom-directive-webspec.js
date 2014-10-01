@@ -49,8 +49,15 @@ describe("affix-bottom-directive tests", function () {
         default:
           return;
       }
+
       browser.manage().window().setSize(browserWidth, browserHeight);
       browser.get('/#/unit-test-e2e?html=' + encodeURIComponent(html));
+
+      if (dataForceAffixWidth > browserWidth) {
+        expect(element(by.css('.affix-bottom')).isPresent()).toBe(true);
+      } else {
+        expect(element(by.css('.affix-bottom')).isPresent()).toBe(false);
+      }
     }
   }
 
@@ -67,14 +74,6 @@ describe("affix-bottom-directive tests", function () {
   it("affix-bottom is present (868)", function () {
     html = setDataForceAffixWidth(868);
     testResolutions();
-  });
-
-  afterEach(function () {
-    if (dataForceAffixWidth > browser.manage().window().width) {
-      expect(element(by.css('.affix-bottom')).isPresent()).toBe(true);
-    } else {
-      expect(element(by.css('.affix-bottom')).isPresent()).toBe(false);
-    }
   });
 
 });
