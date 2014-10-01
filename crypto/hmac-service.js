@@ -10,16 +10,12 @@
  */
 
 angular.module('avCrypto')
-  .service('HmacService', function() {
-    var lib;
-    /* jshint ignore:start */
-    lib = sjcl;
-    /* jshint ignore:end */
+  .service('HmacService', function(SjclService) {
 
     function hmacFunc(key, message) {
-      var keyBits = lib.codec.utf8String.toBits(key);
-      var out = (new lib.misc.hmac(keyBits, lib.hash.sha256)).mac(message);
-      return lib.codec.hex.fromBits(out);
+      var keyBits = SjclService.codec.utf8String.toBits(key);
+      var out = (new SjclService.misc.hmac(keyBits, SjclService.hash.sha256)).mac(message);
+      return SjclService.codec.hex.fromBits(out);
     }
 
     function equalFunc(a, b) {

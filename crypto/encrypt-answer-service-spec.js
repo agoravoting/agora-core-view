@@ -11,10 +11,10 @@ describe("EncryptAnswerService tests", function() {
 
   beforeEach(module("avCrypto"));
 
-  beforeEach(inject(function (_EncryptAnswerService_) {
+  beforeEach(inject(function (_EncryptAnswerService_, _ElGamalService_, _BigIntService_) {
     EncryptAnswerService = _EncryptAnswerService_;
-    ElGamal = EncryptAnswerService.ElGamal;
-    BigInt = EncryptAnswerService.BigInt;
+    ElGamal = _ElGamalService_;
+    BigInt = _BigIntService_;
   }));
 
   it("should encrypt and prove plaintext knowledge", inject(function() {

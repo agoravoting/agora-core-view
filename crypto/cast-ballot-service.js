@@ -41,17 +41,11 @@
 */
 
 angular.module('avCrypto')
-  .service('CastBallotService', function(ConfigService, EncryptAnswerService, moment) {
-    var sjclLib;
-    /* jshint ignore:start */
-    sjclLib = sjcl;
-    /* jshint ignore:end */
-
-    // TODO move to use a hashService
+  .service('CastBallotService', function(ConfigService, EncryptAnswerService, moment, SjclService) {
     function hashObject(obj) {
       var objStr = angular.toJson(obj);
-      var hashBits = sjclLib.hash.sha256.hash(objStr);
-      return sjclLib.codec.hex.fromBits(hashBits);
+      var hashBits = SjclService.hash.sha256.hash(objStr);
+      return SjclService.codec.hex.fromBits(hashBits);
     }
 
     function getPlainText(question) {
