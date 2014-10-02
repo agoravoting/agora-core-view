@@ -14,7 +14,7 @@
  */
 
 angular.module('avCrypto')
-  .service('AnswerEncoderService', function(DeterministicJsonStringifyService, BigIntService) {
+  .service('AnswerEncoderService', function(DeterministicJsonStringifyService) {
     var stringify = DeterministicJsonStringifyService;
 
 
@@ -37,7 +37,7 @@ angular.module('avCrypto')
         numAvailableOptions: numAvailableOptions,
 
         /**
-         * Converts a vote into a BigInt. A vote in this case is a list of
+         * Converts a vote into a number. A vote in this case is a list of
          * answer ids (which must always be positive non-zero integers),
          * for example [1, 3].
          *
@@ -57,11 +57,6 @@ angular.module('avCrypto')
          *
          * [1, 3] -> ['01', '03'] -> '0103'
          *
-         * After that, we have a number to be encrypted. We convert this number
-         * to integer and then to a BigInt, and return it:
-         *
-         * [1, 3] -> ['01', '03'] -> '0103' -> 103 -> BigInt(103)
-         *
          * NOTE: the zeros at the left of the final number are removed, because
          * a number representation never has any zeros at the left. When
          * doing decoding of the result you should take this into account.
@@ -76,9 +71,7 @@ angular.module('avCrypto')
             if (encodedAnswer.length === 0) {
                 encodedAnswer = numberToString(numAvailableOptions + 2, numChars);
             }
-            var ret_val = new BigIntService(encodedAnswer, 10);
-
-            return ret_val;
+            return encodedAnswer;
         },
 
         /**
@@ -90,7 +83,7 @@ angular.module('avCrypto')
          * This function is very useful for sanity checks.
          */
         decode: function(encodedAnswer) {
-            var encodedStr = encodedAnswer.toJSONObject();
+            var encodedStr = encodedAnswer.toString(10);
             var length = encodedStr.length;
             var tabNumChars = (numAvailableOptions + 2).toString(10).length;
             var missingZeros = (tabNumChars - (length % tabNumChars)) % tabNumChars;

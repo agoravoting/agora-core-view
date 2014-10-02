@@ -203,8 +203,7 @@ angular.module('avCrypto')
         );
 
         // do the encryption. This takes time!
-        var pk = ElGamalService.PublicKey.fromJSONObject(data.election.pubkeys[i]);
-        var encryptor = EncryptAnswerService.init(pk);
+        var encryptor = EncryptAnswerService(data.election.pubkeys[i]);
 
         // we always verify plaintext just to be sure, because it takes very
         // little CPU time
@@ -213,6 +212,7 @@ angular.module('avCrypto')
           data.error("errorEncoding", "error while encoding the answer to a question");
           return;
         }
+        console.log("plaintext = " + plaintext);
         var encryptedAnswer = encryptor.encryptAnswer(plaintext);
         answers.push(encryptedAnswer);
 
