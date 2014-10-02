@@ -30,17 +30,12 @@ angular.module('avCrypto')
 
         // randomness argument is optional, used just for unit testing really
         encryptAnswer: function(plain_answer, randomness) {
-          if (!angular.isNumber(plain_answer)) {
-            throw "plain_answer must be an int";
-          }
           var plaintext = new ElGamalService.Plaintext(
             BigIntService.fromInt(plain_answer),
             publicKey,
             true);
           if (!randomness) {
             randomness = RandomService.getRandomInteger(publicKey.q);
-          } else if (!angular.isNumber(randomness)) {
-            throw "randomness must be an int";
           }
           var ctext = ElGamalService.encrypt(publicKey, plaintext, randomness);
           // obtains proof of plaintext knowledge (schnorr protocol)
@@ -50,7 +45,7 @@ angular.module('avCrypto')
             ElGamalService.fiatshamir_dlog_challenge_generator);
           var ciphertext =  ctext.toJSONObject();
           var jsonProof = proof.toJSONObject();
-          var enc_answer = {
+          var encAnswer = {
             alpha: ciphertext.alpha,
             beta: ciphertext.beta,
             commitment: jsonProof.commitment,
@@ -58,7 +53,7 @@ angular.module('avCrypto')
             challenge: jsonProof.challenge
           };
 
-          return enc_answer;
+          return encAnswer;
         },
 
         getPublicKey: function() {

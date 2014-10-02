@@ -55,7 +55,7 @@ angular.module('avCrypto')
          *
          * Next step is to concatenate the ordered list of option strings:
          *
-         * [1, 3] -> ['01', '03'] -> '0103'
+         * [1, 3] -> ['01', '03'] -> '0103' -> 103
          *
          * NOTE: the zeros at the left of the final number are removed, because
          * a number representation never has any zeros at the left. When
@@ -71,7 +71,7 @@ angular.module('avCrypto')
             if (encodedAnswer.length === 0) {
                 encodedAnswer = numberToString(numAvailableOptions + 2, numChars);
             }
-            return encodedAnswer;
+            return parseInt(encodedAnswer, 10);
         },
 
         /**

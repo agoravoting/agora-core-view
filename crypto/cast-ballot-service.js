@@ -179,10 +179,11 @@ angular.module('avCrypto')
       // encrypt question one by one, with timeouts in the middle to give time
       // to other things (like browser ui) to update
       function encryptNextQuestion() {
-        if (i > numQuestions) {
-          sendBallot();
+        if (i >= numQuestions) {
+          $timeout(sendBallot(), data.delay);
           return;
         }
+
         // initialization
         question = data.election.questions[i];
         percent = Math.floor(
@@ -202,7 +203,8 @@ angular.module('avCrypto')
           }
         );
 
-        // do the encryption. This takes time!
+        // crypto time!
+
         var encryptor = EncryptAnswerService(data.election.pubkeys[i]);
 
         // we always verify plaintext just to be sure, because it takes very
@@ -230,7 +232,7 @@ angular.module('avCrypto')
               percentageCompleted: percent
             }
           );
-          if (encryptor.verifyPlaintextProof(encryptedAnswer)) {
+          if (!encryptor.verifyPlaintextProof(encryptedAnswer)) {
             data.error("errorEncrypting", "error while encrypting the answer to a question");
             return;
           }
@@ -253,7 +255,9 @@ angular.module('avCrypto')
           "sendingBallot",
           {
             ballotHash: ballotHash,
-            ballot: angular.copy(ballot)
+            ballot: angular.copy(ballot),
+            percentageCompleted: Math.floor(100*numQuestions*
+              iterationSteps/(numQuestions*iterationSteps + 1))
           }
         );
       }
