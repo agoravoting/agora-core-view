@@ -1,5 +1,5 @@
 /*
- * Tests if the BigIntService 
+ * BigIntService unit tests
  * Passes a prime number to the service, converts it to a BigInt, 
  * converts it back and checks if it's the original number
  */
