@@ -50,6 +50,7 @@ angular.module('avBooth')
           scope.updateTitle($i18next(
             "avBooth.sendingBallot",
             {percentage: options.percentageCompleted}));
+          scope.stateData.ballotHash = options.ballotHash;
           scope.percentCompleted = options.percentageCompleted;
         }
       }
@@ -60,10 +61,12 @@ angular.module('avBooth')
         CastBallotService({
           election: scope.election,
           statusUpdate: statusUpdateFunc,
+          authorizationHeader: scope.authorizationHeader,
+          castBallotUrl: scope.castBallotUrl,
 
           // on success, we show the next screen (which is the success-screen
           // directive)
-          success: function() {
+          success: function(data) {
             scope.updateTitle($i18next("avBooth.ballotCast", {percentage: 100}));
             scope.percentCompleted = 100;
             scope.next();

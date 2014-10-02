@@ -1,2 +1,7 @@
-<av-booth election-url="{{baseUrl}}election/{{electionId}}" config="{{config}}" pre-check="checkElectionUrl()">
+<av-booth
+  election-url="{{baseUrl}}election/{{electionId}}"
+  cast-ballot-url="{{baseUrl}}ballotbox/cast"
+  authorization-header="{{hmacMessage}}:{{hmacHash}}"
+  config="{{config}}"
+  pre-check="checkElectionUrl()">
 </av-booth>

@@ -12,20 +12,16 @@ angular.module('avBooth')
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion',
         reviewScreen: 'reviewScreen',
-        castingBallotScreen: 'castingBallotScreen'
+        castingBallotScreen: 'castingBallotScreen',
+        successScreen: 'successScreen'
       };
 
       // override state if in debug mode and it's provided via query param
       function setState(newState, newStateData) {
-        if (!scope.config.debug || $location.search()['state'] == null) {
-          console.log("setting state to " + newState);
-          scope.state = newState;
-          scope.stateData = newStateData;
-          scope.stateChange++;
-        } else {
-          console.log("state override: not setting state to " + newState);
-          scope.state = $location.search()['state'];
-        }
+        console.log("setting state to " + newState);
+        scope.state = newState;
+        scope.stateData = newStateData;
+        scope.stateChange++;
       }
 
       // given a question number, looks at the question type and tells the
@@ -59,6 +55,13 @@ angular.module('avBooth')
         } else if (scope.state === stateEnum.reviewScreen)
         {
           scope.setState(stateEnum.castingBallotScreen, {});
+
+        } else if (scope.state === stateEnum.castingBallotScreen)
+        {
+          scope.setState(stateEnum.successScreen, {
+            ballotHash: scope.stateData.ballotHash
+          });
+
 
         } else if (scope.stateData.isLastQuestion || scope.stateData.reviewMode)
         {
@@ -162,12 +165,14 @@ angular.module('avBooth')
     return {
       restrict: 'E',
       scope: {
-        electionUrl: '@electionUrl',
+        electionUrl: '@',
+        castBallotUrl: '@',
+        authorizationHeader: '@',
         configStr: '@config',
 
         // optional function to be called before anything, that will return null
         // if there's no error, or the error to be shown if there was some
-        preCheck: '&'
+        preCheck: '&',
       },
       link: link,
       templateUrl: 'avBooth/booth-directive/booth-directive.html'

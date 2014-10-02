@@ -40,15 +40,17 @@
         statusUpdate: function () (status, options) { .. },
         success: function (resultData) { },
         error: function (status, message) {},
-        verify: true,
-        delay: 100 // in milliseconds
+        verify: true, // verify proofs. takes more time
+        delay: 100,   // in milliseconds
+        authorizationHeader: "voter:eid:voterid:deadbeef",
+        postBallotUrl: "https://example.com/api/v1/ballotbox/vote"
       );
 */
 
 angular.module('avCrypto')
   .service('CastBallotService', function(ConfigService, EncryptAnswerService,
     moment, SjclService, DeterministicJsonStringifyService, ElGamalService,
-    AnswerEncoderService, $timeout)
+    AnswerEncoderService, $timeout, $http)
   {
     var stringify = DeterministicJsonStringifyService;
 
@@ -247,6 +249,7 @@ angular.module('avCrypto')
       function sendBallot() {
         // ballot generated
         var ballot = formatBallot(data.election, answers);
+        var ballotStr = stringify(ballot);
 
         // generate ballot hash
         var ballotHash = hashObject(ballot);
@@ -260,6 +263,17 @@ angular.module('avCrypto')
               iterationSteps/(numQuestions*iterationSteps + 1))
           }
         );
+
+        $http.post(
+          data.castBallotUrl,
+          ballot,
+          {headers: {Authorization: data.authorizationHeader}})
+        .success(function(postData, status, headers, config) {
+          data.success(postData);
+        })
+        .error(function(postData, status, headers, config) {
+          data.error("couldntSendBallot", stringify(postData));
+        });
       }
     };
   });

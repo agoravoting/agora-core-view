@@ -23,6 +23,10 @@ var avConfigData = {
 
   help: {
     info:"<p>To contact us, send an email to <a href=\"mailto:contacto@example.com\">contacto@example.com</a>.</p>"
+  },
+
+  success: {
+    text: "<p>El localizador de tu voto es:</p></h3><p> <strong>{{ballotHash}}</strong></p><p>Puedes usar tu localizador desde *enlace* para verificar que tu voto cuenta. Además, podrás verificarlo una vez hecho el recuento. Mientras que la votación esté en curso, puedes votar de nuevo, sobreescribiendo e invalidando cualquier voto que hayas emitido anteriormente en esta votación. Tienes más información sobre los detalles de la votación en *enlace*.</p><p></p><h2 class=\"text-center\"><a target=\"_blank\" href=\"https://twitter.com/share?url=https://vota.example.info\">¡Twitea esta votación!</a></h2></div>"
   }
 };
 
