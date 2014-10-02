@@ -20,7 +20,7 @@ angular.module('avUi')
       var affix = false;
       var elHeight = $(el).height();
 
-      if ((document.body.scrollHeight + elHeight > window.innerHeight) ||
+      if (($("body").height() + elHeight > window.innerHeight) ||
           (instance.forceAffixWidth && window.innerWidth < instance.forceAffixWidth)) {
         affix = affixBottomClass;
       }
@@ -31,6 +31,7 @@ angular.module('avUi')
 
       instance.affix = affix;
       instance.setIsAffix(scope, affix);
+      el.removeClass("hidden");
 
       if (!affix) {
         el.removeClass(affixBottomClass);
@@ -53,7 +54,7 @@ angular.module('avUi')
           getIsAffix: null,
           setIsAffix: angular.noop,
           defaultBottomMargin: iElement.css("margin-bottom"),
-          forceAffixWidth: iAttrs.forceAffixWidth
+          forceAffixWidth: parseInt(iAttrs.forceAffixWidth, 10)
         };
 
 
