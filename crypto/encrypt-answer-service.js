@@ -29,20 +29,30 @@ angular.module('avCrypto')
       return {
 
         // randomness argument is optional, used just for unit testing really
-        encryptAnswer: function(plain_answer, randomness) {
+        encryptAnswer: function(plain_answer, randomness, randomness2) {
           var plaintext = new ElGamalService.Plaintext(
             BigIntService.fromInt(plain_answer),
             publicKey,
             true);
           if (!randomness) {
             randomness = RandomService.getRandomInteger(publicKey.q);
+          } else {
+            randomness = BigIntService.fromInt(randomness);
           }
+
+          if (!randomness2) {
+            randomness2 = RandomService.getRandomInteger(publicKey.q);
+          } else {
+            randomness2 = BigIntService.fromInt(randomness2);
+          }
+
           var ctext = ElGamalService.encrypt(publicKey, plaintext, randomness);
           // obtains proof of plaintext knowledge (schnorr protocol)
           var proof = plaintext.proveKnowledge(
             ctext.alpha,
             randomness,
-            ElGamalService.fiatshamir_dlog_challenge_generator);
+            ElGamalService.fiatshamir_dlog_challenge_generator,
+            randomness2);
           var ciphertext =  ctext.toJSONObject();
           var jsonProof = proof.toJSONObject();
           var encAnswer = {

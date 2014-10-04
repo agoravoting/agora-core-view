@@ -377,9 +377,11 @@ ElGamal.Plaintext = Class.extend({
 
   // generate a proof of knowledge of the plaintext (schnorr protocol)
   // http://courses.csail.mit.edu/6.897/spring04/L19.pdf
-  proveKnowledge: function(alpha, randomness, challenge_generator) {
-    // generate random w
-    var w = Random.getRandomInteger(this.pk.q);
+  proveKnowledge: function(alpha, randomness, challenge_generator, w) {
+    // generate random w if not provided
+    if (!w) {
+      w = Random.getRandomInteger(this.pk.q);
+    }
 
     // compute first part of commitment = g^w for random w.
     var a = this.pk.g.modPow(w, this.pk.p);
