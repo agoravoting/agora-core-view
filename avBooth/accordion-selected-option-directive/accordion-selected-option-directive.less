@@ -1,0 +1,33 @@
+avb-accordion-selected-option {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  padding-left: 15px;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+
+  .show-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .show-remove {
+    display: none;
+    padding: 0 10px;
+    position: absolute;
+    background-color: @brand-danger;
+    top: 0;
+    right: 0;
+  }
+
+  &:hover {
+    color: white;
+    background-color: @brand-danger;
+
+    .show-remove {
+      display: block !important;
+    }
+  }
+}
