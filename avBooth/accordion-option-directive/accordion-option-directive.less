@@ -7,6 +7,34 @@ avb-accordion-option {
   clear: both;
   overflow: hidden;
 
+  .opt-data {
+    display: block;
+    float: left;
+    width: 70%;
+    height: 80px;
+  }
+
+  h4 {
+    font-weight: bold;
+  }
+
+  p.details {
+    line-height: 15px !important;
+    display: block;
+    padding-right: 5px;
+    overflow: hidden;
+    max-height: 30px;
+  }
+
+  a.btn-right {
+    display: block;
+    float: left;
+    width: 26%;
+    height: 60px;
+    padding-top: 20px;
+    margin: 10px 2%;
+  }
+
   .show-value {
     white-space: nowrap;
     overflow: hidden;
@@ -19,7 +47,7 @@ avb-accordion-option {
     position: absolute;
     background-color: @brand-danger;
     top: 0;
-    right: 0;
+    right: 30%;
   }
 
   &.selected {
