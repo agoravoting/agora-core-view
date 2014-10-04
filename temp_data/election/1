@@ -26,7 +26,7 @@
             "category": "Resoluciones generales",
             "a":"ballot/answer",
             "urls":[
-              {"title": "Ver en pdf", "url": "https://example.com"}
+              {"title": "Ver pdf", "url": "https://example.com"}
             ]
           },
           {
@@ -38,7 +38,7 @@
             "category": "Resoluciones políticas",
             "a":"ballot/answer",
             "urls":[
-              {"title": "Ver en pdf", "url": "https://example.com"}
+              {"title": "Ver pdf", "url": "https://example.com"}
             ]
           },
           {
@@ -50,7 +50,7 @@
             "category": "Resoluciones políticas",
             "a":"ballot/answer",
             "urls":[
-              {"title": "Ver en pdf", "url": "https://example.com"}
+              {"title": "Ver pdf", "url": "https://example.com"}
             ]
           }
         ]
