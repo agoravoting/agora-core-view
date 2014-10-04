@@ -30,7 +30,7 @@
     "selectMoreOpts": "Debes seleccionar al menos __min__ opciones.",
     "maxSelectedLimitReached": "No puedes seleccionar más opciones (máximo __max__). Para seleccionar una opción, deselecciona otra primero.",
 
-    "removeSelectedItem": "eliminar",
+    "removeSelectedItem": "deseleccionar",
 
     "helpTitle": "Ayuda",
     "helpText": "",
