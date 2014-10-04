@@ -17,11 +17,18 @@ describe("DeterministicJsonStringifyService tests", function () {
   it("DeterministicJsonStringifyService test (simple)", function () {
     var simpleJson = {
       "a": "1",
-      "b": "2",
-      "c": "3"
+      "c": "3",
+      "b": "2"
+    };
+
+    var simpleJson2 = {
+      "c": "3",
+      "a": "1",
+      "b": "2"
     };
     var simpleJsonStr = '{"a": "1", "b": "2", "c": "3"}';
     expect(stringify(simpleJson)).toBe(simpleJsonStr);
+    expect(stringify(simpleJson2)).toBe(simpleJsonStr);
   });
 
   it("DeterministicJsonStringifyService test (boolean)", function () {
@@ -39,9 +46,10 @@ describe("DeterministicJsonStringifyService tests", function () {
         {"a": "1"},
         {"b": "2"}
       ],
+      whatever: "yeah",
       "c": "3"
     };
-    var arrayJsonStr = '{"arrayX": [{"a": "1"}, {"b": "2"}], "c": "3"}';
+    var arrayJsonStr = '{"arrayX": [{"a": "1"}, {"b": "2"}], "c": "3", "whatever": "yeah"}';
     expect(stringify(arrayJson)).toBe(arrayJsonStr);
   });
 
@@ -58,8 +66,8 @@ describe("DeterministicJsonStringifyService tests", function () {
 
   it("DeterministicJsonStringifyService test (size)", function () {
     var sizeJson = {
-      "a": "123",
       "b": "456",
+      "a": "123",
       "c": "789"
     };
     var sizeJsonStr = '{"a": "123", "b": "456", "c": "789"}';
