@@ -11,3 +11,16 @@
     ng-i18next="avBooth.noResults">
   </div>
 </div>
+<div class="col-xs-12" ng-if="layout === 'accordion'">
+  <avb-accordion-option
+    ng-repeat="option in options | filter:filter"
+    class="animate-repeat"
+    ng-class="{selected: option.selected > -1}"
+    ng-click="toggleSelectItem(option)">
+  </avb-accordion-option>
+  <div
+    class="animate-repeat padded-left"
+    ng-if="(options | filter:filter).length == 0"
+    ng-i18next="avBooth.noResults">
+  </div>
+</div>

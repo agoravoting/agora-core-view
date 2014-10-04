@@ -10,7 +10,7 @@
         "a":"ballot/question",
         "question":"¿Cuales resoluciones quieres aprobar?",
         "description": "Hemos agrupado las resoluciones por categorías. Puedes seleccionar cualquier resolución hasta un máximo de cinco. Con el objetivo de maximizar el consenso, se aprobarán las cinco resoluciones con más votos.",
-        "layout":"simple",
+        "layout":"accordion",
         "tally_type":"APPROVAL",
         "randomize_answer_order":false,
         "max":5,
@@ -46,7 +46,7 @@
             "media_url":"",
             "details_title":"Presentaci\u00f3n y motivos",
             "details":"Este es un pequeño texto que puede acompañar a la resolución. Máximo tendrá unos 140 caracteres igual que pasa con twitter ¿no es cierto?",
-            "value":"Rechazo a las puertas giratorias",
+            "value":"Por el bien común",
             "category": "Resoluciones políticas",
             "a":"ballot/answer",
             "urls":[
