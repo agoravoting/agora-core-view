@@ -1,10 +1,10 @@
-<div class="col-xs-12" ng-if="layout === 'primary'">
-  <avb-detailed-option
+<div class="col-xs-12" ng-if="layout === 'simple'">
+  <avb-simple-option
     ng-repeat="option in options | filter:filter"
     class="animate-repeat"
     ng-class="{selected: option.selected > -1}"
     ng-click="toggleSelectItem(option)">
-  </avb-detailed-option>
+  </avb-simple-option>
   <div
     class="animate-repeat padded-left"
     ng-if="(options | filter:filter).length == 0"

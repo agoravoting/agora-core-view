@@ -4,15 +4,16 @@
     "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices tincidunt ipsum in laoreet. Integer interdum ex eget odio commodo vulputate. Mauris tristique congue elit at gravida. Fusce in libero a eros luctus auctor. Vestibulum tellus mi, vehicula non nisi sed, lobortis tempus diam. Donec laoreet, enim quis blandit consectetur, elit neque dapibus sapien, eu faucibus nunc nibh eget dui. Duis elementum nisl ac nunc mattis ullamcorper. Vestibulum at ipsum nulla. Proin interdum metus vitae consectetur porta.",
     "slug_name":"equipo-que-organizara-la-asamblea-ciudadana-si-se-puede4",
     "pretty_name":"Asamblea Ciudadana: elige tu forma de representación",
+    "layout": "normal",
     "questions":[
       {
         "a":"ballot/question",
-        "question":"¿Cual es el equipo que quieres elegir para que organice la Asamblea Ciudadana de otoño?",
-        "description": "ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices tincidunt ipsum in laoreet. Integer interdum ex eget odio commodo vulputate. Mauris tristique congue elit at gravida. Fusce in libero a eros luctus auctor. Vestibulum tellus mi, vehicula non nisi sed, lobortis tempus diam.",
-        "layout":"primary",
+        "question":"¿Cuales resoluciones quieres aprobar?",
+        "description": "Hemos agrupado las resoluciones por categorías. Puedes seleccionar cualquier resolución hasta un máximo de cinco. Con el objetivo de maximizar el consenso, se aprobarán las cinco resoluciones con más votos.",
+        "layout":"simple",
         "tally_type":"APPROVAL",
         "randomize_answer_order":false,
-        "max":1,
+        "max":5,
         "min":1,
         "num_winners":1,
         "answers":[
@@ -20,22 +21,36 @@
             "id": 1,
             "media_url":"",
             "details_title":"Presentaci\u00f3n y motivos",
-            "details":"Detalles",
-            "value":"Equipo presentado por Pablo Iglesias",
+            "details":"Este es un pequeño texto que puede acompañar a la resolución. Máximo tendrá unos 140 caracteres igual que pasa con twitter ¿no es cierto?",
+            "value":"Apoyo a las energías renovables",
+            "category": "Resoluciones generales",
             "a":"ballot/answer",
             "urls":[
-
+              {"title": "Ver en pdf", "url": "https://example.com"}
             ]
           },
           {
             "id": 2,
             "media_url":"",
             "details_title":"Presentaci\u00f3n y motivos",
-            "details":"Detalle",
-            "value":"Equipo presentado por C\u00edrculo Enfermeras",
+            "details":"Este es un pequeño texto que puede acompañar a la resolución. Máximo tendrá unos 140 caracteres igual que pasa con twitter ¿no es cierto?",
+            "value":"Rechazo a las puertas giratorias",
+            "category": "Resoluciones políticas",
             "a":"ballot/answer",
             "urls":[
-
+              {"title": "Ver en pdf", "url": "https://example.com"}
+            ]
+          },
+          {
+            "id": 3,
+            "media_url":"",
+            "details_title":"Presentaci\u00f3n y motivos",
+            "details":"Este es un pequeño texto que puede acompañar a la resolución. Máximo tendrá unos 140 caracteres igual que pasa con twitter ¿no es cierto?",
+            "value":"Rechazo a las puertas giratorias",
+            "category": "Resoluciones políticas",
+            "a":"ballot/answer",
+            "urls":[
+              {"title": "Ver en pdf", "url": "https://example.com"}
             ]
           }
         ]
@@ -44,7 +59,7 @@
         "a":"ballot/question",
         "question":"¿Cual es el equipo que quieres elegir para que organice la Asamblea Ciudadana de otoño?",
         "description": "ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices tincidunt ipsum in laoreet. Integer interdum ex eget odio commodo vulputate. Mauris tristique congue elit at gravida. Fusce in libero a eros luctus auctor. Vestibulum tellus mi, vehicula non nisi sed, lobortis tempus diam.",
-        "layout":"primary",
+        "layout":"simple",
         "tally_type":"APPROVAL",
         "randomize_answer_order":false,
         "max":1,
