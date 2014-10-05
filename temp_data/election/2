@@ -10,7 +10,7 @@
       {
         "a":"ballot/question",
         "question":"¿Qué documento de Compromiso Ético prefieres que se incorpore a los estatutos?",
-        "description": ".",
+        "description": "Compromiso Ético",
         "layout":"accordion",
         "tally_type":"APPROVAL",
         "randomize_answer_order":false,
@@ -55,8 +55,8 @@
       },
       {
         "a":"ballot/question",
-        "question":"¿Qué documento de Principios Éticos prefieres que se incorpore a los estatutos?",
-        "description": ".",
+        "question":"¿Qué documento de Principios Políticos prefieres que se incorpore a los estatutos?",
+        "description": "Principios Éticos",
         "layout":"accordion",
         "tally_type":"APPROVAL",
         "randomize_answer_order":false,
@@ -102,7 +102,7 @@
       {
         "a":"ballot/question",
         "question":"¿Qué documento de Principios Organizativos prefieres que se incorpore a los estatutos?",
-        "description": ".",
+        "description": "Principios Organizativos",
         "layout":"accordion",
         "tally_type":"APPROVAL",
         "randomize_answer_order":false,

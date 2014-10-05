@@ -49,6 +49,8 @@
     "sendingBallot": "Sending the ballot to the server, please wait (__percentage__% completed)",
 
     "successTitle": "Vote cast successfully",
-    "successSubheader": "Congratulations, you habe correctly cast your ballot and it's now being kept in our electronic ballot box."
+    "successSubheader": "Congratulations, you habe correctly cast your ballot and it's now being kept in our electronic ballot box.",
+
+    "completePacksTitle": "Complete packs"
   }
 }

@@ -18,15 +18,15 @@ angular.module('avBooth')
       // reduce all the options of all questions in only one list, but each
       // answer is tagged with its question
       var allOptions = _.reduce(scope.election.questions, function(memo, question) {
-        var taggedAnswers = _.map(question.anwsers, function (answer) {
-          answer.category = question.question;
+        var taggedAnswers = _.map(question.answers, function (answer) {
+          answer.category = question.description;
           if (answer.selected === undefined) {
-            answer.selected = false;
+            answer.selected = -1;
           }
           return answer;
         });
         return _.union(memo, taggedAnswers);
-      });
+      }, []);
 
       // group answers by value
       var groupedAnswers = _.groupBy(allOptions, "value");
