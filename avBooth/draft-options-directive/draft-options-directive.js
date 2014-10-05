@@ -47,27 +47,27 @@ angular.module('avBooth')
 
         // filter function that filters option.value ignoring accents
         function ignoreAccents(item) {
-            if (!scope.filter) {
+            if (!scope.stateData.filter) {
               return true;
             }
 
             var text = removeAccents(item.title.toLowerCase());
-            var filter = removeAccents(scope.filter.toLowerCase());
+            var filter = removeAccents(scope.stateData.filter.toLowerCase());
             return text.indexOf(filter) > -1;
         }
 
 
         function updateFilteredOptions() {
+          console.log("updating filtered options, filter: " + scope.stateData.filter);
           scope.filteredOptions = $filter('filter')(scope.flatOptions, ignoreAccents);
         }
 
-        scope.$watch("filter", updateFilteredOptions);
+        scope.$watch("stateData.filter", updateFilteredOptions);
         updateFilteredOptions();
     };
 
     return {
       restrict: 'E',
-      scope: true,
       link: link,
       templateUrl: 'avBooth/draft-options-directive/draft-options-directive.html'
     };

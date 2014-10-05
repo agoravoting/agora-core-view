@@ -11,7 +11,7 @@
     <p class="details">{{option.details}}</p>
   </div>
   <button
-    class="btn btn-default btn-right btn-expand"
+    class="btn btn-default btn-right"
     ng-class="{'in': option.isOpen}"
     ng-click="option.isOpen = !option.isOpen">
     <span
@@ -36,7 +36,7 @@
 </div>
 <div ng-if="!option.isPack">
   <div
-    class="opt-data-simple"
+    class="opt-data"
     ng-click="toggleSelectItem(option)">
     <img src="{{option.media_url}}" alt="{{option.value}}" class="img-rounded"/>
     <h4 class="show-value">{{option.value}}</h4>
@@ -50,7 +50,6 @@
     class="btn btn-default btn-right btn-link"
     href="{{option.urls[0].url}}"
     target="_blank">
-    <span ng-i18next="avBooth.goToDraftLink"></span>
     <span class="glyphicon glyphicon-cloud-download">
     </span>
   </a>

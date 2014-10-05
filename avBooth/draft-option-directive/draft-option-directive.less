@@ -14,14 +14,9 @@ avb-draft-option {
     height: 80px;
   }
 
-  .opt-data-simple {
-    width: 85% !important;
-  }
-
   h4 {
     font-weight: bold;
   }
-
 
   .img-rounded {
     overflow: hidden;
@@ -60,13 +55,8 @@ avb-draft-option {
   }
 
   .btn-link {
-    width: 15% !important;
-    color: black;
     padding-top: 30px;
-
-    &:hover {
-      text-decoration: none;
-    }
+    color: black;
   }
 
   .documents-list {
@@ -79,13 +69,17 @@ avb-draft-option {
       width: 100%;
       color: black;
       transition: all .4s ease;
-      padding: 10px 10px;
+      padding: 10px 23px;
       font-size: 13px;
 
       &:hover {
         color: white;
         text-decoration: none;
-        background-color: @gray-light;
+        background-color: @brand-success;
+      }
+
+      span.glyphicon {
+        margin-top: 15px;
       }
     }
   }
@@ -101,8 +95,8 @@ avb-draft-option {
     padding: 0 10px;
     position: absolute;
     background-color: @brand-danger;
-    top: 10px;
-    right: 30%;
+    top: 0;
+    right: 10%;
   }
 
   &.selected {

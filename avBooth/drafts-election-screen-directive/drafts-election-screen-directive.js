@@ -26,6 +26,7 @@ angular.module('avBooth')
       scope.allOptions = _.reduce(scope.election.questions, function(memo, question) {
         var taggedAnswers = _.map(question.answers, function (answer) {
           answer.category = question.description;
+          answer.title = answer.value;
           if (answer.selected === undefined) {
             answer.selected = -1;
           }

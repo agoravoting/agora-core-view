@@ -2,8 +2,11 @@
   <!-- shown when no filter is being applied (i.e. by default) -->
   <div ng-if="stateData.filter.length === 0" class="accordion-mode">
     <accordion close-others="true">
-      <accordion-group ng-repeat="category in categories" is-open="category.isOpen"
-          ng-class="{'in': category.isOpen}">
+      <accordion-group
+        ng-repeat="category in categories"
+        is-open="category.isOpen"
+        class="animate-repeat"
+        ng-class="{'in': category.isOpen}">
         <accordion-heading>
           {{category.title}}
           <span
@@ -23,7 +26,7 @@
   <!-- shown when user has entered a filter -->
   <div ng-if="stateData.filter.length > 0" class="filter-mode">
     <avb-draft-option
-      ng-repeat="option in category.options"
+      ng-repeat="option in filteredOptions"
       class="animate-repeat"
       ng-class="{selected: option.selected > -1}">
     </avb-draft-option>
