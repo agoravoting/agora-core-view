@@ -11,6 +11,7 @@ angular.module('avBooth')
         helpScreen: 'helpScreen',
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion',
+        draftsElectionScreen: 'draftsElectionScreen',
         reviewScreen: 'reviewScreen',
         castingBallotScreen: 'castingBallotScreen',
         successScreen: 'successScreen'
@@ -28,6 +29,20 @@ angular.module('avBooth')
       // correct state to set, so that the associated directive correctly shows
       // the given question
       function goToQuestion(n, reviewMode) {
+        // first check for special election-wide layouts
+        var layout = scope.election.layout;
+        if (layout !== "normal") {
+          if (layout === "drafts-election") {
+            scope.setState(stateEnum.draftsElectionScreen, {
+              isLastQuestion: true,
+              reviewMode: true,
+              filter: ""
+            });
+            return;
+          }
+        }
+
+
         var question = scope.election.questions[n];
         var map = {
           "MEEK-STV": stateEnum.multiQuestion,

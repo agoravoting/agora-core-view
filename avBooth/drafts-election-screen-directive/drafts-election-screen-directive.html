@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row avb-top-navbar">
       <div class="pull-left"
-        ng-i18next="[i18next]({sprintf:['2','3', stateData.questionNum+1, election.questions.length]})avBooth.stepAndQuestionNumber">
+        ng-i18next="[i18next]({sprintf:['2','3']})avBooth.stepNumber">
       </div>
       <div class="pull-right">
         <span
@@ -17,11 +17,11 @@
 </nav>
 
 <div class="wrapper-unfixed">
-  <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="avb-multi-question #avb-toggle">
+  <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="avb-drafts-election-screen #avb-toggle">
     <div class="container">
       <div class="hidden unfixed-top-height"></div>
-      <h1>{{stateData.question.question}}</h1>
-      <p>{{stateData.question.description}}</p>
+      <h1>{{election.pretty_name}}</h1>
+      <p>{{election.description}}</p>
     </div>
   </div>
 </div>
@@ -76,14 +76,8 @@
             />
           <span class="glyphicon glyphicon-search"></span>
         </div>
-        <avb-available-options
-          layout="stateData.question.layout"
-          max="stateData.question.max"
-          min="stateData.question.min"
-          options="stateData.question.answers"
-          filter="{{stateData.filter}}"
-          ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
-        <avb-available-options>
+        <avb-draft-options>
+        </avb-draft-options>
       </div>
 
       <!-- show selected options -->
@@ -91,13 +85,7 @@
         class="col-xs-12 col-sm-6 padded"
         ng-class="{hidden: stateData.affixIsSet && !stateData.affixDropDownShown, affixedSelection: stateData.affixIsSet}">
         <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h3>
-        <avb-selected-options
-          layout="stateData.question.layout"
-          max="stateData.question.max"
-          min="stateData.question.min"
-          sorted="true"
-          options="stateData.question.answers">
-        <avb-selected-options>
+        <!-- TODO: show here selected options -->
       </div>
     </div>
 
@@ -110,7 +98,7 @@
           ng-i18next="[i18next]({min: stateData.question.min})avBooth.selectMoreOpts"
           ng-if="numSelectedOptions() < stateData.question.min">
         </span>
-        <span
+          <!-- <span
           class="text-brand-primary"
           id="maxSelectedLimitReached"
           ng-i18next="[i18next]({max: stateData.question.max})avBooth.maxSelectedLimitReached"
@@ -123,12 +111,12 @@
         <span
           ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"
           ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
-        </span>
+        </span> -->
       </p>
       <button
         class="btn btn-block btn-lg btn-success btn-plain"
         ng-i18next="avBooth.continueButton"
-        ng-click="questionNext()">
+        ng-click="showNext()">
       </button>
     </div>
   </div>
