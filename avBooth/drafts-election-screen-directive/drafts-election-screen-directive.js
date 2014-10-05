@@ -74,6 +74,7 @@ angular.module('avBooth')
             title: pair[0],
             isPack: true,
             isOpen: false,
+            isOpen2: false,
             media_url: pair[1][0].media_url,
             selected: selected,
             details: pair[1][0].details,
@@ -97,6 +98,7 @@ angular.module('avBooth')
             title: pair[0],
             isPack: false,
             isOpen: false,
+            isOpen2: false,
             options: pair[1]
           };
         });

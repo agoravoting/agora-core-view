@@ -58,7 +58,6 @@ angular.module('avBooth')
 
 
         function updateFilteredOptions() {
-          console.log("updating filtered options, filter: " + scope.stateData.filter);
           scope.filteredOptions = $filter('filter')(scope.flatOptions, ignoreAccents);
         }
 
