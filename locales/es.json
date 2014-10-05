@@ -51,6 +51,8 @@
     "successTitle": "Voto emitido con éxito",
     "successSubheader": "Enhorabuena, has emitido correctamente tu voto y queda custodiado por la urna electrónica.",
 
-    "completePacksTitle": "Packs completos"
+    "completePacksTitle": "Packs completos",
+    "goToDraftLink": "Ver",
+    "listOfDraftDocuments": "Documentos"
   }
 }

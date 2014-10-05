@@ -7,15 +7,31 @@ avb-draft-option {
   clear: both;
   overflow: hidden;
 
-  .opt-data {
+  .opt-data, .opt-data-simple {
     display: block;
     float: left;
-    width: 70%;
+    width: 90%;
     height: 80px;
+  }
+
+  .opt-data-simple {
+    width: 85% !important;
   }
 
   h4 {
     font-weight: bold;
+  }
+
+
+  .img-rounded {
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    display: block;
+    float: left;
+    margin: 10px 10px 0 0;
+    color: @gray-lighter;
+    background-color: @gray-lighter;
   }
 
   p.details {
@@ -26,13 +42,52 @@ avb-draft-option {
     max-height: 30px;
   }
 
-  a.btn-right {
+  .btn-right {
     display: block;
     float: left;
-    width: 26%;
-    height: 60px;
-    padding-top: 20px;
-    margin: 10px 2%;
+    width: 10%;
+    height: 79px;
+    border: 0 none;
+    background-color: lighten(@brand-success, 40%);
+    margin: 0;
+    border-radius: 0;
+    transition: all .4s ease;
+
+    &:hover, &.in {
+      color: white;
+      background-color: @brand-success;
+    }
+  }
+
+  .btn-link {
+    width: 15% !important;
+    color: black;
+    padding-top: 30px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .documents-list {
+    display: block;
+    width: 100%;
+    clear: both;
+
+    a {
+      display: block;
+      width: 100%;
+      color: black;
+      transition: all .4s ease;
+      padding: 10px 10px;
+      font-size: 13px;
+
+      &:hover {
+        color: white;
+        text-decoration: none;
+        background-color: @gray-light;
+      }
+    }
   }
 
   .show-value {
@@ -46,13 +101,34 @@ avb-draft-option {
     padding: 0 10px;
     position: absolute;
     background-color: @brand-danger;
-    top: 0;
+    top: 10px;
     right: 30%;
   }
 
   &.selected {
     color: white;
     background-color: @av-primary;
+
+    .documents-list {
+      color: white;
+
+      a {
+        color: white;
+
+        &:hover {
+          background-color: darken(@brand-danger, 20%);
+        }
+      }
+    }
+
+    .btn-right {
+      background-color: @av-primary;
+      color: white;
+
+      &:hover {
+        background-color: darken(@brand-danger, 20%);
+      }
+    }
   }
 
   &.selected:hover {
@@ -61,6 +137,15 @@ avb-draft-option {
     .show-remove {
       color: white;
       display: block !important;
+    }
+
+
+    .btn-right {
+      background-color: @brand-danger;
+
+      &:hover {
+        background-color: darken(@brand-danger, 20%);
+      }
     }
   }
 

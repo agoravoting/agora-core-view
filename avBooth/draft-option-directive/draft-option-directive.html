@@ -1,16 +1,57 @@
-<div
-  class="opt-data"
-  ng-click="toggleSelectItem(option)">
-  <h4 class="show-value">{{option.title}}</h4>
-  <div class="show-remove">
-    <span ng-i18next="avBooth.removeSelectedItem"></span>
-    <span class="glyphicon glyphicon-remove"></span>
+<div ng-if="option.isPack">
+  <div
+    class="opt-data"
+    ng-click="toggleSelectItem(option)">
+    <img src="{{option.media_url}}" alt="{{option.title}}" class="img-rounded"/>
+    <h4 class="show-value">{{option.title}}</h4>
+    <div class="show-remove">
+      <span ng-i18next="avBooth.removeSelectedItem"></span>
+      <span class="glyphicon glyphicon-remove"></span>
+    </div>
+    <p class="details">{{option.details}}</p>
   </div>
-  <p class="details">{{option.details}}</p>
+  <button
+    class="btn btn-default btn-right btn-expand"
+    ng-class="{'in': option.isOpen}"
+    ng-click="option.isOpen = !option.isOpen">
+    <span
+      class="glyphicon"
+      ng-class="{'glyphicon-chevron-up': option.isOpen, 'glyphicon-chevron-down': !option.isOpen}">
+    </span>
+  </button>
+  <div
+    class="documents-list"
+    ng-class="{'hidden': !option.isOpen}">
+    <h4 ng-i18next="avBooth.listOfDraftDocuments"></h4>
+    <a
+      class="get-document"
+      ng-repeat="suboption in option.suboptions"
+      href="{{suboption.urls[0].url}}"
+      target="_blank">
+      {{suboption.category}}
+      <span class="glyphicon glyphicon-cloud-download pull-right">
+    </span>
+    </a>
+  </div>
 </div>
-<a
-  class="btn btn-default btn-right"
-  href="{{option.urls[0].url}}"
-  target="_blank">
-  {{option.urls[0].title}}
-</a>
+<div ng-if="!option.isPack">
+  <div
+    class="opt-data-simple"
+    ng-click="toggleSelectItem(option)">
+    <img src="{{option.media_url}}" alt="{{option.value}}" class="img-rounded"/>
+    <h4 class="show-value">{{option.value}}</h4>
+    <div class="show-remove">
+      <span ng-i18next="avBooth.removeSelectedItem"></span>
+      <span class="glyphicon glyphicon-remove"></span>
+    </div>
+    <p class="details">{{option.details}}</p>
+  </div>
+  <a
+    class="btn btn-default btn-right btn-link"
+    href="{{option.urls[0].url}}"
+    target="_blank">
+    <span ng-i18next="avBooth.goToDraftLink"></span>
+    <span class="glyphicon glyphicon-cloud-download">
+    </span>
+  </a>
+</div>

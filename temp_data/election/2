@@ -44,8 +44,8 @@
             "id": 3,
             "media_url":"",
             "details_title":"",
-            "details":"Propuesta de Pablo Echenique.",
-            "value":"Por el bien común",
+            "details":"Firmantes: fulanito, menganito de tal, zutanito, el parriba, el salao, aquel de más allá, johnny, el médico del pueblo, etc, etc.",
+            "value":"Propuesta de Pablo Echenique",
             "a":"ballot/answer",
             "urls":[
               {"title": "Ver pdf", "url": "https://example.com"}
@@ -90,8 +90,8 @@
             "id": 3,
             "media_url":"",
             "details_title":"",
-            "details":"Propuesta de Pablo Echenique",
-            "value":"Por el bien común",
+            "details":"Firmantes: fulanito, menganito de tal, zutanito, el parriba, el salao, aquel de más allá, johnny, el médico del pueblo, etc, etc.",
+            "value":"Propuesta de Pablo Echenique",
             "a":"ballot/answer",
             "urls":[
               {"title": "Ver pdf", "url": "https://example.com"}
@@ -136,8 +136,8 @@
             "id": 3,
             "media_url":"",
             "details_title":"",
-            "details":"Propuesta de Pablo Echenique",
-            "value":"Por el bien común",
+            "details":"Firmantes: fulanito, menganito de tal, zutanito, el parriba, el salao, aquel de más allá, johnny, el médico del pueblo, etc, etc.",
+            "value":"Propuesta de Pablo Echenique",
             "a":"ballot/answer",
             "urls":[
               {"title": "Ver pdf", "url": "https://example.com"}

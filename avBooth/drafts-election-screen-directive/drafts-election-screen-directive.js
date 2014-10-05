@@ -72,7 +72,10 @@ angular.module('avBooth')
           return {
             title: pair[0],
             isPack: true,
+            isOpen: false,
+            media_url: pair[1][0].media_url,
             selected: selected,
+            details: pair[1][0].details,
             suboptions: pair[1]
           };
         })
