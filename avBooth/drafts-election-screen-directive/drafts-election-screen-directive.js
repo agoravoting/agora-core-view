@@ -12,12 +12,18 @@ angular.module('avBooth')
   .directive('avbDraftsElectionScreen', function($i18next) {
 
     var link = function(scope, element, attrs) {
+      scope.warningEnum = {
+        packAlreadySelected: "packAlreadySelected",
+        optionInCategoryAlreadySelected: "optionInCategoryAlreadySelected",
+        cantSelectPackOptionAlreadySelected: "cantSelectPackOptionAlreadySelected"
+      };
+
       scope.stateData.affixIsSet = false;
       scope.stateData.affixDropDownShown = false;
 
       // reduce all the options of all questions in only one list, but each
       // answer is tagged with its question
-      var allOptions = _.reduce(scope.election.questions, function(memo, question) {
+      scope.allOptions = _.reduce(scope.election.questions, function(memo, question) {
         var taggedAnswers = _.map(question.answers, function (answer) {
           answer.category = question.description;
           if (answer.selected === undefined) {
@@ -29,7 +35,7 @@ angular.module('avBooth')
       }, []);
 
       // group answers by value
-      var groupedAnswers = _.groupBy(allOptions, "value");
+      var groupedAnswers = _.groupBy(scope.allOptions, "value");
 
       // filter only answers that have an answer for each question (= packs)
       // the result is a list of pairs
@@ -59,9 +65,14 @@ angular.module('avBooth')
         isPack: true,
         isOpen: true,
         options: _.map(packs, function (pair) {
+          var selected = -1;
+          if (pair[1][0].selected !== undefined) {
+            selected = pair[1][0].selected;
+          }
           return {
             title: pair[0],
             isPack: true,
+            selected: selected,
             suboptions: pair[1]
           };
         })
@@ -70,7 +81,7 @@ angular.module('avBooth')
       var packsTitles = _.pluck(packsCategory.options, "title");
 
       // get all the options that are not in a pack
-      var nonPackedOptions = _.filter(allOptions, function (option) {
+      var nonPackedOptions = _.filter(scope.allOptions, function (option) {
         return !_.contains(packsTitles, option.value);
       });
 
@@ -89,9 +100,12 @@ angular.module('avBooth')
       // makes packs to be the first category
       scope.categories.unshift(packsCategory);
 
+      // packs + normal options in one list
+      scope.flatOptions = _.flatten(_.pluck(scope.categories, "options"));
+
       scope.numSelectedOptions = function () {
         return _.filter(
-          allOptions,
+          scope.allOptions,
           function (element) {
             return element.selected > -1;
           }).length;
@@ -106,6 +120,10 @@ angular.module('avBooth')
           return;
         }
         scope.next();
+      };
+
+      scope.flashWarning = function (warningName) {
+        console.log(warningName);
       };
     };
 

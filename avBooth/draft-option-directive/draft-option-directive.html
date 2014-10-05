@@ -1,0 +1,16 @@
+<div
+  class="opt-data"
+  ng-click="toggleSelectItem(option)">
+  <h4 class="show-value">{{option.title}}</h4>
+  <div class="show-remove">
+    <span ng-i18next="avBooth.removeSelectedItem"></span>
+    <span class="glyphicon glyphicon-remove"></span>
+  </div>
+  <p class="details">{{option.details}}</p>
+</div>
+<a
+  class="btn btn-default btn-right"
+  href="{{option.urls[0].url}}"
+  target="_blank">
+  {{option.urls[0].title}}
+</a>

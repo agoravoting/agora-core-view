@@ -5,20 +5,28 @@
       <accordion-group ng-repeat="category in categories" is-open="category.isOpen"
           ng-class="{'in': category.isOpen}">
         <accordion-heading>
-        {{category.title}}
-        <span
-          class="pull-right glyphicon"
-          ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
-        </span>
-    </accordion-heading>
-        options go here
+          {{category.title}}
+          <span
+            class="pull-right glyphicon"
+            ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
+          </span>
+        </accordion-heading>
+        <avb-draft-option
+          ng-repeat="option in category.options"
+          class="animate-repeat"
+          ng-class="{selected: option.selected > -1}">
+        </avb-draft-option>
       </accordion-group>
     </accordion>
   </div>
 
   <!-- shown when user has entered a filter -->
   <div ng-if="stateData.filter.length > 0" class="filter-mode">
-      options go here
+    <avb-draft-option
+      ng-repeat="option in category.options"
+      class="animate-repeat"
+      ng-class="{selected: option.selected > -1}">
+    </avb-draft-option>
     <div
       class="animate-repeat padded-left"
       ng-if="filteredOptions.length == 0"
