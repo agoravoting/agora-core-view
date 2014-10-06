@@ -51,6 +51,11 @@
     "successTitle": "Vote cast successfully",
     "successSubheader": "Congratulations, you habe correctly cast your ballot and it's now being kept in our electronic ballot box.",
 
-    "completePacksTitle": "Complete packs"
+    "completePacksTitle": "Complete packs",
+    "listOfDraftDocuments": "Documents",
+    "alreadySelectedAPack": "You already selected a pack. Remove your selection to be able to select another",
+    "optionInCategoryAlreadySelected": "To be able to select a pack, please deselect any other item",
+    "cantSelectNormalOptionPackAlreadySelected": "To be able to select an option, please deselect the pack you chose",
+    "cantSelectPackNormalOptionAlreadySelected": "To be able to select a pack, pelase deselect the options you chose"
   }
 }

@@ -8,32 +8,6 @@ angular.module('avBooth')
   .directive('avbDraftOptions', function($filter) {
 
     var link = function(scope, element, attrs) {
-        /*
-         * Toggles selection, if possible.
-         */
-        scope.toggleSelectItem = function(option) {
-          // we do different things for packs and normal options. Here for packs:
-          if (option.isPack) {
-            if (option.selected > -1) {
-              option.selected = -1;
-            } else {
-              // TODO: check more things
-              option.selected = 0;
-            }
-            _.each(option.suboptions, function (opt) { opt.selected = option.selected; });
-
-          // and here for normal options
-          } else {
-            // toggle selection
-            if (option.selected > -1) {
-              option.selected = -1;
-            } else {
-              // TODO: check more thins
-              option.selected = 0;
-            }
-          }
-        };
-
         // TODO: only use this when localeCompare is unavailable
         function removeAccents(value) {
           return value

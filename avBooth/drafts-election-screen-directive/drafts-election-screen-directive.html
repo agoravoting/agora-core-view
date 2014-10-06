@@ -104,23 +104,39 @@
         <span
           class="text-brand-warning"
           id="selectMoreOptsWarning"
-          ng-i18next="[i18next]({min: stateData.question.min})avBooth.selectMoreOpts"
-          ng-if="numSelectedOptions() < stateData.question.min">
+          ng-i18next="[i18next]({min: election.min})avBooth.selectMoreOpts"
+          ng-if="shownWarning === warningEnum.selectMoreOpts">
         </span>
-          <!-- <span
+        <span
           class="text-brand-primary"
           id="maxSelectedLimitReached"
-          ng-i18next="[i18next]({max: stateData.question.max})avBooth.maxSelectedLimitReached"
-          ng-if="numSelectedOptions() === stateData.question.max">
+          ng-i18next="[i18next]({max: election.max})avBooth.maxSelectedLimitReached"
+          ng-if="shownWarning === warningEnum.maxSelectedLimitReached">
         </span>
         <span
-          ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numOptionsSelected"
-          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
+          class="text-brand-warning"
+          id="alreadySelectedAPack"
+          ng-i18next="avBooth.alreadySelectedAPack"
+          ng-if="shownWarning === warningEnum.alreadySelectedAPack">
         </span>
         <span
-          ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"
-          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
-        </span> -->
+          class="text-brand-warning"
+          id="optionInCategoryAlreadySelected"
+          ng-i18next="avBooth.optionInCategoryAlreadySelected"
+          ng-if="shownWarning === warningEnum.optionInCategoryAlreadySelected">
+        </span>
+        <span
+          class="text-brand-warning"
+          id="cantSelectNormalOptionPackAlreadySelected"
+          ng-i18next="avBooth.cantSelectNormalOptionPackAlreadySelected"
+          ng-if="shownWarning === warningEnum.cantSelectNormalOptionPackAlreadySelected">
+        </span>
+        <span
+          class="text-brand-warning"
+          id="cantSelectPackNormalOptionAlreadySelected"
+          ng-i18next="avBooth.cantSelectPackNormalOptionAlreadySelected"
+          ng-if="shownWarning === warningEnum.cantSelectPackNormalOptionAlreadySelected">
+        </span>
       </p>
       <button
         class="btn btn-block btn-lg btn-success btn-plain"
