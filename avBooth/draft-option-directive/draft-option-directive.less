@@ -99,6 +99,13 @@ avb-draft-option {
     right: 10%;
   }
 
+  span.label {
+    display: none;
+    position: absolute;
+    top: 9px;
+    right: 11%;
+  }
+
   &.selected {
     color: white;
     background-color: @av-primary;
@@ -133,6 +140,10 @@ avb-draft-option {
       display: block !important;
     }
 
+    span.label {
+      display: none !important;
+    }
+
 
     .btn-right {
       background-color: @brand-danger;
@@ -146,4 +157,8 @@ avb-draft-option {
   &:hover {
     background-color: @gray-lighter;
   }
+}
+
+.filter-mode avb-draft-option span.label {
+  display: block;
 }

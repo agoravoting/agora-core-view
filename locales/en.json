@@ -56,6 +56,7 @@
     "alreadySelectedAPack": "You already selected a pack. Remove your selection to be able to select another",
     "optionInCategoryAlreadySelected": "To be able to select a pack, please deselect any other item",
     "cantSelectNormalOptionPackAlreadySelected": "To be able to select an option, please deselect the pack you chose",
-    "cantSelectPackNormalOptionAlreadySelected": "To be able to select a pack, pelase deselect the options you chose"
+    "cantSelectPackNormalOptionAlreadySelected": "To be able to select a pack, pelase deselect the options you chose",
+    "packLabel": "Pack"
   }
 }

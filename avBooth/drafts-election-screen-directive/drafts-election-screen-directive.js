@@ -92,10 +92,18 @@ angular.module('avBooth')
       };
 
       scope.showWarning = function (warn) {
-        scope.shownWarning = warn;
-        $timeout(function () {
-          $("#" + warn).flash("white", "#0081B9", 200);
-        }, 150);
+        // if warning is already being shown, just flash it instantly
+        if (scope.shownWarning === warn) {
+            $("#" + warn).flash("white", "#0081B9", 200);
+
+        // if warning is not being shown, then change it and wait a bit for it
+        // to be shown to flash it
+        } else {
+          scope.shownWarning = warn;
+          $timeout(function () {
+            $("#" + warn).flash("white", "#0081B9", 200);
+          }, 150);
+        }
       };
 
       // reduce all the options of all questions in only one list, but each
