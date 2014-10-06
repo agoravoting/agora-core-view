@@ -9,7 +9,7 @@
  * as a "pack" in a special "whole packs" category.
  */
 angular.module('avBooth')
-  .directive('avbDraftsElectionScreen', function($i18next, $filter, $interpolate) {
+  .directive('avbDraftsElectionScreen', function($i18next, $filter, $interpolate, $timeout) {
 
     var link = function(scope, element, attrs) {
       scope.warningEnum = {
@@ -62,6 +62,7 @@ angular.module('avBooth')
             option.selected = 0;
           }
           _.each(option.suboptions, function (opt) { opt.selected = option.selected; });
+          scope.updateSelectionWarnings();
 
         // and here for normal options
         } else {
@@ -82,7 +83,6 @@ angular.module('avBooth')
             }
             option.selected = 0;
           }
-
           scope.updateSelectionWarnings();
         }
       };
@@ -93,7 +93,9 @@ angular.module('avBooth')
 
       scope.showWarning = function (warn) {
         scope.shownWarning = warn;
-        $("#" + warn).flash("white", "#0081B9", 200);
+        $timeout(function () {
+          $("#" + warn).flash("white", "#0081B9", 200);
+        }, 150);
       };
 
       // reduce all the options of all questions in only one list, but each
@@ -209,7 +211,7 @@ angular.module('avBooth')
 
       // watch for changes in selection, changing the warning if need be
       scope.shownWarning = "";
-      scope.updateSelectionWarnings = function updateSelectionWarnings() {
+      scope.updateSelectionWarnings = function () {
         var selection = $filter('avbSelectedOptions')(scope.flatOptions);
         var hasPackValidOpts = [
           scope.warningEnum.maxSelectedLimitReached,
