@@ -226,7 +226,7 @@ angular.module('avBooth')
           scope.warningEnum.alreadySelectedAPack,
           scope.warningEnum.cantSelectNormalOptionPackAlreadySelected
         ];
-        console.log("updateSelectionWarnings: " + selection.length);
+
 
         // if no option
         if (selection.length === 0) {
