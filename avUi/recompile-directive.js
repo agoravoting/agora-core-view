@@ -32,7 +32,7 @@ angular.module('avUi').directive('avRecompile', function($compile, $parse) {
     compile: function(el) {
       var template = getElementAsHtml(el);
       return function link(scope, $el, attrs) {
-        var stopWatching = scope.$parent.$watch(attrs.kcdRecompile, function(_new, _old) {
+        var stopWatching = scope.$parent.$watch(attrs.avRecompile, function(_new, _old) {
           var useBoolean = attrs.hasOwnProperty('useBoolean');
           if ((useBoolean && (!_new || _new === 'false')) || (!useBoolean && (!_new || _new === _old))) {
             return;
