@@ -1,0 +1,62 @@
+{
+  "app": {
+    "name": "Agora Voting"
+  },
+  "avBooth": {
+    "loadingElectionTitle": "Cargando votación, un momento por favor..",
+    "stepNumber": "paso %s de %s",
+    "stepAndQuestionNumber": "paso %s de %s, pregunta %s de %s",
+    "startVoting": "Empezar a votar",
+    "continueButton": "Continuar",
+    "stepsToVote": "Seguirás estos pasos al emitir tu voto:",
+    "selectOptionsTitle": "1. Selecciona tus opciones",
+    "selectOptionsText": "Responde a las preguntas de la votación que se presentan una a una. Configurarás así las preferencias de tu papeleta.",
+    "reviewOptionsTitle": "2. Revisa tu papeleta",
+    "reviewOptionsText": "Te mostraremos el contenido de tu papeleta para que puedas revisarla. Estarás a tiempo de cambiar las respuestas si quieres.",
+    "encryptAndEmitBallotTitle": "3. Emite tu voto",
+    "encryptAndEmitBallotText": "Antes de enviar tu voto, la cabina tardará unos segundos mientras lo cifra. De esa forma, se mantendrá el secreto del voto. Al terminar, obtendrás un localizador con el que verificar que tu voto fue debidamente registrado.",
+
+    "errorTitle": "Oops. Ocurrió algo inesperado",
+    "errorHtml": "<p>Ocurrió el siguiente problema: __error__.</p></p>Te sugerimos que contactes con nosotros y nos cuentes lo que ha pasado. Puedes enviarnos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
+
+    "questionSelectedOptionsTitle": "opciones seleccionadas (__count__)",
+    "questionAvailableOptionsTitle": "opciones disponibles",
+    "numOptionsSelected": "__count__ opciones seleccionadas.",
+    "noOptionsSelected": "Ninguna opción seleccionada.",
+    "numOptionsLimits": "Selecciona entre __min__ y __max__ opciones.",
+    "filterOptionsPlaceholder": "filtrar..",
+    "noResults": "el filtro no produjo resultados.",
+    "numSelectedOptionsSmall": "__count__ seleccionadas",
+    "selectMoreOpts": "Debes seleccionar al menos __min__ opciones.",
+    "maxSelectedLimitReached": "No puedes seleccionar más opciones (máximo __max__). Para seleccionar una opción, deselecciona otra primero.",
+
+    "removeSelectedItem": "deseleccionar",
+
+    "helpTitle": "Ayuda",
+    "helpText": "",
+    "goBack": "Volver a la cabina",
+
+    "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
+    "reviewYourBallotTitle": "Revisa tu papeleta",
+    "reviewYourBallotText": "Antes de emitir tu voto, por favor revisa el contenido de tu papeleta",
+    "encryptAndCastTheBallot": "Cifra y envia el voto",
+    "changeAnswerToQuestion": "cambiar",
+    "emptyAnswer": "<sin respuesta>",
+
+    "statusExecutingSanityChecks": "Verificando que el navegador es capaz de codificar el voto, por favor espera (__percentage__% completado)",
+    "statusEncryptingQuestion": "Cifrando respuestas a la pregunta __questionNum__, por favor espera (__percentage__% completado)",
+    "statusVerifyingQuestion": "Verificando el cifrado de las respuestas a la pregunta __questionNum__, por favor espera (__percentage__% completado)",
+    "sendingBallot": "Enviando la papeleta cifrada al servidor, por favor espera (__percentage__% completado)",
+
+    "successTitle": "Voto emitido con éxito",
+    "successSubheader": "Enhorabuena, has emitido correctamente tu voto y queda custodiado por la urna electrónica.",
+
+    "completePacksTitle": "Packs completos",
+    "listOfDraftDocuments": "Documentos",
+    "alreadySelectedAPack": "Tienes seleccionado otro pack. Deselecciónalo para poder elegir otro pack.",
+    "optionInCategoryAlreadySelected": "Para poder elegir un pack, debes primero borrar toda tu selección.",
+    "cantSelectNormalOptionPackAlreadySelected": "Para poder elegir una opción, debes primero borrar el pack que seleccionaste.",
+    "cantSelectPackNormalOptionAlreadySelected": "Para poder elegir un pack, debes primero borrar toda tu selección.",
+    "packLabel": "Pack"
+  }
+}
