@@ -1,0 +1,74 @@
+avb-draft-options {
+  > .col-xs-12 {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+
+  .animate-repeat {
+    line-height: 40px;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter,
+  .animate-repeat.ng-leave {
+    transition:all linear 0.5s;
+  }
+
+  .animate-repeat.ng-leave.ng-leave-active,
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter {
+    opacity:0;
+    max-height:0;
+  }
+
+  .animate-repeat.ng-leave,
+  .animate-repeat.ng-move.ng-move-active,
+  .animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+    max-height:40px;
+  }
+
+  accordion {
+    .panel {
+      border: 0 none;
+      border-radius: 0 !important;
+
+      .panel-heading {
+        border: 0 none;
+        border-radius: 0;
+        padding: 0;
+
+        .panel-title a {
+          display: block;
+          padding: 10px 15px;
+          cursor: pointer;
+          display: block;
+          width: 100%;
+          transition: all .4s ease;
+
+          &:hover {
+            text-decoration: none;
+            background-color: @brand-success;
+            color: white;
+          }
+        }
+      }
+
+      &.in {
+        border-left: 1px solid @brand-success;
+
+        .panel-heading .panel-title a {
+          text-decoration: none;
+          background-color: @brand-success;
+          color: white;
+        }
+
+        .panel-body {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

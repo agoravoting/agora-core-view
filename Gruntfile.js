@@ -80,6 +80,14 @@ module.exports = function (grunt) {
         }
       }
     },
+    autoprefixer: {
+      options: {
+        browsers: ['ie >= 8', 'ff > 4', 'last 8 versions']
+      },
+      main: {
+        src: 'temp/app.css'
+      }
+    },
     ngtemplates: {
       main: {
         options: {
@@ -94,7 +102,24 @@ module.exports = function (grunt) {
       main: {
         files: [
           {src: ['img/**'], dest: 'dist/'},
-          {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/',filter:'isFile',expand:true}
+          {src: ['temp_data/**'], dest: 'dist/'},
+          {
+            expand: true,
+            cwd: 'bower_components/bootstrap/fonts/',
+            src: ['**'],
+            dest: 'dist/fonts/'
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/bootstrap/fonts/',
+            src: ['**'],
+            dest: 'dist/fonts/'
+          },
+          {
+            src: ['locales/**'],
+            dest: 'dist/'
+          },
+//           {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/',filter:'isFile',expand:true}
           //{src: ['bower_components/angular-ui-utils/ui-utils-ieshiv.min.js'], dest: 'dist/'},
           //{src: ['bower_components/select2/*.png','bower_components/select2/*.gif'], dest:'dist/css/',flatten:true,expand:true},
           //{src: ['bower_components/angular-mocks/angular-mocks.js'], dest: 'dist/'}
@@ -105,8 +130,8 @@ module.exports = function (grunt) {
       read: {
         options: {
           read:[
-            {selector:'script[class="app"]',attribute:'src',writeto:'appjs'},
             {selector:'script[class="lib"]',attribute:'src',writeto:'libjs'},
+            {selector:'script[class="app"]',attribute:'src',writeto:'appjs'},
             {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
           ]
         },
@@ -135,8 +160,8 @@ module.exports = function (grunt) {
     concat: {
       main: {
         files: {
-          'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
+          'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
           'dist/avConfig.js': ['avConfig.js']
         }
       }
@@ -186,9 +211,10 @@ module.exports = function (grunt) {
       options: {
         frameworks: ['jasmine'],
         files: [  //this files data is also updated in the watch handler, if updated change there too
-          '<%= dom_munger.data.appjs %>',
-          'avConfig.js',
           '<%= dom_munger.data.libjs %>',
+          'avConfig.js',
+          '<%= dom_munger.data.appjs %>',
+          '<%= ngtemplates.main.dest %>',
           'bower_components/angular-mocks/angular-mocks.js',
           createFolderGlobs('*-spec.js')
         ],
@@ -203,10 +229,28 @@ module.exports = function (grunt) {
       during_watch: {
         browsers: ['PhantomJS']
       },
-    }
+    },
+    protractor: {
+      options: {
+        configFile: "node_modules/protractor/referenceConf.js", // Default config file
+        keepAlive: true, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        args: {
+        // Arguments passed to the command
+      }
+    },
+    //your_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+      all: {
+      options: {
+        configFile: "e2e.conf.js", // Target-specific config file
+        args: {} // Target-specific arguments
+      }
+    },
+  },
+
   });
 
-  grunt.registerTask('build',['jshint','clean:before','less','dom_munger','ngtemplates','cssmin','concat','ngAnnotate','uglify','copy','htmlmin','imagemin','clean:after']);
+  grunt.registerTask('build',['jshint','clean:before','less','autoprefixer','dom_munger','ngtemplates','cssmin','concat','ngAnnotate','uglify','copy','htmlmin','imagemin','clean:after']);
   grunt.registerTask('serve', ['dom_munger:read','jshint','connect', 'watch']);
   grunt.registerTask('test',['dom_munger:read','karma:all_tests']);
 
@@ -215,13 +259,14 @@ module.exports = function (grunt) {
 
     var tasksToRun = [];
 
-    if (filepath.lastIndexOf('.js') !== -1 && filepath.lastIndexOf('.js') === filepath.length - 3) {
+    if ((filepath.lastIndexOf('.json') !== -1 && filepath.lastIndexOf('.json') === filepath.length - 5) ||
+        (filepath.lastIndexOf('.js') !== -1 && filepath.lastIndexOf('.js') === filepath.length - 3)) {
 
       //lint the changed js file
       grunt.config('jshint.main.src', filepath);
       tasksToRun.push('jshint');
 
-      //find the appropriate unit test for the changed file
+      //find the appropriate unit t est for the changed file
       var spec = filepath;
       if (filepath.lastIndexOf('-spec.js') === -1 || filepath.lastIndexOf('-spec.js') !== filepath.length - 8) {
         spec = filepath.substring(0,filepath.length - 3) + '-spec.js';
@@ -229,10 +274,11 @@ module.exports = function (grunt) {
 
       //if the spec exists then lets run it
       if (grunt.file.exists(spec)) {
-        var files = [].concat(grunt.config('dom_munger.data.appjs'));
+        var files = [].concat(grunt.config('dom_munger.data.libjs'));
         files.push('bower_components/angular-mocks/angular-mocks.js');
         files.push('avConfig.js');
-        files.concat(grunt.config('dom_munger.data.libjs'));
+        files.concat(grunt.config('dom_munger.data.appjs'));
+        files.concat(grunt.config('ngtemplates.main.dest'));
         files.push(spec);
         grunt.config('karma.options.files', files);
         tasksToRun.push('karma:during_watch');
@@ -248,4 +294,6 @@ module.exports = function (grunt) {
     grunt.config('watch.main.tasks',tasksToRun);
 
   });
+  
+  grunt.loadNpmTasks('grunt-protractor-runner');
 };

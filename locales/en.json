@@ -1,5 +1,62 @@
 {
   "app": {
-    "name": "Agora Voting [en]"
+    "name": "Agora Voting"
+  },
+  "avBooth": {
+    "loadingElectionTitle": "Loading election, please wait..",
+    "stepNumber": "step %s of %s",
+    "stepAndQuestionNumber": "step %s of %s, question %s of %s",
+    "continueButton": "Continue",
+    "startVoting": "Start Voting",
+    "stepsToVote": "You need to follow these steps to cast your ballot:",
+    "selectOptionsTitle": "1. Select your options",
+    "selectOptionsText": "Answer to the election questions one by one as they are shown. This way you will configure your preferences in your ballot.",
+    "reviewOptionsTitle": "2. Review your ballot",
+    "reviewOptionsText": "We will show a summary with the content of your ballot so that you can review it. You'll still be able to change your answers if you want",
+    "encryptAndEmitBallotTitle": "3. Cast your vote",
+    "encryptAndEmitBallotText": "When you proceeed to cast your vote, the voting booth will take some seconds to encrypt it. This way the secrecy of the vote will be preserved. Once the is cast you'll receive a tracker id, that you can use to verify that your ballot was correctly registered.",
+
+    "helpTitle": "Oops. Something unexpected happened",
+    "helpHtml": "<p>The following problem occurred: __error__. </p></p>Please contact us and tell us what happened. You can send an email to us at <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
+
+    "questionSelectedOptionsTitle": "selected options (__count__)",
+    "questionAvailableOptionsTitle": "available options",
+    "numOptionsSelected_plural_0": "No options selected yet.",
+    "numOptionsSelected": "1 option selected.",
+    "numOptionsSelected_plural_2": "__count__ options selected.",
+    "noOptionsSelected": "No option selected.",
+    "numOptionsLimits": "Select between __min__ and __max__ options.",
+    "filterOptionsPlaceholder": "filter..",
+    "noResults": "no results found..",
+    "numSelectedOptionsSmall": "__count__ selected",
+    "selectMoreOpts": "Select at least __min__ options.",
+    "maxSelectedLimitReached": "Maximum number of selected options reached (__max__). To select an option, deselect another first.",
+
+    "removeSelectedItem": "deselect",
+
+    "helpTitle": "Help",
+    "helpText": "",
+    "goBack": "Go back to booth",
+
+    "errorElectionUrl": "The introduced address has an erroneous format",
+    "reviewYourBallotTitle": "Review your ballot",
+    "reviewYourBallotText": "Before casting your vote, please review the content of your ballot",
+    "encryptAndCastTheBallot": "Encrypt and cast your ballot",
+
+    "statusExecutingSanityChecks": "Verifying that the web browser is able to encode the ballot, please wait (__percentage__% completed)",
+    "statusEncryptingQuestion": "Encrypting answers to question __questionNum__, please wait (__percentage__% completed)",
+    "statusVerifyingQuestion": "Verifying the encrypted answers to question __questionNum__, please wait (__percentage__% completed)",
+    "sendingBallot": "Sending the ballot to the server, please wait (__percentage__% completed)",
+
+    "successTitle": "Vote cast successfully",
+    "successSubheader": "Congratulations, you habe correctly cast your ballot and it's now being kept in our electronic ballot box.",
+
+    "completePacksTitle": "Complete packs",
+    "listOfDraftDocuments": "Documents",
+    "alreadySelectedAPack": "You already selected a pack. Remove your selection to be able to select another",
+    "optionInCategoryAlreadySelected": "To be able to select a pack, please deselect any other item",
+    "cantSelectNormalOptionPackAlreadySelected": "To be able to select an option, please deselect the pack you chose",
+    "cantSelectPackNormalOptionAlreadySelected": "To be able to select a pack, pelase deselect the options you chose",
+    "packLabel": "Pack"
   }
 }

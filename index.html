@@ -2,11 +2,28 @@
 <html ng-app="agora-core-view">
 <head>
   <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="utf-8">
-  <link href="app.less" type="text/css" rel="stylesheet/less">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+  <link href="app.less" type="text/css" rel="stylesheet/less" />
 </head>
 <body>
+  <style type="text/css">
+  .avb-start-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 7px;
+    background-image: url('img/loading.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #009CDF;
+  }
+  </style>
 
   <!-- Livereload script for development only (stripped during dist build) -->
   <script src="http://localhost:35729/livereload.js"></script>
@@ -17,6 +34,7 @@
   <script src="bower_components/bootstrap/dist/js/bootstrap.js" class="lib"></script>
   <script src="bower_components/underscore/underscore.js" class="lib"></script>
   <script src="bower_components/angular/angular.js" class="lib"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js" class="lib"></script>
   <script src="bower_components/moment/moment.js" class="lib"></script>
   <script src="bower_components/angular-moment/angular-moment.js" class="lib"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js" class="lib"></script>
@@ -28,37 +46,84 @@
   <script src="bower_components/ng-i18next/dist/ng-i18next.js" class="lib"></script>
   <!-- Add New Bower Component JS Above -->
 
+  <!-- JS from Vendor Components -->
+  <script src="vendor/crypto/jsbn.js" class="lib"></script>
+  <script src="vendor/crypto/jsbn2.js" class="lib"></script>
+  <script src="vendor/crypto/bigint.js" class="lib"></script>
+  <script src="vendor/crypto/class.js" class="lib"></script>
+  <script src="vendor/crypto/elgamal.js" class="lib"></script>
+  <script src="vendor/crypto/random.js" class="lib"></script>
+  <script src="vendor/crypto/sha1.js" class="lib"></script>
+  <script src="vendor/crypto/sha2.js" class="lib"></script>
+  <script src="vendor/crypto/sjcl.js" class="lib"></script>
+  <script src="vendor/jquery.nanoscroller/nanoscroller.js" class="lib"></script>
+  <!-- Add New Vendor Component JS Above -->
+
   <!-- Configuration file JS -->
   <script src="avConfig.js"></script>
 
-  <!-- Crypto library JS -->
-  <script src="crypto/crypto.js" class="app"></script>
-  <script src="crypto/encrypt-answer.js" class="app"></script>
-  <script src="crypto/hmac.js" class="app"></script>
-  <script src="crypto/jsbn.js" class="app"></script>
-  <script src="crypto/jsbn2.js" class="app"></script>
-  <script src="crypto/bigint.js" class="app"></script>
-  <script src="crypto/class.js" class="app"></script>
-  <script src="crypto/elgamal.js" class="app"></script>
-  <script src="crypto/random.js" class="app"></script>
-  <script src="crypto/sha1.js" class="app"></script>
-  <script src="crypto/sha2.js" class="app"></script>
-  <script src="crypto/sjcl.js" class="app"></script>
-
   <!-- Main App JS -->
+  <script src="avUi/avUi.js" class="app"></script>
+  <script src="avUi/jquery.flash.js" class="app"></script>
+  <script src="avUi/affix-bottom-directive.js" class="app"></script>
+  <script src="avUi/affix-top-directive.js" class="app"></script>
+  <script src="avUi/collapsing-directive.js" class="app"></script>
+  <script src="avUi/recompile-directive.js" class="app"></script>
+
+  <script src="crypto/crypto.js" class="app"></script>
+  <script src="crypto/random-service.js" class="app"></script>
+  <script src="crypto/deterministic-json-stringify-service.js" class="app"></script>
+  <script src="crypto/bigint-service.js" class="app"></script>
+  <script src="crypto/sjcl-service.js" class="app"></script>
+  <script src="crypto/elgamal-service.js" class="app"></script>
+  <script src="crypto/encrypt-answer-service.js" class="app"></script>
+  <script src="crypto/hmac-service.js" class="app"></script>
+  <script src="crypto/answer-encoder-service.js" class="app"></script>
+  <script src="crypto/cast-ballot-service.js" class="app"></script>
+
   <script src="app.js" class="app"></script>
-  <script src="home/home.js" class="app"></script>
-  <script src="panel/panel.js" class="app"></script>
-  <script src="election/election.js" class="app"></script>
   <script src="avBooth/booth.js" class="app"></script>
+  <script src="avBooth/accordion-option-directive/accordion-option-directive.js" class="app"></script>
+  <script src="avBooth/accordion-options-directive/accordion-options-directive.js" class="app"></script>
+  <script src="avBooth/accordion-selected-option-directive/accordion-selected-option-directive.js" class="app"></script>
+  <script src="avBooth/available-options-directive/available-options-directive.js" class="app"></script>
   <script src="avBooth/booth-directive/booth-directive.js" class="app"></script>
+  <script src="avBooth/busy-directive/busy-directive.js" class="app"></script>
+  <script src="avBooth/casting-ballot-screen-directive/casting-ballot-screen-directive.js" class="app"></script>
+  <script src="avBooth/draft-option-directive/draft-option-directive.js" class="app"></script>
+  <script src="avBooth/draft-options-directive/draft-options-directive.js" class="app"></script>
+  <script src="avBooth/simple-option-directive/simple-option-directive.js" class="app"></script>
+  <script src="avBooth/simple-selected-option-directive/simple-selected-option-directive.js" class="app"></script>
+  <script src="avBooth/drafts-election-screen-directive/drafts-election-screen-directive.js" class="app"></script>
+  <script src="avBooth/error-screen-directive/error-screen-directive.js" class="app"></script>
+  <script src="avBooth/help-screen-directive/help-screen-directive.js" class="app"></script>
+  <script src="avBooth/multi-question-directive/multi-question-directive.js" class="app"></script>
+  <script src="avBooth/review-ballot-directive/review-ballot-directive.js" class="app"></script>
+  <script src="avBooth/review-screen-directive/review-screen-directive.js" class="app"></script>
+  <script src="avBooth/selected-options-directive/selected-options-directive.js" class="app"></script>
+  <script src="avBooth/draft-selected-option-directive/draft-selected-option-directive.js" class="app"></script>
+  <script src="avBooth/start-screen-directive/start-screen-directive.js" class="app"></script>
+  <script src="avBooth/success-screen-directive/success-screen-directive.js" class="app"></script>
+  <script src="avBooth/selected-options-filter.js" class="app"></script>
+  <script src="test/test.js" class="app"></script>
+  <!-- for security, we do not include the dynamic directive in the app,
+       so in the compiled app e2e tests are not expected work. -->
+  <script src="test/dynamic-directive.js"></script>
   <script src="test/test_hmac.js" class="app"></script>
+  <script src="test/unit_test_e2e.js" class="app"></script>
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="ie10-viewport-bug-workaround.js"></script>
+  
   <!-- Add New Component JS Above -->
 
   <div>
-    <!-- MAIN CONTENT -->
+    <!-- Shown while loading -->
+    <div id="angular-preloading" class="avb-start-loading">
+    </div>
+    <!-- Main content -->
     <div id="content">
-      <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+      <!-- This is where angular injects its content -->
       <div ui-view>
       </div>
     </div>

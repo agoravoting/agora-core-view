@@ -1,0 +1,143 @@
+avb-draft-selected-option {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  padding-left: 15px;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+
+  .opt-data, .opt-data-simple {
+    display: block;
+    float: left;
+    width: 90%;
+    height: 80px;
+  }
+
+  h4 {
+    font-weight: bold;
+  }
+
+  .img-rounded {
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    display: block;
+    float: left;
+    margin: 10px 10px 0 0;
+    color: @gray-lighter;
+    background-color: @gray-lighter;
+  }
+
+  p.details {
+    line-height: 15px !important;
+    display: block;
+    padding-right: 5px;
+    overflow: hidden;
+    max-height: 30px;
+  }
+
+  .btn-right {
+    display: block;
+    float: left;
+    width: 10%;
+    height: 79px;
+    border: 0 none;
+    background-color: lighten(@brand-success, 40%);
+    margin: 0;
+    border-radius: 0;
+    transition: all .4s ease;
+
+    &:hover, &.in {
+      color: white;
+      background-color: @brand-success;
+    }
+  }
+
+  .btn-link {
+    padding-top: 30px;
+    color: black;
+  }
+
+  .documents-list {
+    display: block;
+    width: 100%;
+    clear: both;
+
+    a {
+      display: block;
+      width: 100%;
+      color: black;
+      transition: all .4s ease;
+      padding: 10px 23px 10px 0;
+      font-size: 13px;
+
+      &:hover {
+        color: white;
+        text-decoration: none;
+        background-color: @brand-success;
+      }
+
+      span.glyphicon {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .show-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .show-remove {
+    display: none;
+    padding: 0 10px;
+    position: absolute;
+    background-color: @brand-danger;
+    top: 0;
+    right: 10%;
+  }
+
+  span.label {
+    position: absolute;
+    top: 9px;
+    right: 11%;
+  }
+
+  &:hover {
+    color: white;
+    background-color: @brand-danger;
+
+
+    span.label {
+      display: none;
+    }
+
+    .show-remove {
+      color: white;
+      display: block !important;
+    }
+
+    .documents-list {
+      color: white;
+
+      a {
+        color: white;
+
+        &:hover {
+          background-color: darken(@brand-danger, 20%);
+        }
+      }
+    }
+
+    .btn-right {
+      background-color: @brand-danger;
+      color: white;
+
+      &:hover {
+        background-color: darken(@brand-danger, 20%);
+      }
+    }
+  }
+}

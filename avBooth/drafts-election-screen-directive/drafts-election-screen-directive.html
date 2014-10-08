@@ -1,0 +1,149 @@
+<!-- top navbar with question title -->
+<nav class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
+  <div class="container">
+    <div class="row avb-top-navbar">
+      <div class="pull-left"
+        ng-i18next="[i18next]({sprintf:['2','3']})avBooth.stepNumber">
+      </div>
+      <div class="pull-right">
+        <span
+          class="glyphicon glyphicon-question-sign"
+          ng-click="launchHelp()">
+        </span>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="wrapper-unfixed">
+  <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="avb-drafts-election-screen #avb-toggle">
+    <div class="container">
+      <div class="hidden unfixed-top-height"></div>
+      <h1>{{election.pretty_name}}</h1>
+      <p>{{election.description}}</p>
+    </div>
+  </div>
+</div>
+
+<div id="avb-toggle" class="text-center item-block hidden">
+  <span class="glyphicon glyphicon-play"></span>
+</div>
+
+<div class="content avb-content">
+  <div class="container">
+    <div class="row">
+      <!-- only shown if in mobile: a row with selected opts and filter -->
+      <div
+        class="visible-xs col-xs-12 small-selected padded"
+        ng-class="{dropdown: stateData.affixDropDownShown}">
+        <div
+          class="pull-left"
+          ng-click="stateData.affixDropDownShown = !stateData.affixDropDownShown">
+          <h4 class="text-brand-success" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numSelectedOptionsSmall"></h4>
+          <span
+            class="text-brand-success glyphicon glyphicon-play avb-toggle-span">
+            </span>
+        </div>
+        <div
+          class="pull-right filter-input"
+          ng-class="{hidden: stateData.affixDropDownShown}">
+          <div class="pull-right filter-input">
+            <input type="text"
+              class="filter-input"
+              id="filter-input"
+              ng-model="stateData.filter"
+              ng-model-options="{debounce: 500}"
+              ng-i18next="[placeholder]avBooth.filterOptionsPlaceholder"
+              />
+            <span class="glyphicon glyphicon-search"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- show available options and filter -->
+      <div class="col-xs-12 col-sm-6">
+        <div class="pull-left padded-left hidden-xs">
+          <h4 class="text-brand-success" ng-i18next="avBooth.questionAvailableOptionsTitle"></h3>
+        </div>
+        <div class="pull-right filter-input hidden-xs">
+          <input type="text"
+            class="filter-input"
+            id="filter-input"
+            ng-model="stateData.filter"
+            ng-model-options="{debounce: 500}"
+            ng-i18next="[placeholder]avBooth.filterOptionsPlaceholder"
+            />
+          <span class="glyphicon glyphicon-search"></span>
+        </div>
+        <avb-draft-options
+          ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
+        </avb-draft-options>
+      </div>
+
+      <!-- show selected options -->
+      <div
+        class="col-xs-12 col-sm-6 padded"
+        ng-class="{hidden: stateData.affixIsSet && !stateData.affixDropDownShown, affixedSelection: stateData.affixIsSet}">
+        <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h3>
+        <avb-draft-selected-option
+          ng-repeat="option in flatOptions | avbSelectedOptions"
+          class="animate-repeat"
+          ng-class="{selected: option.selected > -1}">
+        </avb-draft-selected-option>
+        <div
+          class="padded"
+          ng-if="(flatOptions | avbSelectedOptions).length == 0"
+          ng-i18next="avBooth.noOptionsSelected">
+        </div>
+      </div>
+    </div>
+
+    <!-- next button -->
+    <div class="row hidden" ng-cloak av-affix-bottom="stateData.affixIsSet" data-force-affix-width="768">
+      <p>
+        <span
+          class="text-brand-warning"
+          id="selectMoreOptsWarning"
+          ng-i18next="[i18next]({min: election.min})avBooth.selectMoreOpts"
+          ng-if="shownWarning === warningEnum.selectMoreOpts">
+        </span>
+        <span
+          class="text-brand-primary"
+          id="maxSelectedLimitReached"
+          ng-i18next="[i18next]({max: election.max})avBooth.maxSelectedLimitReached"
+          ng-if="shownWarning === warningEnum.maxSelectedLimitReached">
+        </span>
+        <span
+          class="text-brand-warning"
+          id="alreadySelectedAPack"
+          ng-i18next="avBooth.alreadySelectedAPack"
+          ng-if="shownWarning === warningEnum.alreadySelectedAPack">
+        </span>
+        <span
+          class="text-brand-warning"
+          id="optionInCategoryAlreadySelected"
+          ng-i18next="avBooth.optionInCategoryAlreadySelected"
+          ng-if="shownWarning === warningEnum.optionInCategoryAlreadySelected">
+        </span>
+        <span
+          class="text-brand-warning"
+          id="cantSelectNormalOptionPackAlreadySelected"
+          ng-i18next="avBooth.cantSelectNormalOptionPackAlreadySelected"
+          ng-if="shownWarning === warningEnum.cantSelectNormalOptionPackAlreadySelected">
+        </span>
+        <span
+          class="text-brand-warning"
+          id="cantSelectPackNormalOptionAlreadySelected"
+          ng-i18next="avBooth.cantSelectPackNormalOptionAlreadySelected"
+          ng-if="shownWarning === warningEnum.cantSelectPackNormalOptionAlreadySelected">
+        </span>
+      </p>
+      <button
+        class="btn btn-block btn-lg btn-success btn-plain"
+        ng-i18next="avBooth.continueButton"
+        ng-click="showNext()">
+      </button>
+    </div>
+  </div>
+</div>

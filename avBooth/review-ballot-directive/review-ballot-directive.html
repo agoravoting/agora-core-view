@@ -1,0 +1,22 @@
+<div
+  class="question padded"
+  ng-repeat="question in election.questions"
+  ng-click="goToQuestion($index, true)">
+  <h3 class="text-brand-success">
+    {{$index + 1}}. {{question.question}}
+    <div class="pull-right">
+      <span class="glyphicon glyphicon-edit"></span>
+    </div>
+  </h3>
+  <ul>
+    <li
+      ng-repeat="answer in question.answers | avbSelectedOptions"
+      class="animate-repeat selected-answer">
+      {{answer.value}}
+    </li>
+    <li
+      ng-if="(question.answers | avbSelectedOptions).length == 0"
+      ng-i18next="avBooth.emptyAnswer">
+    </li>
+  </ul>
+</div>

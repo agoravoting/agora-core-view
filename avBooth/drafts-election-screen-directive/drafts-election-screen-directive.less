@@ -1,0 +1,95 @@
+avb-drafts-election-screen {
+
+  .filter-input {
+    input {
+      border: 0;
+      margin-top: 10px;
+      color: @gray-darker;
+      width: 100px;
+    }
+    span {
+      margin-left: -20px;
+      display: block;
+      float: right;
+      margin-top: 13px;
+      margin-right: 10px;
+    }
+  }
+
+  .affixedSelection {
+    background-color: @brand-success;
+    color: white !important;
+    > h4 {
+      display: none;
+    }
+  }
+
+  .small-selected {
+    margin-top: -15px;
+
+    .filter-input span {
+      margin-right: 0;
+    }
+
+    h4 {
+      display: inline-block;
+      clear: none;
+      margin-top: 7px;
+    }
+
+    &.dropdown {
+      background-color: @brand-success;
+      color: white;
+
+      .pull-left {
+        h4, span.text-brand-success, .show-value {
+          color: white;
+        }
+
+        span.glyphicon-play {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    .pull-left {
+      cursor: pointer;
+      display: block;
+
+      &:hover {
+        background-color: #6AD46A;
+        color: white;
+
+        h4, span.text-brand-success {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .animate-repeat {
+    line-height: 40px;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter,
+  .animate-repeat.ng-leave {
+    transition:all linear 0.5s;
+  }
+
+  .animate-repeat.ng-leave.ng-leave-active,
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter {
+    opacity:0;
+    max-height:0;
+  }
+
+  .animate-repeat.ng-leave,
+  .animate-repeat.ng-move.ng-move-active,
+  .animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+    max-height:40px;
+  }
+}

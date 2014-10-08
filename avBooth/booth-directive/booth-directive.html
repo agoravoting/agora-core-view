@@ -1,2 +1,21 @@
-<p>booth directive working! and the election url is "{{ electionUrl }}"</p>
-<p ng-i18next="app.name"></p>
+<div av-recompile="stateChange">
+  <avb-busy ng-if="state == stateEnum.receivingElection">
+    <p ng-i18next="avBooth.loadingElectionTitle"></p>
+  </avb-busy>
+  <avb-error-screen ng-if="state == stateEnum.errorScreen">
+  </avb-error-screen>
+  <avb-help-screen ng-if="state == stateEnum.helpScreen">
+  </avb-help-screen>
+  <avb-start-screen ng-if="state == stateEnum.startScreen">
+  </avb-start-screen>
+  <avb-multi-question ng-if="state == stateEnum.multiQuestion">
+  </avb-multi-question>
+  <avb-drafts-election-screen ng-if="state == stateEnum.draftsElectionScreen">
+  </avb-drafts-election-screen>
+  <avb-review-screen ng-if="state == stateEnum.reviewScreen">
+  </avb-review-screen>
+  <avb-casting-ballot-screen ng-if="state == stateEnum.castingBallotScreen">
+  </avb-casting-ballot-screen>
+  <avb-success-screen ng-if="state == stateEnum.successScreen">
+  </avb-success-screen>
+</div>

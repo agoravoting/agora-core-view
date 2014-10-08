@@ -1,23 +1,67 @@
 @import "bower_components/bootstrap/less/bootstrap.less";
 //@import "bower_components/bootstrap/less/theme.less";
 @import "bower_components/font-awesome/less/font-awesome.less";
+@import "vendor/jquery.nanoscroller/nanoscroller.css";
+
 @fa-font-path: "bower_components/font-awesome/fonts";
 
+/* Global Config */
+@av-primary: #009CDF;
+/* End Global Config */
+
 /* Component LESS */
-@import "home/home.less";
+@import "avBooth/accordion-option-directive/accordion-option-directive.less";
+@import "avBooth/accordion-options-directive/accordion-options-directive.less";
+@import "avBooth/accordion-selected-option-directive/accordion-selected-option-directive.less";
+@import "avBooth/available-options-directive/available-options-directive.less";
+@import "avBooth/booth-directive/booth-directive.less";
+@import "avBooth/busy-directive/busy-directive.less";
+@import "avBooth/casting-ballot-screen-directive/casting-ballot-screen-directive.less";
+@import "avBooth/draft-options-directive/draft-options-directive.less";
+@import "avBooth/simple-option-directive/simple-option-directive.less";
+@import "avBooth/simple-selected-option-directive/simple-selected-option-directive.less";
+@import "avBooth/draft-option-directive/draft-option-directive.less";
+@import "avBooth/draft-selected-option-directive/draft-selected-option-directive.less";
+@import "avBooth/error-screen-directive/error-screen-directive.less";
+@import "avBooth/help-screen-directive/help-screen-directive.less";
+@import "avBooth/drafts-election-screen-directive/drafts-election-screen-directive.less";
+@import "avBooth/review-screen-directive/review-screen-directive.less";
+@import "avBooth/review-ballot-directive/review-ballot-directive.less";
+@import "avBooth/multi-question-directive/multi-question-directive.less";
+@import "avBooth/selected-options-directive/selected-options-directive.less";
+@import "avBooth/start-screen-directive/start-screen-directive.less";
+@import "avBooth/success-screen-directive/success-screen-directive.less";
 /* Add Component LESS Above */
 
 /* Required for Angular UI Bootstrap */
 .nav, .pagination, .carousel a { cursor: pointer; }
 
-/* Personal preference for BS modal.  The LESS below makes the backdrop white and
-   causes the modal to fade in rather than slide in. */
-//@modal-backdrop-bg: white;
-//.modal {
-//	&.fade {
-//		.transition(opacity .3s);
-//	}
-//	&.fade .modal-dialog {
-//		.translate(0,0);
-//	}
-//}
+/* Global LESS */
+.btn-plain {
+  border-radius: 0;
+  border: 0;
+}
+
+.item-block {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.text-brand-success {
+  color: @brand-success;
+}
+
+.text-brand-warning {
+  color: @brand-warning;
+}
+
+.text-brand-danger {
+  color: @brand-danger;
+}
+
+.text-brand-primary {
+  color: @brand-primary;
+}
+
+/* End Global LESS */

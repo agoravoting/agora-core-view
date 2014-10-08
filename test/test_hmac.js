@@ -2,9 +2,7 @@
  * TestHmacController, that allows you to test that you are correctly
  * generating the urls for elections.
  */
-angular.module('avTest', []);
-
-angular.module('avTest', [])
+angular.module('avTest')
   .controller('TestHmacController',
     function($scope, $stateParams, HmacService, amMoment) {
       $scope.hmac = $stateParams.hmac;

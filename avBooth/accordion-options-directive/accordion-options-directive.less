@@ -1,0 +1,41 @@
+avb-accordion-options accordion {
+  .panel {
+    border: 0 none;
+    border-radius: 0 !important;
+
+    .panel-heading {
+      border: 0 none;
+      border-radius: 0;
+      padding: 0;
+
+      .panel-title a {
+        display: block;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        transition: all .4s ease;
+
+        &:hover {
+          text-decoration: none;
+          background-color: @brand-success;
+          color: white;
+        }
+      }
+    }
+
+    &.in {
+      border-left: 1px solid @brand-success;
+
+      .panel-heading .panel-title a {
+        text-decoration: none;
+        background-color: @brand-success;
+        color: white;
+      }
+
+      .panel-body {
+        padding: 0;
+      }
+    }
+  }
+}
