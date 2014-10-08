@@ -16,6 +16,7 @@
     "angular-animate": "~1.2",
     "angular-resource": "~1.2",
     "angular-mocks": "~1.2",
+    "angular-ui-router": "~0.2.11",
     "angular-ui-utils": "~0.1",
     "angular-bootstrap": "~0.10",
     "angular-moment": "~0.8.2",
