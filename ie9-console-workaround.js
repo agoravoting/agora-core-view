@@ -11,5 +11,5 @@ if (!window.console) {
     error: function() {},
     time: function() {},
     timeEnd: function() {}
-  }
+  };
 }
