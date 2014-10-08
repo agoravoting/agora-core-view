@@ -63,7 +63,7 @@ angular.module('avCrypto')
          */
         encode: function(answer) {
             var numChars = (numAvailableOptions + 2).toString(10).length;
-            var encodedAnswer = _.reduce(answer, function (memo, answerId) {
+            var encodedAnswer = _.reduceRight(answer, function (memo, answerId) {
                 return numberToString(answerId, numChars) + memo;
             }, "");
 
