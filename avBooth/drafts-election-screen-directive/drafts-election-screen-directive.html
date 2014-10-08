@@ -76,7 +76,8 @@
             />
           <span class="glyphicon glyphicon-search"></span>
         </div>
-        <avb-draft-options>
+        <avb-draft-options
+          ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
         </avb-draft-options>
       </div>
 
