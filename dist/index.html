@@ -1,1 +1,15 @@
-<!DOCTYPE html><html ng-app=agora-core-view><head><title></title><meta name=viewport content="width=device-width, initial-scale=1.0"><meta charset=utf-8><link rel=stylesheet href=app.full.min.css></head><body><div><div id=content><div ui-view=""></div></div></div><script src=lib.min.js></script><script src=avConfig.js></script><script src=app.min.js></script></body></html>
+<!DOCTYPE html><html ng-app=agora-core-view><head><title></title><meta name=viewport content="width=device-width, initial-scale=1.0"><meta charset=utf-8><link rel=stylesheet href=app.full.min.css></head><body><style>.avb-start-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 7px;
+    background-image: url('img/loading.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #009CDF;
+  }</style><div><div id=angular-preloading class=avb-start-loading></div><div id=content><div ui-view=""></div></div></div><script src=lib.min.js></script><script src=avConfig.js></script><script src=app.min.js></script></body></html>
