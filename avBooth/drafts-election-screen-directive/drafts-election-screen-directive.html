@@ -83,7 +83,7 @@
 
       <!-- show selected options -->
       <div
-        class="col-xs-12 col-sm-6 padded"
+        class="col-xs-12 col-sm-6 padded hidden-xs"
         ng-class="{hidden: stateData.affixIsSet && !stateData.affixDropDownShown, affixedSelection: stateData.affixIsSet}">
         <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h3>
         <avb-draft-selected-option
@@ -100,7 +100,7 @@
     </div>
 
     <!-- next button -->
-    <div class="row hidden" ng-cloak av-affix-bottom="stateData.affixIsSet" data-force-affix-width="768">
+    <div class="row hidden" ng-cloak av-affix-bottom data-force-affix-width="768">
       <p>
         <span
           class="text-brand-warning"
