@@ -1,6 +1,7 @@
 /*
  * IE8 bind workaround
- * The bind function is not present on Internet Explorer 8
+ * The bind function is not present on Internet Explorer 8, 
+ * so we have to implement it. More info at
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
  */
 
