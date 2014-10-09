@@ -11,11 +11,12 @@ angular.module('avBooth').controller('BoothController',
     $scope.hmacHash = $stateParams.hmac;
     $scope.hmacMessage = $stateParams.message;    
     $scope.baseUrl = ConfigService.baseUrl;
+    $scope.voterId = "";
     $scope.config = $filter('json')(ConfigService);
 
     // checks that the general format of the input data (hmac hash & message)
     // is valid
-    $scope.checkElectionUrl = function () {
+    function checkElectionUrl() {
       var hashFormat = /^[0-9a-f]{64}$/;
       var error = $i18next("avBooth.errorElectionUrl");
 
@@ -25,15 +26,30 @@ angular.module('avBooth').controller('BoothController',
         return error;
       }
 
-      var splitMessage = $scope.hmacMessage.split(":");
+      var splitHmac = $scope.hmacMessage.split(":");
+      if (splitHmac.length !== 2) {
+        return error;
+      }
 
-      if (splitMessage.length !== 3 ||
-        !hashFormat.test(splitMessage[0]) ||
+      var message = splitHmac[0];
+      var timestamp = splitHmac[1];
+      var splitMessage = message.split("-");
+
+      if (splitMessage[0] !== "voter" ||
+        !hashFormat.test(splitMessage[2]) ||
         isNaN(parseInt(splitMessage[1])) ||
-        isNaN(parseInt(splitMessage[2])))
+        isNaN(parseInt(timestamp)))
       {
           return error;
       }
+
+      $scope.voterId = splitMessage[2];
+
       return null;
-    };
+    }
+
+    // check that election url is right and set the valid scope.voterId too
+    checkElectionUrl();
+
+    $scope.checkElectionUrl = checkElectionUrl;
 });

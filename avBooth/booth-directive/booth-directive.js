@@ -1,5 +1,5 @@
 angular.module('avBooth')
-  .directive('avBooth', function($resource, $location) {
+  .directive('avBooth', function($http, $location) {
 
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
@@ -154,19 +154,19 @@ angular.module('avBooth')
 
       // load election on background
       try {
-        $resource(scope.electionUrl, {}, {'get': {method: 'GET'}})
-          .get()
-          .$promise
+        $http.get(
+            scope.electionUrl,
+            {headers: {Authorization: scope.authorizationHeader}})
           // on success
-          .then(function(value) {
+          .success(function(value) {
             scope.election = value;
             // initialize ballotClearText as a list of lists
             scope.ballotClearText = _.map(
               scope.election.questions, function () { return []; });
             scope.setState(stateEnum.startScreen, {});
-          },
+          })
           // on error, like parse error or 404
-          function (error) {
+          .error(function (error) {
             showError("error loading the election");
           });
 
