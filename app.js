@@ -12,7 +12,7 @@ angular.module(
   'avUi',
   'avBooth',
   'avTest',
-  'avCrypto',
+  'avCrypto'
 ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {
