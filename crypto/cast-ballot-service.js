@@ -90,25 +90,25 @@ angular.module('avCrypto')
 
     function formatBallot(election, answers) {
       var ballot = {
-            "a": "encrypted-vote-v1",
-            "proofs": [],
-            "choices": [],
-            "issue_date": moment().format(),
-            "election_hash": {"a": "hash/sha256/value", "value": election.hash},
-        };
-        for (var i = 0; i < election.questions_data.length; i++) {
-            var qAnswer = answers[i];
-            ballot.proofs.push({
-                "commitment": qAnswer['commitment'],
-                "response": qAnswer['response'],
-                "challenge": qAnswer['challenge']
-            });
-            ballot.choices.push({
-                "alpha": qAnswer['alpha'],
-                "beta": qAnswer['beta']
-            });
-        }
-        return ballot;
+        "a": "encrypted-vote-v1",
+        "proofs": [],
+        "choices": [],
+        "issue_date": moment().format(),
+        "election_hash": {"a": "hash/sha256/value", "value": election.hash},
+      };
+      for (var i = 0; i < election.questions_data.length; i++) {
+        var qAnswer = answers[i];
+        ballot.proofs.push({
+          "commitment": qAnswer['commitment'],
+          "response": qAnswer['response'],
+          "challenge": qAnswer['challenge']
+        });
+        ballot.choices.push({
+          "alpha": qAnswer['alpha'],
+          "beta": qAnswer['beta']
+        });
+      }
+      return ballot;
     }
 
     return function (data) {
@@ -271,7 +271,10 @@ angular.module('avCrypto')
 
         $http.post(
           data.castBallotUrl,
-          ballot,
+          {
+             vote: ballotStr,
+             vote_hash: ballotHash
+          },
           {headers: {Authorization: data.authorizationHeader}})
         .success(function(postData, status, headers, config) {
           data.success(postData);
