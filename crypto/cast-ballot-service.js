@@ -37,12 +37,13 @@
 
       CastBallotService({
         election: election,
+		pubkeys: pubkeys,
         statusUpdate: function () (status, options) { .. },
         success: function (resultData) { },
         error: function (status, message) {},
         verify: true, // verify proofs. takes more time
         delay: 100,   // in milliseconds
-        authorizationHeader: "voter:eid:voterid:deadbeef",
+        authorizationHeader: "voter-eid-voterid:deadbeef",
         postBallotUrl: "https://example.com/api/v1/ballotbox/vote"
       );
 */
@@ -95,7 +96,7 @@ angular.module('avCrypto')
             "issue_date": moment().format(),
             "election_hash": {"a": "hash/sha256/value", "value": election.hash},
         };
-        for (var i = 0; i < election.questions.length; i++) {
+        for (var i = 0; i < election.questions_data.length; i++) {
             var qAnswer = answers[i];
             ballot.proofs.push({
                 "commitment": qAnswer['commitment'],
@@ -130,6 +131,10 @@ angular.module('avCrypto')
         data.error("invalidDataFormat", "invalid data.election, not an object");
         return;
       }
+      if (!angular.isDefined(data.pubkeys) || !angular.isArray(data.pubkeys)) {
+        data.error("invalidDataFormat", "invalid data.pubkeys, not an array");
+        return;
+      }
       if (!angular.isDefined(data.verify)) {
         data.error("invalidDataFormat", "invalid data.verify");
         return;
@@ -137,7 +142,7 @@ angular.module('avCrypto')
       // convert to bool for sure
       data.verify = !!data.verify;
 
-      var numQuestions = data.election.questions.length;
+      var numQuestions = data.election.questions_data.length;
       var qNum = 0;
       var answers = [];
 
@@ -158,9 +163,9 @@ angular.module('avCrypto')
       var percent;
       try {
         for (i = 0; i < numQuestions; i++) {
-          question = data.election.questions[i];
+          question = data.election.questions_data[i];
           codec = AnswerEncoderService(question.tally_type, question.answers.length);
-          if (!codec.sanityCheck(data.election.questions[i])) {
+          if (!codec.sanityCheck(data.election.questions_data[i])) {
             sanitized = false;
             break;
           }
@@ -187,7 +192,7 @@ angular.module('avCrypto')
         }
 
         // initialization
-        question = data.election.questions[i];
+        question = data.election.questions_data[i];
         percent = Math.floor(
           (100*i*iterationSteps) / (numQuestions*iterationSteps + 1));
 
@@ -207,7 +212,7 @@ angular.module('avCrypto')
 
         // crypto time!
 
-        var encryptor = EncryptAnswerService(data.election.pubkeys[i]);
+        var encryptor = EncryptAnswerService(data.pubkeys[i]);
 
         // we always verify plaintext just to be sure, because it takes very
         // little CPU time

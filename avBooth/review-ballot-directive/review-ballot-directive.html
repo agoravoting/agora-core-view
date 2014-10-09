@@ -1,6 +1,6 @@
 <div
   class="question padded"
-  ng-repeat="question in election.questions"
+  ng-repeat="question in election.questions_data"
   ng-click="goToQuestion($index, true)">
   <h3 class="text-brand-success">
     {{$index + 1}}. {{question.question}}

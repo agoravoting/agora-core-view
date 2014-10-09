@@ -43,7 +43,7 @@ angular.module('avBooth')
         }
 
 
-        var question = scope.election.questions[n];
+        var question = scope.election.questions_data[n];
         var map = {
           "MEEK-STV": stateEnum.multiQuestion,
           "APPROVAL": stateEnum.multiQuestion
@@ -51,9 +51,9 @@ angular.module('avBooth')
         var nextState = map[question.tally_type];
 
         scope.setState(nextState, {
-          question: scope.election.questions[n],
+          question: scope.election.questions_data[n],
           questionNum: n,
-          isLastQuestion: (scope.election.questions.length === n + 1),
+          isLastQuestion: (scope.election.questions_data.length === n + 1),
           reviewMode: reviewMode,
           filter: ""
         });
@@ -162,12 +162,23 @@ angular.module('avBooth')
             scope.election = value;
             // initialize ballotClearText as a list of lists
             scope.ballotClearText = _.map(
-              scope.election.questions, function () { return []; });
+              scope.election.questions_data, function () { return []; });
             scope.setState(stateEnum.startScreen, {});
           })
           // on error, like parse error or 404
           .error(function (error) {
             showError("error loading the election");
+          });
+
+
+        $http.get(scope.pubKeysUrl)
+          // on success
+          .success(function(value) {
+            scope.pubkeys = value;
+          })
+          // on error, like parse error or 404
+          .error(function (error) {
+            showError("error loading the public keys of the election");
           });
 
       // the electionUrl might throw an exception
@@ -181,6 +192,7 @@ angular.module('avBooth')
       restrict: 'E',
       scope: {
         electionUrl: '@',
+        pubKeysUrl: '@',
         castBallotUrl: '@',
         authorizationHeader: '@',
         configStr: '@config',

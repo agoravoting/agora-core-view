@@ -60,6 +60,7 @@ angular.module('avBooth')
       $timeout(function () {
         CastBallotService({
           election: scope.election,
+		  pubkeys: scope.pubkeys,
           statusUpdate: statusUpdateFunc,
           authorizationHeader: scope.authorizationHeader,
           castBallotUrl: scope.castBallotUrl,

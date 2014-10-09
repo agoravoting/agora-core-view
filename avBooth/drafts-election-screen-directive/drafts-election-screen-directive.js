@@ -108,7 +108,7 @@ angular.module('avBooth')
 
       // reduce all the options of all questions in only one list, but each
       // answer is tagged with its question
-      scope.allOptions = _.reduce(scope.election.questions, function(memo, question) {
+      scope.allOptions = _.reduce(scope.election.questions_data, function(memo, question) {
         var taggedAnswers = _.map(question.answers, function (answer) {
           answer.category = question.description;
           answer.title = answer.value;
@@ -143,7 +143,7 @@ angular.module('avBooth')
       //   ], ..
       // ]
       var packs = _.filter(_.pairs(groupedAnswers), function (pair) {
-        return pair[1].length === scope.election.questions.length;
+        return pair[1].length === scope.election.questions_data.length;
       });
 
       var packsCategory = {
