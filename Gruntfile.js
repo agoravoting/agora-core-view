@@ -130,6 +130,7 @@ module.exports = function (grunt) {
       read: {
         options: {
           read:[
+            {selector:'script[class="libnocompat"]',attribute:'src',writeto:'libnocompatjs'},
             {selector:'script[class="lib"]',attribute:'src',writeto:'libjs'},
             {selector:'script[class="app"]',attribute:'src',writeto:'appjs'},
             {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
@@ -141,6 +142,7 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
+            {selector:'body',html:'<!-- jQuery 2.0 doesnt support IE 6/7/8 --><!--[if lte IE 8]><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><![endif]--><!--[if gt IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE] --><script src="libnocompat.min.js"></script><!-- [endif] -->'},
             {selector:'body',html:'<script src="lib.min.js"></script>'},
             {selector:'body',html:'<script src="avConfig.js"></script>'},
             {selector:'body',html:'<script src="app.min.js"></script>'},
@@ -160,6 +162,7 @@ module.exports = function (grunt) {
     concat: {
       main: {
         files: {
+          'temp/libnocompat.js': ['<%= dom_munger.data.libnocompatjs %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
           'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
           'dist/avConfig.js': ['avConfig.js']
@@ -170,7 +173,8 @@ module.exports = function (grunt) {
       main: {
         files: {
         'temp/app.js':['temp/app.js'],
-        'temp/lib.js': ['temp/lib.js']
+        'temp/lib.js': ['temp/lib.js'],
+        'temp/libnocompat.js': ['temp/libnocompat.js']
         }
       }
     },
@@ -178,7 +182,8 @@ module.exports = function (grunt) {
       main: {
         files: {
           'dist/app.min.js': 'temp/app.js',
-          'dist/lib.min.js': 'temp/lib.js'
+          'dist/lib.min.js': 'temp/lib.js',
+          'dist/libnocompat.min.js': 'temp/libnocompat.js',
         }
       }
     },
@@ -211,6 +216,7 @@ module.exports = function (grunt) {
       options: {
         frameworks: ['jasmine'],
         files: [  //this files data is also updated in the watch handler, if updated change there too
+          '<%= dom_munger.data.libnocompatjs %>',
           '<%= dom_munger.data.libjs %>',
           'avConfig.js',
           '<%= dom_munger.data.appjs %>',
@@ -274,7 +280,8 @@ module.exports = function (grunt) {
 
       //if the spec exists then lets run it
       if (grunt.file.exists(spec)) {
-        var files = [].concat(grunt.config('dom_munger.data.libjs'));
+        var files = [].concat(grunt.config('dom_munger.data.libnocompatjs'));
+        files.concat(grunt.config('dom_munger.data.libjs'));
         files.push('bower_components/angular-mocks/angular-mocks.js');
         files.push('avConfig.js');
         files.concat(grunt.config('dom_munger.data.appjs'));
