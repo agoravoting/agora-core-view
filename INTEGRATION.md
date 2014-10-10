@@ -139,12 +139,12 @@ autentica la validez del mensaje ante Agora Voting.
 #### 4.1 El mensaje
 
 El mensaje por tanto es generado por el servidor de la aplicación y tiene
-el siguiente formato: "```<voter-id>:<election-id>:<timestamp>```". Por ejemplo,
+el siguiente formato: "```voter-<election-id>-<voter-id>:<timestamp>```". Por ejemplo,
 un mensaje válido podría ser:
 
-    8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1:1411130040
+    voter-1-8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1411130040
 
-Como puede verse hay, separados por el símbolo ":", tres datos dentro del mensaje:
+Como puede verse hay tres datos dentro del mensaje:
 
 **voter-id**
 Es una cadena de texto que sirve a Agora Voting como identificador del votante.
@@ -204,7 +204,7 @@ será una URL que aun no funciona porque la cabina aun no está terminada ni
 desplegada en los servidores definitivos, pero que ya podemos decir que
 probablemente tendrá el formato siguiente:
 
-    https://vota.podemos.info/agora/#/election/:id/vote/:hash/:message
+    https://vota.podemos.info/#/election/:id/vote/:hash/:message
 
 En dicho enlace, :id es el id de la votación, :message el mensaje de
 autenticación, y :hash el código HMAC de autenticación, explicados
@@ -228,7 +228,7 @@ formato del mensaje para comprobar también si su estructura es correcta. El
 siguiente es un ejemplo de una url generada correctamente (haced clic para
 probar):
 
-  [http://agoravoting.org/agora-core-view/dist#/test_hmac/whatever-password-123/ff66424d7d77607bbfe78209e407df6fff31abe214a1fe3b3a7dd82600ec0000/8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1:1411130040](http://agoravoting.org/agora-core-view/dist#/test_hmac/whatever-password-123/ff66424d7d77607bbfe78209e407df6fff31abe214a1fe3b3a7dd82600ec0000/8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1:1411130040)
+  [https://vota.podemos.info/#/test_hmac/vor1HieM/704501b0c3ea5e2be36153a7bfa00a9eb6a51d9cef08804808abf2a57e5dc879/voter-1306-8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1412937266](https://vota.podemos.info/#/test_hmac/vor1HieM/704501b0c3ea5e2be36153a7bfa00a9eb6a51d9cef08804808abf2a57e5dc879/voter-1306-8dee0c135afeae29e208550e7258dab7b64fb008bc606fc326d41946ab8e773f:1412937266)
 
 ### 5. La aplicación abre en un navegador el enlace autenticado a la cabina de votación
 
