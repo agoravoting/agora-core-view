@@ -1,5 +1,5 @@
 angular.module('avBooth')
-  .directive('avBooth', function($http, $location) {
+  .directive('avBooth', function($http, $location, $i18next) {
 
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
@@ -167,7 +167,7 @@ angular.module('avBooth')
           })
           // on error, like parse error or 404
           .error(function (error) {
-            showError("error loading the election");
+            showError($i18next("avBooth.errorLoadingElection"));
           });
 
 
@@ -178,12 +178,12 @@ angular.module('avBooth')
           })
           // on error, like parse error or 404
           .error(function (error) {
-            showError("error loading the public keys of the election");
+            showError($i18next("avBooth.errorLoadingElectionPubKeys"));
           });
 
       // the electionUrl might throw an exception
       } catch (error) {
-          showError("error loading the election");
+          showError($i18next("avBooth.errorLoadingElection"));
       }
     }
 

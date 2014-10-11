@@ -17,7 +17,11 @@
     "encryptAndEmitBallotText": "Antes de enviar tu voto, la cabina tardará unos segundos mientras lo cifra. De esa forma, se mantendrá el secreto del voto. Al terminar, obtendrás un localizador con el que verificar que tu voto fue debidamente registrado.",
 
     "errorTitle": "Oops. Ocurrió algo inesperado",
-    "errorHtml": "<p>Ocurrió el siguiente problema: __error__.</p></p>Te sugerimos que contactes con nosotros y nos cuentes lo que ha pasado. Puedes enviarnos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
+    "errorHtml": "<p>Ocurrió el siguiente problema: </p><p>__error__</p><p>Te sugerimos que contactes con nosotros y nos cuentes lo que ha pasado. Puedes enviarnos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
+    "errorLoadingElection": "Error cargando la votación. Puede que este enlace sea incorrecto, o que el servidor no esté disponible temporalmente. Prueba de nuevo más tarde o ponte en contacto con nosotros.",
+    "errorLoadingElectionPubKeys": "Error cargando las claves públicas de la votación. Puede que este enlace sea incorrecto, o que el servidor no esté disponible temporalmente. Prueba de nuevo más tarde o ponte en contacto con nosotros.",
+    "errorSendingBallot": "Error enviando el voto.",
+    "errorSendingBallotUnknown": "Error no catalogado enviando el voto.",
 
     "questionSelectedOptionsTitle": "opciones seleccionadas (__count__)",
     "questionAvailableOptionsTitle": "opciones disponibles",

@@ -60,7 +60,7 @@ angular.module('avBooth')
       $timeout(function () {
         CastBallotService({
           election: scope.election,
-		  pubkeys: scope.pubkeys,
+          pubkeys: scope.pubkeys,
           statusUpdate: statusUpdateFunc,
           authorizationHeader: scope.authorizationHeader,
           castBallotUrl: scope.castBallotUrl,
@@ -78,9 +78,11 @@ angular.module('avBooth')
             if (status === "couldntSendBallot") {
               // TODO show "try again" button somehow if it's a network problem.
               // hopefully, without having to encrypt again the ballot
-              scope.showError("error sending the ballot. " + message);
+              scope.showError($i18next("avBooth.errorSendingBallot",
+                {msg:message}));
             } else {
-              scope.showError("unknown error casting th ballot. "  + message);
+              scope.showError($i18next("avBooth.errorSendingBallotUnknown",
+                {msg:message}));
             }
           },
           verify: false,
