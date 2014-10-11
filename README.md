@@ -15,6 +15,10 @@ example) or install it from the web and follow the instructions in the README
     cd node-v0.10.31
     ./configure && make && sudo make install
 
+You need also to install globally grunt and bower:
+
+    sudo npm install -g grunt-cli grunt bower
+
 After that, you can install the agora-core-view javascript dependencies:
 
     npm install && bower install
