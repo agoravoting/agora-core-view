@@ -22,7 +22,7 @@ var avConfigData = {
   },
 
   help: {
-    info:"<p>Puedes encontrar más información sobre la votación en los siguientes enlaces:</p><ul><li><a href=\"https://vota.podemos.info/doc/faqs.html\" target=\"_blank\">Preguntas Frecuentes</a></li><li><a href=\"https://vota.podemos.info/doc/auths.html\" target=\"_blank\">Lista de Autoridades</a></li><li><a href=\"https://vota.podemos.info/doc/overview.html\" target=\"_blank\">Esquema General</a></li><li><a href=\"https://vota.podemos.info/doc/tech_overview_1016.pdf\" target=\"_blank\">Descripción técnica (en inglés)</a></li></ul><p>Si quieres, puedes ponerte en contacto con nosotros enviando un email a <a href=\"mailto:contacto@ahorapodemos.info\">contacto@ahorapodemos.info</a>.</p>"
+    info:"<p>Puedes encontrar más información sobre la votación en los siguientes enlaces:</p><ul><li><a href=\"https://vota.podemos.info/doc/faqs.html\" target=\"_blank\">Preguntas Frecuentes</a></li><li><a href=\"https://vota.podemos.info/doc/auths.html\" target=\"_blank\">Lista de Autoridades</a></li><li><a href=\"https://vota.podemos.info/doc/overview.html\" target=\"_blank\">Esquema General</a></li><li><a href=\"https://vota.podemos.info/doc/tech_overview_1016.pdf\" target=\"_blank\">Descripción técnica (en inglés)</a></li></ul><p>Si quieres, puedes ponerte en contacto con nosotros enviando un email a <a href=\"mailto:contacto@ahorapodemos.info\">contacto@podemos.info</a>.</p>"
   },
 
   success: {
