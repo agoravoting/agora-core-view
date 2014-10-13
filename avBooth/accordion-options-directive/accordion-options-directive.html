@@ -1,23 +1,23 @@
 
 <!-- shown when no filter is being applied (i.e. by default) -->
 <div ng-if="filter.length == 0" class="accordion-mode">
-  <accordion close-others="true">
-    <accordion-group ng-repeat="category in categories" is-open="category.isOpen"
+  <div accordion close-others="true">
+    <div accordion-group ng-repeat="category in categories" is-open="category.isOpen"
         ng-class="{'in': category.isOpen}">
-      <accordion-heading>
+      <div accordion-heading>
       {{category.title}}
       <span
         class="pull-right glyphicon"
         ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
       </span>
-  </accordion-heading>
+  </div>
       <div avb-accordion-option
         ng-repeat="option in category.options"
         class="animate-repeat"
         ng-class="{selected: option.selected > -1}">
       </div>
-    </accordion-group>
-  </accordion>
+    </div>
+  </div>
 </div>
 
 <!-- shown when user has entered a filter -->
