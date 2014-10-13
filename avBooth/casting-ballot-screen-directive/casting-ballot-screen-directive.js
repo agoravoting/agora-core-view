@@ -92,7 +92,7 @@ angular.module('avBooth')
     }
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       link: link,
       templateUrl: 'avBooth/casting-ballot-screen-directive/casting-ballot-screen-directive.html'
     };

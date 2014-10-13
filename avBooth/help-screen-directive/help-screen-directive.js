@@ -9,7 +9,7 @@ angular.module('avBooth')
     }
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       link: link,
       templateUrl: 'avBooth/help-screen-directive/help-screen-directive.html'
     };

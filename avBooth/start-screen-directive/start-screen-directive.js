@@ -6,7 +6,7 @@
 angular.module('avBooth')
   .directive('avbStartScreen', function() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       scope: true,
       templateUrl: 'avBooth/start-screen-directive/start-screen-directive.html'
     };

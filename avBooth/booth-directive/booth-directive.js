@@ -189,7 +189,7 @@ angular.module('avBooth')
 
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       scope: {
         electionUrl: '@',
         pubKeysUrl: '@',

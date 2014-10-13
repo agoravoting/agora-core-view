@@ -6,7 +6,7 @@
 angular.module('avBooth')
   .directive('avbDraftSelectedOption', function() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       templateUrl: 'avBooth/draft-selected-option-directive/draft-selected-option-directive.html'
     };
   });

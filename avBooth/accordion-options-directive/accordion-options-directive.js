@@ -26,7 +26,7 @@ angular.module('avBooth')
     };
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       scope: true,
       link: link,
       templateUrl: 'avBooth/accordion-options-directive/accordion-options-directive.html'

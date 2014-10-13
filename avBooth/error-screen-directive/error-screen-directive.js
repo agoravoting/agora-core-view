@@ -4,7 +4,7 @@
 angular.module('avBooth')
   .directive('avbErrorScreen', function($resource, $window) {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       templateUrl: 'avBooth/error-screen-directive/error-screen-directive.html'
     };
   });

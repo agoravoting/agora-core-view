@@ -23,7 +23,7 @@ angular.module('avBooth')
 
     }
     return {
-      restrict: 'E',
+      restrict: 'AE',
       scope: {},
       link: link,
       transclude: true,

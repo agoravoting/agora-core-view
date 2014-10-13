@@ -11,7 +11,7 @@ angular.module('avBooth')
     }
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       link: link,
       templateUrl: 'avBooth/success-screen-directive/success-screen-directive.html'
     };

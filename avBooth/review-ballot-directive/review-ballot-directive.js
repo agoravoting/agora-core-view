@@ -6,7 +6,7 @@
 angular.module('avBooth')
   .directive('avbReviewBallot', function() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       templateUrl: 'avBooth/review-ballot-directive/review-ballot-directive.html'
     };
   });

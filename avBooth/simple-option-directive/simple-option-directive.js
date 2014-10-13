@@ -4,7 +4,7 @@
 angular.module('avBooth')
   .directive('avbSimpleOption', function() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       templateUrl: 'avBooth/simple-option-directive/simple-option-directive.html'
     };
   });

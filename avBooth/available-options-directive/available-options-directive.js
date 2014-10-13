@@ -67,7 +67,7 @@ angular.module('avBooth')
     };
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       scope: {
         // max number of selected options allowed
         max: '=',

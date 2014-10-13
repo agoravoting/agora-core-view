@@ -6,7 +6,7 @@
 angular.module('avBooth')
   .directive('avbReviewScreen', function() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       templateUrl: 'avBooth/review-screen-directive/review-screen-directive.html'
     };
   });

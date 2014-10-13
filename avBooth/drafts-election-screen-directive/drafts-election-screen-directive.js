@@ -253,7 +253,7 @@ angular.module('avBooth')
     };
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       link: link,
       templateUrl: 'avBooth/drafts-election-screen-directive/drafts-election-screen-directive.html'
     };

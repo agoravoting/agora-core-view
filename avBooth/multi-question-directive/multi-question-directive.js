@@ -30,7 +30,7 @@ angular.module('avBooth')
     };
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       link: link,
       templateUrl: 'avBooth/multi-question-directive/multi-question-directive.html'
     };

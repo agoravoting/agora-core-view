@@ -40,7 +40,7 @@ angular.module('avBooth')
     };
 
     return {
-      restrict: 'E',
+      restrict: 'AE',
       link: link,
       templateUrl: 'avBooth/draft-options-directive/draft-options-directive.html'
     };
