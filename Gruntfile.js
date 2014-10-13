@@ -142,7 +142,7 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<!-- jQuery 2.0 doesnt support IE 6/7/8 --><!--[if lte IE 8]><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><![endif]--><!--[if gt IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat.min.js"></script><!--<![endif]-->'},
+            {selector:'body',html:'<!--[if lte IE 8]><script src="libnocompat.min.js"></script><![endif]--><!--[if gt IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat.min.js"></script><!--<![endif]-->'},
             {selector:'body',html:'<script src="lib.min.js"></script>'},
             {selector:'body',html:'<script src="avConfig.js"></script>'},
             {selector:'body',html:'<script src="app.min.js"></script>'},
@@ -162,6 +162,10 @@ module.exports = function (grunt) {
     concat: {
       main: {
         files: {
+          'temp/libcompat.js': [
+             'vendor/jquery.compat/jquery-1.11.1.js',
+             'vendor/json3/json-v3.3.2.js'
+          ],
           'temp/libnocompat.js': ['<%= dom_munger.data.libnocompatjs %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
           'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
@@ -174,7 +178,8 @@ module.exports = function (grunt) {
         files: {
         'temp/app.js':['temp/app.js'],
         'temp/lib.js': ['temp/lib.js'],
-        'temp/libnocompat.js': ['temp/libnocompat.js']
+        'temp/libnocompat.js': ['temp/libnocompat.js'],
+        'temp/libcompat.js': ['temp/libcompat.js']
         }
       }
     },
@@ -184,6 +189,7 @@ module.exports = function (grunt) {
           'dist/app.min.js': 'temp/app.js',
           'dist/lib.min.js': 'temp/lib.js',
           'dist/libnocompat.min.js': 'temp/libnocompat.js',
+          'dist/libcompat.min.js': 'temp/libcompat.js'
         }
       }
     },
