@@ -76,14 +76,14 @@
             />
           <span class="glyphicon glyphicon-search"></span>
         </div>
-        <avb-available-options
+        <div avb-available-options
           layout="stateData.question.layout"
           max="stateData.question.max"
           min="stateData.question.min"
           options="stateData.question.answers"
           filter="{{stateData.filter}}"
           ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
-        <avb-available-options>
+        <div avb-available-options>
       </div>
 
       <!-- show selected options -->
@@ -91,13 +91,13 @@
         class="col-xs-12 col-sm-6 padded"
         ng-class="{hidden: stateData.affixIsSet && !stateData.affixDropDownShown, affixedSelection: stateData.affixIsSet}">
         <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h4>
-        <avb-selected-options
+        <div avb-selected-options
           layout="stateData.question.layout"
           max="stateData.question.max"
           min="stateData.question.min"
           sorted="true"
           options="stateData.question.answers">
-        <avb-selected-options>
+        <div avb-selected-options>
       </div>
     </div>
 

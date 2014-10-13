@@ -76,9 +76,9 @@
             />
           <span class="glyphicon glyphicon-search"></span>
         </div>
-        <avb-draft-options
+        <div avb-draft-options
           ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
-        </avb-draft-options>
+        </div>
       </div>
 
       <!-- show selected options -->
@@ -86,11 +86,11 @@
         class="col-xs-12 col-sm-6 padded hidden-xs"
         ng-class="{hidden: stateData.affixIsSet && !stateData.affixDropDownShown, affixedSelection: stateData.affixIsSet}">
         <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h4>
-        <avb-draft-selected-option
+        <div avb-draft-selected-option
           ng-repeat="option in flatOptions | avbSelectedOptions"
           class="animate-repeat"
           ng-class="{selected: option.selected > -1}">
-        </avb-draft-selected-option>
+        </div>
         <div
           class="padded"
           ng-if="(flatOptions | avbSelectedOptions).length == 0"

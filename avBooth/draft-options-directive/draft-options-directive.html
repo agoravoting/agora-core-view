@@ -14,22 +14,22 @@
             ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
           </span>
         </accordion-heading>
-        <avb-draft-option
+        <div avb-draft-option
           ng-repeat="option in category.options"
           class="animate-repeat"
           ng-class="{selected: option.selected > -1}">
-        </avb-draft-option>
+        </div>
       </accordion-group>
     </accordion>
   </div>
 
   <!-- shown when user has entered a filter -->
   <div ng-if="stateData.filter.length > 0" class="filter-mode">
-    <avb-draft-option
+    <div avb-draft-option
       ng-repeat="option in filteredOptions"
       class="animate-repeat"
       ng-class="{selected: option.selected > -1}">
-    </avb-draft-option>
+    </div>
     <div
       class="animate-repeat padded-left"
       ng-if="filteredOptions.length == 0"
