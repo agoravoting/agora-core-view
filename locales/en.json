@@ -41,6 +41,7 @@
     "helpTitle": "Help",
     "helpText": "",
     "goBack": "Go back to booth",
+    "selectedOptionsFollow": "The options you chose are:",
 
     "errorElectionUrl": "The introduced address has an erroneous format",
     "reviewYourBallotTitle": "Review your ballot",

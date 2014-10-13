@@ -39,6 +39,7 @@
     "helpTitle": "Ayuda",
     "helpText": "",
     "goBack": "Volver a la cabina",
+    "selectedOptionsFollow": "Las opciones que seleccionaste son:",
 
     "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
     "reviewYourBallotTitle": "Revisa tu papeleta",
