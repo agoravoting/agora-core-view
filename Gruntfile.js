@@ -142,7 +142,7 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<!-- jQuery 2.0 doesnt support IE 6/7/8 --><!--[if lte IE 8]><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><![endif]--><!--[if gt IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE]><script src="libnocompat.min.js"></script><![endif]-->'},
+            {selector:'body',html:'<!-- jQuery 2.0 doesnt support IE 6/7/8 --><!--[if lte IE 8]><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><![endif]--><!--[if gt IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat.min.js"></script><!--<![endif]-->'},
             {selector:'body',html:'<script src="lib.min.js"></script>'},
             {selector:'body',html:'<script src="avConfig.js"></script>'},
             {selector:'body',html:'<script src="app.min.js"></script>'},
