@@ -14,11 +14,10 @@
 angular.module('avUi')
   .directive('avAffixBottom', function($window, $timeout, $parse) {
     var affixBottomClass = "affix-bottom";
-
     var checkPosition = function(scope, instance, el, options) {
 
       var affix = false;
-      var elHeight = $(el).height();
+      var elHeight = $(el).actual('height');
 
       if (($("body").height() + elHeight > window.innerHeight) ||
           (instance.forceAffixWidth && window.innerWidth < instance.forceAffixWidth)) {
@@ -78,6 +77,7 @@ angular.module('avUi')
         // watch for window resizes and element resizes too
         angular.element($window).on('resize', callCheckPos);
         angular.element(document.body).on('resize', callCheckPos);
+        console.log("iElement NOT resize, height = " + iElement.height());
         angular.element(iElement).on('resize', callCheckPos);
       }
     };
