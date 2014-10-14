@@ -30,9 +30,9 @@
     display: block;
     float: left;
     width: 26%;
-    height: 60px;
-    padding-top: 20px;
-    margin: 10px 2%;
+    height: 40px;
+    padding-top: 10px;
+    margin: 30px 2% 10px 2%;
   }
 
   .show-value {
@@ -46,13 +46,25 @@
     padding: 0 10px;
     position: absolute;
     background-color: @brand-danger;
-    top: 0;
-    right: 30%;
+    top: 9px;
+    line-height: 16px;
+    right: 2%;
+  }
+
+  span.label {
+    position: absolute;
+    top: 9px;
+    right: 2%;
   }
 
   &:hover {
     color: white;
     background-color: @brand-danger;
+
+
+    span.label {
+      display: none;
+    }
 
     .show-remove {
       display: block !important;

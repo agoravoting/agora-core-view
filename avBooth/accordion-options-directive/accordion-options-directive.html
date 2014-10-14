@@ -5,10 +5,15 @@
     <div accordion-group ng-repeat="category in categories" is-open="category.isOpen"
         ng-class="{'in': category.isOpen}">
       <div accordion-heading>
-      <span ng-i18next="avBooth.accordionCategoryTitle"></span> {{category.title}}
+      <span ng-i18next="avBooth.accordionCategoryTitle"></span>
+      <span>{{category.title}}</span>
       <span
         class="pull-right glyphicon"
         ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
+      </span>
+      <span class="accordion-num-label pull-right label label-primary"
+        ng-if="(category.options | avbSelectedOptions).length > 0">
+        {{(category.options | avbSelectedOptions).length }}
       </span>
   </div>
       <div avb-accordion-option
