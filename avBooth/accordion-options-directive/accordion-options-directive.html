@@ -5,7 +5,7 @@
     <div accordion-group ng-repeat="category in categories" is-open="category.isOpen"
         ng-class="{'in': category.isOpen}">
       <div accordion-heading>
-      {{category.title}}
+      <span ng-i18next="avBooth.accordionCategoryTitle"></span> {{category.title}}
       <span
         class="pull-right glyphicon"
         ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
