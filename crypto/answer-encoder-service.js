@@ -71,7 +71,7 @@ angular.module('avCrypto')
             if (encodedAnswer.length === 0) {
                 encodedAnswer = numberToString(numAvailableOptions + 2, numChars);
             }
-            return parseInt(encodedAnswer, 10);
+            return encodedAnswer;
         },
 
         /**
@@ -83,7 +83,7 @@ angular.module('avCrypto')
          * This function is very useful for sanity checks.
          */
         decode: function(encodedAnswer) {
-            var encodedStr = encodedAnswer.toString(10);
+            var encodedStr = encodedAnswer;
             var length = encodedStr.length;
             var tabNumChars = (numAvailableOptions + 2).toString(10).length;
             var missingZeros = (tabNumChars - (length % tabNumChars)) % tabNumChars;
