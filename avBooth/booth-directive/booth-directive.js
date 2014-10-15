@@ -1,8 +1,25 @@
 angular.module('avBooth')
-  .directive('avBooth', function($http, $location, $i18next) {
+  .directive('avBooth', function($http, $location, $i18next, $window, $timeout) {
 
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+      // timeout is used with updateWidth so that we do not create too many
+      // calls to it, at most one per 100ms
+      var timeoutWidth;
+      var w = angular.element($window);
+
+      function updateWidth() {
+        timeoutWidth = $timeout(function() {
+          $timeout.cancel(timeoutWidth);
+          scope.windowWidth = w.width();
+          console.log("scope.windowWidth = " + scope.windowWidth);
+          scope.$apply();
+        }, 100);
+      }
+      w.bind('resize', function () {
+        updateWidth();
+      });
+      updateWidth();
 
       // possible values of the election state scope variable
       var stateEnum = {
