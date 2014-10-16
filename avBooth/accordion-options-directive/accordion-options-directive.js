@@ -13,14 +13,11 @@ angular.module('avBooth')
 
         // convert this associative array to a list of objects with title and
         // options attributes
-        var first = true;
         scope.categories = _.map(_.pairs(categories), function(pair) {
-          var isOpen = (first === true);
-          first = false;
           return {
             title: pair[0],
             options: pair[1],
-            isOpen: isOpen
+            isOpen: false
           };
         });
     };
