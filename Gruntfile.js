@@ -142,7 +142,7 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat.min.js"></script><![endif]--><!--[if gt IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat.min.js"></script><!--<![endif]-->'},
+            {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat.min.js"></script><![endif]--><!--[if gte IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat.min.js"></script><!--<![endif]-->'},
             {selector:'body',html:'<script src="lib.min.js"></script>'},
             {selector:'body',html:'<script src="avConfig.js"></script>'},
             {selector:'body',html:'<script src="app.min.js"></script>'},
@@ -307,6 +307,6 @@ module.exports = function (grunt) {
     grunt.config('watch.main.tasks',tasksToRun);
 
   });
-  
+
   grunt.loadNpmTasks('grunt-protractor-runner');
 };
