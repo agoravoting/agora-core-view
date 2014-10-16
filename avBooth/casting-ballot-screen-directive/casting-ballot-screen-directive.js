@@ -80,6 +80,21 @@ angular.module('avBooth')
               // hopefully, without having to encrypt again the ballot
               scope.showError($i18next("avBooth.errorSendingBallot",
                 {msg:message}));
+            } else if (status === "couldntSendBallotNotFound") {
+              scope.showError($i18next("avBooth.couldntSendBallotNotFound",
+                {msg:message}));
+            } else if (status === "couldntSendBallotUnauthorized") {
+              scope.showError($i18next("avBooth.couldntSendBallotUnauthorized",
+                {msg:message}));
+            } else if (status === "errorEncrypting") {
+              scope.showError($i18next("avBooth.errorEncrypting",
+                {msg:message}));
+            } else if (status === "errorEncoding") {
+              scope.showError($i18next("avBooth.errorEncoding",
+                {msg:message}));
+            } else if (status === "sanityChecksFailed") {
+              scope.showError($i18next("avBooth.sanityChecksFailed",
+                {msg:message}));
             } else {
               scope.showError($i18next("avBooth.errorSendingBallotUnknown",
                 {msg:message}));

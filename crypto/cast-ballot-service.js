@@ -280,7 +280,13 @@ angular.module('avCrypto')
           data.success(postData);
         })
         .error(function(postData, status, headers, config) {
-          data.error("couldntSendBallot", stringify(postData));
+          if (status === 401) {
+            data.error("couldntSendBallotUnauthorized", stringify(postData));
+          } else if (status === 404 || status === 502) {
+            data.error("couldntSendBallotNotFound", stringify(postData));
+          } else {
+            data.error("couldntSendBallot", stringify(postData));
+          }
         });
       }
     };

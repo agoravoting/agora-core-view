@@ -108,6 +108,10 @@ angular.module('avBooth')
 
       // shows the error string
       function showError(error) {
+        if (scope.state === stateEnum.errorScreen) {
+          console.log("already in an error state, new error appeared: " + error);
+          return;
+        }
         scope.setState(stateEnum.errorScreen, {error: error});
       }
 
