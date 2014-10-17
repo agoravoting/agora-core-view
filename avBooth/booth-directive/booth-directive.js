@@ -199,7 +199,9 @@ angular.module('avBooth')
           })
           // on error, like parse error or 404
           .error(function (error) {
-            showError($i18next("avBooth.errorLoadingElectionPubKeys"));
+            // TODO: in order to remove race condition with the other showError
+            // errorLoadingElection, we comment this for now
+            // showError($i18next("avBooth.errorLoadingElectionPubKeys"));
           });
 
       // the electionUrl might throw an exception
