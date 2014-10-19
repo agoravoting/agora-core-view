@@ -110,7 +110,7 @@ angular.module('avBooth')
       // answer is tagged with its question
       scope.allOptions = _.reduce(scope.election.questions_data, function(memo, question) {
         var taggedAnswers = _.map(question.answers, function (answer) {
-          answer.category = question.description;
+          answer.category = question.question;
           answer.title = answer.value;
           if (answer.selected === undefined) {
             answer.selected = -1;
@@ -122,74 +122,6 @@ angular.module('avBooth')
 
       // group answers by value
       var groupedAnswers = _.groupBy(scope.allOptions, "value");
-
-      // filter only answers that have an answer for each question (= packs)
-      // the result is a list of pairs
-      // the result will be something like:
-      // [
-      //   [
-      //     "Propuesta de Fulanito",
-      //     [
-      //       {
-      //         value: "Propuesta de Fulanito",
-      //         details: "whatever",
-      //         category: "¿Cual quieres que sea el documento blah blah?",
-      //         urls: [
-      //           {title: "Ver pdf", url: "https://example.com"}
-      //         ]
-      //       },
-      //       ...
-      //     ]
-      //   ], ..
-      // ]
-      var packs = _.filter(_.pairs(groupedAnswers), function (pair) {
-        return pair[1].length === scope.election.questions_data.length;
-      });
-
-      var packsCategory = {
-        title: $i18next("avBooth.completePacksTitle"),
-        isPack: true,
-        isOpen: true,
-        options: _.map(packs, function (pair) {
-          var selected = -1;
-          if (pair[1][0].selected !== undefined) {
-            selected = pair[1][0].selected;
-          }
-          return {
-            title: pair[0],
-            isPack: true,
-            isOpen: false,
-            isOpen2: false,
-            media_url: pair[1][0].media_url,
-            selected: selected,
-            details: pair[1][0].details,
-            suboptions: pair[1]
-          };
-        })
-      };
-
-      var packsTitles = _.pluck(packsCategory.options, "title");
-
-      // get all the options that are not in a pack
-      var nonPackedOptions = _.filter(scope.allOptions, function (option) {
-        return !_.contains(packsTitles, option.value);
-      });
-
-      var categorizedNonPackedOptions = _.groupBy(nonPackedOptions, "category");
-      scope.categories = _.map(
-        _.pairs(categorizedNonPackedOptions),
-        function (pair) {
-          return {
-            title: pair[0],
-            isPack: false,
-            isOpen: false,
-            isOpen2: false,
-            options: pair[1]
-          };
-        });
-
-      // makes packs to be the first category
-      scope.categories.unshift(packsCategory);
 
       // packs + normal options in one list
       scope.flatOptions = _.flatten(_.pluck(scope.categories, "options"));

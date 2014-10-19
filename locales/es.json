@@ -35,7 +35,7 @@
     "numOptionsLimits": "Selecciona entre __min__ y __max__ opciones.",
     "filterOptionsPlaceholder": "filtrar..",
     "noResults": "el filtro no produjo resultados.",
-    "numSelectedOptionsSmall": "__count__ seleccionadas",
+    "numSelectedOptionsSmall": "__count__ opciones seleccionadas",
     "selectMoreOpts": "Debes seleccionar al menos __min__ opciones.",
     "maxSelectedLimitReached": "No puedes seleccionar más opciones (máximo __max__). Para seleccionar una opción, deselecciona otra primero.",
 
@@ -68,6 +68,8 @@
     "cantSelectNormalOptionPackAlreadySelected": "Para poder elegir una opción, debes primero borrar el pack que seleccionaste.",
     "cantSelectPackNormalOptionAlreadySelected": "Para poder elegir un pack, debes primero borrar toda tu selección.",
     "packLabel": "Pack",
-    "accordionCategoryTitle": "Categoría:"
+    "accordionCategoryTitle": "Categoría:",
+
+    "proposalsTitleClickToSelect": "Opciones (clic para seleccionar):"
   }
 }

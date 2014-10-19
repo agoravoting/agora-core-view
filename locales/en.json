@@ -68,6 +68,8 @@
     "cantSelectNormalOptionPackAlreadySelected": "To be able to select an option, please deselect the pack you chose",
     "cantSelectPackNormalOptionAlreadySelected": "To be able to select a pack, pelase deselect the options you chose",
     "packLabel": "Pack",
-    "accordionCategoryTitle": "Category:"
+    "accordionCategoryTitle": "Category:",
+
+    "proposalsTitleClickToSelect": "Optiones (click to select):"
   }
 }

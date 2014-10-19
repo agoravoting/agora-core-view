@@ -36,18 +36,24 @@
       <!-- only shown if in mobile: a row with selected opts and filter -->
       <div
         class="col-xs-12 small-selected padded"
-        ng-class="{dropdown: stateData.affixDropDownShown}">
+        ng-class="{dropdown: stateData.selectionDropDown}">
         <div
           class="pull-left"
-          ng-click="stateData.affixDropDownShown = !stateData.affixDropDownShown">
-          <h4 class="text-brand-success" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numSelectedOptionsSmall"></h4>
+          ng-click="stateData.selectionDropDown = !stateData.selectionDropDown">
+          <h4 ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numSelectedOptionsSmall"></h4>
           <span
-            class="text-brand-success glyphicon glyphicon-play avb-toggle-span">
+            class="glyphicon glyphicon-play avb-toggle-span">
           </span>
         </div>
+      </div>
+
+      <div class="col-xs-12 col-md-6 options-title"
+        av-affix-top-offset="30"
+        ng-class="{hidden: stateData.selectionDropDown}">
+        <span ng-i18next="avBooth.proposalsTitleClickToSelect"></span>
         <div
           class="pull-right filter-input"
-          ng-class="{hidden: stateData.affixDropDownShown}">
+          ng-class="{hidden: stateData.selectionDropDown}">
           <div class="pull-right filter-input">
             <input type="text"
               class="filter-input"
@@ -60,10 +66,22 @@
           </div>
         </div>
       </div>
+      <div class="hidden-xs col-md-2 affix-docs-header" av-affix-top-offset="30"
+        ng-if="!stateData.selectionDropDown">
+        Documento ético
+      </div>
+      <div class="hidden-xs col-md-2 affix-docs-header" av-affix-top-offset="30"
+        ng-if="!stateData.selectionDropDown">
+        Documento político
+      </div>
+      <div class="hidden-xs col-md-2 affix-docs-header" av-affix-top-offset="30"
+        ng-if="!stateData.selectionDropDown">
+        Documento organizativo
+      </div>
 
       <!-- show available options and filter -->
       <div class="col-xs-12"
-        ng-class="{hidden: stateData.affixDropDownShown}">
+        ng-class="{hidden: stateData.selectionDropDown}">
         <div avb-draft-options>
         </div>
       </div>
@@ -71,7 +89,7 @@
       <!-- show selected options -->
       <div
         class="col-xs-12 affixedSelection"
-        ng-class="{hidden: !stateData.affixDropDownShown}">
+        ng-class="{hidden: !stateData.selectionDropDown}">
         <div avb-draft-selected-option
           ng-repeat="option in flatOptions | avbSelectedOptions"
           class="animate-repeat"
@@ -86,7 +104,7 @@
     </div>
 
     <!-- next button -->
-    <div class="row hidden" ng-cloak av-affix-bottom="stateData.affixIsSet" data-force-affix-width="1">
+    <div class="row affix-bottom">
       <p>
         <span
           class="text-brand-warning"
