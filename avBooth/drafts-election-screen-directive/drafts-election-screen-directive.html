@@ -35,7 +35,7 @@
     <div class="row">
       <!-- only shown if in mobile: a row with selected opts and filter -->
       <div
-        class="visible-xs col-xs-12 small-selected padded"
+        class="col-xs-12 small-selected padded"
         ng-class="{dropdown: stateData.affixDropDownShown}">
         <div
           class="pull-left"
@@ -43,7 +43,7 @@
           <h4 class="text-brand-success" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numSelectedOptionsSmall"></h4>
           <span
             class="text-brand-success glyphicon glyphicon-play avb-toggle-span">
-            </span>
+          </span>
         </div>
         <div
           class="pull-right filter-input"
@@ -62,30 +62,16 @@
       </div>
 
       <!-- show available options and filter -->
-      <div class="col-xs-12 col-sm-6">
-        <div class="pull-left padded-left hidden-xs">
-          <h4 class="text-brand-success" ng-i18next="avBooth.questionAvailableOptionsTitle"></h4>
-        </div>
-        <div class="pull-right filter-input hidden-xs">
-          <input type="text"
-            class="filter-input"
-            id="filter-input"
-            ng-model="stateData.filter"
-            ng-model-options="{debounce: 500}"
-            ng-i18next="[placeholder]avBooth.filterOptionsPlaceholder"
-            />
-          <span class="glyphicon glyphicon-search"></span>
-        </div>
-        <div avb-draft-options
-          ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
+      <div class="col-xs-12"
+        ng-class="{hidden: stateData.affixDropDownShown}">
+        <div avb-draft-options>
         </div>
       </div>
 
       <!-- show selected options -->
       <div
-        class="col-xs-12 col-sm-6 padded hidden-xs"
-        ng-class="{hidden: windowWidth < 768 && !stateData.affixDropDownShown, affixedSelection: windowWidth < 768 && stateData.affixIsSet}">
-        <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h4>
+        class="col-xs-12 affixedSelection"
+        ng-class="{hidden: !stateData.affixDropDownShown}">
         <div avb-draft-selected-option
           ng-repeat="option in flatOptions | avbSelectedOptions"
           class="animate-repeat"
@@ -100,7 +86,7 @@
     </div>
 
     <!-- next button -->
-    <div class="row hidden" ng-cloak av-affix-bottom data-force-affix-width="768">
+    <div class="row hidden" ng-cloak av-affix-bottom="stateData.affixIsSet" data-force-affix-width="1">
       <p>
         <span
           class="text-brand-warning"
