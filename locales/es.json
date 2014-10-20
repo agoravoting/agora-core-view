@@ -4,7 +4,7 @@
   },
   "avBooth": {
     "loadingElectionTitle": "Cargando votación, un momento por favor..",
-    "stepNumber": "paso %s de %s &nbsp; &nbsp;<a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a>",
+    "stepNumber": "paso %s de %s &nbsp; &nbsp; funciona con <strong><a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a></strong>",
     "stepAndQuestionNumber": "paso %s de %s, pregunta %s de %s",
     "startVoting": "Empezar a votar",
     "continueButton": "Continuar",

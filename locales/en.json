@@ -4,7 +4,7 @@
   },
   "avBooth": {
     "loadingElectionTitle": "Loading election, please wait..",
-    "stepNumber": "step %s of %s",
+    "stepNumber": "step %s of %s &nbsp; &nbsp; powered by <strong><a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a></strong>",
     "stepAndQuestionNumber": "step %s of %s, question %s of %s",
     "continueButton": "Continue",
     "startVoting": "Start Voting",
