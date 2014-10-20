@@ -8,6 +8,7 @@ angular.module('avBooth')
   .directive('avbDraftOptions', function($filter) {
 
     var link = function(scope, element, attrs) {
+
         // TODO: only use this when localeCompare is unavailable
         function removeAccents(value) {
           return value
@@ -32,7 +33,7 @@ angular.module('avBooth')
 
 
         function updateFilteredOptions() {
-          scope.filteredOptions = $filter('filter')(scope.flatOptions, ignoreAccents);
+          scope.filteredOptions = $filter('filter')(scope.groupedOptions, ignoreAccents);
         }
 
         scope.$watch("stateData.filter", updateFilteredOptions);

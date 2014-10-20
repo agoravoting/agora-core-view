@@ -44,47 +44,33 @@ angular.module('avBooth')
        */
       scope.toggleSelectItem = function(option) {
         var selection = scope.getSelection();
+        var subselection = _.filter(option.documents, function (doc) {
+          return doc.selected > -1;
+        });
 
-        // we do different things for packs and normal options. Here for packs:
-        if (option.isPack) {
-          // deselect the pack
-          if (option.selected > -1) {
-            option.selected = -1;
-
-          // select the pack
-          } else {
-            // to select a pack, selection must be empty
-            if (selection.length > 0 && selection[0].isPack) {
-                return scope.showWarning(scope.warningEnum.alreadySelectedAPack);
-            } else if (selection.length > 0) {
-                return scope.showWarning(scope.warningEnum.cantSelectPackNormalOptionAlreadySelected);
+        // if it has selection, deselect all of them
+        if (option.isSelected) {
+          _.each(option.documents, function (doc) {
+            if (doc.selected !== -1) {
+              doc.selected = -1;
             }
-            option.selected = 0;
-          }
-          _.each(option.suboptions, function (opt) { opt.selected = option.selected; });
-          scope.updateSelectionWarnings();
+          });
+          option.isSelected = false;
 
-        // and here for normal options
+        // select all the docs
         } else {
-          // deselect the option
-          if (option.selected > -1) {
-            option.selected = -1;
-
-          // select the option
-          } else {
-            // detect problems
-            var sameInCategory = _.filter(selection, function (opt) {
-              return !opt.isPack && opt.category === option.category;
-            }).length > 0;
-            if (selection.length > 0 && selection[0].isPack) {
-                return scope.showWarning(scope.warningEnum.cantSelectNormalOptionPackAlreadySelected);
-            } else if (sameInCategory) {
-                return scope.showWarning(scope.warningEnum.optionInCategoryAlreadySelected);
-            }
-            option.selected = 0;
-          }
-          scope.updateSelectionWarnings();
+          // TODO: checks
+//           if (selection.length > 0 && selection[0].isPack) {
+//               return scope.showWarning(scope.warningEnum.alreadySelectedAPack);
+//           } else if (selection.length > 0) {
+//               return scope.showWarning(scope.warningEnum.cantSelectPackNormalOptionAlreadySelected);
+//           }
+          _.each(option.documents, function (opt) {
+            opt.selected = 0;
+          });
+          option.isSelected = true;
         }
+        scope.updateSelectionWarnings();
       };
 
       scope.getSelection = function () {
@@ -110,7 +96,7 @@ angular.module('avBooth')
       // answer is tagged with its question
       scope.allOptions = _.reduce(scope.election.questions_data, function(memo, question) {
         var taggedAnswers = _.map(question.answers, function (answer) {
-          answer.category = question.question;
+          answer.category = question.description;
           answer.title = answer.value;
           if (answer.selected === undefined) {
             answer.selected = -1;
@@ -121,10 +107,19 @@ angular.module('avBooth')
       }, []);
 
       // group answers by value
-      var groupedAnswers = _.groupBy(scope.allOptions, "value");
-
-      // packs + normal options in one list
-      scope.flatOptions = _.flatten(_.pluck(scope.categories, "options"));
+      scope.groupedOptions = _.map(
+        _.groupBy(scope.allOptions, "value"),
+        function (group) {
+          return {
+            isOpen: false,
+            isOpen2: false,
+            isPack: !group[0].isPack,
+            isSelected: $filter("avbHasSelectedOptions")(group),
+            title: group[0].value,
+            details: group[0].details,
+            documents: group
+          };
+        });
 
       scope.numSelectedOptions = function () {
         return _.filter(
@@ -152,7 +147,9 @@ angular.module('avBooth')
       // watch for changes in selection, changing the warning if need be
       scope.shownWarning = "";
       scope.updateSelectionWarnings = function () {
-        var selection = $filter('avbSelectedOptions')(scope.flatOptions);
+        // TODO
+        return;
+        /*var selection = $filter('avbSelectedOptions')(scope.flatOptions);
         var hasPackValidOpts = [
           scope.warningEnum.maxSelectedLimitReached,
           scope.warningEnum.alreadySelectedAPack,
@@ -179,7 +176,7 @@ angular.module('avBooth')
         // if max normal options selected
         } else if (selection.length === scope.election.max) {
           scope.shownWarning = scope.warningEnum.maxSelectedLimitReached;
-        }
+        }*/
       };
       scope.updateSelectionWarnings();
     };

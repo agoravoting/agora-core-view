@@ -1,8 +1,7 @@
-<div ng-if="option.isPack" class="col-xs-12 col-md-6">
+<div class="col-xs-12 col-md-6">
   <div
     class="opt-data"
     ng-click="toggleSelectItem(option)">
-    <img src="{{option.media_url}}" alt="{{option.title}}" class="img-rounded"/>
     <h4 class="show-value">{{option.title}}</h4>
     <div class="show-remove">
       <span ng-i18next="avBooth.removeSelectedItem"></span>
@@ -26,7 +25,7 @@
     <h4 ng-i18next="avBooth.listOfDraftDocuments"></h4>
     <a
       class="get-document"
-      ng-repeat="suboption in option.suboptions"
+      ng-repeat="suboption in option.documents"
       href="{{suboption.urls[0].url}}"
       target="_blank">
       {{suboption.category}}
@@ -35,26 +34,9 @@
     </a>
   </div>
 </div>
-<div ng-if="!option.isPack" class="col-xs-12 col-md-6">
-  <div
-    class="opt-data"
-    ng-click="toggleSelectItem(option)">
-    <img src="{{option.media_url}}" alt="{{option.value}}" class="img-rounded"/>
-    <h4 class="show-value">{{option.value}}</h4>
-    <div class="show-remove">
-      <span ng-i18next="avBooth.removeSelectedItem"></span>
-      <span class="glyphicon glyphicon-remove"></span>
-    </div>
-    <span class="label label-default">
-      {{option.category}}
-    </span>
-    <p class="details">{{option.details}}</p>
-  </div>
-  <a
-    class="btn btn-default btn-right btn-link"
-    href="{{option.urls[0].url}}"
-    target="_blank">
-    <span class="glyphicon glyphicon-cloud-download">
-    </span>
-  </a>
+<div avb-draft-option-cell="Documento Ético" class="hidden-xs col-md-2">
+</div>
+<div avb-draft-option-cell="Documento Político" class="hidden-xs col-md-2">
+</div>
+<div avb-draft-option-cell="Documento Organizativo" class="hidden-xs col-md-2">
 </div>

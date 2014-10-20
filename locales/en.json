@@ -70,6 +70,9 @@
     "packLabel": "Pack",
     "accordionCategoryTitle": "Category:",
 
-    "proposalsTitleClickToSelect": "Optiones (click to select):"
+    "proposalsTitleClickToSelect": "Options (click to select):",
+    "notSelectableCell": "not included",
+    "clickToSelectCell": "click to select",
+    "clickToDeselectCell": "deselect x"
   }
 }

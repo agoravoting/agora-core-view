@@ -38,7 +38,7 @@
     font-size: 16px;
 
     &.affix-top {
-      margin-left: 5px;
+      margin-left: -2%;
     }
   }
 
@@ -52,8 +52,6 @@
 
   .small-selected {
     margin-top: -33px;
-    padding: 0 8px;
-    color: white;
 
     h4 {
       display: inline-block;
@@ -66,6 +64,7 @@
       color: white;
 
       .pull-left {
+        background-color: @brand-success;
         h4, span, .show-value {
           color: white;
         }
@@ -80,7 +79,10 @@
     .pull-left {
       cursor: pointer;
       display: block;
-      background-color: @brand-success;
+      padding: 0 8px;
+      border-radius: 10px;
+      background-color: white;
+      color: @brand-success;
 
       &:hover {
         background-color: #6AD46A;
