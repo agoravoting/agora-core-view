@@ -15,8 +15,25 @@ angular.module('avBooth')
         scope.opt = null;
       }
 
-      scope.selectCell = function () {
-        console.log("TODO");
+      scope.toggleCell = function () {
+        // on packs, just call to toggleSelectItem
+        if (scope.option.isPack) {
+          scope.toggleSelectItem(scope.option);
+          return;
+        }
+
+        // if selected, we can just deselect it
+        if (scope.opt.selected > -1) {
+          scope.opt.selected = -1;
+
+          // mark as deselected the whole row if appliable
+          var subselection = _.filter(scope.option.documents, function (doc) {
+            return doc.selected > -1;
+          });
+          if (subselection.length === 0) {
+            scope.option.isSelected = false;
+          }
+        }
       };
     };
 

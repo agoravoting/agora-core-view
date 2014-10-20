@@ -9,7 +9,7 @@
   class="has-data"
   ng-if="opt !== null"
   ng-class="{selected: opt.selected > -1}"
-  ng-click="selectCell()">
+  ng-click="toggleCell()">
   <span
     ng-if="opt.selected === -1"
     ng-i18next="avBooth.clickToSelectCell">

@@ -113,7 +113,7 @@ angular.module('avBooth')
           return {
             isOpen: false,
             isOpen2: false,
-            isPack: !group[0].isPack,
+            isPack: group[0].isPack,
             isSelected: $filter("avbHasSelectedOptions")(group),
             title: group[0].value,
             details: group[0].details,
