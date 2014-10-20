@@ -79,6 +79,7 @@
     "notSelectableCell": "not included",
     "clickToSelectCell": "click to select",
     "clickToDeselectCell": "deselect x",
-    "draftIncludesList": "Includes __includeList__"
+    "draftIncludesList": "Includes __includeList__",
+    "dropdownOptionView": "View"
   }
 }
