@@ -73,6 +73,7 @@
     "accordionCategoryTitle": "Categoría:",
 
     "proposalsTitleClickToSelect": "Opciones (clic para seleccionar):",
+    "proposalsTitleClickToDeselect": "Opciones (clic para deseleccionar):",
     "notSelectableCell": "no incluído",
     "clickToSelectCell": "clic para seleccionar",
     "clickToDeselectCell": "deseleccionar x",

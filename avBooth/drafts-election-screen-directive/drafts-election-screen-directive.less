@@ -48,6 +48,52 @@
     > h4 {
       display: none;
     }
+
+    [avb-draft-option].selected {
+      background-color: @brand-success;
+
+      .btn-right {
+        background-color: @brand-success;
+      }
+
+      [avb-draft-option-cell] {
+        background-color: @brand-success;
+
+        .has-data.selected {
+          background-color: @brand-success;
+        }
+      }
+
+      &:hover {
+        background-color: @brand-danger;
+
+        .btn-right {
+          background-color: @brand-danger;
+
+          &:hover {
+            background-color: darken(@brand-danger, 20%);
+          }
+        }
+
+
+        [avb-draft-option-cell] {
+          background-color: @brand-danger;
+
+          .has-data.selected {
+            background-color: @brand-danger;
+
+            &:hover {
+              background-color: darken(@brand-danger, 20%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .titleSelected {
+    background-color: @brand-success;
+    color: white !important;
   }
 
   .small-selected {

@@ -49,8 +49,11 @@
 
       <div class="col-xs-12 col-md-6 options-title"
         av-affix-top-offset="30"
-        ng-class="{hidden: stateData.selectionDropDown}">
-        <span ng-i18next="avBooth.proposalsTitleClickToSelect"></span>
+        ng-class="{titleSelected: stateData.selectionDropDown}">
+        <span ng-i18next="avBooth.proposalsTitleClickToSelect"
+        ng-if="!stateData.selectionDropDown"></span>
+        <span ng-i18next="avBooth.proposalsTitleClickToDeselect"
+        ng-if="stateData.selectionDropDown"></span>
         <div
           class="pull-right filter-input"
           ng-class="{hidden: stateData.selectionDropDown}">
@@ -67,15 +70,15 @@
         </div>
       </div>
       <div class="hidden-xs col-md-2 affix-docs-header" av-affix-top-offset="30"
-        ng-if="!stateData.selectionDropDown">
+        ng-class="{titleSelected: stateData.selectionDropDown}">
         Documento ético
       </div>
       <div class="hidden-xs col-md-2 affix-docs-header" av-affix-top-offset="30"
-        ng-if="!stateData.selectionDropDown">
+        ng-class="{titleSelected: stateData.selectionDropDown}">
         Documento político
       </div>
       <div class="hidden-xs col-md-2 affix-docs-header" av-affix-top-offset="30"
-        ng-if="!stateData.selectionDropDown">
+        ng-class="{titleSelected: stateData.selectionDropDown}">
         Documento organizativo
       </div>
 
@@ -90,14 +93,13 @@
       <div
         class="col-xs-12 affixedSelection"
         ng-class="{hidden: !stateData.selectionDropDown}">
-        <div avb-draft-selected-option
-          ng-repeat="option in flatOptions | avbSelectedOptions"
-          class="animate-repeat"
-          ng-class="{selected: option.selected > -1}">
+        <div avb-draft-option
+          ng-repeat="option in groupedOptions | avbSelectedOptions"
+          class="animate-repeat selected">
         </div>
         <div
           class="padded"
-          ng-if="(flatOptions | avbSelectedOptions).length == 0"
+          ng-if="(groupedOptions | avbSelectedOptions).length == 0"
           ng-i18next="avBooth.noOptionsSelected">
         </div>
       </div>
