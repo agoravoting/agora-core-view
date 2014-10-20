@@ -18,6 +18,8 @@ angular.module(
 angular.module('jm.i18next').config(function ($i18nextProvider) {
   // note that we do not send the language: by default, it will try the language
   // supported by the web browser
+  $("#no-js").hide();
+
   $i18nextProvider.options = {
     useCookie: false,
     useLocalStorage: false,
