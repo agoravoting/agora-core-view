@@ -1,6 +1,7 @@
 <!-- shown when the proposal includes this type of document -->
-<div class="no-data" ng-if="opt === null">
-  <span ng-i18next="avBooth.notSelectableCell">
+<div class="no-data" ng-if="opt === null && showCategory == 'true'">
+  <span
+    ng-i18next="avBooth.notSelectableCell">
   </span>
 </div>
 
@@ -11,11 +12,21 @@
   ng-class="{selected: opt.selected > -1}"
   ng-click="toggleCell()">
   <span
-    ng-if="opt.selected === -1"
-    ng-i18next="avBooth.clickToSelectCell">
+    ng-if="opt.selected > -1"
+    ng-if="showCategory === 'true'">{{opt.category}}
   </span>
   <span
     ng-if="opt.selected > -1"
-    ng-i18next="avBooth.clickToDeselectCell">
+    ng-i18next="avBooth.clickToSelectCell"
+    ng-if="showCategory === 'false'">
+  </span>
+  <span
+    ng-if="opt.selected === -1"
+    ng-if="showCategory === 'true'">{{opt.category}}
+  </span>
+  <span
+    ng-if="opt.selected === -1"
+    ng-i18next="avBooth.clickToDeselectCell"
+    ng-if="showCategory === 'false'">
   </span>
 </div>

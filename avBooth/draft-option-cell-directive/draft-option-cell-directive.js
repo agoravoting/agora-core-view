@@ -8,6 +8,7 @@ angular.module('avBooth')
       var opts = _.filter(scope.option.documents, function (opt) {
         return opt.category === attrs.avbDraftOptionCell;
       });
+      scope.showCategory = attrs.showCategory;
       if (opts.length > 0) {
         scope.opt = opts[0];
       }

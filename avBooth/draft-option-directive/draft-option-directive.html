@@ -26,24 +26,32 @@
       ng-class="{'glyphicon-chevron-up': option.isOpen, 'glyphicon-chevron-down': !option.isOpen}">
     </span>
   </button>
+  <div class="documents-list visible-xs" ng-if="option.isOpen">
+    <h4 class="docs-list" ng-i18next="avBooth.selectedDocuments"></h4>
+    <div avb-draft-option-cell="Documento Ético" show-category="true">
+    </div>
+    <div avb-draft-option-cell="Documento Político" show-category="true">
+    </div>
+    <div avb-draft-option-cell="Documento Organizativo" show-category="true">
+    </div>
+  </div>
   <div
     class="documents-list"
     ng-class="{'hidden': !option.isOpen}">
-    <h4 ng-i18next="avBooth.listOfDraftDocuments"></h4>
+    <h4 class="docs-list" ng-i18next="avBooth.listOfDraftDocuments"></h4>
     <a
       class="get-document"
       ng-repeat="suboption in option.documents"
       href="{{suboption.urls[0].url}}"
       target="_blank">
       {{suboption.category}}
-      <span class="glyphicon glyphicon-cloud-download pull-right">
     </span>
     </a>
   </div>
 </div>
-<div avb-draft-option-cell="Documento Ético" class="hidden-xs col-md-2">
+<div avb-draft-option-cell="Documento Ético" show-category="false" class="hidden-xs col-md-2">
 </div>
-<div avb-draft-option-cell="Documento Político" class="hidden-xs col-md-2">
+<div avb-draft-option-cell="Documento Político" show-category="false" class="hidden-xs col-md-2">
 </div>
-<div avb-draft-option-cell="Documento Organizativo" class="hidden-xs col-md-2">
+<div avb-draft-option-cell="Documento Organizativo" show-category="false" class="hidden-xs col-md-2">
 </div>

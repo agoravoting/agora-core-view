@@ -63,7 +63,8 @@
     "successSubheader": "Congratulations, you have correctly cast your ballot and it's now being kept in our electronic ballot box.",
 
     "completePacksTitle": "Complete packs",
-    "listOfDraftDocuments": "Documents",
+    "listOfDraftDocuments": "Documents (click to open)",
+    "selectedDocuments": "Documents (clic to select)",
     "alreadySelectedAPack": "You already selected a pack. Remove your selection to be able to select another",
     "optionInCategoryAlreadySelected": "To be able to select a pack, please deselect any other item",
     "cantSelectNormalOptionPackAlreadySelected": "To be able to select an option, please deselect the pack you chose",

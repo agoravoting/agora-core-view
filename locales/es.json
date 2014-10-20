@@ -63,7 +63,8 @@
     "successSubheader": "Enhorabuena, has emitido correctamente tu voto y queda custodiado por la urna electrónica.",
 
     "completePacksTitle": "Packs completos",
-    "listOfDraftDocuments": "Documentos",
+    "listOfDraftDocuments": "Documentos (clic para ver)",
+    "selectedDocuments": "Documentos (clic para seleccionar)",
     "alreadySelectedAPack": "Tienes seleccionado otro pack. Deselecciónalo para poder elegir otro pack.",
     "optionInCategoryAlreadySelected": "Para poder elegir un pack, debes primero borrar toda tu selección.",
     "cantSelectNormalOptionPackAlreadySelected": "Para poder elegir una opción, debes primero borrar el pack que seleccionaste.",
