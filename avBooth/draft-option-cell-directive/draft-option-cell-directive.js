@@ -46,6 +46,7 @@ angular.module('avBooth')
           }
           scope.opt.selected = 0;
           scope.option.isSelected = true;
+          scope.updateSelectionWarnings();
         }
       };
     };

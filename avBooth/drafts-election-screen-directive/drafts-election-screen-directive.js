@@ -122,9 +122,8 @@ angular.module('avBooth')
       // watch for changes in selection, changing the warning if need be
       scope.shownWarning = "";
       scope.updateSelectionWarnings = function () {
-        var selection = scope.numSelectedOptions();
         scope.shownWarning  = "";
-        if (selection.length === scope.election.max) {
+        if (scope.numSelectedOptions() === scope.election.max) {
           scope.shownWarning = scope.warningEnum.maxSelectedLimitReached;
         }
       };
