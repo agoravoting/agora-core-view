@@ -66,14 +66,14 @@ angular.module('avBooth')
       scope.showWarning = function (warn) {
         // if warning is already being shown, just flash it instantly
         if (scope.shownWarning === warn) {
-            $("#" + warn).flash("white", "#0081B9", 200);
+            $("#" + warn).flash("white", "#D9534F", 200);
 
         // if warning is not being shown, then change it and wait a bit for it
         // to be shown to flash it
         } else {
           scope.shownWarning = warn;
           $timeout(function () {
-            $("#" + warn).flash("white", "#0081B9", 200);
+            $("#" + warn).flash("white", "#D9534F", 200);
           }, 150);
         }
       };
