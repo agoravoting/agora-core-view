@@ -17,7 +17,11 @@ angular.module('avBooth')
         maxSelectedLimitReached: "maxSelectedLimitReached",
 
         // shown if the user already selected a document of that type
-        alreadySelectedDocumentType: "alreadySelectedDocumentType"
+        alreadySelectedDocumentType: "alreadySelectedDocumentType",
+
+        alreadySelectedPack: "alreadySelectedPack",
+
+        cantSelectPack: "cantSelectPack"
       };
 
       scope.stateData.affixIsSet = false;
@@ -49,7 +53,13 @@ angular.module('avBooth')
             _.pluck(option.documents, "category")
             ).length > 0)
           {
-            return scope.showWarning(scope.warningEnum.alreadySelectedDocumentType);
+            if (selection.length > 0 && selection[0].isPack) {
+              return scope.showWarning(scope.warningEnum.alreadySelectedPack);
+            } else if (option.isPack) {
+              return scope.showWarning(scope.warningEnum.cantSelectPack);
+            } else {
+              return scope.showWarning(scope.warningEnum.alreadySelectedDocumentType);
+            }
           }
           _.each(option.documents, function (opt) {
             opt.selected = 0;

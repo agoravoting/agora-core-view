@@ -41,6 +41,8 @@
     "selectMoreOpts": "Select at least __min__ options.",
     "maxSelectedLimitReached": "Maximum number of selected options reached (__max__). To select an option, deselect another first.",
     "alreadySelectedDocumentType": "You can't select two documents of the same type - deselect it first.",
+    "alreadySelectedPack": "Seleccionaste una opción vinculada a otros documentos más. No es posible seleccionarlo de forma aislada.",
+    "cantSelectPack": "Intentaste seleccionar una opción vinculada que no puede seleccionar de forma aislada, y ya tienes otra seleccionada.",
 
     "removeSelectedItem": "deselect",
 
@@ -69,7 +71,7 @@
     "optionInCategoryAlreadySelected": "To be able to select a pack, please deselect any other item",
     "cantSelectNormalOptionPackAlreadySelected": "To be able to select an option, please deselect the pack you chose",
     "cantSelectPackNormalOptionAlreadySelected": "To be able to select a pack, pelase deselect the options you chose",
-    "packLabel": "full",
+    "packLabel": "vote all",
     "accordionCategoryTitle": "Category:",
 
     "proposalsTitleClickToSelect": "Options (click to select):",
