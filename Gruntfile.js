@@ -142,11 +142,11 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat.min.js"></script><![endif]--><!--[if gte IE 9]><script src="libnocompat.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat.min.js"></script><!--<![endif]-->'},
-            {selector:'body',html:'<script src="lib.min.js"></script>'},
-            {selector:'body',html:'<script src="avConfig.js"></script>'},
-            {selector:'body',html:'<script src="app.min.js"></script>'},
-            {selector:'head',html:'<link rel="stylesheet" href="app.full.min.css">'}
+            {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat-v1.0.1.min.js"></script><![endif]--><!--[if gte IE 9]><script src="libnocompat-v1.0.1.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat-v1.0.1.min.js"></script><!--<![endif]-->'},
+            {selector:'body',html:'<script src="lib-v1.0.1.min.js"></script>'},
+            {selector:'body',html:'<script src="avConfig-v1.0.1.js"></script>'},
+            {selector:'body',html:'<script src="app-v1.0.1.min.js"></script>'},
+            {selector:'head',html:'<link rel="stylesheet" href="app-v1.0.1.full.min.css">'}
           ]
         },
         src:'index.html',
@@ -156,7 +156,7 @@ module.exports = function (grunt) {
     cssmin: {
       main: {
         src:['temp/app.css','<%= dom_munger.data.appcss %>'],
-        dest:'dist/app.full.min.css'
+        dest:'dist/app-v1.0.1.full.min.css'
       },
     },
     concat: {
@@ -164,12 +164,13 @@ module.exports = function (grunt) {
         files: {
           'temp/libcompat.js': [
              'vendor/jquery.compat/jquery-1.11.1.js',
-             'vendor/json3/json-v3.3.2.js'
+             'vendor/json3/json-v3.3.2.js',
+             'vendor/crypto/unsupportedBrowser.js'
           ],
           'temp/libnocompat.js': ['<%= dom_munger.data.libnocompatjs %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
           'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
-          'dist/avConfig.js': ['avConfig.js']
+          'dist/avConfig-v1.0.1.js': ['avConfig.js']
         }
       }
     },
@@ -185,11 +186,16 @@ module.exports = function (grunt) {
     },
     uglify: {
       main: {
+        /*options:{
+          mangle: false,
+          compress: false,
+          beautify: true
+        },*/
         files: {
-          'dist/app.min.js': 'temp/app.js',
-          'dist/lib.min.js': 'temp/lib.js',
-          'dist/libnocompat.min.js': 'temp/libnocompat.js',
-          'dist/libcompat.min.js': 'temp/libcompat.js'
+          'dist/app-v1.0.1.min.js': 'temp/app.js',
+          'dist/lib-v1.0.1.min.js': 'temp/lib.js',
+          'dist/libnocompat-v1.0.1.min.js': 'temp/libnocompat.js',
+          'dist/libcompat-v1.0.1.min.js': 'temp/libcompat.js'
         }
       }
     },
