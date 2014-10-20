@@ -92,7 +92,7 @@ angular.module('avBooth')
       // answer is tagged with its question
       scope.allOptions = _.reduce(scope.election.questions_data, function(memo, question) {
         var taggedAnswers = _.map(question.answers, function (answer) {
-          answer.category = question.description;
+          answer.category = question.question;
           answer.title = answer.value;
           if (answer.selected === undefined) {
             answer.selected = -1;
@@ -110,6 +110,7 @@ angular.module('avBooth')
             isOpen: false,
             isOpen2: false,
             isPack: group[0].isPack,
+            sortOrder: group[0].sort_order,
             isSelected: $filter("avbHasSelectedOptions")(group),
             title: group[0].value,
             details: group[0].details,
@@ -117,6 +118,9 @@ angular.module('avBooth')
             documents: group
           };
         });
+
+      // sort by given order
+      scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");
 
       scope.numSelectedOptions = function () {
         return _.filter(
