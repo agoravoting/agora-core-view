@@ -13,27 +13,11 @@ angular.module('avBooth')
 
     var link = function(scope, element, attrs) {
       scope.warningEnum = {
-        // shown when the user has not selected any option
-        selectMoreOpts: "selectMoreOpts",
-
         // shown when the user has already select all possible options
         maxSelectedLimitReached: "maxSelectedLimitReached",
 
-        // shown if the user tries to select a pack and there's already a
-        // pack selected
-        alreadySelectedAPack: "alreadySelectedAPack",
-
-        // shown if the user tries to select a normal option and there's
-        // another normal option already selected in that category
-        optionInCategoryAlreadySelected: "optionInCategoryAlreadySelected",
-
-        // shown if the user tries to select a normal option and there's a pack
-        // already selected
-        cantSelectNormalOptionPackAlreadySelected: "cantSelectNormalOptionPackAlreadySelected",
-
-        // shown if the user tries to select a pack and there's some normal
-        // options already selected
-        cantSelectPackNormalOptionAlreadySelected: "cantSelectPackNormalOptionAlreadySelected"
+        // shown if the user already selected a document of that type
+        alreadySelectedDocumentType: "alreadySelectedDocumentType"
       };
 
       scope.stateData.affixIsSet = false;
@@ -59,12 +43,14 @@ angular.module('avBooth')
 
         // select all the docs
         } else {
-          // TODO: checks
-//           if (selection.length > 0 && selection[0].isPack) {
-//               return scope.showWarning(scope.warningEnum.alreadySelectedAPack);
-//           } else if (selection.length > 0) {
-//               return scope.showWarning(scope.warningEnum.cantSelectPackNormalOptionAlreadySelected);
-//           }
+          // check no conflict exist
+          if (_.intersection(
+            _.pluck(selection, "category"),
+            _.pluck(option.documents, "category")
+            ).length > 0)
+          {
+            return scope.showWarning(scope.warningEnum.alreadySelectedDocumentType);
+          }
           _.each(option.documents, function (opt) {
             opt.selected = 0;
           });
@@ -74,7 +60,7 @@ angular.module('avBooth')
       };
 
       scope.getSelection = function () {
-        return $filter('avbSelectedOptions')(scope.flatOptions);
+        return $filter('avbSelectedOptions')(scope.allOptions);
       };
 
       scope.showWarning = function (warn) {
@@ -129,54 +115,18 @@ angular.module('avBooth')
           }).length;
       };
 
-      // questionNext calls to scope.next() if user selected enough options.
-      // If not, then it flashes the #selectMoreOptsWarning div so that user
-      // notices.
       scope.showNext = function() {
-        if (scope.numSelectedOptions() < scope.election.min) {
-          $("#selectMoreOptsWarning").flash("white", "#d9534f", 200);
-          return;
-        }
         scope.next();
-      };
-
-      scope.flashWarning = function (warningName) {
-        console.log(warningName);
       };
 
       // watch for changes in selection, changing the warning if need be
       scope.shownWarning = "";
       scope.updateSelectionWarnings = function () {
-        // TODO
-        return;
-        /*var selection = $filter('avbSelectedOptions')(scope.flatOptions);
-        var hasPackValidOpts = [
-          scope.warningEnum.maxSelectedLimitReached,
-          scope.warningEnum.alreadySelectedAPack,
-          scope.warningEnum.cantSelectNormalOptionPackAlreadySelected
-        ];
-
-
-        // if no option
-        if (selection.length === 0) {
-          scope.shownWarning = scope.warningEnum.selectMoreOpts;
-
-        // if it's a pack
-        } else if (selection.length === 1 && selection[0].isPack) {
-          if (_.contains(hasPackValidOpts, scope.shownWarning)) {
-            return;
-          } else {
-            scope.shownWarning = scope.warningEnum.maxSelectedLimitReached;
-          }
-
-        // if at least one normal option is selected
-        } else if (selection.length < scope.election.max) {
-          scope.shownWarning = "";
-
-        // if max normal options selected
-        } else if (selection.length === scope.election.max) {
+        var selection = scope.numSelectedOptions();
+        scope.shownWarning  = "";
+        if (selection.length === scope.election.max) {
           scope.shownWarning = scope.warningEnum.maxSelectedLimitReached;
-        }*/
+        }
       };
       scope.updateSelectionWarnings();
     };

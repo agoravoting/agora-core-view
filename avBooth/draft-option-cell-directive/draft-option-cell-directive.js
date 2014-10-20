@@ -33,6 +33,19 @@ angular.module('avBooth')
           if (subselection.length === 0) {
             scope.option.isSelected = false;
           }
+
+        // to select the document, we need to do some checks first
+        } else {
+          var selection = scope.getSelection();
+          if (_.intersection(
+            _.pluck(selection, "category"),
+            [scope.opt.category]
+            ).length > 0)
+          {
+            return scope.showWarning(scope.warningEnum.alreadySelectedDocumentType);
+          }
+          scope.opt.selected = 0;
+          scope.option.isSelected = true;
         }
       };
     };

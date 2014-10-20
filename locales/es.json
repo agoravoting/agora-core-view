@@ -38,6 +38,7 @@
     "numSelectedOptionsSmall": "__count__ opciones seleccionadas",
     "selectMoreOpts": "Debes seleccionar al menos __min__ opciones.",
     "maxSelectedLimitReached": "No puedes seleccionar más opciones (máximo __max__). Para seleccionar una opción, deselecciona otra primero.",
+    "alreadySelectedDocumentType": "No puedes seleccionar dos documentos del mismo tipo, deselecciónalo primero antes.",
 
     "removeSelectedItem": "deseleccionar",
 

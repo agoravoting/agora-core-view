@@ -40,6 +40,7 @@
     "numSelectedOptionsSmall": "__count__ selected",
     "selectMoreOpts": "Select at least __min__ options.",
     "maxSelectedLimitReached": "Maximum number of selected options reached (__max__). To select an option, deselect another first.",
+    "alreadySelectedDocumentType": "You can't select two documents of the same type - deselect it first.",
 
     "removeSelectedItem": "deselect",
 
