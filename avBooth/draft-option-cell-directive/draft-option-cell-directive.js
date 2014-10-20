@@ -23,6 +23,7 @@ angular.module('avBooth')
     return {
       restrict: 'AE',
       link: link,
+      scope: true,
       templateUrl: 'avBooth/draft-option-cell-directive/draft-option-cell-directive.html'
     };
   });
