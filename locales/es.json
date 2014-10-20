@@ -27,6 +27,7 @@
     "errorEncoding": "Ocurrió un problema codificando tu voto, por lo que no ha podido ser emitido. Seguramente esto sea debido a que utilizas un navegador web no soportado por nuestro software. Por favor, inténtalo de nuevo en otro navegador web diferente y más actualizado, y si el problema persiste ponte en contacto con nosotros. Disculpa las molestias.",
     "sanityChecksFailed": "Ocurrió un problema haciendo comprobaciones automáticas de codificación previas al envío del voto, por lo que no hemos podido emitir tu voto. Seguramente esto sea debido a que utilizas un navegador web no soportado por nuestro software. Por favor, inténtalo de nuevo en otro navegador web diferente y más actualizado, y si el problema persiste ponte en contacto con nosotros. Disculpa las molestias.",
     "couldntSendBallotNotFound":  "No se pudo enviar el voto. Puede que haya problemas de conexión, o el servidor no esté disponible temporalmente. Si se trata de este caso, prueba de nuevo más tarde y si el problema persiste ponte en contacto con nosotros.",
+    "tooManyUserUpdates": "No se pudo registrar el voto, debido a que lo has cambiado demasiadas veces en esta votación. Por tanto, el último voto que hayas emitido es el que queda registrado.",
 
     "questionSelectedOptionsTitle": "opciones seleccionadas (__count__)",
     "questionAvailableOptionsTitle": "opciones disponibles",

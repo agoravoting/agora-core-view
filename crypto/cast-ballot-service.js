@@ -277,7 +277,11 @@ angular.module('avCrypto')
           },
           {headers: {Authorization: data.authorizationHeader}})
         .success(function(postData, status, headers, config) {
-          data.success(postData);
+          if (postData.updated === "true") {
+            data.success(postData);
+          } else {
+            data.error("tooManyUserUpdates", stringify(postData));
+          }
         })
         .error(function(postData, status, headers, config) {
           if (status === 401) {

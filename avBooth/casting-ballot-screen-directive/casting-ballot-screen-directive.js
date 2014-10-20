@@ -95,6 +95,9 @@ angular.module('avBooth')
             } else if (status === "sanityChecksFailed") {
               scope.showError($i18next("avBooth.sanityChecksFailed",
                 {msg:message}));
+            } else if (status === "tooManyUserUpdates") {
+              scope.showError($i18next("avBooth.tooManyUserUpdates",
+                {msg:message}));
             } else {
               scope.showError($i18next("avBooth.errorSendingBallotUnknown",
                 {msg:message}));
