@@ -103,6 +103,7 @@ angular.module('avBooth')
             isSelected: $filter("avbHasSelectedOptions")(group),
             title: group[0].value,
             details: group[0].details,
+            includes: _.pluck(group, 'category').join(", "),
             documents: group
           };
         });

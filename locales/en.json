@@ -74,6 +74,7 @@
     "proposalsTitleClickToSelect": "Options (click to select):",
     "notSelectableCell": "not included",
     "clickToSelectCell": "click to select",
-    "clickToDeselectCell": "deselect x"
+    "clickToDeselectCell": "deselect x",
+    "draftIncludesList": "Includes __includeList__"
   }
 }

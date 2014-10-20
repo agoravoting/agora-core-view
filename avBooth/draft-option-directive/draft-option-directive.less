@@ -95,6 +95,14 @@
     text-overflow: ellipsis;
   }
 
+  .includes {
+    color: #808080;
+    margin-bottom: 8px;
+    margin-top: -8px;
+    line-height: 10px;
+    font-size: 12px;
+  }
+
   .show-remove {
     display: none;
     padding: 0 10px;
@@ -114,6 +122,10 @@
   &.selected {
     color: white;
     background-color: @av-primary;
+
+    .includes {
+      color: #eeaaff;
+    }
 
     .documents-list {
       color: white;
@@ -139,6 +151,10 @@
 
   &.selected:hover {
     background-color: @brand-danger;
+
+    .includes {
+      color: white;
+    }
 
     .show-remove {
       color: white;

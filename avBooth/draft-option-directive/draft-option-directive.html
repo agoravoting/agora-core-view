@@ -12,6 +12,9 @@
       ng-i18next="avBooth.packLabel"
       ng-if="option.isPack">
     </span>
+    <p
+      class="includes visible-xs"
+      ng-i18next="[i18next]({includeList: option.includes})avBooth.draftIncludesList"></p>
     <p class="details">{{option.details}}</p>
   </div>
   <button
