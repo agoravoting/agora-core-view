@@ -68,7 +68,7 @@
     "optionInCategoryAlreadySelected": "Para poder elegir un pack, debes primero borrar toda tu selección.",
     "cantSelectNormalOptionPackAlreadySelected": "Para poder elegir una opción, debes primero borrar el pack que seleccionaste.",
     "cantSelectPackNormalOptionAlreadySelected": "Para poder elegir un pack, debes primero borrar toda tu selección.",
-    "packLabel": "Pack",
+    "packLabel": "indivisible",
     "accordionCategoryTitle": "Categoría:",
 
     "proposalsTitleClickToSelect": "Opciones (clic para seleccionar):",

@@ -68,7 +68,7 @@
     "optionInCategoryAlreadySelected": "To be able to select a pack, please deselect any other item",
     "cantSelectNormalOptionPackAlreadySelected": "To be able to select an option, please deselect the pack you chose",
     "cantSelectPackNormalOptionAlreadySelected": "To be able to select a pack, pelase deselect the options you chose",
-    "packLabel": "Pack",
+    "packLabel": "indivisible",
     "accordionCategoryTitle": "Category:",
 
     "proposalsTitleClickToSelect": "Options (click to select):",
