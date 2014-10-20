@@ -42,7 +42,7 @@
     "maxSelectedLimitReached": "Maximum number of selected options reached (__max__). To select an option, deselect another first.",
     "alreadySelectedDocumentType": "You can't select two documents of the same type - deselect it first.",
     "alreadySelectedPack": "Seleccionaste una opción vinculada a otros documentos más. No es posible seleccionarlo de forma aislada.",
-    "cantSelectPack": "Intentaste seleccionar una opción vinculada que no puede seleccionar de forma aislada, y ya tienes otra seleccionada.",
+    "cantSelectPack": "Intentaste seleccionar una opción vinculada que no se puede seleccionar de forma aislada, y ya tienes otra seleccionada.",
     "tooManyUserUpdates": "No se pudo registrar el voto, debido a que lo has cambiado demasiadas veces en esta votación. Por tanto, el último voto que hayas emitido es el que queda registrado.",
 
     "removeSelectedItem": "deselect",
