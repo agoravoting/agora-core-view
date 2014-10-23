@@ -97,13 +97,6 @@ angular.module('avBooth')
           if (answer.selected === undefined) {
             answer.selected = -1;
           }
-          if (answer.urls.length > 0 && answer.urls[0].url &&
-            answer.urls[0].url.indexOf("Android") >= -1)
-          {
-            // FIXME show in android viewer so that it works fine in the
-            // Podemos app for now
-            answer.urls[0].url = "https://docs.google.com/viewer?url=" + encodeURIComponent(answer.urls[0].url);
-          }
           return answer;
         });
         return _.union(memo, taggedAnswers);
