@@ -14,6 +14,7 @@ example) or install it from the web and follow the instructions in the README
     tar zxf node-v0.10.31.tar.gz
     cd node-v0.10.31
     ./configure && make && sudo make install
+    sudo chown -R `whoami` ~/.npm
 
 You need also to install globally grunt and bower:
 
@@ -22,6 +23,7 @@ You need also to install globally grunt and bower:
 After that, you can install the agora-core-view javascript dependencies:
 
     npm install && bower install
+    npm install lodash glob minimatch html-minifier globule ng-annotate async debug faye-websocket
 
 Once that's done, you have 3 simple Grunt commands available:
 
