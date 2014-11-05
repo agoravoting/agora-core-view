@@ -93,7 +93,7 @@ angular.module('avCrypto')
         "a": "encrypted-vote-v1",
         "proofs": [],
         "choices": [],
-        "issue_date": moment().format(),
+        "issue_date": moment().format("DD/MM/YYYY"),
         "election_hash": {"a": "hash/sha256/value", "value": election.hash},
       };
       for (var i = 0; i < election.questions_data.length; i++) {
