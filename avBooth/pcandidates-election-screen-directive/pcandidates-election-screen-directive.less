@@ -1,0 +1,170 @@
+[avb-pcandidates-election-screen] {
+
+  .filter-input {
+    background-color: @av-primary;
+    border-radius: 0 0 20px 20px;
+    padding: 5px 0 10px 0;
+    margin-top: -15px;
+
+    input {
+      border: 0;
+      margin-top: -3px;
+      color: white;
+      width: 90%;
+      background-color: transparent;
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    span {
+      color: white;
+      margin: 0 -22px 0 22px;
+      font-size: 16px;
+    }
+  }
+
+  .options-title {
+    background-color: white;
+    color: @av-primary;
+    padding: 10px !important;
+    font-size: 16px;
+  }
+
+  .affix-docs-header {
+    background-color: white;
+    color: @brand-success;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+
+    &.affix-top {
+      margin-left: -2%;
+    }
+  }
+
+  .affixedSelection {
+    background-color: @brand-success;
+    color: white !important;
+    > h4 {
+      display: none;
+    }
+    margin-bottom: 100px;
+
+    [avb-pcandidates-option].selected {
+      background-color: @brand-success;
+
+      .btn-right {
+        background-color: @brand-success;
+      }
+
+      [avb-pcandidates-option-cell] {
+        background-color: @brand-success;
+
+        .has-data.selected {
+          background-color: @brand-success;
+        }
+      }
+
+      &:hover {
+        background-color: @brand-danger;
+
+        .btn-right {
+          background-color: @brand-danger;
+
+          &:hover {
+            background-color: darken(@brand-danger, 20%);
+          }
+        }
+
+
+        [avb-pcandidates-option-cell] {
+          background-color: @brand-danger;
+
+          .has-data.selected {
+            background-color: @brand-danger;
+
+            &:hover {
+              background-color: darken(@brand-danger, 20%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .titleSelected {
+    background-color: @brand-success;
+    color: white !important;
+  }
+
+  .small-selected {
+    margin-top: -33px;
+
+    h4 {
+      display: inline-block;
+      clear: none;
+      margin-top: 7px;
+    }
+
+    &.dropdown {
+      background-color: @brand-success;
+      color: white;
+
+      .pull-left {
+        background-color: @brand-success;
+        h4, span, .show-value {
+          color: white;
+        }
+
+        span.glyphicon-play {
+          color: white;
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    .pull-left {
+      cursor: pointer;
+      display: block;
+      padding: 0 8px;
+      border-radius: 10px;
+      background-color: white;
+      color: @brand-success;
+
+      &:hover {
+        background-color: #6AD46A;
+        color: white;
+
+        h4, span {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .animate-repeat {
+    line-height: 40px;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter,
+  .animate-repeat.ng-leave {
+    transition:all linear 0.5s;
+  }
+
+  .animate-repeat.ng-leave.ng-leave-active,
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter {
+    opacity:0;
+    max-height:0;
+  }
+
+  .animate-repeat.ng-leave,
+  .animate-repeat.ng-move.ng-move-active,
+  .animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+    max-height:40px;
+  }
+}

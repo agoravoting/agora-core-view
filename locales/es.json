@@ -81,6 +81,8 @@
     "clickToSelectCell": "clic para seleccionar",
     "clickToDeselectCell": "deseleccionar x",
     "draftIncludesList": "Incluye __includeList__",
-    "dropdownOptionView": "Ver"
+    "dropdownOptionView": "Ver",
+
+    "filterOptionsPlaceholder2": "Buscar nombre o candidatura.."
   }
 }

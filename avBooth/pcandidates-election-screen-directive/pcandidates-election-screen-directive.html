@@ -1,0 +1,84 @@
+<!-- top navbar with question title -->
+<nav class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
+  <div class="container">
+    <div class="row avb-top-navbar">
+      <div class="pull-left"
+        ng-i18next="[html:i18next]({sprintf:['2','3']})avBooth.stepNumber">
+      </div>
+      <div class="pull-right">
+        <span
+          class="glyphicon glyphicon-question-sign"
+          ng-click="launchHelp()">
+        </span>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="wrapper-unfixed">
+  <div class="navbar-unfixed-top text-center">
+    <div class="container">
+      <div class="hidden unfixed-top-height"></div>
+      <h1>{{election.pretty_name}}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="content avb-content">
+  <div class="container">
+    <div class="row">
+    <div class="row">
+      <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <div
+          class="filter-input"
+          ng-class="{hidden: stateData.selectionDropDown}">
+            <span class="glyphicon glyphicon-search"></span>
+            <input type="text"
+              id="filter-input"
+              ng-model="stateData.filter"
+              ng-model-options="{debounce: 700}"
+              ng-i18next="[placeholder]avBooth.filterOptionsPlaceholder2"
+              />
+        </div>
+      </div>
+      <div class="col-xs-6 hidden-xs options-title"
+        av-affix-top-offset="30"
+        ng-class="{titleSelected: stateData.selectionDropDown}">
+        <span ng-i18next="avBooth.proposalsTitleClickToSelect"
+        ng-if="!stateData.selectionDropDown"></span>
+        <span ng-i18next="avBooth.proposalsTitleClickToDeselect"
+        ng-if="stateData.selectionDropDown"></span>
+      </div>
+      <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
+        ng-class="{titleSelected: stateData.selectionDropDown}">
+        Secretaría General
+      </div>
+      <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
+        ng-class="{titleSelected: stateData.selectionDropDown}">
+        Consejo Ciudadano
+      </div>
+      <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
+        ng-class="{titleSelected: stateData.selectionDropDown}">
+        Comisión de Garantías
+      </div>
+    </div>
+
+    <!-- next button -->
+    <div class="row affix-bottom text-center">
+      <p>
+        <span
+          class="text-brand-warning"
+          id="maxSelectedLimitReached"
+          ng-i18next="[i18next]({max: election.max})avBooth.maxSelectedLimitReached"
+          ng-if="shownWarning === warningEnum.maxSelectedLimitReached">
+        </span>
+      </p>
+      <button
+        class="btn btn-block btn-lg btn-success btn-plain"
+        ng-i18next="avBooth.continueButton"
+        ng-click="showNext()">
+      </button>
+    </div>
+  </div>
+</div>

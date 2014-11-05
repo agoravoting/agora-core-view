@@ -29,6 +29,7 @@ angular.module('avBooth')
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion',
         draftsElectionScreen: 'draftsElectionScreen',
+        pcandidatesElectionScreen: 'pcandidatesElectionScreen',
         reviewScreen: 'reviewScreen',
         castingBallotScreen: 'castingBallotScreen',
         successScreen: 'successScreen'
@@ -51,6 +52,13 @@ angular.module('avBooth')
         if (layout !== "normal") {
           if (layout === "drafts-election") {
             scope.setState(stateEnum.draftsElectionScreen, {
+              isLastQuestion: true,
+              reviewMode: true,
+              filter: ""
+            });
+            return;
+          } else if (layout === "pcandidates-election") {
+            scope.setState(stateEnum.pcandidatesElectionScreen, {
               isLastQuestion: true,
               reviewMode: true,
               filter: ""
