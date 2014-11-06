@@ -31,8 +31,65 @@ angular.module('avBooth')
         scope.clearSelectionWarnings();
       };
 
+      scope.deselectTeam = function(team) {
+        var slugs = ["secretario", "consejo", "garantias"];
+        // deselect the whole group
+        _.each(slugs, function (slug) {
+          var cell = team[slug];
+          _.each(cell, function(option) {
+            option.selected = -1;
+          });
+          cell.selected = 0;
+        });
+        team.isSelected = false;
+        scope.clearSelectionWarnings();
+      };
+
       scope.toggleTeam = function(team) {
-        console.log("TODO");
+        var slugs = ["secretario", "consejo", "garantias"];
+        var canSelect = true;
+        var teamSize = team.group.length;
+        var totalSelectedInTeam = _.filter(team.group, function (opt) {
+          return opt.selected > -1;
+        }).length;
+
+        // deselect if all team options are already selected
+        if (teamSize === totalSelectedInTeam) {
+          scope.deselectTeam(team);
+        // try to select all if not all were selected
+        } else {
+
+          // detect if we can select
+          _.each(slugs, function (slug) {
+            var cell = team[slug];
+            // the maximum number of selected items for this question
+            if (_.filter(scope.getSelection(), function (opt) {
+                return opt.question_slug === slug;
+              }).length + cell.length - cell.selected > scope.questionsDict[slug].max)
+            {
+              canSelect = false;
+            }
+          });
+
+          // if we can't select the row, then deselect it, unless it has no selection
+          // then show warning
+          if (!canSelect && totalSelectedInTeam > 0) {
+            return scope.deselectTeam(team);
+          } else if (!canSelect && totalSelectedInTeam === 0) {
+            return scope.showWarning(scope.warningEnum.cannotSelectAll);
+          }
+
+          // select the whole group
+          _.each(slugs, function (slug) {
+            var cell = team[slug];
+            _.each(cell, function(option) {
+              option.selected = option.sort_order;
+            });
+            cell.selected = cell.length;
+          });
+          team.isSelected = true;
+        }
+        scope.clearSelectionWarnings();
       };
 
       scope.toggleCell = function (team, question_slug) {
