@@ -126,6 +126,9 @@ angular.module('avBooth')
 
         team.isSelected = $filter("avbHasSelectedOptions")(team.group);
       };
+      
+      scope.toggleCandidate = function (team, candidate) {
+      };
 
 
       scope.getSelection = function () {

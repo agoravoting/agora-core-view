@@ -22,13 +22,13 @@
   <div
     class="has-data-wrapper"
     ng-click="toggleCell(team, question_slug)">
-  <span
-    class="first-candidate"
-    ng-i18next="[i18next]({name: candidates[0].value})avBooth.firstCandidateOfMany">
-  </span>
-  <span class="num-selected"
-    ng-i18next="[i18next]({selected: candidates.selected, total: candidates.length})avBooth.numCandidatesSelected">
-  </span>
+    <span
+      class="first-candidate"
+      ng-i18next="[i18next]({name: candidates[0].value})avBooth.firstCandidateOfMany">
+    </span>
+    <span class="num-selected"
+      ng-i18next="[i18next]({selected: candidates.selected, total: candidates.length})avBooth.numCandidatesSelected">
+    </span>
   </div>
   <button
     class="btn btn-default btn-right"
@@ -41,4 +41,23 @@
       ng-class="{'glyphicon-chevron-up': isOpenCell(), 'glyphicon-chevron-down': !isOpenCell()}">
     </span>
   </button>
+  <div
+    class="candidates-list"
+    ng-if="isOpenCell()">
+    <h4
+      ng-i18next="avBooth.candidatesTitle"
+      ng-click="toggleCell(team, question_slug)">
+    </h4>
+    <div
+      class="candidate"
+      ng-repeat="cand in candidates"
+      ng-class="{'selected': cand.selected > -1}"
+      ng-click="toggleCandidate(cand)">
+      <span
+        class="glyphicon"
+        ng-class="{'glyphicon glyphicon-check': cand.selected > -1, 'glyphicon glyphicon-unchecked': cand.selected === -1}">
+      </span>
+      <span>{{cand.value}}</span>
+    </div>
+  </div>
 </div>
