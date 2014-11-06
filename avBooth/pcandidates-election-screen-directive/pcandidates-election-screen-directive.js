@@ -126,10 +126,30 @@ angular.module('avBooth')
 
         team.isSelected = $filter("avbHasSelectedOptions")(team.group);
       };
-      
-      scope.toggleCandidate = function (team, candidate) {
-      };
 
+      scope.toggleCandidate = function (team, candidate) {
+        // if not selected --> try to select it
+        var cell = team[candidate.question_slug];
+        if (candidate.selected === -1) {
+          if (_.filter(scope.getSelection(), function (opt) {
+              return opt.question_slug === candidate.question_slug;
+            }).length + 1 - cell.selected > scope.questionsDict[candidate.question_slug].max)
+          {
+            return scope.showWarning(scope.warningEnum.cannotSelectAll);
+          }
+
+          candidate.selected = candidate.sort_order;
+          cell.selected += 1;
+          scope.clearSelectionWarnings();
+
+        // deselect it
+        } else {
+          candidate.selected = -1;
+          cell.selected -= 1;
+          scope.clearSelectionWarnings();
+        }
+        team.isSelected = $filter("avbHasSelectedOptions")(team.group);
+      };
 
       scope.getSelection = function () {
         return $filter('avbSelectedOptions')(scope.allOptions);

@@ -52,7 +52,7 @@
       class="candidate"
       ng-repeat="cand in candidates"
       ng-class="{'selected': cand.selected > -1}"
-      ng-click="toggleCandidate(cand)">
+      ng-click="toggleCandidate(team, cand)">
       <span
         class="glyphicon"
         ng-class="{'glyphicon glyphicon-check': cand.selected > -1, 'glyphicon glyphicon-unchecked': cand.selected === -1}">
