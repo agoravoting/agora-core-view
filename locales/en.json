@@ -87,6 +87,8 @@
     "candidatesTitle": "Candidates",
     "helpTextViewSingleCandidates": "Click in View to select single candidates",
     "helpTextViewCell": "Click in a cell to select it all",
-    "randomizeColumn": "Sort randomly"
+    "randomizeColumn": "Sort randomly",
+    "numCandidatesSelected": "__name__ and others",
+    "numCandidatesSelected": "(__selected__ of __total__ selected)"
   }
 }

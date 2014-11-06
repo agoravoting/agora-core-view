@@ -34,6 +34,36 @@ angular.module('avBooth')
         console.log("TODO");
       };
 
+      scope.toggleCell = function (team, question_slug) {
+        // if selected, we can just deselect it
+        if (scope.opt.selected > -1) {
+          scope.opt.selected = -1;
+
+          // mark as deselected the whole row if appliable
+          var subselection = _.filter(scope.option.documents, function (doc) {
+            return doc.selected > -1;
+          });
+          if (subselection.length === 0) {
+            scope.option.isSelected = false;
+          }
+
+        // to select the document, we need to do some checks first
+        } else {
+          var selection = scope.getSelection();
+          if (_.intersection(
+            _.pluck(selection, "category"),
+            [scope.opt.category]
+            ).length > 0)
+          {
+            return scope.showWarning(scope.warningEnum.alreadySelectedDocumentType);
+          }
+          scope.opt.selected = 0;
+          scope.option.isSelected = true;
+          scope.updateSelectionWarnings();
+        }
+      };
+
+
       scope.getSelection = function () {
         return $filter('avbSelectedOptions')(scope.allOptions);
       };

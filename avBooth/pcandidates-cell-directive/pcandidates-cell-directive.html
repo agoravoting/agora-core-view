@@ -1,0 +1,30 @@
+<!-- shown when the team does not include a proposal in this column -->
+<div class="no-data" ng-if="candidates.length == 0">
+  <span
+    ng-i18next="avBooth.notSelectableCell">
+  </span>
+</div>
+
+<!-- shown when the team includes a candidate in this column -->
+<div
+  class="has-data"
+  ng-if="candidates.length == 1"
+  ng-class="{selected: candidates.selected > 0}"
+  ng-click="toggleCell(team, question_slug)">
+  <span>{{candidates[0].value}}</span>
+</div>
+
+<!-- shown when the team includes multiple candidates in this column -->
+<div
+  class="has-data"
+  ng-if="candidates.length > 1"
+  ng-class="{selected: candidates.selected > 0}"
+  ng-click="toggleCell(team, question_slug)">
+  <span
+    class="first-candidate"
+    ng-i18next="[i18next]({name: candidates[0].value})avBooth.firstCandidateOfMany">
+  </span>
+  <span class="num-selected"
+    ng-i18next="[i18next]({selected: candidates.selected, total: candidates.length})avBooth.numCandidatesSelected">
+  </span>
+</div>
