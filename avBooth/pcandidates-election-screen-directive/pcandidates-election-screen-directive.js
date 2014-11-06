@@ -26,8 +26,6 @@ angular.module('avBooth')
           return doc.selected > -1;
         });
 
-        // TODO
-
         scope.clearSelectionWarnings();
       };
 
@@ -222,7 +220,13 @@ angular.module('avBooth')
       };
 
       // sort by given order
-      scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");
+      if (scope.election.questions_data[0].randomize_answer_order) {
+        scope.groupedOptions = _.sample(
+          scope.groupedOptions,
+          scope.groupedOptions.length);
+      } else {
+        scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");
+      }
 
       scope.numSelectedOptions = function () {
         return _.filter(
