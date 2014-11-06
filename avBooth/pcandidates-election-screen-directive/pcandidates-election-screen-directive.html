@@ -133,6 +133,22 @@
       </div>
     </div>
 
+    <!-- show selected options -->
+    <div
+      class="col-xs-12 affixedSelection"
+      ng-class="{hidden: !stateData.selectionDropDown}">
+      <div avb-pcandidates-row
+        ng-repeat="team in groupedOptions | avbSelectedOptions"
+        class="animate-repeat selected">
+      </div>
+      <div
+        class="padded"
+        ng-if="(groupedOptions | avbSelectedOptions).length == 0"
+        ng-i18next="avBooth.noOptionsSelected">
+      </div>
+    </div>
+  </div>
+
     <!-- next button -->
     <div class="row affix-bottom text-center">
       <p>

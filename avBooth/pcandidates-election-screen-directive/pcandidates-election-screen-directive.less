@@ -79,9 +79,6 @@
   .affixedSelection {
     background-color: @brand-success;
     color: white !important;
-    > h4 {
-      display: none;
-    }
     margin-bottom: 100px;
 
     [avb-pcandidates-row].selected {
@@ -96,6 +93,10 @@
 
         .has-data.selected {
           background-color: @brand-success;
+
+          .candidate.selected {
+            background-color: @brand-success;
+          }
         }
       }
 
