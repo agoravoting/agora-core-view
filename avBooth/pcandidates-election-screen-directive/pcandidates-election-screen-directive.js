@@ -49,39 +49,43 @@ angular.module('avBooth')
         }
       };
 
-//       // reduce all the options of all questions in only one list, but each
-//       // answer is tagged with its question
-//       scope.allOptions = _.reduce(scope.election.questions_data, function(memo, question) {
-//         var taggedAnswers = _.map(question.answers, function (answer) {
-//           answer.question = question.question;
-//           answer.title = answer.value;
-//           if (answer.selected === undefined) {
-//             answer.selected = -1;
-//           }
-//           return answer;
-//         });
-//         return _.union(memo, taggedAnswers);
-//       }, []);
-//
-//       // group answers by value
-//       scope.groupedOptions = _.map(
-//         _.groupBy(scope.allOptions, "value"),
-//         function (group) {
-//           return {
-//             isOpen: false,
-//             isOpen2: false,
-//             isPack: group[0].isPack,
-//             sortOrder: group[0].sort_order,
-//             isSelected: $filter("avbHasSelectedOptions")(group),
-//             title: group[0].value,
-//             details: group[0].details,
-//             includes: _.pluck(group, 'question').join(", "),
-//             documents: group
-//           };
-//         });
-//
-//       // sort by given order
-//       scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");
+      // reduce all the options of all questions in only one list, but each
+      // answer is tagged with its question_slug (apart from the tag of the
+      // category) This kind of list is good for filtering/searching
+      scope.allOptions = _.reduce(scope.election.questions_data, function(memo, question) {
+        var taggedAnswers = _.map(question.answers, function (answer) {
+          answer.question_slug = question.question_slug;
+          answer.title = answer.value;
+          if (answer.selected === undefined) {
+            answer.selected = -1;
+          }
+          return answer;
+        });
+        return _.union(memo, taggedAnswers);
+      }, []);
+
+      // group answers by category
+      scope.groupedOptions = _.map(
+        _.groupBy(scope.allOptions, "category"),
+        function (group) {
+          var groupedByQuestion = _.groupBy(group, "question_slug");
+          _.each(groupedByQuestion, function(l, key, list) {
+            l.sort(function (item1, item2) { return item1.sortOrder - item2.sortOrder; });
+          });
+          return $.extend({
+            isOpen: false,
+            isOpenDropdown: false,
+            sortOrder: group[0].sort_order,
+            isSelected: $filter("avbHasSelectedOptions")(group),
+            title: group[0].category,
+            secretario: [],
+            consejo: [],
+            garantias: [],
+          }, groupedByQuestion);
+        });
+
+      // sort by given order
+      scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");
 
       scope.numSelectedOptions = function () {
         return _.filter(

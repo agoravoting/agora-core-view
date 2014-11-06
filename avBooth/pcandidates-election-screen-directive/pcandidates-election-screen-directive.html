@@ -41,7 +41,8 @@
         </div>
       </div>
       <div
-        class="col-xs-12 col-md-4 filter-input-wrap">
+        class="col-xs-12 col-md-4 filter-input-wrap"
+        ng-class="{wrapDropdown: stateData.selectionDropDown}">
         <div
           class="filter-input"
           ng-if="!stateData.selectionDropDown">
@@ -88,6 +89,7 @@
         Secretaría General
         <div
           class="randomize-column"
+          ng-class="{hidden: stateData.selectionDropDown}"
           data-question="secretario">
            <span class="glyphicon glyphicon-sort-by-attributes"></span>
            <span ng-i18next="avBooth.randomizeColumn"></span>
@@ -98,6 +100,7 @@
         Consejo Ciudadano
         <div
           class="randomize-column"
+          ng-class="{hidden: stateData.selectionDropDown}"
           data-question-num="consejo">
            <span class="glyphicon glyphicon-sort-by-attributes"></span>
            <span ng-i18next="avBooth.randomizeColumn"></span>
@@ -108,10 +111,16 @@
         Comisión de Garantías
         <div
           class="randomize-column"
-          data-question-num="garantias">
+          data-question-num="garantias"
+          ng-class="{hidden: stateData.selectionDropDown}">
            <span class="glyphicon glyphicon-sort-by-attributes"></span>
            <span ng-i18next="avBooth.randomizeColumn"></span>
         </div>
+      </div>
+
+      <div
+        class="clearfix"
+        ng-class="{titleSelected: stateData.selectionDropDown}">
       </div>
     </div>
 

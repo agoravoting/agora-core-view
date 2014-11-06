@@ -1,6 +1,10 @@
 [avb-pcandidates-election-screen] {
   .filter-input-wrap {
     min-height: 37px;
+
+    &.wrapDropdown {
+      min-height: 15px;
+    }
   }
   .filter-input {
     background-color: @av-primary;
@@ -204,6 +208,9 @@
 
 @media(max-width: 768px) {
   [avb-pcandidates-election-screen] {
+    .filter-input-wrap.wrapDropdown {
+      min-height: 37px;
+    }
     .filter-input {
       border-radius: 0;
     }
