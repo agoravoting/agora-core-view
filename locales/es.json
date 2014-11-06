@@ -84,6 +84,9 @@
     "dropdownOptionView": "Ver",
 
     "filterOptionsPlaceholder2": "Buscar nombre o candidatura..",
-    "candidatesTitle": "Candidaturas"
+    "candidatesTitle": "Candidaturas",
+    "helpTextViewSingleCandidates": "Clic en Ver para seleccionar candidatos individuales",
+    "helpTextViewCell": "Clic en una celda para seleccionarla completa",
+    "randomizeColumn": "Ordenar aleatoriomente"
   }
 }

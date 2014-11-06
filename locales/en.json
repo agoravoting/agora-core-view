@@ -84,6 +84,9 @@
     "dropdownOptionView": "View",
 
     "filterOptionsPlaceholder2": "Search name or candidate..",
-    "candidatesTitle": "Candidates"
+    "candidatesTitle": "Candidates",
+    "helpTextViewSingleCandidates": "Click in View to select single candidates",
+    "helpTextViewCell": "Click in a cell to select it all",
+    "randomizeColumn": "Sort randomly"
   }
 }

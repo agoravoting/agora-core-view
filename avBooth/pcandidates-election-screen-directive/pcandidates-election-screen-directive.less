@@ -31,6 +31,12 @@
     padding: 10px !important;
     font-size: 16px;
     margin-top: -15px;
+
+    .title-help {
+      clear: both;
+      color: black;
+      font-size: 12px;
+    }
   }
 
   .affix-docs-header {
@@ -47,6 +53,17 @@
 
     &.col-xs-2 {
       width: 19.4443%;
+    }
+
+    .randomize-column {
+      clear: both;
+      color: black;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        color: @av-primary;
+      }
     }
   }
 
@@ -103,6 +120,11 @@
   .titleSelected {
     background-color: @brand-success;
     color: white !important;
+
+
+    .randomize-column, .title-help {
+      color: white !important;
+    }
   }
 
   .small-selected {

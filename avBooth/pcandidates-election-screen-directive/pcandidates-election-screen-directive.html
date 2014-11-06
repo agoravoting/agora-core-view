@@ -80,18 +80,38 @@
         av-affix-top-offset="30"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         <span ng-i18next="avBooth.candidatesTitle"></span>
+        <div class="title-help" ng-i18next="avBooth.helpTextViewSingleCandidates"></div>
+        <div class="title-help" ng-i18next="avBooth.helpTextViewCell"></div>
       </div>
       <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         Secretaría General
+        <div
+          class="randomize-column"
+          data-question="secretario">
+           <span class="glyphicon glyphicon-sort-by-attributes"></span>
+           <span ng-i18next="avBooth.randomizeColumn"></span>
+        </div>
       </div>
       <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         Consejo Ciudadano
+        <div
+          class="randomize-column"
+          data-question-num="consejo">
+           <span class="glyphicon glyphicon-sort-by-attributes"></span>
+           <span ng-i18next="avBooth.randomizeColumn"></span>
+        </div>
       </div>
       <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         Comisión de Garantías
+        <div
+          class="randomize-column"
+          data-question-num="garantias">
+           <span class="glyphicon glyphicon-sort-by-attributes"></span>
+           <span ng-i18next="avBooth.randomizeColumn"></span>
+        </div>
       </div>
     </div>
 
