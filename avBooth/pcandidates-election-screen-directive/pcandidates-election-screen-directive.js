@@ -30,6 +30,10 @@ angular.module('avBooth')
         scope.updateSelectionWarnings();
       };
 
+      scope.toggleTeam = function(team) {
+        console.log("TODO");
+      };
+
       scope.getSelection = function () {
         return $filter('avbSelectedOptions')(scope.allOptions);
       };

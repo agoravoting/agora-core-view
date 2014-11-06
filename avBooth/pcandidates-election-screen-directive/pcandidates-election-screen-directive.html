@@ -29,7 +29,8 @@
   <div class="container">
     <div class="row">
       <div
-        class="hidden-xs col-md-4 small-selected"
+        class="hidden-xs col-sm-4 small-selected"
+        av-affix-top-offset="30"
         ng-class="{dropdown: stateData.selectionDropDown}">
         <div
           class="pull-left"
@@ -41,7 +42,8 @@
         </div>
       </div>
       <div
-        class="col-xs-12 col-md-4 filter-input-wrap"
+        class="col-xs-12 col-sm-4 filter-input-wrap"
+        av-affix-top-offset="30"
         ng-class="{wrapDropdown: stateData.selectionDropDown}">
         <div
           class="filter-input"
@@ -61,6 +63,7 @@
       </div>
       <div
         class="visible-xs col-xs-12 small-selected padded"
+        av-affix-top-offset="30"
         ng-class="{dropdown: stateData.selectionDropDown}">
         <div
           class="pull-left"
@@ -78,13 +81,12 @@
       </div>
 
       <div class="col-xs-5 hidden-xs options-title"
-        av-affix-top-offset="30"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         <span ng-i18next="avBooth.candidatesTitle"></span>
         <div class="title-help" ng-i18next="avBooth.helpTextViewSingleCandidates"></div>
         <div class="title-help" ng-i18next="avBooth.helpTextViewCell"></div>
       </div>
-      <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
+      <div class="hidden-xs col-xs-2 affix-docs-header"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         Secretaría General
         <div
@@ -95,7 +97,7 @@
            <span ng-i18next="avBooth.randomizeColumn"></span>
         </div>
       </div>
-      <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
+      <div class="hidden-xs col-xs-2 affix-docs-header"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         Consejo Ciudadano
         <div
@@ -106,7 +108,7 @@
            <span ng-i18next="avBooth.randomizeColumn"></span>
         </div>
       </div>
-      <div class="hidden-xs col-xs-2 affix-docs-header" av-affix-top-offset="30"
+      <div class="hidden-xs col-xs-2 affix-docs-header"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         Comisión de Garantías
         <div
@@ -125,7 +127,7 @@
     </div>
 
     <!-- show available options and filter -->
-    <div class="col-xs-12"
+    <div class="col-xs-12 pcandidates-list"
       ng-class="{hidden: stateData.selectionDropDown}">
       <div avb-pcandidates-rows>
       </div>

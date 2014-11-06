@@ -79,14 +79,14 @@
     }
     margin-bottom: 100px;
 
-    [avb-pcandidates-option].selected {
+    [avb-pcandidates-row].selected {
       background-color: @brand-success;
 
       .btn-right {
         background-color: @brand-success;
       }
 
-      [avb-pcandidates-option-cell] {
+      [avb-pcandidates-cell] {
         background-color: @brand-success;
 
         .has-data.selected {
@@ -106,7 +106,7 @@
         }
 
 
-        [avb-pcandidates-option-cell] {
+        [avb-pcandidates-cell] {
           background-color: @brand-danger;
 
           .has-data.selected {
@@ -119,6 +119,10 @@
         }
       }
     }
+  }
+
+  .pcandidates-list {
+    padding: 0;
   }
 
   .titleSelected {
