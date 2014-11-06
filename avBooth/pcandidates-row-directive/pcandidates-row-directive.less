@@ -26,6 +26,18 @@
     width: 88%;
   }
 
+  .show-remove {
+    display: none;
+    padding: 0 10px;
+    position: absolute;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: normal;
+    background-color: @brand-danger;
+    top: 8px;
+    right: 15%;
+  }
+
   &:hover {
     background-color: @gray-lighter;
   }
@@ -47,4 +59,34 @@
     }
   }
 
+  &.selected {
+    color: white;
+    background-color: @av-primary;
+
+    .btn-right {
+      background-color: @av-primary;
+      color: white;
+
+      &:hover {
+        background-color: darken(@brand-danger, 20%);
+      }
+    }
+  }
+
+  &.selected:hover {
+    background-color: @brand-danger;
+
+    .show-remove {
+      color: white;
+      display: block !important;
+    }
+
+    .btn-right {
+      background-color: @brand-danger;
+
+      &:hover {
+        background-color: darken(@brand-danger, 20%);
+      }
+    }
+  }
 }

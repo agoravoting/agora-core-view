@@ -56,7 +56,6 @@ angular.module('avBooth')
 
 
         function updateFilteredOptions() {
-          console.log("filter changed: " + scope.stateData.filter);
           scope.filteredOptions = $filter('filter')(scope.groupedOptions, filterRow);
         }
 

@@ -89,6 +89,7 @@
     "helpTextViewCell": "Clic en una celda para seleccionarla completa",
     "randomizeColumn": "Ordenar aleatoriomente",
     "firstCandidateOfMany": "__name__ y otros",
-    "numCandidatesSelected": "(__selected__ de __total__ seleccionados)"
+    "numCandidatesSelected": "(__selected__ de __total__ seleccionados)",
+    "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero"
   }
 }

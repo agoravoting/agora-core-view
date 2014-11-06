@@ -89,6 +89,7 @@
     "helpTextViewCell": "Click in a cell to select it all",
     "randomizeColumn": "Sort randomly",
     "numCandidatesSelected": "__name__ and others",
-    "numCandidatesSelected": "(__selected__ of __total__ selected)"
+    "numCandidatesSelected": "(__selected__ of __total__ selected)",
+    "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero"
   }
 }

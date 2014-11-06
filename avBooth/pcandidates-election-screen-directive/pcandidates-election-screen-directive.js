@@ -11,6 +11,7 @@ angular.module('avBooth')
       scope.warningEnum = {
         // shown when the user has already select all possible options
         maxSelectedLimitReached: "maxSelectedLimitReached",
+        cannotSelectAll: "cannotSelectAll"
       };
 
       scope.stateData.affixIsSet = false;
@@ -27,7 +28,7 @@ angular.module('avBooth')
 
         // TODO
 
-        scope.updateSelectionWarnings();
+        scope.clearSelectionWarnings();
       };
 
       scope.toggleTeam = function(team) {
@@ -35,32 +36,38 @@ angular.module('avBooth')
       };
 
       scope.toggleCell = function (team, question_slug) {
-        // if selected, we can just deselect it
-        if (scope.opt.selected > -1) {
-          scope.opt.selected = -1;
-
-          // mark as deselected the whole row if appliable
-          var subselection = _.filter(scope.option.documents, function (doc) {
-            return doc.selected > -1;
+        // if cell is totally selected, deselect it all
+        var cell = team[question_slug];
+        if (cell.selected === cell.length) {
+          _.each(cell, function(option) {
+            option.selected = -1;
           });
-          if (subselection.length === 0) {
-            scope.option.isSelected = false;
-          }
+          cell.selected = 0;
+          scope.clearSelectionWarnings();
 
-        // to select the document, we need to do some checks first
+        // if less than all the elements are selected, select them all
         } else {
           var selection = scope.getSelection();
-          if (_.intersection(
-            _.pluck(selection, "category"),
-            [scope.opt.category]
-            ).length > 0)
+          // check that adding the options that are not selected does not exceed
+          // the maximum number of selected items for this question
+          if (_.filter(scope.getSelection(), function (opt) {
+              return opt.question_slug === question_slug;
+            }).length + cell.length - cell.selected > scope.questionsDict[question_slug].max)
           {
-            return scope.showWarning(scope.warningEnum.alreadySelectedDocumentType);
+            return scope.showWarning(scope.warningEnum.cannotSelectAll);
           }
-          scope.opt.selected = 0;
-          scope.option.isSelected = true;
-          scope.updateSelectionWarnings();
+
+          // checks done -> select them all
+          _.each(cell, function(option) {
+            if (option.selected !== option.sort_order) {
+              option.selected = option.sort_order;
+            }
+          });
+          cell.selected = cell.length;
+          scope.clearSelectionWarnings();
         }
+
+        team.isSelected = $filter("avbHasSelectedOptions")(team.group);
       };
 
 
@@ -83,10 +90,15 @@ angular.module('avBooth')
         }
       };
 
+      // directly accesable associative array, where the keys are the
+      // question_slugs and the values the questions
+      scope.questionsDict = {};
+
       // reduce all the options of all questions in only one list, but each
       // answer is tagged with its question_slug (apart from the tag of the
       // category) This kind of list is good for filtering/searching
       scope.allOptions = _.reduce(scope.election.questions_data, function(memo, question) {
+      scope.questionsDict[question.question_slug] = question;
         var taggedAnswers = _.map(question.answers, function (answer) {
           answer.question_slug = question.question_slug;
           answer.title = answer.value;
@@ -112,6 +124,7 @@ angular.module('avBooth')
             sortOrder: group[0].sort_order,
             isSelected: $filter("avbHasSelectedOptions")(group),
             title: group[0].category,
+            group: group,
             secretario: [],
             consejo: [],
             garantias: [],
@@ -135,13 +148,10 @@ angular.module('avBooth')
 
       // watch for changes in selection, changing the warning if need be
       scope.shownWarning = "";
-      scope.updateSelectionWarnings = function () {
+      scope.clearSelectionWarnings = function () {
         scope.shownWarning  = "";
-        if (scope.numSelectedOptions() === scope.election.max) {
-          scope.shownWarning = scope.warningEnum.maxSelectedLimitReached;
-        }
       };
-      scope.updateSelectionWarnings();
+      scope.clearSelectionWarnings();
     };
 
     return {

@@ -3,6 +3,10 @@
     class="team-title"
     ng-click="toggleTeam(team)">
     {{team.title}}
+    <div class="show-remove">
+      <span ng-i18next="avBooth.removeSelectedItem"></span>
+      <span class="glyphicon glyphicon-remove"></span>
+    </div>
   </div>
   <button
     class="btn btn-default btn-right"
