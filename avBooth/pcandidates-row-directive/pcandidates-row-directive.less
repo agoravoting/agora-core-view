@@ -7,13 +7,19 @@
   overflow: hidden;
   transition:all linear 0.5s;
 
-  .col-sm-2 {
-    width: 19.4443%;
+  * {
+    transition: all linear 0.5s;
   }
 
   > .col-sm-5, > .col-sm-2 {
     height: 60px;
     padding: 0;
+  }
+
+
+  > .col-sm-2.empty-cell {
+    display: none;
+    height: 0;
   }
 
   .team-title {
@@ -35,7 +41,7 @@
     font-weight: normal;
     background-color: @brand-danger;
     top: 8px;
-    right: 15%;
+    right: 8px;
   }
 
   &:hover {
@@ -43,7 +49,7 @@
   }
 
   .btn-right {
-    display: block;
+    display: none;
     float: left;
     width: 12%;
     color: white;
@@ -52,7 +58,6 @@
     background-color: @brand-success;
     margin: 0;
     border-radius: 0;
-    transition: all .4s ease;
 
     &:hover, &.in {
       background-color: darken(@brand-success, 10%);
@@ -87,6 +92,35 @@
       &:hover {
         background-color: darken(@brand-danger, 20%);
       }
+    }
+  }
+}
+
+@media(max-width: 768px) {
+  [avb-pcandidates-row] {
+    > .col-xs-11 {
+      margin-left: 2%;
+      width: 98%;
+    }
+  }
+}
+
+@media(min-width: 768px) {
+  [avb-pcandidates-row] {
+    .show-remove {
+      right: 15%;
+    }
+
+    .col-sm-2 {
+      width: 19.4443%;
+
+      &.empty-cell {
+        display: block;
+      }
+    }
+
+    .btn-right {
+      display: block;
     }
   }
 }

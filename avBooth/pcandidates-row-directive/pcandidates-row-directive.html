@@ -10,19 +10,28 @@
   </div>
   <button
     class="btn btn-default btn-right"
-    ng-class="{'in': team.isOpen}"
-    ng-click="team.isOpen = !team.isOpen">
+    ng-class="{'in': team.isOpenConsejo}"
+    ng-click="toggleOpen(team)">
     <span ng-i18next="avBooth.dropdownOptionView">
     </span>
     <span
       class="glyphicon"
-      ng-class="{'glyphicon-chevron-up': team.isOpen, 'glyphicon-chevron-down': !team.isOpen}">
+      ng-class="{'glyphicon-chevron-up': team.isOpenConsejo, 'glyphicon-chevron-down': !team.isOpenConsejo}">
     </span>
   </button>
 </div>
-<div class="hidden-xs col-sm-2" avb-pcandidates-cell="secretario">
+<div
+  class="col-xs-11 col-sm-offset-0 col-sm-2"
+  avb-pcandidates-cell="secretario"
+  ng-class="{'empty-cell': team.secretario.length === 0}">
 </div>
-<div class="hidden-xs col-sm-2" avb-pcandidates-cell="consejo">
+<div
+  class="col-xs-11 col-sm-offset-0 col-sm-2"
+  avb-pcandidates-cell="consejo"
+  ng-class="{'empty-cell': team.consejo.length === 0}">
 </div>
-<div class="hidden-xs col-sm-2" avb-pcandidates-cell="garantias">
+<div
+  class="col-xs-11 col-sm-offset-0 col-sm-2"
+  avb-pcandidates-cell="garantias"
+  ng-class="{'empty-cell': team.garantias.length === 0}">
 </div>

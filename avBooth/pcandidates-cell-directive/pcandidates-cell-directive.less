@@ -1,15 +1,27 @@
 [avb-pcandidates-cell] {
   padding: 0 !important;
 
+  .has-data-wrapper {
+    display: block;
+    width: 100%;
+    float: left;
+  }
+
+  .btn-right {
+    display: none;
+    margin-top: -12px;
+  }
+
   .no-data, .has-data {
     width: 100%;
     height: 80px;
     padding-top: 12px;
+    float: left;
     text-align: center;
-    transition: all .4s ease;
   }
 
   .no-data {
+    display: block;
     background-color: #F9F9F9;
     color: #CCC;
   }
@@ -26,11 +38,10 @@
       text-overflow: ellipsis;
       clear: both;
       display: block;
-      transition: all .4s ease;
+      transition: all linear 0.5s;
     }
 
     .num-selected {
-      transition: all .4s ease;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -85,12 +96,29 @@
     }
   }
 
+  .no-data {
+    display: block;
+  }
+
   .has-data.selected {
     color: white;
     background-color: #97C2B8;
 
     &:hover {
       background-color: #8BB3AA;
+    }
+  }
+}
+
+@media(max-width: 768px) {
+  [avb-pcandidates-cell] {
+    .has-data-wrapper {
+      width: 90%;
+    }
+
+    .btn-right {
+      display: block;
+      width: 10%;
     }
   }
 }

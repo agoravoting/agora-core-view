@@ -18,8 +18,10 @@
 <div
   class="has-data"
   ng-if="candidates.length > 1"
-  ng-class="{selected: candidates.selected > 0}"
-  ng-click="toggleCell(team, question_slug)">
+  ng-class="{selected: candidates.selected > 0}">
+  <div
+    class="has-data-wrapper"
+    ng-click="toggleCell(team, question_slug)">
   <span
     class="first-candidate"
     ng-i18next="[i18next]({name: candidates[0].value})avBooth.firstCandidateOfMany">
@@ -27,4 +29,16 @@
   <span class="num-selected"
     ng-i18next="[i18next]({selected: candidates.selected, total: candidates.length})avBooth.numCandidatesSelected">
   </span>
+  </div>
+  <button
+    class="btn btn-default btn-right"
+    ng-class="{'in': isOpenCell()}"
+    ng-click="toggleOpenCell()">
+    <span ng-i18next="avBooth.dropdownOptionView">
+    </span>
+    <span
+      class="glyphicon"
+      ng-class="{'glyphicon-chevron-up': isOpenCell(), 'glyphicon-chevron-down': !isOpenCell()}">
+    </span>
+  </button>
 </div>

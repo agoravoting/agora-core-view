@@ -176,8 +176,10 @@ angular.module('avBooth')
             l.sort(function (item1, item2) { return item1.sortOrder - item2.sortOrder; });
           });
           return $.extend({
-            isOpen: false,
-            isOpenDropdown: false,
+            isOpenConsejo: false,
+            isOpenConsejoDropdown: false,
+            isOpenGarantias: false,
+            isOpenGarantiasDropdown: false,
             sortOrder: group[0].sort_order,
             isSelected: $filter("avbHasSelectedOptions")(group),
             title: group[0].category,
@@ -187,6 +189,14 @@ angular.module('avBooth')
             garantias: [],
           }, groupedByQuestion);
         });
+
+      scope.toggleOpen = function (team) {
+        team.isOpenConsejo = team.isOpenGarantias = !team.isOpenConsejo;
+      };
+
+      scope.toggleOpenDropdown = function (team) {
+        team.isOpenConsejoDropdown = team.isOpenGarantiasDropdown = !team.isOpenConsejoDropdown;
+      };
 
       // sort by given order
       scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");

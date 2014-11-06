@@ -8,6 +8,22 @@ angular.module('avBooth')
       scope.question_slug = attrs.avbPcandidatesCell;
       scope.candidates = scope.$parent.team[scope.question_slug];
       scope.candidates.selected = $filter("avbCountSelectedOptions")(scope.candidates);
+
+      scope.isOpenCell = function () {
+        if (scope.question_slug === "garantias") {
+          return scope.$parent.team.isOpenGarantias;
+        } else {
+          return scope.$parent.team.isOpenConsejo;
+        }
+      };
+
+      scope.toggleOpenCell = function () {
+        if (scope.question_slug === "garantias") {
+          scope.$parent.team.isOpenGarantias = !scope.$parent.team.isOpenGarantias;
+        } else {
+          scope.$parent.team.isOpenConsejo = !scope.$parent.team.isOpenConsejo;
+        }
+      };
     };
 
     return {
