@@ -83,6 +83,7 @@
     "draftIncludesList": "Incluye __includeList__",
     "dropdownOptionView": "Ver",
 
-    "filterOptionsPlaceholder2": "Buscar nombre o candidatura.."
+    "filterOptionsPlaceholder2": "Buscar nombre o candidatura..",
+    "candidatesTitle": "Candidaturas"
   }
 }
