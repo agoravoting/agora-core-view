@@ -1,3 +1,4 @@
+// source: https://gist.github.com/tommaitland/7579618#file-ng-debounce-js
 angular.module('avUi')
   .directive('avDebounce', function($timeout) {
     return {
