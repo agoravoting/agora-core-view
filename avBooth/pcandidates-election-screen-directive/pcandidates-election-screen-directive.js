@@ -153,6 +153,16 @@ angular.module('avBooth')
         return $filter('avbSelectedOptions')(scope.allOptions);
       };
 
+      scope.numSelectedBySlug = function (slug) {
+        return _.filter(scope.getSelection(), function (opt) {
+            return opt.question_slug === slug;
+          }).length;
+      };
+
+      scope.numTotalBySlug = function (slug) {
+        return scope.questionsDict[slug].max;
+      };
+
       scope.showWarning = function (warn) {
         // if warning is already being shown, just flash it instantly
         if (scope.shownWarning === warn) {
