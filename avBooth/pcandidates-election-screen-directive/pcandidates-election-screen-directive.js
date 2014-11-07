@@ -131,7 +131,7 @@ angular.module('avBooth')
         if (candidate.selected === -1) {
           if (_.filter(scope.getSelection(), function (opt) {
               return opt.question_slug === candidate.question_slug;
-            }).length + 1 - cell.selected > scope.questionsDict[candidate.question_slug].max)
+            }).length + 1 > scope.questionsDict[candidate.question_slug].max)
           {
             return scope.showWarning(scope.warningEnum.cannotSelectAll);
           }
