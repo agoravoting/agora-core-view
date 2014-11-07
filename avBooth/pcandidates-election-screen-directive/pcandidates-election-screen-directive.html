@@ -92,7 +92,7 @@
         <div
           class="randomize-column"
           ng-class="{hidden: stateData.selectionDropDown}"
-          data-question="secretario">
+          ng-click="randomizeByColumn('secretario')">
            <span class="glyphicon glyphicon-sort-by-attributes"></span>
            <span ng-i18next="avBooth.randomizeColumn"></span>
         </div>
@@ -103,7 +103,7 @@
         <div
           class="randomize-column"
           ng-class="{hidden: stateData.selectionDropDown}"
-          data-question-num="consejo">
+          ng-click="randomizeByColumn('consejo')">
            <span class="glyphicon glyphicon-sort-by-attributes"></span>
            <span ng-i18next="avBooth.randomizeColumn"></span>
         </div>
@@ -113,7 +113,7 @@
         Comisión de Garantías
         <div
           class="randomize-column"
-          data-question-num="garantias"
+          ng-click="randomizeByColumn('garantias')"
           ng-class="{hidden: stateData.selectionDropDown}">
            <span class="glyphicon glyphicon-sort-by-attributes"></span>
            <span ng-i18next="avBooth.randomizeColumn"></span>

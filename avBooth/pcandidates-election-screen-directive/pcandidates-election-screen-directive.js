@@ -219,11 +219,41 @@ angular.module('avBooth')
         team.isOpenConsejoDropdown = team.isOpenGarantiasDropdown = !team.isOpenConsejoDropdown;
       };
 
+      // randomize by column
+      scope.randomizeByColumn = function (question_slug) {
+        var max = scope.groupedOptions.length;
+
+        // we can't just sample the groupedOptions list because we need to
+        // 1. use the same list object
+        // 2. generate a specific ordering for all the options
+        var i = 0;
+        var randomList = _.shuffle(
+          _.map(scope.groupedOptions,
+            function () { i += 1; return i;}
+          ));
+
+        for (i = 0; i < max; i++) {
+          var team = scope.groupedOptions[i];
+          if (team[question_slug].length > 0) {
+            team.sortOrder = randomList[i];
+
+          } else if (team.secretario.length > 0) {
+            team.sortOrder = randomList[i] + max;
+
+          } else if (team.consejo.length > 0) {
+            team.sortOrder = randomList[i] + max*2;
+
+          } else if (team.garantias.length > 0) {
+            team.sortOrder = randomList[i] + max*3;
+          }
+        }
+        scope.groupedOptions.sort(function (item1, item2) { return item1.sortOrder - item2.sortOrder; });
+        updateFilteredOptions();
+      };
+
       // sort by given order
       if (scope.election.questions_data[0].randomize_answer_order) {
-        scope.groupedOptions = _.sample(
-          scope.groupedOptions,
-          scope.groupedOptions.length);
+        scope.groupedOptions = _.shuffle(scope.groupedOptions);
       } else {
         scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");
       }
@@ -235,6 +265,62 @@ angular.module('avBooth')
             return element.selected > -1;
           }).length;
       };
+
+
+      // TODO: only use this when localeCompare is unavailable
+      function removeAccents(value) {
+        return value
+          .replace(/á/g, 'a')
+          .replace(/é/g, 'e')
+          .replace(/í/g, 'i')
+          .replace(/ó/g, 'o')
+          .replace(/ú/g, 'u')
+          .replace(/ñ/g, 'n');
+      }
+
+      function hasMatch(text, filter) {
+        return removeAccents(text.toLowerCase()).indexOf(filter) > -1;
+      }
+
+      // filter function that filters option.value ignoring accents
+      function filterRow(team) {
+          if (!scope.stateData.filter) {
+            return true;
+          }
+
+          var filter = removeAccents(scope.stateData.filter.toLowerCase());
+          if (hasMatch(team.title, filter)) {
+            return true;
+          }
+
+          if (_.find(team.secretario, function (candidate) {
+              return hasMatch(candidate.value, filter);
+            }) !== undefined) {
+            return true;
+          }
+
+          if (_.find(team.consejo, function (candidate) {
+              return hasMatch(candidate.value, filter);
+            }) !== undefined) {
+            return true;
+          }
+
+          if (_.find(team.garantias, function (candidate) {
+              return hasMatch(candidate.value, filter);
+            }) !== undefined) {
+            return true;
+          }
+          return false;
+      }
+
+
+      function updateFilteredOptions() {
+        scope.filteredOptions = $filter('filter')(scope.groupedOptions, filterRow);
+      }
+
+      scope.$watch("stateData.filter", updateFilteredOptions);
+      updateFilteredOptions();
+
 
       scope.showNext = function() {
         scope.next();
