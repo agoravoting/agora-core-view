@@ -8,7 +8,7 @@
       <span class="glyphicon glyphicon-edit"></span>
     </div>
   </h3>
-  <p ng-i18next="avBooth.selectedOptionsFollow"></p>
+  <p ng-i18next="[i18next]({num: (question.answers | avbSelectedOptions).length})avBooth.selectedOptionsFollow"></p>
   <ul>
     <li
       ng-repeat="answer in question.answers | avbSelectedOptions"

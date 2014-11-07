@@ -48,7 +48,7 @@
     "helpTitle": "Ayuda",
     "helpText": "",
     "goBack": "Volver a la cabina",
-    "selectedOptionsFollow": "Las opciones que seleccionaste son:",
+    "selectedOptionsFollow": "Las __num__ opciones que seleccionaste son:",
 
     "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
     "reviewYourBallotTitle": "Revisa tu papeleta",
@@ -90,6 +90,7 @@
     "randomizeColumn": "Ordenar aleatoriomente",
     "firstCandidateOfMany": "__name__ y otros",
     "numCandidatesSelected": "(__selected__ de __total__ seleccionados)",
-    "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero"
+    "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero",
+    "totalsQuestionColumn": "(__selected__ de __count__ seleccionados)"
   }
 }

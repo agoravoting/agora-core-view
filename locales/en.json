@@ -50,7 +50,7 @@
     "helpTitle": "Help",
     "helpText": "",
     "goBack": "Go back to booth",
-    "selectedOptionsFollow": "The options you chose are:",
+    "selectedOptionsFollow": "The __num__ options you chose are:",
 
     "errorElectionUrl": "The introduced address has an erroneous format",
     "reviewYourBallotTitle": "Review your ballot",
@@ -90,6 +90,7 @@
     "randomizeColumn": "Sort randomly",
     "numCandidatesSelected": "__name__ and others",
     "numCandidatesSelected": "(__selected__ of __total__ selected)",
-    "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero"
+    "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero",
+    "totalsQuestionColumn": "(__selected__ of __count__ selected)"
   }
 }
