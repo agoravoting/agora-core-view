@@ -28,6 +28,7 @@ angular.module('avUi')
         el.css("float", "none");
         el.css("top", Math.floor(instance.avAffixTopOffset) + "px");
         el.css("left", Math.floor(instance.baseOffset.left) + "px");
+        el.css("width", Math.floor(instance.baseWidth) + "px");
         el.css( "z-index", "10");
       }
 
@@ -41,6 +42,7 @@ angular.module('avUi')
           affix: false,
           scrollAffix: null,
           baseOffset: iElement.offset(),
+          baseWidth: iElement.width(),
           avAffixTopOffset: parseInt(iAttrs.avAffixTopOffset, 10)
         };
 
@@ -58,6 +60,7 @@ angular.module('avUi')
           instance.scrollAffix = null;
           $timeout(function () {
             instance.baseOffset = iElement.offset();
+            instance.baseWidth = iElement.width();
             callCheckPos();
           }, 100);
         }

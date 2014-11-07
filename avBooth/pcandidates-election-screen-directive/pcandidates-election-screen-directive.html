@@ -27,10 +27,11 @@
 
 <div class="content avb-content">
   <div class="container">
-    <div class="row">
+    <div
+      class="row"
+      av-affix-top-offset="45">
       <div
         class="hidden-xs col-sm-4 small-selected"
-        av-affix-top-offset="30"
         ng-class="{dropdown: stateData.selectionDropDown}">
         <div
           class="pull-left"
@@ -43,7 +44,6 @@
       </div>
       <div
         class="col-xs-12 col-sm-4 filter-input-wrap"
-        av-affix-top-offset="30"
         ng-class="{wrapDropdown: stateData.selectionDropDown}">
         <div
           class="filter-input"
@@ -63,7 +63,6 @@
       </div>
       <div
         class="visible-xs col-xs-12 small-selected padded"
-        av-affix-top-offset="30"
         ng-class="{dropdown: stateData.selectionDropDown}">
         <div
           class="pull-left"
@@ -79,7 +78,8 @@
         class="clearfix"
         ng-class="{titleSelected: stateData.selectionDropDown}">
       </div>
-
+    </div>
+    <div class="row">
       <div class="col-xs-5 hidden-xs options-title"
         ng-class="{titleSelected: stateData.selectionDropDown}">
         <span ng-i18next="avBooth.candidatesTitle"></span>
