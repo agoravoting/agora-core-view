@@ -23,7 +23,6 @@ You need also to install globally grunt and bower:
 After that, you can install the agora-core-view javascript dependencies:
 
     npm install && bower install
-    npm install lodash glob minimatch html-minifier globule ng-annotate async debug faye-websocket jshint qs karma
 
 Once that's done, you have 3 simple Grunt commands available:
 
