@@ -26,7 +26,7 @@ describe("DeterministicJsonStringifyService tests", function () {
       "a": "1",
       "b": "2"
     };
-    var simpleJsonStr = '{"a": "1", "b": "2", "c": "3"}';
+    var simpleJsonStr = '{"a":"1","b":"2","c":"3"}';
     expect(stringify(simpleJson)).toBe(simpleJsonStr);
     expect(stringify(simpleJson2)).toBe(simpleJsonStr);
   });
@@ -36,7 +36,7 @@ describe("DeterministicJsonStringifyService tests", function () {
       "llueve": false,
       "hace sol": true
     };
-    var booleanJsonStr = '{"hace sol": true, "llueve": false}';
+    var booleanJsonStr = '{"hace sol":true,"llueve":false}';
     expect(stringify(booleanJson)).toBe(booleanJsonStr);
   });
 
@@ -49,7 +49,7 @@ describe("DeterministicJsonStringifyService tests", function () {
       whatever: "yeah",
       "c": "3"
     };
-    var arrayJsonStr = '{"arrayX": [{"a": "1"}, {"b": "2"}], "c": "3", "whatever": "yeah"}';
+    var arrayJsonStr = '{"arrayX":[{"a":"1"},{"b":"2"}],"c":"3","whatever":"yeah"}';
     expect(stringify(arrayJson)).toBe(arrayJsonStr);
   });
 
@@ -59,8 +59,8 @@ describe("DeterministicJsonStringifyService tests", function () {
       "lentejas": "ñam ñam, ¡qué ricas!",
       "¡¿otra más?!": "víbora hocicuda"
     };
-    var accentJsonStr = '{"con la a": "aventar", "lentejas": "ñam ñam, ' +
-            '¡qué ricas!", "¡¿otra más?!": "víbora hocicuda"}';
+    var accentJsonStr = '{"con la a":"aventar","lentejas":"ñam ñam,' +
+            '¡qué ricas!","¡¿otra más?!":"víbora hocicuda"}';
     expect(stringify(accentJson)).toBe(accentJsonStr);
   });
 
@@ -70,7 +70,7 @@ describe("DeterministicJsonStringifyService tests", function () {
       "a": "123",
       "c": "789"
     };
-    var sizeJsonStr = '{"a": "123", "b": "456", "c": "789"}';
+    var sizeJsonStr = '{"a":"123","b":"456","c":"789"}';
     expect(stringify(sizeJson).length).toBe(sizeJsonStr.length);
   });
 
@@ -87,8 +87,8 @@ describe("DeterministicJsonStringifyService tests", function () {
         }
       ]
     };
-    var listJsonStr = '{"catList": [{"cat1": "foo", "cat2": "meow"}, ' +
-            '{"kitty1": "meeooww", "kitty2": "meow?"}]}';
+    var listJsonStr = '{"catList":[{"cat1":"foo","cat2":"meow"},' +
+            '{"kitty1":"meeooww","kitty2":"meow?"}]}';
     expect(stringify(listJson)).toBe(listJsonStr);
   });
 
@@ -117,12 +117,12 @@ describe("DeterministicJsonStringifyService tests", function () {
                         [["80", "81"], ["90", "91"]]
               }
     };
-    var complexJsonStr = '{"algo": {"números": [["80", "81"], ["90", "91"]]}, ' +
-            '"data": {"Otro tipo": [{"Es mentira": false, "Es verdad": true, ' +
-            '"Nada, en blanco": "", "Un espacio": " ", "id": 2, ' +
-            '"menos es nada": null, "xyz": ["1", "2", "3"]}], "enrevesado": ' +
-            '{"Un tipo": [{"id": "1", "nombre": "Pedrín"}, ' +
-            '{"id": "2", "nombre": "Ozores"}]}}}';
+    var complexJsonStr = '{"algo":{"números":[["80","81"],["90","91"]]},' +
+            '"data":{"Otro tipo":[{"Es mentira":false,"Es verdad":true,' +
+            '"Nada, en blanco":"","Un espacio":" ","id":2,' +
+            '"menos es nada":null,"xyz":["1", "2", "3"]}],"enrevesado":' +
+            '{"Un tipo":[{"id":"1","nombre":"Pedrín"},' +
+            '{"id":"2","nombre":"Ozores"}]}}}';
     expect(stringify(complexJson)).toBe(complexJsonStr);
   });
 

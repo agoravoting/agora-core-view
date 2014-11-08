@@ -12,7 +12,7 @@ angular.module('avCrypto')
             for(i = 0; i < obj.length; i++) {
                 serialized.push(stringify(obj[i]));
             }
-            return "[" + serialized.join(", ") + "]";
+            return "[" + serialized.join(",") + "]";
         } else if (typeof(obj) === 'object') {
             if (obj == null) {
                 return "null";
@@ -24,9 +24,9 @@ angular.module('avCrypto')
                 var value = obj[key];
                 key = JSON.stringify(key);
                 value = stringify(value);
-                arr.push(key + ': ' + value);
+                arr.push(key + ':' + value);
             }
-            return "{" + arr.join(", ") + "}";
+            return "{" + arr.join(",") + "}";
         } else {
             return JSON.stringify(obj);
         }
