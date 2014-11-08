@@ -261,12 +261,8 @@ angular.module('avBooth')
         updateFilteredOptions();
       };
 
-      // sort by given order
-      if (scope.election.questions_data[0].randomize_answer_order) {
-        scope.groupedOptions = _.shuffle(scope.groupedOptions);
-      } else {
-        scope.groupedOptions = _.sortBy(scope.groupedOptions, "sortOrder");
-      }
+      // sort by consejo column
+      scope.randomizeByColumn('consejo');
 
       scope.numSelectedOptions = function () {
         return _.filter(
