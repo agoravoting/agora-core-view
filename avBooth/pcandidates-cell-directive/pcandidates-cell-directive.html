@@ -11,6 +11,7 @@
   ng-if="candidates.length == 1"
   ng-class="{selected: candidates.selected > 0}"
   ng-click="toggleCell(team, question_slug)">
+  <span class="label label-default label-category">{{question}}</span>
   <span>{{candidates[0].value}}</span>
 </div>
 
@@ -19,6 +20,7 @@
   class="has-data"
   ng-if="candidates.length > 1"
   ng-class="{selected: candidates.selected > 0}">
+  <span class="label label-default label-category">{{question}}</span>
   <div
     class="has-data-wrapper"
     ng-click="toggleCell(team, question_slug)">
@@ -44,6 +46,7 @@
   <div
     class="candidates-list"
     ng-if="isOpenCell()">
+    <span class="label label-default label-category">{{question}}</span>
     <h4
       ng-i18next="avBooth.candidatesTitle"
       ng-click="toggleCell(team, question_slug)">

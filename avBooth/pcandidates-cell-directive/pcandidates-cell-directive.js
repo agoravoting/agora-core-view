@@ -9,6 +9,16 @@ angular.module('avBooth')
       scope.candidates = scope.$parent.team[scope.question_slug];
       scope.candidates.selected = $filter("avbCountSelectedOptions")(scope.candidates);
 
+      if (scope.question_slug === "secretario") {
+        scope.question = "Secretaría General";
+      }
+      else if (scope.question_slug === "consejo") {
+        scope.question = "Consejo Ciudadano";
+      }
+      else if (scope.question_slug === "garantias") {
+        scope.question = "Comité de Garantías";
+      }
+
       scope.isOpenCell = function () {
         if (scope.question_slug === "garantias") {
           return scope.$parent.team.isOpenGarantias;
