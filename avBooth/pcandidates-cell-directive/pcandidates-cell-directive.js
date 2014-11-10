@@ -16,7 +16,7 @@ angular.module('avBooth')
         scope.question = "Consejo Ciudadano";
       }
       else if (scope.question_slug === "garantias") {
-        scope.question = "Comité de Garantías";
+        scope.question = "Comisión de Garantías";
       }
 
       scope.isOpenCell = function () {
