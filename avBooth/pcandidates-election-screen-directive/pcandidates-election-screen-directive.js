@@ -204,7 +204,7 @@ angular.module('avBooth')
         function (group) {
           var groupedByQuestion = _.groupBy(group, "question_slug");
           _.each(groupedByQuestion, function(l, key, list) {
-            l.sort(function (item1, item2) { return item1.sortOrder - item2.sortOrder; });
+            l.sort(function (item1, item2) { return item1.sort_order - item2.sort_order; });
           });
           return $.extend({
             isOpenConsejo: false,
