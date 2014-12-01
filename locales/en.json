@@ -88,9 +88,19 @@
     "helpTextViewSingleCandidates": "Click in View to select single candidates",
     "helpTextViewCell": "Click in a cell to select it all",
     "randomizeColumn": "Sort randomly",
+    "firstCandidateOfMany": "__name__ y otros",
     "numCandidatesSelected": "__name__ and others",
     "numCandidatesSelected": "(__selected__ of __total__ selected)",
     "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero",
     "totalsQuestionColumn": "(__selected__ of __count__ selected)"
+  },
+  "avRegistration": {
+    "loginHeader": "Enter",
+    "emailPlaceholder": "email",
+    "passwordPlaceholder": "password",
+    "notRegisteredYet": "Are you not registered yet?",
+    "registerHere": "Register here",
+    "forgotPassword": "Forgot my password",
+    "loginButton": "Enter"
   }
 }

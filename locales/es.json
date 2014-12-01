@@ -92,5 +92,14 @@
     "numCandidatesSelected": "(__selected__ de __total__ seleccionados)",
     "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero",
     "totalsQuestionColumn": "(__selected__ de __count__ seleccionados)"
+  },
+  "avRegistration": {
+    "loginHeader": "Entrar",
+    "emailPlaceholder": "email",
+    "passwordPlaceholder": "contraseña",
+    "notRegisteredYet": "¿Aún no te has registrado?",
+    "registerHere": "Regístrate aquí",
+    "forgotPassword": "Olvidé mi contraseña",
+    "loginButton": "Entrar"
   }
 }

@@ -11,6 +11,7 @@ angular.module(
   'avConfig',
   'avUi',
   'avBooth',
+  'avRegistration',
   'avTest',
   'avCrypto'
 ]);
@@ -38,6 +39,12 @@ angular.module('agora-core-view').config(
         url: '/election/:id/vote/:hmac/:message',
         templateUrl: 'avBooth/booth.html',
         controller: "BoothController"
+      });
+    $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
       });
     $stateProvider
       .state('test-hmac', {

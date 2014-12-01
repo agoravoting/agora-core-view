@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-4 col-xs-4">
+    <h1 ng-i18next="avRegistration.loginHeader" class="text-center"></h1>
+    <form role="form">
+      <div class="form-group">
+        <input type="text" class="form-control" id="emailText" ng-i18next="[placeholder]avRegistration.emailPlaceholder" />
+        <p class="help-block">
+          <span ng-i18next="avRegistration.notRegisteredYet"></span>
+          <a ng-i18next="avRegistration.registerHere" ng-click="registerHere()"></a>
+        </p>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" id="passwordText" ng-i18next="[placeholder]avRegistration.passwordPlaceholder" />
+        <p class="help-block">
+          <a ng-i18next="avRegistration.forgotPassword" ng-click="forgotPassword()"></a>
+        </p>
+      </div>
+
+      <button class="btn btn-block" ng-i18next="avRegistration.loginButton">
+      </button>
+    </form>
+  </div>
+</div>
