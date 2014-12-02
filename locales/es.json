@@ -13,8 +13,11 @@
     "selectOptionsText": "Responde a las preguntas de la votación que se presentan una a una. Configurarás así las preferencias de tu papeleta.",
     "reviewOptionsTitle": "2. Revisa tu papeleta",
     "reviewOptionsText": "Te mostraremos el contenido de tu papeleta para que puedas revisarla. Estarás a tiempo de cambiar las respuestas si quieres.",
-    "encryptAndEmitBallotTitle": "3. Emite tu voto",
-    "encryptAndEmitBallotText": "Antes de enviar tu voto, la cabina tardará unos segundos mientras lo cifra. De esa forma, se mantendrá el secreto del voto. Al terminar, obtendrás un localizador con el que verificar que tu voto fue debidamente registrado.",
+    "encryptBallotTitle": "3. Cifra tu voto",
+    "encryptBallotText": "Una vez has elegido tus opciones, puedes proceder a cifrarlas para mantener el secreto del voto. La cabina tardará unos segundos mientras cifra tu voto. Al terminar, obtendrás un localizador con el que verificar que tu voto no puede ser alterado.",
+
+    "emitBallotTitle": "4. Envía tu voto",
+    "emitBallotText": "Una vez tu voto está cifrado, ya puedes enviarlo a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditar que tu voto fue correctamente cifrado. Al auditar el voto éste será desechado, así que para votar deberás comenzar el proceso de voto de nuevo.",
 
     "errorTitle": "Oops. Ocurrió algo inesperado",
     "errorHtml": "<p>Ocurrió el siguiente problema (identificador __errorId__): </p><p>__error__</p><p>En caso de que creas que debes contactar con nosotros, puedes hacerlo enviándonos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
@@ -53,7 +56,7 @@
     "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
     "reviewYourBallotTitle": "Revisa tu papeleta",
     "reviewYourBallotText": "Antes de emitir tu voto, por favor revisa el contenido de tu papeleta",
-    "encryptAndCastTheBallot": "Cifra y envía el voto",
+    "encryptBallot": "Cifrar el voto",
     "changeAnswerToQuestion": "cambiar",
     "emptyAnswer": "<sin respuesta>",
 
