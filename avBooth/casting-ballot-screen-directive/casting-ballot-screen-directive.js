@@ -4,7 +4,7 @@
  * Shown while the ballot is being encrypted and sent.
  */
 angular.module('avBooth')
-  .directive('avbCastingBallotScreen', function($i18next, CastBallotService, $timeout) {
+  .directive('avbCastingBallotScreen', function($i18next, CastBallotService, $timeout, $window, InsideIframeService) {
 
     function link(scope, element, attrs) {
       // moves the title on top of the busy indicator
@@ -57,13 +57,13 @@ angular.module('avBooth')
       // delay in millisecs
       var delay = 500;
 
-      $timeout(function () {
+      function sendToBallotBox() {
         CastBallotService({
           election: scope.election,
           pubkeys: scope.pubkeys,
           statusUpdate: statusUpdateFunc,
           authorizationHeader: scope.authorizationHeader,
-          castBallotUrl: scope.castBallotUrl,
+          castBallotUrl: scope.baseUrl + "election/" + scope.electionId + "/vote/" + scope.voterId,
 
           // on success, we show the next screen (which is the success-screen
           // directive)
@@ -106,6 +106,21 @@ angular.module('avBooth')
           verify: false,
           delay: delay
         });
+      }
+
+      $timeout(function () {
+        if (InsideIframeService()) {
+        scope.setAuthorizationReceiver(sendToBallotBox);
+        $window.top.postMessage(
+          "avRequestAuthorization:" +
+          angular.toJson({
+            permission: "vote",
+            object_type: "election",
+            object_id: scope.electionId
+          }), '*');
+        } else {
+          sendToBallotBox();
+        }
       }, delay);
     }
 

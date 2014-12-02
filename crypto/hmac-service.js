@@ -35,11 +35,61 @@ angular.module('avCrypto')
         return match === 1;
     }
 
+    /**
+     * This function checks a keyed hmac Url. Here's an example:
+     * > checkKhmac("khmac:///sha-256;6a4cdcebed4fad9f96bf3c6774919606c565570bac2ef808e764427eaf2377ea/userid:create:user-deadbeef:134234111");
+     * < returns {
+     *     "digest": "6a4cdcebed4fad9f96bf3c6774919606c565570bac2ef808e764427eaf2377ea",
+     *     "digestMethod": "sha-256",
+     *     "timestamp": 134234111,
+     *     "message": "userid:create:user-deadbeef:134234111"
+     *   }
+     *
+     * returns false if the url is invalid.
+     */
+    function checkKhmac(url) {
+      var knownStart = "khmac:///sha-256;";
+      if (url.substr(0, knownStart.length) !== knownStart) {
+        return false;
+      }
+
+      var splitSlash = url.substr(knownStart.length, url.length).split("/");
+      if (splitSlash.length !== 2) {
+        return false;
+      }
+      var hash = splitSlash[0];
+      var message = splitSlash[1];
+
+      var hashFormat = /^[0-9a-f]{64}$/;
+
+      if (!hashFormat.test(hash) || $.type(message) !== "string") {
+        return false;
+      }
+
+      var splitMessage = message.split(":");
+      if (splitMessage.length === 0) {
+        return false;
+      }
+
+      var timestamp = parseInt(splitMessage[splitMessage.length - 1]);
+      if (isNaN(timestamp) || timestamp < 0) {
+        return false;
+      }
+
+      return {
+        digest: hash,
+        digestMethod: "sha-256",
+        timestamp: timestamp,
+        message: message
+      };
+    }
+
     return {
       "checkHmac": function(key, message, messageMAC) {
         return equalFunc(hmacFunc(key, message), messageMAC);
       },
       "hmac": hmacFunc,
       "equal": equalFunc,
+      "checkKhmac": checkKhmac
     };
   });

@@ -41,6 +41,12 @@ angular.module('agora-core-view').config(
         controller: "BoothController"
       });
     $stateProvider
+      .state('booth-nohmac', {
+        url: '/election/:id/vote',
+        templateUrl: 'avBooth/booth.html',
+        controller: "BoothController"
+      });
+    $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'avRegistration/login-controller/login-controller.html',

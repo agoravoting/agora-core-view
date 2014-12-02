@@ -1,7 +1,7 @@
 <div av-booth
-  election-url="{{baseUrl}}election/{{electionId}}/config/{{voterId}}"
-  pub-keys-url="{{baseUrl}}election/{{electionId}}/pubkeys"
-  cast-ballot-url="{{baseUrl}}election/{{electionId}}/vote/{{voterId}}"
+  election-id="{{electionId}}"
+  base-url="{{baseUrl}}"
+  voter-id="{{voterId}}"
   authorization-header="{{hmacMessage}}:{{hmacHash}}"
   config="{{config}}"
   pre-check="checkElectionUrl()">
