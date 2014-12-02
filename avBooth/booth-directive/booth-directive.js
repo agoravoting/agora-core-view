@@ -31,6 +31,7 @@ angular.module('avBooth')
         draftsElectionScreen: 'draftsElectionScreen',
         pcandidatesElectionScreen: 'pcandidatesElectionScreen',
         encryptingBallotScreen: 'encryptingBallotScreen',
+        castOrCancelScreen: 'castOrCancelScreen',
         reviewScreen: 'reviewScreen',
         castingBallotScreen: 'castingBallotScreen',
         successScreen: 'successScreen'
@@ -97,6 +98,13 @@ angular.module('avBooth')
           scope.setState(stateEnum.encryptingBallotScreen, {});
 
         } else if (scope.state === stateEnum.encryptingBallotScreen)
+        {
+          scope.setState(stateEnum.castOrCancelScreen, {
+            encryptedBallot: scope.stateData.encryptedBallot,
+            auditableBallot: scope.stateData.auditableBallot,
+            ballotHash: scope.stateData.auditableBallot.ballot_hash
+          });
+        } else if (scope.state === stateEnum.castOrCancelScreen)
         {
           scope.setState(stateEnum.castingBallotScreen, {
             encryptedBallot: scope.stateData.encryptedBallot,

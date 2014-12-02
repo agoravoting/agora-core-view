@@ -94,7 +94,14 @@
     "firstCandidateOfMany": "__name__ y otros",
     "numCandidatesSelected": "(__selected__ de __total__ seleccionados)",
     "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero",
-    "totalsQuestionColumn": "(__selected__ de __count__ seleccionados)"
+    "totalsQuestionColumn": "(__selected__ de __count__ seleccionados)",
+
+    "castOrCancelTitle": "Enviar el voto",
+    "castOrCancelSubtitle": "Tu voto está cifrado, ya puedes enviarlo a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditar que fue correctamente cifrado.",
+    "castOrCancelText": "<p>El localizador de tu voto es:</p><p> <strong>__ballotHash__</strong></p><p>Este paso adicional sirve para permitirte verificar que la cabina de votación cifra correctamente los votos. Si quieres, puedes simplemente emitir tu voto.</p><p>Si por el contrario así lo prefieres puedes auditar tu voto. Se te mostrará en pantalla detalles de cómo se cifró el voto, y podrás copiar esos datos a otra pieza de software para verificar la corrección del cifrado. Por razones de seguridad si decides auditar el voto éste no puede ser enviado, por lo que para emitir tu voto tendrás que comenzar el proceso de voto de nuevo.</p>",
+    "castTheBallot": "Enviar el voto",
+    "auditTheBallot": "Cancelar y Auditar la papeleta"
+
   },
   "avRegistration": {
     "loginHeader": "Entrar",

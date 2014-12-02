@@ -94,7 +94,13 @@
     "numCandidatesSelected": "__name__ and others",
     "numCandidatesSelected": "(__selected__ of __total__ selected)",
     "cannotSelectAll": "Para seleccionar todos esos candidatos tienes que deseleccionar algunos primero",
-    "totalsQuestionColumn": "(__selected__ of __count__ selected)"
+    "totalsQuestionColumn": "(__selected__ of __count__ selected)",
+
+    "castOrCancelTitle": "Send the ballot",
+    "castOrCancelSubtitle": "Your ballot is encrypted, so you can now send it to the electronic ballot box to be cast. Alternatively, you can audit that it was correctly encrypted.",
+    "castOrCancelText": "<p>The locator of your ballot is:</p><p> <strong>__ballotHash__</strong></p><p>This additional step allows you to verify that the voting booth correctly encrypts ballots. If you want, you can just cast your ballot.</p><p>If on the contrary you want to audit your ballot, we will show you a screen with the details of how your ballot was encrypted. You can copy this data and check it with third party software to verify the correction of the encryption. For security reasons, if you choose to audit your ballot then it will be spoiled, so you will have to start again the voting process to cast your ballot.</p>",
+    "castTheBallot": "Send the ballot",
+    "auditTheBallot": "Cancel and audit the ballot"
   },
   "avRegistration": {
     "loginHeader": "Enter",
