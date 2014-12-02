@@ -195,7 +195,8 @@ module.exports = function (grunt) {
           'dist/app-v1.0.17.min.js': 'temp/app.js',
           'dist/lib-v1.0.17.min.js': 'temp/lib.js',
           'dist/libnocompat-v1.0.17.min.js': 'temp/libnocompat.js',
-          'dist/libcompat-v1.0.17.min.js': 'temp/libcompat.js'
+          'dist/libcompat-v1.0.17.min.js': 'temp/libcompat.js',
+          'dist/avWidgets.min.js': 'avWidgets.js'
         }
       }
     },
@@ -231,6 +232,7 @@ module.exports = function (grunt) {
           '<%= dom_munger.data.libnocompatjs %>',
           '<%= dom_munger.data.libjs %>',
           'avConfig.js',
+          'avWidgets.js',
           '<%= dom_munger.data.appjs %>',
           '<%= ngtemplates.main.dest %>',
           'bower_components/angular-mocks/angular-mocks.js',
@@ -296,6 +298,7 @@ module.exports = function (grunt) {
         files.concat(grunt.config('dom_munger.data.libjs'));
         files.push('bower_components/angular-mocks/angular-mocks.js');
         files.push('avConfig.js');
+        files.push('avWidgets.js');
         files.concat(grunt.config('dom_munger.data.appjs'));
         files.concat(grunt.config('ngtemplates.main.dest'));
         files.push(spec);
