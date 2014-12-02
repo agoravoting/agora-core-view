@@ -60,7 +60,9 @@ angular.module('avCrypto')
             beta: ciphertext.beta,
             commitment: jsonProof.commitment,
             response: jsonProof.response,
-            challenge: jsonProof.challenge
+            challenge: jsonProof.challenge,
+            randomness: randomness.toJSONObject(),
+            plaintext: plaintext.m.toJSONObject()
           };
 
           return encAnswer;

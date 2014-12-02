@@ -4,7 +4,7 @@
  * Shown while the ballot is being encrypted and sent.
  */
 angular.module('avBooth')
-  .directive('avbCastingBallotScreen', function($i18next, CastBallotService, $timeout, $window, InsideIframeService) {
+  .directive('avbCastingBallotScreen', function($i18next, CastBallotService, EncryptBallotService, $timeout, $window, InsideIframeService) {
 
     function link(scope, element, attrs) {
       // moves the title on top of the busy indicator
@@ -57,18 +57,29 @@ angular.module('avBooth')
       // delay in millisecs
       var delay = 500;
 
-      function sendToBallotBox() {
-        CastBallotService({
+      function encryptBallot() {
+        var encryptionInfo = {
           election: scope.election,
           pubkeys: scope.pubkeys,
           statusUpdate: statusUpdateFunc,
           authorizationHeader: scope.authorizationHeader,
           castBallotUrl: scope.baseUrl + "election/" + scope.electionId + "/vote/" + scope.voterId,
+          encryptedBallot: null,
 
-          // on success, we show the next screen (which is the success-screen
-          // directive)
-          success: function(data) {
-            scope.updateTitle($i18next("avBooth.ballotCast", {percentage: 100}));
+          // on success, we first then try to submit, then once submitted we
+          // show the next screen (which is the success-screen directive)
+          success: function(encryptedBallot, auditableBallot) {
+            if (encryptionInfo.encryptedBallot === null) {
+              console.log(auditableBallot);
+              console.log(encryptedBallot);
+              scope.updateTitle($i18next("avBooth.sendingBallot", {percentage: 80}));
+              scope.percentCompleted = 80;
+              encryptionInfo.encryptedBallot = encryptedBallot;
+              CastBallotService(encryptionInfo);
+              return;
+            }
+
+            scope.updateTitle($i18next("avBooth.sendingBallot", {percentage: 100}));
             scope.percentCompleted = 100;
             scope.next();
           },
@@ -105,12 +116,13 @@ angular.module('avBooth')
           },
           verify: false,
           delay: delay
-        });
+        };
+        EncryptBallotService(encryptionInfo);
       }
 
       $timeout(function () {
         if (InsideIframeService()) {
-        scope.setAuthorizationReceiver(sendToBallotBox);
+        scope.setAuthorizationReceiver(encryptBallot);
         $window.top.postMessage(
           "avRequestAuthorization:" +
           angular.toJson({
@@ -119,7 +131,7 @@ angular.module('avBooth')
             object_id: scope.electionId
           }), '*');
         } else {
-          sendToBallotBox();
+          encryptBallot();
         }
       }, delay);
     }
