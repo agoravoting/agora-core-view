@@ -12,12 +12,9 @@
     "selectOptionsTitle": "1. Selecciona tus opciones",
     "selectOptionsText": "Responde a las preguntas de la votación que se presentan una a una. Configurarás así las preferencias de tu papeleta.",
     "reviewOptionsTitle": "2. Revisa tu papeleta",
-    "reviewOptionsText": "Te mostraremos el contenido de tu papeleta para que puedas revisarla. Estarás a tiempo de cambiar las respuestas si quieres.",
-    "encryptBallotTitle": "3. Cifra tu voto",
-    "encryptBallotText": "Una vez has elegido tus opciones, puedes proceder a cifrarlas para mantener el secreto del voto. La cabina tardará unos segundos mientras cifra tu voto. Al terminar, obtendrás un localizador con el que verificar que tu voto no puede ser alterado.",
-
-    "emitBallotTitle": "4. Envía tu voto",
-    "emitBallotText": "Una vez tu voto está cifrado, ya puedes enviarlo a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditar que tu voto fue correctamente cifrado. Al auditar el voto éste será desechado, así que para votar deberás comenzar el proceso de voto de nuevo.",
+    "reviewOptionsText": "Una vez has elegido tus opciones, procederemos a cifrarlas y obtendrás un localizador. Te mostraremos el contenido de tu papeleta para que puedas revisarla.",
+    "emitBallotTitle": "3. Envía tu voto",
+    "emitBallotText": "Puedes enviar tu voto a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditarlo que tu voto fue correctamente cifrado.",
 
     "errorTitle": "Oops. Ocurrió algo inesperado",
     "errorHtml": "<p>Ocurrió el siguiente problema (identificador __errorId__): </p><p>__error__</p><p>En caso de que creas que debes contactar con nosotros, puedes hacerlo enviándonos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
@@ -56,7 +53,7 @@
     "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
     "reviewYourBallotTitle": "Revisa tu papeleta",
     "reviewYourBallotText": "Antes de emitir tu voto, por favor revisa el contenido de tu papeleta",
-    "encryptBallot": "Cifrar el voto",
+    "castTheBallot": "Enviar el voto",
     "changeAnswerToQuestion": "cambiar",
     "emptyAnswer": "<sin respuesta>",
 
@@ -98,9 +95,8 @@
 
     "castOrCancelTitle": "Enviar el voto",
     "castOrCancelSubtitle": "Tu voto está cifrado, ya puedes enviarlo a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditar que fue correctamente cifrado.",
-    "castOrCancelText": "<p>El localizador de tu voto es:</p><p> <strong>__ballotHash__</strong></p><p>Este paso adicional sirve para permitirte verificar que la cabina de votación cifra correctamente los votos. Si quieres, puedes simplemente emitir tu voto.</p><p>Si por el contrario así lo prefieres puedes auditar tu voto. Se te mostrará en pantalla detalles de cómo se cifró el voto, y podrás copiar esos datos a otra pieza de software para verificar la corrección del cifrado. Por razones de seguridad si decides auditar el voto éste no puede ser enviado, por lo que para emitir tu voto tendrás que comenzar el proceso de voto de nuevo.</p>",
-    "castTheBallot": "Enviar el voto",
-    "auditTheBallot": "Cancelar y Auditar la papeleta"
+    "reviewBallotHashText": "El localizador de tu voto es: <strong>__ballotHash__</strong>",
+    "auditTheBallot": "Auditar la papeleta"
 
   },
   "avRegistration": {

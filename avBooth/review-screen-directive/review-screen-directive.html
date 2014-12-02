@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
   <div class="container">
     <div class="row avb-top-navbar">
-      <div class="pull-left" ng-i18next="[html:i18next]({sprintf:['3','4']})avBooth.stepNumber">
+      <div class="pull-left" ng-i18next="[html:i18next]({sprintf:['3','3']})avBooth.stepNumber">
       </div>
       <div class="pull-right">
         <span
@@ -32,15 +32,25 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
+        <p ng-i18next="[html:i18next]({ballotHash: stateData.ballotHash})avBooth.reviewBallotHashText"></p>
         <div avb-review-ballot></div>
       </div>
     </div>
     <div class="row hidden" ng-cloak av-affix-bottom data-force-affix-width="768">
-      <button
-        class="btn btn-block btn-lg btn-success btn-plain"
-        ng-i18next="avBooth.encryptAndCastTheBallot"
-        ng-click="next()">
-      </button>
+      <div class="col-xs-9 no-padding">
+        <button
+          class="btn btn-block btn-lg btn-success btn-plain"
+          ng-i18next="avBooth.castTheBallot"
+          ng-click="next()">
+        </button>
+      </div>
+      <div class="col-xs-3 no-padding">
+        <button
+          class="btn btn-block btn-lg btn-plain btn-audit"
+          ng-i18next="avBooth.auditTheBallot"
+          ng-click="audit()">
+        </button>
+      </div>
     </div>
   </div>
 </div>

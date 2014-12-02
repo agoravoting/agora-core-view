@@ -12,11 +12,9 @@
     "selectOptionsTitle": "1. Select your options",
     "selectOptionsText": "Answer to the election questions one by one as they are shown. This way you will configure your preferences in your ballot.",
     "reviewOptionsTitle": "2. Review your ballot",
-    "reviewOptionsText": "We will show a summary with the content of your ballot so that you can review it. You'll still be able to change your answers if you want",
-    "encryptBallotTitle": "3. Encrypt your ballot",
-    "encryptBallotText": "Once you have chosen your preferences, you can proceed to encrypt them so that the secrecy of the vote is preserved. The voting booth will take some seconds to perform the encryption. Afterwards you'll receive a tracker id, that you can use to verify that your ballot cannot be altered.",
-    "emitBallotTitle": "4. Cast your ballot",
-    "emitBallotText": "Once your ballot is encrypted, you can cast it so that it's properly registered. Alternatively, you can audit that your ballot was correctly encrypted. If you choose to audit your ballot then it will be spoiled, so to cast a vote you'll have to start the process again.",
+    "reviewOptionsText": "Once you have chosen your preferences, we will proceed to encrypt them and you'll be shown the ballot's tracker id. You'll also be shown a summary with the content of your ballot for review.",
+    "emitBallotTitle": "3. Cast your ballot",
+    "emitBallotText": "You can cast it so that it's properly registered. Alternatively, you can audit that your ballot was correctly encrypted.",
     "errorTitle": "Oops. Something unexpected happened",
     "errorHtml": "<p>Ocurrió el siguiente problema (identificador __errorId__): </p><p>__error__</p><p>En caso de que creas que debes contactar con nosotros, puedes hacerlo enviándonos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
     "errorLoadingElection": "Error cargando la votación. Esto puede ocurrir por múltiples motivos: lo más probable es que debido a motivos de seguridad este enlace haya expirado, por lo que te recomendamos que simplemente cierres este enlace y comiences desde el principio el proceso de voto. También puede que este enlace sea incorrecto, puede que lo hayas introducido o se haya generado mal. Para ello comprueba a generarlo de nuevo. Finalmente, puede ocurrir que el servidor no esté disponible temporalmente. Si se trata de este caso, prueba de nuevo más tarde y si el problema persiste ponte en contacto con nosotros.",
@@ -56,7 +54,7 @@
     "errorElectionUrl": "The introduced address has an erroneous format",
     "reviewYourBallotTitle": "Review your ballot",
     "reviewYourBallotText": "Before casting your vote, please review the content of your ballot",
-    "encryptAndCastTheBallot": "Encrypt your ballot",
+    "castTheBallot": "Cast your ballot",
 
     "statusExecutingSanityChecks": "Verifying that the web browser is able to encode the ballot, please wait (__percentage__% completed)",
     "statusEncryptingQuestion": "Encrypting answers to question __questionNum__, please wait (__percentage__% completed)",
@@ -98,9 +96,8 @@
 
     "castOrCancelTitle": "Send the ballot",
     "castOrCancelSubtitle": "Your ballot is encrypted, so you can now send it to the electronic ballot box to be cast. Alternatively, you can audit that it was correctly encrypted.",
-    "castOrCancelText": "<p>The locator of your ballot is:</p><p> <strong>__ballotHash__</strong></p><p>This additional step allows you to verify that the voting booth correctly encrypts ballots. If you want, you can just cast your ballot.</p><p>If on the contrary you want to audit your ballot, we will show you a screen with the details of how your ballot was encrypted. You can copy this data and check it with third party software to verify the correction of the encryption. For security reasons, if you choose to audit your ballot then it will be spoiled, so you will have to start again the voting process to cast your ballot.</p>",
-    "castTheBallot": "Send the ballot",
-    "auditTheBallot": "Cancel and audit the ballot"
+    "reviewBallotHashText": "Your ballot tracker id is: <strong>__ballotHash__</strong>",
+    "auditTheBallot": "Audit the ballot"
   },
   "avRegistration": {
     "loginHeader": "Enter",

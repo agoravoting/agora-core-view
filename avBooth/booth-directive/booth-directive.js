@@ -95,20 +95,17 @@ angular.module('avBooth')
 
         } else if (scope.state === stateEnum.reviewScreen)
         {
-          scope.setState(stateEnum.encryptingBallotScreen, {});
-
-        } else if (scope.state === stateEnum.encryptingBallotScreen)
-        {
-          scope.setState(stateEnum.castOrCancelScreen, {
-            encryptedBallot: scope.stateData.encryptedBallot,
-            auditableBallot: scope.stateData.auditableBallot,
-            ballotHash: scope.stateData.auditableBallot.ballot_hash
-          });
-        } else if (scope.state === stateEnum.castOrCancelScreen)
-        {
           scope.setState(stateEnum.castingBallotScreen, {
             encryptedBallot: scope.stateData.encryptedBallot,
             auditableBallot: scope.stateData.auditableBallot
+          });
+
+        } else if (scope.state === stateEnum.encryptingBallotScreen)
+        {
+          scope.setState(stateEnum.reviewScreen, {
+            encryptedBallot: scope.stateData.encryptedBallot,
+            auditableBallot: scope.stateData.auditableBallot,
+            ballotHash: scope.stateData.auditableBallot.ballot_hash
           });
 
         } else if (scope.state === stateEnum.castingBallotScreen)
@@ -117,10 +114,9 @@ angular.module('avBooth')
             ballotHash: scope.stateData.ballotHash
           });
 
-
         } else if (scope.stateData.isLastQuestion || scope.stateData.reviewMode)
         {
-          scope.setState(stateEnum.reviewScreen, {});
+          scope.setState(stateEnum.encryptingBallotScreen, {});
 
         } else if (_.contains(questionStates, scope.state) &&
                    !scope.stateData.isLastQuestion)
