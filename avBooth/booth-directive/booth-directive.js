@@ -29,6 +29,7 @@ angular.module('avBooth')
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion',
         draftsElectionScreen: 'draftsElectionScreen',
+        auditBallotScreen: 'auditBallotScreen',
         pcandidatesElectionScreen: 'pcandidatesElectionScreen',
         encryptingBallotScreen: 'encryptingBallotScreen',
         castOrCancelScreen: 'castOrCancelScreen',
@@ -95,17 +96,30 @@ angular.module('avBooth')
 
         } else if (scope.state === stateEnum.reviewScreen)
         {
-          scope.setState(stateEnum.castingBallotScreen, {
-            encryptedBallot: scope.stateData.encryptedBallot,
-            auditableBallot: scope.stateData.auditableBallot
-          });
+          if (!scope.stateData.auditClicked) {
+            scope.setState(stateEnum.castingBallotScreen, {
+              encryptedBallot: scope.stateData.encryptedBallot,
+              auditableBallot: scope.stateData.auditableBallot
+            });
+          } else {
+            scope.setState(stateEnum.auditBallotScreen, {
+              encryptedBallot: scope.stateData.encryptedBallot,
+              auditableBallot: scope.stateData.auditableBallot,
+              ballotHash: scope.stateData.auditableBallot.ballot_hash
+            });
+          }
+
+        } else if (scope.state === stateEnum.auditBallotScreen)
+        {
+          goToQuestion(0, false);
 
         } else if (scope.state === stateEnum.encryptingBallotScreen)
         {
           scope.setState(stateEnum.reviewScreen, {
             encryptedBallot: scope.stateData.encryptedBallot,
             auditableBallot: scope.stateData.auditableBallot,
-            ballotHash: scope.stateData.auditableBallot.ballot_hash
+            ballotHash: scope.stateData.auditableBallot.ballot_hash,
+            auditClicked: false
           });
 
         } else if (scope.state === stateEnum.castingBallotScreen)
