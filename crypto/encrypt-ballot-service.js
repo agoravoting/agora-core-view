@@ -51,7 +51,6 @@
     ],
     "election_hash":{"a":"hash/sha256/value","value":""},
     "issue_date":"07/11/2014",
-    "election_url":"https://whatever",
     "proofs":[
       {
         "challenge":"1",
@@ -74,7 +73,8 @@
     ],
     "election_hash":{"a":"hash/sha256/value","value":""},
     "issue_date":"07/11/2014",
-    "election_url":"https://whatever",
+    "pubkeys_url":"https://whatever",
+    "election_url":"https://whatever2",
     "ballot_hash":"whatever",
     "proofs":[
       {
@@ -198,7 +198,7 @@ angular.module('avCrypto')
         return;
       }
 
-    function formatBallot(election, answers, auditable) {
+    function formatBallot(election, answers) {
       var ballot = {
         "a": "encrypted-vote-v1",
         "proofs": [],
@@ -213,19 +213,37 @@ angular.module('avCrypto')
           "response": qAnswer['response'],
           "challenge": qAnswer['challenge']
         });
-        if (!auditable) {
-          ballot.choices.push({
-            "alpha": qAnswer['alpha'],
-            "beta": qAnswer['beta']
-          });
-        } else {
-          ballot.choices.push({
-            "alpha": qAnswer['alpha'],
-            "beta": qAnswer['beta'],
-            "randomness": qAnswer['randomness'],
-            "plaintext": qAnswer['plaintext']
-          });
-        }
+        ballot.choices.push({
+          "alpha": qAnswer['alpha'],
+          "beta": qAnswer['beta']
+        });
+      }
+      return ballot;
+    }
+
+    function formatAuditableBallot(election, answers, base_url) {
+      var ballot = {
+        "a": "encrypted-vote-v1",
+        "proofs": [],
+        "choices": [],
+        "issue_date": moment().format("DD/MM/YYYY"),
+        "election_hash": {"a": "hash/sha256/value", "value": election.hash},
+        "election_url": ConfigService.baseUrl + "election/" + election.id + "/config",
+        "pubkeys_url": ConfigService.baseUrl + "election/" + election.id + "/pubkeys"
+      };
+      for (var i = 0; i < election.questions_data.length; i++) {
+        var qAnswer = answers[i];
+        ballot.proofs.push({
+          "commitment": qAnswer['commitment'],
+          "response": qAnswer['response'],
+          "challenge": qAnswer['challenge']
+        });
+        ballot.choices.push({
+          "alpha": qAnswer['alpha'],
+          "beta": qAnswer['beta'],
+          "randomness": qAnswer['randomness'],
+          "plaintext": qAnswer['plaintext']
+        });
       }
       return ballot;
     }
@@ -237,8 +255,8 @@ angular.module('avCrypto')
       function encryptNextQuestion() {
         if (i >= numQuestions) {
           // ballot generated
-          var ballot = formatBallot(data.election, answers, false);
-          var auditData = formatBallot(data.election, answers, true);
+          var ballot = formatBallot(data.election, answers);
+          var auditData = formatAuditableBallot(data.election, answers, data.baseUrl);
           var ballotStr = stringify(ballot);
 
           // generate ballot hash

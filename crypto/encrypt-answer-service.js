@@ -62,7 +62,7 @@ angular.module('avCrypto')
             response: jsonProof.response,
             challenge: jsonProof.challenge,
             randomness: randomness.toJSONObject(),
-            plaintext: plaintext.m.toJSONObject()
+            plaintext: plain_answer
           };
 
           return encAnswer;

@@ -207,9 +207,7 @@ angular.module('avBooth')
 
       function retrieveElectionConfig() {
         try {
-          $http.get(
-              scope.baseUrl + "election/" + scope.electionId + "/config/" + scope.voterId,
-              {headers: {Authorization: scope.authorizationHeader}})
+          $http.get(scope.baseUrl + "election/" + scope.electionId + "/config")
             // on success
             .success(function(value) {
               scope.election = value;
