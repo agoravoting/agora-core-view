@@ -99,7 +99,7 @@
 
     "auditBallotTitle": "Audit your Ballot",
     "auditBallotSubtitle": "",
-    "auditBallotText": "<p>The ballot tracker id is: <code>__ballotHash__</code></p><p><strong>The audit of the ballot requires some technical knowledge. If you don't have it, you can simply start again the voting process clicking in the button below.</strong></p><p>To verify your ballot you need to:</p><ol><li>Copy and save to a file your ballot (click to select):<br/><div class=\"code\" ng-click=\"selectDiv($event)\">__auditableBallot__</div></li><li>Follow the steps in <a href=\"https://github.com/agoravoting/agora-core-view/blob/master/doc/BALLOT-VERIFY.md\" target=\"_blank\">this tutorial to verify that ballot was correctly encrypted</a>.</li></ol><p>For security reasons, if you audit the ballot, it needs to be spoiled. To continue the voting process, you need to start from the begining.</p>",
+    "auditBallotText": "<p>The ballot tracker id is: <code>__ballotHash__</code></p><p><strong>The audit of the ballot requires some technical knowledge. If you don't have it, you can simply start again the voting process clicking in the button below.</strong></p><p>To verify your ballot you need to:</p><ol><li>Copy and save to a file your ballot (click to select):<br/><div class=\"code\" ng-click=\"selectDiv($event)\">__auditableBallot__</div></li><li>Follow the steps in <a href=\"https://github.com/agoravoting/agora-airgap/blob/master/README.md\" target=\"_blank\">this tutorial to verify that ballot was correctly encrypted</a>.</li></ol><p>For security reasons, if you audit the ballot, it needs to be spoiled. To continue the voting process, you need to start from the begining.</p>",
     "auditStartAgain": "Start voting from the begining"
 
   },
