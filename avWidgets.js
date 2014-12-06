@@ -24,17 +24,21 @@
     boothLink.parentNode.removeChild(boothLink);
   }
   function requestAuthorization(e) {
-    console.log("calling requestAuthorization");
     var reqAuth = "avRequestAuthorization:";
     if (e.data.substr(0, reqAuth.length) !== reqAuth) {
       return;
     }
 
-    var data = JSON.parse(e.data.substr(reqAuth.length, e.data.length));
-    var khmac = window[window.avRequestAuthorizationFuncName].apply(window, data);
-    e.source.postMessage('avPostAuthorization:' + khmac, '*');
+    function callback(khmac) {
+      e.source.postMessage('avPostAuthorization:' + khmac, '*');
+    }
+
+    var args = [
+      JSON.parse(e.data.substr(reqAuth.length, e.data.length)),
+      callback
+    ];
+    window[window.avRequestAuthorizationFuncName].apply(window, args);
   }
-  console.log("adding event listener requestAuthorization");
   window.addEventListener('message', requestAuthorization, false);
 })();
 /* jshint ignore:end */
