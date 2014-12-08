@@ -13,7 +13,8 @@ angular.module(
   'avBooth',
   'avRegistration',
   'avTest',
-  'avCrypto'
+  'avCrypto',
+  'avElection'
 ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {
@@ -51,6 +52,21 @@ angular.module('agora-core-view').config(
         url: '/login',
         templateUrl: 'avRegistration/login-controller/login-controller.html',
         controller: "LoginController"
+      });
+    $stateProvider
+      .state('results', {
+        url: '/election/:id/results',
+        templateUrl: 'avElection/results-controller/results-controller.html',
+        controller: "ResultsController"
+      })
+      .state('results.loading', {
+        templateUrl: 'avElection/results-controller/loading.html',
+      })
+      .state('results.show', {
+        templateUrl: 'avElection/results-controller/show.html',
+      })
+      .state('results.error', {
+        templateUrl: 'avElection/results-controller/error.html',
       });
     $stateProvider
       .state('test-hmac', {

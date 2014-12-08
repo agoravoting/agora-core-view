@@ -17,6 +17,10 @@ angular.module('avBooth')
         title.attr("style", "margin-top: " + marginTop + "px; margin-left: " + marginLeft + "px");
       };
 
+      // TODO try
+//       scope.$watch(function () { return attrs.title; }, function() {
+//         scope.updateTitle();
+//       });
       scope.$watch(attrs.title, function() {
         scope.updateTitle();
       });

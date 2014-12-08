@@ -104,6 +104,10 @@
     "auditStartAgain": "Comenzar el proceso de voto de nuevo"
 
   },
+  "avElection": {
+    "resultsLoadingText": "Cargando resultados",
+    "errorLoadingText": "Error cargando resultados. Puede que el recuento aun no se haya publicado, que no tengas permisos o incluso que la votación no exista"
+  },
   "avRegistration": {
     "loginHeader": "Entrar",
     "emailPlaceholder": "email",

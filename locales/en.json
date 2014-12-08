@@ -103,6 +103,10 @@
     "auditStartAgain": "Start voting from the begining"
 
   },
+  "avElection": {
+    "resultsLoadingText": "Loading results",
+    "errorLoadingText": "Error loading results. Maybe they have not been published, you don't have permissions or maybe the election does not exist."
+  },
   "avRegistration": {
     "loginHeader": "Enter",
     "emailPlaceholder": "email",
