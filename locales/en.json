@@ -52,7 +52,7 @@
     "selectedOptionsFollow": "The __num__ options you chose are:",
 
     "errorElectionUrl": "The introduced address has an erroneous format",
-    "reviewYourBallotTitle": "Review your ballot",
+    "reviewYourBallotTitle": "Ballot not sent yet: review it first",
     "reviewYourBallotText": "Before casting your vote, please review the content of your ballot",
     "castTheBallot": "Cast your ballot",
 

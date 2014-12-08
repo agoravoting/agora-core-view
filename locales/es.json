@@ -51,7 +51,7 @@
     "selectedOptionsFollow": "Las __num__ opciones que seleccionaste son:",
 
     "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
-    "reviewYourBallotTitle": "Revisa tu papeleta",
+    "reviewYourBallotTitle": "Falta enviar la papeleta: revísala primero",
     "reviewYourBallotText": "Antes de emitir tu voto, por favor revisa el contenido de tu papeleta",
     "castTheBallot": "Enviar el voto",
     "changeAnswerToQuestion": "cambiar",
