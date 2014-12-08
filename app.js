@@ -36,14 +36,14 @@ angular.module('agora-core-view').config(
 
     /* App states and urls are defined here */
     $stateProvider
-      .state('booth', {
-        url: '/election/:id/vote/:hmac/:message',
+      .state('election.booth', {
+        url: '/:id/vote/:hmac/:message',
         templateUrl: 'avBooth/booth.html',
         controller: "BoothController"
       });
     $stateProvider
-      .state('booth-nohmac', {
-        url: '/election/:id/vote',
+      .state('election.booth-nohmac', {
+        url: '/:id/vote',
         templateUrl: 'avBooth/booth.html',
         controller: "BoothController"
       });
@@ -54,19 +54,24 @@ angular.module('agora-core-view').config(
         controller: "LoginController"
       });
     $stateProvider
-      .state('results', {
-        url: '/election/:id/results',
+      .state('election', {
+        abstract: true,
+        url: '/election',
+        template: '<div ui-view></div>'
+      })
+      .state('election.results', {
+        url: '/:id/results',
         templateUrl: 'avElection/results-controller/results-controller.html',
         controller: "ResultsController"
       })
-      .state('results.loading', {
-        templateUrl: 'avElection/results-controller/loading.html',
+      .state('election.results.loading', {
+        templateUrl: 'avElection/results-controller/loading.html'
       })
-      .state('results.show', {
-        templateUrl: 'avElection/results-controller/show.html',
+      .state('election.results.show', {
+        templateUrl: 'avElection/results-controller/show.html'
       })
-      .state('results.error', {
-        templateUrl: 'avElection/results-controller/error.html',
+      .state('election.results.error', {
+        templateUrl: 'avElection/results-controller/error.html'
       });
     $stateProvider
       .state('test-hmac', {
@@ -98,7 +103,7 @@ angular.module('agora-core-view').run(function($rootScope) {
 
   $rootScope.$on('$stateChangeStart',
     function(event, toState, toParams, fromState, fromParams) {
-      console.log("change start");
+      console.log("change start from " + fromState.name + " to " + toState.name);
       $("#angular-preloading").show();
     });
   $rootScope.$on('$stateChangeSuccess',
