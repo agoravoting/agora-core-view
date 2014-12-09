@@ -1,15 +1,12 @@
 /*
- * Busy indicator directive.
- *
- * Receives via transclude the text to show in the indicator, if any.
+ * Simple error directive.
  */
-angular.module('avBooth')
-  .directive('avbBusy', function($resource, $window) {
-
+angular.module('avUi')
+  .directive('avSimpleError', function($resource, $window) {
     function link(scope, element, attrs) {
       // moves the title on top of the busy indicator
       scope.updateTitle = function() {
-        var title = element.find(".avb-busy-title");
+        var title = element.find(".av-simple-error-title");
 
         // set margin-top
         var marginTop = - title.height() - 45;
@@ -22,13 +19,12 @@ angular.module('avBooth')
           scope.updateTitle();
         }
       );
-
     }
     return {
       restrict: 'AE',
       scope: {},
       link: link,
       transclude: true,
-      templateUrl: 'avBooth/busy-directive/busy-directive.html'
+      templateUrl: 'avUi/simple-error-directive/simple-error-directive.html'
     };
   });
