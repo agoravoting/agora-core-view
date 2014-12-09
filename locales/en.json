@@ -114,6 +114,11 @@
     "notRegisteredYet": "Are you not registered yet?",
     "registerHere": "Register here",
     "forgotPassword": "Forgot my password",
-    "loginButton": "Enter"
+    "loginButton": "Enter",
+
+    "registerHeader": "Register",
+    "registerButton": "Sign up",
+    "namePlaceholder": "name",
+    "phonePlaceholder": "phone"
   }
 }

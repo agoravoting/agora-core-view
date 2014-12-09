@@ -115,6 +115,11 @@
     "notRegisteredYet": "¿Aún no te has registrado?",
     "registerHere": "Regístrate aquí",
     "forgotPassword": "Olvidé mi contraseña",
-    "loginButton": "Entrar"
+    "loginButton": "Entrar",
+
+    "registerHeader": "Registro",
+    "registerButton": "Registrarse",
+    "namePlaceholder": "nombre",
+    "phonePlaceholder": "teléfono"
   }
 }
