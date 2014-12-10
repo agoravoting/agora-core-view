@@ -111,7 +111,10 @@
     "resultsTableCandidateHeader": "Candidature",
     "resultsTableVotesHeader": "Votes",
     "resultsTableVotesPercentageHeader": "",
-    "resultsTablePositionHeader": "Position"
+    "resultsTablePositionHeader": "Position",
+    "resultsLastUpdated": "Last updated: __date__",
+
+    "errorLoadingQuestionTest": "Unknown question layout"
   },
   "avRegistration": {
     "loginHeader": "Enter",

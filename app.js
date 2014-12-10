@@ -77,11 +77,17 @@ angular.module('agora-core-view').config(
       .state('election.results.loading', {
         templateUrl: 'avElection/results-controller/loading.html'
       })
+      .state('election.results.error', {
+        templateUrl: 'avElection/results-controller/error.html'
+      })
       .state('election.results.show', {
         templateUrl: 'avElection/results-controller/show.html'
       })
-      .state('election.results.error', {
-        templateUrl: 'avElection/results-controller/error.html'
+      .state('election.results.show.unknown', {
+        templateUrl: 'avElection/question-results-directive/unknown.html'
+      })
+      .state('election.results.show.plurality-at-large', {
+        template: '<div av-plurality-at-large-results></div>',
       });
     $stateProvider
       .state('test-hmac', {

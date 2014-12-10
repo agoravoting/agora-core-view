@@ -1,0 +1,23 @@
+<h2>{{question.question}}</h2>
+<div class="col-xs-12 col-md-6 pull-right">
+</div>
+<div class="col-xs-12 col-md-6">
+  <table class="table table-hover table-condensed results">
+    <thead>
+      <tr class="warning">
+        <th ng-i18next="avElection.resultsTableCandidateHeader"></th>
+        <th ng-i18next="avElection.resultsTableVotesHeader" class="text-right"></th>
+        <th ng-i18next="avElection.resultsTableVotesPercentageHeader" class="text-right"></th>
+        <th ng-i18next="avElection.resultsTablePositionHeader" class="text-right"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="answer in question.answers" ng-class="{winner: winnerPosition(answer) > 0}">
+        <td>{{answer.value}}</td>
+        <td class="text-right">{{addDotsToIntNumber(answer.total_votes)}}</td>
+        <td class="text-right">{{percentVotes(answer, question)}}</td>
+        <td class="text-right">{{winnerPosition(answer)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
