@@ -3,7 +3,7 @@
  * loading config, showing results, showing error if no result is found.
  */
 angular.module('avElection').controller('ResultsController',
-  function($state, $stateParams, $http, $scope, $i18next, ConfigService) {
+  function($state, $stateParams, $http, $scope, $i18next, ConfigService, InsideIframeService) {
     $state.go('election.results.loading');
 
     // get election config and check if they contain the results
@@ -14,6 +14,7 @@ angular.module('avElection').controller('ResultsController',
           $state.go("election.results.error");
         }
         $scope.election = value;
+        $scope.inside_iframe = InsideIframeService();
         $state.go("election.results.show");
       })
       // on error, like parse error or 404

@@ -1,9 +1,33 @@
 <div class="container">
   <div class="row">
-    <h1 ng-i18next="[i18next]({title: election.pretty_name})avElection.resultsHeader"></h1>
-    <p ng-i18next="[i18next]({date: last_updated})avElection.resultsLastUpdated"></span>
-    </p>
+    <div class="pull-left">
+      <h1 ng-i18next="[i18next]({title: election.pretty_name})avElection.resultsHeader"></h1>
+      <p>
+        <a
+          href="{{electionDataUrl}}"
+          target="_blank"
+          ng-i18next="[alt]avElection.downloadElectionData">
+          <i class="fa fa-fw fa-cloud-download"></i>
+        </a>
+        <a
+          href="{{electionTwitterUrl}}"
+          ng-i18next="[alt]avElection.tweetElection"
+          target="_blank">
+          <i class="fa fa-fw fa-facebook"></i>
+        </a>
+        <a
+          href="{{electionFacebookUrl}}"
+          target="_blank"
+          ng-i18next="[alt]avElection.tweetElection">
+          <i class="fa fa-fw fa-twitter"></i>
+        </a>
+        <span ng-i18next="[i18next]({date: last_updated})avElection.resultsLastUpdated"></span>
+      </p>
+    </div>
+    <div class="pull-right">
+      <a href="https://agoravoting.com" class="agoralogo" target="_blank"></a>
+    </div>
   </div>
-  <div class="row" ng-repeat="question in election.questions_data" av-question-results>
+  <div class="row" ng-repeat="question in election.questions_data" av-question-results index="{{$index}}">
   </div>
 </div>

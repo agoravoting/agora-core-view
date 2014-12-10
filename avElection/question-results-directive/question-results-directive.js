@@ -14,6 +14,7 @@ angular.module('avElection')
       } else {
         $state.go("election.results.show.unknown");
       }
+      scope.question_index = attrs.index;
     }
     return {
       restrict: 'AE',

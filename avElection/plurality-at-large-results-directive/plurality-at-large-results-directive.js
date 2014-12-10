@@ -35,18 +35,6 @@ angular.module('avElection')
 
       scope.addDotsToIntNumber = AddDotsToIntService;
       scope.percentVotes = PercentVotesService;
-      scope.bars_data = [
-        {
-          term: "Prod-A",
-          count: 306
-        },{
-          term: "Prod-B",
-          count: 148
-        },{
-          term: "Prod-C",
-          count: 62
-        }
-      ];
 
       /*
        * Returns the winner position if its >= 0. Else, returns ""
