@@ -75,9 +75,12 @@ module.exports = function (grunt) {
       production: {
         options: {
         },
-        files: {
-          'temp/app.css': 'app.less'
-        }
+        files: [{
+          expand: true,
+          src: ['themes/**/app.less'],
+          dest: 'temp/',
+          ext: '.css',
+        }]
       }
     },
     autoprefixer: {
@@ -85,7 +88,7 @@ module.exports = function (grunt) {
         browsers: ['ie >= 8', 'ff > 4', 'last 8 versions']
       },
       main: {
-        src: 'temp/app.css'
+        src: 'temp/themes/**/app.css'
       }
     },
     ngtemplates: {
@@ -107,13 +110,13 @@ module.exports = function (grunt) {
             expand: true,
             cwd: 'bower_components/bootstrap/fonts/',
             src: ['**'],
-            dest: 'dist/fonts/'
+            dest: 'dist/themes/fonts/'
           },
           {
             expand: true,
             cwd: 'bower_components/bootstrap/fonts/',
             src: ['**'],
-            dest: 'dist/fonts/'
+            dest: 'dist/themes/fonts/'
           },
           {
             src: ['locales/**'],
@@ -145,8 +148,9 @@ module.exports = function (grunt) {
             {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat-v1.0.17.min.js"></script><![endif]--><!--[if gte IE 9]><script src="libnocompat-v1.0.17.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat-v1.0.17.min.js"></script><!--<![endif]-->'},
             {selector:'body',html:'<script src="lib-v1.0.17.min.js"></script>'},
             {selector:'body',html:'<script src="avConfig-v1.0.17.js"></script>'},
+            {selector:'body',html:'<script src="avThemes-v1.0.17.js"></script>'},
             {selector:'body',html:'<script src="app-v1.0.17.min.js"></script>'},
-            {selector:'head',html:'<link rel="stylesheet" href="app-v1.0.17.full.min.css">'}
+            {selector:'head',html:'<link rel="stylesheet" id="theme" href="themes/default/app.min.css">'}
           ]
         },
         src:'index.html',
@@ -155,8 +159,14 @@ module.exports = function (grunt) {
     },
     cssmin: {
       main: {
-        src:['temp/app.css','<%= dom_munger.data.appcss %>'],
-        dest:'dist/app-v1.0.17.full.min.css'
+        files: [{
+            expand: true,
+            cwd:'temp/themes',
+            src: ['**/app.css'],
+            dest: 'dist/themes/',
+            ext: '.min.css',
+            extDot: 'first'
+        }]
       },
     },
     concat: {
@@ -170,7 +180,8 @@ module.exports = function (grunt) {
           'temp/libnocompat.js': ['<%= dom_munger.data.libnocompatjs %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
           'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
-          'dist/avConfig-v1.0.17.js': ['avConfig.js']
+          'dist/avConfig-v1.0.17.js': ['avConfig.js'],
+          'dist/avThemes-v1.0.17.js': ['avThemes.js']
         }
       }
     },
@@ -232,6 +243,7 @@ module.exports = function (grunt) {
           '<%= dom_munger.data.libnocompatjs %>',
           '<%= dom_munger.data.libjs %>',
           'avConfig.js',
+          'avThemes.js',
           'avWidgets.js',
           '<%= dom_munger.data.appjs %>',
           '<%= ngtemplates.main.dest %>',
@@ -298,6 +310,7 @@ module.exports = function (grunt) {
         files.concat(grunt.config('dom_munger.data.libjs'));
         files.push('bower_components/angular-mocks/angular-mocks.js');
         files.push('avConfig.js');
+        files.push('avThemes.js');
         files.push('avWidgets.js');
         files.concat(grunt.config('dom_munger.data.appjs'));
         files.concat(grunt.config('ngtemplates.main.dest'));
