@@ -106,7 +106,22 @@
   },
   "avElection": {
     "resultsLoadingText": "Cargando resultados",
-    "errorLoadingText": "Error cargando resultados. Puede que el recuento aun no se haya publicado, que no tengas permisos o incluso que la votación no exista"
+    "errorLoadingText": "Error cargando resultados. Puede que el recuento aun no se haya publicado, que no tengas permisos o incluso que la votación no exista",
+
+    "resultsHeader": "__title__: Resultados",
+    "resultsTableCandidateHeader": "Candidatura",
+    "resultsTableVotesHeader": "Votos",
+    "resultsTableVotesPercentageHeader": "",
+    "resultsTablePositionHeader": "Posición",
+    "resultsLastUpdated": "Última actualización: __date__",
+    "resultsSummary": "Resumen de escrutinio",
+    "totalNumberOfVotes": "Total de votos:",
+    "validVotes": "Votos válidos:",
+    "blankVotes": "Votos en blanco:",
+    "nullVotes": "Votos nulos:",
+
+
+    "errorLoadingQuestionTest": "Disposición de pregunta desconocida"
   },
   "avRegistration": {
     "loginHeader": "Entrar",

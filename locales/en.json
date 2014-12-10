@@ -113,6 +113,11 @@
     "resultsTableVotesPercentageHeader": "",
     "resultsTablePositionHeader": "Position",
     "resultsLastUpdated": "Last updated: __date__",
+    "resultsSummary": "Scrutiny summary",
+    "totalNumberOfVotes": "Total number of votes:",
+    "validVotes": "Valid votes:",
+    "blankVotes": "Blank votes:",
+    "nullVotes": "Null votes:",
 
     "errorLoadingQuestionTest": "Unknown question layout"
   },

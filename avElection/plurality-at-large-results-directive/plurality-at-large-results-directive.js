@@ -3,7 +3,7 @@
  * is of show with the plurality at large layout
  */
 angular.module('avElection')
-  .directive('avPluralityAtLargeResults', function() {
+  .directive('avPluralityAtLargeResults', function(AddDotsToIntService, PercentVotesService) {
     // works like a controller
     function link(scope, element, attrs) {
 
@@ -33,44 +33,20 @@ angular.module('avElection')
       }
       initData();
 
-      /*
-       * Given a number, adds dots every three digits.
-       *
-       * Example:
-       *
-       *    addDotsToIntNumber(1234567) --> "1.234.567"
-       */
-      scope.addDotsToIntNumber = function (number) {
-        var number_str = number + "";
-        var ret = "";
-        for (var i = 0; i < number_str.length; i++) {
-          var reverse = number_str.length - i;
-          if ((reverse % 3 === 0) && reverse > 0 && i > 0) {
-            ret = ret + ".";
-          }
-          ret = ret + number_str[i];
+      scope.addDotsToIntNumber = AddDotsToIntService;
+      scope.percentVotes = PercentVotesService;
+      scope.bars_data = [
+        {
+          term: "Prod-A",
+          count: 306
+        },{
+          term: "Prod-B",
+          count: 148
+        },{
+          term: "Prod-C",
+          count: 62
         }
-        return ret;
-      };
-
-      /*
-       * Returns the percentage of votes received by an answer. The base number
-       * of the percentage that is used depends on the
-       * "answer_total_votes_percentage" option in the question.
-       */
-      scope.percentVotes = function (answer, question) {
-        // special case
-        if (answer.total_votes === 0) {
-          return "0.00%";
-        }
-
-        var base = question.totals.all_votes;
-        if (answer.answer_total_votes_percentage === "over-valid-votes") {
-          base = question.totals.valid_votes;
-        }
-
-        return (100*answer.total_votes / base).toFixed(2) + "%";
-      };
+      ];
 
       /*
        * Returns the winner position if its >= 0. Else, returns ""
