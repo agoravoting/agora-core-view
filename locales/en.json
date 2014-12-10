@@ -139,6 +139,10 @@
 
     "validateHeader": "Validate code",
     "validateButton": "Validate",
-    "codePlaceholder": "code"
+    "codePlaceholder": "code",
+
+    "loadingRegistration": "Loading",
+    "successRegistration": "Success",
+    "errorRegistration": "Error"
   }
 }

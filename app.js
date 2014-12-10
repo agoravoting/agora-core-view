@@ -58,16 +58,29 @@ angular.module('agora-core-view').config(
         controller: "LoginController"
       });
     $stateProvider
-      .state('register', {
-          url: '/authevent/:id/register',
+      .state('registration', {
+        abstract: true,
+        url: '/registration',
+        template: '<div ui-view></div>'
+      })
+      .state('registration.register', {
+        url: '/:id/register',
         templateUrl: 'avRegistration/register-controller/register-controller.html',
         controller: "RegisterController"
-      });
-    $stateProvider
-      .state('validate', {
-          url: '/authevent/:id/validate',
+      })
+      .state('registration.validate', {
+        url: '/:id/validate',
         templateUrl: 'avRegistration/validate-controller/validate-controller.html',
         controller: "ValidateController"
+      })
+      .state('registration.success', {
+        templateUrl: 'avRegistration/success.html'
+      })
+      .state('registration.loading', {
+        templateUrl: 'avRegistration/loading.html'
+      })
+      .state('registration.error', {
+        templateUrl: 'avRegistration/error.html'
       });
     $stateProvider
       .state('election', {

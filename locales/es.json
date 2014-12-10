@@ -141,6 +141,10 @@
 
     "validateHeader": "Código de validación",
     "validateButton": "Validar",
-    "codePlaceholder": "código"
+    "codePlaceholder": "código",
+
+    "loadingRegistration": "Cargando",
+    "successRegistration": "Exitoso",
+    "errorRegistration": "Error"
   }
 }

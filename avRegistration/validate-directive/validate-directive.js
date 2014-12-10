@@ -1,5 +1,5 @@
 angular.module('avRegistration')
-  .directive('avValidate', ['Authmethod', '$location', function(Authmethod, $location) {
+  .directive('avValidate', ['Authmethod', '$location', '$state', function(Authmethod, $location, $state) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
 
@@ -29,10 +29,15 @@ angular.module('avRegistration')
         };
 
         scope.validate = function() {
-            Authmethod.validate(scope.method, scope.tlf, scope.code)
+            var data = {
+                'tlf': scope.tlf,
+                'dni': scope.dni,
+                'code': scope.code,
+            };
+            Authmethod.validate(scope.method, data)
                 .success(function(data) {
                     if (data.status === "ok") {
-                        $location.path('validate/success');
+                        $state.go('registration.success');
                     } else {
                         // TODO: msg try again
                         scope.status = 'Not found';
