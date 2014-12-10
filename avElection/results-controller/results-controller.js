@@ -10,6 +10,9 @@ angular.module('avElection').controller('ResultsController',
     // TODO: change config to results
     $http.get(ConfigService.baseUrl + "election/" + $stateParams.id + "/config")
       .success(function(value) {
+        if (value.status !== "results-published") {
+          $state.go("election.results.error");
+        }
         $scope.election = value;
         $state.go("election.results.show");
       })
