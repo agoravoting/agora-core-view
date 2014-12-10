@@ -133,6 +133,12 @@
     "registerHeader": "Register",
     "registerButton": "Sign up",
     "namePlaceholder": "name",
-    "phonePlaceholder": "phone"
+    "surnamePlaceholder": "surname",
+    "tlfPlaceholder": "phone",
+    "dniPlaceholder": "DNI",
+
+    "validateHeader": "Validate code",
+    "validateButton": "Validate",
+    "codePlaceholder": "code"
   }
 }

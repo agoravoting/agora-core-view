@@ -7,7 +7,7 @@
       <div id="signupForm" class="form-horizontal">
         <div ng-repeat="field in fields.fields">
           <div class="form-group">
-              <input type="{{field.type}}" class="form-control" id={{field.name}}
+              <input type="{{field.type}}" class="form-control" ng-model="register[field.name]"
                    ng-i18next="[placeholder]avRegistration.{{field.name}}Placeholder"
                    ng-required={{field.required}} />
           </div>

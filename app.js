@@ -64,6 +64,12 @@ angular.module('agora-core-view').config(
         controller: "RegisterController"
       });
     $stateProvider
+      .state('validate', {
+          url: '/authevent/:id/validate',
+        templateUrl: 'avRegistration/validate-controller/validate-controller.html',
+        controller: "ValidateController"
+      });
+    $stateProvider
       .state('election', {
         abstract: true,
         url: '/election',

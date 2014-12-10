@@ -1,10 +1,10 @@
 angular.module('avRegistration')
-  .directive('avRegister', ['Authmethod', '$location', '$parse', function(Authmethod, $location, $parse) {
+  .directive('avValidate', ['Authmethod', '$location', function(Authmethod, $location) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+
         var splitUrl = $location.absUrl().split('/');
         var autheventid = splitUrl[splitUrl.length - 2];
-        scope.register = {};
 
         scope.view = function(id) {
             Authmethod.viewEvent(id)
@@ -23,21 +23,18 @@ angular.module('avRegistration')
         };
         scope.view(autheventid);
 
-        // Example
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
-            scope.fields = JSON.parse(authevent['metadata']);
         };
 
-        scope.signUp = function() {
-            Authmethod.signup(scope.method, autheventid, scope.register)
+        scope.validate = function() {
+            Authmethod.validate(scope.method, scope.tlf, scope.code)
                 .success(function(data) {
                     if (data.status === "ok") {
-                        scope.user = data.user;
-                        // TODO neccesary validation?
-                        $location.path('authevent/' + autheventid + '/validate');
+                        $location.path('validate/success');
                     } else {
+                        // TODO: msg try again
                         scope.status = 'Not found';
                         document.querySelector(".error").style.display = "block";
                     }
@@ -54,6 +51,7 @@ angular.module('avRegistration')
       scope: {
       },
       link: link,
-      templateUrl: 'avRegistration/register-directive/register-directive.html'
+      templateUrl: 'avRegistration/validate-directive/validate-directive.html'
     };
   }]);
+

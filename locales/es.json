@@ -135,6 +135,12 @@
     "registerHeader": "Registro",
     "registerButton": "Registrarse",
     "namePlaceholder": "nombre",
-    "phonePlaceholder": "teléfono"
+    "surnamePlaceholder": "apellido",
+    "tlfPlaceholder": "teléfono",
+    "dniPlaceholder": "DNI",
+
+    "validateHeader": "Código de validación",
+    "validateButton": "Validar",
+    "codePlaceholder": "código"
   }
 }
