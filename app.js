@@ -34,6 +34,10 @@ angular.module('jm.i18next').config(function ($i18nextProvider) {
 angular.module('agora-core-view').config(
   function($stateProvider, $urlRouterProvider, $httpProvider) {
 
+    // CSRF verification
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+
     /* App states and urls are defined here */
     $stateProvider
       .state('election.booth', {
@@ -55,7 +59,7 @@ angular.module('agora-core-view').config(
       });
     $stateProvider
       .state('register', {
-        url: '/register',
+          url: '/authevent/:id/register',
         templateUrl: 'avRegistration/register-controller/register-controller.html',
         controller: "RegisterController"
       });
