@@ -8,8 +8,8 @@ angular.module('avRegistration')
             return $http.post(backendUrl + '/api/authmethod/'+ method + '/register/' + id + '/', data);
         };
 
-        authmethod.validate = function(method, data) { //TODO: changed in authapi
-            return $http.post(backendUrl + '/api/authmethod/'+ method + '/validate/', data);
+        authmethod.validate = function(method, id, data) {
+            return $http.post(backendUrl + '/api/authmethod/'+ method + '/validate/' + id + '/', data);
         };
 
         authmethod.viewEvent = function(id) {

@@ -34,7 +34,7 @@ angular.module('avRegistration')
                 'dni': scope.dni,
                 'code': scope.code,
             };
-            Authmethod.validate(scope.method, data)
+            Authmethod.validate(scope.method, autheventid, data)
                 .success(function(data) {
                     if (data.status === "ok") {
                         $state.go('registration.success');
