@@ -1,9 +1,9 @@
 <div
   class="question padded"
-  ng-repeat="question in election.questions_data"
+  ng-repeat="question in election.questions"
   ng-click="goToQuestion($index, true)">
   <h3 class="text-brand-success">
-    {{$index + 1}}. {{question.question}}
+    {{$index + 1}}. {{question.title}}
     <div class="pull-right">
       <span class="glyphicon glyphicon-edit"></span>
     </div>
@@ -13,7 +13,7 @@
     <li
       ng-repeat="answer in question.answers | avbSelectedOptions"
       class="animate-repeat selected-answer">
-      {{answer.value}}
+      {{answer.text}}
     </li>
     <li
       ng-if="(question.answers | avbSelectedOptions).length == 0"

@@ -53,14 +53,7 @@ angular.module('avBooth')
         // first check for special election-wide layouts
         var layout = scope.election.layout;
         if (layout !== "normal") {
-          if (layout === "drafts-election") {
-            scope.setState(stateEnum.draftsElectionScreen, {
-              isLastQuestion: true,
-              reviewMode: true,
-              filter: ""
-            });
-            return;
-          } else if (layout === "pcandidates-election") {
+          if (layout === "pcandidates-election") {
             scope.setState(stateEnum.pcandidatesElectionScreen, {
               isLastQuestion: true,
               reviewMode: true,
@@ -70,17 +63,16 @@ angular.module('avBooth')
           }
         }
 
-        var question = scope.election.questions_data[n];
+        var question = scope.election.questions[n];
         var map = {
-          "MEEK-STV": stateEnum.multiQuestion,
-          "APPROVAL": stateEnum.multiQuestion
+          "plurality-at-large": stateEnum.multiQuestion
         };
         var nextState = map[question.tally_type];
 
         scope.setState(nextState, {
-          question: scope.election.questions_data[n],
+          question: scope.election.questions[n],
           questionNum: n,
-          isLastQuestion: (scope.election.questions_data.length === n + 1),
+          isLastQuestion: (scope.election.questions.length === n + 1),
           reviewMode: reviewMode,
           filter: ""
         });
@@ -213,7 +205,7 @@ angular.module('avBooth')
               scope.election = value;
               // initialize ballotClearText as a list of lists
               scope.ballotClearText = _.map(
-                scope.election.questions_data, function () { return []; });
+                scope.election.questions, function () { return []; });
               scope.setState(stateEnum.startScreen, {});
             })
             // on error, like parse error or 404

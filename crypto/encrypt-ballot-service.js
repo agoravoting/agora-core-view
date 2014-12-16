@@ -62,7 +62,6 @@
 
   auditableBallot argument of the success callback follows the format below:
   {
-    "a":"encrypted-vote-v1",
     "choices":[
       {
         "alpha":"1",
@@ -71,10 +70,8 @@
         "plaintext": "5"
       }
     ],
-    "election_hash":{"a":"hash/sha256/value","value":""},
     "issue_date":"07/11/2014",
     "pubkeys_url":"https://whatever",
-    "election_url":"https://whatever2",
     "ballot_hash":"whatever",
     "proofs":[
       {
@@ -158,7 +155,7 @@ angular.module('avCrypto')
       // convert to bool for sure
       data.verify = !!data.verify;
 
-      var numQuestions = data.election.questions_data.length;
+      var numQuestions = data.election.questions.length;
       var qNum = 0;
       var answers = [];
 
@@ -179,9 +176,9 @@ angular.module('avCrypto')
       var percent;
       try {
         for (i = 0; i < numQuestions; i++) {
-          question = data.election.questions_data[i];
+          question = data.election.questions[i];
           codec = AnswerEncoderService(question.tally_type, question.answers.length);
-          if (!codec.sanityCheck(data.election.questions_data[i])) {
+          if (!codec.sanityCheck(data.election.questions[i])) {
             sanitized = false;
             break;
           }
@@ -200,13 +197,11 @@ angular.module('avCrypto')
 
     function formatBallot(election, answers) {
       var ballot = {
-        "a": "encrypted-vote-v1",
         "proofs": [],
         "choices": [],
         "issue_date": moment().format("DD/MM/YYYY"),
-        "election_hash": {"a": "hash/sha256/value", "value": election.hash},
       };
-      for (var i = 0; i < election.questions_data.length; i++) {
+      for (var i = 0; i < election.questions.length; i++) {
         var qAnswer = answers[i];
         ballot.proofs.push({
           "commitment": qAnswer['commitment'],
@@ -223,15 +218,13 @@ angular.module('avCrypto')
 
     function formatAuditableBallot(election, answers, base_url) {
       var ballot = {
-        "a": "encrypted-vote-v1",
         "proofs": [],
         "choices": [],
         "issue_date": moment().format("DD/MM/YYYY"),
-        "election_hash": {"a": "hash/sha256/value", "value": election.hash},
         "election_url": ConfigService.baseUrl + "election/" + election.id + "/config",
         "pubkeys_url": ConfigService.baseUrl + "election/" + election.id + "/pubkeys"
       };
-      for (var i = 0; i < election.questions_data.length; i++) {
+      for (var i = 0; i < election.questions.length; i++) {
         var qAnswer = answers[i];
         ballot.proofs.push({
           "commitment": qAnswer['commitment'],
@@ -267,7 +260,7 @@ angular.module('avCrypto')
         }
 
         // initialization
-        question = data.election.questions_data[i];
+        question = data.election.questions[i];
         percent = Math.floor(
           (100*i*iterationSteps) / (numQuestions*iterationSteps));
 

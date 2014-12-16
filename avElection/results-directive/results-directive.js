@@ -14,11 +14,11 @@ angular.module('avElection')
         scope.electionDataUrl = ConfigService.baseUrl + "election/" + $stateParams.id + "/results";
 
         // generate share links
-        var shortedTitle = scope.election.pretty_name;
+        var shortedTitle = scope.election.title;
         if (shortedTitle.length > 64) {
           shortedTitle = shortedTitle.substr(0, 64) + "..";
         }
-        var shareText = $i18next("avElection.resultsHeader", {title: scope.election.pretty_name}) + " " + $location.absUrl();
+        var shareText = $i18next("avElection.resultsHeader", {title: scope.election.title}) + " " + $location.absUrl();
         scope.electionTwitterUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareText);
         scope.electionFacebookUrl = "https://twitter.com/home?status=" + encodeURIComponent(shareText);
 

@@ -5,34 +5,20 @@ angular.module('avBooth')
   .directive('avbPcandidatesCell', function($filter) {
 
     var link = function(scope, element, attrs) {
-      scope.question_slug = attrs.avbPcandidatesCell;
-      scope.candidates = scope.$parent.team[scope.question_slug];
+      scope.question_index = parseInt(attrs.avbPcandidatesCell);
+      scope.team = scope.$parent.$parent.team;
+      scope.candidates = scope.team.options[scope.question_index];
       scope.candidates.selected = $filter("avbCountSelectedOptions")(scope.candidates);
 
-      if (scope.question_slug === "secretario") {
-        scope.question = "Secretaría General";
-      }
-      else if (scope.question_slug === "consejo") {
-        scope.question = "Consejo Ciudadano";
-      }
-      else if (scope.question_slug === "garantias") {
-        scope.question = "Comisión de Garantías";
-      }
+      scope.question_title = scope.$parent.question.title;
 
       scope.isOpenCell = function () {
-        if (scope.question_slug === "garantias") {
-          return scope.$parent.team.isOpenGarantias;
-        } else {
-          return scope.$parent.team.isOpenConsejo;
-        }
+        return scope.team["isOpen" + scope.question_index];
       };
 
       scope.toggleOpenCell = function () {
-        if (scope.question_slug === "garantias") {
-          scope.$parent.team.isOpenGarantias = !scope.$parent.team.isOpenGarantias;
-        } else {
-          scope.$parent.team.isOpenConsejo = !scope.$parent.team.isOpenConsejo;
-        }
+        scope.team["isOpen" + scope.question_index] =
+          !scope.team["isOpen" + scope.question_index];
       };
     };
 

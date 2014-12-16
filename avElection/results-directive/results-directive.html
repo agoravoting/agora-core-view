@@ -1,7 +1,9 @@
+<div class="row" ng-if="!inside_iframe">
+</div>
 <div class="container">
-  <div class="row">
+  <div class="row" ng-if="!inside_iframe">
     <div class="pull-left">
-      <h1 ng-i18next="[i18next]({title: election.pretty_name})avElection.resultsHeader"></h1>
+      <h1 ng-i18next="[i18next]({title: election.title})avElection.resultsHeader"></h1>
       <p>
         <a
           href="{{electionDataUrl}}"

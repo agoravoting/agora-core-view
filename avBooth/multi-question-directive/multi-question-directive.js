@@ -11,7 +11,7 @@ angular.module('avBooth')
       scope.stateData.affixDropDownShown = false;
       scope.numSelectedOptions = function () {
         return _.filter(
-          scope.election.questions_data[scope.stateData.questionNum].answers,
+          scope.election.questions[scope.stateData.questionNum].answers,
           function (element) {
             return element.selected > -1;
           }).length;

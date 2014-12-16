@@ -33,7 +33,7 @@ angular.module('avCrypto')
 
     return function (requestedCodec, numAvailableOptions) {
       var multi = {
-        validCodecs: ["APPROVAL", "MEEK-STV"],
+        validCodecs: ["plurality-at-large"],
         numAvailableOptions: numAvailableOptions,
 
         /**

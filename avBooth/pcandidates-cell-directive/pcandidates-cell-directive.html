@@ -10,9 +10,9 @@
   class="has-data"
   ng-if="candidates.length == 1"
   ng-class="{selected: candidates.selected > 0}"
-  ng-click="toggleCell(team, question_slug)">
-  <span class="label label-default label-category">{{question}}</span>
-  <span>{{candidates[0].value}}</span>
+  ng-click="toggleCell(team, question_index)">
+  <span class="label label-default label-category">{{question_title}}</span>
+  <span>{{candidates[0].text}}</span>
 </div>
 
 <!-- shown when the team includes multiple candidates in this column -->
@@ -20,13 +20,13 @@
   class="has-data"
   ng-if="candidates.length > 1"
   ng-class="{selected: candidates.selected > 0}">
-  <span class="label label-default label-category">{{question}}</span>
+  <span class="label label-default label-category">{{question_title}}</span>
   <div
     class="has-data-wrapper"
-    ng-click="toggleCell(team, question_slug)">
+    ng-click="toggleCell(team, question_index)">
     <span
       class="first-candidate"
-      ng-i18next="[i18next]({name: candidates[0].value})avBooth.firstCandidateOfMany">
+      ng-i18next="[i18next]({name: candidates[0].text})avBooth.firstCandidateOfMany">
     </span>
     <span class="num-selected"
       ng-i18next="[i18next]({selected: candidates.selected, total: candidates.length})avBooth.numCandidatesSelected">
@@ -46,10 +46,10 @@
   <div
     class="candidates-list"
     ng-if="isOpenCell()">
-    <span class="label label-default label-category">{{question}}</span>
+    <span class="label label-default label-category">{{question_title}}</span>
     <h4
       ng-i18next="avBooth.candidatesTitle"
-      ng-click="toggleCell(team, question_slug)">
+      ng-click="toggleCell(team, question_index)">
     </h4>
     <div
       class="candidate"
@@ -60,7 +60,7 @@
         class="glyphicon"
         ng-class="{'glyphicon glyphicon-check': cand.selected > -1, 'glyphicon glyphicon-unchecked': cand.selected === -1}">
       </span>
-      <span>{{cand.value}}</span>
+      <span>{{cand.text}}</span>
     </div>
   </div>
 </div>

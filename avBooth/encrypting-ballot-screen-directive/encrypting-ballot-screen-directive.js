@@ -80,7 +80,7 @@ angular.module('avBooth')
               scope.showError($i18next("avBooth.sanityChecksFailed",
                 {msg:message}));
             } else {
-              scope.showError($i18next("avBooth.errorSendingBallotUnknown",
+              scope.showError($i18next("avBooth.errorCastingBallotUnknown",
                 {msg:message}));
             }
           },

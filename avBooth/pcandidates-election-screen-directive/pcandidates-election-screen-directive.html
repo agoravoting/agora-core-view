@@ -20,7 +20,7 @@
   <div class="navbar-unfixed-top text-center">
     <div class="container">
       <div class="hidden unfixed-top-height"></div>
-      <h1>{{election.pretty_name}}</h1>
+      <h1>{{election.title}}</h1>
     </div>
   </div>
 </div>
@@ -86,47 +86,18 @@
         <div class="title-help important" ng-i18next="avBooth.helpTextViewSingleCandidates"></div>
         <div class="title-help" ng-i18next="avBooth.helpTextViewCell"></div>
       </div>
-      <div class="hidden-xs col-xs-2 affix-docs-header"
-        ng-class="{titleSelected: stateData.selectionDropDown}">
-        Secretaría General
+      <div class="hidden-xs col-xs-{{6 / election.questions.length}} affix-docs-header"
+        ng-class="{titleSelected: stateData.selectionDropDown}"
+        ng-repeat="question in election.questions">
+        {{question.title}}
         <div
           class="title-help"
-          ng-i18next="[i18next]({selected: numSelectedBySlug('secretario'), count: numTotalBySlug('secretario')})avBooth.totalsQuestionColumn">
+          ng-i18next="[i18next]({selected: numSelectedByQuestionIndex($index), count: numTotalByQuestionIndex($index)})avBooth.totalsQuestionColumn">
         </div>
         <div
           class="randomize-column"
           ng-class="{hidden: stateData.selectionDropDown}"
-          ng-click="randomizeByColumn('secretario')">
-           <span class="glyphicon glyphicon-sort-by-attributes"></span>
-           <span ng-i18next="avBooth.randomizeColumn"></span>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 affix-docs-header"
-        ng-class="{titleSelected: stateData.selectionDropDown}">
-        Consejo Ciudadano
-        <div
-          class="title-help"
-          ng-i18next="[i18next]({selected: numSelectedBySlug('consejo'), count: numTotalBySlug('consejo')})avBooth.totalsQuestionColumn">
-        </div>
-        <div
-          class="randomize-column"
-          ng-class="{hidden: stateData.selectionDropDown}"
-          ng-click="randomizeByColumn('consejo')">
-           <span class="glyphicon glyphicon-sort-by-attributes"></span>
-           <span ng-i18next="avBooth.randomizeColumn"></span>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 affix-docs-header"
-        ng-class="{titleSelected: stateData.selectionDropDown}">
-        Comisión de Garantías
-        <div
-          class="title-help"
-          ng-i18next="[i18next]({selected: numSelectedBySlug('garantias'), count: numTotalBySlug('garantias')})avBooth.totalsQuestionColumn">
-        </div>
-        <div
-          class="randomize-column"
-          ng-click="randomizeByColumn('garantias')"
-          ng-class="{hidden: stateData.selectionDropDown}">
+          ng-click="randomizeByColumn($index)">
            <span class="glyphicon glyphicon-sort-by-attributes"></span>
            <span ng-i18next="avBooth.randomizeColumn"></span>
         </div>

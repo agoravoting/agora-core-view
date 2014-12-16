@@ -52,7 +52,7 @@ angular.module('avBooth')
               return true;
             }
 
-            var text = removeAccents(item.value.toLowerCase());
+            var text = removeAccents(item.text.toLowerCase());
             var filter = removeAccents(scope.filter.toLowerCase());
             return text.indexOf(filter) > -1;
         }
