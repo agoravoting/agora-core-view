@@ -11,6 +11,8 @@ angular.module('avElection')
       };
       if (scope.question.layout in supportedLayouts) {
         $state.go("election.results.show." + supportedLayouts[scope.question.layout]);
+      } if (scope.$parent.election.layout === "pcandidates-election") {
+        $state.go("election.results.show." + supportedLayouts["pcandidates-election"]);
       } else {
         $state.go("election.results.show.unknown");
       }
