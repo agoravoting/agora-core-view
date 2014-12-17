@@ -1,0 +1,27 @@
+<div class="navbar-unfixed-top text-center admintop">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <span ng-bind="admin"></span> |
+            <a href="#" ng-i18next="avRegistration.logout"></a>
+        </div>
+        <div class="hidden unfixed-top-height"></div>
+        <h1 class="ng-binding">
+            <span ng-i18next="avAdmin.admin"></span> /
+            <span ng-i18next="avAdmin.elections"></span>
+        </h1>
+    </div>
+</div>
+
+<div class="container-fluid adminlist">
+    <div class="list-group">
+      <a href="#" class="list-group-item active" ng-repeat="election in elections">
+        <h4 class="list-group-item-heading">{{ election.description }}</h4>
+        <p class="list-group-item-text">
+            id: {{ election.id }}<br/>
+            layout: {{ election.layout }}
+        </p>
+      </a>
+    </div>
+
+    <a href="#" class="btn btn-block btn-lg btn-plain btn-success" ng-i18next="avAdmin.newElection"></a>
+</div>

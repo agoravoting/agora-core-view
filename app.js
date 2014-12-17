@@ -14,6 +14,7 @@ angular.module(
   'avRegistration',
   'avTest',
   'avCrypto',
+  'avAdmin',
   'avElection'
 ]);
 
@@ -82,6 +83,19 @@ angular.module('agora-core-view').config(
       .state('registration.error', {
         templateUrl: 'avRegistration/error.html'
       });
+    // Admin interface
+    $stateProvider
+      .state('admin', {
+        abstract: true,
+        url: '/admin',
+        template: '<div ui-view></div>'
+      })
+      .state('admin.elections', {
+        url: '/elections',
+        templateUrl: 'avAdmin/elections-controller/elections-controller.html',
+        controller: "ElectionsController"
+      });
+    // END of Admin interface
     $stateProvider
       .state('election', {
         abstract: true,

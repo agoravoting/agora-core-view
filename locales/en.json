@@ -124,6 +124,7 @@
   },
   "avRegistration": {
     "loginHeader": "Enter",
+    "logout": "Logout",
     "emailPlaceholder": "email",
     "passwordPlaceholder": "password",
     "notRegisteredYet": "Are you not registered yet?",
@@ -145,5 +146,11 @@
     "loadingRegistration": "Loading",
     "successRegistration": "Success",
     "errorRegistration": "Error"
+  },
+
+  "avAdmin": {
+    "admin": "Admin",
+    "elections": "Elections",
+    "newElection": "New election"
   }
 }

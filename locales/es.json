@@ -126,6 +126,7 @@
   },
   "avRegistration": {
     "loginHeader": "Entrar",
+    "logout": "Salir",
     "emailPlaceholder": "email",
     "passwordPlaceholder": "contraseña",
     "notRegisteredYet": "¿Aún no te has registrado?",
@@ -147,5 +148,11 @@
     "loadingRegistration": "Cargando",
     "successRegistration": "Exitoso",
     "errorRegistration": "Error"
+  },
+
+  "avAdmin": {
+    "admin": "Admin",
+    "elections": "Votaciones",
+    "newElection": "Nueva votación"
   }
 }
