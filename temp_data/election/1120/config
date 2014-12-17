@@ -28,6 +28,13 @@
                     "details": "",
                     "id": 1,
                     "sort_order": 1,
+                    "text": "Sutanito",
+                    "urls": []
+                },
+                {
+                    "details": "",
+                    "id": 2,
+                    "sort_order": 2,
                     "text": "Menganito",
                     "urls": []
                 }
@@ -63,24 +70,24 @@
                 {
                     "category": "Otra cosa",
                     "details": "",
-                    "id": 0,
-                    "sort_order": 0,
+                    "id": 2,
+                    "sort_order": 2,
                     "text": "Pepito",
                     "urls": []
                 },
                 {
                     "category": "Otra cosa",
                     "details": "",
-                    "id": 1,
-                    "sort_order": 1,
+                    "id": 3,
+                    "sort_order": 3,
                     "text": "Juanito",
                     "urls": []
                 }
             ],
             "description": "Elige los miembros del Consejo Ciudadano",
             "layout": "accordion",
-            "max": "7",
-            "min": "0",
+            "max": "3",
+            "min": "1",
             "num_winners": "7",
             "randomize_answer_order": true,
             "tally_type": "plurality-at-large",
