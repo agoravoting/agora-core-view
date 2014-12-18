@@ -154,7 +154,6 @@
     "newElection": "New election",
     "layout": "Layout",
     "questions": "Questions",
-    "votingSystem": "Voting system",
     "start": "start",
     "finish": "finish",
     "edit": "edit",
@@ -164,6 +163,16 @@
     "tally": "In tally",
     "notstarted": "Not started",
     "started": "Started",
-    "done": "Done"
+    "done": "Done",
+    "form": {
+        "name": "Name",
+        "description": "Description",
+        "questions": "Questions",
+        "newQuestion": "Add Question",
+        "qText": "Question text",
+        "qVotingSystem": "Voting system",
+        "qOptions": "Options",
+        "save": "Save"
+    }
   }
 }

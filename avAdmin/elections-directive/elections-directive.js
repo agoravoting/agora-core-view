@@ -18,10 +18,10 @@ angular.module('avAdmin')
                         scope.status = 'Not found';
                         document.querySelector(".error").style.display = "block";
                     }
-                //})
-                //.error(function(error) {
-                //    scope.status = 'Scan error: ' + error.message;
-                //    document.querySelector(".error").style.display = "block";
+                })
+                .error(function(error) {
+                    scope.status = 'Scan error: ' + error.message;
+                    document.querySelector(".error").style.display = "block";
                 });
         };
 

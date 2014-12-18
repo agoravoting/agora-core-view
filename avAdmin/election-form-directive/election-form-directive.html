@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="av-admin-form">
+        <div class="election-id" ng-if="id">id: <span ng-model="election.id"></span></div>
+        <form novalidate class="form" role="form">
+            <div class="form-group">
+                <label for="name" ng-i18next="avAdmin.form.name"></label>
+                <input type="text" class="form-control" id="name" ng-model="election.title"/>
+            </div>
+            <div class="form-group">
+                <label for="desc" ng-i18next="avAdmin.form.description"></label>
+                <textarea id="desc" class="form-control" ng-model="election.description"></textarea>
+            </div>
+            <div av-questions questions="election.questions">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="av-admin-form-buttons">
+    <!-- buttons -->
+    <a href="#" role="button" class="btn btn-primary btn-block btn-plain">
+        <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        <span ng-i18next="avAdmin.form.save"></span>
+    </a>
+</div>
+

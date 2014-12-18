@@ -156,7 +156,6 @@
     "newElection": "Nueva votación",
     "layout": "Diseño",
     "questions": "Preguntas",
-    "votingSystem": "Sistema de votación",
     "start": "comenzar",
     "finish": "terminar",
     "edit": "editar",
@@ -166,6 +165,16 @@
     "tally": "En recuento",
     "notstarted": "No comenzada",
     "started": "En votación",
-    "done": "Terminada"
+    "done": "Terminada",
+    "form": {
+        "name": "Nombre",
+        "description": "Descripción",
+        "questions": "Preguntas",
+        "newQuestion": "Añadir pregunta",
+        "qText": "Texto de la pregunta",
+        "qVotingSystem": "Sistema de votación",
+        "qOptions": "Opciones",
+        "save": "Guardar"
+    }
   }
 }
