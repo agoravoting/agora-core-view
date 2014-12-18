@@ -22,9 +22,31 @@ angular.module('avAdmin')
             return false;
         }
 
+        function newOption() {
+            if (!scope.options) {
+                scope.options = [];
+            }
+
+            var option = {};
+            option.text = $("#options").val();
+
+            // reset
+            $("#options").val("");
+
+            scope.options.push(option);
+            return false;
+        }
+
+        function rmOption(index) {
+            scope.options.splice(index, 1);
+            return false;
+        }
+
         angular.extend(scope, {
           newQuestion: newQuestion,
           rmQuestion: rmQuestion,
+          newOption: newOption,
+          rmOption: rmOption,
         });
     }
 

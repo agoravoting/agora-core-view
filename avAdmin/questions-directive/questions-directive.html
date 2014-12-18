@@ -1,6 +1,8 @@
 <div class="av-admin-questions">
     <h2 ng-i18next="avAdmin.form.questions"></h2>
     <div class="questions">
+
+        <!-- TODO show all options on click -->
         <div class="question" ng-repeat="q in questions">
             <div class="row">
                 <div class="col-xs-11">
@@ -13,11 +15,13 @@
                 </div>
             </div>
         </div>
+
         <div class="newquestion">
             <div class="form-group">
                 <label for="text" ng-i18next="avAdmin.form.qText"></label>
                 <textarea id="text" class="form-control"></textarea>
             </div>
+            <!--
             <div class="form-group">
                 <label for="method" ng-i18next="avAdmin.form.qVotingSystem"></label>
                 <select class="form-control" id="method">
@@ -25,19 +29,27 @@
                     <option>VUT</option>
                 </select>
             </div>
+            -->
             <div class="form-group">
                 <label for="options" ng-i18next="avAdmin.form.qOptions"></label>
 
                 <div class="input-group">
-                    <input type="text" class="form-control" id="options"/>
+                    <input type="text" class="form-control" id="options" ng-enter="newOption()"/>
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-primary" type="button" ng-click="newOption()">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                     </span>
                 </div>
 
-                <input type="text" class="form-control" value="{{ o.text }}" ng-repeat="o in question.options"/>
+                <div class="input-group" ng-repeat="o in options">
+                    <input type="text" class="form-control" ng-model="o.text"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" ng-click="rmOption($index)">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
 
             </div>
             <button class="btn btn-block btn-plain btn-success" ng-i18next="avAdmin.form.newQuestion" ng-click="newQuestion()"></button>
