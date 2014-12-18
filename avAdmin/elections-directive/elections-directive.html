@@ -13,15 +13,66 @@
 </div>
 
 <div class="container-fluid adminlist">
-    <div class="list-group">
-      <a href="#" class="list-group-item active" ng-repeat="election in elections">
-        <h4 class="list-group-item-heading">{{ election.description }}</h4>
-        <p class="list-group-item-text">
-            id: {{ election.id }}<br/>
-            layout: {{ election.layout }}
-        </p>
-      </a>
-    </div>
+      <div class="row adminelection" ng-repeat="election in elections">
+        <div class="col-sm-8">
+            <div class="election-heading">
+                <h4>{{ election.title }} (<span class="status" ng-i18next="avAdmin.{{election.status}}"></span>)</h4>
+            </div>
+            <p class="election-text">
+                id: {{ election.id }} |
+                <span ng-i18next="avAdmin.layout"></span>: {{ election.layout }} |
+                <span ng-i18next="avAdmin.questions"></span>: {{ election.questions.length }}
+            </p>
+        </div> <!-- endof content column -->
+        <div class="col-sm-4 election-buttons">
+            <!-- buttons -->
+            <div class="btn-group-vertical btn-block" role="group">
+              <a href="#" role="button" class="btn btn-success"
+                ng-if="election.status == 'notstarted'">
+                  <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                  <span ng-i18next="avAdmin.start"></span>
+              </a>
 
-    <a href="#" class="btn btn-block btn-lg btn-plain btn-success" ng-i18next="avAdmin.newElection"></a>
+              <a href="#" role="button" class="btn btn-success"
+                ng-if="election.status != 'notstarted'">
+                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                  {{election.start_date|date:'medium'}}
+              </a>
+              <a href="#" role="button" class="btn btn-danger"
+                ng-if="election.status == 'done' || election.status == 'tally'">
+                  <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                  {{election.end_date|date:'medium'}}
+              </a>
+
+              <a href="#" role="button" class="btn btn-warning"
+                ng-if="election.status == 'notstarted'">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                  <span ng-i18next="avAdmin.edit"></span>
+              </a>
+              <a href="#" role="button" class="btn btn-danger"
+                ng-if="election.status == 'notstarted'">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  <span ng-i18next="avAdmin.remove"></span>
+              </a>
+
+              <a href="#" role="button" class="btn btn-danger"
+                ng-if="election.status == 'started'">
+                  <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                  <span ng-i18next="avAdmin.finish"></span>
+              </a>
+
+              <a href="#" role="button" class="btn btn-primary"
+                ng-if="election.status == 'started'">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span ng-i18next="avAdmin.view"></span>
+              </a>
+              <a href="#" role="button" class="btn btn-primary"
+                ng-if="election.status == 'done'">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span ng-i18next="avAdmin.results"></span>
+              </a>
+            </div>
+        </div> <!-- endof buttons column -->
+      </div> <!-- endof row -->
+    <a href="#" class="btn-bottom btn btn-block btn-lg btn-plain btn-success" ng-i18next="avAdmin.newElection"></a>
 </div>

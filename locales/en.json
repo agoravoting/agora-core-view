@@ -151,6 +151,19 @@
   "avAdmin": {
     "admin": "Admin",
     "elections": "Elections",
-    "newElection": "New election"
+    "newElection": "New election",
+    "layout": "Layout",
+    "questions": "Questions",
+    "votingSystem": "Voting system",
+    "start": "start",
+    "finish": "finish",
+    "edit": "edit",
+    "remove": "remove",
+    "view": "view election",
+    "results": "view results",
+    "tally": "In tally",
+    "notstarted": "Not started",
+    "started": "Started",
+    "done": "Done"
   }
 }

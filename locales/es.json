@@ -153,6 +153,19 @@
   "avAdmin": {
     "admin": "Admin",
     "elections": "Votaciones",
-    "newElection": "Nueva votación"
+    "newElection": "Nueva votación",
+    "layout": "Diseño",
+    "questions": "Preguntas",
+    "votingSystem": "Sistema de votación",
+    "start": "comenzar",
+    "finish": "terminar",
+    "edit": "editar",
+    "remove": "eliminar",
+    "view": "ir a votación",
+    "results": "ver resultados",
+    "tally": "En recuento",
+    "notstarted": "No comenzada",
+    "started": "En votación",
+    "done": "Terminada"
   }
 }
