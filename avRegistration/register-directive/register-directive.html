@@ -3,7 +3,7 @@
     <div class="col-xs-offset-4 col-xs-4">
     <h1 class="text-center">{{name}}</h1>
     <h1 ng-i18next="avRegistration.registerHeader" class="text-center"></h1>
-    <form role="form">
+    <form name="form" role="form">
       <div id="signupForm" class="form-horizontal">
         <div ng-repeat="field in fields.fields">
           <div class="form-group">
@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <button class="btn btn-block" ng-i18next="avRegistration.registerButton" ng-click="signUp()">
+      <button type="submit" class="btn btn-block" ng-i18next="avRegistration.registerButton" ng-click="signUp(form.$valid)">
       </button>
     </form>
   </div>

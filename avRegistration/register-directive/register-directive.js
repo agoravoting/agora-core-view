@@ -29,7 +29,10 @@ angular.module('avRegistration')
             scope.fields = JSON.parse(authevent['metadata']);
         };
 
-        scope.signUp = function() {
+        scope.signUp = function(valid) {
+            if (!valid) {
+                return;
+            }
             Authmethod.signup(scope.method, autheventid, scope.register)
                 .success(function(data) {
                     if (data.status === "ok") {
