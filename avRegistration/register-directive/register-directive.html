@@ -9,7 +9,7 @@
           <div class="form-group">
               <input type="{{field.type}}" class="form-control" ng-model="register[field.name]"
                    ng-i18next="[placeholder]avRegistration.{{field.name}}Placeholder"
-                   ng-required={{field.required}} />
+                   ng-required={{field.required}} ng-pattern="patterns( field.name )" />
           </div>
         </div>
       </div>

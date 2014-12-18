@@ -29,6 +29,16 @@ angular.module('avRegistration')
             scope.fields = JSON.parse(authevent['metadata']);
         };
 
+        scope.patterns = function(name) {
+            if (name === 'dni') {
+                return /^\d{7,8}[a-zA-Z]{1}$/i;
+            } else if (name === 'mail' || name === 'email') {
+                return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            } else {
+                return /.*/;
+            }
+        };
+
         scope.signUp = function(valid) {
             if (!valid) {
                 return;
