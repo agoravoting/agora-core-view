@@ -2,11 +2,12 @@
     <h2 ng-i18next="avAdmin.form.questions"></h2>
     <div class="questions">
 
-        <!-- TODO show all options on click -->
         <div class="question" ng-repeat="q in questions">
-            <div class="row">
+            <div class="row qshort" id="s{{ $index }}">
                 <div class="col-xs-11">
-                    #{{ $index + 1 }}. {{ q.title }}
+                    <a href="" ng-click="showQuestion($index)">
+                    #{{ $index + 1 }}. {{ q.title|limitTo:100 }}...
+                    </a>
                 </div>
                 <div class="col-xs-1">
                     <div ng-click="rmQuestion($index)" class="closebutton pull-right">
@@ -14,45 +15,20 @@
                     </div>
                 </div>
             </div>
+            <div class="qform hidden" id="q{{ $index }}">
+                <div av-question question="q"></div>
+                <div class="error" ng-repeat="e in q.errors"> {{ e }} </div>
+                <button class="btn btn-block btn-plain btn-primary" ng-i18next="avAdmin.form.saveQuestion" ng-click="saveQuestion($index)"></button>
+            </div>
         </div>
 
         <div class="newquestion">
-            <div class="form-group">
-                <label for="text" ng-i18next="avAdmin.form.qText"></label>
-                <textarea id="text" class="form-control"></textarea>
+            <div id="nq">
+                <div class="nq" av-question question="newquestion"></div>
+                <div class="error" ng-repeat="e in newquestion.errors"> {{ e }} </div>
+                <button class="btn btn-block btn-plain btn-success" ng-i18next="avAdmin.form.saveQuestion" ng-click="saveQuestion()"></button>
             </div>
-            <!--
-            <div class="form-group">
-                <label for="method" ng-i18next="avAdmin.form.qVotingSystem"></label>
-                <select class="form-control" id="method">
-                    <option>plurality at large</option>
-                    <option>VUT</option>
-                </select>
-            </div>
-            -->
-            <div class="form-group">
-                <label for="options" ng-i18next="avAdmin.form.qOptions"></label>
-
-                <div class="input-group">
-                    <input type="text" class="form-control" id="options" ng-enter="newOption()"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button" ng-click="newOption()">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button>
-                    </span>
-                </div>
-
-                <div class="input-group" ng-repeat="o in options">
-                    <input type="text" class="form-control" ng-model="o.text"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button" ng-click="rmOption($index)">
-                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                        </button>
-                    </span>
-                </div>
-
-            </div>
-            <button class="btn btn-block btn-plain btn-success" ng-i18next="avAdmin.form.newQuestion" ng-click="newQuestion()"></button>
+            <button id="newq" class="btn btn-block btn-plain btn-success" ng-i18next="avAdmin.form.newQuestion" ng-click="newQuestion()"></button>
         </div>
     </div>
 </div>

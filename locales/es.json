@@ -171,6 +171,16 @@
         "description": "Descripción",
         "questions": "Preguntas",
         "newQuestion": "Añadir pregunta",
+        "saveQuestion": "Guardar pregunta",
+        "q": {
+            "titleError": "Introduce un título válido",
+            "optionsError": "Añade al menos una opción"
+        },
+        "el": {
+            "titleError": "Introduce un título de votación válido",
+            "descriptionError": "Introduce una descripción de votación válida",
+            "questionsError": "Añade al menos una pregunta"
+        },
         "qText": "Texto de la pregunta",
         "qVotingSystem": "Sistema de votación",
         "qOptions": "Opciones",

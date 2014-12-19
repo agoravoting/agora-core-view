@@ -17,10 +17,11 @@
 </div>
 
 <div class="av-admin-form-buttons">
+    <div class="error" ng-repeat="e in election.errors"> {{ e }} </div>
     <!-- buttons -->
-    <a href="#" role="button" class="btn btn-primary btn-block btn-plain">
+    <button role="button" class="btn btn-primary btn-block btn-plain" ng-click="saveElection()">
         <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
         <span ng-i18next="avAdmin.form.save"></span>
-    </a>
+    </button>
 </div>
 

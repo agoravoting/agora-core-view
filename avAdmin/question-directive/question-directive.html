@@ -1,0 +1,34 @@
+<div class="form-group">
+    <label ng-i18next="avAdmin.form.qText"></label>
+    <textarea class="qtext form-control" ng-model="question.title"></textarea>
+</div>
+<!--
+<div class="form-group">
+    <label ng-i18next="avAdmin.form.qVotingSystem"></label>
+    <select class="form-control qmethod">
+        <option>plurality at large</option>
+        <option>VUT</option>
+    </select>
+</div>
+-->
+<div class="form-group">
+    <label for="options" ng-i18next="avAdmin.form.qOptions"></label>
+
+    <div class="input-group">
+        <input type="text" class="form-control newopt" ng-enter="newOption()"/>
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" ng-click="newOption()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </span>
+    </div>
+
+    <div class="input-group" ng-repeat="o in question.answers">
+        <input type="text" class="form-control opt" ng-model="o.text"/>
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" ng-click="rmOption($index)">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+        </span>
+    </div>
+</div>
