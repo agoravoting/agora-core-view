@@ -99,11 +99,11 @@ angular.module('agora-core-view').config(
         url: '/new',
         templateUrl: 'avAdmin/new-election-controller/new-election-controller.html',
         controller: "NewElectionController"
-      //})
-      //.state('admin.elections.edit', {
-      //  url: '/edit/:id',
-      //  templateUrl: 'avRegistration/register-controller/register-controller.html',
-      //  controller: "RegisterController"
+      })
+      .state('admin.editelection', {
+        url: '/edit/:id',
+        templateUrl: 'avAdmin/edit-election-controller/edit-election-controller.html',
+        controller: "EditElectionController"
       });
     // END of Admin interface
     $stateProvider

@@ -22,5 +22,9 @@ angular.module('avAdmin')
             return $http.get(backendUrl + '/elections');
         };
 
+        electionsapi.election = function(adminid, adminauth, id) {
+            return $http.get(backendUrl + '/election/'+id+'/config');
+        };
+
         return electionsapi;
     }]);
