@@ -28,16 +28,14 @@ angular.module('avBooth')
           scope.percentCompleted = options.percentageCompleted;
         }
       }
-      // delay in millisecs
-      var delay = 500;
 
-      function encryptBallot() {
+      function castBallot() {
         var castingInfo = {
           election: scope.election,
           pubkeys: scope.pubkeys,
           statusUpdate: statusUpdateFunc,
           authorizationHeader: scope.authorizationHeader,
-          castBallotUrl: scope.baseUrl + "election/" + scope.electionId + "/vote/" + scope.voterId,
+          castBallotUrl: scope.baseUrl + "election/" + scope.electionId + "/voter/" + scope.voterId,
           encryptedBallot: scope.stateData.encryptedBallot,
 
           // on success, we first then try to submit, then once submitted we
@@ -70,25 +68,25 @@ angular.module('avBooth')
             }
           },
           verify: false,
-          delay: delay
         };
         CastBallotService(castingInfo);
       }
 
-      $timeout(function () {
-        if (InsideIframeService()) {
-        scope.setAuthorizationReceiver(encryptBallot);
-        $window.top.postMessage(
-          "avRequestAuthorization:" +
-          angular.toJson({
-            permission: "vote",
-            object_type: "election",
-            object_id: scope.electionId
-          }), '*');
-        } else {
-          encryptBallot();
-        }
-      }, delay);
+      if (InsideIframeService()) {
+        scope.setAuthorizationReceiver(castBallot, function() {
+          scope.showError($i18next("avBooth.couldntSendBallotUnauthorized",
+            {msg:"error-receiving-hmac"}));
+        });
+      $window.top.postMessage(
+        "avRequestAuthorization:" +
+        angular.toJson({
+          permission: "vote",
+          object_type: "election",
+          object_id: scope.electionId
+        }), '*');
+      } else {
+        castBallot();
+      }
     }
 
     return {

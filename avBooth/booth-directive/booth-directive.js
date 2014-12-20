@@ -199,10 +199,11 @@ angular.module('avBooth')
 
       function retrieveElectionConfig() {
         try {
-          $http.get(scope.baseUrl + "election/" + scope.electionId + "/config")
+          $http.get(scope.baseUrl + "election/" + scope.electionId)
             // on success
             .success(function(value) {
-              scope.election = value;
+              scope.election = angular.fromJson(value.payload.configuration);
+              scope.pubkeys = angular.fromJson(value.payload.pks);
               // initialize ballotClearText as a list of lists
               scope.ballotClearText = _.map(
                 scope.election.questions, function () { return []; });
@@ -212,23 +213,11 @@ angular.module('avBooth')
             .error(function (error) {
               showError($i18next("avBooth.errorLoadingElection"));
             });
-
-          $http.get(scope.baseUrl + "election/" + scope.electionId + "/pubkeys")
-            // on success
-            .success(function(value) {
-              scope.pubkeys = value;
-            })
-            // on error, like parse error or 404
-            .error(function (error) {
-              // TODO: in order to remove race condition with the other showError
-              // errorLoadingElection, we comment this for now
-              // showError($i18next("avBooth.errorLoadingElectionPubKeys"));
-            });
         } catch (error) {
           showError($i18next("avBooth.errorLoadingElection"));
         }
       }
-      function avPostAuthorization(e) {
+      function avPostAuthorization(e, errorHandler) {
         var action = "avPostAuthorization:";
         if (e.data.substr(0, action.length) !== action) {
           return;
@@ -237,41 +226,28 @@ angular.module('avBooth')
         var khmacStr = e.data.substr(action.length, e.data.length);
         var khmac = HmacService.checkKhmac(khmacStr);
         if (!khmac) {
+          scope.authorizationReceiverErrorHandler();
           showError($i18next("avBooth.errorLoadingElection"));
           return;
         }
-        scope.authorizationHeader = khmac.message + ":" + khmac.digest;
+        scope.authorizationHeader = khmacStr;
         var splitMessage = khmac.message.split(":");
 
-        if (splitMessage.length < 2) {
-          showError($i18next("avBooth.errorLoadingElection"));
+        if (splitMessage.length < 4) {
+          scope.authorizationReceiverErrorHandler();
           return;
         }
-        scope.voterId = splitMessage[0].split("-")[2];
+        scope.voterId = splitMessage[0];
         scope.authorizationReceiver();
         scope.authorizationReceiver = null;
       }
-      scope.setAuthorizationReceiver = function (callback) {
+      scope.setAuthorizationReceiver = function (callback, errorCallback) {
         scope.authorizationReceiver = callback;
+        scope.authorizationReceiverErrorHandler = errorCallback;
       };
 
-      // load election on background
-      if (scope.authorizationHeader.length < 70) {
-        // we need to request our authorization to the parent window using
-        // web messaging
-        $window.addEventListener('message', avPostAuthorization, false);
-
-        scope.setAuthorizationReceiver(retrieveElectionConfig);
-        $window.top.postMessage(
-          "avRequestAuthorization:" +
-          angular.toJson({
-            permission: "vote",
-            object_type: "election",
-            object_id: scope.electionId
-          }), '*');
-      } else {
-        retrieveElectionConfig();
-      }
+      $window.addEventListener('message', avPostAuthorization, false);
+      retrieveElectionConfig();
     }
 
 

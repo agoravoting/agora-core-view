@@ -37,12 +37,12 @@ angular.module('avCrypto')
 
     /**
      * This function checks a keyed hmac Url. Here's an example:
-     * > checkKhmac("khmac:///sha-256;6a4cdcebed4fad9f96bf3c6774919606c565570bac2ef808e764427eaf2377ea/userid:create:user-deadbeef:134234111");
+     * > checkKhmac("khmac:///sha-256;6a4cdcebed4fad9f96bf3c6774919606c565570bac2ef808e764427eaf2377ea/userid:vote:election:1110:134234111");
      * < returns {
      *     "digest": "6a4cdcebed4fad9f96bf3c6774919606c565570bac2ef808e764427eaf2377ea",
      *     "digestMethod": "sha-256",
      *     "timestamp": 134234111,
-     *     "message": "userid:create:user-deadbeef:134234111"
+     *     "message": "userid:vote:election:1110:134234111"
      *   }
      *
      * returns false if the url is invalid.

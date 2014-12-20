@@ -221,8 +221,7 @@ angular.module('avCrypto')
         "proofs": [],
         "choices": [],
         "issue_date": moment().format("DD/MM/YYYY"),
-        "election_url": ConfigService.baseUrl + "election/" + election.id + "/config",
-        "pubkeys_url": ConfigService.baseUrl + "election/" + election.id + "/pubkeys"
+        "election_url": ConfigService.baseUrl + "election/" + election.id
       };
       for (var i = 0; i < election.questions.length; i++) {
         var qAnswer = answers[i];

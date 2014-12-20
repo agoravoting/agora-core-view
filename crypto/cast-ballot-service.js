@@ -26,8 +26,8 @@
         statusUpdate: function () (status, options) { .. },
         success: function (resultData) { },
         error: function (status, message) {},
-        authorizationHeader: "voter-eid-voterid:deadbeef",
-        postBallotUrl: "https://example.com/api/v1/ballotbox/vote"
+        authorizationHeader: "khmac:///sha-256;hash/voterid:action:vote:election:eid:timestamp",
+        castBallotUrl: "https://example.com/api/v1/ballotbox/vote"
       });
 */
 
@@ -86,11 +86,7 @@ angular.module('avCrypto')
         },
         {headers: {Authorization: data.authorizationHeader}})
       .success(function(postData, status, headers, config) {
-        if (postData.updated === "true") {
           data.success(postData);
-        } else {
-          data.error("tooManyUserUpdates", stringify(postData));
-        }
       })
       .error(function(postData, status, headers, config) {
         if (status === 401) {
