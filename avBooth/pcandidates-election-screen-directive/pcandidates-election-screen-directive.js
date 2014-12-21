@@ -5,7 +5,7 @@
  * some unique details.
  */
 angular.module('avBooth')
-  .directive('avbPcandidatesElectionScreen', function($i18next, $filter, $interpolate, $timeout) {
+  .directive('avbPcandidatesElectionScreen', function($i18next, $filter, $interpolate, $timeout, $window) {
 
     var link = function(scope, element, attrs) {
       scope.warningEnum = {
@@ -70,6 +70,9 @@ angular.module('avBooth')
           if (!canSelect && totalSelectedInTeam > 0) {
             return scope.deselectTeam(team);
           } else if (!canSelect && totalSelectedInTeam === 0) {
+            _.each(scope.election.questions, function(_, index) {
+              team["isOpen" + index] = true;
+            });
             return scope.showWarning(scope.warningEnum.cannotSelectAll);
           }
 
@@ -104,6 +107,16 @@ angular.module('avBooth')
               return opt.question_index === question_index;
             }).length + cell.length - cell.selected > scope.election.questions[question_index].max)
           {
+            // if cell is not open.. open it
+            if (!team["isOpen" + question_index]) {
+              if ($window.innerHeight < 768) {
+                team["isOpen" + question_index] = true;
+              } else {
+                _.each(scope.election.questions, function(_, index) {
+                  team["isOpen" + index] = true;
+                });
+              }
+            }
             return scope.showWarning(scope.warningEnum.cannotSelectAll);
           }
 
