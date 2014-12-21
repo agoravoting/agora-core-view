@@ -12,6 +12,10 @@ angular.module('avRegistration')
             return $http.post(backendUrl + '/api/authmethod/'+ method + '/validate/' + id + '/', data);
         };
 
+        authmethod.login = function(data) {
+            return $http.post(backendUrl + '/api/login/', data);
+        };
+
         authmethod.viewEvent = function(id) {
             return $http.get(backendUrl + '/api/auth-event/' + id);
         };

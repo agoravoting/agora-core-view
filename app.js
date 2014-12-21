@@ -53,12 +53,6 @@ angular.module('agora-core-view').config(
         controller: "BoothController"
       });
     $stateProvider
-      .state('login', {
-        url: '/login',
-        templateUrl: 'avRegistration/login-controller/login-controller.html',
-        controller: "LoginController"
-      });
-    $stateProvider
       .state('registration', {
         abstract: true,
         url: '/registration',
@@ -73,6 +67,11 @@ angular.module('agora-core-view').config(
         url: '/:id/validate',
         templateUrl: 'avRegistration/validate-controller/validate-controller.html',
         controller: "ValidateController"
+      })
+      .state('registration.login', {
+        url: '/:id/login',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
       })
       .state('registration.success', {
         templateUrl: 'avRegistration/success.html'
