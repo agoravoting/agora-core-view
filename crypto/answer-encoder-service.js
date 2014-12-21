@@ -38,14 +38,14 @@ angular.module('avCrypto')
 
         /**
          * Converts a vote into a number. A vote in this case is a list of
-         * answer ids (which must always be positive non-zero integers),
-         * for example [1, 3].
+         * answer ids (which must always be positive integers),
+         * for example [0, 2].
          *
          * Note that answer ids cannot be zero because it would cause encoding
          * problems. Next step is converting those number to strings of fixed
          * size:
          *
-         * [1, 3] -> ['01', '03']
+         * [0, 2] -> ['01', '03']
          *
          * We need to be sure that each option will always be encoded using the
          * the same number of characters so that decoding the options is
@@ -55,7 +55,7 @@ angular.module('avCrypto')
          *
          * Next step is to concatenate the ordered list of option strings:
          *
-         * [1, 3] -> ['01', '03'] -> '0103' -> 103
+         * [0, 2] -> ['01', '03'] -> '0103' -> 103
          *
          * NOTE: the zeros at the left of the final number are removed, because
          * a number representation never has any zeros at the left. When
@@ -64,7 +64,7 @@ angular.module('avCrypto')
         encode: function(answer) {
             var numChars = (numAvailableOptions + 2).toString(10).length;
             var encodedAnswer = _.reduceRight(answer, function (memo, answerId) {
-                return numberToString(answerId, numChars) + memo;
+                return numberToString(answerId + 1, numChars) + memo;
             }, "");
 
             // blank vote --> make it not count numAvailableOptions + 2;
@@ -104,7 +104,7 @@ angular.module('avCrypto')
             for (i = 0; i < (encodedStr.length / tabNumChars); i++) {
                 var optionStr = encodedStr.substr(i*tabNumChars, tabNumChars);
                 var optionId = parseInt(optionStr, 10);
-                decodedAnswer.push(optionId);
+                decodedAnswer.push(optionId - 1);
             }
             return decodedAnswer;
         },
