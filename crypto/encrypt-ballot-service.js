@@ -42,14 +42,12 @@
 
   encryptedBallot argument of the success callback follows the format below:
   {
-    "a":"encrypted-vote-v1",
     "choices":[
       {
         "alpha":"1",
         "beta":"3",
       }
     ],
-    "election_hash":{"a":"hash/sha256/value","value":""},
     "issue_date":"07/11/2014",
     "proofs":[
       {
