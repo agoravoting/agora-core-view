@@ -62,6 +62,9 @@ angular.module('avBooth')
             } else if (status === "tooManyUserUpdates") {
               scope.showError($i18next("avBooth.tooManyUserUpdates",
                 {msg:message}));
+            } else if (status === "errorSendingBallotElectionNotOpen") {
+              scope.showError($i18next("avBooth.errorSendingBallotElectionNotOpen",
+                {msg:message}));
             } else {
               scope.showError($i18next("avBooth.errorSendingBallotUnknown",
                 {msg:message}));

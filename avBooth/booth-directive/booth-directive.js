@@ -202,6 +202,11 @@ angular.module('avBooth')
           $http.get(scope.baseUrl + "election/" + scope.electionId)
             // on success
             .success(function(value) {
+              if (value.payload.state !== "started") {
+                showError($i18next("avBooth.errorElectionIsNotOpen"));
+                return;
+              }
+
               scope.election = angular.fromJson(value.payload.configuration);
               scope.pubkeys = angular.fromJson(value.payload.pks);
               // initialize ballotClearText as a list of lists
