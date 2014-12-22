@@ -95,6 +95,8 @@ angular.module('avCrypto')
           data.error("couldntSendBallotNotFound", stringify(postData));
         } else if (status === 400 && postData.payload === 'Maximum number of revotes reached') {
            data.error("tooManyUserUpdates", stringify(postData));
+        } else if (status === 400 && postData.payload === 'Election is not open') {
+           data.error("errorSendingBallotElectionNotOpen", stringify(postData));
         } else {
           data.error("couldntSendBallot", stringify(postData));
         }
