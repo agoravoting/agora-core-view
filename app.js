@@ -132,6 +132,14 @@ angular.module('agora-core-view').config(
         template: '<div av-plurality-at-large-results></div>',
       });
     $stateProvider
+      .state('election.ballot-locator', {
+        url: '/:id/ballot-locator',
+        template: '<div av-ballot-locator-screen></div>',
+        controller: function($scope, $stateParams) {
+          $scope.electionId = $stateParams.id;
+        }
+      });
+    $stateProvider
       .state('unit-test-e2e', {
         url: '/unit-test-e2e',
         templateUrl: 'test/unit_test_e2e.html',

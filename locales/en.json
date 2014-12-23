@@ -104,8 +104,19 @@
     "auditBallotTitle": "Audit your Ballot",
     "auditBallotSubtitle": "",
     "auditBallotText": "<p>The ballot tracker id is: <code>__ballotHash__</code></p><p><strong>The audit of the ballot requires some technical knowledge. If you don't have it, you can simply start again the voting process clicking in the button below.</strong></p><p>To verify your ballot you need to:</p><ol><li>Copy and save to a file your ballot (click to select):<br/><div class=\"code\" ng-click=\"selectDiv($event)\">__auditableBallot__</div></li><li>Follow the steps in <a href=\"https://github.com/agoravoting/agora-airgap/blob/master/README.md\" target=\"_blank\">this tutorial to verify that the ballot was correctly encrypted</a>.</li></ol><p>For security reasons, if you audit the ballot, it needs to be spoiled. To continue the voting process, you need to start from the begining.</p>",
-    "auditStartAgain": "Start voting from the begining"
+    "auditStartAgain": "Start voting from the begining",
 
+    "ballotLocatorTitle": "Encuentra tu papeleta",
+    "ballotLocatorSubtitle": "",
+    "inputLocatorPlaceholder": "Introduce aquí el localizador",
+    "ballotLocatorPTitle": "Localizador de la papeleta",
+    "searchLocatorButton": "Encontrar papeleta",
+    "locatorDescription": "Cuando emites tu voto, te aparece el localizador de tu papeleta para que puedas seguirle el rastro sin desvelar el sentido del voto. Aquí puedes introducir ese localizador y ver que efectivamente esa papeleta cifrada fue emitida y registrada correctamente.",
+    "locatorFoundText": "¡Papeleta encontrada! Efectivamente, la papeleta con el localizador <strong>__locator__</strong> fue emitida y registrada correctamente. El texto de la papeleta cifrada es:",
+    "locatorSearchingStatus": "<span class=\"text-primary\">Buscando localizador..</span>",
+    "locatorFoundStatus": "<span class=\"text-success\">¡Localizador encontrado!</span>",
+    "locatorNotFoundStatus": "<span class=\"text-danger\">Localizador no encontrado</span>",
+    "locatorInfoText": "Ejemplo de localizador: 78a319dbd699c5d6ff08ca08990b395e593bcb8282a7660417a50d0ee470503f"
   },
   "avElection": {
     "resultsLoadingText": "Loading results",

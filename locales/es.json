@@ -105,7 +105,19 @@
     "auditBallotTitle": "Auditar la papeleta",
     "auditBallotSubtitle": "",
     "auditBallotText": "<p>El localizador de tu voto es: <code>__ballotHash__</code></p><p><strong>La auditoría de la papeleta requiere ciertos conocimientos técnicos. Si no los tienes, puedes simplemente comenzar de nuevo el proceso de voto haciendo clic abajo</strong>.</p><p>Para verificar tu voto, necesitas:</p><ol><li>Copiar y guardar en un fichero la papeleta (clic para seleccionar):<br/><div class=\"code\" ng-click=\"selectDiv($event)\">__auditableBallot__</div></li><li>Seguir los pasos de <a href=\"https://github.com/agoravoting/agora-airgap/blob/master/README.md\" target=\"_blank\">este tutorial para verificar que la papeleta fue cifrada correctamente</a>.</li></ol><p>Por razones de seguridad, al auditar el voto, el ha de ser desechado. Para continuar el proceso de voto, debes comenzar el proceso de nuevo.</p>",
-    "auditStartAgain": "Comenzar el proceso de voto de nuevo"
+    "auditStartAgain": "Comenzar el proceso de voto de nuevo",
+
+    "ballotLocatorTitle": "Encuentra tu papeleta",
+    "ballotLocatorSubtitle": "",
+    "inputLocatorPlaceholder": "Introduce aquí el localizador",
+    "ballotLocatorPTitle": "Localizador de la papeleta",
+    "searchLocatorButton": "Encontrar papeleta",
+    "locatorDescription": "Cuando emites tu voto, te aparece el localizador de tu papeleta para que puedas seguirle el rastro sin desvelar el sentido del voto. Aquí puedes introducir ese localizador y ver que efectivamente esa papeleta cifrada fue emitida y registrada correctamente.",
+    "locatorFoundText": "¡Papeleta encontrada! Efectivamente, la papeleta con el localizador <strong>__locator__</strong> fue emitida y registrada correctamente. El texto de la papeleta cifrada es:",
+    "locatorSearchingStatus": "<span class=\"text-primary\">Buscando localizador..</span>",
+    "locatorFoundStatus": "<span class=\"text-success\">¡Localizador encontrado!</span>",
+    "locatorNotFoundStatus": "<span class=\"text-danger\">Localizador no encontrado</span>",
+    "locatorInfoText": "Ejemplo de localizador: 78a319dbd699c5d6ff08ca08990b395e593bcb8282a7660417a50d0ee470503f"
 
   },
   "avElection": {
