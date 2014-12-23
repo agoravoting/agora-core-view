@@ -26,11 +26,6 @@ angular.module('avBooth')
             scope.searchEnabled = true;
             scope.ballot = "";
             scope.locatorStatus = $i18next("avBooth.locatorNotFoundStatus");
-
-
-            scope.searchEnabled = true;
-            scope.locatorStatus = $i18next("avBooth.locatorFoundStatus");
-            scope.ballot = angular.toJson("yadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayada yadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayadayada yadayadayadayadayadayadayadayadayadayadayadayadayadayada");
           });
       };
     }
