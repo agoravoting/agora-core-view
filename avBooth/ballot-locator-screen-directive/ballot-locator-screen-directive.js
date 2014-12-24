@@ -8,11 +8,14 @@ angular.module('avBooth')
       scope.locator = "";
       scope.locatorStatus = "";
       scope.ballot = "";
+      scope.foundLocator = "";
       scope.searchEnabled = true;
 
 
       scope.searchLocator = function() {
         scope.searchEnabled = false;
+        scope.ballot = "";
+        scope.foundLocator = scope.locator;
         scope.locatorStatus = $i18next("avBooth.locatorSearchingStatus");
         $http.get(ConfigService.baseUrl + "election/" + scope.electionId + "/hash/" + scope.locator)
           // on success
