@@ -1,9 +1,14 @@
 angular.module('avRegistration')
-  .directive('avLogin', ['Authmethod', '$location', '$parse', '$state', function(Authmethod, $location, $parse, $state) {
+  .directive('avLogin', ['Authmethod', '$location', '$parse', '$state', '$cookies', function(Authmethod, $location, $parse, $state, $cookies) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var splitUrl = $location.absUrl().split('/');
         var autheventid = splitUrl[splitUrl.length - 2];
+
+        scope.isAdmin = false;
+        if (autheventid === 'admin') {
+            scope.isAdmin = true;
+        }
 
         scope.login = {};
 
@@ -22,7 +27,9 @@ angular.module('avRegistration')
                     document.querySelector(".error").style.display = "block";
                 });
         };
-        scope.view(autheventid);
+        if (!scope.isAdmin) {
+            scope.view(autheventid);
+        }
 
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
@@ -52,7 +59,14 @@ angular.module('avRegistration')
                 .success(function(data) {
                     if (data.status === "ok") {
                         scope.khmac = data.khmac;
-                        $state.go('registration.success');
+                        $cookies.authevent = autheventid;
+                        $cookies.user = scope.login.email;
+                        $cookies.auth = data['auth-token'];
+                        if (scope.isAdmin) {
+                            $state.go('admin.elections');
+                        } else {
+                            $state.go('registration.success');
+                        }
                     } else {
                         scope.status = 'Not found';
                         document.querySelector(".error").style.display = "block";

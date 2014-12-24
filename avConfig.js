@@ -9,6 +9,11 @@ var avConfigData = {
   // 'https://foo/api/v3/' and always ends in '/'.
   baseUrl: "http://agora.dev/temp_data/",
 
+  // AuthApi base url
+  authAPI: "http://agora.dev/authapi/",
+  // Agora Elections base url
+  electionsAPI: "http://agora.dev/elections/",
+
   // default language of the application
   language: "es",
 

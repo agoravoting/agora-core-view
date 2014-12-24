@@ -6,6 +6,7 @@ angular.module(
   'jm.i18next',
   'ngAnimate',
   'ngResource',
+  'ngCookies',
   'ngSanitize',
   'angularMoment',
   'avConfig',
@@ -73,6 +74,10 @@ angular.module('agora-core-view').config(
         templateUrl: 'avRegistration/login-controller/login-controller.html',
         controller: "LoginController"
       })
+      .state('registration.logout', {
+        url: '/logout',
+        controller: "LogoutController"
+      })
       .state('registration.success', {
         templateUrl: 'avRegistration/success.html'
       })
@@ -88,6 +93,11 @@ angular.module('agora-core-view').config(
         abstract: true,
         url: '/admin',
         template: '<div ui-view></div>'
+      })
+      .state('admin.login', {
+        url: '/login',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
       })
       .state('admin.elections', {
         url: '/elections',

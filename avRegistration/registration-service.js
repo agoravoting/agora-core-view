@@ -1,7 +1,8 @@
 angular.module('avRegistration')
 
-    .factory('Authmethod', ['$http', function($http) {
-        var backendUrl = "http://localhost:8000";
+    .factory('Authmethod', ['$http', 'ConfigService', function($http, ConfigService) {
+        //var backendUrl = "http://localhost:8000";
+        var backendUrl = ConfigService.authAPI;
         var authmethod = {};
 
         authmethod.signup = function(method, id, data) {
