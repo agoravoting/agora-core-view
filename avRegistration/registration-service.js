@@ -30,6 +30,11 @@ angular.module('avRegistration')
             return $http.get(backendUrl);
         };
 
+        authmethod.setAuth = function(auth) {
+            $http.defaults.headers.common.Authorization = auth;
+            return false;
+        };
+
         return authmethod;
 
     }]);

@@ -2,35 +2,33 @@ angular.module('avAdmin')
   .directive('avElections', ['AuthApi', 'ElectionsApi', '$location', '$parse', '$state', function(AuthApi, ElectionsApi, $location, $parse, $state) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
-        // TODO make it real
-        var adminid = 'admin-id';
-        var admin = 'Ganemos Sevilla';
-        var adminauth = 'HMAC';
-
         scope.register = {};
+        scope.elections = [];
+        scope.loading = true;
 
-        scope.view = function(id, auth) {
-            ElectionsApi.elections(id, auth)
+        scope.view = function() {
+            AuthApi.electionsIds()
                 .success(function(data) {
-                    if (data.status === "ok") {
-                        scope.apply(data.elections);
-                    } else {
-                        scope.status = 'Not found';
-                        document.querySelector(".error").style.display = "block";
-                    }
-                })
-                .error(function(error) {
-                    scope.status = 'Scan error: ' + error.message;
-                    document.querySelector(".error").style.display = "block";
+                    //scope.loading = data.perms.length;
+
+                    // here we've the elections id, then we need to ask to
+                    // ElectionsApi for each election and load it.
+                    data.perms.forEach(function (perm) {
+                        //ElectionsApi.election(perm.object_id)
+                        //.success(function(d) {
+                        //    scope.elections.push(d);
+                        //    scope.loading -= 1;
+                        //});
+                    });
                 });
+
+            ElectionsApi.elections().success(function(data) {
+                scope.elections = data.elections;
+                scope.loading = false;
+            });
         };
 
-        scope.apply = function(elections) {
-            scope.admin = admin;
-            scope.elections = elections;
-        };
-
-        scope.view(adminid, adminauth);
+        scope.view();
     }
 
     return {

@@ -4,6 +4,7 @@ angular.module('avRegistration').controller('LogoutController',
     $cookies.user = '';
     $cookies.auth = '';
     $cookies.authevent = '';
+    $cookies.userid = '';
     if (authevent === 'admin') {
         $state.go("admin.login");
     } else {

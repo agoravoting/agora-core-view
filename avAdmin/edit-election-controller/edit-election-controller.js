@@ -7,7 +7,7 @@ angular.module('avAdmin').controller('EditElectionController',
     var id = "FAKE ADMIN ID";
     var auth = "FAKE ADMIN AUTH";
 
-    ElectionsApi.election(id, auth, $stateParams.id)
+    ElectionsApi.election($stateParams.id)
         .success(function(data) {
             $scope.loading = false;
             $scope.election = data;

@@ -60,8 +60,10 @@ angular.module('avRegistration')
                     if (data.status === "ok") {
                         scope.khmac = data.khmac;
                         $cookies.authevent = autheventid;
+                        $cookies.userid = data['username'];
                         $cookies.user = scope.login.email;
                         $cookies.auth = data['auth-token'];
+                        Authmethod.setAuth($cookies.auth);
                         if (scope.isAdmin) {
                             $state.go('admin.elections');
                         } else {
