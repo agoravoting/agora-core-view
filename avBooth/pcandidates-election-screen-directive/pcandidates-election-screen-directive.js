@@ -203,6 +203,18 @@ angular.module('avBooth')
         return _.union(memo, taggedAnswers);
       }, []);
 
+      // change sort_order of "Candidatura no agrupada" options
+      var filtered = _.filter(scope.allOptions, function(opt) { return opt.category === "Candidatura no agrupada"; });
+      // we can't just sample the groupedOptions list because we need to
+      // 1. use the same list object
+      // 2. generate a specific ordering for all the options
+      var i = -1;
+      var randomFiltered = _.shuffle(_.map(filtered, function () { i += 1; return i;}));
+      // map different sort orders
+      randomFiltered = _.map(randomFiltered, function (index) { return filtered[index].sort_order;});
+      // now, assign
+      _.each(filtered, function (opt, index) { opt.sort_order = randomFiltered[index];});
+
       // group answers by category
       scope.groupedOptions = _.map(
         _.groupBy(scope.allOptions, "category"),
