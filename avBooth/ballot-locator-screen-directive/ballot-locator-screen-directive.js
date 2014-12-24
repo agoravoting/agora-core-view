@@ -19,7 +19,7 @@ angular.module('avBooth')
           .success(function(value) {
             scope.searchEnabled = true;
             scope.locatorStatus = $i18next("avBooth.locatorFoundStatus");
-            scope.ballot = angular.toJson(value.payload);
+            scope.ballot = value.payload.vote;
           })
           // on error, like parse error or 404
           .error(function (error) {
