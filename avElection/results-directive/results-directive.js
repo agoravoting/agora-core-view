@@ -11,7 +11,7 @@ angular.module('avElection')
        */
       function initData() {
         scope.last_updated = moment(scope.election.last_updated).format('lll');
-        scope.electionDataUrl = ConfigService.baseUrl + "election/" + $stateParams.id + "/results";
+        scope.electionDataUrl = ConfigService.baseUrl + "election/" + $stateParams.id;
 
         // generate share links
         var shortedTitle = scope.election.title;

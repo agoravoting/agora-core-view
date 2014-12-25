@@ -8,12 +8,13 @@ angular.module('avElection').controller('ResultsController',
 
     // get election config and check if they contain the results
     // TODO: change config to results
-    $http.get(ConfigService.baseUrl + "election/" + $stateParams.id + "/config")
+    $http.get(ConfigService.baseUrl + "election/" + $stateParams.id)
       .success(function(value) {
-        if (value.status !== "results-published") {
+        if (value.payload.state !== "tally_ok") {
           $state.go("election.results.error");
         }
-        $scope.election = value;
+        $scope.election = angular.fromJson(value.payload.configuration);
+        $scope.results = angular.fromJson(value.payload.results);
         $scope.inside_iframe = InsideIframeService();
         $state.go("election.results.show");
       })

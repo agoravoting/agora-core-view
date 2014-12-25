@@ -13,6 +13,9 @@ angular.module('avElection')
       function initData() {
         // copy questions before sort
         scope.question = angular.copy(scope.question);
+          _.each(scope.question.answers, function (answer) {
+            answer.is_winner = (answer.winner_position !== null);
+          });
         scope.question.answers.sort(function(answer, answer2) {
           // if one is a winner, then that one goes first
           if (answer.is_winner && !answer2.is_winner) {
@@ -28,7 +31,7 @@ angular.module('avElection')
           }
 
           // if they have the same position, sort by totals
-          return answer2.total_votes - answer.total_votes;
+          return answer2.total_count - answer.total_count;
         });
       }
       initData();
@@ -40,7 +43,7 @@ angular.module('avElection')
        * Returns the winner position if its >= 0. Else, returns ""
        */
       scope.winnerPosition = function(answer) {
-        if (answer.winner_position >= 0) {
+        if (answer.winner_position !== null && answer.winner_position >= 0) {
           return answer.winner_position + 1;
         } else {
           return "";

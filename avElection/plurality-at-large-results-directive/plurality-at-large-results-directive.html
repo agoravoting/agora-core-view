@@ -5,7 +5,7 @@
     <tbody>
       <tr>
         <td ng-i18next="avElection.totalNumberOfVotes" class="title"></td>
-        <td class="text-right">{{addDotsToIntNumber(question.totals.all_votes)}}</td>
+        <td class="text-right">{{addDotsToIntNumber(question.totals.valid_votes + question.totals.null_votes + question.totals.blank_votes)}}</td>
         <td></td>
       </tr>
       <tr>
@@ -42,8 +42,8 @@
           ng-class="{winner: winnerPosition(answer) > 0}"
           style="background: linear-gradient(to right, rgba(220,220,220,1) 0%,rgba(220,220,220,1) {{percentVotes(answer.total_votes, question)}},rgba(255,255,255,1) {{percentVotes(answer.total_votes, question)}},rgba(255,255,255,1) 100%);">
         <td>{{answer.text}}</td>
-        <td class="text-right">{{addDotsToIntNumber(answer.total_votes)}}</td>
-        <td class="text-right">{{percentVotes(answer.total_votes, question)}}</td>
+        <td class="text-right">{{addDotsToIntNumber(answer.total_count)}}</td>
+        <td class="text-right">{{percentVotes(answer.total_count, question)}}</td>
         <td class="text-right">{{winnerPosition(answer)}}</td>
       </tr>
     </tbody>
