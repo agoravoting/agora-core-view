@@ -8,6 +8,7 @@
           class="glyphicon glyphicon-question-sign"
           ng-click="launchHelp()">
         </span>
+        <span ng-click="launchHelp()" ng-i18next="avBooth.helpTitle"></span>
       </div>
     </div>
 
@@ -52,7 +53,7 @@
     <div class="row" ng-if="tosTitle.length > 0">
       <div class="padded col-xs-12">
         <h4>{{tosTitle}}</h4>
-        <div ng-bind-html="tosText"></div>
+        <div class="tos-text" ng-bind-html="tosText"></div>
       </div>
     </div>
     <div class="row hidden" ng-cloak av-affix-bottom data-force-affix-width="768">

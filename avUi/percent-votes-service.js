@@ -23,7 +23,7 @@ angular.module('avUi')
         return print(0.00);
       }
 
-      var base = question.totals.all_votes;
+      var base = question.totals.valid_votes + question.totals.null_votes + question.totals.blank_votes;
       if (over === undefined || over === null) {
         over = question.answer_total_votes_percentage;
       }
