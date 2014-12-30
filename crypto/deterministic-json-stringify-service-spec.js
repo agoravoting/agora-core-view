@@ -59,8 +59,8 @@ describe("DeterministicJsonStringifyService tests", function () {
       "lentejas": "ñam ñam, ¡qué ricas!",
       "¡¿otra más?!": "víbora hocicuda"
     };
-    var accentJsonStr = '{"con la a":"aventar","lentejas":"ñam ñam,' +
-            '¡qué ricas!","¡¿otra más?!":"víbora hocicuda"}';
+    var accentJsonStr = '{"con la a":"aventar","lentejas":"ñam ñam, ¡qué ricas!",' +
+        '"¡¿otra más?!":"víbora hocicuda"}';
     expect(stringify(accentJson)).toBe(accentJsonStr);
   });
 
@@ -120,7 +120,7 @@ describe("DeterministicJsonStringifyService tests", function () {
     var complexJsonStr = '{"algo":{"números":[["80","81"],["90","91"]]},' +
             '"data":{"Otro tipo":[{"Es mentira":false,"Es verdad":true,' +
             '"Nada, en blanco":"","Un espacio":" ","id":2,' +
-            '"menos es nada":null,"xyz":["1", "2", "3"]}],"enrevesado":' +
+            '"menos es nada":null,"xyz":["1","2","3"]}],"enrevesado":' +
             '{"Un tipo":[{"id":"1","nombre":"Pedrín"},' +
             '{"id":"2","nombre":"Ozores"}]}}}';
     expect(stringify(complexJson)).toBe(complexJsonStr);

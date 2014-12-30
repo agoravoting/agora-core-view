@@ -14,9 +14,8 @@ describe("AnswerEncoderService tests", function () {
 
   it("AnswerEncoderService test", function () {
     
-    // FIXME
     var answer = [1, 5];
-    var codec = answerEncoder("MEEK-STV", 7);
+    var codec = answerEncoder("plurality-at-large", 7);
     expect(codec.sanityCheck()).toBe(true); // false
     
     var encoded = codec.encode(answer);
