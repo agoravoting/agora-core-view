@@ -2,7 +2,7 @@ angular.module('avAdmin')
   .directive('avQuestions', function() {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
-        scope.newquestion = {};
+        scope.newquestion = {max: 1, min: 0};
 
         function hideAll() {
             $(".qshort").show();
@@ -44,10 +44,16 @@ angular.module('avAdmin')
                 question.errors.push(window.i18n.t("avAdmin.form.q.optionsError"));
             }
 
+            var min = parseInt(question.min, 10);
+            var max = parseInt(question.max, 10);
+            if (!(min >= 0 && max >= 0 && min <= max)) {
+                question.errors.push(window.i18n.t("avAdmin.form.q.minmaxError"));
+            }
+
             if (question.errors.length === 0) {
                 if (index === undefined) {
                     scope.questions.push(scope.newquestion);
-                    scope.newquestion = {};
+                    scope.newquestion = {max: 1, min: 0};
                 }
                 hideNewQuestion();
                 hideAll();

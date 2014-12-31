@@ -1,16 +1,59 @@
-<div class="form-group">
-    <label ng-i18next="avAdmin.form.qText"></label>
-    <textarea class="qtext form-control" ng-model="question.title"></textarea>
+<div class="col-sm-6">
+    <div class="form-group">
+        <label ng-i18next="avAdmin.form.qText"></label>
+        <textarea class="qtext form-control" ng-model="question.title"></textarea>
+    </div>
+
+    <!--
+    <div class="form-group">
+        <label ng-i18next="avAdmin.form.qVotingSystem"></label>
+        <select class="form-control qmethod">
+            <option>plurality at large</option>
+            <option>VUT</option>
+        </select>
+    </div>
+    -->
 </div>
-<!--
-<div class="form-group">
-    <label ng-i18next="avAdmin.form.qVotingSystem"></label>
-    <select class="form-control qmethod">
-        <option>plurality at large</option>
-        <option>VUT</option>
-    </select>
+
+<div class="col-sm-6">
+    <div class="form-group">
+        <label ng-i18next="avAdmin.form.qMin"></label>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="add('min', 1)">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+          </span>
+          <input type="text" id="min" name="min" min=0 step=1
+          class="form-control" ng-model="question.min" required/>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="add('min', -1)">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+          </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label ng-i18next="avAdmin.form.qMax"></label>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"
+            ng-click="add('max', 1)" required>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+          </span>
+          <input type="text" id="max" name="max" min=0 step=1
+          class="form-control" ng-model="question.max" required/>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="add('max', -1)">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+          </span>
+        </div>
+    </div>
 </div>
--->
+
 <div class="form-group">
     <label for="options" ng-i18next="avAdmin.form.qOptions"></label>
 

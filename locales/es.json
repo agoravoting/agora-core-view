@@ -191,7 +191,8 @@
         "saveQuestion": "Guardar pregunta",
         "q": {
             "titleError": "Introduce un título válido",
-            "optionsError": "Añade al menos una opción"
+            "optionsError": "Añade al menos una opción",
+            "minmaxError": "Mínimo o máximo inválidos"
         },
         "el": {
             "titleError": "Introduce un título de votación válido",
@@ -199,6 +200,8 @@
             "questionsError": "Añade al menos una pregunta"
         },
         "qText": "Texto de la pregunta",
+        "qMin": "Mínimo de opciones a elegir (0 permite voto en blanco)",
+        "qMax": "Máximo de opciones a elegir",
         "qVotingSystem": "Sistema de votación",
         "qOptions": "Opciones",
         "save": "Guardar"

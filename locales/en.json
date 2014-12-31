@@ -188,7 +188,8 @@
         "saveQuestion": "Save Question",
         "q": {
             "titleError": "Enter a valid question title",
-            "optionsError": "Add at least one option"
+            "optionsError": "Add at least one option",
+            "minmaxError": "Invalid minimum or maximum"
         },
         "el": {
             "titleError": "Enter a valid election title",
@@ -196,6 +197,8 @@
             "questionsError": "Add at least one question"
         },
         "qText": "Question text",
+        "qMin": "Minium options to select (0 allow blank vote)",
+        "qMax": "Maximum options to select",
         "qVotingSystem": "Voting system",
         "qOptions": "Options",
         "save": "Save"
