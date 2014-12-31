@@ -3,6 +3,7 @@
     <div class="col-xs-offset-4 col-xs-4">
     <h1 class="text-center">{{name}}</h1>
     <h1 ng-i18next="avRegistration.loginHeader" class="text-center"></h1>
+    <div class="error" ng-if="error">{{ error }}</div>
     <form name="form" role="form">
       <div id="loginForm" class="form-horizontal">
         <input type="text" class="form-control" ng-model="login.email" id="emailText"

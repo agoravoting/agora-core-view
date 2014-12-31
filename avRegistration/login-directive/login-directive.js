@@ -1,5 +1,5 @@
 angular.module('avRegistration')
-  .directive('avLogin', ['Authmethod', '$location', '$parse', '$state', '$cookies', function(Authmethod, $location, $parse, $state, $cookies) {
+  .directive('avLogin', ['Authmethod', '$location', '$parse', '$state', '$cookies', '$i18next', function(Authmethod, $location, $parse, $state, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var splitUrl = $location.absUrl().split('/');
@@ -71,12 +71,12 @@ angular.module('avRegistration')
                         }
                     } else {
                         scope.status = 'Not found';
-                        document.querySelector(".error").style.display = "block";
+                        scope.error = $i18next('avRegistration.invalidCredentials');
                     }
                 })
                 .error(function(error) {
                     scope.status = 'Registration error: ' + error.message;
-                    document.querySelector(".error").style.display = "block";
+                    scope.error = $i18next('avRegistration.errorRegistration');
                 });
         };
 

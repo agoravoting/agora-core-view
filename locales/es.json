@@ -162,7 +162,9 @@
 
     "loadingRegistration": "Cargando",
     "successRegistration": "Exitoso",
-    "errorRegistration": "Error"
+    "errorRegistration": "Error",
+
+    "invalidCredentials": "Credenciales no válidas"
   },
 
   "avAdmin": {
