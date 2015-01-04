@@ -3,19 +3,14 @@ angular.module('avAdmin').controller('EditElectionController',
     $scope.election = {questions: []};
     $scope.loading = true;
 
-
-    var id = "FAKE ADMIN ID";
-    var auth = "FAKE ADMIN AUTH";
-
     ElectionsApi.election($stateParams.id)
         .success(function(data) {
+            $scope.election = ElectionsApi.parseElection(data);
             $scope.loading = false;
-            $scope.election = data;
         })
         .error(function(error) {
             $scope.loading = false;
             $scope.status = 'error: ' + error.message;
-            //document.querySelector(".error").style.display = "block";
         });
   }
 );

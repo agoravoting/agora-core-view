@@ -17,15 +17,8 @@ angular.module('avAdmin')
                     data.perms.forEach(function (perm) {
                         ElectionsApi.election(perm.object_id)
                         .success(function(d) {
-                            var election = d.payload;
-                            var conf = JSON.parse(election.configuration);
-                            conf.status = election.state;
-                            conf.visibleStatus = election.state;
-                            if (conf.status === 'registered') {
-                                conf.status = 'notstarted';
-                            }
-                            console.log(conf);
-                            scope.elections.push(conf);
+                            var election = ElectionsApi.parseElection(d);
+                            scope.elections.push(election);
                             scope.loading -= 1;
                         });
                     });
