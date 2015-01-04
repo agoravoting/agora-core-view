@@ -168,6 +168,7 @@
   },
 
   "avAdmin": {
+    "noElections": "Sin votaciones",
     "admin": "Admin",
     "elections": "Votaciones",
     "newElection": "Nueva votación",
@@ -179,6 +180,7 @@
     "remove": "eliminar",
     "view": "ir a votación",
     "results": "ver resultados",
+    "registered": "registrado",
     "tally": "En recuento",
     "notstarted": "No comenzada",
     "started": "En votación",

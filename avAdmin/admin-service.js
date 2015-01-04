@@ -12,18 +12,12 @@ angular.module('avAdmin')
 
     }])
 
-    .factory('ElectionsApi', ['$http', function($http) {
-        // FAKE, TODO make it real
-        //var backendUrl = ConfigService.electionsAPI;
-        var backendUrl = "/temp_data";
+    .factory('ElectionsApi', ['ConfigService', '$http', function(ConfigService, $http) {
+        var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {};
 
-        electionsapi.elections = function() {
-            return $http.get(backendUrl + '/elections');
-        };
-
         electionsapi.election = function(id) {
-            return $http.get(backendUrl + '/election/'+id+'/config');
+            return $http.get(backendUrl + 'api/election/'+id);
         };
 
         return electionsapi;

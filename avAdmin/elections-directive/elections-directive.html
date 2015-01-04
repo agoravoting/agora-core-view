@@ -1,9 +1,14 @@
 <div avb-busy ng-if="loading"></div>
 <div class="container-fluid adminlist">
+      <div class="row" ng-show="error">
+        <div class="col-sm-12">
+            <div class="error"> {{ error }} </div>
+        </div>
+      </div>
       <div class="row adminelection" ng-repeat="election in elections">
         <div class="col-sm-8">
             <div class="election-heading">
-                <h4>{{ election.title }} (<span class="status" ng-i18next="avAdmin.{{election.status}}"></span>)</h4>
+                <h4>{{ election.title }} (<span class="status" ng-i18next="avAdmin.{{election.visibleStatus}}"></span>)</h4>
             </div>
             <p class="election-text">
                 id: {{ election.id }} |

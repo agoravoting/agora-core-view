@@ -13,19 +13,27 @@ angular.module('avAdmin')
 
                     // here we've the elections id, then we need to ask to
                     // ElectionsApi for each election and load it.
+                    scope.loading = data.perms.length;
                     data.perms.forEach(function (perm) {
-                        //ElectionsApi.election(perm.object_id)
-                        //.success(function(d) {
-                        //    scope.elections.push(d);
-                        //    scope.loading -= 1;
-                        //});
+                        ElectionsApi.election(perm.object_id)
+                        .success(function(d) {
+                            var election = d.payload;
+                            var conf = JSON.parse(election.configuration);
+                            conf.status = election.state;
+                            conf.visibleStatus = election.state;
+                            if (conf.status === 'registered') {
+                                conf.status = 'notstarted';
+                            }
+                            console.log(conf);
+                            scope.elections.push(conf);
+                            scope.loading -= 1;
+                        });
                     });
+                })
+                .error(function(data) {
+                    scope.loading = false;
+                    scope.error = data;
                 });
-
-            ElectionsApi.elections().success(function(data) {
-                scope.elections = data.elections;
-                scope.loading = false;
-            });
         };
 
         scope.view();

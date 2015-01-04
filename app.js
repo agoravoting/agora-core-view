@@ -155,10 +155,9 @@ angular.module('agora-core-view').config(
         templateUrl: 'test/unit_test_e2e.html',
         controller: "UnitTestE2EController"
       });
-
 });
 
-angular.module('agora-core-view').run(function($rootScope) {
+angular.module('agora-core-view').run(function($cookies, $http, $rootScope) {
 
   $rootScope.safeApply = function(fn) {
     var phase = $rootScope.$$phase;
@@ -182,6 +181,9 @@ angular.module('agora-core-view').run(function($rootScope) {
       $("#angular-preloading").hide();
     });
 
+    if ($cookies.auth) {
+        $http.defaults.headers.common.Authorization = $cookies.auth;
+    }
 });
 
 

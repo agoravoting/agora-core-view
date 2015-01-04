@@ -165,6 +165,7 @@
   },
 
   "avAdmin": {
+    "noElections": "No elections yet",
     "admin": "Admin",
     "elections": "Elections",
     "newElection": "New election",
@@ -176,6 +177,7 @@
     "remove": "remove",
     "view": "view election",
     "results": "view results",
+    "registered": "registered",
     "tally": "In tally",
     "notstarted": "Not started",
     "started": "Started",
