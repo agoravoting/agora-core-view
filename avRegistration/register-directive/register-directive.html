@@ -7,9 +7,14 @@
       <div id="signupForm" class="form-horizontal">
         <div ng-repeat="field in fields.fields">
           <div class="form-group">
-              <input type="{{field.type}}" class="form-control" ng-model="register[field.name]"
-                   ng-i18next="[placeholder]avRegistration.{{field.name}}Placeholder"
-                   ng-required={{field.required}} ng-pattern="patterns( field.name )" />
+              <ng-form name="subForm">
+                <input name="input" type="{{field.type}}" class="form-control" ng-model="register[field.name]"
+                     ng-i18next="[placeholder]avRegistration.{{field.name}}Placeholder"
+                     ng-required={{field.required}} ng-pattern="patterns( field.name )" />
+                <div class="error" ng-show="subForm.input.$dirty && subForm.input.$invalid">
+                    <small class="error" ng-i18next="avRegistration.{{field.name}}Error"></small>
+                </div>
+              </ng-form>
           </div>
         </div>
       </div>

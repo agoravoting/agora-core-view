@@ -156,6 +156,10 @@
     "tlfPlaceholder": "teléfono",
     "dniPlaceholder": "DNI",
 
+    "tlfError": "Teléfono incorrecto",
+    "dniError": "DNI ejemplo 12345678H",
+    "emailError": "Email incorrecto",
+
     "validateHeader": "Código de validación",
     "validateButton": "Validar",
     "codePlaceholder": "código",

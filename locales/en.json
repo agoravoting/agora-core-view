@@ -153,6 +153,10 @@
     "tlfPlaceholder": "phone",
     "dniPlaceholder": "DNI",
 
+    "tlfError": "Invalid phone",
+    "dniError": "DNI example 12345678H",
+    "emailError": "Invalid email",
+
     "validateHeader": "Validate code",
     "validateButton": "Validate",
     "codePlaceholder": "code",
