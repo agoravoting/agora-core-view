@@ -64,6 +64,34 @@ describe("NewElectionSend tests", function() {
     expect(results.first().getText()).toEqual('Add at least one option');
   });
 
+  it("should add one option", function() {
+    element(by.id('newq')).click();
+    var qtext = element(by.id('qtext'));
+    qtext.sendKeys("test question");
+    element(by.id('newopt')).click();
+    element(by.id('saveq')).click();
+    expect(element(by.repeater('e in newquestion.errors')).isPresent()).toBe(false);
+    expect(element(by.repeater('q in questions')).isPresent()).toBe(true);
+    var results = element.all(by.repeater('q in questions'));
+    expect(results.count()).toEqual(1);
+  });
+
+  it("should create a new election", function() {
+    var name = element(by.id('name'));
+    name.sendKeys("test");
+    var desc = element(by.id('desc'));
+    desc.sendKeys("test description");
+
+    element(by.id('newq')).click();
+    var qtext = element(by.id('qtext'));
+    qtext.sendKeys("test question");
+    element(by.id('newopt')).click();
+    element(by.id('saveq')).click();
+
+    element(by.css('.glyphicon-save')).click();
+    expect(element(by.repeater('e in election.errors')).isPresent()).toBe(false);
+  });
+
 });
 /* jshint ignore:end */
 
