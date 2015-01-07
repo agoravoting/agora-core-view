@@ -26,7 +26,7 @@
             <div id="nq">
                 <div class="nq" av-question question="newquestion"></div>
                 <div class="error" ng-repeat="e in newquestion.errors"> {{ e }} </div>
-                <button class="btn btn-block btn-plain btn-success" ng-i18next="avAdmin.form.saveQuestion" ng-click="saveQuestion()"></button>
+                <button id="saveq" class="btn btn-block btn-plain btn-success" ng-i18next="avAdmin.form.saveQuestion" ng-click="saveQuestion()"></button>
             </div>
             <button id="newq" class="btn btn-block btn-plain btn-success" ng-i18next="avAdmin.form.newQuestion" ng-click="newQuestion()"></button>
         </div>

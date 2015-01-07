@@ -3,6 +3,7 @@ exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   frameworks: ['jasmine'],
   specs: [
+    'avAdmin/new-election-send-webspec.js',
     'avUi/affix-bottom-directive-webspec.js',
     'avUi/affix-top-directive-webspec.js',
     'avUi/collapsing-directive-webspec.js',
