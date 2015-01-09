@@ -1,0 +1,116 @@
+@import "../../external.less";
+
+/* Global Config */
+@av-primary: #612d62;
+@av-secondary: #78bbb1;
+@av-primary-contrast: white;
+@av-secondary-contrast: white;
+@brand-primary: #612D62;
+@brand-success: #005c56;
+@brand-danger: #97c2b8;
+
+/* Admin Config */
+@av-bg: #EEE;
+@av-bg-hover: #DDD;
+@av-error-bg: #aa9999;
+@av-error-color: #882222;
+
+@imgdir: "../../img";
+
+@import "../../app.less";
+
+/* Global LESS */
+
+.btn-plain {
+  border-radius: 0;
+  border: 0;
+}
+
+.item-block {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.text-brand-success {
+  color: @brand-success;
+}
+
+.text-brand-warning {
+  color: @brand-warning;
+}
+
+.text-brand-danger {
+  color: @brand-danger;
+}
+
+.text-brand-primary {
+  color: @brand-primary;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+.no-padding-right {
+  padding-right: 0;
+}
+
+#no-js {
+  color: @gray-dark;
+  text-align: center;
+  padding: 5%;
+}
+
+#unsupported-browser {
+  color: @gray-dark;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: none;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  padding: 5%;
+}
+
+/* End Global LESS */
+
+// podemos custom
+
+[av-ballot-locator-screen] .navbar-unfixed-top h1, [av-booth] .navbar-unfixed-top h1 {
+ margin-top: 17px;
+ font-weight: 700;
+ font-size: 26px;
+}
+
+@theme-font-path: "../../themes/default";
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url('@{theme-font-path}/zhcz-_WihjSQC0oHJ9TCYBsxEYwM7FgeyaSgU71cLG0.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url('@{theme-font-path}/IQHow_FEYlDC4Gzy_m8fcgFhaRv2pGgT5Kf0An0s4MM.woff') format('woff');
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: Montserrat,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+@media (min-width: 1200px) {
+  .container {
+      width: 970px;
+  }
+}
