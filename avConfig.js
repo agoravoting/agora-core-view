@@ -10,7 +10,7 @@ var avConfigData = {
   baseUrl: "http://agora.dev/elections/api/",
 
   // AuthApi base url
-  authAPI: "http://agora.dev/authapi/",
+  authAPI: "http://agora.dev/authapi/api/",
   // Agora Elections base url
   electionsAPI: "http://agora.dev/elections/",
 

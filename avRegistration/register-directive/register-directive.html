@@ -5,7 +5,7 @@
     <h1 ng-i18next="avRegistration.registerHeader" class="text-center"></h1>
     <form name="form" role="form">
       <div id="signupForm" class="form-horizontal">
-        <div ng-repeat="field in fields.fields">
+        <div ng-repeat="field in metadata.fieldsRegister">
           <div class="form-group">
               <ng-form name="subForm">
                 <input name="input" type="{{field.type}}" class="form-control" ng-model="register[field.name]"

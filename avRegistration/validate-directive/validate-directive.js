@@ -1,10 +1,11 @@
 angular.module('avRegistration')
-  .directive('avValidate', ['Authmethod', '$location', '$state', function(Authmethod, $location, $state) {
+  .directive('avValidate', ['Authmethod', 'Patterns', '$location', '$state', function(Authmethod, Patterns, $location, $state) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
 
         var splitUrl = $location.absUrl().split('/');
         var autheventid = splitUrl[splitUrl.length - 2];
+        scope.validate = {};
 
         scope.view = function(id) {
             Authmethod.viewEvent(id)
@@ -26,9 +27,21 @@ angular.module('avRegistration')
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
+            scope.metadata = JSON.parse(authevent['metadata']);
+            var validateStep = scope.metadata.fieldsValidate;
+            if (typeof validateStep === 'string') {
+                $state.go('registration.success');
+            }
         };
 
-        scope.validate = function() {
+        scope.patterns = function(name) {
+            return Patterns.get(name);
+        };
+
+        scope.validate = function(valid) {
+            if (!valid) {
+                return;
+            }
             var data = {
                 'tlf': scope.tlf,
                 'dni': scope.dni,

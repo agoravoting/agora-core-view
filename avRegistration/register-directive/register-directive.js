@@ -1,5 +1,5 @@
 angular.module('avRegistration')
-  .directive('avRegister', ['Authmethod', '$location', '$parse', '$state', function(Authmethod, $location, $parse, $state) {
+  .directive('avRegister', ['Authmethod', 'Patterns', '$location', '$parse', '$state', function(Authmethod, Patterns, $location, $parse, $state) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var splitUrl = $location.absUrl().split('/');
@@ -26,17 +26,16 @@ angular.module('avRegistration')
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
-            scope.fields = JSON.parse(authevent['metadata']);
+            scope.metadata = JSON.parse(authevent['metadata']);
+            if (scope.metadata.steps[0] === 'validate') {
+                $state.go('registration.validate', {id: autheventid});
+            } else if (scope.metadata.steps[0] === 'login') {
+                $state.go('registration.login', {id: autheventid});
+            }
         };
 
         scope.patterns = function(name) {
-            if (name === 'dni') {
-                return /^\d{7,8}[a-zA-Z]{1}$/i;
-            } else if (name === 'mail' || name === 'email') {
-                return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            } else {
-                return /.*/;
-            }
+            return Patterns.get(name);
         };
 
         scope.signUp = function(valid) {
@@ -47,8 +46,11 @@ angular.module('avRegistration')
                 .success(function(data) {
                     if (data.status === "ok") {
                         scope.user = data.user;
-                        // TODO neccesary validation?
-                        $state.go('registration.validate', {id: autheventid});
+                        if (scope.metadata.steps.indexOf('validate') > -1) {
+                            $state.go('registration.validate', {id: autheventid});
+                        } else if (scope.metadata.steps.indexOf('login') > -1) {
+                            $state.go('registration.success');
+                        }
                     } else {
                         scope.status = 'Not found';
                         document.querySelector(".error").style.display = "block";
