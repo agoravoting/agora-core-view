@@ -1,6 +1,5 @@
 angular.module('avAdmin')
-  .directive('avElectionForm', function() {
-    // we use it as something similar to a controller here
+  .directive('avElectionForm', ['Authmethod', '$cookies', function(Authmethod, $cookies) {
     function link(scope, element, attrs) {
         if (!scope.election) {
             scope.election = {questions: []};
@@ -8,7 +7,6 @@ angular.module('avAdmin')
 
         function saveElection() {
             var el = scope.election;
-            console.log("SAVING:");
 
             // validating election
             el.errors = [];
@@ -23,9 +21,27 @@ angular.module('avAdmin')
             }
 
             if (el.errors.length === 0) {
-                // DONE
-            }
+                var data = {
+                    'name': scope.el.title,
+                    'auth_method': 'email', // TODO select method
+                    'auth-token': $cookies.auth
+                };
+                Authmethod.createEvent(data)
+                    .success(function(data) {
+                        if (data.status === "ok") {
+                            console.log("OK");
+                            // TODO change other pg
+                        } else {
+                            scope.status = 'Not found';
+                            document.querySelector(".error").style.display = "block";
+                        }
+                    })
+                    .error(function(error) {
+                        scope.status = 'Registration error: ' + error.message;
+                        document.querySelector(".error").style.display = "block";
+                    });
 
+            }
             console.log(el);
         }
 
@@ -42,4 +58,4 @@ angular.module('avAdmin')
       link: link,
       templateUrl: 'avAdmin/election-form-directive/election-form-directive.html'
     };
-  });
+  }]);

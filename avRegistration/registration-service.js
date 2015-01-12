@@ -31,11 +31,19 @@ angular.module('avRegistration')
         };
 
         authmethod.viewEvent = function(id) {
-            return $http.get(backendUrl + 'auth-event/' + id);
+            return $http.get(backendUrl + 'auth-event/' + id + '/');
         };
 
         authmethod.viewEvents = function() {
             return $http.get(backendUrl + 'auth-event/');
+        };
+
+        authmethod.createEvent = function(data) {
+            return $http.post(backendUrl + 'auth-event/', data);
+        };
+
+        authmethod.editEvent = function(id, data) {
+            return $http.post(backendUrl + 'auth-event/' + id +'/', data);
         };
 
         // TEST
