@@ -52,15 +52,13 @@ angular.module('avBooth')
       function goToQuestion(n, reviewMode) {
         // first check for special election-wide layouts
         var layout = scope.election.layout;
-        if (layout !== "normal") {
-          if (layout === "pcandidates-election") {
-            scope.setState(stateEnum.pcandidatesElectionScreen, {
-              isLastQuestion: true,
-              reviewMode: true,
-              filter: ""
-            });
-            return;
-          }
+        if (layout === "pcandidates-election") {
+          scope.setState(stateEnum.pcandidatesElectionScreen, {
+            isLastQuestion: true,
+            reviewMode: true,
+            filter: ""
+          });
+          return;
         }
 
         var question = scope.election.questions[n];
@@ -207,7 +205,7 @@ angular.module('avBooth')
                 return;
               }
 
-              scope.election = angular.fromJson(value.payload.configuration);
+              scope.election = value.payload.configuration;
               scope.pubkeys = angular.fromJson(value.payload.pks);
               // initialize ballotClearText as a list of lists
               scope.ballotClearText = _.map(
