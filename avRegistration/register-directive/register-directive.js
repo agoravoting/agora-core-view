@@ -26,7 +26,7 @@ angular.module('avRegistration')
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
-            scope.metadata = JSON.parse(authevent['metadata']);
+            scope.metadata = authevent['metadata'];
             if (scope.metadata.steps[0] === 'validate') {
                 $state.go('registration.validate', {id: autheventid});
             } else if (scope.metadata.steps[0] === 'login') {
