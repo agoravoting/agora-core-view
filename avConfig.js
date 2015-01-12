@@ -12,7 +12,7 @@ var avConfigData = {
   // AuthApi base url
   authAPI: "http://agora.dev/authapi/api/",
   // Agora Elections base url
-  electionsAPI: "http://agora.dev/elections/",
+  electionsAPI: "http://agora.dev/elections/api/",
 
   // default language of the application
   language: "es",

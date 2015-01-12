@@ -6,9 +6,13 @@
     <div class="error" ng-if="error">{{ error }}</div>
     <form name="form" role="form">
       <div id="loginForm" class="form-horizontal">
-        <input type="text" class="form-control" ng-model="login.email" id="emailText"
+        <input type="text" class="form-control" ng-model="login.email"
+                name="emailText" id="emailText"
                 ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="1"
                 ng-pattern="patterns('email')" autofocus required />
+        <div class="error" ng-show="form.emailText.$dirty && form.emailText.$invalid">
+            <small class="error" ng-i18next="avRegistration.emailError"></small>
+        </div>
 
         <p class="help-block">
           <span ng-i18next="avRegistration.notRegisteredYet"></span>
@@ -20,6 +24,10 @@
         <p class="help-block">
           <a href="#" ng-i18next="avRegistration.forgotPassword" ng-click="forgotPassword()" tabindex="5"></a>
         </p>
+      </div>
+
+      <div class="error" ng-show="form.$submitted && form.$invalid">
+          <small class="error" ng-i18next="avRegistration.invalidCredentials"></small>
       </div>
 
       <button type="submit" class="btn btn-block" ng-i18next="avRegistration.loginButton"

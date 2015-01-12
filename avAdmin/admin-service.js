@@ -5,7 +5,7 @@ angular.module('avAdmin')
         var authapi = {};
 
         authapi.electionsIds = function() {
-            return $http.get(backendUrl + 'api/acl/mine/?object_type=AuthEvent&perm=admin');
+            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=admin');
         };
 
         return authapi;
@@ -17,7 +17,7 @@ angular.module('avAdmin')
         var electionsapi = {};
 
         electionsapi.election = function(id) {
-            return $http.get(backendUrl + 'api/election/'+id);
+            return $http.get(backendUrl + 'election/'+id);
         };
 
         electionsapi.parseElection = function(d) {
