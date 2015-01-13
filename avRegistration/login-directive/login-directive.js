@@ -1,5 +1,5 @@
 angular.module('avRegistration')
-  .directive('avLogin', ['Authmethod', '$location', '$parse', '$state', '$cookies', '$i18next', function(Authmethod, $location, $parse, $state, $cookies, $i18next) {
+  .directive('avLogin', ['Authmethod', 'Patterns', '$location', '$parse', '$state', '$cookies', '$i18next', function(Authmethod, Patterns, $location, $parse, $state, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var splitUrl = $location.absUrl().split('/');
@@ -37,11 +37,7 @@ angular.module('avRegistration')
         };
 
         scope.patterns = function(name) {
-            if (name === 'mail' || name === 'email') {
-                return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            } else {
-                return /.*/;
-            }
+            return Patterns.get(name);
         };
 
         scope.loginUser = function(valid) {
