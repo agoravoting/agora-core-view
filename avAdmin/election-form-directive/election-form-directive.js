@@ -22,7 +22,7 @@ angular.module('avAdmin')
 
             if (el.errors.length === 0) {
                 var data = {
-                    'name': scope.el.title,
+                    'name': el.title,
                     'auth_method': 'email', // TODO select method
                     'auth-token': $cookies.auth
                 };
