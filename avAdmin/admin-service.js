@@ -109,5 +109,13 @@ angular.module('avAdmin')
             reg.error(error);
         };
 
+        electionsapi.updateElection = function(data, adminPerm) {
+            var el = electionsapi.generateElection(data);
+            var id = el.id;
+
+            var update = $http.post(backendUrl + 'election/'+id, el, {headers: {'Authorization': adminPerm}});
+            return update;
+        };
+
         return electionsapi;
     }]);

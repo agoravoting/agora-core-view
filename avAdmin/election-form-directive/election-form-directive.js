@@ -12,7 +12,7 @@ angular.module('avAdmin')
 
         if (!scope.election.id) {
             scope.newElection = true;
-            AuthApi.getPerm("admin", "election", 0)
+            AuthApi.getPerm("admin", "AuthEvent", 0)
                 .success(function(data) {
                     scope.createToken = data['permission-token'];
                 })
@@ -21,7 +21,7 @@ angular.module('avAdmin')
                     console.log(data);
                 });
         } else {
-            AuthApi.getPerm("admin", "election", scope.election.id)
+            AuthApi.getPerm("admin", "AuthEvent", scope.election.id)
                 .success(function(data) {
                     scope.editToken = data['permission-token'];
                 })
@@ -66,6 +66,12 @@ angular.module('avAdmin')
                         $state.go("admin.elections");
                     },
                     callError);
+            } else {
+                ElectionsApi.updateElection(el, scope.editToken)
+                    .success(function(data) {
+                        $state.go("admin.elections");
+                    })
+                    .error(callError);
             }
         }
 
