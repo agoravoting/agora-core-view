@@ -202,11 +202,11 @@ module.exports = function (grunt) {
     },
     uglify: {
       main: {
-        /*options:{
+        options:{
           mangle: false,
           compress: false,
           beautify: true
-        },*/
+        },
         files: {
           'dist/app-v1.0.17.min.js': 'temp/app.js',
           'dist/lib-v1.0.17.min.js': 'temp/lib.js',
