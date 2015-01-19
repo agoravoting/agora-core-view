@@ -177,6 +177,38 @@
         "login": "login",
         "logout": "logout"
     },
+    "foot": {
+        "contact": "Contact",
+        "contactsupport": "Contact support",
+        "contactsales": "Contact sales",
+        "callsales": "Call sales",
+
+        "whatwedo": "What we do",
+        "pricing": "Pricing",
+        "overview": "Overview",
+        "featurestour": "Features tour",
+        "casestudies": "Case studies",
+
+        "community": "Community",
+        "blog": "Blog",
+        "mailinglist": "Mailing list",
+        "sourcecode": "Source code",
+        "events": "Events",
+        "communitywebsite": "Community website",
+
+        "support": "Support",
+        "helpcenter": "Help center",
+        "systemstatus": "System status",
+        "videos": "Videos",
+        "developers": "Developers",
+
+        "aboutus": "About us",
+        "ourteam": "Our team",
+        "electionauthorities": "Election authorities",
+        "tos": "Term of service",
+        "presscenter": "Press center",
+        "privacy": "Privacy & security"
+    },
 
     "noElections": "No elections yet",
     "admin": "Admin",

@@ -180,6 +180,38 @@
         "login": "Acceso",
         "logout": "salir"
     },
+    "foot": {
+        "contact": "Contacto",
+        "contactsupport": "Contacto de soporte",
+        "contactsales": "Contacto de ventas",
+        "callsales": "Llamar a ventas",
+
+        "whatwedo": "Qué hacemos",
+        "pricing": "Precios",
+        "overview": "Resumen",
+        "featurestour": "Tour de funcionalidad",
+        "casestudies": "Casos de estudio",
+
+        "community": "Comunidad",
+        "blog": "Blog",
+        "mailinglist": "Lista de correo",
+        "sourcecode": "Código fuente",
+        "events": "Eventos",
+        "communitywebsite": "Web de comunidad",
+
+        "support": "Soporte",
+        "helpcenter": "Help center",
+        "systemstatus": "Estado del sistema",
+        "videos": "Vídeos",
+        "developers": "Desarrolladores",
+
+        "aboutus": "Acerca de",
+        "ourteam": "Nuestro equipo",
+        "electionauthorities": "Autoridades de votación",
+        "tos": "Términos del servicio",
+        "presscenter": "Centro de prensa",
+        "privacy": "Privacidad y seguridad"
+    },
 
     "noElections": "Sin votaciones",
     "admin": "Admin",
