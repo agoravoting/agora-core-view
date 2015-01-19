@@ -4,7 +4,7 @@ angular.module('avAdmin')
     function link(scope, element, attrs) {
         var admin = $cookies.user;
         scope.admin = admin;
-        scope.nologin = ('nologin' in attrs);
+        scope.nologin = ('nologin' in attrs) || scope.admin;
         scope.deflang = navigator.language;
 
         function changeLang(newl) {
