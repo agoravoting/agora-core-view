@@ -96,7 +96,7 @@ angular.module('agora-core-view').config(
       })
       .state('admin.login', {
         url: '/login',
-        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        templateUrl: 'avAdmin/login-controller/login-controller.html',
         controller: "LoginController"
       })
       .state('admin.elections', {

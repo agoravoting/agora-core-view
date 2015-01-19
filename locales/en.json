@@ -169,6 +169,15 @@
   },
 
   "avAdmin": {
+    "topbar": {
+        "home": "Home",
+        "features": "Features",
+        "help": "Help",
+        "freesignup": "Free sign up",
+        "login": "login",
+        "logout": "logout"
+    },
+
     "noElections": "No elections yet",
     "admin": "Admin",
     "elections": "Elections",

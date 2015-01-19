@@ -1,10 +1,20 @@
 angular.module('avAdmin')
-  .directive('avAdminHead', ['$cookies', function($cookies) {
+  .directive('avAdminHead', ['$cookies', '$i18next', function($cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
-        // TODO make it real
         var admin = $cookies.user;
         scope.admin = admin;
+        scope.nologin = ('nologin' in attrs);
+        scope.deflang = navigator.language;
+
+        function changeLang(newl) {
+            $i18next.options.lng = newl;
+            scope.deflang = $i18next.options.lng;
+        }
+
+        angular.extend(scope, {
+          changeLang: changeLang,
+        });
     }
 
     return {

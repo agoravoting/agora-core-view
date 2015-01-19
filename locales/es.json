@@ -172,6 +172,15 @@
   },
 
   "avAdmin": {
+    "topbar": {
+        "home": "Inicio",
+        "features": "Funcionalidad",
+        "help": "Ayuda",
+        "freesignup": "Registro gratuito",
+        "login": "Acceso",
+        "logout": "salir"
+    },
+
     "noElections": "Sin votaciones",
     "admin": "Admin",
     "elections": "Votaciones",
