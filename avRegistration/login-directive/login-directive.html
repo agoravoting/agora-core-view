@@ -1,39 +1,62 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-offset-4 col-xs-4">
-    <h1 class="text-center">{{name}}</h1>
-    <h1 ng-i18next="avRegistration.loginHeader" class="text-center"></h1>
-    <div class="error" ng-if="error">{{ error }}</div>
-    <form name="form" role="form">
-      <div id="loginForm" class="form-horizontal">
-        <input type="text" class="form-control" ng-model="login.email"
-                name="emailText" id="emailText"
-                ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="1"
-                ng-pattern="patterns('email')" autofocus required />
-        <div class="error" ng-show="form.emailText.$dirty && form.emailText.$invalid">
-            <small class="error" ng-i18next="avRegistration.emailError"></small>
-        </div>
+    <div class="col-sm-12 loginheader">
+        <h1 class="text-center">{{name}}</h1>
+        <h1 ng-i18next="avRegistration.loginHeader" class="text-center"></h1>
+    </div>
 
-        <p class="help-block">
-          <span ng-i18next="avRegistration.notRegisteredYet"></span>
-          <a href="#" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="5"></a>
-        </p>
+    <div class="col-sm-6">
+        <div class="error" ng-if="error">{{ error }}</div>
+        <form name="form" id="loginForm" role="form" class="form-horizontal">
+            <div class="form-group" ng-class="{true: 'has-error',false: 'is-required'}[form.emailText.$dirty && form.emailText.$invalid]">
+                <label for="emailText" class="control-label col-sm-4" ng-i18next="avRegistration.emailLabel"></label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" ng-model="login.email"
+                            name="emailText" id="emailText"
+                            ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="1"
+                            ng-pattern="patterns('email')" autofocus required />
+                    <div class="error" ng-show="form.emailText.$dirty && form.emailText.$invalid">
+                        <small class="error" ng-i18next="avRegistration.emailError"></small>
+                    </div>
+                </div>
+            </div>
 
-        <input type="password" class="form-control" ng-model="login.password" id="passwordText"
-                ng-i18next="[placeholder]avRegistration.passwordPlaceholder" tabindex="2" required />
-        <p class="help-block">
-          <a href="#" ng-i18next="avRegistration.forgotPassword" ng-click="forgotPassword()" tabindex="5"></a>
-        </p>
-      </div>
+            <div class="form-group" ng-class="{true: 'has-error',false: 'is-required'}[form.passwordText.$dirty && form.passwordText.$invalid]">
+                <label for="passwordText" class="control-label col-sm-4">
+                    <span ng-i18next="avRegistration.passwordLabel"></span>
+                    <p class="help-block">
+                      <a href="#" ng-i18next="avRegistration.forgotPassword" ng-click="forgotPassword()" tabindex="5"></a>
+                    </p>
+                </label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" ng-model="login.password" id="passwordText"
+                            ng-i18next="[placeholder]avRegistration.passwordPlaceholder" tabindex="2" required />
+                </div>
+            </div>
 
-      <div class="error" ng-show="form.$submitted && form.$invalid">
-          <small class="error" ng-i18next="avRegistration.invalidCredentials"></small>
-      </div>
+          <div class="error" ng-show="form.$submitted && form.$invalid">
+              <small class="error" ng-i18next="avRegistration.invalidCredentials"></small>
+          </div>
 
-      <button type="submit" class="btn btn-block" ng-i18next="avRegistration.loginButton"
-              ng-click="loginUser(form.$valid)" tabindex="3">
-      </button>
-    </form>
+          <div class="col-sm-offset-4 col-sm-8">
+              <button type="submit" class="btn btn-block btn-success" ng-i18next="avRegistration.loginButton"
+                      ng-click="loginUser(form.$valid)" tabindex="3">
+              </button>
+          </div>
+        </form>
+    </div>
+    <div class="col-sm-5 col-sm-offset-1">
+      <h3 ng-i18next="avRegistration.notRegisteredYet"></h3>
+      <p>
+        <a href="#" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="5"></a><br/>
+        <span ng-i18next="avRegistration.fewMinutes"></span>
+      </p>
+      <p>
+        <span ng-i18next="avRegistration.createElection"></span><br/>
+        <span ng-i18next="avRegistration.takeLook"></span>
+        <a href="" target="_blank" ng-i18next="avRegistration.step"></a>
+      </p>
+    </div>
   </div>
 </div>
 

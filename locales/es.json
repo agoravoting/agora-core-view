@@ -136,16 +136,21 @@
     "blankVotes": "Votos en blanco:",
     "nullVotes": "Votos nulos:",
 
-
     "errorLoadingQuestionTest": "Disposición de pregunta desconocida"
   },
   "avRegistration": {
-    "loginHeader": "Entrar",
+    "loginHeader": "Entrar en tu cuenta de Agora Voting",
     "logout": "Salir",
-    "emailPlaceholder": "email",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "fulanito@ejemplo.com",
+    "passwordLabel": "Contraseña",
     "passwordPlaceholder": "contraseña",
     "notRegisteredYet": "¿Aún no te has registrado?",
     "registerHere": "Regístrate aquí",
+    "fewMinutes": "Sólo te llevará unos minutos",
+    "createElection": "¿Buscas crear una votación?",
+    "takeLook": "Echa un vistazo a la",
+    "step": "guia paso a paso",
     "forgotPassword": "Olvidé mi contraseña",
     "loginButton": "Entrar",
 

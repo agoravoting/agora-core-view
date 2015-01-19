@@ -137,12 +137,18 @@
     "errorLoadingQuestionTest": "Unknown question layout"
   },
   "avRegistration": {
-    "loginHeader": "Enter",
+    "loginHeader": "Login to your Agora Voting account",
     "logout": "Logout",
-    "emailPlaceholder": "email",
+    "emailLabel": "Email",
+    "emailPlaceholder": "john@example.com",
+    "passwordLabel": "Password",
     "passwordPlaceholder": "password",
     "notRegisteredYet": "Are you not registered yet?",
     "registerHere": "Register here",
+    "fewMinutes": "It only takes a few minutes",
+    "createElection": "Looking to create an election?",
+    "takeLook": "Take a look at the",
+    "step": "step by step guide",
     "forgotPassword": "Forgot my password",
     "loginButton": "Enter",
 
