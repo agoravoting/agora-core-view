@@ -1,0 +1,15 @@
+<div av-admin-head>
+</div>
+
+<div class="container-fluid">
+    <div av-admin-sidebar active="elections" class="col-sm-3">
+    </div>
+    <div ng-switch="state" class="col-sm-9">
+        <div av-elections ng-switch-when="admin.elections"></div>
+        <div av-election-form election="election" ng-switch-when="admin.newelection"></div>
+        <div av-election-form election="election" ng-switch-when="admin.editelection"></div>
+    </div>
+</div>
+
+<div av-admin-foot>
+</div>
