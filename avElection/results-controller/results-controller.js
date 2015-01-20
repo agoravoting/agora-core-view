@@ -14,6 +14,7 @@ angular.module('avElection').controller('ResultsController',
           $state.go("election.results.error");
         }
         $scope.election = value.payload.configuration;
+        $scope.electionState = value.payload.state;
         $scope.results = angular.fromJson(value.payload.results);
         $scope.inside_iframe = InsideIframeService();
         $state.go("election.results.show");

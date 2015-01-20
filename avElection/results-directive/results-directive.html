@@ -6,55 +6,60 @@
       <h1 ng-i18next="[i18next]({title: election.title})avElection.resultsHeader"></h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-6">
-      <div class="pull-left">
-        <p>
-          <a class="padding-right"
-            href="#election/{{election.id}}/ballot-locator">
-            <i class="fa fa-binoculars"></i>
-            <span ng-i18next="avElection.resultsDirective.ballotLocatorLink"></span>
-          </a>
-          <a class="padding-right"
-            href="#election/{{election.id}}/verify-results">
-            <i class="fa fa-fw fa-check-square-o"></i>
-            <span ng-i18next="avElection.resultsDirective.verifiableResultsLink"></span>
-          </a>
-          <a
-            href="{{electionDataUrl}}"
-            target="_blank"
-            ng-i18next="[alt]avElection.downloadElectionData">
-            <i class="fa fa-fw fa-cloud-download"></i>
-          </a>
-          <a
-            href="{{electionTwitterUrl}}"
-            ng-i18next="[alt]avElection.tweetElection"
-            target="_blank">
-            <i class="fa fa-fw fa-facebook"></i>
-          </a>
-          <a
-            href="{{electionFacebookUrl}}"
-            target="_blank"
-            ng-i18next="[alt]avElection.tweetElection">
-            <i class="fa fa-fw fa-twitter"></i>
-          </a>
-          <a
-            href="#election/{{election.id}}/results"
-            target="_blank">
-            <span class="glyphicon glyphicon-share"></span>
-          </a>
-          <span ng-i18next="[i18next]({date: last_updated})avElection.resultsLastUpdated"></span>
-        </p>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="pull-right padding-right">
-        <a href="https://agoravoting.com" class="agoralogo" target="_blank"></a>
-      </div>
-    </div>
+  <div ng-if="electionState !== 'results_ok'">
+    <div ng-i18next="avElection.stateNotPublished"></div>
   </div>
-  <div class="row">
-    <div class="col-xs-12" ng-repeat="question in results.questions" av-question-results index="{{$index}}">
+  <div ng-if="electionState === 'results_ok'">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="pull-left">
+          <p>
+            <a class="padding-right"
+              href="#election/{{election.id}}/ballot-locator">
+              <i class="fa fa-binoculars"></i>
+              <span ng-i18next="avElection.resultsDirective.ballotLocatorLink"></span>
+            </a>
+            <a class="padding-right"
+              href="#election/{{election.id}}/verify-results">
+              <i class="fa fa-fw fa-check-square-o"></i>
+              <span ng-i18next="avElection.resultsDirective.verifiableResultsLink"></span>
+            </a>
+            <a
+              href="{{electionDataUrl}}"
+              target="_blank"
+              ng-i18next="[alt]avElection.downloadElectionData">
+              <i class="fa fa-fw fa-cloud-download"></i>
+            </a>
+            <a
+              href="{{electionTwitterUrl}}"
+              ng-i18next="[alt]avElection.tweetElection"
+              target="_blank">
+              <i class="fa fa-fw fa-facebook"></i>
+            </a>
+            <a
+              href="{{electionFacebookUrl}}"
+              target="_blank"
+              ng-i18next="[alt]avElection.tweetElection">
+              <i class="fa fa-fw fa-twitter"></i>
+            </a>
+            <a
+              href="#election/{{election.id}}/results"
+              target="_blank">
+              <span class="glyphicon glyphicon-share"></span>
+            </a>
+            <span ng-i18next="[i18next]({date: last_updated})avElection.resultsLastUpdated"></span>
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="pull-right padding-right">
+          <a href="https://agoravoting.com" class="agoralogo" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" ng-repeat="question in results.questions" av-question-results index="{{$index}}">
+      </div>
     </div>
   </div>
 </div>

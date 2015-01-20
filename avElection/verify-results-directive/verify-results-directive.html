@@ -29,8 +29,19 @@
   <div class="content avb-content">
     <div class="container">
       <div class="row">
-        <div class="con-xs-12 col-sm-8 col-sm-offset-2 padded-left padded-right"
+        <div class="con-xs-12 col-sm-8 col-sm-offset-2 padded-left padded-right">
+          <div
+          ng-if="electionState === 'results_ok'"
           ng-i18next="[i18next:html]({title: election.title, electionId: election.id})avElection.verifyResults.verifyText">
+          </div>
+          <div
+          ng-if="electionState === 'loading'"
+          ng-i18next="[i18next]avElection.verifyResults.stateLoadingData">
+          </div>
+          <div
+          ng-if="!['loading', 'results_ok'].contains(electionState)"
+          ng-i18next="[i18next]avElection.verifyResults.stateNotPublished">
+          </div>
         </div>
       </div>
     </div>
