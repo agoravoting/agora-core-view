@@ -101,18 +101,18 @@ angular.module('agora-core-view').config(
       })
       .state('admin.elections', {
         url: '/elections',
-        templateUrl: 'avAdmin/elections-controller/elections-controller.html',
-        controller: "ElectionsController"
+        templateUrl: 'avAdmin/admin-controller/admin-controller.html',
+        controller: 'AdminController'
       })
       .state('admin.newelection', {
         url: '/new',
-        templateUrl: 'avAdmin/new-election-controller/new-election-controller.html',
-        controller: "NewElectionController"
+        templateUrl: 'avAdmin/admin-controller/admin-controller.html',
+        controller: "AdminController"
       })
       .state('admin.editelection', {
         url: '/edit/:id',
-        templateUrl: 'avAdmin/edit-election-controller/edit-election-controller.html',
-        controller: "EditElectionController"
+        templateUrl: 'avAdmin/admin-controller/admin-controller.html',
+        controller: "AdminController"
       });
     // END of Admin interface
     $stateProvider
