@@ -146,6 +146,13 @@ angular.module('agora-core-view').config(
         controller: function($scope, $stateParams) {
           $scope.electionId = $stateParams.id;
         }
+      })
+      .state('election.verify-results', {
+        url: '/:id/verify-results',
+        template: '<div av-verify-results></div>',
+        controller: function($scope, $stateParams) {
+          $scope.electionId = $stateParams.id;
+        }
       });
     $stateProvider
       .state('unit-test-e2e', {

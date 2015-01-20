@@ -2,7 +2,7 @@
  * Ballot locator screen directive.
  */
 angular.module('avBooth')
-  .directive('avBallotLocatorScreen',  function(ConfigService, $http, $i18next) {
+  .directive('avBallotLocatorScreen',  function(ConfigService, $http, $i18next, $sce) {
 
     function link(scope, element, attrs) {
       scope.locator = "";
@@ -11,6 +11,11 @@ angular.module('avBooth')
       scope.foundLocator = "";
       scope.searchEnabled = true;
 
+      $http.get(ConfigService.baseUrl + "election/" + scope.electionId)
+          // on success
+          .success(function(value) {
+            scope.election = value.payload.configuration;
+          });
 
       scope.searchLocator = function() {
         scope.searchEnabled = false;

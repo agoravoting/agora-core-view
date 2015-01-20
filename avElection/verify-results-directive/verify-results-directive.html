@@ -1,0 +1,38 @@
+<div class="basic-booth-layout">
+  <nav class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
+    <div class="container">
+      <div class="row avb-top-navbar">
+        <div class="pull-left" ng-i18next="[html]avBooth.poweredBy">
+        </div>
+        <div class="pull-right">
+          <a href="#/election/{{electionId}}/verify-results" target="_blank">
+            <span
+              class="glyphicon glyphicon-share">
+            </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="wrapper-unfixed">
+    <div class="navbar-unfixed-top text-center">
+      <div class="container">
+        <div class="hidden unfixed-top-height"></div>
+        <h1 ng-i18next="avElection.verifyResults.title"></h1>
+          <p ng-i18next="[i18next]({title: election.title})avElection.verifyResults.subtitle"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content avb-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 padded-left padded-right"
+          ng-i18next="[i18next:html]({title: election.title, electionId: election.id})avElection.verifyResults.verifyText">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
