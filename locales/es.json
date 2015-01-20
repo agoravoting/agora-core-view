@@ -217,6 +217,22 @@
         "presscenter": "Centro de prensa",
         "privacy": "Privacidad y seguridad"
     },
+    "sidebar": {
+        "elections": "Votaciones",
+        "newel": "Nueva votación",
+        "import": "Importar",
+        "currentel": "Votación actual",
+        "dashboard": "Panel de control",
+        "basic": "Detalles básicos",
+        "questions": "Preguntas",
+        "census": "Censo",
+        "auth": "Autorización",
+        "tally": "Recuento",
+        "myAccount": "Mi cuenta",
+        "billinfo": "Información de pago",
+        "billhistory": "Historial de pagos",
+        "buy": "Comprar créditos"
+    },
 
     "noElections": "Sin votaciones",
     "admin": "Admin",

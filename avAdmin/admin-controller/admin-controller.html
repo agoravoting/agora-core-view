@@ -2,12 +2,20 @@
 </div>
 
 <div class="container-fluid">
-    <div av-admin-sidebar active="elections" class="col-sm-3">
+    <div av-admin-sidebar class="col-sm-3">
     </div>
     <div ng-switch="state" class="col-sm-9">
-        <div av-elections ng-switch-when="admin.elections"></div>
-        <div av-election-form election="election" ng-switch-when="admin.newelection"></div>
-        <div av-election-form election="election" ng-switch-when="admin.editelection"></div>
+        <div av-admin-elections ng-switch-when="admin.elections"></div>
+        <div av-admin-import ng-switch-when="admin.import"></div>
+        <div av-admin-elbasic ng-switch-when="admin.basic"></div>
+        <div av-admin-elquestions ng-switch-when="admin.questions"></div>
+        <div av-admin-elcensus ng-switch-when="admin.census"></div>
+        <div av-admin-elauth ng-switch-when="admin.auth"></div>
+        <div av-admin-eltally ng-switch-when="admin.tally"></div>
+        <div av-admin-dashboard ng-switch-when="admin.dashboard"></div>
+        <div av-admin-account ng-switch-when="admin.account"></div>
+        <div av-admin-billinginfo ng-switch-when="admin.billinfo"></div>
+        <div av-admin-billinghistory ng-switch-when="admin.billhistory"></div>
     </div>
 </div>
 

@@ -215,6 +215,22 @@
         "presscenter": "Press center",
         "privacy": "Privacy & security"
     },
+    "sidebar": {
+        "elections": "Elections",
+        "newel": "New election",
+        "import": "Import",
+        "currentel": "Current election",
+        "dashboard": "Dashboard",
+        "basic": "Basic details",
+        "questions": "Questions",
+        "census": "Census",
+        "auth": "Authentication",
+        "tally": "Tally",
+        "myAccount": "My account",
+        "billinfo": "Billing information",
+        "billhistory": "Billing history",
+        "buy": "Buy credits"
+    },
 
     "noElections": "No elections yet",
     "admin": "Admin",

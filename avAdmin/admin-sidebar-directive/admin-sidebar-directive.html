@@ -1,15 +1,32 @@
 <ul class="nav nav-pills nav-stacked sidebar">
-  <li role="presentation" class="head" ng-class="{true: 'active', false: ''}[active=='elections']"><a ui-sref="admin.elections()">Elections</a></li>
-  <li role="presentation" class="sub1"><a ui-sref="admin.newelection()">New election</a></li>
-  <li role="presentation" class="sub1"><a href="#">Import</a></li>
+  <li role="presentation" class="head" ng-class="{active:state=='admin.elections'}">
+    <a ui-sref="admin.elections()" ng-i18next="avAdmin.sidebar.elections">Elections</a> </li>
+  <li role="presentation" class="sub1">
+    <a ui-sref="admin.dashboard()"> <i class="fa-fw fa fa-plus-circle"></i> <span ng-i18next="avAdmin.sidebar.newel"></span></a> </li>
+  <li role="presentation" class="sub1" ng-class="{active:state=='admin.import'}">
+    <a ui-sref="admin.import()"> <i class="fa-fw fa fa-upload"></i> <span ng-i18next="avAdmin.sidebar.import"></span></a> </li>
 
-  <ul class="nav nav-pills nav-stacked sidebar" ng-if="current">
-    <li role="presentation" class="head"><a href="#">Current election</a></li>
+  <ul class="nav nav-pills nav-stacked" ng-if="current">
+    <li role="presentation" class="head"><a ui-sref="admin.dashboard()"><span ng-i18next="avAdmin.sidebar.currentel"></span></a></li>
+    <li role="presentation" class="sub1" ng-class="{active:state=='admin.dashboard'}">
+      <a ui-sref="admin.dashboard()"> <i class="fa-fw fa fa-dashboard"></i> <span ng-i18next="avAdmin.sidebar.dashboard"></span></a> </li>
+    <li role="presentation" class="sub1" ng-class="{active:state=='admin.basic'}">
+      <a ui-sref="admin.basic()"> <i class="fa-fw fa fa-university"></i> <span ng-i18next="avAdmin.sidebar.basic"></span></a> </li>
+    <li role="presentation" class="sub1" ng-class="{active:state=='admin.questions'}">
+      <a ui-sref="admin.questions()"> <i class="fa-fw fa fa-question-circle"></i> <span ng-i18next="avAdmin.sidebar.questions"></span></a> </li>
+    <li role="presentation" class="sub1" ng-class="{active:state=='admin.census'}">
+      <a ui-sref="admin.census()"> <i class="fa-fw fa fa-users"></i> <span ng-i18next="avAdmin.sidebar.census"></span></a> </li>
+    <li role="presentation" class="sub1" ng-class="{active:state=='admin.auth'}">
+      <a ui-sref="admin.auth()"> <i class="fa-fw fa fa-unlock"></i> <span ng-i18next="avAdmin.sidebar.auth"></span></a> </li>
+    <li role="presentation" class="sub1" ng-class="{active:state=='admin.tally'}">
+      <a ui-sref="admin.tally()"> <i class="fa-fw fa fa-pie-chart"></i> <span ng-i18next="avAdmin.sidebar.tally"></span></a> </li>
   </ul>
 
-  <li role="presentation" class="head" ng-class="{true: 'active', false: ''}[active=='account']"><a href="#">Account</a></li>
-  <li role="presentation" class="sub1"><a href="#">My account</a></li>
-  <li role="presentation" class="sub1"><a href="#">Billing information</a></li>
-  <li role="presentation" class="sub1"><a href="#">Billing history</a></li>
-  <li role="presentation" class="sub1"><a href="#">Buy credits</a></li>
+  <li role="presentation" class="head" ng-class="{active:state=='admin.account'}">
+    <a ui-sref="admin.account()"> <i class="fa-fw fa fa-user"></i> <span ng-i18next="avAdmin.sidebar.myAccount"></span></a> </li>
+  <li role="presentation" class="sub1" ng-class="{active:state=='admin.billinfo'}">
+    <a ui-sref="admin.billinfo()"> <i class="fa-fw fa fa-credit-card"></i> <span ng-i18next="avAdmin.sidebar.billinfo"></span></a> </li>
+  <li role="presentation" class="sub1" ng-class="{active:state=='admin.billhistory'}">
+    <a ui-sref="admin.billhistory()"> <i class="fa-fw fa fa-history"></i> <span ng-i18next="avAdmin.sidebar.billhistory"></span></a> </li>
+  <li role="presentation" class="sub1"><a href="#"> <i class="fa-fw fa fa-dollar"></i> <span ng-i18next="avAdmin.sidebar.buy"></span></a></li>
 </ul>
