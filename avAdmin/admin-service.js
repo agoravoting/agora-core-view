@@ -4,8 +4,11 @@ angular.module('avAdmin')
         var backendUrl = ConfigService.authAPI;
         var authapi = {};
 
-        authapi.electionsIds = function() {
-            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=admin');
+        authapi.electionsIds = function(page) {
+            if (!page) {
+                page = 1;
+            }
+            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=admin&page='+page);
         };
 
         authapi.getPerm = function(perm, object_type, object_id) {
@@ -32,16 +35,10 @@ angular.module('avAdmin')
         electionsapi.parseElection = function(d) {
             var election = d.payload;
             var conf = election.configuration;
-            var statuses = {
-                registered: "notstarted",
-                created: "notstarted",
-                started: "started",
-                stopped: "tally",
-                tally_ok: "tally",
-                results_ok: "done"
-            };
-            conf.status = statuses[election.state];
-            conf.visibleStatus = conf.status;
+            conf.status = election.state;
+            // TODO make it real
+            conf.votes = 10000;
+            conf.votes_percentage = 72;
             return conf;
         };
 

@@ -46,11 +46,9 @@ angular.module('avRegistration')
             }
             var data = {
                 'auth-method': scope.method,
-                'auth-data': {
-                    'email': scope.login.email,
-                    'password': scope.login.password,
-                    'authevent': autheventid,
-                }
+                'email': scope.login.email,
+                'password': scope.login.password,
+                'authevent': autheventid,
             };
             Authmethod.login(data)
                 .success(function(data) {

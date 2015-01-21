@@ -1,6 +1,12 @@
 {
   "loading": "Loading...",
   "nomore": "No more elements",
+  "registered": "registered",
+  "created": "created",
+  "started": "started",
+  "stopped": "stopped",
+  "tally_ok": "tally done",
+  "results_ok": "results done",
 
   "app": {
     "name": "Agora Voting"
@@ -251,6 +257,13 @@
         "filter": "Filter...",
         "status": "Status",
         "participation": "Participation"
+    },
+    "action": {
+        "create": "create",
+        "start": "start",
+        "stop": "stop",
+        "tally": "tally",
+        "publish": "publish"
     }
   }
 }

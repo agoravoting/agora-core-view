@@ -1,6 +1,12 @@
 {
   "loading": "Cargando...",
   "nomore": "No hay más elementos",
+  "registered": "registrada",
+  "created": "creada",
+  "started": "comenzada",
+  "stopped": "detenida",
+  "tally_ok": "recuento realizado",
+  "results_ok": "resultados",
 
   "app": {
     "name": "Agora Voting"
@@ -253,6 +259,13 @@
         "filter": "Filtrar...",
         "status": "Estado",
         "participation": "Participación"
+    },
+    "action": {
+        "create": "crear",
+        "start": "comenzar",
+        "stop": "parar",
+        "tally": "lanzar recuento",
+        "publish": "publicar"
     }
   }
 }
