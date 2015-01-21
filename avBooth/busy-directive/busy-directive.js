@@ -17,6 +17,8 @@ angular.module('avBooth')
         title.attr("style", "margin-top: " + marginTop + "px; margin-left: " + marginLeft + "px");
       };
 
+      scope.overlay = ('overlay' in attrs);
+
       scope.$watch(attrs.title,
         function() {
           scope.updateTitle();

@@ -1,3 +1,53 @@
 <div>
-    <h1>elections</h1>
+    <h2>
+        <span>Elections</span>
+    </h2>
+
+    <table role="table" class="table table-striped electionlist" infinite-scroll="loadMoreElections()" infinite-scroll-distance="0">
+        <!-- header row -->
+        <tr>
+            <th>
+                <div class="input-group search">
+                  <input type="text" class="form-control" placeholder="{{'avAdmin.elections.filter' | i18next}}">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+            </th>
+            <th class="text-center" ng-i18next> avAdmin.elections.status </th>
+            <th class="text-center"ng-i18next> avAdmin.elections.participation </th>
+            <th></th>
+        </tr>
+
+        <tr ng-repeat="election in elections">
+            <td>
+                <strong>{{ election.title }}</strong> {{ election.description|truncate:150 }}
+            </td>
+            <td class="text-center">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownStatus" data-toggle="dropdown" aria-expanded="true">
+                    {{ election.status }}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu text-left" role="menu" aria-labelledby="dropdownStatus">
+                    <li role="presentation" ng-if="election.status == 'registered'"><a role="menuitem" tabindex="-1" href="#">Create</a></li>
+                    <li role="presentation" ng-if="election.status == 'created'"><a role="menuitem" tabindex="-1" href="#">Start voting</a></li>
+                    <li role="presentation" ng-if="election.status == 'voting'"><a role="menuitem" tabindex="-1" href="#">Stop voting</a></li>
+                    <li role="presentation" ng-if="election.status == 'stopped'"><a role="menuitem" tabindex="-1" href="#">Tally</a></li>
+                    <li role="presentation" ng-if="election.status == 'tally'"><a role="menuitem" tabindex="-1" href="#">Publish</a></li>
+                  </ul>
+                </div>
+            </td>
+            <td class="text-center">
+                <strong>{{ election.votes }}</strong>
+                <br/>
+                {{ election.votes_percentage }}%
+            </td>
+            <td class="text-center">
+                <i class="fa fa-gear fa-lg"></i>
+            </td>
+        </tr>
+    </table>
+    <div ng-if="loading" class="text-center bg-primary" ng-i18next>loading</div>
+    <div ng-if="nomore" class="text-center bg-success" ng-i18next>nomore</div>
 </div>
