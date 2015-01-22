@@ -31,7 +31,7 @@ angular.module('avRegistration')
         };
 
         authmethod.login = function(data) {
-            return $http.post(backendUrl + 'auth-event/0/login/', data);
+            return $http.post(backendUrl + 'auth-event/0/authenticate/', data);
         };
 
         authmethod.viewEvent = function(id) {
