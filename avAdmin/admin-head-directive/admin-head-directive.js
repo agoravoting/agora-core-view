@@ -1,11 +1,16 @@
 angular.module('avAdmin')
-  .directive('avAdminHead', ['$cookies', '$i18next', function($cookies, $i18next) {
+  .directive('avAdminHead', ['Authmethod', '$state', '$cookies', '$i18next', function(Authmethod, $state, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var admin = $cookies.user;
         scope.admin = admin;
         scope.nologin = ('nologin' in attrs) || scope.admin;
         scope.deflang = navigator.language;
+
+        scope.loginrequired = ('loginrequired' in attrs);
+        if (scope.loginrequired && !scope.admin) {
+            $state.go("registration.logout");
+        }
 
         function changeLang(newl) {
             $i18next.options.lng = newl;
@@ -15,6 +20,19 @@ angular.module('avAdmin')
         angular.extend(scope, {
           changeLang: changeLang,
         });
+
+        // checking login status
+        Authmethod.ping()
+            .success(function(data) {
+                if (data.logged) {
+                    Authmethod.setAuth(data['auth-token']);
+                } else {
+                    $state.go("registration.logout");
+                }
+            })
+            .error(function(data) {
+                $state.go("registration.logout");
+            });
     }
 
     return {
