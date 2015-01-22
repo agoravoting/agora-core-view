@@ -7,7 +7,7 @@
             <div class="stick" ng-class="{'stickini': $first, 'stickend': $last}">
                 <i class="fa fa-sw fa-2x" ng-class="{true:'fa-check-circle', false:'fa-circle'}[index > $index]"></i>
             </div>
-            <div class="small" ng-i18next ng-if="index > $index">{{ status }}</div>
+            <div class="small" ng-i18next ng-if="index != $index">{{ status }}</div>
             <button class="btn btn-success" ng-if="index == $index">
                 <div class="small" ng-i18next>{{ nextaction }}</div>
                 <strong ng-i18next>avAdmin.dashboard.donow</strong>
@@ -85,6 +85,40 @@
     <!-- results -->
     <h2 ng-i18next>avAdmin.dashboard.results</h2>
     <!-- TODO -->
+    <div class="well question-result" ng-repeat="q in election.questions">
+        <div class="row">
+            <div class="col-md-7">
+                <h2>{{ q.title }}</h2>
+            </div>
+            <div class="col-md-5">
+                <dl class="dl-horizontal">
+                  <!-- TODO make it real -->
+                  <dt>80</dt>
+                  <dd ng-i18next>avAdmin.dashboard.blankvotes</dd>
+                  <dt>0</dt>
+                  <dd ng-i18next>avAdmin.dashboard.nullvotes</dd>
+                  <dt>{{ election.votes|number }}</dt>
+                  <dd ng-i18next>avAdmin.dashboard.optionvotes</dd>
+                </dl>
+            </div>
+        </div>
 
+        <table role="table" class="table">
+            <tr class="text-success">
+                <th></th>
+                <th ng-i18next>avAdmin.dashboard.option</th>
+                <th ng-i18next>avAdmin.dashboard.votes</th>
+                <th></th>
+                <th ng-i18next>avAdmin.dashboard.winner</th>
+            </tr>
+            <tr ng-repeat="an in q.answers">
+                <td>{{ $index + 1 }}</td>
+                <td>{{ an.text }}</td>
+                <td>{{ "28888"|number }}</td>
+                <td>25%</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </div>
     <!-- endof results -->
 </div>

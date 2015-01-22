@@ -286,7 +286,13 @@
         "stop": "Terminar votación",
         "tally": "Hacer recuento",
         "publish": "Publicar resultados",
-        "results": "Resultados"
+        "results": "Resultados",
+        "blankvotes": "Votos en blanco",
+        "nullvotes": "Votos nulos",
+        "optionvotes": "Votos a opciones",
+        "option": "Candidatura",
+        "votes": "Votos",
+        "winner": "Posición ganadora"
     }
   }
 }

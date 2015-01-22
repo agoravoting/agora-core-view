@@ -284,7 +284,13 @@
         "stop": "Stop voting",
         "tally": "Tally",
         "publish": "Publish results",
-        "results": "Results"
+        "results": "Results",
+        "blankvotes": "Blank votes",
+        "nullvotes": "Null votes",
+        "optionvotes": "Votes to options",
+        "option": "Candidature",
+        "votes": "Votes",
+        "winner": "Winner position"
     }
   }
 }
