@@ -270,7 +270,21 @@
         "file": "Select file"
     },
     "dashboard": {
-        "donow": "click to do now"
+        "donow": "click to do now",
+        "votes": "Votes",
+        "census": "Census",
+        "questions": "Questions",
+        "answers": "Answers",
+        "status": "Status",
+        "authentication": "Authentication",
+        "electionid": "Election Id",
+        "authorities": "Authorities",
+        "create": "Create",
+        "start": "Start voting",
+        "stop": "Stop voting",
+        "tally": "Tally",
+        "publish": "Publish results",
+        "results": "Results"
     }
   }
 }

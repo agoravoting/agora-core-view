@@ -272,7 +272,21 @@
         "file": "Selecciona un fichero"
     },
     "dashboard": {
-        "donow": "pulsa para hacer ahora"
+        "donow": "pulsa para hacer ahora",
+        "votes": "Votos",
+        "census": "Censo",
+        "questions": "Preguntas",
+        "answers": "Respuestas",
+        "status": "Estado",
+        "authentication": "Autenticación",
+        "electionid": "Id de votación",
+        "authorities": "Autoridades",
+        "create": "Crear",
+        "start": "Comenzar votación",
+        "stop": "Terminar votación",
+        "tally": "Hacer recuento",
+        "publish": "Publicar resultados",
+        "results": "Resultados"
     }
   }
 }

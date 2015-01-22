@@ -55,6 +55,18 @@ angular.module('avAdmin')
             // TODO make it real
             conf.votes = 10000;
             conf.votes_percentage = 72;
+            conf.census = 20000;
+
+            // number of answers
+            conf.answers = 0;
+            conf.questions.forEach(function(q) {
+                conf.answers += q.answers.length;
+            });
+
+            // adding director to the list of authorities
+            conf.auths = [conf.director, ];
+            conf.authorities.forEach(function(a) { conf.auths.push(a); });
+
 
             // caching election
             electionsapi.cache[conf.id] = conf;
