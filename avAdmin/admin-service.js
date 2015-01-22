@@ -26,7 +26,23 @@ angular.module('avAdmin')
 
     .factory('ElectionsApi', ['ConfigService', '$http', function(ConfigService, $http) {
         var backendUrl = ConfigService.electionsAPI;
-        var electionsapi = {};
+        var electionsapi = {cache: {}};
+
+        electionsapi.cache_election = function(id, election) {
+            electionsapi.chache[id] = election;
+        };
+
+        electionsapi.get_election = function(id, success, error) {
+            var cached = electionsapi.cache[id];
+            if (!cached) {
+                electionsapi.election(id)
+                    .success(function(data) {
+                        success(electionsapi.parseElection(data));
+                    }).error(error);
+            } else {
+                success(cached);
+            }
+        };
 
         electionsapi.election = function(id) {
             return $http.get(backendUrl + 'election/'+id);
@@ -39,6 +55,9 @@ angular.module('avAdmin')
             // TODO make it real
             conf.votes = 10000;
             conf.votes_percentage = 72;
+
+            // caching election
+            electionsapi.cache[conf.id] = conf;
             return conf;
         };
 

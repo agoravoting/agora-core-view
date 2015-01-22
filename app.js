@@ -101,17 +101,17 @@ angular.module('agora-core-view').config(
         controller: "LoginController"
       })
       // admin directives using the admin controller
-      .state('admin.elections',   { url: '/elections',   templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.import',      { url: '/import',      templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.basic',       { url: '/basic',       templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.questions',   { url: '/questions',   templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.census',      { url: '/census',      templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.auth',        { url: '/auth',        templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.tally',       { url: '/tally',       templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.dashboard',   { url: '/dashboard',   templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.account',     { url: '/account',     templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.billinfo',    { url: '/billinfo',    templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.billhistory', { url: '/billhistory', templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' });
+      .state('admin.elections',   { url: '/elections',     templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.import',      { url: '/import',        templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.basic',       { url: '/basic',         templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.questions',   { url: '/questions',     templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.census',      { url: '/census',        templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.auth',        { url: '/auth',          templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.tally',       { url: '/tally',         templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.dashboard',   { url: '/dashboard/:id', templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.account',     { url: '/account',       templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.billinfo',    { url: '/billinfo',      templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.billhistory', { url: '/billhistory',   templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' });
 
     // END of Admin interface
     $stateProvider

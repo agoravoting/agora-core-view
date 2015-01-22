@@ -7,7 +7,8 @@
     <a ui-sref="admin.import()"> <i class="fa-fw fa fa-upload"></i> <span ng-i18next="avAdmin.sidebar.import"></span></a> </li>
 
   <ul class="nav nav-pills nav-stacked" ng-if="current">
-    <li role="presentation" class="head"><a ui-sref="admin.dashboard()"><span ng-i18next="avAdmin.sidebar.currentel"></span></a></li>
+    <li role="presentation" class="head"><a ui-sref="admin.dashboard()">
+        <span ng-i18next="avAdmin.sidebar.currentel"></span> <span class="label label-success">{{ current.title|truncate:20 }}</span></a></li>
     <li role="presentation" class="sub1" ng-class="{active:state=='admin.dashboard'}">
       <a ui-sref="admin.dashboard()"> <i class="fa-fw fa fa-dashboard"></i> <span ng-i18next="avAdmin.sidebar.dashboard"></span></a> </li>
     <li role="presentation" class="sub1" ng-class="{active:state=='admin.basic'}">

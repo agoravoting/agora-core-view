@@ -22,17 +22,19 @@ angular.module('avAdmin')
         });
 
         // checking login status
-        Authmethod.ping()
-            .success(function(data) {
-                if (data.logged) {
-                    Authmethod.setAuth(data['auth-token']);
-                } else {
+        if (admin) {
+            Authmethod.ping()
+                .success(function(data) {
+                    if (data.logged) {
+                        Authmethod.setAuth(data['auth-token']);
+                    } else {
+                        $state.go("registration.logout");
+                    }
+                })
+                .error(function(data) {
                     $state.go("registration.logout");
-                }
-            })
-            .error(function(data) {
-                $state.go("registration.logout");
-            });
+                });
+        }
     }
 
     return {

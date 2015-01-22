@@ -1,8 +1,7 @@
 angular.module('avAdmin')
-  .directive('avAdminElections', ['AuthApi', 'ElectionsApi', function(AuthApi, ElectionsApi) {
+  .directive('avAdminElections', ['AuthApi', 'ElectionsApi', '$state', function(AuthApi, ElectionsApi, $state) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
-        scope.elections = [];
         scope.page = 1;
         scope.loading = false;
         scope.nomore = false;
