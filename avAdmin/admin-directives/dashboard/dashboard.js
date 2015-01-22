@@ -3,8 +3,23 @@ angular.module('avAdmin')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var id = $stateParams.id;
+        var statuses = [
+            'registered',
+            'created',
+            'started',
+            'stopped',
+            'tally_ok',
+            'results_ok'
+        ];
+        scope.statuses = statuses;
         scope.current = {};
-        ElectionsApi.get_election(id, function(el) { scope.current = el; }, function(data) {});
+        scope.index = 0;
+        ElectionsApi.get_election(id,
+            function(el) {
+                scope.current = el;
+                scope.index = statuses.indexOf(el.status) + 1;
+            },
+            function(data) {});
     }
 
     return {

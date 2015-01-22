@@ -268,6 +268,9 @@
     "import": {
         "desc": "Importing an election from tsv allows you to manage and automatize the creation of elections details externally. <a href=\"#\">Read more about the TSV election format here</a>. If you want to create many elections at once, you can use the API or contact us.",
         "file": "Select file"
+    },
+    "dashboard": {
+        "donow": "click to do now"
     }
   }
 }

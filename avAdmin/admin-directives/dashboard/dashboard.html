@@ -1,5 +1,17 @@
 <div>
     <h2 ng-i18next>avAdmin.sidebar.dashboard</h2>
-    <h3 ng-bind="current.id"></h3>
-    <h3 ng-bind="current.title"></h3>
+
+    <!-- dashboard status bar -->
+    <div class="statusbar row text-center">
+        <div class="col-xs-2" ng-class="{true:'text-success', false:'text-muted'}[index > $index]" ng-repeat="status in statuses">
+            <div class="stick" ng-class="{'stickini': $first, 'stickend': $last}">
+                <i class="fa fa-sw fa-2x" ng-class="{true:'fa-check-circle', false:'fa-circle'}[index > $index]"></i>
+            </div>
+            <div class="small" ng-i18next>{{ status }}</div>
+            <button class="btn btn-success" ng-if="index == $index">
+                <strong ng-i18next>avAdmin.dashboard.donow</strong>
+            </button>
+        </div>
+    </div>
+    <!-- endof dashboard status bar -->
 </div>

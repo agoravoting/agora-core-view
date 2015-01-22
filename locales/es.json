@@ -270,6 +270,9 @@
     "import": {
         "desc": "Importar una votación desde tsv te permite administrar y automatizar la creación de votaciones de forma externa. <a href=\"#\">Lee más acerca de el formato de votación TSV aquí</a>. Si quieres crear varias votaciones a la vez, puedes user la API o contactar con nosotros.",
         "file": "Selecciona un fichero"
+    },
+    "dashboard": {
+        "donow": "pulsa para hacer ahora"
     }
   }
 }
