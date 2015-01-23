@@ -50,7 +50,7 @@
             <td class="text-center">
                 <strong>{{ election.votes }}</strong>
                 <br/>
-                {{ election.votes_percentage }}%
+                {{ election.votes_percentage|number:0 }}%
             </td>
             <td class="text-center">
                 <a ui-sref="admin.dashboard({id: election.id})"><i class="fa fa-gear fa-lg"></i></a>

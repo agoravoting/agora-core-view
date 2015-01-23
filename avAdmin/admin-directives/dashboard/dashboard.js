@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminDashboard', ["Authmethod", "ElectionsApi", "$stateParams", function(Authmethod, ElectionsApi, $stateParams) {
+  .directive('avAdminDashboard', ["ElectionsApi", "$stateParams", function(ElectionsApi, $stateParams) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var id = $stateParams.id;
@@ -21,10 +21,6 @@ angular.module('avAdmin')
         ];
 
         scope.statuses = statuses;
-        scope.auth = {
-            authentication: "",
-            census: 0
-        };
         scope.election = {};
         scope.index = 0;
         scope.nextaction = 0;
@@ -35,12 +31,6 @@ angular.module('avAdmin')
                 scope.nextaction = nextactions[scope.index - 1];
             },
             function(data) {});
-
-        Authmethod.viewEvent(id)
-            .success(function(data) {
-                scope.auth.authentication = data.events.auth_method;
-                scope.auth.census = data.events.users;
-            });
     }
 
     return {

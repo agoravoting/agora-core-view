@@ -24,7 +24,7 @@ angular.module('avAdmin')
 
     }])
 
-    .factory('ElectionsApi', ['ConfigService', '$http', function(ConfigService, $http) {
+    .factory('ElectionsApi', ['Authmethod', 'ConfigService', '$http', function(Authmethod, ConfigService, $http) {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}};
 
@@ -37,7 +37,21 @@ angular.module('avAdmin')
             if (!cached) {
                 electionsapi.election(id)
                     .success(function(data) {
-                        success(electionsapi.parseElection(data));
+                        var el = electionsapi.parseElection(data);
+                        // getting auth info, census and other data
+                        Authmethod.viewEvent(id)
+                            .success(function(data) {
+                                el.auth = {};
+                                el.auth.authentication = data.events.auth_method;
+                                el.auth.census = data.events.users;
+                                if (el.auth.census) {
+                                    el.votes_percentage = (el.stats.votes * 100 )/ el.auth.census;
+                                } else {
+                                    el.votes_percentage = 0;
+                                }
+                                success(el);
+                            })
+                            .error(error);
                     }).error(error);
             } else {
                 success(cached);
@@ -52,10 +66,11 @@ angular.module('avAdmin')
             var election = d.payload;
             var conf = election.configuration;
             conf.status = election.state;
+            conf.stats = election.stats;
+
             // TODO make it real
-            conf.votes = 10000;
-            conf.votes_percentage = 72;
-            conf.census = 20000;
+            conf.votes = conf.stats.votes;
+            conf.votes_percentage = 0;
 
             // number of answers
             conf.answers = 0;
