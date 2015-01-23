@@ -21,7 +21,10 @@ angular.module('avAdmin')
         ];
 
         scope.statuses = statuses;
-        scope.authentication = "";
+        scope.auth = {
+            authentication: "",
+            census: 0
+        };
         scope.election = {};
         scope.index = 0;
         scope.nextaction = 0;
@@ -35,7 +38,8 @@ angular.module('avAdmin')
 
         Authmethod.viewEvent(id)
             .success(function(data) {
-                scope.authentication = data.events.auth_method;
+                scope.auth.authentication = data.events.auth_method;
+                scope.auth.census = data.events.users;
             });
     }
 

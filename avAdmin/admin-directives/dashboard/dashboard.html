@@ -26,7 +26,7 @@
         </div>
         <div class="col-sm-4 text-right">
             <div class="block">
-                <strong>{{ election.census|number }}</strong><br/>
+                <strong>{{ auth.census|number }}</strong><br/>
                 <span ng-i18next>avAdmin.dashboard.census</span>
             </div>
         </div>
@@ -49,7 +49,7 @@
                   <dt ng-i18next>avAdmin.dashboard.status</dt>
                   <dd ng-i18next>{{ election.status }}</dd>
                   <dt ng-i18next>avAdmin.dashboard.authentication</dt>
-                  <dd>{{ authentication }}</dd>
+                  <dd>{{ auth.authentication }}</dd>
                   <dt ng-i18next>avAdmin.dashboard.electionid</dt>
                   <dd>{{ election.id }}</dd>
                 </dl>
