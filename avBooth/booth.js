@@ -16,6 +16,7 @@ angular.module('avBooth').controller('BoothController',
 
     // checks that the general format of the input data (hmac hash & message)
     // is valid
+    // Voting format: /hash/voterid:object_type:object_id:perm:timestamp
     function checkElectionUrl() {
       if ($scope.hmacHash.length === 0 || InsideIframeService()) {
         return null;
@@ -30,23 +31,24 @@ angular.module('avBooth').controller('BoothController',
       }
 
       var splitHmac = $scope.hmacMessage.split(":");
-      if (splitHmac.length !== 2) {
+      if (splitHmac.length !== 5) {
         return error;
       }
 
-      var message = splitHmac[0];
-      var timestamp = splitHmac[1];
+      var voterId = splitHmac[0];
+      var objectType = splitHmac[1];
+      var objectId = splitHmac[2];
+      var perm = splitHmac[3];
+      var message = voterId + ":" + objectType + ":" + objectId + ":" + perm;
+      var timestamp = splitHmac[4];
       var splitMessage = message.split("-");
 
-      if (splitMessage[0] !== "voter" ||
-        !hashFormat.test(splitMessage[2]) ||
-        isNaN(parseInt(splitMessage[1])) ||
-        isNaN(parseInt(timestamp)))
+      if (isNaN(parseInt(objectId, 10)))
       {
           return error;
       }
 
-      $scope.voterId = splitMessage[2];
+      $scope.voterId = voterId;
 
       return null;
     }
