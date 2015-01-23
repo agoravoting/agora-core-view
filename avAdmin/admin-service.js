@@ -24,9 +24,41 @@ angular.module('avAdmin')
 
     }])
 
-    .factory('ElectionsApi', ['Authmethod', 'ConfigService', '$http', function(Authmethod, ConfigService, $http) {
+    .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$http', function($q, Authmethod, ConfigService, $http) {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}};
+
+        function asyncElection(id) {
+            var deferred = $q.defer();
+
+            electionsapi.election(id)
+                .success(function(data) {
+                    var el = electionsapi.parseElection(data);
+                    deferred.resolve(el);
+                }).error(deferred.reject);
+
+            return deferred.promise;
+        }
+
+        function asyncElectionAuth(el) {
+            var deferred = $q.defer();
+
+            Authmethod.viewEvent(el.id)
+                .success(function(data) {
+                    el.auth = {};
+                    el.auth.authentication = data.events.auth_method;
+                    el.auth.census = data.events.users;
+                    if (el.auth.census) {
+                        el.votes_percentage = (el.stats.votes * 100 )/ el.auth.census;
+                    } else {
+                        el.votes_percentage = 0;
+                    }
+                    deferred.resolve(el);
+                })
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
 
         electionsapi.cache_election = function(id, election) {
             electionsapi.chache[id] = election;
@@ -35,24 +67,10 @@ angular.module('avAdmin')
         electionsapi.get_election = function(id, success, error) {
             var cached = electionsapi.cache[id];
             if (!cached) {
-                electionsapi.election(id)
-                    .success(function(data) {
-                        var el = electionsapi.parseElection(data);
-                        // getting auth info, census and other data
-                        Authmethod.viewEvent(id)
-                            .success(function(data) {
-                                el.auth = {};
-                                el.auth.authentication = data.events.auth_method;
-                                el.auth.census = data.events.users;
-                                if (el.auth.census) {
-                                    el.votes_percentage = (el.stats.votes * 100 )/ el.auth.census;
-                                } else {
-                                    el.votes_percentage = 0;
-                                }
-                                success(el);
-                            })
-                            .error(error);
-                    }).error(error);
+                asyncElection(id)
+                  .then(asyncElectionAuth)
+                  .then(success)
+                  .catch(error);
             } else {
                 success(cached);
             }
