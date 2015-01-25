@@ -65,11 +65,6 @@ angular.module('agora-core-view').config(
         templateUrl: 'avRegistration/register-controller/register-controller.html',
         controller: "RegisterController"
       })
-      .state('registration.validate', {
-        url: '/:id/validate',
-        templateUrl: 'avRegistration/validate-controller/validate-controller.html',
-        controller: "ValidateController"
-      })
       .state('registration.login', {
         url: '/:id/login',
         templateUrl: 'avRegistration/login-controller/login-controller.html',
