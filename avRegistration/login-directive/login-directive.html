@@ -6,7 +6,6 @@
     </div>
 
     <div class="col-sm-6">
-        <div class="error text-danger" ng-if="error">{{ error }}</div>
         <form name="form" id="loginForm" role="form" class="form-horizontal">
             <div class="form-group" ng-class="{true: 'has-error',false: 'is-required'}[form.emailText.$dirty && form.emailText.$invalid]">
                 <label for="emailText" class="control-label col-sm-4" ng-i18next="avRegistration.emailLabel"></label>
@@ -34,19 +33,21 @@
                 <div class="col-sm-8">
                     <input type="password" class="form-control" ng-model="login.password" id="passwordText"
                             ng-i18next="[placeholder]avRegistration.passwordPlaceholder" tabindex="2" required />
+                    <div class="input-error">
+                        <small
+                          class="error text-danger"
+                          ng-show="form.$submitted && form.$invalid"
+                          ng-i18next="avRegistration.invalidCredentials"></small>
+                    </div>
                 </div>
             </div>
 
-          <div class="input-error">
-              <small
-                class="error text-danger"
-                ng-show="form.$submitted && form.$invalid"
-                ng-i18next="avRegistration.invalidCredentials"></small>
-          </div>
-
           <div class="col-sm-offset-4 col-sm-8 button-group">
+              <div class="input-error">
+                  <div class="error text-danger" ng-if="error">{{ error }}</div>
+              </div>
               <button type="submit" class="btn btn-block btn-success" ng-i18next="avRegistration.loginButton"
-                      ng-click="loginUser(form.$valid)" tabindex="3">
+                      ng-click="loginUser(form.$valid)" tabindex="3" ng-disabled="!form.$valid && !sendingData">
               </button>
           </div>
         </form>

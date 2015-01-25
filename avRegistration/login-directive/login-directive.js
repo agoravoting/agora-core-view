@@ -4,6 +4,7 @@ angular.module('avRegistration')
     function link(scope, element, attrs) {
         var splitUrl = $location.absUrl().split('/');
         var autheventid = splitUrl[splitUrl.length - 2];
+        scope.sendingData = false;
 
         scope.isAdmin = false;
         if (autheventid === 'admin') {
@@ -44,14 +45,19 @@ angular.module('avRegistration')
             if (!valid) {
                 return;
             }
+            if (scope.sendingData) {
+                return;
+            }
             var data = {
                 'auth-method': scope.method,
                 'email': scope.login.email,
                 'password': scope.login.password,
                 'authevent': autheventid,
             };
+            scope.sendingData = true;
             Authmethod.login(data)
                 .success(function(data) {
+                    scope.sendingData = false;
                     if (data.status === "ok") {
                         scope.khmac = data.khmac;
                         $cookies.authevent = autheventid;
@@ -70,8 +76,9 @@ angular.module('avRegistration')
                     }
                 })
                 .error(function(error) {
+                    scope.sendingData = false;
                     scope.status = 'Registration error: ' + error.message;
-                    scope.error = $i18next('avRegistration.errorRegistration');
+                    scope.error = $i18next('avRegistration.invalidCredentials');
                 });
         };
 
@@ -85,8 +92,7 @@ angular.module('avRegistration')
     }
     return {
       restrict: 'AE',
-      scope: {
-      },
+      scope: true,
       link: link,
       templateUrl: 'avRegistration/login-directive/login-directive.html'
     };
