@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 loginheader">
-        <h1 class="text-center">{{name}}</h1>
-        <h1 ng-i18next="avRegistration.loginHeader" class="text-center"></h1>
+        <h1>{{name}}</h1>
+        <h1 ng-i18next="avRegistration.loginHeader"></h1>
     </div>
 
     <div class="col-sm-6">
-        <div class="error" ng-if="error">{{ error }}</div>
+        <div class="error text-danger" ng-if="error">{{ error }}</div>
         <form name="form" id="loginForm" role="form" class="form-horizontal">
             <div class="form-group" ng-class="{true: 'has-error',false: 'is-required'}[form.emailText.$dirty && form.emailText.$invalid]">
                 <label for="emailText" class="control-label col-sm-4" ng-i18next="avRegistration.emailLabel"></label>
@@ -16,7 +16,7 @@
                             ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="1"
                             ng-pattern="patterns('email')" autofocus required />
                     <div class="error" ng-show="form.emailText.$dirty && form.emailText.$invalid">
-                        <small class="error" ng-i18next="avRegistration.emailError"></small>
+                        <small class="error text-danger" ng-i18next="avRegistration.emailError"></small>
                     </div>
                 </div>
             </div>
@@ -35,10 +35,10 @@
             </div>
 
           <div class="error" ng-show="form.$submitted && form.$invalid">
-              <small class="error" ng-i18next="avRegistration.invalidCredentials"></small>
+              <small class="error text-danger" ng-i18next="avRegistration.invalidCredentials"></small>
           </div>
 
-          <div class="col-sm-offset-4 col-sm-8">
+          <div class="col-sm-offset-4 col-sm-8 button-group">
               <button type="submit" class="btn btn-block btn-success" ng-i18next="avRegistration.loginButton"
                       ng-click="loginUser(form.$valid)" tabindex="3">
               </button>
@@ -46,7 +46,7 @@
         </form>
     </div>
     <div class="col-sm-5 col-sm-offset-1">
-      <h3 ng-i18next="avRegistration.notRegisteredYet"></h3>
+      <h3 class="help-h3" ng-i18next="avRegistration.notRegisteredYet"></h3>
       <p>
         <a href="#" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="5"></a><br/>
         <span ng-i18next="avRegistration.fewMinutes"></span>
