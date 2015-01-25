@@ -15,8 +15,11 @@
                             name="emailText" id="emailText"
                             ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="1"
                             ng-pattern="patterns('email')" autofocus required />
-                    <div class="error" ng-show="form.emailText.$dirty && form.emailText.$invalid">
-                        <small class="error text-danger" ng-i18next="avRegistration.emailError"></small>
+                    <div class="input-error">
+                        <small
+                          class="error text-danger"
+                          ng-show="form.emailText.$dirty && form.emailText.$invalid"
+                          ng-i18next="avRegistration.emailError"></small>
                     </div>
                 </div>
             </div>
@@ -34,8 +37,11 @@
                 </div>
             </div>
 
-          <div class="error" ng-show="form.$submitted && form.$invalid">
-              <small class="error text-danger" ng-i18next="avRegistration.invalidCredentials"></small>
+          <div class="input-error">
+              <small
+                class="error text-danger"
+                ng-show="form.$submitted && form.$invalid"
+                ng-i18next="avRegistration.invalidCredentials"></small>
           </div>
 
           <div class="col-sm-offset-4 col-sm-8 button-group">
