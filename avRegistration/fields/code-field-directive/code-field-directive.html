@@ -7,7 +7,7 @@
             id="{{index}}Text"
             ng-model="field.value"
             ng-disabled="field.disabled"
-            tabindex="1"
+            tabindex="{{parseInt(index)+1}}"
             autofocus
             required />
         <div class="input-error">
