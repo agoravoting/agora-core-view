@@ -32,6 +32,9 @@ angular.module('avRegistration')
             };
             _.each(scope.login_fields, function (field) {
               data[field.name] = field.value;
+              if (field.name === 'email') {
+                scope.email = field.value;
+              }
             });
 
             scope.sendingData = true;
@@ -111,7 +114,7 @@ angular.module('avRegistration')
         } else {
             scope.apply({
               extra_fields: [],
-              auth_method: "email",
+              auth_method: "user-and-password",
               auth_method_config: {}
             });
         }
