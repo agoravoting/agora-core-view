@@ -13,6 +13,21 @@ angular.module('avAdmin')
             }
             scope.loading = true;
 
+            function getAllElections(list) {
+                list.forEach(function (perm) {
+                    ElectionsApi.getElection(perm.object_id)
+                        .then(function(d) {
+                            scope.elections.push(d);
+                            scope.loading -= 1;
+                        })
+                        .catch(function(d) {
+                            // election doesn't exists in agora-elections
+                            console.log("Not in agora elections: " + perm.object_id);
+                            scope.loading -= 1;
+                        });
+                });
+            }
+
             AuthApi.electionsIds(scope.page)
                 .success(function(data) {
                     scope.nomore = true;
@@ -25,17 +40,7 @@ angular.module('avAdmin')
                     // here we've the elections id, then we need to ask to
                     // ElectionsApi for each election and load it.
                     scope.loading = data.perms.length;
-                    data.perms.forEach(function (perm) {
-                        ElectionsApi.get_election(perm.object_id,
-                        function(d) {
-                            scope.elections.push(d);
-                            scope.loading -= 1;
-                        },function(d) {
-                            // election doesn't exists in agora-elections
-                            console.log("Not in agora elections: " + perm.object_id);
-                            scope.loading -= 1;
-                        });
-                    });
+                    getAllElections(data.perms);
                 })
                 .error(function(data) {
                     scope.loading = false;

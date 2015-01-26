@@ -24,13 +24,13 @@ angular.module('avAdmin')
         scope.election = {};
         scope.index = 0;
         scope.nextaction = 0;
-        ElectionsApi.get_election(id,
-            function(el) {
+
+        ElectionsApi.getElection(id)
+            .then(function(el) {
                 scope.election = el;
                 scope.index = statuses.indexOf(el.status) + 1;
                 scope.nextaction = nextactions[scope.index - 1];
-            },
-            function(data) {});
+            });
     }
 
     return {

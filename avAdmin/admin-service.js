@@ -8,7 +8,7 @@ angular.module('avAdmin')
             if (!page) {
                 page = 1;
             }
-            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=admin&page='+page);
+            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&page='+page);
         };
 
         authapi.getPerm = function(perm, object_type, object_id) {
@@ -64,16 +64,20 @@ angular.module('avAdmin')
             electionsapi.chache[id] = election;
         };
 
-        electionsapi.get_election = function(id, success, error) {
+        electionsapi.getElection = function(id) {
+            var deferred = $q.defer();
+
             var cached = electionsapi.cache[id];
             if (!cached) {
                 asyncElection(id)
                   .then(asyncElectionAuth)
-                  .then(success)
-                  .catch(error);
+                  .then(deferred.resolve)
+                  .catch(deferred.reject);
             } else {
-                success(cached);
+                deferred.resolve(cached);
             }
+
+            return deferred.promise;
         };
 
         electionsapi.election = function(id) {
@@ -86,7 +90,6 @@ angular.module('avAdmin')
             conf.status = election.state;
             conf.stats = election.stats;
 
-            // TODO make it real
             conf.votes = conf.stats.votes;
             conf.votes_percentage = 0;
 
