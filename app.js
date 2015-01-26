@@ -70,6 +70,16 @@ angular.module('agora-core-view').config(
         templateUrl: 'avRegistration/login-controller/login-controller.html',
         controller: "LoginController"
       })
+      .state('registration.login_user', {
+        url: '/:id/login/:email',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
+      })
+      .state('registration.login_email_code', {
+        url: '/:id/login/:email/:code',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
+      })
       .state('registration.logout', {
         url: '/logout',
         controller: "LogoutController"

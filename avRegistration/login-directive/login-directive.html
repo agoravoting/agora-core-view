@@ -7,39 +7,7 @@
 
     <div class="col-sm-6">
         <form name="form" id="loginForm" role="form" class="form-horizontal">
-            <div class="form-group" ng-class="{true: 'has-error',false: 'is-required'}[form.emailText.$dirty && form.emailText.$invalid]">
-                <label for="emailText" class="control-label col-sm-4" ng-i18next="avRegistration.emailLabel"></label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" ng-model="login.email"
-                            name="emailText" id="emailText"
-                            ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="1"
-                            ng-pattern="patterns('email')" autofocus required />
-                    <div class="input-error">
-                        <small
-                          class="error text-danger"
-                          ng-show="form.emailText.$dirty && form.emailText.$invalid"
-                          ng-i18next="avRegistration.emailError"></small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{true: 'has-error',false: 'is-required'}[form.passwordText.$dirty && form.passwordText.$invalid]">
-                <label for="passwordText" class="control-label col-sm-4">
-                    <span ng-i18next="avRegistration.passwordLabel"></span>
-                    <p class="help-block">
-                      <a href="#" ng-i18next="avRegistration.forgotPassword" ng-click="forgotPassword()" tabindex="5"></a>
-                    </p>
-                </label>
-                <div class="col-sm-8">
-                    <input type="password" class="form-control" ng-model="login.password" id="passwordText"
-                            ng-i18next="[placeholder]avRegistration.passwordPlaceholder" tabindex="2" required />
-                    <div class="input-error">
-                        <small
-                          class="error text-danger"
-                          ng-show="form.$submitted && form.$invalid"
-                          ng-i18next="avRegistration.invalidCredentials"></small>
-                    </div>
-                </div>
+            <div ng-repeat="field in login_fields" avr-field index="{{$index}}">
             </div>
 
           <div class="col-sm-offset-4 col-sm-8 button-group">

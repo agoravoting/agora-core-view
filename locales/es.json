@@ -163,6 +163,7 @@
   "avRegistration": {
     "loginHeader": "Entrar en tu cuenta de Agora Voting",
     "logout": "Salir",
+    "codeLabel": "Código de Autenticación",
     "emailLabel": "Correo electrónico",
     "emailPlaceholder": "fulanito@ejemplo.com",
     "passwordLabel": "Contraseña",

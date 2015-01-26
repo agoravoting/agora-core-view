@@ -46,6 +46,60 @@ angular.module('avRegistration')
             return $http.post(backendUrl + 'auth-event/' + id +'/', data);
         };
 
+        authmethod.getRegisterFields = function (viewEventData) {
+          var fields = angular.copy(viewEventData.extra_fields);
+          if (viewEventData.auth_method === "sms") {
+            fields.unshift({
+              "name": "code",
+              "type": "text",
+              "required": true,
+              "min": 3,
+              "max": 30,
+              "regexp": "[a-z_A-Z0-9]+",
+              "required_on_authentication": true
+            });
+            fields.unshift({
+              "name": "tlf",
+              "type": "tlf",
+              "required": true,
+              "required_on_authentication": true
+            });
+          } else if (viewEventData.auth_method === "email") {
+            fields.unshift({
+              "name": "code",
+              "type": "code",
+              "required": true,
+              "required_on_authentication": true
+            });
+            fields.unshift({
+              "name": "email",
+              "type": "email",
+              "required": true,
+              "required_on_authentication": true
+            });
+          } else if (viewEventData.auth_method === "user-and-password") {
+            fields.unshift({
+              "name": "password",
+              "type": "password",
+              "required": true,
+              "required_on_authentication": true
+            });
+            fields.unshift({
+              "name": "email",
+              "type": "email",
+              "required": true,
+              "required_on_authentication": true
+            });
+          }
+          return fields;
+        };
+
+        authmethod.getLoginFields = function (viewEventData) {
+          return _.filter(
+            authmethod.getRegisterFields(viewEventData),
+            function (field) {return field.required_on_authentication;});
+        };
+
         // TEST
         authmethod.test = function() {
             return $http.get(backendUrl);

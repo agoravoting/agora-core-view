@@ -1,45 +1,23 @@
 angular.module('avRegistration')
-  .directive('avLogin', ['Authmethod', 'Patterns', '$location', '$parse', '$state', '$cookies', '$i18next', function(Authmethod, Patterns, $location, $parse, $state, $cookies, $i18next) {
+  .directive('avLogin', function(Authmethod, $parse, $state, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
-        var splitUrl = $location.absUrl().split('/');
-        var autheventid = splitUrl[splitUrl.length - 2];
+        var autheventid = attrs.eventId;
         scope.sendingData = false;
 
+        scope.code = null;
+        if (attrs.code && attrs.code.length > 0) {
+          scope.code = attrs.code;
+        }
+        scope.email = null;
+        if (attrs.email && attrs.email.length > 0) {
+          scope.email = attrs.email;
+        }
+
         scope.isAdmin = false;
-        if (autheventid === 'admin') {
+        if (autheventid === '0') {
             scope.isAdmin = true;
         }
-
-        scope.login = {};
-
-        scope.view = function(id) {
-            Authmethod.viewEvent(id)
-                .success(function(data) {
-                    if (data.status === "ok") {
-                        scope.apply(data.events);
-                    } else {
-                        scope.status = 'Not found';
-                        document.querySelector(".error").style.display = "block";
-                    }
-                })
-                .error(function(error) {
-                    scope.status = 'Scan error: ' + error.message;
-                    document.querySelector(".error").style.display = "block";
-                });
-        };
-        if (!scope.isAdmin) {
-            scope.view(autheventid);
-        }
-
-        scope.apply = function(authevent) {
-            scope.method = authevent['auth_method'];
-            scope.name = authevent['name'];
-        };
-
-        scope.patterns = function(name) {
-            return Patterns.get(name);
-        };
 
         scope.loginUser = function(valid) {
             if (!valid) {
@@ -50,10 +28,12 @@ angular.module('avRegistration')
             }
             var data = {
                 'auth-method': scope.method,
-                'email': scope.login.email,
-                'password': scope.login.password,
                 'authevent': autheventid,
             };
+            _.each(scope.login_fields, function (field) {
+              data[field.name] = field.value;
+            });
+
             scope.sendingData = true;
             Authmethod.login(data)
                 .success(function(data) {
@@ -62,7 +42,7 @@ angular.module('avRegistration')
                         scope.khmac = data.khmac;
                         $cookies.authevent = autheventid;
                         $cookies.userid = data['username'];
-                        $cookies.user = scope.login.email;
+                        $cookies.user = scope.email;
                         $cookies.auth = data['auth-token'];
                         Authmethod.setAuth($cookies.auth);
                         if (scope.isAdmin) {
@@ -82,6 +62,60 @@ angular.module('avRegistration')
                 });
         };
 
+        scope.apply = function(authevent) {
+            scope.method = authevent['auth_method'];
+            scope.name = authevent['name'];
+            scope.login_fields = Authmethod.getLoginFields(authevent);
+            var fields = _.map(
+              scope.login_fields,
+              function (el) {
+                el.value = null;
+                el.disabled = false;
+                if (el.type === "email" && scope.email !== null) {
+                  el.value = scope.email;
+                  el.disabled = true;
+                } else if (el.type === "code" && scope.code !== null) {
+                  el.value = scope.code;
+                  el.disabled = true;
+                }
+                return el;
+              });
+            var filled_fields = _.filter(fields,
+              function (el) { return el.value !== null; });
+
+            if (filled_fields.length !== scope.login_fields.length) {
+              return;
+            }
+
+            scope.loginUser(true);
+
+        };
+
+        scope.view = function(id) {
+            Authmethod.viewEvent(id)
+                .success(function(data) {
+                    if (data.status === "ok") {
+                        scope.apply(data.events);
+                    } else {
+                        scope.status = 'Not found';
+                        document.querySelector(".input-error").style.display = "block";
+                    }
+                })
+                .error(function(error) {
+                    scope.status = 'Scan error: ' + error.message;
+                    document.querySelector(".input-error").style.display = "block";
+                });
+        };
+        if (!scope.isAdmin) {
+            scope.view(autheventid);
+        } else {
+            scope.apply({
+              extra_fields: [],
+              auth_method: "email",
+              auth_method_config: {}
+            });
+        }
+
         scope.goSignup = function() {
             $state.go('registration.register', {id: autheventid});
         };
@@ -96,4 +130,4 @@ angular.module('avRegistration')
       link: link,
       templateUrl: 'avRegistration/login-directive/login-directive.html'
     };
-  }]);
+  });

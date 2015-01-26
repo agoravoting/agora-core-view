@@ -162,6 +162,7 @@
     "loginHeader": "Login to your Agora Voting account",
     "logout": "Logout",
     "emailLabel": "Email",
+    "codeLabel": "Authentication Code",
     "emailPlaceholder": "john@example.com",
     "passwordLabel": "Password",
     "passwordPlaceholder": "password",
