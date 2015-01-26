@@ -27,25 +27,7 @@
                 <strong>{{ election.title }}</strong> {{ election.description|truncate:150 }}
             </td>
             <td class="text-center">
-                <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownStatus" data-toggle="dropdown" aria-expanded="true">
-                    {{ election.status|i18next }}
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu text-left" role="menu" aria-labelledby="dropdownStatus">
-                    <!-- registered -> created -> started -> stopped -> tally_ok -> results_ok -->
-                    <li role="presentation" ng-if="election.status == 'registered'">
-                        <a role="menuitem" tabindex="-1" href="#" ng-i18next>avAdmin.action.create</a></li>
-                    <li role="presentation" ng-if="election.status == 'created'">
-                        <a role="menuitem" tabindex="-1" href="#" ng-i18next>avAdmin.action.start</a></li>
-                    <li role="presentation" ng-if="election.status == 'started'">
-                        <a role="menuitem" tabindex="-1" href="#" ng-i18next>avAdmin.action.stop</a></li>
-                    <li role="presentation" ng-if="election.status == 'stopped'">
-                        <a role="menuitem" tabindex="-1" href="#" ng-i18next>avAdmin.action.tally</a></li>
-                    <li role="presentation" ng-if="election.status == 'tally_ok'">
-                        <a role="menuitem" tabindex="-1" href="#" ng-i18next>avAdmin.action.publish</a></li>
-                  </ul>
-                </div>
+                {{ election.status|i18next }}
             </td>
             <td class="text-center">
                 <strong>{{ election.votes }}</strong>
