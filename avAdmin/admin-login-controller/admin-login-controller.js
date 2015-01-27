@@ -1,4 +1,4 @@
-angular.module('avAdmin').controller('LoginController',
+angular.module('avAdmin').controller('AdminLoginController',
   function($scope, $stateParams, $filter, ConfigService, $i18next) {
   }
 );
