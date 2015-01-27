@@ -41,7 +41,7 @@ angular.module('avRegistration')
             Authmethod.login(data)
                 .success(function(rcvData) {
                     scope.sendingData = false;
-                    if (data.status === "ok") {
+                    if (rcvData.status === "ok") {
                         scope.khmac = rcvData.khmac;
                         $cookies.authevent = autheventid;
                         $cookies.userid = rcvData.username;
@@ -53,8 +53,8 @@ angular.module('avRegistration')
                         } else {
                             // redirecting to vote link
                             Authmethod.getPerm("vote", "AuthEvent", autheventid)
-                                .success(function(data) {
-                                    var khmac = data['permission-token'];
+                                .success(function(rcvData2) {
+                                    var khmac = rcvData2['permission-token'];
                                     var path = khmac.split(";")[1];
                                     var hash = path.split("/")[0];
                                     var msg = path.split("/")[1];
