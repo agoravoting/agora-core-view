@@ -31,6 +31,15 @@ angular.module('avRegistration')
             return $http.post(backendUrl + 'auth-event/'+eid+'/authenticate/', data);
         };
 
+        authmethod.getPerm = function(perm, object_type, object_id) {
+            var data = {
+                permission: perm,
+                object_type: object_type,
+                object_id: object_id + "" // to convert to string
+            };
+            return $http.post(backendUrl + 'get-perms/', data);
+        };
+
         authmethod.viewEvent = function(id) {
             return $http.get(backendUrl + 'auth-event/' + id + '/');
         };

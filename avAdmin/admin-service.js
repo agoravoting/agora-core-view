@@ -11,15 +11,6 @@ angular.module('avAdmin')
             return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&page='+page);
         };
 
-        authapi.getPerm = function(perm, object_type, object_id) {
-            var data = {
-                permission: perm,
-                object_type: object_type,
-                object_id: object_id + "" // to convert to string
-            };
-            return $http.post(backendUrl + 'get-perms/', data);
-        };
-
         return authapi;
 
     }])

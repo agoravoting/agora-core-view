@@ -51,7 +51,15 @@ angular.module('avRegistration')
                         if (scope.isAdmin) {
                             $state.go('admin.elections');
                         } else {
-                            $state.go('registration.success');
+                            // redirecting to vote link
+                            Authmethod.getPerm("vote", "AuthEvent", autheventid)
+                                .success(function(data) {
+                                    var khmac = data['permission-token'];
+                                    var path = khmac.split(";")[1];
+                                    var hash = path.split("/")[0];
+                                    var msg = path.split("/")[1];
+                                    $state.go('election.booth', {id: autheventid, hmac: khmac, message: msg});
+                                });
                         }
                     } else {
                         scope.status = 'Not found';
