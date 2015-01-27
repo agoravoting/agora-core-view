@@ -48,6 +48,7 @@ angular.module('avRegistration')
 
         authmethod.getRegisterFields = function (viewEventData) {
           var fields = angular.copy(viewEventData.extra_fields);
+          if (!fields) { fields = []; }
           if (viewEventData.auth_method === "sms") {
             fields.unshift({
               "name": "code",
