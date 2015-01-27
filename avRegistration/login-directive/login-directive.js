@@ -39,14 +39,14 @@ angular.module('avRegistration')
 
             scope.sendingData = true;
             Authmethod.login(data)
-                .success(function(data) {
+                .success(function(rcvData) {
                     scope.sendingData = false;
                     if (data.status === "ok") {
-                        scope.khmac = data.khmac;
+                        scope.khmac = rcvData.khmac;
                         $cookies.authevent = autheventid;
-                        $cookies.userid = data['username'];
+                        $cookies.userid = rcvData.username;
                         $cookies.user = scope.email;
-                        $cookies.auth = data['auth-token'];
+                        $cookies.auth = rcvData['auth-token'];
                         Authmethod.setAuth($cookies.auth);
                         if (scope.isAdmin) {
                             $state.go('admin.elections');
