@@ -58,7 +58,7 @@ angular.module('avRegistration')
                                     var path = khmac.split(";")[1];
                                     var hash = path.split("/")[0];
                                     var msg = path.split("/")[1];
-                                    $state.go('election.booth', {id: autheventid, hmac: khmac, message: msg});
+                                    $state.go('election.booth', {id: autheventid, hmac: hash, message: msg});
                                 });
                         }
                     } else {
