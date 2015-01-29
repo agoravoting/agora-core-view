@@ -83,6 +83,7 @@ angular.module('avAdmin')
             var conf = election.configuration;
             conf.status = election.state;
             conf.stats = {};
+            conf.results = {};
 
             conf.votes = 0;
             conf.votes_percentage = 0;
@@ -97,6 +98,10 @@ angular.module('avAdmin')
             conf.auths = [conf.director, ];
             conf.authorities.forEach(function(a) { conf.auths.push(a); });
 
+            // results
+            if (election.results) {
+                conf.results = angular.fromJson(election.results);
+            }
 
             // caching election
             electionsapi.cache[conf.id] = conf;

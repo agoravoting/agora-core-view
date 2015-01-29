@@ -291,7 +291,8 @@
         "optionvotes": "Votes to options",
         "option": "Candidature",
         "votes": "Votes",
-        "winner": "Winner position"
+        "winner": "Winner position",
+        "publicResultsUrl": "Public results url"
     }
   }
 }

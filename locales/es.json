@@ -293,7 +293,8 @@
         "optionvotes": "Votos a opciones",
         "option": "Candidatura",
         "votes": "Votos",
-        "winner": "Posición ganadora"
+        "winner": "Posición ganadora",
+        "publicResultsUrl": "Url pública de resultados"
     }
   }
 }

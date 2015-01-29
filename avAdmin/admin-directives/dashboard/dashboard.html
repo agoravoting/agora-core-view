@@ -47,7 +47,7 @@
             <div class="well">
                 <dl class="dl-horizontal">
                   <dt ng-i18next>avAdmin.dashboard.status</dt>
-                  <dd ng-i18next>{{ election.status }}</dd>
+                  <dd ng-i18next="{{ election.status }}"></dd>
                   <dt ng-i18next>avAdmin.dashboard.authentication</dt>
                   <dd>{{ election.auth.authentication }}</dd>
                   <dt ng-i18next>avAdmin.dashboard.electionid</dt>
@@ -83,21 +83,20 @@
     <!-- endof general -->
 
     <!-- results -->
-    <h2 ng-i18next>avAdmin.dashboard.results</h2>
-    <!-- TODO -->
-    <div class="well question-result" ng-repeat="q in election.questions">
+    <a class="pull-right" ng-if="election.results" ui-sref="election.results({ id: election.id })" ng-i18next>avAdmin.dashboard.publicResultsUrl</a>
+    <h2 ng-if="election.results" ng-i18next>avAdmin.dashboard.results</h2>
+    <div class="well question-result" ng-repeat="q in election.results.questions">
         <div class="row">
             <div class="col-md-7">
                 <h2>{{ q.title }}</h2>
             </div>
             <div class="col-md-5">
                 <dl class="dl-horizontal">
-                  <!-- TODO make it real -->
-                  <dt>80</dt>
+                  <dt>{{ q.totals.blank_votes }}</dt>
                   <dd ng-i18next>avAdmin.dashboard.blankvotes</dd>
-                  <dt>0</dt>
+                  <dt>{{ q.totals.null_votes }}</dt>
                   <dd ng-i18next>avAdmin.dashboard.nullvotes</dd>
-                  <dt>{{ election.votes|number }}</dt>
+                  <dt>{{ q.totals.valid_votes|number }}</dt>
                   <dd ng-i18next>avAdmin.dashboard.optionvotes</dd>
                 </dl>
             </div>
@@ -111,12 +110,13 @@
                 <th></th>
                 <th ng-i18next>avAdmin.dashboard.winner</th>
             </tr>
-            <tr ng-repeat="an in q.answers">
+            <tr ng-repeat="an in q.answers|orderBy:'-total_count'">
                 <td>{{ $index + 1 }}</td>
                 <td>{{ an.text }}</td>
-                <td>{{ "28888"|number }}</td>
-                <td>25%</td>
-                <td>1</td>
+                <td>{{ an.total_count|number }}</td>
+                <td>{{ an.total_count * 100/ q.totals.valid_votes }} %</td>
+                <td ng-if="an.winner_position === 0 || an.winner_positon">{{ an.winner_positon + 1}}</td>
+                <td ng-if="!(an.winner_position === 0 || an.winner_positon)">--</td>
             </tr>
         </table>
     </div>
