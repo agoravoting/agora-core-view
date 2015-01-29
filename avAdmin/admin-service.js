@@ -17,7 +17,7 @@ angular.module('avAdmin')
 
     .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$http', function($q, Authmethod, ConfigService, $http) {
         var backendUrl = ConfigService.electionsAPI;
-        var electionsapi = {cache: {}};
+        var electionsapi = {cache: {}, permcache: {}};
 
         function asyncElection(id) {
             var deferred = $q.defer();
@@ -40,9 +40,11 @@ angular.module('avAdmin')
                     el.auth.authentication = data.events.auth_method;
                     el.auth.census = data.events.users;
                     if (el.auth.census) {
-                        el.votes_percentage = (el.stats.votes * 100 )/ el.auth.census;
+                        el.votes = el.stats.votes;
+                        el.votes_percentage = ( el.stats.votes * 100 )/ el.auth.census;
                     } else {
                         el.votes_percentage = 0;
+                        el.votes = el.stats.votes || 0;
                     }
                     deferred.resolve(el);
                 })
@@ -61,6 +63,7 @@ angular.module('avAdmin')
             var cached = electionsapi.cache[id];
             if (!cached) {
                 asyncElection(id)
+                  .then(electionsapi.stats)
                   .then(asyncElectionAuth)
                   .then(deferred.resolve)
                   .catch(deferred.reject);
@@ -79,9 +82,9 @@ angular.module('avAdmin')
             var election = d.payload;
             var conf = election.configuration;
             conf.status = election.state;
-            conf.stats = election.stats;
+            conf.stats = {};
 
-            conf.votes = conf.stats.votes;
+            conf.votes = 0;
             conf.votes_percentage = 0;
 
             // number of answers
@@ -170,6 +173,39 @@ angular.module('avAdmin')
 
             var update = $http.post(backendUrl + 'election/'+id, el, {headers: {'Authorization': adminPerm}});
             return update;
+        };
+
+        electionsapi.getEditPerm = function(id) {
+            var deferred = $q.defer();
+
+            var cached = electionsapi.permcache[id];
+            if (!cached) {
+                Authmethod.getPerm("edit", "AuthEvent", id)
+                    .success(function(data) {
+                        var perm = data['permission-token'];
+                        electionsapi.permcache[id] = perm;
+                        deferred.resolve(perm);
+                    });
+            } else {
+                deferred.resolve(cached);
+            }
+
+            return deferred.promise;
+        };
+
+        electionsapi.stats = function(el) {
+            var deferred = $q.defer();
+
+            electionsapi.getEditPerm(el.id)
+                .then(function(perm) {
+                    var stats = $http.get(backendUrl + 'election/'+el.id+'/stats', {headers: {'Authorization': perm}});
+                    stats.success(function(d) {
+                        el.stats = d.payload;
+                        deferred.resolve(el);
+                    }).error(deferred.reject);
+                });
+
+            return deferred.promise;
         };
 
         return electionsapi;
