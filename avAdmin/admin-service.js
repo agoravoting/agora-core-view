@@ -11,6 +11,19 @@ angular.module('avAdmin')
             return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&page='+page);
         };
 
+        authapi.sendAuthCodes = function(eid) {
+            var url = backendUrl + 'auth-event/'+eid+'/census/send_auth/';
+            // TODO add template
+            var data = {};
+            return $http.post(url, data);
+        };
+
+        authapi.changeAuthEvent = function(eid, st) {
+            var url = backendUrl + 'auth-event/'+eid+'/'+st+'/';
+            var data = {};
+            return $http.post(url, data);
+        };
+
         return authapi;
 
     }])
