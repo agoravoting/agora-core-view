@@ -196,13 +196,31 @@ angular.module('avAdmin')
         electionsapi.stats = function(el) {
             var deferred = $q.defer();
 
-            electionsapi.getEditPerm(el.id)
-                .then(function(perm) {
-                    var stats = $http.get(backendUrl + 'election/'+el.id+'/stats', {headers: {'Authorization': perm}});
-                    stats.success(function(d) {
+            electionsapi.command(el, 'stats', 'GET')
+                .then(function(d) {
                         el.stats = d.payload;
                         deferred.resolve(el);
-                    }).error(deferred.reject);
+                      })
+                 .catch(deferred.reject);
+
+            return deferred.promise;
+        };
+
+        electionsapi.command = function(el, command, method, data) {
+            var deferred = $q.defer();
+            var m = {};
+            var d = data || {};
+            var url = backendUrl + 'election/'+el.id+'/'+command;
+
+            electionsapi.getEditPerm(el.id)
+                .then(function(perm) {
+                    if (method === "POST") {
+                        m = $http.post(url, data, {headers: {'Authorization': perm}});
+                    } else {
+                        m = $http.get(url, {headers: {'Authorization': perm}});
+                    }
+
+                    m.success(deferred.resolve).error(deferred.reject);
                 });
 
             return deferred.promise;
