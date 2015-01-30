@@ -19,7 +19,7 @@
             <th></th>
         </tr>
 
-        <tr ng-repeat="election in elections | filter:q">
+        <tr ng-repeat="election in elections | filter:q | orderBy:'-id'">
             <th>
                 {{ election.id }}
             </th>
