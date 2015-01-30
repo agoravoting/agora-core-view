@@ -24,17 +24,49 @@ angular.module('avAdmin')
         scope.election = {};
         scope.index = 0;
         scope.nextaction = 0;
+        scope.loading = false;
+        scope.error = null;
+        scope.prevStatus = null;
 
         ElectionsApi.getElection(id)
             .then(function(el) {
                 scope.election = el;
                 scope.index = statuses.indexOf(el.status) + 1;
                 scope.nextaction = nextactions[scope.index - 1];
+
+                if (scope.election.status === 'registered') {
+                    reload();
+                }
+
             });
 
+        function reload() {
+            scope.loading = true;
+            scope.prevStatus = scope.election.status;
+            setTimeout(waitElectionChange, 1000);
+        }
+
+        function waitElectionChange() {
+            var ignorecache = true;
+            ElectionsApi.getElection(id, ignorecache)
+                .then(function(el) {
+                    if (el.status === scope.prevStatus) {
+                        setTimeout(waitElectionChange, 1000);
+                    } else {
+                        scope.loading = false;
+                        scope.prevStatus = null;
+                        scope.election = el;
+                        scope.index = statuses.indexOf(el.status) + 1;
+                        scope.nextaction = nextactions[scope.index - 1];
+                    }
+                });
+        }
+
         function doAction(index) {
-            // TODO Show the loading spinner and add a setinterval to
-            // reload the election until the status change
+            scope.loading = true;
+            scope.prevStatus = scope.election.status;
+            setTimeout(waitElectionChange, 1000);
+
 
             var commands = [
                 {path: 'register', method: 'GET'},
@@ -52,21 +84,24 @@ angular.module('avAdmin')
             ];
             var c = commands[index];
             ElectionsApi.command(scope.election, c.path, c.method, c.data)
-                .then(function(d) {
-                        console.log("OKS");
-                      });
+                .catch(function(error) { scope.loading = false; scope.error = error; });
 
             if (c.path === 'start') {
-                AuthApi.changeAuthEvent(scope.election.id, 'started');
+                AuthApi.changeAuthEvent(scope.election.id, 'started')
+                    .error(function(error) { scope.loading = false; scope.error = error; });
             }
 
             if (c.path === 'stop') {
-                AuthApi.changeAuthEvent(scope.election.id, 'stopped');
+                AuthApi.changeAuthEvent(scope.election.id, 'stopped')
+                    .error(function(error) { scope.loading = false; scope.error = error; });
             }
         }
 
         function sendAuthCodes(election) {
-            AuthApi.sendAuthCodes(election.id);
+            scope.loading = true;
+            AuthApi.sendAuthCodes(election.id)
+                .success(function(r) { scope.loading = false; })
+                .error(function(error) { scope.loading = false; scope.error = error.error; });
         }
 
         angular.extend(scope, {

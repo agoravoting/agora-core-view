@@ -1,3 +1,5 @@
+<div avb-busy overlay ng-if="loading"></div>
+
 <div class="dashboard">
     <h2 ng-i18next>avAdmin.sidebar.dashboard</h2>
 
@@ -15,6 +17,10 @@
         </div>
     </div>
     <!-- endof dashboard status bar -->
+
+    <div ng-if="error" class="bg-danger">
+        {{ error }}
+    </div>
 
     <!-- election info -->
     <div class="row info">

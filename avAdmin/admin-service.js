@@ -70,11 +70,11 @@ angular.module('avAdmin')
             electionsapi.chache[id] = election;
         };
 
-        electionsapi.getElection = function(id) {
+        electionsapi.getElection = function(id, ignorecache) {
             var deferred = $q.defer();
 
             var cached = electionsapi.cache[id];
-            if (!cached) {
+            if (ignorecache || !cached) {
                 asyncElection(id)
                   .then(electionsapi.stats)
                   .then(asyncElectionAuth)
