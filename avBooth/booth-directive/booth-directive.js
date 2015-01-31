@@ -1,5 +1,5 @@
 angular.module('avBooth')
-  .directive('avBooth', function($http, $location, $i18next, $window, $timeout, HmacService) {
+  .directive('avBooth', function($http, $location, $i18next, $window, $timeout, HmacService, ConfigService) {
 
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
@@ -7,6 +7,7 @@ angular.module('avBooth')
       // calls to it, at most one per 100ms
       var timeoutWidth;
       var w = angular.element($window);
+      $("#theme").attr("href", "themes/" + ConfigService.theme + "/app.min.css");
 
       function updateWidth() {
         timeoutWidth = $timeout(function() {
@@ -31,6 +32,7 @@ angular.module('avBooth')
         draftsElectionScreen: 'draftsElectionScreen',
         auditBallotScreen: 'auditBallotScreen',
         pcandidatesElectionScreen: 'pcandidatesElectionScreen',
+        "2questionsConditionalScreen": '2questionsConditionalScreen',
         encryptingBallotScreen: 'encryptingBallotScreen',
         castOrCancelScreen: 'castOrCancelScreen',
         reviewScreen: 'reviewScreen',
@@ -54,6 +56,13 @@ angular.module('avBooth')
         var layout = scope.election.layout;
         if (layout === "pcandidates-election") {
           scope.setState(stateEnum.pcandidatesElectionScreen, {
+            isLastQuestion: true,
+            reviewMode: true,
+            filter: ""
+          });
+          return;
+        } else if (layout === "2questions-conditional") {
+          scope.setState(stateEnum["2questionsConditionalScreen"], {
             isLastQuestion: true,
             reviewMode: true,
             filter: ""
@@ -205,7 +214,7 @@ angular.module('avBooth')
                 return;
               }
 
-              scope.election = value.payload.configuration;
+              scope.election = angular.fromJson(value.payload.configuration);
               scope.pubkeys = angular.fromJson(value.payload.pks);
               // initialize ballotClearText as a list of lists
               scope.ballotClearText = _.map(
