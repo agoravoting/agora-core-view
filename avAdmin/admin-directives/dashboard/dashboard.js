@@ -50,7 +50,7 @@ angular.module('avAdmin')
             var ignorecache = true;
             ElectionsApi.getElection(id, ignorecache)
                 .then(function(el) {
-                    if (el.status === scope.prevStatus) {
+                    if (el.status === scope.prevStatus && scope.loading) {
                         setTimeout(waitElectionChange, 1000);
                     } else {
                         scope.loading = false;
