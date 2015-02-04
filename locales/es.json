@@ -7,6 +7,8 @@
   "stopped": "detenida",
   "tally_ok": "recuento realizado",
   "results_ok": "resultados",
+  "doing_tally": "haciendo el recuento",
+  "tally_error": "error en el recuento",
 
   "app": {
     "name": "Agora Voting"
@@ -287,6 +289,7 @@
         "stop": "Terminar votación",
         "tally": "Hacer recuento",
         "publish": "Publicar resultados",
+        "doingtally": "Haciendo el recuento",
         "results": "Resultados",
         "blankvotes": "Votos en blanco",
         "nullvotes": "Votos nulos",
@@ -294,7 +297,8 @@
         "option": "Candidatura",
         "votes": "Votos",
         "winner": "Posición ganadora",
-        "publicResultsUrl": "Url pública de resultados"
+        "publicResultsUrl": "Url pública de resultados",
+        "censussend": "Se ha enviado el censo correctamente"
     }
   }
 }

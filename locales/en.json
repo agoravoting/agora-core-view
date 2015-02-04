@@ -7,6 +7,8 @@
   "stopped": "stopped",
   "tally_ok": "tally done",
   "results_ok": "results done",
+  "doing_tally": "doing the tally",
+  "tally_error": "tally error",
 
   "app": {
     "name": "Agora Voting"
@@ -285,6 +287,7 @@
         "stop": "Stop voting",
         "tally": "Tally",
         "publish": "Publish results",
+        "doingtally": "Doing the tally",
         "results": "Results",
         "blankvotes": "Blank votes",
         "nullvotes": "Null votes",
@@ -292,7 +295,8 @@
         "option": "Candidature",
         "votes": "Votes",
         "winner": "Winner position",
-        "publicResultsUrl": "Public results url"
+        "publicResultsUrl": "Public results url",
+        "censussend": "Census send correctly"
     }
   }
 }

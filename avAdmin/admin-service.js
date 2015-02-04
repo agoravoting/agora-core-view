@@ -8,13 +8,16 @@ angular.module('avAdmin')
             if (!page) {
                 page = 1;
             }
-            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&page='+page);
+            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&order=-pk&page='+page);
         };
 
         authapi.sendAuthCodes = function(eid) {
             var url = backendUrl + 'auth-event/'+eid+'/census/send_auth/';
             // TODO add template
-            var data = {};
+            // TODO translate
+            var data = {
+                msg: "This is your vote link: %(url)s",
+                subject: "Confirm your email - admin"};
             return $http.post(url, data);
         };
 

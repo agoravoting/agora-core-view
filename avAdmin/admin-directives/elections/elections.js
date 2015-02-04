@@ -30,7 +30,6 @@ angular.module('avAdmin')
 
             AuthApi.electionsIds(scope.page)
                 .success(function(data) {
-                    scope.nomore = true;
                     scope.page += 1;
 
                     if (data.end_index === data.total_count) {

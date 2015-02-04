@@ -1,4 +1,4 @@
-<div avb-busy overlay ng-if="loading"></div>
+<div avb-busy overlay ng-if="loading && !intally"></div>
 
 <div class="dashboard">
     <h2 ng-i18next>avAdmin.sidebar.dashboard</h2>
@@ -7,19 +7,30 @@
     <div class="statusbar row text-center">
         <div class="col-xs-2" ng-class="{true:'text-success', false:'text-muted'}[index > $index]" ng-repeat="status in statuses">
             <div class="stick" ng-class="{'stickini': $first, 'stickend': $last}">
-                <i class="fa fa-sw fa-2x" ng-class="{true:'fa-check-circle', false:'fa-circle'}[index > $index]"></i>
+                <i class="fa fa-cog fa-spin fa-sw fa-2x text-warning" ng-if="index == $index && intally"></i>
+                <i class="fa fa-sw fa-2x fa-check-circle" ng-if="index > $index"></i>
+                <i class="fa fa-sw fa-2x fa-circle" ng-if="index == $index && !intally"></i>
+                <i class="fa fa-sw fa-2x fa-circle" ng-if="index < $index"></i>
             </div>
             <div class="small" ng-i18next ng-if="index != $index">{{ status }}</div>
-            <button ng-click="doAction($index)" class="btn btn-success" ng-if="index == $index">
+            <button ng-click="doAction($index)" class="btn btn-success" ng-if="index == $index && nextaction">
                 <div class="small" ng-i18next>{{ nextaction }}</div>
                 <strong ng-i18next>avAdmin.dashboard.donow</strong>
+            </button>
+            <button class="btn btn-warning" ng-if="index == $index && intally">
+                <div class="small" ng-i18next="avAdmin.dashboard.doingtally"></div>
             </button>
         </div>
     </div>
     <!-- endof dashboard status bar -->
 
     <div ng-if="error" class="bg-danger">
-        {{ error }}
+        <span ng-if="error.payload">{{ error.payload }}</span>
+        <span ng-if="!error.payload">{{ error }}</span>
+    </div>
+
+    <div ng-if="msg" class="bg-success">
+        <span ng-i18next="{{ msg }}"></span>
     </div>
 
     <!-- election info -->
@@ -33,7 +44,7 @@
         <div class="col-sm-4 text-right">
             <div class="block">
                 <strong>{{ election.auth.census|number }}</strong><br/>
-                <button ng-click="sendAuthCodes(election)" class="btn btn-success">
+                <button ng-click="sendAuthCodes(election)" ng-if="election.status == 'started'" class="btn btn-success">
                     <i class="fa fa-sw fa-send"></i>
                 </button>
                 <span ng-i18next>avAdmin.dashboard.census</span>
@@ -63,14 +74,20 @@
                   <dd>{{ election.id }}</dd>
                 </dl>
             </div>
-            <!-- TODO make it real -->
+
+            <!-- TODO make it real
             <div class="well text-right">
                 <a href="">Election public site</a><br/>
                 <a href="">Preview voting booth</a><br/>
                 <a href="">Embed election</a>
             </div>
+            -->
 
-            <button ng-click="doAction(index)" class="btn btn-block btn-lg btn-success" ng-if="nextaction" ng-i18next>{{ nextaction }}</button>
+            <button ng-click="doAction(index)" class="btn btn-block btn-lg btn-success" ng-if="nextaction" ng-i18next="{{ nextaction }}"></button>
+            <button class="btn btn-block btn-lg btn-warning" ng-if="intally">
+                <i class="fa fa-cog fa-spin fa-sw fa-2x"></i><br/>
+                <span ng-i18next="avAdmin.dashboard.doingtally"></span>
+            </button>
         </div>
         <!-- authorities -->
         <div class="col-md-6">
@@ -92,8 +109,8 @@
     <!-- endof general -->
 
     <!-- results -->
-    <a class="pull-right" ng-if="election.results" ui-sref="election.results({ id: election.id })" ng-i18next>avAdmin.dashboard.publicResultsUrl</a>
-    <h2 ng-if="election.results" ng-i18next>avAdmin.dashboard.results</h2>
+    <a class="pull-right" ng-if="election.results.questions" ui-sref="election.results({ id: election.id })" ng-i18next>avAdmin.dashboard.publicResultsUrl</a>
+    <h2 ng-if="election.results.questions" ng-i18next>avAdmin.dashboard.results</h2>
     <div class="well question-result" ng-repeat="q in election.results.questions">
         <div class="row">
             <div class="col-md-7">

@@ -24,25 +24,35 @@ angular.module('avAdmin')
         scope.election = {};
         scope.index = 0;
         scope.nextaction = 0;
-        scope.loading = false;
+        scope.loading = true;
+        scope.waiting = false;
         scope.error = null;
+        scope.msg = null;
         scope.prevStatus = null;
 
         ElectionsApi.getElection(id)
             .then(function(el) {
+                scope.loading = false;
                 scope.election = el;
-                scope.index = statuses.indexOf(el.status) + 1;
-                scope.nextaction = nextactions[scope.index - 1];
-
-                if (scope.election.status === 'registered') {
-                    reload();
+                scope.intally = el.status === 'doing_tally';
+                if (scope.intally) {
+                    scope.index = statuses.indexOf('stopped') + 1;
+                    scope.nextaction = false;
+                } else {
+                    scope.index = statuses.indexOf(el.status) + 1;
+                    scope.nextaction = nextactions[scope.index - 1];
                 }
+
+                //if (scope.election.status === 'registered') {
+                //    reload();
+                //}
 
             });
 
         function reload() {
             scope.loading = true;
             scope.prevStatus = scope.election.status;
+            scope.waiting = true;
             setTimeout(waitElectionChange, 1000);
         }
 
@@ -50,23 +60,38 @@ angular.module('avAdmin')
             var ignorecache = true;
             ElectionsApi.getElection(id, ignorecache)
                 .then(function(el) {
-                    if (el.status === scope.prevStatus && scope.loading) {
+                    if (el.status === scope.prevStatus && scope.waiting) {
                         setTimeout(waitElectionChange, 1000);
                     } else {
+                        scope.waiting = false;
                         scope.loading = false;
                         scope.prevStatus = null;
                         scope.election = el;
-                        scope.index = statuses.indexOf(el.status) + 1;
-                        scope.nextaction = nextactions[scope.index - 1];
+
+                        scope.intally = el.status === 'doing_tally';
+                        if (scope.intally) {
+                            scope.index = statuses.indexOf('stopped') + 1;
+                            scope.nextaction = false;
+                            scope.prevStatus = scope.election.status;
+                            scope.waiting = true;
+                            waitElectionChange();
+                        } else {
+                            scope.index = statuses.indexOf(el.status) + 1;
+                            scope.nextaction = nextactions[scope.index - 1];
+                        }
                     }
                 });
         }
 
         function doAction(index) {
+            if (scope.intally) {
+                return;
+            }
+
             scope.loading = true;
             scope.prevStatus = scope.election.status;
+            scope.waiting = true;
             setTimeout(waitElectionChange, 1000);
-
 
             var commands = [
                 {path: 'register', method: 'GET'},
@@ -100,7 +125,10 @@ angular.module('avAdmin')
         function sendAuthCodes(election) {
             scope.loading = true;
             AuthApi.sendAuthCodes(election.id)
-                .success(function(r) { scope.loading = false; })
+                .success(function(r) {
+                    scope.loading = false;
+                    scope.msg = "avAdmin.dashboard.censussend";
+                })
                 .error(function(error) { scope.loading = false; scope.error = error.error; });
         }
 

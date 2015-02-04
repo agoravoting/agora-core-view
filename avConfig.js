@@ -7,6 +7,7 @@ var avConfigData = {
   // the base url path for ajax requests, for example for sending ballots or
   // getting info about an election. This url is usually in the form of
   // 'https://foo/api/v3/' and always ends in '/'.
+  theme: "default",
   baseUrl: "http://agora.dev/elections/api/",
 
   // AuthApi base url
