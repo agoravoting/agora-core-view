@@ -62,11 +62,8 @@ angular.module('avRegistration')
           if (viewEventData.auth_method === "sms") {
             fields.unshift({
               "name": "code",
-              "type": "text",
+              "type": "code",
               "required": true,
-              "min": 3,
-              "max": 30,
-              "regexp": "[a-z_A-Z0-9]+",
               "required_on_authentication": true
             });
             fields.unshift({
