@@ -106,6 +106,7 @@ angular.module('agora-core-view').config(
         controller: "AdminLoginController"
       })
       // admin directives using the admin controller
+      .state('admin.new'      ,   { url: '/new',           templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
       .state('admin.elections',   { url: '/elections',     templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
       .state('admin.import',      { url: '/import',        templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
       .state('admin.basic',       { url: '/basic',         templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })

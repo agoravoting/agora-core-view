@@ -1,4 +1,6 @@
 {
+  "next": "Next",
+  "done": "Done",
   "loading": "Loading...",
   "nomore": "No more elements",
   "registered": "registered",
@@ -300,6 +302,16 @@
         "winner": "Winner position",
         "publicResultsUrl": "Public results url",
         "censussend": "Census send correctly"
+    },
+    "basic": {
+        "intro": "Creating an election involves multiple steps, but it's not hard. Don't panic and go ahead, it only takes 5 minutes",
+        "title": { "label": "Title", "placeholder": "eg.New Board of Directors" },
+        "description": { "label": "Description", "placeholder": "Description will be shown" },
+        "share": { "label": "Share text", "placeholder": "Text to use for social sharing" },
+        "layout": { "label": "Layout", "placeholder": "Specifies how the whole election will be displayed" },
+        "layouts": { "simple": "Simple", "yesno": "Yes/No" },
+        "theme": { "label": "Theme", "placeholder": "How will the election look like?" },
+        "themes": { "default": "Default", "podemos": "Podemos" }
     }
   }
 }

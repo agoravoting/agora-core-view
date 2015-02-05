@@ -6,3 +6,4 @@ _SpecRunner.html
 .DS_Store
 agora-core-view.kdev4
 .kdev4
+*.swp

@@ -2,9 +2,9 @@
   <li role="presentation" class="head" ng-class="{active:state=='admin.elections'}">
     <a ui-sref="admin.elections()" ng-i18next="avAdmin.sidebar.elections">Elections</a> </li>
 
-  <!-- not implemented yet
   <li role="presentation" class="sub1">
-    <a ui-sref="admin.dashboard()"> <i class="fa-fw fa fa-plus-circle"></i> <span ng-i18next="avAdmin.sidebar.newel"></span></a> </li>
+    <a ui-sref="admin.new()"> <i class="fa-fw fa fa-plus-circle"></i> <span ng-i18next="avAdmin.sidebar.newel"></span></a> </li>
+  <!-- not implemented yet
   <li role="presentation" class="sub1" ng-class="{active:state=='admin.import'}">
     <a ui-sref="admin.import()"> <i class="fa-fw fa fa-upload"></i> <span ng-i18next="avAdmin.sidebar.import"></span></a> </li>
   -->
@@ -12,21 +12,15 @@
   <ul class="nav nav-pills nav-stacked" ng-if="current">
     <li role="presentation" class="head"><a ui-sref="admin.dashboard()">
         <span ng-i18next="avAdmin.sidebar.currentel"></span> <span class="label label-success">{{ current.title|truncate:20 }}</span></a></li>
-    <li role="presentation" class="sub1" ng-class="{active:state=='admin.dashboard'}">
+    <li role="presentation" class="sub1" ng-class="{active:state=='admin.dashboard'}" ng-if="current.id">
       <a ui-sref="admin.dashboard()"> <i class="fa-fw fa fa-dashboard"></i> <span ng-i18next="avAdmin.sidebar.dashboard"></span></a> </li>
 
-    <!-- not implemented yet
-    <li role="presentation" class="sub1" ng-class="{active:state=='admin.basic'}">
-      <a ui-sref="admin.basic()"> <i class="fa-fw fa fa-university"></i> <span ng-i18next="avAdmin.sidebar.basic"></span></a> </li>
-    <li role="presentation" class="sub1" ng-class="{active:state=='admin.questions'}">
-      <a ui-sref="admin.questions()"> <i class="fa-fw fa fa-question-circle"></i> <span ng-i18next="avAdmin.sidebar.questions"></span></a> </li>
-    <li role="presentation" class="sub1" ng-class="{active:state=='admin.census'}">
-      <a ui-sref="admin.census()"> <i class="fa-fw fa fa-users"></i> <span ng-i18next="avAdmin.sidebar.census"></span></a> </li>
-    <li role="presentation" class="sub1" ng-class="{active:state=='admin.auth'}">
-      <a ui-sref="admin.auth()"> <i class="fa-fw fa fa-unlock"></i> <span ng-i18next="avAdmin.sidebar.auth"></span></a> </li>
-    <li role="presentation" class="sub1" ng-class="{active:state=='admin.tally'}">
-      <a ui-sref="admin.tally()"> <i class="fa-fw fa fa-pie-chart"></i> <span ng-i18next="avAdmin.sidebar.tally"></span></a> </li>
-    -->
+    <li role="presentation" class="sub1" ng-class="{active:state == 'admin.'+l.name}" ng-repeat="l in sidebarlinks">
+      <a ui-sref="{{ 'admin.'+l.name+'()' }}">
+        <i class="fa-fw fa fa-{{ l.icon }}"></i>
+        <span ng-i18next="avAdmin.sidebar.{{ l.name }}"></span>
+      </a>
+     </li>
   </ul>
 
   <!-- not implemented yet

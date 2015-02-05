@@ -34,6 +34,8 @@ angular.module('avAdmin')
     .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$http', function($q, Authmethod, ConfigService, $http) {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}, permcache: {}};
+        electionsapi.currentElection = {};
+        electionsapi.newElection = false;
 
         function asyncElection(id) {
             var deferred = $q.defer();

@@ -21,12 +21,12 @@ angular.module('avAdmin')
           changeLang: changeLang,
         });
 
-        // checking login status
-        if (admin) {
+        function ping() {
             Authmethod.ping()
                 .success(function(data) {
                     if (data.logged) {
                         Authmethod.setAuth(data['auth-token']);
+                        setTimeout(function() { ping(); }, 5000);
                     } else {
                         $state.go("registration.logout");
                     }
@@ -34,6 +34,11 @@ angular.module('avAdmin')
                 .error(function(data) {
                     $state.go("registration.logout");
                 });
+        }
+
+        // checking login status
+        if (admin) {
+            ping();
         }
     }
 

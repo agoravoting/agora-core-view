@@ -1,4 +1,6 @@
 {
+  "next": "Siguiente",
+  "done": "Hecho",
   "loading": "Cargando...",
   "nomore": "No hay más elementos",
   "registered": "registrada",
@@ -302,6 +304,16 @@
         "winner": "Posición ganadora",
         "publicResultsUrl": "Url pública de resultados",
         "censussend": "Se ha enviado el censo correctamente"
+    },
+    "basic": {
+        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. No te pongas nerviso y adelante, sólo te llevará 5 minutos",
+        "title": { "label": "Título", "placeholder": "ej.Nueva junta de dirección" },
+        "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará" },
+        "share": { "label": "Texto para compartir", "placeholder": "Texto para usar en los enlaces a redes sociales" },
+        "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votación" },
+        "layouts": { "simple": "Simple", "yesno": "Sí/No" },
+        "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votación?" },
+        "themes": { "default": "Por defecto", "podemos": "Podemos" }
     }
   }
 }
