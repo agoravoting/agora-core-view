@@ -48,6 +48,22 @@ angular.module('avBooth')
         scope.stateChange++;
       }
 
+      scope.mapQuestion = function(question) {
+        var map = {
+          "plurality-at-large": {
+            state: stateEnum.multiQuestion,
+            sorted: true,
+            ordered: false
+          },
+          "borda-nauru": {
+            state: stateEnum.multiQuestion,
+            sorted: true,
+            ordered: true
+          }
+        };
+        return map[question.tally_type];
+      };
+
       // given a question number, looks at the question type and tells the
       // correct state to set, so that the associated directive correctly shows
       // the given question
@@ -71,17 +87,16 @@ angular.module('avBooth')
         }
 
         var question = scope.election.questions[n];
-        var map = {
-          "plurality-at-large": stateEnum.multiQuestion
-        };
-        var nextState = map[question.tally_type];
+        var mapped = scope.mapQuestion(question);
 
-        scope.setState(nextState, {
+        scope.setState(mapped.state, {
           question: scope.election.questions[n],
           questionNum: n,
           isLastQuestion: (scope.election.questions.length === n + 1),
           reviewMode: reviewMode,
-          filter: ""
+          filter: "",
+          sorted: mapped.sorted,
+          ordered: mapped.ordered
         });
       }
 

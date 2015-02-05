@@ -1,4 +1,13 @@
-<span class="show-value">{{option.text}}</span>
+<span
+  class="show-value"
+  ng-if="!ordered">
+  {{option.text}}
+</span>
+<span
+  class="show-value"
+  ng-if="ordered">
+  {{option.selected + 1}}. {{option.text}}
+</span>
 <div class="show-remove">
   <span ng-i18next="avBooth.removeSelectedItem"></span>
   <span class="glyphicon glyphicon-remove"></span>

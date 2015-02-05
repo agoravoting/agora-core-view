@@ -36,7 +36,8 @@ angular.module('avBooth')
         min: '=',
         options: '=',
         layout: '=',
-        sorted: "="
+        sorted: "=",
+        ordered: "="
       },
       link: link,
       templateUrl: 'avBooth/selected-options-directive/selected-options-directive.html'
