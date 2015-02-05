@@ -57,6 +57,7 @@
     "filterOptionsPlaceholder": "filtrar..",
     "noResults": "el filtro no produjo resultados.",
     "numSelectedOptionsSmall": "__count__ opciones seleccionadas",
+    "numSelectedOptionsSmall_plural": "__count__ opciones seleccionadas",
     "selectMoreOpts": "Debes seleccionar al menos __min__ opciones.",
     "selectMoreOpts_plural": "Debes seleccionar al menos __min__ opciones.",
     "maxSelectedLimitReached": "No puedes seleccionar más opciones (máximo __max__). Para seleccionar una opción, deselecciona otra primero.",
