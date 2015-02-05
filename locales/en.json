@@ -44,8 +44,10 @@
 
 
     "questionSelectedOptionsTitle": "selected options (__count__)",
+    "questionSelectedOptionsTitle_plural": "selected options (0)",
     "questionAvailableOptionsTitle": "available options",
     "numOptionsSelected": "__count__ options selected.",
+    "numOptionsSelected_plural": "__count__ options selected.",
     "numOptionsSelected_plural_2": "__count__ options selected.",
     "noOptionsSelected": "No option selected.",
     "numOptionsLimits": "Select between __min__ and __max__ options.",
@@ -53,6 +55,7 @@
     "noResults": "no results found..",
     "numSelectedOptionsSmall": "__count__ selected",
     "selectMoreOpts": "Select at least __min__ options.",
+    "selectMoreOpts_plural": "Select at least __min__ options.",
     "maxSelectedLimitReached": "Maximum number of selected options reached (__max__). To select an option, deselect another first.",
     "alreadySelectedDocumentType": "You can't select two documents of the same type - deselect it first.",
     "alreadySelectedPack": "Seleccionaste una opción vinculada a otros documentos más. No es posible seleccionarlo de forma aislada.",
