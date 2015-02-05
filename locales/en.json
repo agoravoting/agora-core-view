@@ -312,6 +312,9 @@
         "layouts": { "simple": "Simple", "yesno": "Yes/No" },
         "theme": { "label": "Theme", "placeholder": "How will the election look like?" },
         "themes": { "default": "Default", "podemos": "Podemos" }
+    },
+    "questions": {
+        "new": "New question"
     }
   }
 }

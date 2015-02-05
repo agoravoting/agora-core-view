@@ -1,16 +1,8 @@
 <div>
     <h1 ng-i18next>avAdmin.sidebar.questions</h1>
 
-    <div class="question row" ng-repeat="q in election.questions">
-        <div class="col-sm-10">
-            {{ q.title|truncate:200 }}
-        </div>
-        <div class="col-sm-2 text-right">
-            <i class="fa fa-chevron-up fa-sw fa-2x" ng-if="active == $index"></i>
-            <i class="fa fa-chevron-down fa-sw fa-2x"></i>
-            <i class="fa fa-times fa-sw fa-2x"></i>
-        </div>
-    </div>
+    <div av-admin-question question="q" ng-repeat="q in election.questions"> </div>
 
+    <button ng-click="newQuestion()" class="btn btn-block btn-primary" ng-i18next>avAdmin.questions.new</button>
     <button ng-click="saveQuestions()" class="btn btn-block btn-success" ng-i18next>next</button>
 </div>

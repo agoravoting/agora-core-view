@@ -11,7 +11,7 @@
 
   <ul class="nav nav-pills nav-stacked" ng-if="current">
     <li role="presentation" class="head"><a ui-sref="admin.dashboard({id:current.id})">
-        <span ng-i18next="avAdmin.sidebar.currentel"></span> <span class="label label-success">{{ current.title|truncate:20 }}</span></a></li>
+        <span ng-if="current.title" ng-i18next="avAdmin.sidebar.currentel"></span> <span class="label label-success">{{ current.title|truncate:20 }}</span></a></li>
     <li role="presentation" class="sub1" ng-class="{active:state=='admin.dashboard'}" ng-if="current.id">
       <a ui-sref="admin.dashboard({id:current.id})"> <i class="fa-fw fa fa-dashboard"></i> <span ng-i18next="avAdmin.sidebar.dashboard"></span></a> </li>
 
