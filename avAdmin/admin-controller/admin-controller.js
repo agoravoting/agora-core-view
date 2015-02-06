@@ -1,5 +1,5 @@
 angular.module('avAdmin').controller('AdminController',
-  function($scope, $state, $stateParams, ElectionsApi) {
+  function($scope, $i18next, $state, $stateParams, ElectionsApi) {
     var id = $stateParams.id;
     $scope.state = $state.current.name;
     $scope.current = null;
@@ -14,7 +14,7 @@ angular.module('avAdmin').controller('AdminController',
 
     if ($scope.state === 'admin.new') {
         // New election
-        var el = {title: 'New Election'};
+        var el = {title: $i18next('avAdmin.sidebar.newel')};
         $scope.current = el;
         ElectionsApi.currentElection = el;
         $state.go("admin.basic");
@@ -31,6 +31,10 @@ angular.module('avAdmin').controller('AdminController',
         ];
         if (!id) {
             var current = ElectionsApi.currentElection;
+            if (!current.title) {
+                current = {title: $i18next('avAdmin.sidebar.newel')};
+                ElectionsApi.currentElection = current;
+            }
             $scope.current = current;
         }
     } else {

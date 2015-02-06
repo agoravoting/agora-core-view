@@ -314,7 +314,15 @@
         "themes": { "default": "Default", "podemos": "Podemos" }
     },
     "questions": {
-        "new": "New question"
+        "new": "New question",
+        "votingSystem": "Voting System",
+        "votings": {"plurality-at-large": "Plurality at large", "borda": "BORDA"},
+        "winners": {"label": "Number of winners", "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options"},
+        "min": {"label": "Minimum number of selected options", "placeholder": "How many options should a voter select in this question? Minimum is zero wich would allow blank votes"},
+        "max": {"label": "Maximum number of selected options", "placeholder": "How many options can a voter select in this question?"},
+        "random": {"label": "Randomize options order", "placeholder": "When randomization of the options order is active, each voter will see the options for this question in a different order in the voting booth"},
+        "candidates": {"label": "Candidates", "placeholder": "Candidate options that can be voted for this question"},
+        "newopt": "New option name"
     }
   }
 }

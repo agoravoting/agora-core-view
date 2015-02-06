@@ -11,7 +11,7 @@
     </div>
 
     <!-- question form -->
-    <form class="row form qform" ng-if="q.active">
+    <form class="row form form-horizontal qform" ng-if="q.active">
         <div class="col-xs-12">
 
             <!-- title -->
@@ -32,15 +32,12 @@
 
             <!-- voting system -->
             <div class="form-group">
-                <label class="col-sm-2" for="layout" ng-i18next>Voting system</label>
+                <label class="col-sm-2" for="voting" ng-i18next>avAdmin.questions.votingSystem</label>
                 <div class="col-sm-10">
-                    <p class="text-muted" ng-i18next>
-                        Voting system
-                    </p>
                     <div class="radio" ng-repeat="o in vsystems">
                         <label>
-                            <input type="radio" name="layout" value="{{ o }}" ng-model="q.tally_type"/>
-                            <span ng-i18next>{{ o }}</span>
+                            <input type="radio" name="voting" value="{{ o }}" ng-model="q.tally_type"/>
+                            <span ng-i18next="avAdmin.questions.votings.{{ o }}"></span>
                         </label>
                     </div>
                 </div>
@@ -48,10 +45,10 @@
 
             <!-- number of winners -->
             <div class="form-group">
-                <label class="col-sm-2" for="winners" ng-i18next>Winners</label>
+                <label class="col-sm-2" for="winners" ng-i18next>avAdmin.questions.winners.label</label>
                 <div class="col-sm-10">
-                    <p class="text-muted" ng-i18next> Number of winners </p>
-                    <div class="input-group">
+                    <p class="text-muted" ng-i18next>avAdmin.questions.winners.placeholder</p>
+                    <div class="input-group col-xs-2">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="incOpt($index, 'num_winners', -1)">
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -69,10 +66,10 @@
 
             <!-- Minium -->
             <div class="form-group">
-                <label class="col-sm-2" for="winners" ng-i18next>Minimum</label>
+                <label class="col-sm-2" for="winners" ng-i18next>avAdmin.questions.min.label</label>
                 <div class="col-sm-10">
-                    <p class="text-muted" ng-i18next> Minumum </p>
-                    <div class="input-group">
+                    <p class="text-muted" ng-i18next> avAdmin.questions.min.placeholder </p>
+                    <div class="input-group col-xs-2">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="incOpt($index, 'min', -1)">
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -90,10 +87,10 @@
 
             <!-- Maximum -->
             <div class="form-group">
-                <label class="col-sm-2" for="winners" ng-i18next>Maximum</label>
+                <label class="col-sm-2" for="winners" ng-i18next>avAdmin.questions.max.label</label>
                 <div class="col-sm-10">
-                    <p class="text-muted" ng-i18next> Maximum </p>
-                    <div class="input-group">
+                    <p class="text-muted" ng-i18next> avAdmin.questions.max.placeholder </p>
+                    <div class="input-group col-xs-2">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="incOpt($index, 'max', -1)">
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -111,15 +108,12 @@
 
             <!-- Randomize -->
             <div class="form-group">
-                <label class="col-sm-2" for="layout" ng-i18next>Randomize</label>
+                <label class="col-sm-2" for="random" ng-i18next>avAdmin.questions.random.label</label>
                 <div class="col-sm-10">
-                    <p class="text-muted" ng-i18next>
-                        Randomize
-                    </p>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="random" value="false" ng-model="q.randomize_answer_order"/>
-                            <span ng-i18next>Randomize</span>
+                            <input type="checkbox" id="random" name="random" value="false" ng-model="q.randomize_answer_order"/>
+                            <span ng-i18next>avAdmin.questions.random.placeholder</span>
                         </label>
                     </div>
                 </div>
@@ -127,10 +121,10 @@
 
             <!-- Candidates -->
             <div class="form-group">
-                <label class="col-sm-2" for="layout" ng-i18next>Candidates</label>
+                <label class="col-sm-2" for="candidates" ng-i18next>avAdmin.questions.candidates.label</label>
                 <div class="col-sm-10">
                     <p class="text-muted" ng-i18next>
-                        Candidates
+                        avAdmin.questions.candidates.placeholder
                     </p>
 
                     <div class="col-sm-12">
@@ -145,7 +139,7 @@
                         <div class="row">
                             <div class="col-sm-12 newopt">
                                 <div class="input-group">
-                                  <input type="text" id="newopt" class="form-control" ng-enter="addOption($index)"/>
+                                  <input type="text" id="newopt" class="form-control" ng-enter="addOption($index)" ng-i18next="[placeholder]avAdmin.questions.newopt"/>
                                   <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" ng-click="addOption($index)">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

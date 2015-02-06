@@ -314,6 +314,17 @@
         "layouts": { "simple": "Simple", "yesno": "Sí/No" },
         "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votación?" },
         "themes": { "default": "Por defecto", "podemos": "Podemos" }
+    },
+    "questions": {
+        "new": "Nueva pregunta",
+        "votingSystem": "Sistema de votación",
+        "votings": {"plurality-at-large": "Plurality at large", "borda": "BORDA"},
+        "winners": {"label": "Número de ganadores", "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de opciones"},
+        "min": {"label": "Mínimo de opciones seleccionadas", "placeholder": "¿Cuántas opciones debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco"},
+        "max": {"label": "Máximo de opciones seleccionadas", "placeholder": "¿Cuántas opciones puede un votante seleccionar?"},
+        "random": {"label": "Orden aleatorio de opciones", "placeholder": "Cuando está activo las opciones aparecerán en un orden diferente a cada votante en la cabina de votación"},
+        "candidates": {"label": "Candidatos", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
+        "newopt": "Nueva opción"
     }
   }
 }
