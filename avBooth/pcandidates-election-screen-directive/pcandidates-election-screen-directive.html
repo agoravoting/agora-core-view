@@ -91,10 +91,10 @@
         ng-class="{titleSelected: stateData.selectionDropDown}"
         ng-repeat="question in election.questions">
         {{question.title}}
-        <div
+        <!--<div
           class="title-help"
           ng-i18next="[i18next]({selected: numSelectedByQuestionIndex($index), count: numTotalByQuestionIndex($index)})avBooth.totalsQuestionColumn">
-        </div>
+        </div>-->
         <div
           class="randomize-column"
           ng-class="{hidden: stateData.selectionDropDown}"

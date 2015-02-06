@@ -204,7 +204,7 @@ angular.module('avBooth')
       }, []);
 
       // change sort_order of "Candidatura no agrupada" options
-      var filtered = _.filter(scope.allOptions, function(opt) { return opt.category === "Candidatura no agrupada"; });
+      var filtered = _.filter(scope.allOptions, function(opt) { return opt.category === "Candidaturas no agrupadas"; });
       // we can't just sample the groupedOptions list because we need to
       // 1. use the same list object
       // 2. generate a specific ordering for all the options
