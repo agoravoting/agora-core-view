@@ -4,6 +4,30 @@ angular.module('avAdmin').controller('AdminController',
     $scope.state = $state.current.name;
     $scope.current = null;
 
+    function newElection() {
+        var el = {
+            title: $i18next('avAdmin.sidebar.newel'),
+            census: {
+                voters: [],
+                census:'open',
+                extra_fields: [
+                    {
+                    "name": "email",
+                    "type": "text",
+                    "required": true,
+                    "min": 2,
+                    "max": 200,
+                    "required_on_authentication": true
+                    }
+                ]
+            }
+        };
+        $scope.current = el;
+        ElectionsApi.currentElection = el;
+
+        return el;
+    }
+
     if (id) {
         ElectionsApi.getElection(id)
             .then(function(el) {
@@ -14,9 +38,7 @@ angular.module('avAdmin').controller('AdminController',
 
     if ($scope.state === 'admin.new') {
         // New election
-        var el = {title: $i18next('avAdmin.sidebar.newel')};
-        $scope.current = el;
-        ElectionsApi.currentElection = el;
+        newElection();
         $state.go("admin.basic");
     }
 
@@ -32,8 +54,7 @@ angular.module('avAdmin').controller('AdminController',
         if (!id) {
             var current = ElectionsApi.currentElection;
             if (!current.title) {
-                current = {title: $i18next('avAdmin.sidebar.newel')};
-                ElectionsApi.currentElection = current;
+                current = newElection();
             }
             $scope.current = current;
         }

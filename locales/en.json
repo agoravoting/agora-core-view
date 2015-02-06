@@ -323,6 +323,16 @@
         "random": {"label": "Randomize options order", "placeholder": "When randomization of the options order is active, each voter will see the options for this question in a different order in the voting booth"},
         "candidates": {"label": "Candidates", "placeholder": "Candidate options that can be voted for this question"},
         "newopt": "New option name"
+    },
+    "census": {
+        "intro": "The census specifies who can vote and the details we need from each elector. Here you can configure and manage it",
+        "reg": { "label": "Registration", "placeholder": "How the census is generated?" },
+        "census": {"open": "Open registration", "closed": "Closed registration"},
+        "fields": {"label": "Extra fields", "placeholder": "Voter extra fields"},
+        "manage": "Manage census",
+        "name": "Name",
+        "required": "Required",
+        "add": "Add"
     }
   }
 }

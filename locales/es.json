@@ -325,6 +325,16 @@
         "random": {"label": "Orden aleatorio de opciones", "placeholder": "Cuando está activo las opciones aparecerán en un orden diferente a cada votante en la cabina de votación"},
         "candidates": {"label": "Candidatos", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
         "newopt": "Nueva opción"
+    },
+    "census": {
+        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo y administrarlo",
+        "reg": { "label": "Registro", "placeholder": "¿Cómo se genera el censo?" },
+        "census": {"open": "Registro abierto", "closed": "Registro cerrado"},
+        "fields": {"label": "Campos extra", "placeholder": "Campos extra del votante"},
+        "manage": "Administrar censo",
+        "name": "Nombre",
+        "required": "Obligatorio",
+        "add": "Añadir"
     }
   }
 }
