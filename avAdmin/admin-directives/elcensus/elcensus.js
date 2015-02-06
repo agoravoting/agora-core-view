@@ -6,6 +6,7 @@ angular.module('avAdmin')
         scope.election = ElectionsApi.currentElection;
         scope.newef = {};
         scope.newcensus = {};
+        scope.massiveef = "";
 
         function saveCensus() {
             $state.go("admin.auth");
@@ -47,12 +48,30 @@ angular.module('avAdmin')
             el.census.voters = cs.slice(0, index).concat(cs.slice(index+1,cs.length));
         }
 
+        function massiveAdd() {
+            var el = ElectionsApi.currentElection;
+            var cs = el.census.voters;
+
+            var fields = el.census.extra_fields;
+
+            var lines = scope.massiveef.split("\n");
+            lines.forEach(function(l) {
+                var lf = l.split(";");
+                var nv = {};
+                fields.forEach(function(f, i) { nv[f.name] = lf[i]; });
+                cs.push(nv);
+            });
+
+            scope.massiveef = "";
+        }
+
         angular.extend(scope, {
             saveCensus: saveCensus,
             delEf: delEf,
             addEf: addEf,
             addToCensus: addToCensus,
             delVoter: delVoter,
+            massiveAdd: massiveAdd,
         });
     }
 

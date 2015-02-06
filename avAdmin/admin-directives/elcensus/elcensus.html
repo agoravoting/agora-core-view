@@ -69,12 +69,31 @@
     </table>
 
     <div class="well">
-        <form class="form">
-            <div class="form-group" ng-repeat="ef in election.census.extra_fields">
-                <input type="text" class="form-control" placeholder="{{ef.name}}" ng-model="newcensus[ef.name]"/>
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="text-muted"> Manual add </p>
+                <form class="form">
+                    <div class="form-group" ng-repeat="ef in election.census.extra_fields">
+                        <input type="text" class="form-control" placeholder="{{ef.name}}" ng-model="newcensus[ef.name]"/>
+                    </div>
+                    <button class="btn btn-success" type="button" ng-click="addToCensus()" ng-i18next>avAdmin.census.add</button>
+                </form>
             </div>
-            <button class="btn btn-success" type="button" ng-click="addToCensus()" ng-i18next>avAdmin.census.add</button>
-        </form>
+            <div class="col-sm-6">
+                <p class="text-muted"> CSV file, use semicolon to split fields. One voter per line </p>
+                <p class="text-muted">
+                    eg.
+                    <span ng-repeat="ef in election.census.extra_fields">
+                        {{ ef.name }}<span ng-if="!$last">;<span>
+                    </span>
+                </p>
+                <form class="form">
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="one voter per line, mantain the order" ng-model="massiveef"></textarea>
+                    </div>
+                    <button class="btn btn-success" type="button" ng-click="massiveAdd()" ng-i18next>avAdmin.census.add</button>
+                </form>
+            </div>
     </div>
 
     <button ng-click="saveCensus()" class="btn btn-block btn-success" ng-i18next>next</button>
