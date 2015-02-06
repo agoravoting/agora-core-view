@@ -1,4 +1,5 @@
 {
+  "eg": "ej.",
   "next": "Siguiente",
   "done": "Hecho",
   "loading": "Cargando...",
@@ -334,7 +335,10 @@
         "manage": "Administrar censo",
         "name": "Nombre",
         "required": "Obligatorio",
-        "add": "Añadir"
+        "add": "Añadir",
+        "manualAdd": "Añadir a mano",
+        "massive1": "Fichero CSV, usa punto y coma para separar lo campos",
+        "massive2": "un votante por línea, mantén el orden de los campos"
     }
   }
 }
