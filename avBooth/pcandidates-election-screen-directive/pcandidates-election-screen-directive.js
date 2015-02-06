@@ -70,9 +70,9 @@ angular.module('avBooth')
           if (!canSelect && totalSelectedInTeam > 0) {
             return scope.deselectTeam(team);
           } else if (!canSelect && totalSelectedInTeam === 0) {
-            _.each(scope.election.questions, function(_, index) {
-              team["isOpen" + index] = true;
-            });
+//             _.each(scope.election.questions, function(_, index) {
+//               team["isOpen" + index] = true;
+//             });
             return scope.showWarning(scope.warningEnum.cannotSelectAll);
           }
 
@@ -108,15 +108,15 @@ angular.module('avBooth')
             }).length + cell.length - cell.selected > scope.election.questions[question_index].max)
           {
             // if cell is not open.. open it
-            if (!team["isOpen" + question_index]) {
-              if ($window.innerHeight < 768) {
-                team["isOpen" + question_index] = true;
-              } else {
-                _.each(scope.election.questions, function(_, index) {
-                  team["isOpen" + index] = true;
-                });
-              }
-            }
+//             if (!team["isOpen" + question_index]) {
+//               if ($window.innerHeight < 768) {
+//                 team["isOpen" + question_index] = true;
+//               } else {
+//                 _.each(scope.election.questions, function(_, index) {
+//                   team["isOpen" + index] = true;
+//                 });
+//               }
+//             }
             return scope.showWarning(scope.warningEnum.cannotSelectAll);
           }
 
