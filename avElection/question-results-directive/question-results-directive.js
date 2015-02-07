@@ -7,6 +7,7 @@ angular.module('avElection')
     function link(scope, element, attrs) {
       var mappings = {
         "simple.plurality-at-large": "plurality-at-large",
+        "simple.borda-nauru": "plurality-at-large",
         "pcandidates-election.pcandidates-election": "plurality-at-large"
       };
 
