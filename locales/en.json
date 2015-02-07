@@ -338,6 +338,18 @@
         "manualAdd": "Manual add",
         "massive1": "CSV file, use semicolon to split fields",
         "massive2": "one voter per line, keep the field order"
+    },
+    "auth": {
+        "intro": "Authentication is the means used to ensure that an elector is who he sais he is. Here you need to find a balance between security, usability an cost",
+        "auth": "Auth method",
+        "auths": {"email": "Email links", "sms": "SMS"},
+        "sms": "SMS message",
+        "smstemp": "Template used in the SMS to send to the user. Use %(code)s to insert the SMS code",
+        "smsdef": "This is your vote code: %(code)",
+        "email": "Email message",
+        "emailsub": "Email subject",
+        "emailtemp": "Template used in the Email link to send to the user. Use %(code)s to insert the login code and %(link)s to insert the election link",
+        "emaildef": "Vote following this link %(link)s\nThis is your auth code: %(code)s"
     }
   }
 }

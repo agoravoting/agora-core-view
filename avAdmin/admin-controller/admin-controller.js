@@ -9,17 +9,13 @@ angular.module('avAdmin').controller('AdminController',
             title: $i18next('avAdmin.sidebar.newel'),
             census: {
                 voters: [],
+                auth_method: 'email',
                 census:'open',
-                extra_fields: [
-                    {
-                    "name": "email",
-                    "type": "text",
-                    "required": true,
-                    "min": 2,
-                    "max": 200,
-                    "required_on_authentication": true
-                    }
-                ]
+                extra_fields: [ ],
+                config: {
+                    "msg": $i18next('avAdmin.auth.emaildef'),
+                    "subject": $i18next('avAdmin.auth.emailsub')
+                }
             }
         };
         $scope.current = el;

@@ -36,7 +36,7 @@
                     <tr ng-repeat="ef in election.census.extra_fields">
                         <td width="100%">{{ ef.name }}</td>
                         <td><input type="checkbox" class="form-control" ng-model="ef.required"/></td>
-                        <td><i class="fa fa-times" ng-click="delEf($index)"></i></td>
+                        <td><i class="fa fa-times" ng-click="delEf($index)" ng-if="!ef.must"></i></td>
                     </tr>
                 </table>
 
