@@ -18,8 +18,9 @@ angular.module('avRegistration')
         var backendUrl = ConfigService.authAPI;
         var authmethod = {};
 
-        authmethod.signup = function(method, id, data) {
-            return $http.post(backendUrl + 'authmethod/'+ method + '/register/' + id + '/', data);
+        authmethod.signup = function(data) {
+            var eid = data.authevent || '0';
+            return $http.post(backendUrl + 'auth-event/'+eid+'/register/', data);
         };
 
         authmethod.ping = function() {
@@ -61,24 +62,12 @@ angular.module('avRegistration')
           if (!fields) { fields = []; }
           if (viewEventData.auth_method === "sms") {
             fields.unshift({
-              "name": "code",
-              "type": "code",
-              "required": true,
-              "required_on_authentication": true
-            });
-            fields.unshift({
               "name": "tlf",
               "type": "tlf",
               "required": true,
               "required_on_authentication": true
             });
           } else if (viewEventData.auth_method === "email") {
-            fields.unshift({
-              "name": "code",
-              "type": "code",
-              "required": true,
-              "required_on_authentication": true
-            });
             fields.unshift({
               "name": "email",
               "type": "email",
@@ -103,9 +92,16 @@ angular.module('avRegistration')
         };
 
         authmethod.getLoginFields = function (viewEventData) {
-          return _.filter(
-            authmethod.getRegisterFields(viewEventData),
-            function (field) {return field.required_on_authentication;});
+            var fields = authmethod.getRegisterFields(viewEventData);
+            if (viewEventData.auth_method === "sms" || viewEventData.auth_method === "email") {
+              fields.push({
+                "name": "code",
+                "type": "code",
+                "required": true,
+                "required_on_authentication": true
+              });
+            }
+          return _.filter(fields, function (field) {return field.required_on_authentication;});
         };
 
         // TEST
