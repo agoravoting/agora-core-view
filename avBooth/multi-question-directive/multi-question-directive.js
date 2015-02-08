@@ -18,6 +18,9 @@ angular.module('avBooth')
       };
 
       var question = scope.stateData.question;
+      if (question.layout === "") {
+        question.layout = "simple";
+      }
       if (question.randomize_answer_order) {
           // we can't just sample the groupedOptions list because we need to
           // 1. use the same list object
