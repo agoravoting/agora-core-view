@@ -55,13 +55,6 @@ angular.module('avRegistration')
                 }
                 return el;
               });
-            var filled_fields = _.filter(fields,
-              function (el) { return el.value !== null; });
-
-            if (filled_fields.length !== scope.register_fields.length) {
-              return;
-            }
-            scope.signUp(true);
         };
 
         scope.view = function(id) {
