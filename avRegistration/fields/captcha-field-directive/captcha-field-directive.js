@@ -6,8 +6,8 @@ angular.module('avRegistration')
                 .success(function(data) {
                     console.log(data);
                     if (data.captcha_code !== null) {
-                        scope.captcha_code = data.captcha_code
-                        scope.image_url = data.image_url
+                        scope.captcha_code = data.captcha_code;
+                        scope.image_url = data.image_url;
                     } else {
                         scope.status = 'Not found';
                         document.querySelector(".input-error").style.display = "block";

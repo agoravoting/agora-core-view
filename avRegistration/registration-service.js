@@ -97,11 +97,9 @@ angular.module('avRegistration')
           for (var i=0; i<fields.length; i++) {
               if (fields[i]['type'] === "captcha") {
                   var captcha = fields.splice(i, 1);
+                  fields.push(captcha[0]);
                   break;
               }
-          }
-          if (captcha !== undefined) {
-              fields.push(captcha[0]);
           }
           return fields;
         };
@@ -123,11 +121,9 @@ angular.module('avRegistration')
             for (var i=0; i<fields.length; i++) {
                 if (fields[i]['type'] === "captcha") {
                     var captcha = fields.splice(i, 1);
+                    fields.push(captcha[0]);
                     break;
                 }
-            }
-            if (captcha !== undefined) {
-                fields.push(captcha[0]);
             }
             return fields;
         };
