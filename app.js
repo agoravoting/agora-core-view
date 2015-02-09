@@ -98,7 +98,7 @@ angular.module('agora-core-view').config(
       .state('admin', {
         abstract: true,
         url: '/admin',
-        template: '<div ui-view></div>'
+        template: '<div ui-view autoscroll></div>'
       })
       .state('admin.login', {
         url: '/login',
@@ -117,7 +117,8 @@ angular.module('agora-core-view').config(
       .state('admin.dashboard',   { url: '/dashboard/:id', templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
       .state('admin.account',     { url: '/account',       templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
       .state('admin.billinfo',    { url: '/billinfo',      templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
-      .state('admin.billhistory', { url: '/billhistory',   templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' });
+      .state('admin.billhistory', { url: '/billhistory',   templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' })
+      .state('admin.create',      { url: '/create',        templateUrl: 'avAdmin/admin-controller/admin-controller.html', controller: 'AdminController' });
 
     // END of Admin interface
     $stateProvider

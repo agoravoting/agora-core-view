@@ -258,6 +258,7 @@
         "census": "Census",
         "auth": "Authentication",
         "tally": "Tally",
+        "create": "Create Election",
         "myAccount": "My account",
         "billinfo": "Billing information",
         "billhistory": "Billing history",
@@ -329,7 +330,7 @@
     "census": {
         "intro": "The census specifies who can vote and the details we need from each elector. Here you can configure and manage it",
         "reg": { "label": "Registration", "placeholder": "How the census is generated?" },
-        "census": {"open": "Open registration", "closed": "Closed registration"},
+        "census": {"open": "Open registration", "close": "Closed registration"},
         "fields": {"label": "Extra fields", "placeholder": "Voter extra fields"},
         "manage": "Manage census",
         "name": "Name",
@@ -350,6 +351,14 @@
         "emailsub": "Email subject",
         "emailtemp": "Template used in the Email link to send to the user. Use %(code)s to insert the login code and %(link)s to insert the election link",
         "emaildef": "Vote following this link %(link)s\nThis is your auth code: %(code)s"
+    },
+    "create": {
+        "summary": "Summary",
+        "create": "Create the election",
+        "creating": "Creating the authentication",
+        "census": "Adding the census",
+        "reg": "Registering the election",
+        "creatingEl": "Creating the election"
     }
   }
 }

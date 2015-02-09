@@ -1,5 +1,5 @@
 angular.module('avAdmin').controller('AdminController',
-  function($scope, $i18next, $state, $stateParams, ElectionsApi) {
+  function(ConfigService, $scope, $i18next, $state, $stateParams, ElectionsApi) {
     var id = $stateParams.id;
     $scope.state = $state.current.name;
     $scope.current = null;
@@ -7,6 +7,17 @@ angular.module('avAdmin').controller('AdminController',
     function newElection() {
         var el = {
             title: $i18next('avAdmin.sidebar.newel'),
+            start_date: "2015-01-27T16:00:00.001",
+            end_date: "2015-01-27T16:00:00.001",
+            authorities: ConfigService.authorities,
+            director: ConfigService.director,
+            presentation: {
+                theme: 'default',
+                share_text: '',
+                urls: [],
+                theme_css: ''
+            },
+            layout: 'simple',
             census: {
                 voters: [],
                 auth_method: 'email',
@@ -38,16 +49,18 @@ angular.module('avAdmin').controller('AdminController',
         $state.go("admin.basic");
     }
 
-    var states =[ 'admin.dashboard', 'admin.basic', 'admin.questions', 'admin.census', 'admin.auth', 'admin.tally' ];
+    var states =[ 'admin.dashboard', 'admin.basic', 'admin.questions', 'admin.census', 'admin.auth', 'admin.tally', 'admin.create'];
     if (states.indexOf($scope.state) >= 0) {
         $scope.sidebarlinks = [
             {name: 'basic', icon: 'university'},
             {name: 'questions', icon: 'question-circle'},
             {name: 'census', icon: 'users'},
             {name: 'auth', icon: 'unlock'},
-            {name: 'tally', icon: 'pie-chart'},
+            //{name: 'tally', icon: 'pie-chart'},
         ];
+
         if (!id) {
+            $scope.sidebarlinks.push({name: 'create', icon: 'rocket'});
             var current = ElectionsApi.currentElection;
             if (!current.title) {
                 current = newElection();

@@ -15,6 +15,9 @@ var avConfigData = {
   // Agora Elections base url
   electionsAPI: "http://agora.dev/elections/api/",
 
+  authorities: [ "local-auth2" ],
+  director: "local-auth1",
+
   // default language of the application
   language: "en",
 

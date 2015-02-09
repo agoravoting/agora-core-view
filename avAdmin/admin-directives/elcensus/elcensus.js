@@ -2,7 +2,7 @@ angular.module('avAdmin')
   .directive('avAdminElcensus', ['$state', 'ElectionsApi', function($state, ElectionsApi) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
-        scope.census = ['open', 'closed'];
+        scope.census = ['open', 'close'];
         scope.election = ElectionsApi.currentElection;
         scope.newef = {};
         scope.newcensus = {};

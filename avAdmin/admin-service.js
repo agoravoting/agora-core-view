@@ -233,7 +233,11 @@ angular.module('avAdmin')
             var deferred = $q.defer();
             var m = {};
             var d = data || {};
-            var url = backendUrl + 'election/'+el.id+'/'+command;
+            var url = backendUrl + 'election/'+el.id;
+
+            if (command) {
+                url += '/'+command;
+            }
 
             electionsapi.getEditPerm(el.id)
                 .then(function(perm) {

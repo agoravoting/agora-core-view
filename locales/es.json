@@ -260,6 +260,7 @@
         "census": "Censo",
         "auth": "Autorización",
         "tally": "Recuento",
+        "create": "Crear Votación",
         "myAccount": "Mi cuenta",
         "billinfo": "Información de pago",
         "billhistory": "Historial de pagos",
@@ -331,7 +332,7 @@
     "census": {
         "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo y administrarlo",
         "reg": { "label": "Registro", "placeholder": "¿Cómo se genera el censo?" },
-        "census": {"open": "Registro abierto", "closed": "Registro cerrado"},
+        "census": {"open": "Registro abierto", "close": "Registro cerrado"},
         "fields": {"label": "Campos extra", "placeholder": "Campos extra del votante"},
         "manage": "Administrar censo",
         "name": "Nombre",
@@ -352,6 +353,14 @@
         "emailsub": "Asúnto del correo",
         "emailtemp": "Plantilla usada en el correo para enviar a los usuarios. Usa %(code)s para añadir el código de acceso y %(link)s para insertar el enlace de votación",
         "emaildef": "Vota siguiendo este enlace %(link)s\nEste es tu código de autenticación: %(code)s"
+    },
+    "create": {
+        "summary": "Resumen",
+        "create": "Crear la votación",
+        "creating": "Creando la autenticación",
+        "census": "Añadiendo el censo",
+        "reg": "Registrando la votación",
+        "creatingEl": "Creando la votación"
     }
   }
 }
