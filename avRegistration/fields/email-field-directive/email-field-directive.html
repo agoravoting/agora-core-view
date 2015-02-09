@@ -3,7 +3,7 @@
     <div class="col-sm-8">
         <input type="text" class="form-control" ng-model="field.value"
                 name="emailText" id="emailText"
-                ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="1"
+                ng-i18next="[placeholder]avRegistration.emailPlaceholder" tabindex="{{index}}"
                 ng-pattern="patterns('email')" autofocus required ng-disabled="field.disabled"/>
         <div class="input-error">
             <small

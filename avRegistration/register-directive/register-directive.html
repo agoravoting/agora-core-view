@@ -6,7 +6,7 @@
 
     <div class="col-sm-6">
         <form name="form" id="registerForm" role="form" class="form-horizontal">
-            <div ng-repeat="field in register_fields" avr-field index="{{$index}}">
+            <div ng-repeat="field in register_fields" avr-field index="{{$index+1}}">
             </div>
 
           <div class="col-sm-offset-4 col-sm-8 button-group">
@@ -28,7 +28,7 @@
       <p>
         <span ng-i18next="avRegistration.createElection"></span><br/>
         <span ng-i18next="avRegistration.takeLook"></span>
-        <a href="" target="_blank" ng-i18next="avRegistration.step"></a>
+        <a href="" target="_blank" ng-i18next="avRegistration.step" tabindex="{{register_fields.length+2}}"></a>
       </p>
     </div>
   </div>
