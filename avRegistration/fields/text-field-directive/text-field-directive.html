@@ -10,11 +10,13 @@
             type="text"
             class="form-control"
             id="{{index}}Text"
+            minlength={{field.min}}
+            maxlength={{field.max}}
             ng-model="field.value"
             ng-disabled="field.disabled"
             tabindex="{{index}}"
             autofocus
-            required />
+            ng-required={{field.required}} />
         <div class="input-error">
         </div>
     </div>
