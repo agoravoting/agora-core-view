@@ -1,14 +1,13 @@
 angular.module('avRegistration')
   .directive('avrCaptchaField', function(Authmethod, $state) {
     function link(scope, element, attrs) {
-        var static_authapi = '/home/virako/wadobo/agora/authapi/authapi'
         scope.view = function() {
             Authmethod.newCaptcha()
                 .success(function(data) {
                     console.log(data);
                     if (data.captcha_code !== null) {
                         scope.captcha_code = data.captcha_code
-                        scope.image_url = static_authapi + data.image_url
+                        scope.image_url = data.image_url
                     } else {
                         scope.status = 'Not found';
                         document.querySelector(".input-error").style.display = "block";
