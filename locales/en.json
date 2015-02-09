@@ -171,6 +171,7 @@
     "loginHeader": "Login to your Agora Voting account",
     "logout": "Logout",
     "emailLabel": "Email",
+    "telLabel": "Phone",
     "codeLabel": "Authentication Code",
     "emailPlaceholder": "john@example.com",
     "passwordLabel": "Password",
@@ -194,6 +195,7 @@
     "tlfError": "Invalid phone",
     "dniError": "DNI example 12345678H",
     "emailError": "Invalid email",
+    "telError": "Invalid phone",
 
     "validateHeader": "Validate code",
     "validateButton": "Validate",

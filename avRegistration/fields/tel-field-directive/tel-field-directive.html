@@ -1,0 +1,16 @@
+<div class="form-group">
+    <label for="telText" class="control-label col-sm-4" ng-i18next="avRegistration.telLabel"></label>
+    <div class="col-sm-8">
+        <input
+            type="tel"
+            class="form-control"
+            id="{{index}}Text"
+            ng-model="field.value"
+            ng-disabled="field.disabled"
+            tabindex="{{index}}"
+            autofocus
+            required />
+        <div class="input-error">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="form-group">
+    <label for="{{index}}Text" class="control-label col-sm-4">
+        <span>{{field.name}}</span>
+        <p class="help-block" ng-if="field.help">
+          {{field.help}}
+        </p>
+    </label>
+    <div class="col-sm-8">
+        <input
+            type="number"
+            class="form-control"
+            id="{{index}}Text"
+            ng-model="field.value"
+            ng-disabled="field.disabled"
+            tabindex="{{index}}"
+            autofocus
+            required />
+        <div class="input-error">
+        </div>
+    </div>
+</div>
