@@ -92,6 +92,15 @@ angular.module('avRegistration')
               "required_on_authentication": true
             });
           }
+
+          // put captha the last
+          for (var i=0; i<fields.length; i++) {
+              if (fields[i]['type'] === "captcha") {
+                  var captcha = fields.splice(i, 1);
+                  break;
+              }
+          }
+          fields.push(captcha[0]);
           return fields;
         };
 
@@ -105,7 +114,22 @@ angular.module('avRegistration')
                 "required_on_authentication": true
               });
             }
-          return _.filter(fields, function (field) {return field.required_on_authentication;});
+
+            fields = _.filter(fields, function (field) {return field.required_on_authentication;});
+
+            // put captha the last
+            for (var i=0; i<fields.length; i++) {
+                if (fields[i]['type'] === "captcha") {
+                    var captcha = fields.splice(i, 1);
+                    break;
+                }
+            }
+            fields.push(captcha[0]);
+            return fields;
+        };
+
+        authmethod.newCaptcha = function() {
+            return $http.get(backendUrl + 'captcha/new/', {});
         };
 
         // TEST
