@@ -100,7 +100,9 @@ angular.module('avRegistration')
                   break;
               }
           }
-          fields.push(captcha[0]);
+          if (captcha !== undefined) {
+              fields.push(captcha[0]);
+          }
           return fields;
         };
 
@@ -124,7 +126,9 @@ angular.module('avRegistration')
                     break;
                 }
             }
-            fields.push(captcha[0]);
+            if (captcha !== undefined) {
+                fields.push(captcha[0]);
+            }
             return fields;
         };
 
