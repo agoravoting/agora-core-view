@@ -321,7 +321,7 @@
     "questions": {
         "new": "New question",
         "votingSystem": "Voting System",
-        "votings": {"plurality-at-large": "Plurality at large", "borda": "BORDA"},
+        "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Nauru's Borda Count or Borda Dowdall (1/n)"},
         "winners": {"label": "Number of winners", "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options"},
         "min": {"label": "Minimum number of selected options", "placeholder": "How many options should a voter select in this question? Minimum is zero wich would allow blank votes"},
         "max": {"label": "Maximum number of selected options", "placeholder": "How many options can a voter select in this question?"},
