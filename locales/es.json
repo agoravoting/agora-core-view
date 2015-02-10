@@ -308,7 +308,8 @@
         "votes": "Votos",
         "winner": "Posición ganadora",
         "publicResultsUrl": "Url pública de resultados",
-        "censussend": "Se ha enviado el censo correctamente"
+        "censussend": "Se ha enviado el censo correctamente",
+        "preview": "Vista previa de la cabina de votación"
     },
     "basic": {
         "intro": "Crear una votación conlleva varios pasos, pero no es difícil. No te pongas nerviso y adelante, sólo te llevará 5 minutos",

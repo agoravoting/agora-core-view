@@ -306,7 +306,8 @@
         "votes": "Votes",
         "winner": "Winner position",
         "publicResultsUrl": "Public results url",
-        "censussend": "Census send correctly"
+        "censussend": "Census send correctly",
+        "preview": "Preview voting booth"
     },
     "basic": {
         "intro": "Creating an election involves multiple steps, but it's not hard. Don't panic and go ahead, it only takes 5 minutes",

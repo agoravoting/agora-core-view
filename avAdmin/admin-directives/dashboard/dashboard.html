@@ -75,13 +75,19 @@
                 </dl>
             </div>
 
-            <!-- TODO make it real
             <div class="well text-right">
+                <a ui-sref="election.booth-nohmac({ id: election.id })" ng-i18next>
+                    avAdmin.dashboard.preview
+                </a>
+                <a ng-if="election.results.questions"
+                   ui-sref="election.results({ id: election.id })" ng-i18next>
+                   avAdmin.dashboard.publicResultsUrl
+                </a>
+                <!--
                 <a href="">Election public site</a><br/>
-                <a href="">Preview voting booth</a><br/>
                 <a href="">Embed election</a>
+                -->
             </div>
-            -->
 
             <button ng-click="doAction(index)" class="btn btn-block btn-lg btn-success" ng-if="nextaction" ng-i18next="{{ nextaction }}"></button>
             <button class="btn btn-block btn-lg btn-warning" ng-if="intally">
