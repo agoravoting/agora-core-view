@@ -155,6 +155,18 @@
 
     "errorLoadingQuestionTest": "Unknown question layout",
 
+    "public": {
+      "loadingText": "Loading election",
+      "shareLink": "Tweet this election!",
+      "errorLoadingText": "Error loading the election. This election might not exist, or maybe it has not been published yet.",
+      "faqsLink": "FAQs",
+      "authoritiesLink": "Authorities",
+      "overviewLink": "Overview",
+      "technicalOverviewLink": "Technical overview",
+      "demoVotingBoothLink": "Demo voting booth",
+      "voteNowLink": "Vote now"
+    },
+
     "resultsDirective": {
       "ballotLocatorLink": "Find ballot locator",
       "verifiableResultsLink": "Verifiable tally"

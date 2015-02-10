@@ -154,6 +154,18 @@
     "nullVotes": "Votos nulos:",
     "stateNotPublished": "Lo sentimos. No se pueden mostrar los resultados porque aun no han sido publicados.",
 
+    "public": {
+      "loadingText": "Cargando votación",
+      "shareLink": "¡Twitea esta votación!",
+      "errorLoadingText": "Error cargando la votación. Puede que esta votación no exista o no se haya publicado todavía.",
+      "faqsLink": "Preguntas frecuentes",
+      "authoritiesLink": "Autoridades",
+      "overviewLink": "Esquema general",
+      "technicalOverviewLink": "Análisis técnico",
+      "demoVotingBoothLink": "Demo cabina de votación",
+      "voteNowLink": "Vota ahora"
+    },
+
     "errorLoadingQuestionTest": "Disposición de pregunta desconocida",
 
     "verifyResults": {

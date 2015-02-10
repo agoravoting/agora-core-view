@@ -5,21 +5,11 @@ angular.module('avAdmin')
         var admin = $cookies.user;
         scope.admin = admin;
         scope.nologin = ('nologin' in attrs) || scope.admin;
-        scope.deflang = navigator.language;
 
         scope.loginrequired = ('loginrequired' in attrs);
         if (scope.loginrequired && !scope.admin) {
             $state.go("registration.logout");
         }
-
-        function changeLang(newl) {
-            $i18next.options.lng = newl;
-            scope.deflang = $i18next.options.lng;
-        }
-
-        angular.extend(scope, {
-          changeLang: changeLang,
-        });
 
         function ping() {
             Authmethod.ping()

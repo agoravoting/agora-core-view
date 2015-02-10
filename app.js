@@ -127,6 +127,20 @@ angular.module('agora-core-view').config(
         url: '/election',
         template: '<div ui-view></div>'
       })
+      .state('election.public', {
+        url: '/:id/public',
+        templateUrl: 'avElection/public-controller/public-controller.html',
+        controller: "PublicController"
+      })
+      .state('election.public.loading', {
+        templateUrl: 'avElection/public-controller/loading.html'
+      })
+      .state('election.public.error', {
+        templateUrl: 'avElection/public-controller/error.html'
+      })
+      .state('election.public.show', {
+        templateUrl: 'avElection/public-controller/show.html'
+      })
       .state('election.results', {
         url: '/:id/results',
         templateUrl: 'avElection/results-controller/results-controller.html',
