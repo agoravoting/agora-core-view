@@ -256,7 +256,7 @@ angular.module('avBooth')
           });
       };
 
-      // randomize by column
+      // randomize by column, or randomly by no column if question_index is -1
       scope.randomizeByColumn = function (question_index) {
         var max = scope.groupedOptions.length;
 
@@ -271,7 +271,7 @@ angular.module('avBooth')
 
         for (i = 0; i < max; i++) {
           var team = scope.groupedOptions[i];
-          if (team.options[question_index].length > 0) {
+          if (question_index === -1 || team.options[question_index].length > 0) {
             team.sortOrder = randomList[i];
           } else {
             var found = false;
@@ -289,8 +289,8 @@ angular.module('avBooth')
         updateFilteredOptions();
       };
 
-      // sort by last column
-      scope.randomizeByColumn(scope.election.questions.length - 1);
+      // sort randomly, by no column
+      scope.randomizeByColumn(-1);
 
       scope.numSelectedOptions = function () {
         return _.filter(
