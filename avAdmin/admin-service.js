@@ -31,7 +31,7 @@ angular.module('avAdmin')
 
     }])
 
-    .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$http', function($q, Authmethod, ConfigService, $http) {
+    .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$i18next', '$http', function($q, Authmethod, ConfigService, $i18next, $http) {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}, permcache: {}};
         electionsapi.currentElection = {};
@@ -251,6 +251,52 @@ angular.module('avAdmin')
                 });
 
             return deferred.promise;
+        };
+
+        electionsapi.templateEl = function() {
+            var el = {
+                title: $i18next('avAdmin.sidebar.newel'),
+                description: "",
+                start_date: "2015-01-27T16:00:00.001",
+                end_date: "2015-01-27T16:00:00.001",
+                authorities: ConfigService.authorities,
+                director: ConfigService.director,
+                presentation: {
+                    theme: 'default',
+                    share_text: '',
+                    urls: [],
+                    theme_css: ''
+                },
+                layout: 'simple',
+                census: {
+                    voters: [],
+                    auth_method: 'email',
+                    census:'open',
+                    extra_fields: [ ],
+                    config: {
+                        "msg": $i18next('avAdmin.auth.emaildef'),
+                        "subject": $i18next('avAdmin.auth.emailsub')
+                    }
+                },
+                questions: []
+            };
+            return el;
+        };
+
+        electionsapi.templateQ = function(title) {
+            var q = {
+                "answer_total_votes_percentage": "over-total-valid-votes",
+                "answers": [],
+                "description": "",
+                "layout": "simple",
+                "max": 1,
+                "min": 1,
+                "num_winners": 1,
+                "randomize_answer_order": true,
+                "tally_type": "plurality-at-large",
+                "title": title
+            };
+            return q;
         };
 
         return electionsapi;

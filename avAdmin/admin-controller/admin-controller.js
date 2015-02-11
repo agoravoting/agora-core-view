@@ -5,30 +5,7 @@ angular.module('avAdmin').controller('AdminController',
     $scope.current = null;
 
     function newElection() {
-        var el = {
-            title: $i18next('avAdmin.sidebar.newel'),
-            start_date: "2015-01-27T16:00:00.001",
-            end_date: "2015-01-27T16:00:00.001",
-            authorities: ConfigService.authorities,
-            director: ConfigService.director,
-            presentation: {
-                theme: 'default',
-                share_text: '',
-                urls: [],
-                theme_css: ''
-            },
-            layout: 'simple',
-            census: {
-                voters: [],
-                auth_method: 'email',
-                census:'open',
-                extra_fields: [ ],
-                config: {
-                    "msg": $i18next('avAdmin.auth.emaildef'),
-                    "subject": $i18next('avAdmin.auth.emailsub')
-                }
-            }
-        };
+        var el = ElectionsApi.templateEl();
         $scope.current = el;
         ElectionsApi.currentElection = el;
 

@@ -15,18 +15,7 @@ angular.module('avAdmin')
                 el.questions = [];
             }
             // New question
-            var q = {
-                "answer_total_votes_percentage": "over-total-valid-votes",
-                "answers": [],
-                "description": "",
-                "layout": "simple",
-                "max": 1,
-                "min": 1,
-                "num_winners": 1,
-                "randomize_answer_order": true,
-                "tally_type": "plurality-at-large",
-                "title": $i18next("avAdmin.questions.new") + " " + el.questions.length
-            };
+            var q = ElectionsApi.templateQ($i18next("avAdmin.questions.new") + " " + el.questions.length);
             el.questions.push(q);
             expand(el.questions.length - 1);
         }

@@ -4,10 +4,8 @@
 
   <li role="presentation" class="sub1">
     <a ui-sref="admin.new()"> <i class="fa-fw fa fa-plus-circle"></i> <span ng-i18next="avAdmin.sidebar.newel"></span></a> </li>
-  <!-- not implemented yet
   <li role="presentation" class="sub1" ng-class="{active:state=='admin.import'}">
     <a ui-sref="admin.import()"> <i class="fa-fw fa fa-upload"></i> <span ng-i18next="avAdmin.sidebar.import"></span></a> </li>
-  -->
 
   <ul class="nav nav-pills nav-stacked" ng-if="current">
     <li role="presentation" class="head"><a ui-sref="admin.dashboard({id:current.id})">
