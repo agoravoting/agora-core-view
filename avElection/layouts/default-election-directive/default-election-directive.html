@@ -1,4 +1,4 @@
-<nav class="navbar navbar-admin adminhead">
+<nav class="navbar navbar-admin adminhead navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
     <div ng-class="{'container-fluid': admin, 'container': !admin}">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -29,7 +29,7 @@
 <div class="container-fluid background">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 top-section">
+      <div class="col-xs-12 top-section first">
         <h1 class="text-center election-title">{{election.title}}</h1>
         <p class="election-description" ng-bind-html="election.description"></p>
         <a
