@@ -10,6 +10,11 @@
 
       h1.election-title {
         padding: 18px;
+        color: @av-primary;
+      }
+
+      h2 {
+        padding: 10px;
       }
 
       p.election-description {
@@ -18,7 +23,9 @@
       }
 
       ul.election-links {
+        padding: 0;
         text-align: center;
+
         li {
           display:inline-block;
           font-size: 18px;
@@ -27,5 +34,11 @@
         }
       }
     }
+  }
+}
+
+@media(max-width: @screen-sm-max) {
+  .background > .container {
+    padding: 0;
   }
 }

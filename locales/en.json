@@ -166,7 +166,12 @@
       "overviewLink": "Overview",
       "technicalOverviewLink": "Technical overview",
       "demoVotingBoothLink": "Demo voting booth",
-      "voteNowLink": "Vote now"
+      "voteNowLink": "Vote now",
+      "answers": "Candidates",
+      "answersRandomized": "Candidates (in random order)",
+      "questionsTitle": "Questions",
+      "questionInfoText": "Voters will select between <strong>__min__</strong> and <strong>__max__</strong> candidates. <strong>__numWinners__</strong> winners.",
+      "votingSystemText": "Voting system: <strong>__method__</strong>."
     },
 
     "resultsDirective": {

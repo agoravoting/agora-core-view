@@ -1,0 +1,9 @@
+<h3>Q{{index+1}}. {{question.title}}</h3>
+<p>{{question.description}}</p>
+<p ng-i18next="[html:i18next]({min: question.min, max: question.max, numWinners: question.num_winners})avElection.public.questionInfoText"></p>
+<p ng-i18next="[html:i18next]({method: tallyMethod})avElection.public.votingSystemText"></p>
+<p ng-if="question.randomize_answer_order"><strong ng-i18next="avElection.public.answersRandomized"></strong></p>
+<p ng-if="!question.randomize_answer_order"><strong ng-i18next="avElection.public.answers"></strong></p>
+<ul>
+  <li ng-repeat="answer in question.answers">{{answer.text}}</li>
+</ul>

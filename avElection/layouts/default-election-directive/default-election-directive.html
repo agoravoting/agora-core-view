@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="" ng-i18next="avElection.public.shareLink">
+            <a href="{{getShareLink()}}" target="_blank" ng-i18next="avElection.public.shareLink">
             </a>
           </li>
 
@@ -40,28 +40,31 @@
         </a>
         <ul class="election-links">
           <li>
-            <a href="" ng-i18next="avElection.public.faqsLink"></a>
+            <a href="#/election/{{election.id}}/public/faqs" ng-i18next="avElection.public.faqsLink"></a>
           </li>
           <li>
-            <a href="" ng-i18next="avElection.public.authoritiesLink"></a>
+            <a href="#/election/{{election.id}}/public/auths" ng-i18next="avElection.public.authoritiesLink"></a>
           </li>
           <li>
-            <a href="" ng-i18next="avElection.public.overviewLink"></a>
+            <a href="#/election/{{election.id}}/public/overview" ng-i18next="avElection.public.overviewLink"></a>
           </li>
           <li>
-            <a href="" ng-i18next="avElection.public.technicalOverviewLink"></a>
+            <a href="#/election/{{election.id}}/public/tech_overview" target="_blank" ng-i18next="avElection.public.technicalOverviewLink"></a>
           </li>
           <li>
-            <a href="" ng-i18next="avElection.public.demoVotingBoothLink"></a>
+            <a href="#/election/{{election.id}}/vote" target="_blank" ng-i18next="avElection.public.demoVotingBoothLink"></a>
           </li>
         </ul>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 top-section">
-        <div ave-questions-info ng-if="election.state !== 'results_ok'">
+        <div ng-if="election.state !== 'results_ok'">
+          <h2 class="text-center" ng-i18next="avElection.public.questionsTitle"></h2>
+          <div ave-question-info ng-repeat="question in election.questions" index="{{$index}}">
+          </div>
         </div>
-        <div av-results ng-if="election.state === 'results_ok'">
+        <div ng-if="election.state === 'results_ok'" av-results>
         </div>
       </div>
     </div>

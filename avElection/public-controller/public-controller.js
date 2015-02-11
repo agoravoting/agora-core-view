@@ -32,7 +32,7 @@ angular.module('avElection').controller('PublicController',
       })
       // on error, like parse error or 404
       .error(function (error) {
-        $state.go("election.results.error");
+        $state.go("election.public.error");
       });
   }
 );

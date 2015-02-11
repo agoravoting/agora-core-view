@@ -165,7 +165,12 @@
       "overviewLink": "Esquema general",
       "technicalOverviewLink": "Análisis técnico",
       "demoVotingBoothLink": "Demo cabina de votación",
-      "voteNowLink": "Vota ahora"
+      "voteNowLink": "Vota ahora",
+      "answers": "Candidaturas",
+      "answersRandomized": "Candidaturas (en orden aleatorio)",
+      "questionsTitle": "Preguntas",
+      "questionInfoText": "Los votantes seleccionarán entre <strong>__min__</strong> y <strong>__max__</strong> candidaturas. <strong>__numWinners__</strong> ganadores.",
+      "votingSystemText": "Sistema de votación: <strong>__method__</strong>."
     },
 
     "errorLoadingQuestionTest": "Disposición de pregunta desconocida",
