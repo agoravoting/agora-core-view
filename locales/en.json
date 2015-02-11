@@ -158,6 +158,7 @@
     "errorLoadingQuestionTest": "Unknown question layout",
 
     "public": {
+      "homeText": "Home",
       "loadingText": "Loading election",
       "loadingDataText": "Cargando datos..",
       "shareLink": "Tweet this election!",

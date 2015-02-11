@@ -7,6 +7,7 @@ angular.module('avElection')
       scope.getShareLink = function() {
         return "https://twitter.com/intent/tweet?text=" + encodeURIComponent(scope.election.presentation.share_text) + "&source=webclient";
       };
+      scope.name = "Home";
     }
     return {
       restrict: 'AE',

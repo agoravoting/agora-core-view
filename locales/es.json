@@ -157,6 +157,7 @@
     "stateNotPublished": "Lo sentimos. No se pueden mostrar los resultados porque aun no han sido publicados.",
 
     "public": {
+      "homeText": "Portada",
       "loadingText": "Cargando votación",
       "loadingDataText": "Cargando datos..",
       "shareLink": "¡Twitea esta votación!",

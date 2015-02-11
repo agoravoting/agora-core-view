@@ -38,23 +38,7 @@
           class="btn btn-block btn-success btn-lg"
           ng-if="election.state === 'started'">
         </a>
-        <ul class="election-links">
-          <li>
-            <a href="#/election/{{election.id}}/public-view/faqs.html" ng-i18next="avElection.public.faqsLink"></a>
-          </li>
-          <li>
-            <a href="#/election/{{election.id}}/public-view/auths.html" ng-i18next="avElection.public.authoritiesLink"></a>
-          </li>
-          <li>
-            <a href="#/election/{{election.id}}/public-view/overview.html" ng-i18next="avElection.public.overviewLink"></a>
-          </li>
-          <li>
-            <a href="#/election/{{election.id}}/public-view/tech_overview.pdf" target="_blank" ng-i18next="avElection.public.technicalOverviewLink"></a>
-          </li>
-          <li>
-            <a href="#/election/{{election.id}}/vote" target="_blank" ng-i18next="avElection.public.demoVotingBoothLink"></a>
-          </li>
-        </ul>
+        <div ave-election-links></div>
       </div>
     </div>
     <div class="row">
