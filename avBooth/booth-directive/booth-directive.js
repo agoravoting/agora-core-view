@@ -1,5 +1,5 @@
 angular.module('avBooth')
-  .directive('avBooth', function($http, $location, $i18next, $window, $timeout, HmacService, ConfigService) {
+  .directive('avBooth', function($http, $location, $i18next, $window, $timeout, HmacService, ConfigService, InsideIframeService) {
 
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
@@ -8,6 +8,10 @@ angular.module('avBooth')
       var timeoutWidth;
       var w = angular.element($window);
       $("#theme").attr("href", "themes/" + ConfigService.theme + "/app.min.css");
+
+      // when we are not inside an iframe and voter id is not set, this is a
+      // demo booth
+      scope.isDemo = !InsideIframeService() && !scope.voterId;
 
       function updateWidth() {
         timeoutWidth = $timeout(function() {
@@ -111,10 +115,18 @@ angular.module('avBooth')
         } else if (scope.state === stateEnum.reviewScreen)
         {
           if (!scope.stateData.auditClicked) {
-            scope.setState(stateEnum.castingBallotScreen, {
-              encryptedBallot: scope.stateData.encryptedBallot,
-              auditableBallot: scope.stateData.auditableBallot
-            });
+            // in a demo, we don't send the ballot, we just show as if we had sent it
+            if (scope.isDemo) {
+              scope.setState(stateEnum.successScreen, {
+                ballotHash: scope.stateData.ballotHash
+              });
+            // if we are not in a demo, send the ballot
+            } else {
+              scope.setState(stateEnum.castingBallotScreen, {
+                encryptedBallot: scope.stateData.encryptedBallot,
+                auditableBallot: scope.stateData.auditableBallot
+              });
+            }
           } else {
             scope.setState(stateEnum.auditBallotScreen, {
               encryptedBallot: scope.stateData.encryptedBallot,
@@ -224,7 +236,7 @@ angular.module('avBooth')
           $http.get(scope.baseUrl + "election/" + scope.electionId)
             // on success
             .success(function(value) {
-              if (value.payload.state !== "started") {
+              if (!scope.isDemo && value.payload.state !== "started") {
                 showError($i18next("avBooth.errorElectionIsNotOpen"));
                 return;
               }
