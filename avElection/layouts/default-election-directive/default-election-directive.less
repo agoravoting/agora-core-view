@@ -1,4 +1,4 @@
-[ave-default-election] {
+[ave-default-election], [ave-public-view] {
   .background {
     background-color: @gray-lighter;
 
@@ -7,6 +7,7 @@
       background-color: @av-primary-contrast;
       margin-top: 14px;
       padding: 10px;
+      min-height: 100px;
 
       &.first {
         margin-top: 65px;
@@ -26,6 +27,10 @@
         text-align: center;
       }
 
+      > .pad {
+        padding: 15px;
+      }
+
       ul.election-links {
         padding: 0;
         text-align: center;
@@ -35,6 +40,11 @@
           font-size: 18px;
           padding: 10px;
           list-style-type: none;
+
+          a.selected {
+            color: @av-primary;
+            font-weight: bold;
+          }
         }
       }
     }

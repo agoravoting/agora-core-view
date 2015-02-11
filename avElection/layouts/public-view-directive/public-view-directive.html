@@ -14,7 +14,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li ng-if="!!election">
             <a href="{{getShareLink()}}" target="_blank" ng-i18next="avElection.public.shareLink">
             </a>
           </li>
@@ -31,7 +31,6 @@
     <div class="row">
       <div class="col-xs-12 top-section first">
         <h1 class="text-center election-title">{{election.title}}</h1>
-        <p class="election-description" ng-bind-html="election.description"></p>
         <a
           href=""
           ng-i18next="avElection.public.voteNowLink"
@@ -40,16 +39,32 @@
         </a>
         <ul class="election-links">
           <li>
-            <a href="#/election/{{election.id}}/public-view/faqs.html" ng-i18next="avElection.public.faqsLink"></a>
+            <a
+              href="#/election/{{election.id}}/public-view/faqs.html"
+              ng-i18next="avElection.public.faqsLink"
+              ng-class="{selected: name === 'faqs.html'}">
+            </a>
           </li>
           <li>
-            <a href="#/election/{{election.id}}/public-view/auths.html" ng-i18next="avElection.public.authoritiesLink"></a>
+            <a
+              href="#/election/{{election.id}}/public-view/auths.html"
+              ng-i18next="avElection.public.authoritiesLink"
+              ng-class="{selected: name === 'auths.html'}">
+            </a>
           </li>
           <li>
-            <a href="#/election/{{election.id}}/public-view/overview.html" ng-i18next="avElection.public.overviewLink"></a>
+            <a
+              href="#/election/{{election.id}}/public-view/overview.html"
+              ng-i18next="avElection.public.overviewLink"
+              ng-class="{selected: name === 'overview.html'}">
+            </a>
           </li>
           <li>
-            <a href="#/election/{{election.id}}/public-view/tech_overview.pdf" target="_blank" ng-i18next="avElection.public.technicalOverviewLink"></a>
+            <a
+              href="#/election/{{election.id}}/public-view/tech_overview.pdf"
+              target="_blank"
+              ng-i18next="avElection.public.technicalOverviewLink"
+              ng-class="{selected: name === 'tech_overview.pdf'}"></a>
           </li>
           <li>
             <a href="#/election/{{election.id}}/vote" target="_blank" ng-i18next="avElection.public.demoVotingBoothLink"></a>
@@ -59,12 +74,14 @@
     </div>
     <div class="row">
       <div class="col-xs-12 top-section">
-        <div ng-if="election.state !== 'results_ok'">
-          <h2 class="text-center" ng-i18next="avElection.public.questionsTitle"></h2>
-          <div ave-question-info ng-repeat="question in election.questions" index="{{$index}}">
+        <div class="pad">
+          <div ng-if="!fileDataHtml && !fileDataError">
+            <p class="text-center" ng-i18next="avElection.public.loadingDataText"></p>
           </div>
-        </div>
-        <div ng-if="election.state === 'results_ok'" av-results>
+          <div ng-bind-html="fileDataHtml" ng-if="!!fileDataHtml && !fileDataError"></div>
+          <div ng-if="fileDataError">
+            <p class="text-center" ng-i18next="avElection.public.errorNotFoundText"></p>
+          </div>
         </div>
       </div>
     </div>

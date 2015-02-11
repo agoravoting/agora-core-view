@@ -1,5 +1,5 @@
 /**
- * Shows the results of an election in a simple way
+ * Public lading page for an election
  */
 angular.module('avElection')
   .directive('aveDefaultElection', function() {

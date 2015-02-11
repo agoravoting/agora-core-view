@@ -11,6 +11,7 @@ angular.module('avBooth')
         .success(function(value) {
           scope.election = value.payload.configuration;
           scope.electionState = value.payload.state;
+          scope.publicURL = ConfigService.publicURL;
         });
     }
 

@@ -141,6 +141,10 @@ angular.module('agora-core-view').config(
       .state('election.public.show', {
         templateUrl: 'avElection/public-controller/show.html'
       })
+      .state('election.public-view', {
+        url: '/:id/public-view/:name',
+        template: '<div ave-public-view></div>'
+      })
       .state('election.public.show.simple', {
         template: '<div ave-simple-question></div>'
       })
