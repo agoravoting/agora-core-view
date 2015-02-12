@@ -4,19 +4,24 @@
  * Example:
  *
  *    AddDotsToIntService(1234567) --> "1.234.567"
+ *    AddDotsToIntService(1111.234567) --> "1.111,234567"
  */
 angular.module('avUi')
   .service('AddDotsToIntService', function() {
     return function (number) {
-      var number_str = number + "";
+      var number_str = (number + "").replace(".", ",");
       var ret = "";
-      for (var i = 0; i < number_str.length; i++) {
-        var reverse = number_str.length - i;
+      var commaPos = number_str.length;
+      if (number_str.contains(",")) {
+        commaPos = number_str.indexOf(",");
+      }
+      for (var i = 0; i < commaPos; i++) {
+        var reverse = commaPos - i;
         if ((reverse % 3 === 0) && reverse > 0 && i > 0) {
           ret = ret + ".";
         }
         ret = ret + number_str[i];
       }
-      return ret;
+      return ret + number_str.substr(commaPos, number_str.length);
     };
   });
