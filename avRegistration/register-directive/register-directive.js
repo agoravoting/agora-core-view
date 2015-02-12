@@ -4,6 +4,7 @@ angular.module('avRegistration')
     function link(scope, element, attrs) {
         var autheventid = attrs.eventId;
         scope.register = {};
+        scope.sendingData = false;
 
         scope.email = null;
         if (attrs.email && attrs.email.length > 0) {
@@ -14,6 +15,7 @@ angular.module('avRegistration')
             if (!valid) {
                 return;
             }
+            scope.sendingData = true;
             var data = {
                 'auth-method': scope.method,
                 'authevent': autheventid,
@@ -26,6 +28,7 @@ angular.module('avRegistration')
             });
             Authmethod.signup(data)
                 .success(function(rcvData) {
+                    scope.sendingData = false;
                     if (rcvData.status === "ok") {
                         scope.user = rcvData.user;
                         $state.go('registration.login', {id: autheventid});
@@ -35,6 +38,7 @@ angular.module('avRegistration')
                     }
                 })
                 .error(function(error) {
+                    scope.sendingData = false;
                     scope.status = 'Registration error: ' + error.message;
                     scope.error = $i18next('avRegistration.invalidRegisterData');
                 });

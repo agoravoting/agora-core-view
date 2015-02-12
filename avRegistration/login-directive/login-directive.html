@@ -20,7 +20,7 @@
                 ng-i18next="avRegistration.loginButton"
                 ng-click="loginUser(form.$valid)"
                 tabindex="{{login_fields.length+1}}"
-                ng-disabled="!form.$valid && !sendingData">
+                ng-disabled="!form.$valid || sendingData">
               </button>
           </div>
         </form>
