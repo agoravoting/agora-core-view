@@ -8,6 +8,7 @@ angular.module('avElection').controller('PublicController',
 
     var mapLayouts = {
       "": "default",
+      "simple": "default",
       "pcandidates-election": "default"
     };
 
