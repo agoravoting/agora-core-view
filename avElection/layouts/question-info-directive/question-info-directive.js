@@ -13,9 +13,9 @@ angular.module('avElection')
       }
       var key = scope.question.layout + "." + scope.question.tally_type;
       if (key in mappings) {
-        $state.go("election.public.show." + mappings[key]);
+        $state.go("election.public.show.home." + mappings[key]);
       } else {
-        $state.go("election.public.show.simple");
+        $state.go("election.public.show.home.simple");
       }
     }
     return {

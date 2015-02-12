@@ -27,6 +27,22 @@
     background-color: @gray-lighter;
   }
 
+  .no-header {
+    &:after {
+      background: transparent !important;
+    }
+
+    .navbar-unfixed-top {
+      background: transparent !important;
+    }
+    color: @gray-dark;
+
+    h1 {
+      color: @av-secondary;
+      font-size: 30px;
+    }
+  }
+
   .ballot {
     border: 0 none;
     border-radius: 5px;

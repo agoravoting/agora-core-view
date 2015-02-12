@@ -1,64 +1,7 @@
-<nav class="navbar navbar-admin adminhead navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
-    <div ng-class="{'container-fluid': admin, 'container': !admin}">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="https://agoravoting.com"></a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li ng-if="!!election">
-            <a href="{{getShareLink()}}" target="_blank" ng-i18next="avElection.public.shareLink">
-            </a>
-          </li>
-
-          <li class="dropdown" av-change-lang>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div>
-</nav>
-
-<div class="container-fluid background first">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 top-section">
-        <h1 class="text-center election-title">{{election.title}}</h1>
-        <a
-          href=""
-          ng-i18next="avElection.public.voteNowLink"
-          class="btn btn-block btn-success btn-lg"
-          ng-if="election.state === 'started'">
-        </a>
-        <div ave-election-links></div>
-      </div>
-    </div>
-  </div>
+<div ng-if="!fileDataHtml && !fileDataError">
+  <p class="text-center" ng-i18next="avElection.public.loadingDataText"></p>
 </div>
-<div class="container-fluid background">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 top-section">
-        <div class="pad">
-          <div ng-if="!fileDataHtml && !fileDataError">
-            <p class="text-center" ng-i18next="avElection.public.loadingDataText"></p>
-          </div>
-          <div ng-bind-html="fileDataHtml" ng-if="!!fileDataHtml && !fileDataError"></div>
-          <div ng-if="fileDataError">
-            <p class="text-center" ng-i18next="avElection.public.errorNotFoundText"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div av-admin-foot class="hidden-xs">
+<div ng-bind-html="fileDataHtml" ng-if="!!fileDataHtml && !fileDataError"></div>
+<div ng-if="fileDataError">
+  <p class="text-center" ng-i18next="avElection.public.errorNotFoundText"></p>
 </div>

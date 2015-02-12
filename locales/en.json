@@ -177,11 +177,18 @@
       "answersRandomized_plural": "__count__ candidates (in random order)",
       "questionsTitle": "Questions",
       "questionInfoText": "Voters will select between <strong>__min__</strong> and <strong>__max__</strong> candidates. <strong>__numWinners__</strong> winners.",
-      "votingSystemText": "Voting system: <strong>__method__</strong>."
+      "votingSystemText": "Voting system: <strong>__method__</strong>.",
+      "status-registered": "Status: <strong>election registered</strong>",
+      "status-created": "Status: <strong>election created</strong>",
+      "status-started": "Status: <strong>election started</strong>",
+      "status-stopped": "Status: <strong>election stopped</strong>",
+      "status-doing_tally": "Status: <strong>doing tally</strong>",
+      "status-tally_ok": "Status: <strong>tally done</strong>",
+      "status-results_ok": "Status: <strong>results published</strong>"
     },
 
     "resultsDirective": {
-      "ballotLocatorLink": "Find ballot locator",
+      "ballotLocatorLink": "Ballot locator",
       "verifiableResultsLink": "Verifiable tally"
     },
     "verifyResults": {

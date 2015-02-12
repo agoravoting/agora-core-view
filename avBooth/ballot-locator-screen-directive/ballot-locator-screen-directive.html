@@ -1,11 +1,11 @@
 <div class="basic-booth-layout">
-  <nav class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
+  <nav ng-if="!noHeader" class="navbar navbar-default navbar-fixed-top" av-affix-top=".navbar-unfixed-top" role="navigation">
     <div class="container">
       <div class="row avb-top-navbar">
         <div class="pull-left" ng-i18next="[html]avBooth.poweredBy">
         </div>
         <div class="pull-right">
-          <a href="#/election/{{electionId}}/ballot-locator" target="_blank">
+          <a href="#/election/{{electionId}}/public/ballot-locator" target="_blank">
             <span
               class="glyphicon glyphicon-share">
             </span>
@@ -16,22 +16,24 @@
     </div>
   </nav>
 
-  <div class="wrapper-unfixed">
+  <div class="wrapper-unfixed" ng-class="{'no-header': noHeader}">
     <div class="navbar-unfixed-top text-center" av-collapsing=".unfixed-top-height" data-toggle-selector="[audit-ballot-screen] #avb-toggle">
       <div class="container">
         <div class="hidden unfixed-top-height"></div>
         <h1 ng-i18next="avBooth.ballotLocatorTitle"></h1>
-          <p ng-i18next="[i18next]({title: election.title})avBooth.ballotLocatorSubtitle"></p>
+        <p
+          ng-if="!noHeader"
+          ng-i18next="[i18next]({title: election.title})avBooth.ballotLocatorSubtitle"></p>
       </div>
     </div>
   </div>
 
-  <div id="avb-toggle" class="text-center item-block hidden">
+  <div id="avb-toggle" class="text-center item-block hidden" ng-if="!noHeader">
     <span class="glyphicon glyphicon-play"></span>
   </div>
 
   <div class="content avb-content">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-sm-7 padded-left padded-right">
           <p><strong ng-i18next="avBooth.ballotLocatorPTitle"></strong></p>

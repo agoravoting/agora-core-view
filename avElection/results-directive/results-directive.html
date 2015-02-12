@@ -15,12 +15,14 @@
         <div ng-class="{'pull-left': !noHeader, 'text-center': noHeader}">
           <p>
             <a class="padding-right"
-              href="#election/{{election.id}}/ballot-locator">
+              ng-if="!noHeader"
+              href="#election/{{election.id}}/public/ballot-locator">
               <i class="fa fa-binoculars"></i>
               <span ng-i18next="avElection.resultsDirective.ballotLocatorLink"></span>
             </a>
             <a class="padding-right"
-              href="#election/{{election.id}}/verify-results">
+              ng-if="!noHeader"
+              href="#election/{{election.id}}/public/verify-results">
               <i class="fa fa-fw fa-check-square-o"></i>
               <span ng-i18next="avElection.resultsDirective.verifiableResultsLink"></span>
             </a>
@@ -45,7 +47,8 @@
               <i class="fa fa-fw fa-twitter"></i>
             </a>
             <a
-              href="#election/{{election.id}}/results"
+              href="#election/{{election.id}}/public/home"
+              ng-if="!noHeader"
               target="_blank">
               <span class="glyphicon glyphicon-share"></span>
             </a>

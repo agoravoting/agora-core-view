@@ -1,9 +1,17 @@
-[av-election-verify-results] {
-  .special {
-    font-size: 10px;
-  }
+[av-verify-results] {
+  .no-header {
+    &:after {
+      background: transparent !important;
+    }
 
-  .avb-content {
-    overflow-y: hidden;
+    .navbar-unfixed-top {
+      background: transparent !important;
+    }
+    color: @gray-dark;
+
+    h1 {
+      color: @av-secondary;
+      font-size: 30px;
+    }
   }
 }

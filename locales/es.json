@@ -176,7 +176,14 @@
       "answersRandomized_plural": "__count__ candidaturas (en orden aleatorio)",
       "questionsTitle": "Preguntas",
       "questionInfoText": "Los votantes seleccionarán entre <strong>__min__</strong> y <strong>__max__</strong> candidaturas. <strong>__numWinners__</strong> ganadores.",
-      "votingSystemText": "Sistema de votación: <strong>__method__</strong>."
+      "votingSystemText": "Sistema de votación: <strong>__method__</strong>.",
+      "status-registered": "Estado: <strong>votación registrada</strong>",
+      "status-created": "Estado: <strong>votación creada</strong>",
+      "status-started": "Estado: <strong>votando</strong>",
+      "status-stopped": "Estado: <strong>periodo de voto finalizado</strong>",
+      "status-doing_tally": "Estado: <strong>haciendo recuento</strong>",
+      "status-tally_ok": "Estado: <strong>recuento hecho</strong>",
+      "status-results_ok": "Estado: <strong>resultados publicados</strong>"
     },
 
     "errorLoadingQuestionTest": "Disposición de pregunta desconocida",
@@ -190,7 +197,7 @@
     },
 
     "resultsDirective": {
-      "ballotLocatorLink": "Encontrar localizador",
+      "ballotLocatorLink": "Encontrar papeleta",
       "verifiableResultsLink": "Recuento verificable"
     }
   },

@@ -31,7 +31,11 @@
     <div class="row">
       <div class="col-xs-12 top-section">
         <h1 class="text-center election-title">{{election.title}}</h1>
-        <p class="election-description" ng-bind-html="election.description"></p>
+        <p
+          class="election-description"
+          ng-bind-html="election.description"
+          ng-if="name() === 'home'">
+        </p>
         <a
           href=""
           ng-i18next="avElection.public.voteNowLink"
@@ -46,17 +50,7 @@
 <div class="container-fluid background">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 top-section">
-        <div ng-if="electionState !== 'results_ok'">
-          <h2 class="text-center text-av-secondary" ng-i18next="avElection.public.questionsTitle"></h2>
-          <div ave-question-info ng-repeat="question in election.questions" index="{{$index}}">
-          </div>
-        </div>
-        <div ng-if="electionState === 'results_ok'">
-          <h2 class="text-center text-av-secondary" ng-i18next="avElection.public.resultsTitle"></h2>
-          <div av-results no-header></div>
-        </div>
-      </div>
+      <div ui-view></div>
     </div>
   </div>
 </div>

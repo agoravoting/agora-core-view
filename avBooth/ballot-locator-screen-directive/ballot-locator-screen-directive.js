@@ -8,14 +8,17 @@ angular.module('avBooth')
       scope.locator = "";
       scope.locatorStatus = "";
       scope.ballot = "";
+      scope.noHeader = (attrs.noHeader !== undefined);
       scope.foundLocator = "";
       scope.searchEnabled = true;
 
-      $http.get(ConfigService.baseUrl + "election/" + scope.electionId)
+      if (!scope.noHeader && !scope.election) {
+        $http.get(ConfigService.baseUrl + "election/" + scope.electionId)
           // on success
           .success(function(value) {
             scope.election = value.payload.configuration;
           });
+      }
 
       scope.searchLocator = function() {
         scope.searchEnabled = false;

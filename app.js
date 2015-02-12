@@ -141,17 +141,33 @@ angular.module('agora-core-view').config(
       .state('election.public.show', {
         templateUrl: 'avElection/public-controller/show.html'
       })
-      .state('election.public-view', {
-        url: '/:id/public-view/:name',
-        template: '<div ave-public-view></div>'
+      .state('election.public.show.home', {
+        url: '/home',
+        templateUrl: 'avElection/public-controller/home.html'
       })
-      .state('election.public.show.simple', {
+      .state('election.public.show.view', {
+        url: '/view/:name',
+        templateUrl: 'avElection/public-controller/view_page.html'
+      })
+      .state('election.public.show.auths', {
+        url: '/authorities',
+        templateUrl: 'avElection/public-controller/authorities.html'
+      })
+      .state('election.public.show.verify-results', {
+        url: '/verify-results',
+        templateUrl: 'avElection/public-controller/verify_results.html'
+      })
+      .state('election.public.show.ballot-locator', {
+        url: '/ballot-locator',
+        templateUrl: 'avElection/public-controller/ballot_locator.html'
+      })
+      .state('election.public.show.home.simple', {
         template: '<div ave-simple-question></div>'
       })
-      .state('election.public.show.unknown', {
+      .state('election.public.show.home.unknown', {
         templateUrl: 'avElection/question-results-directive/unknown.html'
       })
-      .state('election.public.show.plurality-at-large', {
+      .state('election.public.show.home.plurality-at-large', {
         template: '<div av-plurality-at-large-results></div>',
       })
       .state('election.results', {

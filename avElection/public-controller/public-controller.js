@@ -4,13 +4,16 @@
  */
 angular.module('avElection').controller('PublicController',
   function($state, $stateParams, $http, $scope, $i18next, ConfigService, InsideIframeService) {
-    $state.go('election.public.loading');
+//     $state.go('election.public.loading');
 
     var mapLayouts = {
       "": "default",
       "simple": "default",
       "pcandidates-election": "default"
     };
+    $scope.layout = mapLayouts["simple"];
+    $scope.statePrefix = "election.public.show.home";
+        $scope.inside_iframe = InsideIframeService();
 
     // get election config
     $http.get(ConfigService.baseUrl + "election/" + $stateParams.id)
@@ -18,10 +21,7 @@ angular.module('avElection').controller('PublicController',
         $scope.election = value.payload.configuration;
         $scope.layout = mapLayouts[$scope.election.layout];
         $scope.electionState = value.payload.state;
-        $scope.statePrefix = "election.public.show";
         $scope.results = angular.fromJson(value.payload.results);
-        $scope.inside_iframe = InsideIframeService();
-        $state.go($scope.statePrefix);
       })
       // on error, like parse error or 404
       .error(function (error) {
