@@ -59,6 +59,13 @@
         </button>
     </h3>
 
+    <div class="input-group search col-sm-6">
+      <input type="text" class="form-control" ng-model="q" placeholder="{{'avAdmin.elections.filter' | i18next}}">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+      </span>
+    </div>
+
     <table class="table table-bordered table-striped censustable">
         <tr ng-if="loadingcensus">
             <td>
@@ -72,7 +79,7 @@
             </th>
             <th></th>
         </tr>
-        <tr ng-repeat="c in election.census.voters">
+        <tr ng-repeat="c in election.census.voters | filter:q">
             <td ng-repeat="(k, v) in c">
                 {{ v }}
             </td>
