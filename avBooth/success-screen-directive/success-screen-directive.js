@@ -7,7 +7,7 @@ angular.module('avBooth')
     function link(scope, element, attrs) {
       var text = $interpolate(ConfigService.success.text);
 
-      scope.successText = text({ballotHash: scope.stateData.ballotHash, electionId: scope.election.id});
+      scope.successText = text({electionId: scope.election.id});
     }
 
     return {

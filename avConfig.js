@@ -33,11 +33,11 @@ var avConfigData = {
   },
 
   help: {
-    info:"<p></p>"
+    info:""
   },
 
   success: {
-    text: "<p>¡Congratulations! You cast your vote with <a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a>.Your ballot locator is:</p></h3><p> <strong>{{ballotHash}}</strong></p>"
+    text: ""
   },
 
   tos: {

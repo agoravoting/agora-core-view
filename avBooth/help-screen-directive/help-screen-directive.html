@@ -30,7 +30,24 @@
 <div class="content avb-content">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12" ng-bind-html="helpInfo">
+      <div class="col-xs-12">
+        <div ng-bind-html="helpInfo">
+        </div>
+        <p ng-i18next>avBooth.relatedLinksText</p>
+        <ul>
+          <li>
+            <a href="#/election/{{election.id}}/public/view/faqs.html" target="_blank" ng-i18next>avElection.public.faqsLink</a>
+          </li>
+          <li>
+            <a href="#/election/{{election.id}}/public/authorities" target="_blank" ng-i18next>avElection.public.authoritiesLink</a>
+          </li>
+          <li>
+            <a href="#/election/{{election.id}}/public/view/overview.html" target="_blank" ng-i18next>avElection.public.overviewLink</a>
+          </li>
+          <li>
+            <a href="/election/{{election.id}}/public/view/tech_overview.pdf" target="_blank" ng-i18next>avElection.public.technicalOverviewLink</a>
+          </li>
+        </ul>
       </div>
     </div>
 
