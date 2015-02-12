@@ -9,13 +9,13 @@
 angular.module('avUi')
   .service('AddDotsToIntService', function() {
     return function (number, fixedDigits) {
-      if (fixedDigits !== undefined) {
-        number = number.toFixed(fixedDigits);
+      if (angular.isNumber(fixedDigits) && fixedDigits >= 0) {
+        number = number.toFixed(parseInt(fixedDigits));
       }
       var number_str = (number + "").replace(".", ",");
       var ret = "";
       var commaPos = number_str.length;
-      if (number_str.contains(",")) {
+      if (number_str.indexOf(",") !== -1) {
         commaPos = number_str.indexOf(",");
       }
       for (var i = 0; i < commaPos; i++) {
