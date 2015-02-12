@@ -2,16 +2,30 @@
   .background {
     background-color: @gray-lighter;
 
+    &.first {
+      background-color: @av-primary;
+      color: @av-primary-contrast;
+
+    .top-section {
+        background-color: @av-primary;
+        color: @av-primary-contrast;
+
+        h1.election-title {
+          color: @av-primary-contrast;
+        }
+
+        ul.election-links > li > a, ul.election-links > li > a.selected {
+          color: @av-primary-contrast;
+        }
+      }
+    }
+
     .top-section {
       border-radius: 5px;
       background-color: @av-primary-contrast;
       margin-top: 14px;
       padding: 10px;
       min-height: 100px;
-
-      &.first {
-        margin-top: 65px;
-      }
 
       h1.election-title {
         padding: 18px;

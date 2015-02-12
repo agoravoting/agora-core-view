@@ -26,10 +26,10 @@
     </div>
 </nav>
 
-<div class="container-fluid background">
+<div class="container-fluid background first">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 top-section first">
+      <div class="col-xs-12 top-section">
         <h1 class="text-center election-title">{{election.title}}</h1>
         <p class="election-description" ng-bind-html="election.description"></p>
         <a
@@ -41,6 +41,10 @@
         <div ave-election-links></div>
       </div>
     </div>
+  </div>
+</div>
+<div class="container-fluid background">
+  <div class="container">
     <div class="row">
       <div class="col-xs-12 top-section">
         <div ng-if="electionState !== 'results_ok'">
