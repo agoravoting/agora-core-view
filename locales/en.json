@@ -366,7 +366,8 @@
         "add": "Add",
         "manualAdd": "Manual add",
         "massive1": "CSV file, use semicolon to split fields",
-        "massive2": "one voter per line, keep the field order"
+        "massive2": "one voter per line, keep the field order",
+        "export": "Export"
     },
     "auth": {
         "intro": "Authentication is the means used to ensure that an elector is who he sais he is. Here you need to find a balance between security, usability an cost",

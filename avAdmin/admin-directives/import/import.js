@@ -180,7 +180,7 @@ angular.module('avAdmin')
                     scope.loading = false;
                     var els = parseElections(results.data);
                     // only works for one election, the first
-                    ElectionsApi.currentElection = els[0];
+                    ElectionsApi.setCurrent(els[0]);
                     ElectionsApi.newElection = true;
                     $state.go("admin.create");
                 },

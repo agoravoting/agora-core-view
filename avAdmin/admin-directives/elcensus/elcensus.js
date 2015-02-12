@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminElcensus', ['$state', 'ElectionsApi', function($state, ElectionsApi) {
+  .directive('avAdminElcensus', ['$window', '$state', 'ElectionsApi', function($window, $state, ElectionsApi) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         scope.census = ['open', 'close'];
@@ -7,6 +7,7 @@ angular.module('avAdmin')
         scope.newef = {};
         scope.newcensus = {};
         scope.massiveef = "";
+        scope.loadingcensus = !ElectionsApi.newElection;
 
         function must_extra_fields() {
             var el = ElectionsApi.currentElection;
@@ -111,6 +112,15 @@ angular.module('avAdmin')
             scope.massiveef = "";
         }
 
+        function exportCensus() {
+            var el = ElectionsApi.currentElection;
+            var cs = el.census.voters;
+            var text = $window.Papa.unparse(angular.toJson(cs));
+            var blob = new $window.Blob([text], {type: "text/csv"});
+            $window.saveAs(blob, el.id + "-census"+".csv");
+            return false;
+        }
+
         angular.extend(scope, {
             saveCensus: saveCensus,
             delEf: delEf,
@@ -118,9 +128,26 @@ angular.module('avAdmin')
             addToCensus: addToCensus,
             delVoter: delVoter,
             massiveAdd: massiveAdd,
+            exportCensus: exportCensus,
         });
 
-        must_extra_fields();
+        function main() {
+            scope.election = ElectionsApi.currentElection;
+            must_extra_fields();
+
+            if (!ElectionsApi.newElection) {
+                ElectionsApi.getCensus(scope.election)
+                    .then(function(el) {
+                        scope.loadingcensus = false;
+                    })
+                    .catch(function(error) {
+                        // TODO show error
+                        scope.loadingcensus = false;
+                    });
+            }
+        }
+
+        ElectionsApi.waitForCurrent(main);
     }
 
     return {

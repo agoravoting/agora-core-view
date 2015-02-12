@@ -368,7 +368,8 @@
         "add": "Añadir",
         "manualAdd": "Añadir a mano",
         "massive1": "Fichero CSV, usa punto y coma para separar lo campos",
-        "massive2": "un votante por línea, mantén el orden de los campos"
+        "massive2": "un votante por línea, mantén el orden de los campos",
+        "export": "Exportar"
     },
     "auth": {
         "intro": "La autenticación se usa para asegurar que un elector es quien dice ser. Aquí tienes que llegar a un compromiso entre seguridad, usabilidad y coste",

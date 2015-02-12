@@ -13,11 +13,7 @@ angular.module('avAdmin')
 
         authapi.sendAuthCodes = function(eid) {
             var url = backendUrl + 'auth-event/'+eid+'/census/send_auth/';
-            // TODO add template
-            // TODO translate
-            var data = {
-                msg: "This is your vote link: %(url)s",
-                subject: "Confirm your email - admin"};
+            var data = {};
             return $http.post(url, data);
         };
 
@@ -34,8 +30,25 @@ angular.module('avAdmin')
     .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$i18next', '$http', function($q, Authmethod, ConfigService, $i18next, $http) {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}, permcache: {}};
+        electionsapi.waitingCurrent = [];
         electionsapi.currentElection = {};
         electionsapi.newElection = false;
+
+        electionsapi.waitForCurrent = function(f) {
+            if (electionsapi.currentElection.title) {
+                f();
+            } else {
+                electionsapi.waitingCurrent.push(f);
+            }
+        };
+
+        electionsapi.setCurrent = function(el) {
+            electionsapi.currentElection = el;
+            electionsapi.waitingCurrent.forEach(function(f) {
+                f();
+            });
+            electionsapi.waitingCurrent = [];
+        };
 
         function asyncElection(id) {
             var deferred = $q.defer();
@@ -64,6 +77,12 @@ angular.module('avAdmin')
                         el.votes_percentage = 0;
                         el.votes = el.stats.votes || 0;
                     }
+
+                    // updating census
+                    el.census.auth_method = data.events.auth_method;
+                    el.census.extra_fields = data.events.extra_fields;
+                    el.census.census = data.events.census;
+
                     deferred.resolve(el);
                 })
                 .error(deferred.reject);
@@ -98,7 +117,8 @@ angular.module('avAdmin')
 
         electionsapi.parseElection = function(d) {
             var election = d.payload;
-            var conf = election.configuration;
+            var conf = electionsapi.templateEl();
+            conf = _.extend(conf, election.configuration);
             conf.status = election.state;
             conf.stats = {};
             conf.results = {};
@@ -225,6 +245,38 @@ angular.module('avAdmin')
                 "title": title
             };
             return q;
+        };
+
+        electionsapi.getCensus = function(el) {
+            el.census.voters = [];
+            var deferred = $q.defer();
+
+            function getAuthCensus(d) {
+                var voters = d.payload;
+                var deferred = $q.defer();
+                Authmethod.getCensus(el.id)
+                    .success(function(data) {
+                        _.each(data.data, function(v, k) {
+                            var vv = v;
+                            vv.vote = false;
+                            if (voters.indexOf(k) >= 0) {
+                                vv.vote = true;
+                            }
+                            el.census.voters.push(vv);
+                        });
+                        // TODO merge with voters
+                        deferred.resolve(el);
+                    })
+                    .error(deferred.reject);
+                return deferred.promise;
+            }
+
+            electionsapi.command(el, 'voters', 'GET')
+                .then(getAuthCensus)
+                .then(deferred.resolve)
+                .catch(deferred.reject);
+
+            return deferred.promise;
         };
 
         return electionsapi;

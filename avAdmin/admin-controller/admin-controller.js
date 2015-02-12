@@ -7,7 +7,7 @@ angular.module('avAdmin').controller('AdminController',
     function newElection() {
         var el = ElectionsApi.templateEl();
         $scope.current = el;
-        ElectionsApi.currentElection = el;
+        ElectionsApi.setCurrent(el);
 
         return el;
     }
@@ -16,7 +16,7 @@ angular.module('avAdmin').controller('AdminController',
         ElectionsApi.getElection(id)
             .then(function(el) {
                 $scope.current = el;
-                ElectionsApi.currentElection = el;
+                ElectionsApi.setCurrent(el);
             });
     }
 

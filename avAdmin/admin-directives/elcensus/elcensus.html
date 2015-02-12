@@ -51,9 +51,21 @@
         </div>
     </form>
 
-    <h3 ng-i18next>avAdmin.census.manage</h3>
+    <h3>
+        <span ng-i18next>avAdmin.census.manage</span>
+        <button class="btn btn-success" ng-if="election.census.voters.length" ng-click="exportCensus()">
+            <i class="fa fa-download"></i>
+            <span ng-i18next>export</span>
+        </button>
+    </h3>
 
     <table class="table table-bordered table-striped censustable">
+        <tr ng-if="loadingcensus">
+            <td>
+                <i class="fa fa-cog fa-spin fa-sw"></i> <span ng-i18next>loading</span>
+            </td>
+        </tr>
+
         <tr>
             <th ng-repeat="(k, v) in election.census.voters.0">
                 {{ k }}
