@@ -8,7 +8,10 @@
  */
 angular.module('avUi')
   .service('AddDotsToIntService', function() {
-    return function (number) {
+    return function (number, fixedDigits) {
+      if (fixedDigits !== undefined) {
+        number = number.toFixed(fixedDigits);
+      }
       var number_str = (number + "").replace(".", ",");
       var ret = "";
       var commaPos = number_str.length;
