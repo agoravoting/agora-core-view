@@ -13,11 +13,11 @@ angular.module('avElection')
 
       var key = scope.question.layout + "." + scope.question.tally_type;
       if (scope.$parent.election.layout === "pcandidates-election") {
-        $state.go("election.results.show." + mappings["pcandidates-election"]);
+        $state.go(scope.statePrefix + "." + mappings["pcandidates-election"]);
       } else if (key in mappings) {
-        $state.go("election.results.show." + mappings[key]);
+        $state.go(scope.statePrefix + "." + mappings[key]);
       } else {
-        $state.go("election.results.show.unknown");
+        $state.go(scope.statePrefix + ".unknown");
       }
       scope.question_index = attrs.index;
     }

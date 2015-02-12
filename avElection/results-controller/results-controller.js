@@ -16,8 +16,9 @@ angular.module('avElection').controller('ResultsController',
         $scope.election = value.payload.configuration;
         $scope.electionState = value.payload.state;
         $scope.results = angular.fromJson(value.payload.results);
+        $scope.statePrefix = "election.results.show";
         $scope.inside_iframe = InsideIframeService();
-        $state.go("election.results.show");
+        $state.go($scope.statePrefix);
       })
       // on error, like parse error or 404
       .error(function (error) {

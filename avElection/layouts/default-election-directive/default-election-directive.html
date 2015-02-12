@@ -43,12 +43,14 @@
     </div>
     <div class="row">
       <div class="col-xs-12 top-section">
-        <div ng-if="election.state !== 'results_ok'">
+        <div ng-if="electionState !== 'results_ok'">
           <h2 class="text-center" ng-i18next="avElection.public.questionsTitle"></h2>
           <div ave-question-info ng-repeat="question in election.questions" index="{{$index}}">
           </div>
         </div>
-        <div ng-if="election.state === 'results_ok'" av-results>
+        <div ng-if="electionState === 'results_ok'">
+          <h2 class="text-center" ng-i18next="avElection.public.resultsTitle"></h2>
+          <div av-results no-header></div>
         </div>
       </div>
     </div>

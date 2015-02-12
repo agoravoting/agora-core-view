@@ -1,7 +1,7 @@
 <div class="row" ng-if="!inside_iframe">
 </div>
 <div class="container">
-  <div class="row" ng-if="!inside_iframe">
+  <div class="row" ng-if="!inside_iframe && !noHeader">
     <div class="col-xs-12">
       <h1 ng-i18next="[i18next]({title: election.title})avElection.resultsHeader"></h1>
     </div>
@@ -11,8 +11,8 @@
   </div>
   <div ng-if="electionState === 'results_ok'">
     <div class="row">
-      <div class="col-xs-8">
-        <div class="pull-left">
+      <div ng-class="{'col-xs-8': !noHeader, 'col-xs-12': noHeader}">
+        <div ng-class="{'pull-left': !noHeader, 'text-center': noHeader}">
           <p>
             <a class="padding-right"
               href="#election/{{election.id}}/ballot-locator">
@@ -32,12 +32,14 @@
             </a>
             <a
               href="{{electionTwitterUrl}}"
+              ng-if="!noHeader"
               ng-i18next="[alt]avElection.tweetElection"
               target="_blank">
               <i class="fa fa-fw fa-facebook"></i>
             </a>
             <a
               href="{{electionFacebookUrl}}"
+              ng-if="!noHeader"
               target="_blank"
               ng-i18next="[alt]avElection.tweetElection">
               <i class="fa fa-fw fa-twitter"></i>
@@ -51,7 +53,7 @@
           </p>
         </div>
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-4" ng-if="!noHeader">
         <div class="pull-right padding-right">
           <a href="https://agoravoting.com" class="agoralogo" target="_blank"></a>
         </div>

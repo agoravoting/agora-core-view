@@ -158,6 +158,7 @@
 
     "public": {
       "homeText": "Portada",
+      "resultsTitle": "Resultados",
       "loadingText": "Cargando votación",
       "loadingDataText": "Cargando datos..",
       "shareLink": "¡Twitea esta votación!",

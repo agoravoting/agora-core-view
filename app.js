@@ -148,6 +148,12 @@ angular.module('agora-core-view').config(
       .state('election.public.show.simple', {
         template: '<div ave-simple-question></div>'
       })
+      .state('election.public.show.unknown', {
+        templateUrl: 'avElection/question-results-directive/unknown.html'
+      })
+      .state('election.public.show.plurality-at-large', {
+        template: '<div av-plurality-at-large-results></div>',
+      })
       .state('election.results', {
         url: '/:id/results',
         templateUrl: 'avElection/results-controller/results-controller.html',

@@ -159,6 +159,7 @@
 
     "public": {
       "homeText": "Home",
+      "resultsTitle": "Results",
       "loadingText": "Loading election",
       "loadingDataText": "Cargando datos..",
       "shareLink": "Tweet this election!",

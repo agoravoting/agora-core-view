@@ -14,21 +14,13 @@ angular.module('avElection').controller('PublicController',
     // get election config
     $http.get(ConfigService.baseUrl + "election/" + $stateParams.id)
       .success(function(value) {
-        var mapping = {
-          registered:  "election.public.show",
-          created:     "election.public.show",
-          started:     "election.public.show",
-          stopped:     "election.public.show",
-          doing_tally: "election.public.show",
-          tally_ok:    "election.public.show",
-          results_ok:  "election.public.results"
-        };
         $scope.election = value.payload.configuration;
         $scope.layout = mapLayouts[$scope.election.layout];
         $scope.electionState = value.payload.state;
+        $scope.statePrefix = "election.public.show";
         $scope.results = angular.fromJson(value.payload.results);
         $scope.inside_iframe = InsideIframeService();
-        $state.go(mapping[value.payload.state]);
+        $state.go($scope.statePrefix);
       })
       // on error, like parse error or 404
       .error(function (error) {
