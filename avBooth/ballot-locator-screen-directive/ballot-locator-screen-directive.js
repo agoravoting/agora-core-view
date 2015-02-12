@@ -18,8 +18,6 @@ angular.module('avBooth')
           .success(function(value) {
             scope.election = value.payload.configuration;
           });
-      } else {
-        scope.electionId = scope.election.id;
       }
 
       scope.searchLocator = function() {
@@ -27,7 +25,7 @@ angular.module('avBooth')
         scope.ballot = "";
         scope.foundLocator = scope.locator;
         scope.locatorStatus = $i18next("avBooth.locatorSearchingStatus");
-        $http.get(ConfigService.baseUrl + "election/" + scope.electionId + "/hash/" + scope.locator)
+        $http.get(ConfigService.baseUrl + "election/" + scope.election.id + "/hash/" + scope.locator)
           // on success
           .success(function(value) {
             scope.searchEnabled = true;
