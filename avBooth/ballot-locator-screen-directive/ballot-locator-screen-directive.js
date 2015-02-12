@@ -18,6 +18,8 @@ angular.module('avBooth')
           .success(function(value) {
             scope.election = value.payload.configuration;
           });
+      } else {
+        scope.electionId = scope.election.id;
       }
 
       scope.searchLocator = function() {
