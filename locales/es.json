@@ -387,8 +387,8 @@
         "smsdef": "Este es tu código de votación %(code)s",
         "email": "Mensaje por correo elelectrónico",
         "emailsub": "Asúnto del correo",
-        "emailtemp": "Plantilla usada en el correo para enviar a los usuarios. Usa %(code)s para añadir el código de acceso y %(link)s para insertar el enlace de votación",
-        "emaildef": "Vota siguiendo este enlace %(link)s\nEste es tu código de autenticación: %(code)s"
+        "emailtemp": "Plantilla usada en el correo para enviar a los usuarios. Usa %(code)s para añadir el código de acceso y %(url)s para insertar el enlace de votación",
+        "emaildef": "Vota siguiendo este enlace %(url)s\nEste es tu código de autenticación: %(code)s"
     },
     "create": {
         "summary": "Resumen",
