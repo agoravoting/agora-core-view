@@ -34,7 +34,7 @@
         <p
           class="election-description"
           ng-bind-html="election.description"
-          ng-if="name() === 'home'">
+          ng-if="name().indexOf('home') !== -1">
         </p>
         <a
           href=""

@@ -1,55 +1,52 @@
 <ul class="election-links">
-  <li>
+  <li ng-class="{selected: name().indexOf('home') !== -1}">
     <a
-      href="#/election/{{election.id}}/public/home"
-      ng-i18next="avElection.public.homeText"
-      ng-class="{selected: name() === 'home'}">
+      ui-sref="election.public.show.home({id: election.id})"
+      ng-i18next="avElection.public.homeText">
+    </a>
+  </li>
+  <li ng-class="{selected: pageName() === 'faqs.html'}">
+    <a
+      ui-sref="election.public.show.view({id: election.id, name: 'faqs.html'})"
+      ng-i18next="avElection.public.faqsLink">
+    </a>
+  </li>
+  <li ng-class="{selected: pageName() === 'auths.html'}">
+    <a
+      ui-sref="election.public.show.auths({id: election.id})"
+      ng-i18next="avElection.public.authoritiesLink">
+    </a>
+  </li>
+  <li ng-class="{selected: pageName() === 'overview.html'}">
+    <a
+      ui-sref="election.public.show.view({id: election.id, name: 'overview.html'})"
+      ng-i18next="avElection.public.overviewLink">
     </a>
   </li>
   <li>
     <a
-      href="#/election/{{election.id}}/public/view/faqs.html"
-      ng-i18next="avElection.public.faqsLink"
-      ng-class="{selected: name() === 'view' && pageName === 'faqs.html'}">
-    </a>
-  </li>
-  <li>
-    <a
-      href="#/election/{{election.id}}/public/authorities"
-      ng-i18next="avElection.public.authoritiesLink"
-      ng-class="{selected: name() === 'view' && pageName === 'auths.html'}">
-    </a>
-  </li>
-  <li>
-    <a
-      href="#/election/{{election.id}}/public/view/overview.html"
-      ng-i18next="avElection.public.overviewLink"
-      ng-class="{selected: name() === 'view' && pageName === 'overview.html'}">
-    </a>
-  </li>
-  <li>
-    <a
-      href="#/election/{{election.id}}/public/view/tech_overview.pdf"
+      ui-sref="election.public.show.view({id: election.id, name: 'tech_overview.pdf'})"
       target="_blank"
-      ng-i18next="avElection.public.technicalOverviewLink"
-      ng-class="{selected: name() === 'view' && pageName === 'tech_overview.pdf'}"></a>
+      ng-i18next="avElection.public.technicalOverviewLink"></a>
   </li>
   <li ng-if="checkState(['registered', 'created', 'started'])">
     <a href="#/election/{{election.id}}/vote" target="_blank" ng-i18next="avElection.public.demoVotingBoothLink"></a>
   </li>
-  <li ng-if="checkState(['started', 'stopped', 'doing_tally', 'tally_ok', 'results_ok'])">
+  <li
+    ng-if="checkState(['started', 'stopped', 'doing_tally', 'tally_ok', 'results_ok'])"
+    ng-class="{selected: name() === 'ballot-locator'}">
     <a
-      href="#/election/{{election.id}}/public/ballot-locator"
-      ng-class="{selected: name() === 'ballot-locator'}">
+      ui-sref="election.public.show.ballot-locator({id: election.id})">
       <i class="fa fa-binoculars"></i>
       <span ng-i18next="avElection.resultsDirective.ballotLocatorLink">
       </span>
     </a>
   </li>
-  <li ng-if="checkState(['results_ok'])">
+  <li
+    ng-if="checkState(['results_ok'])"
+    ng-class="{selected: name() === 'verify-results'}">
     <a
-      href="#/election/{{election.id}}/public/verify-results"
-      ng-class="{selected: name() === 'verify-results'}">
+      ui-sref="election.public.show.verify-results({id: election.id})">
       <i class="fa fa-fw fa-check-square-o"></i>
       <span ng-i18next="avElection.resultsDirective.verifiableResultsLink">
       </span>

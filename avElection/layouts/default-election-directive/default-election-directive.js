@@ -13,7 +13,10 @@ angular.module('avElection')
       scope.name = function () {
         return $state.current.name.replace("election.public.show.", "");
       };
-      scope.pageName = $stateParams.name;
+
+      scope.pageName = function() {
+        return $stateParams.name;
+      };
     }
     return {
       restrict: 'AE',
