@@ -42,57 +42,6 @@ angular.module('agora-core-view').config(
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
     /* App states and urls are defined here */
-    $stateProvider
-      .state('election.booth', {
-        url: '/:id/vote/:hmac/:message',
-        templateUrl: 'avBooth/booth.html',
-        controller: "BoothController"
-      });
-    $stateProvider
-      .state('election.booth-nohmac', {
-        url: '/:id/vote',
-        templateUrl: 'avBooth/booth.html',
-        controller: "BoothController"
-      });
-    $stateProvider
-      .state('registration', {
-        abstract: true,
-        url: '/registration',
-        template: '<div ui-view></div>'
-      })
-      .state('registration.register', {
-        url: '/:id/register',
-        templateUrl: 'avRegistration/register-controller/register-controller.html',
-        controller: "RegisterController"
-      })
-      .state('registration.login', {
-        url: '/:id/login',
-        templateUrl: 'avRegistration/login-controller/login-controller.html',
-        controller: "LoginController"
-      })
-      .state('registration.login_user', {
-        url: '/:id/login/:email',
-        templateUrl: 'avRegistration/login-controller/login-controller.html',
-        controller: "LoginController"
-      })
-      .state('registration.login_email_code', {
-        url: '/:id/login/:email/:code',
-        templateUrl: 'avRegistration/login-controller/login-controller.html',
-        controller: "LoginController"
-      })
-      .state('registration.logout', {
-        url: '/logout',
-        controller: "LogoutController"
-      })
-      .state('registration.success', {
-        templateUrl: 'avRegistration/success.html'
-      })
-      .state('registration.loading', {
-        templateUrl: 'avRegistration/loading.html'
-      })
-      .state('registration.error', {
-        templateUrl: 'avRegistration/error.html'
-      });
     // Admin interface
     $stateProvider
       .state('admin', {
@@ -126,6 +75,16 @@ angular.module('agora-core-view').config(
         abstract: true,
         url: '/election',
         template: '<div ui-view></div>'
+      })
+      .state('election.booth', {
+        url: '/:id/vote/:hmac/:message',
+        templateUrl: 'avBooth/booth.html',
+        controller: "BoothController"
+      })
+      .state('election.booth-nohmac', {
+        url: '/:id/vote',
+        templateUrl: 'avBooth/booth.html',
+        controller: "BoothController"
       })
       .state('election.public', {
         url: '/:id/public',
@@ -170,6 +129,31 @@ angular.module('agora-core-view').config(
       .state('election.public.show.home.plurality-at-large', {
         template: '<div av-plurality-at-large-results></div>',
       })
+      .state('election.public.show.register', {
+        url: '/register',
+        templateUrl: 'avRegistration/register-controller/register-controller.html',
+        controller: "RegisterController"
+      })
+      .state('election.public.show.login', {
+        url: '/login',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
+      })
+      .state('election.public.show.login_user', {
+        url: '/login/:email',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
+      })
+      .state('election.public.show.login_email_code', {
+        url: '/login/:email/:code',
+        templateUrl: 'avRegistration/login-controller/login-controller.html',
+        controller: "LoginController"
+      })
+      .state('election.public.show.logout', {
+        url: '/logout',
+        controller: "LogoutController"
+      })
+
       .state('election.results', {
         url: '/:id/results',
         templateUrl: 'avElection/results-controller/results-controller.html',

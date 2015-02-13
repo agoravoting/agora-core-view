@@ -1,8 +1,7 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 loginheader">
-        <h1>{{name}}</h1>
-        <h1 ng-i18next="avRegistration.loginHeader"></h1>
+        <h2 class="tex-center" ng-i18next="avRegistration.loginHeader"></h2>
     </div>
 
     <div class="col-sm-6">
@@ -30,11 +29,6 @@
       <p>
         <a href="#" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="{{login_fields.length+2}}"></a><br/>
         <span ng-i18next="avRegistration.fewMinutes"></span>
-      </p>
-      <p>
-        <span ng-i18next="avRegistration.createElection"></span><br/>
-        <span ng-i18next="avRegistration.takeLook"></span>
-        <a href="" target="_blank" ng-i18next="avRegistration.step" tabindex="{{login_fields.length+3}}"></a>
       </p>
     </div>
   </div>
