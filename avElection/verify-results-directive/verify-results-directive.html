@@ -1,4 +1,4 @@
-<div class="basic-booth-layout">
+<div class="basic-booth-layout" ng-if="!!election">
   <nav
     class="navbar navbar-default navbar-fixed-top"
     ng-if="!noHeader"
@@ -8,7 +8,7 @@
         <div class="pull-left" ng-i18next="[html]avBooth.poweredBy">
         </div>
         <div class="pull-right">
-          <a href="#/election/{{electionId}}/public/verify-results" target="_blank">
+          <a href="#/election/{{election.id}}/public/verify-results" target="_blank">
             <span
               class="glyphicon glyphicon-share">
             </span>
@@ -37,15 +37,11 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-left padded-right">
           <div
-          ng-if="electionState === 'results_ok' || !!election"
+          ng-if="electionState === 'results_ok'"
           ng-i18next="[i18next:html]({title: election.title, electionId: election.id, publicURL: publicURL})avElection.verifyResults.verifyText">
           </div>
           <div
-          ng-if="electionState === 'loading' && !!election"
-          ng-i18next="avElection.public.loadingDataText">
-          </div>
-          <div
-          ng-if="!['loading', 'results_ok'].contains(electionState)"
+          ng-if="electionState !== 'results_ok'"
           ng-i18next="[i18next]avElection.verifyResults.stateNotPublished">
           </div>
         </div>
