@@ -9,12 +9,14 @@
       padding: 10px;
       list-style-type: none;
 
-      a, &.selected a {
+      a:hover, a, &.selected a {
         color: @av-primary-contrast;
+        text-decoration: none;
+        outline: 0;
       }
 
       &.selected {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
       }
     }

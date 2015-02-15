@@ -5,29 +5,23 @@
       ng-i18next="avElection.public.homeText">
     </a>
   </li>
-  <li ng-class="{selected: pageName() === 'faqs.html'}">
+  <li class="hidden" ng-class="{selected: pageName() === 'faqs.html'}">
     <a
       ui-sref="election.public.show.view({id: election.id, name: 'faqs.html'})"
       ng-i18next="avElection.public.faqsLink">
     </a>
   </li>
-  <li ng-class="{selected: pageName() === 'auths.html'}">
+  <li ng-class="{selected: name() === 'auths'}">
     <a
       ui-sref="election.public.show.auths({id: election.id})"
       ng-i18next="avElection.public.authoritiesLink">
     </a>
   </li>
-  <li ng-class="{selected: pageName() === 'overview.html'}">
+  <li class="hidden" ng-class="{selected: pageName() === 'overview.html'}">
     <a
       ui-sref="election.public.show.view({id: election.id, name: 'overview.html'})"
       ng-i18next="avElection.public.overviewLink">
     </a>
-  </li>
-  <li>
-    <a
-      ui-sref="election.public.show.view({id: election.id, name: 'tech_overview.pdf'})"
-      target="_blank"
-      ng-i18next="avElection.public.technicalOverviewLink"></a>
   </li>
   <li ng-if="checkState(['registered', 'created', 'started'])">
     <a href="#/election/{{election.id}}/vote" target="_blank" ng-i18next="avElection.public.demoVotingBoothLink"></a>

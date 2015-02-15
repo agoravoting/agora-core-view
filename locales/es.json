@@ -188,6 +188,13 @@
       "status-results_ok": "Estado: <strong>resultados publicados</strong>"
     },
 
+    "authorities": {
+      "loading": "Cargando autoridades..",
+      "loading": "Error cargando autoridades.",
+      "title": "Autoridades de votación",
+      "intro": "Las autoridades de la votación juegan un papel fundamental. La fortaleza del sistema de seguridad usado en esta votación reside en un sistema de seguridad compartida análogo a los apoderados e interventores en las elecciones tradicionales, donde la clave cifrada de la votación se genera de forma distribuida por un conjunto de autoridades independientes de la votación, que velan por el secreto del voto y son las que ejecutan el recuento. Son las siguientes:"
+    },
+
     "errorLoadingQuestionTest": "Disposición de pregunta desconocida",
 
     "verifyResults": {
