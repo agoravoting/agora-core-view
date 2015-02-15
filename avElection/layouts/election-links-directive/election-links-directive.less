@@ -9,9 +9,16 @@
       padding: 10px;
       list-style-type: none;
 
-      a:hover, a, &.selected a {
+      a, &.selected a {
         color: @av-primary-contrast;
         text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a:hover, a:active, a, &.selected a {
         outline: 0;
       }
 

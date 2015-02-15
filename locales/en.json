@@ -163,6 +163,7 @@
       "homeText": "Home",
       "resultsTitle": "Results",
       "loadingText": "Loading election",
+      "voteLink": "Vota",
       "loadingDataText": "Cargando datos..",
       "shareLink": "Tweet this election!",
       "errorNotFoundText": "Error cargando la información.",

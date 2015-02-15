@@ -5,6 +5,14 @@
       ng-i18next="avElection.public.homeText">
     </a>
   </li>
+  <li
+    ng-if="electionState === 'started' && authEvent.census === 'open'"
+    ng-class="{selected: name() === 'register'}">
+    <a
+      href="#/election/{{election.id}}/public/register"
+      ng-i18next="avElection.public.voteLink">
+    </a>
+  </li>
   <li class="hidden" ng-class="{selected: pageName() === 'faqs.html'}">
     <a
       ui-sref="election.public.show.view({id: election.id, name: 'faqs.html'})"

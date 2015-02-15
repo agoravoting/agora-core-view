@@ -36,12 +36,19 @@
           ng-bind-html="election.description"
           ng-if="name().indexOf('home') !== -1">
         </p>
-        <a
-          href=""
-          ng-i18next="avElection.public.voteNowLink"
-          class="btn btn-block btn-success btn-lg"
-          ng-if="election.state === 'started'">
-        </a>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+              <a
+                ng-if="name().indexOf('home') !== -1 && electionState === 'started' && authEvent.census === 'open'"
+                class="btn btn-block btn-lg btn-transparent"
+                href="#/election/{{election.id}}/public/register"
+                ng-i18next="avElection.public.voteLink">
+              </a>
+            </div>
+          </div>
+        </div>
         <div ave-election-links></div>
       </div>
     </div>

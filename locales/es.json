@@ -162,6 +162,7 @@
       "homeText": "Portada",
       "resultsTitle": "Resultados",
       "loadingText": "Cargando votación",
+      "voteLink": "Vota",
       "loadingDataText": "Cargando datos..",
       "shareLink": "¡Twitea esta votación!",
       "errorNotFoundText": "Error cargando la información.",
@@ -206,7 +207,7 @@
     },
 
     "resultsDirective": {
-      "ballotLocatorLink": "Encontrar papeleta",
+      "ballotLocatorLink": "Localizar papeleta",
       "verifiableResultsLink": "Recuento verificable"
     }
   },

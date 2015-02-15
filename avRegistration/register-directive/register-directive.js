@@ -31,7 +31,7 @@ angular.module('avRegistration')
                     scope.sendingData = false;
                     if (rcvData.status === "ok") {
                         scope.user = rcvData.user;
-                        $state.go('registration.login', {id: autheventid});
+                        $state.go('election.public.show.login', {id: autheventid});
                     } else {
                         scope.status = 'Not found';
                         scope.error = $i18next('avRegistration.invalidRegisterData');

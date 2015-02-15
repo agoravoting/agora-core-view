@@ -17,6 +17,10 @@ angular.module('avElection')
       scope.pageName = function() {
         return $stateParams.name;
       };
+      
+      scope.checkState = function (validStates) {
+        return _.contains(validStates, scope.electionState);
+      };
     }
     return {
       restrict: 'AE',

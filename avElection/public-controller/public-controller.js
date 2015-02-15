@@ -3,7 +3,7 @@
  * loading config, showing results, showing error if needed.
  */
 angular.module('avElection').controller('PublicController',
-  function($state, $stateParams, $http, $scope, $i18next, ConfigService, InsideIframeService) {
+  function($state, $stateParams, $http, $scope, $i18next, ConfigService, InsideIframeService, Authmethod) {
 //     $state.go('election.public.loading');
 
     var mapLayouts = {
@@ -26,6 +26,13 @@ angular.module('avElection').controller('PublicController',
       // on error, like parse error or 404
       .error(function (error) {
         $state.go("election.public.error");
+      });
+
+    Authmethod.viewEvent($stateParams.id)
+      .success(function(data) {
+        if (data.status === "ok") {
+          $scope.authEvent = data.events;
+        }
       });
   }
 );
