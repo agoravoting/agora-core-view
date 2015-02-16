@@ -8,7 +8,7 @@ angular.module('avAdmin')
 
         scope.loginrequired = ('loginrequired' in attrs);
         if (scope.loginrequired && !scope.admin) {
-            $state.go("registration.logout");
+            $state.go("admin.logout");
         }
 
         function ping() {
@@ -18,11 +18,11 @@ angular.module('avAdmin')
                         Authmethod.setAuth(data['auth-token']);
                         Authmethod.pingTimeout = setTimeout(function() { ping(); }, 5000);
                     } else {
-                        $state.go("registration.logout");
+                        $state.go("admin.logout");
                     }
                 })
                 .error(function(data) {
-                    $state.go("registration.logout");
+                    $state.go("admin.logout");
                 });
         }
 

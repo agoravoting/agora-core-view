@@ -22,8 +22,8 @@
             <li class="signup" ng-if="!admin"><a ng-i18next="avAdmin.topbar.freesignup"></a></li>
             <li ng-if="!nologin"><a ng-i18next="avAdmin.topbar.login"></a></li>
 
-            <li ng-if="admin"><a ui-sref="registration.logout()"><i class="fa fa-user"></i> {{ admin }}</a></li>
-            <li ng-if="admin"><a ui-sref="registration.logout()"><i class="fa fa-power-off"></i></a></li>
+            <li ng-if="admin"><a ui-sref="admin.logout()"><i class="fa fa-user"></i> {{ admin }}</a></li>
+            <li ng-if="admin"><a ui-sref="admin.logout()"><i class="fa fa-power-off"></i></a></li>
 
             <li class="dropdown" av-change-lang></li>
           </ul>
