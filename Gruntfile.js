@@ -154,6 +154,7 @@ module.exports = function (grunt) {
             {selector:'body',html:'<script src="lib-v1.0.17.min.js"></script>'},
             {selector:'body',html:'<script src="avConfig-v1.0.17.js"></script>'},
             {selector:'body',html:'<script src="avThemes-v1.0.17.js"></script>'},
+            {selector:'body',html:'<script src="avPlugins-v1.0.17.js"></script>'},
             {selector:'body',html:'<script src="app-v1.0.17.min.js"></script>'},
             {selector:'head',html:'<link rel="stylesheet" id="theme" href="themes/default/app.min.css">'}
           ]
@@ -186,7 +187,8 @@ module.exports = function (grunt) {
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
           'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
           'dist/avConfig-v1.0.17.js': ['avConfig.js'],
-          'dist/avThemes-v1.0.17.js': ['avThemes.js']
+          'dist/avThemes-v1.0.17.js': ['avThemes.js'],
+          'dist/avPlugins-v1.0.17.js': ['plugins/**/*.js']
         }
       }
     },
