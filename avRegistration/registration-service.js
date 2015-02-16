@@ -58,7 +58,11 @@ angular.module('avRegistration')
         };
 
         authmethod.addCensus = function(id, data) {
-            return $http.post(backendUrl + 'auth-event/' + id + '/census/', data);
+            var d = {
+                "field-validation": "enabled",
+                "census": data
+            };
+            return $http.post(backendUrl + 'auth-event/' + id + '/census/', d);
         };
 
         authmethod.getCensus = function(id) {
