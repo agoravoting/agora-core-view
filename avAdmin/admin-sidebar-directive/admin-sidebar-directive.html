@@ -21,6 +21,15 @@
      </li>
   </ul>
 
+  <!-- plugins -->
+    <li role="presentation" ng-class="{active:state == 'admin.'+p.name, head:p.head, sub1:!p.head}" ng-repeat="p in plugins">
+      <a ui-sref="{{ 'admin.'+p.name+'({id:current.id})' }}">
+        <i class="fa-fw fa fa-{{ p.icon }}" ng-if="p.icon"></i>
+        <span ng-i18next>{{ p.text }}</span>
+      </a>
+    </li>
+  <!-- endof plugins -->
+
   <!-- not implemented yet
   <li role="presentation" class="head" ng-class="{active:state=='admin.account'}">
     <a ui-sref="admin.account()"> <i class="fa-fw fa fa-user"></i> <span ng-i18next="avAdmin.sidebar.myAccount"></span></a> </li>

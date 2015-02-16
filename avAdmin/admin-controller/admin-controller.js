@@ -1,8 +1,18 @@
 angular.module('avAdmin').controller('AdminController',
-  function(ConfigService, $scope, $i18next, $state, $stateParams, ElectionsApi) {
+  function(AdminPlugins, ConfigService, $scope, $i18next, $state, $stateParams, ElectionsApi, $compile) {
     var id = $stateParams.id;
     $scope.state = $state.current.name;
     $scope.current = null;
+
+    // plugin stuff
+    $scope.plugins = AdminPlugins.plugins;
+    $scope.ps = _.map(AdminPlugins.plugins, function(x) { return x.name; });
+    AdminPlugins.plugins.forEach(function(p) {
+        var tpl = $compile( '<script type="text/ng-template" id="'+p.name+'"><div class="av-plugin-'+p.name+'"></div></script>' )($scope);
+    });
+
+    // state = admin.XXX
+    $scope.shortst = $state.current.name.split(".")[1];
 
     function newElection() {
         var el = ElectionsApi.templateEl();

@@ -119,10 +119,6 @@ module.exports = function (grunt) {
             dest: 'dist/themes/fonts/'
           },
           {
-            src: ['locales/**'],
-            dest: 'dist/'
-          },
-          {
             expand: true,
             cwd: 'bower_components/font-awesome/fonts/',
             src: ['**'],
@@ -154,8 +150,8 @@ module.exports = function (grunt) {
             {selector:'body',html:'<script src="lib-v1.0.17.min.js"></script>'},
             {selector:'body',html:'<script src="avConfig-v1.0.17.js"></script>'},
             {selector:'body',html:'<script src="avThemes-v1.0.17.js"></script>'},
-            {selector:'body',html:'<script src="avPlugins-v1.0.17.js"></script>'},
             {selector:'body',html:'<script src="app-v1.0.17.min.js"></script>'},
+            {selector:'body',html:'<script src="avPlugins-v1.0.17.js"></script>'},
             {selector:'head',html:'<link rel="stylesheet" id="theme" href="themes/default/app.min.css">'}
           ]
         },
@@ -189,6 +185,14 @@ module.exports = function (grunt) {
           'dist/avConfig-v1.0.17.js': ['avConfig.js'],
           'dist/avThemes-v1.0.17.js': ['avThemes.js'],
           'dist/avPlugins-v1.0.17.js': ['plugins/**/*.js']
+        }
+      }
+    },
+    "merge-json": {
+      main: {
+        files: {
+            "dist/locales/en.json": ["locales/en.json", "plugins/**/locales/en.json"],
+            "dist/locales/es.json": ["locales/es.json", "plugins/**/locales/es.json"]
         }
       }
     },
@@ -289,7 +293,7 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.registerTask('build',['jshint','clean:before','less','autoprefixer','dom_munger','ngtemplates','cssmin','concat','ngAnnotate','uglify','copy','htmlmin','imagemin','clean:after']);
+  grunt.registerTask('build',['jshint','clean:before','less','autoprefixer','dom_munger','ngtemplates','cssmin','concat','merge-json','ngAnnotate','uglify','copy','htmlmin','imagemin','clean:after']);
   grunt.registerTask('serve', ['dom_munger:read','jshint','connect', 'watch']);
   grunt.registerTask('test',['dom_munger:read','karma:all_tests']);
 

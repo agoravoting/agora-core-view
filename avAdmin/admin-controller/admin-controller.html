@@ -19,6 +19,7 @@
             <div av-admin-billinginfo ng-switch-when="admin.billinfo"></div>
             <div av-admin-billinghistory ng-switch-when="admin.billhistory"></div>
         </div>
+        <div id="content" class="col-sm-9" ng-repeat='template in ps' ng-include='template'></div>
     </div>
 </div>
 
