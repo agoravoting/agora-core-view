@@ -1,9 +1,11 @@
 angular.module('avRegistration')
-  .directive('avLogin', function(Authmethod, $parse, $state, $cookies, $i18next) {
+  .directive('avLogin', function(Authmethod, StateDataService, $parse, $state, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var autheventid = attrs.eventId;
         scope.sendingData = false;
+
+        scope.stateData = StateDataService.getData();
 
         scope.code = null;
         if (attrs.code && attrs.code.length > 0) {
@@ -77,11 +79,17 @@ angular.module('avRegistration')
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
             scope.login_fields = Authmethod.getLoginFields(authevent);
+
             var fields = _.map(
               scope.login_fields,
               function (el) {
-                el.value = null;
-                el.disabled = false;
+                if (!!scope.stateData[el.name]) {
+                  el.value = scope.stateData[el.name];
+                  el.disabled = true;
+                } else {
+                  el.value = null;
+                  el.disabled = false;
+                }
                 if (el.type === "email" && scope.email !== null) {
                   el.value = scope.email;
                   el.disabled = true;

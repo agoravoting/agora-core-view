@@ -13,6 +13,14 @@
               <div class="input-error">
                   <div class="error text-danger" ng-if="error">{{ error }}</div>
               </div>
+              <div class="input-warn">
+                <span
+                  class="text-warning"
+                  ng-if="!form.$valid || sendingData"
+                  ng-i18next>
+                  avRegistration.fillValidFormText
+                </span>
+              </div>
               <button
                 type="submit"
                 class="btn btn-block btn-success"
@@ -27,7 +35,7 @@
     <div class="col-sm-5 col-sm-offset-1 hidden-xs">
       <h3 class="help-h3" ng-i18next="avRegistration.notRegisteredYet"></h3>
       <p>
-        <a href="#" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="{{login_fields.length+2}}"></a><br/>
+        <a href="#/election/{{election.id}}/public/register" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="{{login_fields.length+2}}"></a><br/>
         <span ng-i18next="avRegistration.fewMinutes"></span>
       </p>
     </div>

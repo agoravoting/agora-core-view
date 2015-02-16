@@ -1,5 +1,5 @@
 angular.module('avRegistration')
-  .directive('avRegister', function(Authmethod, $parse, $state, $cookies, $i18next) {
+  .directive('avRegister', function(Authmethod, StateDataService, $parse, $state, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var autheventid = attrs.eventId;
@@ -31,16 +31,16 @@ angular.module('avRegistration')
                     scope.sendingData = false;
                     if (rcvData.status === "ok") {
                         scope.user = rcvData.user;
-                        $state.go('election.public.show.login', {id: autheventid});
+                        StateDataService.go('election.public.show.login', {id: autheventid}, data);
                     } else {
                         scope.status = 'Not found';
-                        scope.error = $i18next('avRegistration.invalidRegisterData');
+                        scope.error = rcvData.msg || $i18next('avRegistration.invalidRegisterData');
                     }
                 })
                 .error(function(error) {
                     scope.sendingData = false;
                     scope.status = 'Registration error: ' + error.message;
-                    scope.error = $i18next('avRegistration.invalidRegisterData');
+                    scope.error = error.msg || $i18next('avRegistration.invalidRegisterData');
                 });
         };
 
