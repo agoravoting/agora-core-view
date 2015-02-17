@@ -13,7 +13,7 @@ angular.module('avBooth')
         return _.filter(
           scope.stateData.question.answers,
           function (element) {
-            return element.selected > -1;
+            return element.selected > -1 || element.isSelected === true;
           }).length;
       };
 

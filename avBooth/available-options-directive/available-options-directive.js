@@ -19,6 +19,11 @@ angular.module('avBooth')
          */
         scope.toggleSelectItem = function(option) {
           if (option.selected > -1) {
+            _.each(scope.options, function (element) {
+              if (element.selected > option.selected) {
+                element.selected -= 1;
+              }
+            });
             option.selected = -1;
           } else {
             var numSelected = _.filter(scope.options, function (element) {

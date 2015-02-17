@@ -48,7 +48,7 @@
 
 
     "questionSelectedOptionsTitle": "selected options (__count__)",
-    "questionSelectedOptionsTitle_plural": "selected options (0)",
+    "questionSelectedOptionsTitle_plural": "selected options (__count__)",
     "questionAvailableOptionsTitle": "available options",
     "numOptionsSelected": "__count__ options selected.",
     "numOptionsSelected_plural": "__count__ options selected.",
