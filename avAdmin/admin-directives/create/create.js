@@ -38,6 +38,10 @@ angular.module('avAdmin')
             // Creating the authentication
             logInfo($i18next('avAdmin.create.creating', {title: el.title}));
 
+            if (el.census.config.subject && el.census.auth_method !== 'email') {
+              delete el.census.config.subject;
+            }
+
             var d = {
                 auth_method: el.census.auth_method,
                 census: el.census.census,
