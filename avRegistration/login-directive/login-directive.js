@@ -29,8 +29,6 @@ angular.module('avRegistration')
                 return;
             }
             var data = {
-                'auth-method': scope.method,
-                'authevent': autheventid,
                 'captcha_code': Authmethod.captcha_code,
             };
             _.each(scope.login_fields, function (field) {
@@ -41,7 +39,7 @@ angular.module('avRegistration')
             });
 
             scope.sendingData = true;
-            Authmethod.login(data)
+            Authmethod.login(data, autheventid)
                 .success(function(rcvData) {
                     scope.sendingData = false;
                     if (rcvData.status === "ok") {

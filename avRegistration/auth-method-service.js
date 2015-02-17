@@ -5,8 +5,8 @@ angular.module('avRegistration')
         var authmethod = {};
         var captcha_code = null;
 
-        authmethod.signup = function(data) {
-            var eid = data.authevent || '0';
+        authmethod.signup = function(data, authevent) {
+            var eid = authevent || '0';
             return $http.post(backendUrl + 'auth-event/'+eid+'/register/', data);
         };
 
@@ -14,8 +14,9 @@ angular.module('avRegistration')
             return $http.get(backendUrl + 'auth-event/0/ping/');
         };
 
-        authmethod.login = function(data) {
-            var eid = data.authevent || '0';
+        authmethod.login = function(data, authevent) {
+            var eid = authevent || '0';
+            delete data['authevent'];
             return $http.post(backendUrl + 'auth-event/'+eid+'/authenticate/', data);
         };
 
