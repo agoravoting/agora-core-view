@@ -15,6 +15,7 @@ angular.module('avAdmin')
         voters: "Censo",
         winners: "Número de ganadores",
         min: "Número mínimo de opciones",
+        tally_type: "Sistema de votación",
         max: "Número máximo de opciones",
         opts: "Opciones",
         random: "Orden aleatorio",
@@ -90,6 +91,7 @@ angular.module('avAdmin')
           q.min = parseInt(x.min, 10);
           q.num_winners = parseInt(x.winners, 10);
           q.randomize_answer_order = x.random;
+          q.tally_type = x.tally_type.toLowerCase();
           //q.answer_total_votes_percentage = x.results;
           x.opts.forEach(function(y, i) {
             var a = {
