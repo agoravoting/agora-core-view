@@ -135,7 +135,7 @@ angular.module('avAdmin')
                 rawEl.questions.push(q);
               }
               q = {};
-              if (v.toLowerCase().indexOf("no") > 0) {
+              if (v.toLowerCase().indexOf("no") >= 0) {
                 break;
               }
             } else {
