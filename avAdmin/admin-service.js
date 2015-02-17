@@ -1,32 +1,4 @@
 angular.module('avAdmin')
-
-    .factory('AuthApi', ['ConfigService', '$http', function(ConfigService, $http) {
-        var backendUrl = ConfigService.authAPI;
-        var authapi = {};
-
-        authapi.electionsIds = function(page) {
-            if (!page) {
-                page = 1;
-            }
-            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&order=-pk&page='+page);
-        };
-
-        authapi.sendAuthCodes = function(eid) {
-            var url = backendUrl + 'auth-event/'+eid+'/census/send_auth/';
-            var data = {};
-            return $http.post(url, data);
-        };
-
-        authapi.changeAuthEvent = function(eid, st) {
-            var url = backendUrl + 'auth-event/'+eid+'/'+st+'/';
-            var data = {};
-            return $http.post(url, data);
-        };
-
-        return authapi;
-
-    }])
-
     .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$i18next', '$http', function($q, Authmethod, ConfigService, $i18next, $http) {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}, permcache: {}};

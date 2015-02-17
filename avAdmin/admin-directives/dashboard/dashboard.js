@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminDashboard', ["$state", "AuthApi", "ElectionsApi", "$stateParams", function($state, AuthApi, ElectionsApi, $stateParams) {
+  .directive('avAdminDashboard', ["$state", "Authmethod", "ElectionsApi", "$stateParams", function($state, Authmethod, ElectionsApi, $stateParams) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var id = $stateParams.id;
@@ -122,12 +122,12 @@ angular.module('avAdmin')
                 .catch(function(error) { scope.loading = false; scope.error = error; });
 
             if (c.path === 'start') {
-                AuthApi.changeAuthEvent(scope.election.id, 'started')
+                Authmethod.changeAuthEvent(scope.election.id, 'started')
                     .error(function(error) { scope.loading = false; scope.error = error; });
             }
 
             if (c.path === 'stop') {
-                AuthApi.changeAuthEvent(scope.election.id, 'stopped')
+                Authmethod.changeAuthEvent(scope.election.id, 'stopped')
                     .error(function(error) { scope.loading = false; scope.error = error; });
             }
         }
@@ -152,7 +152,7 @@ angular.module('avAdmin')
 
         function sendAuthCodes(election) {
             scope.loading = true;
-            AuthApi.sendAuthCodes(election.id)
+            Authmethod.sendAuthCodes(election.id)
                 .success(function(r) {
                     scope.loading = false;
                     scope.msg = "avAdmin.dashboard.censussend";

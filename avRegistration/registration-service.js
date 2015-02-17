@@ -151,6 +151,25 @@ angular.module('avRegistration')
             return false;
         };
 
+        authmethod.electionsIds = function(page) {
+            if (!page) {
+                page = 1;
+            }
+            return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&order=-pk&page='+page);
+        };
+
+        authmethod.sendAuthCodes = function(eid) {
+            var url = backendUrl + 'auth-event/'+eid+'/census/send_auth/';
+            var data = {};
+            return $http.post(url, data);
+        };
+
+        authmethod.changeAuthEvent = function(eid, st) {
+            var url = backendUrl + 'auth-event/'+eid+'/'+st+'/';
+            var data = {};
+            return $http.post(url, data);
+        };
+
         return authmethod;
 
     }]);

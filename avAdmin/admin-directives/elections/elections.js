@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminElections', ['AuthApi', 'ElectionsApi', '$state', function(AuthApi, ElectionsApi, $state) {
+  .directive('avAdminElections', ['Authmethod', 'ElectionsApi', '$state', function(Authmethod, ElectionsApi, $state) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         scope.page = 1;
@@ -28,7 +28,7 @@ angular.module('avAdmin')
                 });
             }
 
-            AuthApi.electionsIds(scope.page)
+            Authmethod.electionsIds(scope.page)
                 .success(function(data) {
                     scope.page += 1;
 
