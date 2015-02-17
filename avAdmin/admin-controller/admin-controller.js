@@ -6,7 +6,6 @@ angular.module('avAdmin').controller('AdminController',
 
     // plugin stuff
     $scope.plugins = AdminPlugins.plugins;
-    $scope.ps = _.map(AdminPlugins.plugins, function(x) { return x.name; });
     AdminPlugins.plugins.forEach(function(p) {
         var tpl = $compile( '<script type="text/ng-template" id="'+p.name+'"><div class="av-plugin-'+p.name+'"></div></script>' )($scope);
     });
