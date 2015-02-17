@@ -361,7 +361,7 @@
     },
     "basic": {
         "intro": "Creating an election involves multiple steps, but it's not hard. Don't panic and go ahead, it only takes 5 minutes",
-        "title": { "label": "Title", "placeholder": "eg.New Board of Directors" },
+        "title": { "label": "Title", "placeholder": "eg.New Board of Directors", "labelH3": "__index__. Election titled: __title__" },
         "description": { "label": "Description", "placeholder": "Description will be shown" },
         "share": { "label": "Share text", "placeholder": "Text to use for social sharing" },
         "layout": { "label": "Layout", "placeholder": "Specifies how the whole election will be displayed" },
@@ -409,12 +409,14 @@
         "emaildef": "Vote following this link %(url)s\nThis is your auth code: %(code)s"
     },
     "create": {
-        "summary": "Summary",
-        "create": "Create the election",
-        "creating": "Creating the authentication",
-        "census": "Adding the census",
-        "reg": "Registering the election",
-        "creatingEl": "Creating the election"
+        "summary": "Summary: creating __num__ elections",
+        "summary__plural": "Summary: creating __num__ elections",
+        "create": "Create the elections",
+        "creating": "Creating the authentication for election __title__",
+        "census": "Adding the census (id: __id__) __title__",
+        "reg": "Registering the election (id: __id__) __title__",
+        "creatingEl": "Creating election (id: __id__) __title__",
+        "logHeader": "Log"
     }
   }
 }

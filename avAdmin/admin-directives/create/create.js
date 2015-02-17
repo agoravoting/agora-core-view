@@ -3,11 +3,15 @@ angular.module('avAdmin')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         scope.creating = false;
-        scope.creating_text = '';
-        scope.error_text = '';
-        scope.election = ElectionsApi.currentElection;
+        scope.log = '';
+        if (ElectionsApi.currentElections.length === 0 && !!ElectionsApi.currentElection) {
+          scope.elections = [ElectionsApi.currentElection];
+        }
+        scope.elections = ElectionsApi.currentElections;
+        ElectionsApi.currentElections = [];
 
         function getCreatePerm(el) {
+            console.log("creating perm for election " + el.title);
             var deferred = $q.defer();
             Authmethod.getPerm("create", "AuthEvent", 0)
                 .success(function(data) {
@@ -19,10 +23,19 @@ angular.module('avAdmin')
             return deferred.promise;
         }
 
+        function logInfo(text) {
+          scope.log += "<p>" + text + "</p>";
+        }
+
+        function logError(text) {
+          scope.log += "<p class=\"text-brand-danger\">" + text + "</p>";
+        }
+
         function createAuthEvent(el) {
+            console.log("creating auth event for election " + el.title);
             var deferred = $q.defer();
             // Creating the authentication
-            scope.creating_text = $i18next('avAdmin.create.creating');
+            logInfo($i18next('avAdmin.create.creating', {title: el.title}));
 
             var d = {
                 auth_method: el.census.auth_method,
@@ -42,10 +55,11 @@ angular.module('avAdmin')
         }
 
         function addCensus(el) {
+            console.log("adding census for election " + el.title);
             var deferred = $q.defer();
             // Adding the census
-            scope.creating_text = $i18next('avAdmin.create.census');
-            Authmethod.addCensus(el.id, el.census.voters)
+            logInfo($i18next('avAdmin.create.census', {title: el.title, id: el.id}));
+            Authmethod.addCensus(el.id, el.census.voters, 'disabled')
                 .success(function(data) {
                     deferred.resolve(el);
                 }).error(deferred.reject);
@@ -53,9 +67,10 @@ angular.module('avAdmin')
         }
 
         function registerElection(el) {
+            console.log("registering election " + el.title);
             var deferred = $q.defer();
             // Registering the election
-            scope.creating_text = $i18next('avAdmin.create.reg');
+            logInfo($i18next('avAdmin.create.reg', {title: el.title, id: el.id}));
             ElectionsApi.command(el, '', 'POST', el)
                 .then(function(data) { deferred.resolve(el); })
                 .catch(deferred.reject);
@@ -63,48 +78,68 @@ angular.module('avAdmin')
         }
 
         function createElection(el) {
+            console.log("creating election " + el.title);
             var deferred = $q.defer();
             // Creating the election
-            scope.creating_text = $i18next('avAdmin.create.creatingEl');
+            logInfo($i18next('avAdmin.create.creatingEl', {title: el.title, id: el.id}));
             ElectionsApi.command(el, 'create', 'POST', {})
-                .then(function(data) { deferred.resolve(el); })
-                .catch(deferred.reject);
+              .then(function(data) { deferred.resolve(el); })
+              .catch(deferred.reject);
             return deferred.promise;
         }
 
-        function createTheElection() {
-            var el = ElectionsApi.currentElection;
-            getCreatePerm(el)
-                .then(createAuthEvent)
-                .then(addCensus)
-                .then(registerElection)
-                .then(createElection)
-                .then(function(el) {
-                    waitForCreated(el.id);
-                    scope.error_text = '';
-                })
-                .catch(function(error) {
-                    scope.creating = false;
-                    scope.creating_text = '';
-                    scope.error_text = error;
+        function addElection(i) {
+          var deferred = $q.defer();
+          if (i === scope.elections.length) {
+            var el = scope.elections[i - 1];
+            $state.go("admin.dashboard", {id: el.id});
+            return;
+          }
+
+          var promise = deferred.promise;
+          promise = promise
+            .then(getCreatePerm)
+            .then(createAuthEvent)
+            .then(addCensus)
+            .then(registerElection)
+            .then(createElection)
+            .then(function(el) {
+                console.log("waiting for election " + el.title);
+                waitForCreated(el.id, function () {
+                  addElection(i+1);
                 });
+              })
+              .catch(function(error) {
+                scope.creating = false;
+                scope.creating_text = '';
+                logError(angular.toJson(error));
+              });
+          deferred.resolve(scope.elections[i]);
+        }
+
+        function createElections() {
+            var deferred = $q.defer();
+            addElection(0);
+            var promise = deferred.promise;
 
             scope.creating = true;
         }
 
-        function waitForCreated(id) {
+        function waitForCreated(id, f) {
+            console.log("waiting for election id = " + id);
             ElectionsApi.getElection(id, true)
                 .then(function(el) {
+                    var deferred = $q.defer();
                     if (el.status === 'created') {
-                        $state.go("admin.dashboard", {id: el.id});
+                        f();
                     } else {
-                        setTimeout(function() { waitForCreated(id); }, 3000);
+                        setTimeout(function() { waitForCreated(id, f); }, 3000);
                     }
                 });
         }
 
         angular.extend(scope, {
-          createElection: createTheElection,
+          createElections: createElections,
         });
     }
 

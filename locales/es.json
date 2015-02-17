@@ -363,7 +363,7 @@
     },
     "basic": {
         "intro": "Crear una votación conlleva varios pasos, pero no es difícil. No te pongas nerviso y adelante, sólo te llevará 5 minutos",
-        "title": { "label": "Título", "placeholder": "ej.Nueva junta de dirección" },
+        "title": { "label": "Título", "placeholder": "ej.Nueva junta de dirección", "labelH3": "__index__. Votación titulada: __title__" },
         "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará" },
         "share": { "label": "Texto para compartir", "placeholder": "Texto para usar en los enlaces a redes sociales" },
         "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votación" },
@@ -371,7 +371,7 @@
         "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votación?" },
         "themes": { "default": "Por defecto", "podemos": "Podemos" },
         "questionOptionsSummary": "<strong>__num_answers__</strong> candidates. Voters select between <strong>__min__</strong> and <strong>__max__</strong> options (randomize: <strong>__random__</strong>) and there are <strong>__num_winners__</strong> winners. The tally method is <strong>__tally_method__</strong>.",
-        "censusSize": "__num__ entries"
+        "censusSize": "__num__ people"
 
     },
     "questions": {
@@ -412,12 +412,15 @@
         "emaildef": "Vota siguiendo este enlace %(url)s\nEste es tu código de autenticación: %(code)s"
     },
     "create": {
-        "summary": "Resumen",
-        "create": "Crear la votación",
-        "creating": "Creando la autenticación",
-        "census": "Añadiendo el censo",
-        "reg": "Registrando la votación",
-        "creatingEl": "Creando la votación"
+        "summary": "Resumen: creando __num__ votaciones",
+        "summary__plural": "Resumen: creando __num__ votaciones",
+        "create": "Crear las votaciones",
+        "create__plural": "Crear las votaciones",
+        "creating": "Creando la autenticación de la votación __title__",
+        "census": "Añadiendo el censo (id: __id__) __title__",
+        "reg": "Registrando la votación (id: __id__) __title__",
+        "creatingEl": "Creando la votación (id: __id__) __title__",
+        "logHeader": "Log"
     }
   }
 }

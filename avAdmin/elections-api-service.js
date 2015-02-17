@@ -4,6 +4,7 @@ angular.module('avAdmin')
         var electionsapi = {cache: {}, permcache: {}};
         electionsapi.waitingCurrent = [];
         electionsapi.currentElection = {};
+        electionsapi.currentElections = [];
         electionsapi.newElection = false;
 
         electionsapi.waitForCurrent = function(f) {
