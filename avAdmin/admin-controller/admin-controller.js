@@ -13,6 +13,9 @@ angular.module('avAdmin').controller('AdminController',
     // state = admin.XXX
     $scope.shortst = $state.current.name.split(".")[1];
 
+    // removing autoreload stats
+    ElectionsApi.autoreloadStats(null);
+
     function newElection() {
         var el = ElectionsApi.templateEl();
         $scope.current = el;

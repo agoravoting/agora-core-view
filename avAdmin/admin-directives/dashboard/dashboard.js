@@ -55,6 +55,7 @@ angular.module('avAdmin')
                     calculateResults(el);
                 }
 
+                ElectionsApi.autoreloadStats(el);
             });
 
         function reload() {

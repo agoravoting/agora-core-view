@@ -150,6 +150,28 @@ angular.module('avAdmin')
             return deferred.promise;
         };
 
+        electionsapi.autoreloadStatsTimer = null;
+        electionsapi.autoreloadStats = function(el) {
+            clearTimeout(electionsapi.autoreloadStatsTimer);
+            if (!el) {
+                return;
+            }
+
+            electionsapi.stats(el)
+                .then(function() {
+                    if (el.auth.census) {
+                        el.votes = el.stats.votes;
+                        el.votes_percentage = ( el.stats.votes * 100 )/ el.auth.census;
+                    } else {
+                        el.votes_percentage = 0;
+                        el.votes = el.stats.votes || 0;
+                    }
+                })
+                .finally(function() {
+                    electionsapi.autoreloadStatsTimer = setTimeout(function() { electionsapi.autoreloadStats(el); }, 5000);
+                });
+        };
+
         electionsapi.results = function(el) {
             var deferred = $q.defer();
 
