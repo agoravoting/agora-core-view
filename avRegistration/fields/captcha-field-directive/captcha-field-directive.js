@@ -6,7 +6,7 @@ angular.module('avRegistration')
                 .success(function(data) {
                     console.log(data);
                     if (data.captcha_code !== null) {
-                        scope.captcha_code = data.captcha_code;
+                        Authmethod.captcha_code = data.captcha_code;
                         scope.image_url = data.image_url;
                     } else {
                         scope.status = 'Not found';

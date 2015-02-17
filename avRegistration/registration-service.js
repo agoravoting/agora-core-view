@@ -17,6 +17,7 @@ angular.module('avRegistration')
     .factory('Authmethod', ['$http', 'ConfigService', function($http, ConfigService) {
         var backendUrl = ConfigService.authAPI;
         var authmethod = {};
+        var captcha_code = null;
 
         authmethod.signup = function(data) {
             var eid = data.authevent || '0';

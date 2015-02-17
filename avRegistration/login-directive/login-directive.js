@@ -31,6 +31,7 @@ angular.module('avRegistration')
             var data = {
                 'auth-method': scope.method,
                 'authevent': autheventid,
+                'captcha_code': Authmethod.captcha_code,
             };
             _.each(scope.login_fields, function (field) {
               data[field.name] = field.value;
