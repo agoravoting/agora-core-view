@@ -10,6 +10,7 @@
   "stopped": "detenida",
   "tally_ok": "recuento realizado",
   "results_ok": "resultados",
+  "results_pub": "resultados publicados",
   "doing_tally": "haciendo el recuento",
   "tally_error": "error en el recuento",
 
@@ -186,7 +187,8 @@
       "status-stopped": "Estado: <strong>periodo de voto finalizado</strong>",
       "status-doing_tally": "Estado: <strong>haciendo recuento</strong>",
       "status-tally_ok": "Estado: <strong>recuento hecho</strong>",
-      "status-results_ok": "Estado: <strong>resultados publicados</strong>"
+      "status-results_ok": "Status: <strong>resultados calculados</strong>",
+      "status-results_pub": "Estado: <strong>resultados publicados</strong>"
     },
 
     "authorities": {
@@ -354,6 +356,7 @@
         "votes": "Votos",
         "winner": "Posición ganadora",
         "publicResultsUrl": "Url pública de resultados",
+        "electionPublic": "Url pública de la votación",
         "censussend": "Se ha enviado el censo correctamente",
         "preview": "Vista previa de la cabina de votación"
     },

@@ -35,7 +35,7 @@
     <a href="#/election/{{election.id}}/vote" target="_blank" ng-i18next="avElection.public.demoVotingBoothLink"></a>
   </li>
   <li
-    ng-if="checkState(['started', 'stopped', 'doing_tally', 'tally_ok', 'results_ok'])"
+    ng-if="checkState(['started', 'stopped', 'doing_tally', 'tally_ok', 'results_ok', 'results_pub'])"
     ng-class="{selected: name() === 'ballot-locator'}">
     <a
       ui-sref="election.public.show.ballot-locator({id: election.id})">
@@ -45,7 +45,7 @@
     </a>
   </li>
   <li
-    ng-if="checkState(['results_ok'])"
+    ng-if="checkState(['results_pub'])"
     ng-class="{selected: name() === 'verify-results'}">
     <a
       ui-sref="election.public.show.verify-results({id: election.id})">

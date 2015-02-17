@@ -13,7 +13,7 @@
                 <i class="fa fa-sw fa-2x fa-circle" ng-if="index < $index"></i>
             </div>
             <div class="small" ng-i18next ng-if="index != $index">{{ status }}</div>
-            <button ng-click="doAction($index)" class="btn btn-success" ng-if="index == $index && nextaction">
+            <button ng-click="doAction($index)" class="actionbtn btn btn-success" ng-if="index == $index && nextaction">
                 <div class="small" ng-i18next>{{ nextaction }}</div>
                 <strong ng-i18next>avAdmin.dashboard.donow</strong>
             </button>
@@ -76,6 +76,7 @@
             </div>
 
             <div class="well text-right">
+                <a ui-sref="election.public.show.home({ id: election.id })" ng-i18next>avAdmin.dashboard.electionPublic</a><br/>
                 <a ui-sref="election.booth-nohmac({ id: election.id })" ng-i18next>
                     avAdmin.dashboard.preview
                 </a><br/>
@@ -84,7 +85,6 @@
                    avAdmin.dashboard.publicResultsUrl
                 </a>
                 <!--
-                <a href="">Election public site</a><br/>
                 <a href="">Embed election</a>
                 -->
             </div>

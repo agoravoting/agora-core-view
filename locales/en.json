@@ -10,6 +10,7 @@
   "stopped": "stopped",
   "tally_ok": "tally done",
   "results_ok": "results done",
+  "results_pub": "results published",
   "doing_tally": "doing the tally",
   "tally_error": "tally error",
 
@@ -187,7 +188,8 @@
       "status-stopped": "Status: <strong>election stopped</strong>",
       "status-doing_tally": "Status: <strong>doing tally</strong>",
       "status-tally_ok": "Status: <strong>tally done</strong>",
-      "status-results_ok": "Status: <strong>results published</strong>"
+      "status-results_ok": "Status: <strong>results calculated</strong>",
+      "status-results_pub": "Status: <strong>results published</strong>"
     },
 
     "authorities": {
@@ -352,6 +354,7 @@
         "votes": "Votes",
         "winner": "Winner position",
         "publicResultsUrl": "Public results url",
+        "electionPublic": "Election public site",
         "censussend": "Census send correctly",
         "preview": "Preview voting booth"
     },

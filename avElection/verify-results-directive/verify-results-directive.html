@@ -37,11 +37,11 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-left padded-right">
           <div
-          ng-if="electionState === 'results_ok'"
+          ng-if="electionState === 'results_pub'"
           ng-i18next="[i18next:html]({title: election.title, electionId: election.id, publicURL: publicURL})avElection.verifyResults.verifyText">
           </div>
           <div
-          ng-if="electionState !== 'results_ok'"
+          ng-if="electionState !== 'results_pub'"
           ng-i18next="[i18next]avElection.verifyResults.stateNotPublished">
           </div>
         </div>

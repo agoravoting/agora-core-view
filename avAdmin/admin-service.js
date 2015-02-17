@@ -177,6 +177,19 @@ angular.module('avAdmin')
             return deferred.promise;
         };
 
+        electionsapi.results = function(el) {
+            var deferred = $q.defer();
+
+            electionsapi.command(el, 'results', 'GET')
+                .then(function(d) {
+                        el.results = angular.fromJson(d.payload);
+                        deferred.resolve(el);
+                      })
+                 .catch(deferred.reject);
+
+            return deferred.promise;
+        };
+
         electionsapi.command = function(el, command, method, data) {
             var deferred = $q.defer();
             var m = {};

@@ -13,8 +13,8 @@ angular.module('avAdmin')
             'created',
             'started',
             'stopped',
-            'tally_ok',
-            'results_ok'
+            'results_ok',
+            'results_pub'
         ];
 
         var nextactions = [
@@ -48,9 +48,12 @@ angular.module('avAdmin')
                     scope.nextaction = nextactions[scope.index - 1];
                 }
 
-                //if (scope.election.status === 'registered') {
-                //    reload();
-                //}
+                if (el.status === 'results_ok') {
+                    ElectionsApi.results(el);
+                } else if (el.status === 'tally_ok') {
+                    // auto launch calculate
+                    calculateResults(el);
+                }
 
             });
 
@@ -83,6 +86,14 @@ angular.module('avAdmin')
                         } else {
                             scope.index = statuses.indexOf(el.status) + 1;
                             scope.nextaction = nextactions[scope.index - 1];
+                            // auto launch calculate
+                            if (el.status === 'tally_ok') {
+                                calculateResults(el);
+                            }
+
+                            if (el.status === 'results_ok') {
+                                ElectionsApi.results(el);
+                            }
                         }
                     }
                 });
@@ -104,13 +115,7 @@ angular.module('avAdmin')
                 {path: 'start', method: 'POST'},
                 {path: 'stop', method: 'POST'},
                 {path: 'tally', method: 'POST'},
-                // TODO add config to calculate results
-                {path: 'calculate-results', method: 'POST', data: [
-                    [
-                        "agora_results.pipes.results.do_tallies",
-                        {"ignore_invalid_votes": true}
-                    ]
-                ]},
+                {path: 'publish-results', method: 'POST'}
             ];
             var c = commands[index];
             ElectionsApi.command(scope.election, c.path, c.method, c.data)
@@ -125,6 +130,24 @@ angular.module('avAdmin')
                 AuthApi.changeAuthEvent(scope.election.id, 'stopped')
                     .error(function(error) { scope.loading = false; scope.error = error; });
             }
+        }
+
+        function calculateResults(el) {
+            if (el.status !== 'tally_ok') {
+                return;
+            }
+
+            scope.loading = true;
+            scope.prevStatus = 'tally_ok';
+            scope.waiting = true;
+            setTimeout(waitElectionChange, 1000);
+
+            var path = 'calculate-results';
+            var method = 'POST';
+            // TODO add config to calculate results
+            var data = [ [ "agora_results.pipes.results.do_tallies", {"ignore_invalid_votes": true} ] ];
+            ElectionsApi.command(el, path, method, data)
+                .catch(function(error) { scope.loading = false; scope.error = error; });
         }
 
         function sendAuthCodes(election) {
