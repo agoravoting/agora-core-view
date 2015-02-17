@@ -6,9 +6,10 @@ angular.module('avAdmin')
         scope.log = '';
         if (ElectionsApi.currentElections.length === 0 && !!ElectionsApi.currentElection) {
           scope.elections = [ElectionsApi.currentElection];
+        } else {
+          scope.elections = ElectionsApi.currentElections;
+          ElectionsApi.currentElections = [];
         }
-        scope.elections = ElectionsApi.currentElections;
-        ElectionsApi.currentElections = [];
 
         function getCreatePerm(el) {
             console.log("creating perm for election " + el.title);
