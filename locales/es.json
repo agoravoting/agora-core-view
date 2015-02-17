@@ -145,6 +145,7 @@
   "avElection": {
     "resultsLoadingText": "Cargando resultados",
     "errorLoadingText": "Error cargando resultados. Puede que el recuento aun no se haya publicado, que no tengas permisos o incluso que la votación no exista",
+    "defaultShareText": "Vota en __title__ con @agoravoting __url__",
 
     "resultsHeader": "__title__: Resultados",
     "resultsTableCandidateHeader": "Candidatura",
@@ -329,7 +330,7 @@
         "publish": "publicar"
     },
     "import": {
-        "desc": "Importar una votación desde tsv te permite administrar y automatizar la creación de votaciones de forma externa. <a href=\"#\">Lee más acerca de el formato de votación TSV aquí</a>. Si quieres crear varias votaciones a la vez, puedes user la API o contactar con nosotros.",
+        "desc": "Importar una votación desde csv te permite administrar y automatizar la creación de votaciones de forma externa. <a href=\"#\">Lee más acerca de el formato de votación CSV aquí</a>. Si quieres crear varias votaciones a la vez, puedes user la API o contactar con nosotros.",
         "file": "Selecciona un fichero"
     },
     "dashboard": {
@@ -368,7 +369,10 @@
         "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votación" },
         "layouts": { "simple": "Simple", "yesno": "Sí/No" },
         "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votación?" },
-        "themes": { "default": "Por defecto", "podemos": "Podemos" }
+        "themes": { "default": "Por defecto", "podemos": "Podemos" },
+        "questionOptionsSummary": "<strong>__num_answers__</strong> candidates. Voters select between <strong>__min__</strong> and <strong>__max__</strong> options (randomize: <strong>__random__</strong>) and there are <strong>__num_winners__</strong> winners. The tally method is <strong>__tally_method__</strong>.",
+        "censusSize": "__num__ entries"
+
     },
     "questions": {
         "new": "Nueva pregunta",

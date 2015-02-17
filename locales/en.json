@@ -144,6 +144,7 @@
   "avElection": {
     "resultsLoadingText": "Loading results",
     "errorLoadingText": "Error loading results. Maybe they have not been published, you don't have permissions or maybe the election does not exist.",
+    "defaultShareText": "Vote in __title__ with @agoravoting __url__",
 
     "resultsHeader": "__title__: Results",
     "resultsTableCandidateHeader": "Candidature",
@@ -327,7 +328,7 @@
         "publish": "publish"
     },
     "import": {
-        "desc": "Importing an election from tsv allows you to manage and automatize the creation of elections details externally. <a href=\"#\">Read more about the TSV election format here</a>. If you want to create many elections at once, you can use the API or contact us.",
+        "desc": "Importing an election from csv allows you to manage and automatize the creation of elections details externally. <a href=\"#\">Read more about the CSV election format here</a>. If you want to create many elections at once, you can use the API or contact us.",
         "file": "Select file"
     },
     "dashboard": {
@@ -366,7 +367,9 @@
         "layout": { "label": "Layout", "placeholder": "Specifies how the whole election will be displayed" },
         "layouts": { "simple": "Simple", "yesno": "Yes/No" },
         "theme": { "label": "Theme", "placeholder": "How will the election look like?" },
-        "themes": { "default": "Default", "podemos": "Podemos" }
+        "themes": { "default": "Default", "podemos": "Podemos" },
+        "questionOptionsSummary": "<strong>__num_answers__</strong> candidates. Voters select between <strong>__min__</strong> and <strong>__max__</strong> options (randomize: <strong>__random__</strong>) and there are <strong>__num_winners__</strong> winners. The tally method is <strong>__tally_method__</strong>.",
+        "censusSize": "__num__ entries"
     },
     "questions": {
         "new": "New question",

@@ -13,16 +13,20 @@
         <tr>
             <th ng-i18next> avAdmin.sidebar.questions </th>
             <td>
-                <ul>
+                <ol>
                     <li ng-repeat="q in election.questions">
-                        {{ q.title|truncate:"50" }}
+                        <p>{{q.title|truncate:'50'}}</p>
+                        <p ng-i18next>[html:i18next]({'num_answers': q.answers.length, 'min': q.min, 'max': q.max, 'num_winners': q.num_winners, tally_method: q.tally_type, random: q.randomize_answer_order})avAdmin.basic.questionOptionsSummary</p>
                     </li>
-                </ul>
+                </ol>
             </td>
         </tr>
         <tr>
             <th ng-i18next> avAdmin.sidebar.census </th>
-            <td> {{ election.census.auth_method }} - {{ election.census.census }} </td>
+            <td>
+              {{ election.census.auth_method }} - {{ election.census.census }}
+              (<span ng-i18next>[i18next]({'num': election.census.voters.length})avAdmin.basic.censusSize</span>)
+            </td>
         </tr>
     </table>
 
