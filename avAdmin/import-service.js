@@ -64,7 +64,7 @@ angular.module('avAdmin')
           el.census.config.subject = rawel['subject'];
         }
         if (!!rawel['msg']) {
-          el.census.config.subject = rawel['msg'];
+          el.census.config.msg = rawel['msg'];
         }
         var auth = rawel['auth'].toLowerCase();
         if (auth === "sms") {
