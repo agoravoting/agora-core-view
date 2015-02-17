@@ -2,13 +2,28 @@
  * Public lading page for an election
  */
 angular.module('avElection')
-  .directive('aveDefaultElection', function($state, $stateParams) {
+  .directive('aveDefaultElection', function($state, $stateParams, $i18next, $location) {
     function link(scope, element, attrs) {
       scope.getShareLink = function() {
         if (!scope.election) {
           return "";
         }
-        return "https://twitter.com/intent/tweet?text=" + encodeURIComponent(scope.election.presentation.share_text) + "&source=webclient";
+
+        var text = scope.election.presentation.share_text;
+        if (!text || text.length === 0) {
+          var title = scope.election.title.substr(0, 40);
+          if (title.length > 40) {
+            title += "..";
+          }
+          text = $i18next(
+            "avElection.defaultShareText",
+            {
+              title: title,
+              url: $location.absUrl()
+            });
+        }
+
+        return "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&source=webclient";
       };
       scope.name = function () {
         return $state.current.name.replace("election.public.show.", "");
