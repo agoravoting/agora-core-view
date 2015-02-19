@@ -3,7 +3,7 @@ angular.module('avAdmin')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         scope.election = ElectionsApi.currentElection;
-        scope.vsystems = ['plurality-at-large', 'borda-nauru'];
+        scope.vsystems = ['plurality-at-large', 'borda-nauru', 'borda'];
 
         function save() {
             $state.go("admin.census");

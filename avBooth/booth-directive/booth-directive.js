@@ -63,6 +63,11 @@ angular.module('avBooth')
             state: stateEnum.multiQuestion,
             sorted: true,
             ordered: true
+          },
+          "borda": {
+            state: stateEnum.multiQuestion,
+            sorted: true,
+            ordered: true
           }
         };
         return map[question.tally_type];

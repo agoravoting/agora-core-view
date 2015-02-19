@@ -377,7 +377,7 @@
     "questions": {
         "new": "Nueva pregunta",
         "votingSystem": "Sistema de votación",
-        "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Borda Dowdall o de Nauru (1/n)"},
+        "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Borda Dowdall o de Nauru (1/n)", "borda": "Borda tradicional"},
         "winners": {"label": "Número de ganadores", "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de opciones"},
         "min": {"label": "Mínimo de opciones seleccionadas", "placeholder": "¿Cuántas opciones debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco"},
         "max": {"label": "Máximo de opciones seleccionadas", "placeholder": "¿Cuántas opciones puede un votante seleccionar?"},

@@ -8,6 +8,7 @@ angular.module('avElection')
       var mappings = {
         "simple.plurality-at-large": "plurality-at-large",
         "simple.borda-nauru": "plurality-at-large",
+        "simple.borda": "plurality-at-large",
         "pcandidates-election.pcandidates-election": "plurality-at-large"
       };
 

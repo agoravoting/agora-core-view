@@ -4,6 +4,7 @@ angular.module('avElection')
       var mappings = {
         "simple.plurality-at-large": "simple",
         "simple.borda-nauru": "simple",
+        "simple.borda": "simple",
         "pcandidates-election.pcandidates-election": "simple"
       };
 
