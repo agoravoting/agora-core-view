@@ -3,8 +3,15 @@ angular.module('avAdmin')
         var plugins = {};
         plugins.plugins = [];
 
-        plugins.add = function(name, icon, head, text) {
-            var p = {name: name, icon: icon, head: head, text: text};
+        plugins.add = function(p) {
+            // plugin format
+            // {
+            //  name: 'test',
+            //  directive: 'test', (optional, only if this link has a directive)
+            //  head: true | false,
+            //  link: ui-sref link,
+            //  menu: html | {icon: icon, text: text}
+            // }
             plugins.plugins.push(p);
         };
 

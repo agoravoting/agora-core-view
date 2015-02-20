@@ -7,7 +7,9 @@ angular.module('avAdmin').controller('AdminController',
     // plugin stuff
     $scope.plugins = AdminPlugins.plugins;
     AdminPlugins.plugins.forEach(function(p) {
-        var tpl = $compile( '<script type="text/ng-template" id="'+p.name+'"><div class="av-plugin-'+p.name+'"></div></script>' )($scope);
+        if (p.directive) {
+            var tpl = $compile( '<script type="text/ng-template" id="'+p.directive+'"><div class="av-plugin-'+p.directive+'"></div></script>' )($scope);
+        }
     });
 
     // state = admin.XXX
