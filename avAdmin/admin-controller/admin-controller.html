@@ -20,7 +20,7 @@
             <div av-admin-billinghistory ng-switch-when="admin.billhistory"></div>
         </div>
         <div id="content" class="col-sm-9" ng-repeat='template in plugins'
-             ng-include='template.name' ng-if="shortst == template.name"></div>
+             ng-include='template.directive' ng-if="shortst == template.name"></div>
     </div>
 </div>
 

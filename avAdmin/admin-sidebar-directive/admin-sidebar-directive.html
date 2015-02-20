@@ -24,7 +24,7 @@
   <!-- plugins -->
     <li role="presentation" ng-class="{active:state == 'admin.'+p.name, head:p.head, sub1:!p.head}" ng-repeat="p in plugins">
       <a ui-sref="{{ p.link }}">
-        <span ng-if="p.menu.html" ng-bind-html="p.menu.html"></span>
+        <span ng-if="p.menu.html" ng-bind-html="p.menu.html()"></span>
         <span ng-if="!p.menu.html">
             <i class="fa-fw fa fa-{{ p.menu.icon }}" ng-if="p.menu.icon"></i>
             <span ng-i18next>{{ p.menu.text }}</span>
