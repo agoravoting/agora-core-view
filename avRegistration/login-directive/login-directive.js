@@ -41,7 +41,6 @@ angular.module('avRegistration')
             scope.sendingData = true;
             Authmethod.login(data, autheventid)
                 .success(function(rcvData) {
-                    scope.sendingData = false;
                     if (rcvData.status === "ok") {
                         scope.khmac = rcvData.khmac;
                         $cookies.authevent = autheventid;
@@ -63,6 +62,7 @@ angular.module('avRegistration')
                                 });
                         }
                     } else {
+                        scope.sendingData = false;
                         scope.status = 'Not found';
                         scope.error = $i18next('avRegistration.invalidCredentials');
                     }

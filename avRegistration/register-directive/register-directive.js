@@ -27,11 +27,11 @@ angular.module('avRegistration')
             });
             Authmethod.signup(data, autheventid)
                 .success(function(rcvData) {
-                    scope.sendingData = false;
                     if (rcvData.status === "ok") {
                         scope.user = rcvData.user;
                         StateDataService.go('election.public.show.login', {id: autheventid}, data);
                     } else {
+                        scope.sendingData = false;
                         scope.status = 'Not found';
                         scope.error = rcvData.msg || $i18next('avRegistration.invalidRegisterData');
                     }
