@@ -1,15 +1,29 @@
-#sidebar ul {
+.admin-controller {
+  #sidebar ul {
     margin-bottom: -999999px;
     padding-bottom: 999999px;
-}
+  }
 
-#sidebar {
-}
-
-#container {
+  #container {
     overflow: hidden;
-}
+  }
 
-label {
+  label {
     text-align: right;
+  }
+
+  .header-block {
+    display: block;
+    background-color: @gray-lighter;
+    color: @gray;
+    padding: 5px;
+
+    > .glyphicon {
+      font-size: 18px;
+    }
+  }
+
+  .admin-controller-content {
+    background-color: lighten(@gray-lighter, 5%);
+  }
 }

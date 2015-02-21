@@ -45,8 +45,8 @@ angular.module('avAdmin').controller('AdminController',
         $scope.sidebarlinks = [
             {name: 'basic', icon: 'university'},
             {name: 'questions', icon: 'question-circle'},
-            {name: 'census', icon: 'users'},
             {name: 'auth', icon: 'unlock'},
+            {name: 'census', icon: 'users'},
             //{name: 'tally', icon: 'pie-chart'},
         ];
 

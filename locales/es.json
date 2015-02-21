@@ -390,6 +390,7 @@
         "reg": { "label": "Registro", "placeholder": "¿Cómo se genera el censo?" },
         "census": {"open": "Registro abierto", "close": "Registro cerrado"},
         "fields": {"label": "Campos extra", "placeholder": "Campos extra del votante"},
+        "configurationHeader": "Configuration",
         "manage": "Administrar censo",
         "name": "Nombre",
         "required": "Obligatorio",

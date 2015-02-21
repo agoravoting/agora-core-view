@@ -387,6 +387,7 @@
         "reg": { "label": "Registration", "placeholder": "How the census is generated?" },
         "census": {"open": "Open registration", "close": "Closed registration"},
         "fields": {"label": "Extra fields", "placeholder": "Voter extra fields"},
+        "configurationHeader": "Configuration",
         "manage": "Manage census",
         "name": "Name",
         "required": "Required",
