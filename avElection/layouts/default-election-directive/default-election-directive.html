@@ -33,7 +33,7 @@
         <h1 class="text-center election-title">{{election.title}}</h1>
         <p
           class="election-description"
-          ng-bind-html="election.description"
+          ng-bind-html="election.description | addTargetBlank"
           ng-if="name().indexOf('home') !== -1">
         </p>
 
