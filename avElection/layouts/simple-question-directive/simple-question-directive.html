@@ -1,5 +1,5 @@
 <h3>Q{{index+1}}. {{question.title}}</h3>
-<p>{{question.description}}</p>
+<p ng-bind-html="question.description | addTargetBlank"></p>
 <p>
   <span ng-i18next="[html:i18next]({method: tallyMethod})avElection.public.votingSystemText"></span>
   <span ng-i18next="[html:i18next]({min: question.min, max: question.max, numWinners: question.num_winners})avElection.public.questionInfoText"></span>
