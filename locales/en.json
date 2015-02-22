@@ -359,7 +359,25 @@
         "publicResultsUrl": "Public results url",
         "electionPublic": "Election public site",
         "censussend": "Census send correctly",
-        "preview": "Preview voting booth"
+        "preview": "Demo voting booth",
+        "modals": {
+          "createHeader": "Create election",
+          "createBody": "To create the election, its configuration is sent to the election authorities and they create election public encryption keys. After that, the election is no longer editable. Before doing this, please check that the configuration is correct (for example taking a look at the demo voting booth). If you need to change the election after this, you will have to create a new one.",
+          "confirmCreateButton": "Confirm and CREATE election",
+          "startHeader": "Start election",
+          "startBody": "Please be aware that once you start the elections, voters will be able to vote until the election is stopped",
+          "confirmStartButton": "Confirm and START the election",
+          "stopHeader": "Stop election",
+          "stopBody": "Once you stop the election, people will not be able to vote anymore.  Please be aware and exercise caution",
+          "confirmStopButton": "Confirm and STOP the election",
+          "tallyHeader": "Tally election",
+          "tallyBody": "The tally process is run by the election authorities and it might take a while, depending on the number of votes. It involves a mathematically verifiable cryptographic process that anonymizes and obtains the content of each vote.",
+          "confirmTallyButton": "Confirm and TALLY the election",
+          "publishResultsHeader": "Publish election results",
+          "publishResultsBody": "Currently only the election administrators have access to the calculated election results. When you publish the results, these will be made public for everyone to see.",
+          "confirmPublishResultsButton": "Confirm and PUBLISH election results",
+          "cancel": "Cancel"
+        }
     },
     "basic": {
         "intro": "Creating an election involves multiple steps, but it's not hard. Don't panic and go ahead, it only takes 5 minutes",
