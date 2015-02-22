@@ -205,9 +205,9 @@
 </div>
 
 <!-- view field -->
-<div ng-if="!beingEdited()" class="container-fluid view-field" ng-class="{'editable': !field.must}">
+<div ng-if="!beingEdited()" class="container-fluid view-field" ng-class="{'editable': !field.must && electionEditable()}">
   <!-- buttons -->
-  <div class="row" ng-if="!field.must">
+  <div class="row" ng-if="!field.must && electionEditable()">
     <div class="pull-left">
       <div class="btn-group" role="group">
         <button

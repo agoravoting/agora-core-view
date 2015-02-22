@@ -19,6 +19,17 @@
       border-color: @gray-lighter;
     }
 
+    &.disabled {
+      &.selected,  &.selected:hover {
+        border-color: @gray-lighter;
+      }
+
+      &:hover {
+        border-color: transparent;
+        cursor: default;
+      }
+    }
+
     input[type="radio"] {
       display: none;
     }

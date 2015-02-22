@@ -27,11 +27,12 @@
           for="census{{o}}"
           class="radio"
           ng-repeat="o in census"
-          ng-class="{'selected': election.census.census === o}">
+          ng-class="{'selected': election.census.census === o, 'disabled': !electionEditable()}">
           <input
             id="census{{o}}"
             type="radio"
             name="reg"
+            ng-disabled="!electionEditable()"
             value="{{ o }}" ng-model="election.census.census" />
           <span class="header" ng-i18next="avAdmin.census.census.{{ o }}">
           </span>
@@ -54,6 +55,7 @@
       <button
         class="btn btn-success pull-right"
         type="button"
+        ng-if="electionEditable()"
         ng-click="addEf()">
         <i class="fa fa-plus"></i>
         <span ng-i18next>avAdmin.census.add</span>
@@ -71,14 +73,24 @@
         </a>
       </p>
 
-      <div class="extra-fields-wrapper disable-select" dnd-list="list">
-        <div
-          av-extra-field
-          ng-repeat="field in election.census.extra_fields"
-          dnd-draggable="field"
-          dnd-dragstart="console.log('Started to drag an item')"
-          dnd-moved="election.census.extra_fields.splice($index, 1); console.log('item moved')"
-          dnd-effect-allowed="move">
+      <div ng-if="electionEditable()">
+        <div class="extra-fields-wrapper disable-select" dnd-list="list">
+          <div
+            av-extra-field
+            ng-repeat="field in election.census.extra_fields"
+            dnd-draggable="field"
+            dnd-dragstart="console.log('Started to drag an item')"
+            dnd-moved="election.census.extra_fields.splice($index, 1); console.log('item moved')"
+            dnd-effect-allowed="move">
+          </div>
+        </div>
+      </div>
+      <div ng-if="!electionEditable()">
+        <div class="extra-fields-wrapper disable-select">
+          <div
+            av-extra-field
+            ng-repeat="field in election.census.extra_fields">
+          </div>
         </div>
       </div>
   </form>

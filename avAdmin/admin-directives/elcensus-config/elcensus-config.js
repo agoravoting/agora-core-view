@@ -4,6 +4,9 @@ angular.module('avAdmin')
     function link(scope, element, attrs) {
         scope.census = ['open', 'close'];
         scope.election = ElectionsApi.currentElection;
+        scope.electionEditable = function() {
+          return !scope.election.id || scope.election.status === "registered";
+        };
         scope.newef = {};
         scope.newcensus = {};
         scope.extra_fields = {editing: null};
