@@ -4,25 +4,40 @@
     <p class="text-muted" ng-i18next>avAdmin.census.intro</p>
 
     <h4 class="header-block">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span
+        class="glyphicon glyphicon-chevron-right"
+        aria-hidden="true">
+      </span>
       <span ng-i18next>avAdmin.census.manage</span>
-        <button class="btn btn-success pull-right" ng-if="election.census.voters.length" ng-click="exportCensus()">
+        <button
+          class="btn btn-success pull-right"
+          ng-if="election.census.voters.length"
+          ng-click="exportCensus()">
           <i class="fa fa-download"></i>
           <span ng-i18next>export</span>
         </button>
     </h4>
 
     <div class="input-group search col-sm-6">
-      <input type="text" class="form-control" ng-model="q" placeholder="{{'avAdmin.elections.filter' | i18next}}">
+      <input
+        type="text"
+        class="form-control"
+        ng-model="q"
+        placeholder="{{'avAdmin.elections.filter' | i18next}}">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+        <button
+          class="btn btn-default"
+          type="button">
+          <i class="fa fa-search"></i>
+        </button>
       </span>
     </div>
 
     <table class="table table-bordered table-striped censustable">
       <tr ng-if="loadingcensus">
         <td>
-          <i class="fa fa-cog fa-spin fa-sw"></i> <span ng-i18next>loading</span>
+          <i class="fa fa-cog fa-spin fa-sw"></i>
+          <span ng-i18next>loading</span>
         </td>
       </tr>
 
@@ -36,7 +51,9 @@
         <td ng-repeat="(k, v) in c">
           {{ v }}
         </td>
-        <td><i class="fa fa-times" ng-click="delVoter($index)"></i></td>
+        <td>
+          <i class="fa fa-times" ng-click="delVoter($index)"></i>
+        </td>
       </tr>
     </table>
 
@@ -45,10 +62,21 @@
         <div class="col-sm-6">
           <p class="text-muted" ng-i18next>avAdmin.census.manualAdd</p>
           <form class="form">
-            <div class="form-group" ng-repeat="ef in election.census.extra_fields">
-              <input type="text" class="form-control" placeholder="{{ef.name}}" ng-model="newcensus[ef.name]"/>
+            <div
+              class="form-group"
+              ng-repeat="ef in election.census.extra_fields">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="{{ef.name}}"
+                ng-model="newcensus[ef.name]"/>
             </div>
-            <button class="btn btn-success" type="button" ng-click="addToCensus()" ng-i18next>avAdmin.census.add</button>
+            <button
+              class="btn btn-success btn-block"
+              type="button"
+              ng-click="addToCensus()" ng-i18next>
+              avAdmin.census.addCensusElement
+            </button>
           </form>
         </div>
         <div class="col-sm-6">
@@ -61,14 +89,30 @@
           </p>
           <form class="form">
             <div class="form-group">
-              <textarea class="form-control" ng-i18next="[placeholder]avAdmin.census.massive2" ng-model="massiveef"></textarea>
+              <textarea
+                class="form-control"
+                ng-i18next="[placeholder]avAdmin.census.massive2"
+                ng-model="massiveef">
+              </textarea>
             </div>
-            <button class="btn btn-success" type="button" ng-click="massiveAdd()" ng-i18next>avAdmin.census.add</button>
+            <button
+              class="btn btn-success btn-block"
+              type="button"
+              ng-click="massiveAdd()"
+              ng-i18next>
+              avAdmin.census.addCensus
+            </button>
           </form>
         </div>
       </div>
     </div>
 
-    <button ui-sref="admin.create()" ng-if="!election.id" class="btn btn-block btn-success" ng-i18next>next</button>
+    <button
+      ui-sref="admin.create()"
+      ng-if="!election.id"
+      class="btn btn-block btn-success"
+      ng-i18next>
+      next
+    </button>
 
 </div>

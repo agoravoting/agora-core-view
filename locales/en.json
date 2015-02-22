@@ -423,6 +423,8 @@
         "name": "Name",
         "required": "Required",
         "add": "Add a new field",
+        "addCensusElement": "Add person",
+        "addCensus": "Add CSV to census",
         "nonEditableField": "(Required by auth method)",
         "manualAdd": "Manual add",
         "massive1": "CSV file, use semicolon to split fields",

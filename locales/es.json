@@ -419,6 +419,8 @@
         "name": "Nombre",
         "required": "Obligatorio",
         "add": "Añadir un nuevo campo",
+        "addCensusElement": "Añadir persona",
+        "addCensus": "Añadir CSV al censo",
         "manualAdd": "Añadir a mano",
         "nonEditableField": "(Requerido por método de autenticación)",
         "massive1": "Fichero CSV, usa punto y coma para separar lo campos",
