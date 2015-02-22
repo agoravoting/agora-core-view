@@ -6,6 +6,7 @@ angular.module('avAdmin')
         scope.election = ElectionsApi.currentElection;
         scope.newef = {};
         scope.newcensus = {};
+        scope.extra_fields = {editing: null};
         scope.massiveef = "";
         scope.loadingcensus = !ElectionsApi.newElection;
 

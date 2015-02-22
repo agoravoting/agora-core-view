@@ -2,10 +2,8 @@ angular.module('avAdmin')
   .directive('avExtraField', function() {
     function link(scope, element, attrs) {
       if (scope.field.edit !== undefined) {
-        scope.edit = true;
+        scope.extra_fields.editing = scope.field;
         delete scope.field.edit;
-      } else {
-        scope.edit = false;
       }
       scope.field.disabled = true;
       scope.editable = !(
@@ -13,7 +11,15 @@ angular.module('avAdmin')
         (scope.election.census.auth_method === "email" && scope.field.type === "email"));
 
       scope.toggleEdit = function() {
-        scope.edit = !scope.edit;
+        if (scope.extra_fields.editing === scope.field) {
+          scope.extra_fields.editing = null;
+        } else {
+          scope.extra_fields.editing = scope.field;
+        }
+      };
+
+      scope.beingEdited = function() {
+        return scope.extra_fields.editing === scope.field;
       };
 
       scope.removeField = function() {

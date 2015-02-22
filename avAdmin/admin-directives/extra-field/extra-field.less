@@ -16,6 +16,7 @@
       background-color: @gray-lighter;
 
       .btn-group {
+        z-index: 2;
         opacity: 1;
       }
 
@@ -33,6 +34,7 @@
     padding: 8px 14px 8px 8px;
 
     .btn-group {
+      z-index: 2;
       margin-left: 14px;
     }
 
@@ -47,5 +49,17 @@
   .non-editable {
       margin-bottom: -20px;
       color: @gray-light;
+  }
+
+  &.dndDragging {
+    box-shadow: 1px 0px 10px 1px rgba(0, 0, 0, 0.3);
+
+    .editting {
+      box-shadow: none;
+    }
+  }
+
+  &.dndDraggingSource {
+    display: none;
   }
 }
