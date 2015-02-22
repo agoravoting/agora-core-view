@@ -196,9 +196,19 @@ angular.module('avAdmin')
             .catch(function(error) { scope.loading = false; scope.error = error; });
       }
 
-      function sendAuthCodes(election) {
+      function sendAuthCodesModal() {
+        $modal.open({
+          templateUrl: "avAdmin/admin-directives/dashboard/send-auth-codes-modal.html",
+          controller: "SendAuthCodesModal",
+          size: 'lg'
+        }).result.then(function () {
+          sendAuthCodes();
+        });
+      }
+
+      function sendAuthCodes() {
         scope.loading = true;
-        Authmethod.sendAuthCodes(election.id)
+        Authmethod.sendAuthCodes(scope.election.id)
           .success(function(r) {
             scope.loading = false;
             scope.msg = "avAdmin.dashboard.censussend";
@@ -209,7 +219,7 @@ angular.module('avAdmin')
       angular.extend(scope, {
         doAction: doAction,
         doActionConfirm: doActionConfirm,
-        sendAuthCodes: sendAuthCodes,
+        sendAuthCodesModal: sendAuthCodesModal
       });
     }
 

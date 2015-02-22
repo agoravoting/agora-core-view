@@ -336,6 +336,7 @@
         "file": "Selecciona un fichero"
     },
     "dashboard": {
+        "sendAuthCodes": "Enviar autenticación",
         "donow": "pulsa para hacer ahora",
         "votes": "Votos",
         "census": "Censo",
@@ -378,6 +379,9 @@
           "publishResultsHeader": "Publish election results",
           "publishResultsBody": "Currently only the election administrators have access to the calculated election results. When you publish the results, these will be made public for everyone to see.",
           "confirmPublishResultsButton": "Confirm and PUBLISH election results",
+          "sendAuthCodesHeader": "Send authentication codes",
+          "sendAuthCodesBody": "This action will send a message to all the registered electors in the census. Note that sending many messages can be considered as SPAM, so proceed with caution. Also, please review first the message that will be sent.",
+          "confirmSendAuthCodesButton": "SEND authentication codes to ALL census",
           "cancel": "Cancel"
         }
     },

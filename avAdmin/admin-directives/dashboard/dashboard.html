@@ -44,8 +44,14 @@
         <div class="col-sm-4 text-right">
             <div class="block">
                 <strong>{{ election.auth.census|number }}</strong><br/>
-                <button ng-click="sendAuthCodes(election)" ng-if="election.status == 'started'" class="btn btn-success">
+                <button
+                  ng-click="sendAuthCodesModal(election)"
+                  ng-if="election.status == 'started'"
+                  class="btn btn-success send-auth pull-left">
                     <i class="fa fa-sw fa-send"></i>
+                    <span ng-i18next>
+                      avAdmin.dashboard.sendAuthCodes
+                    </span>
                 </button>
                 <span ng-i18next>avAdmin.dashboard.census</span>
             </div>
