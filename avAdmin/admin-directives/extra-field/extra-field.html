@@ -1,7 +1,7 @@
 <!-- edit fields -->
 <div ng-if="beingEdited()" class="editting">
   <!-- buttons -->
-  <div class="row" ng-if="editable" ng-class="{'always-show': beingEdited()}">
+  <div class="row" ng-class="{'always-show': beingEdited()}">
     <div class="pull-left">
       <div class="btn-group" role="group">
         <button
@@ -205,9 +205,9 @@
 </div>
 
 <!-- view field -->
-<div ng-if="!beingEdited()" class="container-fluid view-field" ng-class="{'editable': editable}">
+<div ng-if="!beingEdited()" class="container-fluid view-field" ng-class="{'editable': !field.must}">
   <!-- buttons -->
-  <div class="row" ng-if="editable">
+  <div class="row" ng-if="!field.must">
     <div class="pull-left">
       <div class="btn-group" role="group">
         <button
@@ -223,7 +223,7 @@
     </div>
   </div>
 
-  <div class="row" ng-if="!editable">
+  <div class="row" ng-if="field.must">
     <div class="pull-left non-editable">
       <span ng-i18next>
         avAdmin.census.nonEditableField

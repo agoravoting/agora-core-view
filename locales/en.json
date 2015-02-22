@@ -307,7 +307,8 @@
         "dashboard": "Dashboard",
         "basic": "Basic details",
         "questions": "Questions",
-        "census": "Census",
+        "censusConfig": "Census Configuration",
+        "census": "Census Data",
         "auth": "Authentication",
         "tally": "Tally",
         "create": "Create Election",
@@ -383,8 +384,11 @@
         "candidates": {"label": "Candidates", "placeholder": "Candidate options that can be voted for this question"},
         "newopt": "New option name"
     },
+    "censusConfig": {
+        "intro": "The census specifies who can vote and the details we need from each elector. Here you can configure it"
+    },
     "census": {
-        "intro": "The census specifies who can vote and the details we need from each elector. Here you can configure and manage it",
+        "intro": "The census specifies who can vote and the details we need from each elector. Here you can manage it",
         "reg": { "label": "Registration", "placeholder": "How the census is generated?" },
         "census": {
           "open": "Open registration",

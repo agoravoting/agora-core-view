@@ -309,7 +309,8 @@
         "dashboard": "Panel de control",
         "basic": "Detalles básicos",
         "questions": "Preguntas",
-        "census": "Censo",
+        "censusConfig": "Configuración Censal",
+        "census": "Datos censales",
         "auth": "Autorización",
         "tally": "Recuento",
         "create": "Crear Votación",
@@ -386,8 +387,11 @@
         "candidates": {"label": "Candidatos", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
         "newopt": "Nueva opción"
     },
+    "censusConfig": {
+        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo"
+    },
     "census": {
-        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo y administrarlo",
+        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes gestionarlo",
         "reg": { "label": "Registro", "placeholder": "¿Cómo se genera el censo?" },
         "census": {"open": "Registro abierto", "close": "Registro cerrado"},
         "fields": {"label": "Campos extra", "placeholder": "Campos extra del votante"},

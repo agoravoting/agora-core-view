@@ -5,89 +5,10 @@
 
     <h4 class="header-block">
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span ng-i18next>avAdmin.census.configurationHeader</span>
-    </h4>
-
-    <form role="form" class="form form-horizontal">
-        <!-- Registration -->
-        <div class="form-group">
-            <label class="col-sm-2 control-label" ng-i18next>
-              avAdmin.census.reg.label
-            </label>
-            <div class="col-sm-10">
-                <p class="text-muted">
-                  <span ng-i18next>
-                    avAdmin.census.reg.placeholder
-                  </span>
-                  <a href="" class="learn-more" target="_blank" ng-i18next>
-                    avAdmin.learnMore
-                  </a>
-                </p>
-                <label
-                  for="census{{o}}"
-                  class="radio"
-                  ng-repeat="o in census"
-                  ng-class="{'selected': election.census.census === o}">
-                  <input
-                    id="census{{o}}"
-                    type="radio"
-                    name="reg"
-                    value="{{ o }}" ng-model="election.census.census" />
-                  <span class="header" ng-i18next="avAdmin.census.census.{{ o }}">
-                  </span>
-                  <span
-                    class="description"
-                    ng-i18next="avAdmin.census.census.{{ o }}Description">
-                  </span>
-                  <a href="" class="learn-more" target="_blank" ng-i18next>
-                    avAdmin.learnMore
-                  </a>
-                </label>
-            </div>
-        </div>
-    </form>
-
-    <h4 class="header-block">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span ng-i18next>avAdmin.census.extraFieldsHeader</span>
-    </h4>
-
-    <form role="form" class="form form-horizontal">
-      <div class="form-group">
-        <p>
-          <span ng-i18next>
-            avAdmin.census.extraFieldsInfo
-          </span>
-          <a href="" class="learn-more" target="_blank" ng-i18next>
-            avAdmin.learnMore
-          </a>
-        </p>
-        <button
-          class="btn btn-success btn-block"
-          type="button"
-          ng-click="addEf()"
-          ng-i18next>
-          avAdmin.census.add
-        </button>
-
-        <div class="extra-fields-wrapper disable-select" dnd-list="list">
-          <div
-            av-extra-field
-            ng-repeat="field in election.census.extra_fields"
-            dnd-draggable="field"
-            dnd-dragstart="console.log('Started to drag an item')"
-            dnd-moved="election.census.extra_fields.splice($index, 1); console.log('item moved')"
-            dnd-effect-allowed="move">
-          </div>
-        </div>
-    </form>
-
-    <h4 class="header-block">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span ng-i18next>avAdmin.census.manage</span>
-        <button class="btn btn-success" ng-if="election.census.voters.length" ng-click="exportCensus()">
-            <i class="fa fa-download"></i>
-            <span ng-i18next>export</span>
+        <button class="btn btn-success pull-right" ng-if="election.census.voters.length" ng-click="exportCensus()">
+          <i class="fa fa-download"></i>
+          <span ng-i18next>export</span>
         </button>
     </h4>
 
@@ -99,54 +20,55 @@
     </div>
 
     <table class="table table-bordered table-striped censustable">
-        <tr ng-if="loadingcensus">
-            <td>
-                <i class="fa fa-cog fa-spin fa-sw"></i> <span ng-i18next>loading</span>
-            </td>
-        </tr>
+      <tr ng-if="loadingcensus">
+        <td>
+          <i class="fa fa-cog fa-spin fa-sw"></i> <span ng-i18next>loading</span>
+        </td>
+      </tr>
 
-        <tr>
-            <th ng-repeat="(k, v) in election.census.voters.0">
-                {{ k }}
-            </th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="c in election.census.voters | filter:q">
-            <td ng-repeat="(k, v) in c">
-                {{ v }}
-            </td>
-            <td><i class="fa fa-times" ng-click="delVoter($index)"></i></td>
-        </tr>
+      <tr>
+        <th ng-repeat="(k, v) in election.census.voters.0">
+          {{ k }}
+        </th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="c in election.census.voters | filter:q">
+        <td ng-repeat="(k, v) in c">
+          {{ v }}
+        </td>
+        <td><i class="fa fa-times" ng-click="delVoter($index)"></i></td>
+      </tr>
     </table>
 
     <div class="well">
-        <div class="row">
-            <div class="col-sm-6">
-                <p class="text-muted" ng-i18next>avAdmin.census.manualAdd</p>
-                <form class="form">
-                    <div class="form-group" ng-repeat="ef in election.census.extra_fields">
-                        <input type="text" class="form-control" placeholder="{{ef.name}}" ng-model="newcensus[ef.name]"/>
-                    </div>
-                    <button class="btn btn-success" type="button" ng-click="addToCensus()" ng-i18next>avAdmin.census.add</button>
-                </form>
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="text-muted" ng-i18next>avAdmin.census.manualAdd</p>
+          <form class="form">
+            <div class="form-group" ng-repeat="ef in election.census.extra_fields">
+              <input type="text" class="form-control" placeholder="{{ef.name}}" ng-model="newcensus[ef.name]"/>
             </div>
-            <div class="col-sm-6">
-                <p class="text-muted" ng-i18next> avAdmin.census.massive1 </p>
-                <p class="text-muted">
-                    <span ng-i18next>eg</span>
-                    <span ng-repeat="ef in election.census.extra_fields">
-                        {{ ef.name }}<span ng-if="!$last">;<span>
-                    </span>
-                </p>
-                <form class="form">
-                    <div class="form-group">
-                        <textarea class="form-control" ng-i18next="[placeholder]avAdmin.census.massive2" ng-model="massiveef"></textarea>
-                    </div>
-                    <button class="btn btn-success" type="button" ng-click="massiveAdd()" ng-i18next>avAdmin.census.add</button>
-                </form>
+            <button class="btn btn-success" type="button" ng-click="addToCensus()" ng-i18next>avAdmin.census.add</button>
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <p class="text-muted" ng-i18next> avAdmin.census.massive1 </p>
+          <p class="text-muted">
+            <span ng-i18next>eg</span>
+            <span ng-repeat="ef in election.census.extra_fields">
+              {{ ef.name }}<span ng-if="!$last">;<span>
+            </span>
+          </p>
+          <form class="form">
+            <div class="form-group">
+              <textarea class="form-control" ng-i18next="[placeholder]avAdmin.census.massive2" ng-model="massiveef"></textarea>
             </div>
+            <button class="btn btn-success" type="button" ng-click="massiveAdd()" ng-i18next>avAdmin.census.add</button>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <button ng-click="saveCensus()" class="btn btn-block btn-success" ng-i18next>next</button>
+    <button ui-sref="admin.create()" ng-if="!election.id" class="btn btn-block btn-success" ng-i18next>next</button>
 
 </div>

@@ -6,7 +6,7 @@ angular.module('avAdmin')
         scope.vsystems = ['plurality-at-large', 'borda-nauru', 'borda'];
 
         function save() {
-            $state.go("admin.census");
+            $state.go("admin.auth");
         }
 
         function newq() {

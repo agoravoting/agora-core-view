@@ -40,12 +40,13 @@ angular.module('avAdmin').controller('AdminController',
         $state.go("admin.basic");
     }
 
-    var states =[ 'admin.dashboard', 'admin.basic', 'admin.questions', 'admin.census', 'admin.auth', 'admin.tally', 'admin.create'];
+    var states =[ 'admin.dashboard', 'admin.basic', 'admin.questions', 'admin.censusConfig', 'admin.census', 'admin.auth', 'admin.tally', 'admin.create'];
     if (states.indexOf($scope.state) >= 0) {
         $scope.sidebarlinks = [
             {name: 'basic', icon: 'university'},
             {name: 'questions', icon: 'question-circle'},
             {name: 'auth', icon: 'unlock'},
+            {name: 'censusConfig', icon: 'newspaper-o'},
             {name: 'census', icon: 'users'},
             //{name: 'tally', icon: 'pie-chart'},
         ];
