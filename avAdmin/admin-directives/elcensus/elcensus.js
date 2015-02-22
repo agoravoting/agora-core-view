@@ -75,11 +75,12 @@ angular.module('avAdmin')
                 required: scope.newef.required,
                 min: 2,
                 max: 200,
-                required_on_authentication: true
+                required_on_authentication: true,
+                edit: true
             };
 
             scope.newef = {};
-            efs.push(ef);
+            efs.unshift(ef);
         }
 
         function addToCensus() {

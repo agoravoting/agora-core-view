@@ -1,0 +1,46 @@
+[av-admin-elcensus] {
+  .form-group .radio {
+    border: 2px solid transparent;
+    border-radius: 4px;
+    padding: 10px 15px;
+    text-align: left;
+    cursor: pointer;
+
+    &.selected {
+      background-color: @av-primary-contrast;
+      border-color: @gray-lighter;
+
+      .header {
+        color: @av-secondary;
+      }
+    }
+
+    &:hover {
+      border-color: @gray-lighter;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    .header {
+      display: block;
+      text-align: left;
+      font-size: 16px;
+      padding-bottom: 6px;
+    }
+
+    .description {
+      color: @gray-light;
+    }
+  }
+
+  .form-group {
+    margin-left: 0;
+    margin-right: 0;
+
+    .extra-fields-wrapper {
+      padding-top: 25px;
+    }
+  }
+}

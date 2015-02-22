@@ -11,58 +11,105 @@
     <form role="form" class="form form-horizontal">
         <!-- Registration -->
         <div class="form-group">
-            <label class="col-sm-2" for="reg" ng-i18next="avAdmin.census.reg.label"></label>
+            <label class="col-sm-2" ng-i18next>
+              avAdmin.census.reg.label
+            </label>
             <div class="col-sm-10">
-                <p class="text-muted" ng-i18next>
+                <p class="text-muted">
+                  <span ng-i18next>
                     avAdmin.census.reg.placeholder
+                  </span>
+                  <a href="" class="learn-more" target="_blank" ng-i18next>
+                    avAdmin.learnMore
+                  </a>
                 </p>
-                <div class="radio" ng-repeat="o in census">
-                    <label>
-                        <input type="radio" name="reg" value="{{ o }}" ng-model="election.census.census"/>
-                        <span ng-i18next="avAdmin.census.census.{{ o }}"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <!-- extra fields -->
-        <div class="form-group">
-            <label class="col-sm-2" for="reg" ng-i18next="avAdmin.census.fields.label"></label>
-            <div class="col-sm-10">
-                <p class="text-muted" ng-i18next>
-                    avAdmin.census.fields.placeholder
-                </p>
-                <table class="table table-striped table-bordered">
-                    <tr>
-                        <th ng-i18next>avAdmin.census.name</th>
-                        <th ng-i18next>avAdmin.census.required</th>
-                        <th></th>
-                    </tr>
-                    <tr ng-repeat="ef in election.census.extra_fields">
-                        <td width="100%">{{ ef.name }}</td>
-                        <td><input type="checkbox" class="form-control" ng-model="ef.required"/></td>
-                        <td><i class="fa fa-times" ng-click="delEf($index)" ng-if="!ef.must"></i></td>
-                    </tr>
-                </table>
-
-                <div class="input-group">
-                      <input type="text" class="form-control" placeholder="" ng-model="newef.name" ng-enter="addEf()"/>
-                      <span class="input-group-btn">
-                        <button class="btn btn-success" type="button" ng-click="addEf()" ng-i18next>avAdmin.census.add</button>
-                      </span>
-                </div><!-- /input-group -->
-
+                <label
+                  for="census{{o}}"
+                  class="radio"
+                  ng-repeat="o in census"
+                  ng-class="{'selected': election.census.census === o}">
+                  <input
+                    id="census{{o}}"
+                    type="radio"
+                    name="reg"
+                    value="{{ o }}" ng-model="election.census.census" />
+                  <span class="header" ng-i18next="avAdmin.census.census.{{ o }}">
+                  </span>
+                  <span
+                    class="description"
+                    ng-i18next="avAdmin.census.census.{{ o }}Description">
+                  </span>
+                  <a href="" class="learn-more" target="_blank" ng-i18next>
+                    avAdmin.learnMore
+                  </a>
+                </label>
             </div>
         </div>
     </form>
 
-    <h3>
-        <span ng-i18next>avAdmin.census.manage</span>
+    <h4 class="header-block">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span ng-i18next>avAdmin.census.extraFieldsHeader</span>
+    </h4>
+
+    <form role="form" class="form form-horizontal">
+      <div class="form-group">
+        <p>
+          <span ng-i18next>
+            avAdmin.census.extraFieldsInfo
+          </span>
+          <a href="" class="learn-more" target="_blank" ng-i18next>
+            avAdmin.learnMore
+          </a>
+        </p>
+        <button
+          class="btn btn-success btn-block"
+          type="button"
+          ng-click="addEf()"
+          ng-i18next>
+          avAdmin.census.add
+        </button>
+
+        <div class="extra-fields-wrapper">
+          <div av-extra-field ng-repeat="field in election.census.extra_fields">
+          </div>
+        </div>
+        <!--
+        <div class="col-sm-10">
+            <p class="text-muted" ng-i18next>
+                avAdmin.census.fields.placeholder
+            </p>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th ng-i18next>avAdmin.census.name</th>
+                    <th ng-i18next>avAdmin.census.required</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="ef in election.census.extra_fields">
+                    <td width="100%">{{ ef.name }}</td>
+                    <td><input type="checkbox" class="form-control" ng-model="ef.required"/></td>
+                    <td><i class="fa fa-times" ng-click="delEf($index)" ng-if="!ef.must"></i></td>
+                </tr>
+            </table>
+
+            <div class="input-group">
+                  <input type="text" class="form-control" placeholder="" ng-model="newef.name" ng-enter="addEf()"/>
+                  <span class="input-group-btn">
+                    <button class="btn btn-success" type="button" ng-click="addEf()" ng-i18next>avAdmin.census.add</button>
+                  </span>
+            </div>
+        </div>
+        -->
+    </form>
+
+    <h4 class="header-block">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span ng-i18next>avAdmin.census.manage</span>
         <button class="btn btn-success" ng-if="election.census.voters.length" ng-click="exportCensus()">
             <i class="fa fa-download"></i>
             <span ng-i18next>export</span>
         </button>
-    </h3>
+    </h4>
 
     <div class="input-group search col-sm-6">
       <input type="text" class="form-control" ng-model="q" placeholder="{{'avAdmin.elections.filter' | i18next}}">
