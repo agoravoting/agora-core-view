@@ -5,6 +5,10 @@ angular.module('avAdmin')
         scope.election = ElectionsApi.currentElection;
         scope.vsystems = ['plurality-at-large', 'borda-nauru', 'borda'];
 
+        scope.electionEditable = function() {
+          return !scope.election.id || scope.election.status === "registered";
+        };
+
         function save() {
             $state.go("admin.auth");
         }

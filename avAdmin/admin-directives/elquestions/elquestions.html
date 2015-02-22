@@ -3,6 +3,12 @@
 
     <div av-admin-question question="q" ng-repeat="q in election.questions"> </div>
 
-    <button ng-click="newQuestion()" class="btn btn-block btn-primary" ng-i18next>avAdmin.questions.new</button>
+    <button
+      ng-click="newQuestion()"
+      class="btn btn-block btn-primary"
+      ng-disabled="!electionEditable()"
+      ng-i18next>
+      avAdmin.questions.new
+    </button>
     <button ng-click="saveQuestions()" class="btn btn-block btn-success" ng-i18next>next</button>
 </div>

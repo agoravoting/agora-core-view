@@ -6,6 +6,10 @@ angular.module('avAdmin')
         scope.layouts = ['simple', 'yesno'];
         scope.themes = ['default', 'podemos'];
 
+        scope.electionEditable = function() {
+          return !scope.election.id || scope.election.status === "registered";
+        };
+
         function save() {
             $state.go("admin.questions");
         }
