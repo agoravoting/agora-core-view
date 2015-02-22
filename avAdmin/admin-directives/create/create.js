@@ -4,6 +4,8 @@ angular.module('avAdmin')
     function link(scope, element, attrs) {
         scope.creating = false;
         scope.log = '';
+        scope.createElectionBool = true;
+
         if (ElectionsApi.currentElections.length === 0 && !!ElectionsApi.currentElection) {
           scope.elections = [ElectionsApi.currentElection];
         } else {
@@ -49,7 +51,12 @@ angular.module('avAdmin')
                 extra_fields: []
             };
 
-            d.extra_fields = _.filter(el.census.extra_fields, function(ef) { return !ef.must; });
+            d.extra_fields = _.filter(el.census.extra_fields, function(ef) {
+              var must = ef.must;
+              delete ef.disabled;
+              delete ef.must;
+              return must;
+            });
 
             Authmethod.createEvent(d)
                 .success(function(data) {
@@ -83,13 +90,17 @@ angular.module('avAdmin')
         }
 
         function createElection(el) {
-            console.log("creating election " + el.title);
             var deferred = $q.defer();
-            // Creating the election
-            logInfo($i18next('avAdmin.create.creatingEl', {title: el.title, id: el.id}));
-            ElectionsApi.command(el, 'create', 'POST', {})
-              .then(function(data) { deferred.resolve(el); })
-              .catch(deferred.reject);
+            if (scope.createElectionBool) {
+              console.log("creating election " + el.title);
+              // Creating the election
+              logInfo($i18next('avAdmin.create.creatingEl', {title: el.title, id: el.id}));
+              ElectionsApi.command(el, 'create', 'POST', {})
+                .then(function(data) { deferred.resolve(el); })
+                .catch(deferred.reject);
+            } else {
+              deferred.resolve(el);
+            }
             return deferred.promise;
         }
 
@@ -131,16 +142,18 @@ angular.module('avAdmin')
         }
 
         function waitForCreated(id, f) {
-            console.log("waiting for election id = " + id);
-            ElectionsApi.getElection(id, true)
-                .then(function(el) {
-                    var deferred = $q.defer();
-                    if (el.status === 'created') {
-                        f();
-                    } else {
-                        setTimeout(function() { waitForCreated(id, f); }, 3000);
-                    }
-                });
+          console.log("waiting for election id = " + id);
+          ElectionsApi.getElection(id, true)
+            .then(function(el) {
+                var deferred = $q.defer();
+                if (scope.createElectionBool && el.status === 'created' ||
+                  !scope.createElectionBool && el.status === 'registered')
+                {
+                  f();
+                } else {
+                  setTimeout(function() { waitForCreated(id, f); }, 3000);
+                }
+            });
         }
 
         angular.extend(scope, {

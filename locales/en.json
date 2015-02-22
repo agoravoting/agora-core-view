@@ -389,7 +389,8 @@
         "theme": { "label": "Theme", "placeholder": "How will the election look like?" },
         "themes": { "default": "Default", "podemos": "Podemos" },
         "questionOptionsSummary": "<strong>__num_answers__</strong> candidates. Voters select between <strong>__min__</strong> and <strong>__max__</strong> options (randomize: <strong>__random__</strong>) and there are <strong>__num_winners__</strong> winners. The tally method is <strong>__tally_method__</strong>.",
-        "censusSize": "__num__ people"
+        "censusSize": "__num__ people",
+        "registerAndCreateElection": "Not only register the election, but also create it on the election authorities. This means you won't be able to modify the election."
     },
     "questions": {
         "new": "New question",

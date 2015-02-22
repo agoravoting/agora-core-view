@@ -34,6 +34,19 @@
       <div class="panel-body" av-scroll-to-bottom ng-bind-html="log"></div>
     </div>
 
+    <span ng-if="createElectionBool">createElectionBool</span>
+    <span ng-if="!createElectionBool">!createElectionBool</span>
+
+    <div class="form-group create-election" ng-class="{'hidden': creating}">
+      <input
+        type="checkbox"
+        id="createElection"
+        ng-model="createElectionBool" />
+      <label for="createElection" ng-i18next>
+        avAdmin.basic.registerAndCreateElection
+      </label>
+    </div>
+
     <button class="btn btn-block btn-success" ng-if="!creating" ng-click="createElections()">
         <span ng-i18next>[i18next]({'num': elections.length})avAdmin.create.create</span>
     </button>
