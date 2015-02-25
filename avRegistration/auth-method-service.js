@@ -148,9 +148,15 @@ angular.module('avRegistration')
             return $http.get(backendUrl + 'acl/mine/?object_type=AuthEvent&perm=edit&order=-pk&page='+page);
         };
 
-        authmethod.sendAuthCodes = function(eid) {
+        authmethod.sendAuthCodes = function(eid, election) {
             var url = backendUrl + 'auth-event/'+eid+'/census/send_auth/';
             var data = {};
+            if (angular.isDefined(election)) {
+              data.msg = election.census.config.msg;
+              if (election.census.auth_method === 'email') {
+                data.subject = election.census.config.subject;
+              }
+            }
             return $http.post(url, data);
         };
 

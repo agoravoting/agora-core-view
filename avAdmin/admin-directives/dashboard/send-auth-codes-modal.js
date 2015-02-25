@@ -1,6 +1,7 @@
 angular.module('avAdmin')
   .controller('SendAuthCodesModal',
-    function($scope, $modalInstance) {
+    function($scope, $modalInstance, election) {
+      $scope.election = election;
       $scope.ok = function () {
         $modalInstance.close();
       };

@@ -200,7 +200,12 @@ angular.module('avAdmin')
         $modal.open({
           templateUrl: "avAdmin/admin-directives/dashboard/send-auth-codes-modal.html",
           controller: "SendAuthCodesModal",
-          size: 'lg'
+          size: 'lg',
+          resolve: {
+            election: function () {
+              return scope.election;
+            }
+          }
         }).result.then(function () {
           sendAuthCodes();
         });
@@ -208,7 +213,7 @@ angular.module('avAdmin')
 
       function sendAuthCodes() {
         scope.loading = true;
-        Authmethod.sendAuthCodes(scope.election.id)
+        Authmethod.sendAuthCodes(scope.election.id, scope.election)
           .success(function(r) {
             scope.loading = false;
             scope.msg = "avAdmin.dashboard.censussend";
