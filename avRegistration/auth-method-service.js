@@ -10,6 +10,14 @@ angular.module('avRegistration')
             return $http.post(backendUrl + 'auth-event/'+eid+'/register/', data);
         };
 
+        authmethod.getUserInfo = function(userid) {
+            if (typeof userid === 'undefined') {
+                return $http.get(backendUrl + 'user/', {});
+            } else {
+                return $http.get(backendUrl + 'user/%d' % userid, {});
+            }
+        };
+
         authmethod.ping = function() {
             return $http.get(backendUrl + 'auth-event/0/ping/');
         };
