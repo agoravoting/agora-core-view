@@ -9,7 +9,8 @@ angular.module('avElection').controller('PublicController',
     var mapLayouts = {
       "": "default",
       "simple": "default",
-      "pcandidates-election": "default"
+      "pcandidates-election": "default",
+      "2questions-conditional": "default"
     };
     $scope.layout = mapLayouts["simple"];
     $scope.statePrefix = "election.public.show.home";
