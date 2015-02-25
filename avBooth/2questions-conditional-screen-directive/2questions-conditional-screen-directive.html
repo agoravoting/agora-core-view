@@ -55,22 +55,13 @@
             <div class="col-xs-12">
               <h3>{{election.questions[1].title}}</h3>
             </div>
-            <div class="col-xs-6">
-              <div class="opt" ng-click="toggleOption(1, 0)">
+            <div class="col-xs-{{12/election.questions[1].answers.length}}" ng-repeat="answer in election.questions[1].answers">
+              <div class="opt" ng-click="toggleOption(1, $index)">
                 <span class="glyphicon"
-                  ng-class="{'glyphicon-unchecked': election.questions[1].answers[0].selected === -1,
-                            'glyphicon-check': election.questions[1].answers[0].selected === 0}">
+                  ng-class="{'glyphicon-unchecked': election.questions[1].answers[$index].selected === -1,
+                            'glyphicon-check': election.questions[1].answers[$index].selected === 0}">
                 </span>
-                {{election.questions[1].answers[0].text}}
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="opt" ng-click="toggleOption(1, 1)">
-                <span class="glyphicon"
-                  ng-class="{'glyphicon-unchecked': election.questions[1].answers[1].selected === -1,
-                            'glyphicon-check': election.questions[1].answers[1].selected === 0}">
-                </span>
-                {{election.questions[1].answers[1].text}}
+                {{election.questions[1].answers[$index].text}}
               </div>
             </div>
           </div>
