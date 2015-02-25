@@ -55,7 +55,7 @@ angular.module('avAdmin')
               var must = ef.must;
               delete ef.disabled;
               delete ef.must;
-              return must;
+              return !must;
             });
 
             Authmethod.createEvent(d)

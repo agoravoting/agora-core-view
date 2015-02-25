@@ -391,7 +391,7 @@
         "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará" },
         "share": { "label": "Texto para compartir", "placeholder": "Texto para usar en los enlaces a redes sociales" },
         "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votación" },
-        "layouts": { "simple": "Simple", "yesno": "Sí/No" },
+        "layouts": { "simple": "Simple", "2questions-conditional": "Sí/No", "pcandidates-election": "Podemos Candidates" },
         "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votación?" },
         "themes": { "default": "Por defecto", "podemos": "Podemos" },
         "questionOptionsSummary": "<strong>__num_answers__</strong> candidates. Voters select between <strong>__min__</strong> and <strong>__max__</strong> options (randomize: <strong>__random__</strong>) and there are <strong>__num_winners__</strong> winners. The tally method is <strong>__tally_method__</strong>.",
