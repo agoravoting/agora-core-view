@@ -71,7 +71,8 @@ angular.module('avAdmin')
             var deferred = $q.defer();
             // Adding the census
             logInfo($i18next('avAdmin.create.census', {title: el.title, id: el.id}));
-            Authmethod.addCensus(el.id, el.census.voters, 'disabled')
+            var voters = _.map(el.census.voters, function (i) { return i.metadata; });
+            Authmethod.addCensus(el.id, voters, 'disabled')
                 .success(function(data) {
                     deferred.resolve(el);
                 }).error(deferred.reject);

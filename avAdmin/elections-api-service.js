@@ -256,13 +256,12 @@ angular.module('avAdmin')
                 var deferred = $q.defer();
                 Authmethod.getCensus(el.id)
                     .success(function(data) {
-                        _.each(data.data, function(v, k) {
-                            var vv = v;
-                            vv.vote = false;
-                            if (voters.indexOf(k) >= 0) {
-                                vv.vote = true;
+                        el.census.voters = data.object_list;
+                        _.each(data.object_list, function(user) {
+                            user.vote = false;
+                            if (voters.indexOf(user.username) >= 0) {
+                                user.vote = true;
                             }
-                            el.census.voters.push(vv);
                         });
                         // TODO merge with voters
                         deferred.resolve(el);

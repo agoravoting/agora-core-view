@@ -202,9 +202,8 @@ angular.module('avAdmin')
           controller: "SendAuthCodesModal",
           size: 'lg',
           resolve: {
-            election: function () {
-              return scope.election;
-            }
+            election: function () { return scope.election; },
+            user_ids: function() { return null; }
           }
         }).result.then(function () {
           sendAuthCodes();

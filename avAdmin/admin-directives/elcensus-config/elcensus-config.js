@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminElcensusConfig', function($window, $state, ElectionsApi) {
+  .directive('avAdminElcensusConfig', function($window, $state, ElectionsApi, MustExtraFieldsService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         scope.census = ['open', 'close'];
@@ -12,52 +12,6 @@ angular.module('avAdmin')
         scope.extra_fields = {editing: null};
         scope.massiveef = "";
         scope.loadingcensus = !ElectionsApi.newElection;
-
-        function must_extra_fields() {
-            var el = ElectionsApi.currentElection;
-            var ef = el.census.extra_fields;
-
-            var name = 'email';
-            var must = {};
-
-            if (el.census.auth_method === 'email') {
-                name = 'email';
-                must = {
-                    "must": true,
-                    "name": "email",
-                    "type": "text",
-                    "required": true,
-                    "min": 2,
-                    "max": 200,
-                    "required_on_authentication": true
-                };
-            } else if (el.census.auth_method === 'sms') {
-                name = 'tlf';
-                must = {
-                    "must": true,
-                    "name": "tlf",
-                    "type": "text",
-                    "required": true,
-                    "min": 2,
-                    "max": 200,
-                    "required_on_authentication": true
-                };
-            }
-
-            var found = false;
-            ef.forEach(function(e) {
-                if (e.name === name) {
-                    found = true;
-                    e.must = true;
-                } else {
-                    e.must = false;
-                }
-            });
-
-            if (!found) {
-                ef.push(must);
-            }
-        }
 
         function addEf() {
             var el = ElectionsApi.currentElection;
@@ -85,7 +39,7 @@ angular.module('avAdmin')
 
         function main() {
             scope.election = ElectionsApi.currentElection;
-            must_extra_fields();
+            MustExtraFieldsService(scope.election);
         }
 
         ElectionsApi.waitForCurrent(main);

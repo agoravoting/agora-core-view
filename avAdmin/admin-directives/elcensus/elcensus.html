@@ -1,7 +1,18 @@
+<div avb-busy overlay ng-if="loading"></div>
+
 <div>
     <h2 ng-i18next>avAdmin.sidebar.census</h2>
 
     <p class="text-muted" ng-i18next>avAdmin.census.intro</p>
+
+    <div ng-if="error" class="bg-danger">
+        <span ng-if="error.payload">{{ error.payload }}</span>
+        <span ng-if="!error.payload">{{ error }}</span>
+    </div>
+
+    <div ng-if="msg" class="bg-success">
+        <span ng-i18next="{{ msg }}"></span>
+    </div>
 
     <h4 class="header-block">
       <span
@@ -9,13 +20,39 @@
         aria-hidden="true">
       </span>
       <span ng-i18next>avAdmin.census.manage</span>
-      <button
-        class="btn btn-success pull-right"
-        ng-if="election.census.voters.length"
-        ng-click="exportCensus()">
-        <i class="fa fa-download"></i>
-        <span ng-i18next>export</span>
-      </button>
+
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <span ng-i18next>avAdmin.census.actionsDropdown</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li ng-if="election.census.voters.length">
+            <a ng-click="exportCensus()">
+              <i class="fa fa-download"></i>
+              <span ng-i18next>
+                avAdmin.census.exportCensusAction
+              </span>
+            </a>
+          </li>
+          <li ng-if="election.census.voters.length && !election.id">
+            <a ng-click="removeSelected()">
+              <i class="fa fa-download"></i>
+              <span ng-i18next>
+                [i18next]({num: numSelected()})avAdmin.census.removeCensusAction
+              </span>
+            </a>
+          </li>
+          <li ng-if="election.census.voters.length && election.status === 'started'">
+            <a ng-click="sendAuthCodesSelected()">
+              <i class="fa fa-download"></i>
+              <span ng-i18next>
+                [i18next]({num: numSelected()})avAdmin.census.sendAuthCodesAction
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </h4>
 
     <div class="input-group search col-sm-6">
@@ -42,17 +79,25 @@
       </tr>
 
       <tr>
-        <th ng-repeat="(k, v) in election.census.voters.0">
-          {{ k }}
+        <th ng-i18next>
+          avAdmin.census.idColumnHeader
         </th>
-        <th></th>
+        <th ng-repeat="field in election.census.extra_fields">
+          {{ field.name }}
+        </th>
+        <th ng-i18next>
+          avAdmin.census.selectedColumnHeader
+        </th>
       </tr>
       <tr ng-repeat="c in election.census.voters | filter:q">
-        <td ng-repeat="(k, v) in c">
-          {{ v }}
+        <td>
+          {{c.id}}
+        </td>
+        <td ng-repeat="field in election.census.extra_fields">
+          {{ c.metadata[field.name] }}
         </td>
         <td>
-          <i class="fa fa-times" ng-click="delVoter($index)"></i>
+          <input type="checkbox" ng-model="c.selected" />
         </td>
       </tr>
     </table>
