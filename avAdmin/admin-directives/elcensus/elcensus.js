@@ -101,10 +101,20 @@ angular.module('avAdmin')
         var selectedList = _.filter(scope.election.census.voters, function (v) {
           return v.selected === true;
         });
-        _.each(selectedList, function (selected) {
-          var i = scope.election.census.voters.indexOf(selected);
-          delVoter(i);
-        });
+        if (!scope.election.id) {
+          _.each(selectedList, function (selected) {
+            var i = scope.election.census.voters.indexOf(selected);
+            delVoter(i);
+          });
+        } else {
+          var user_ids = _.pluck(selectedList, "id");
+          Authmethod.removeUsersIds(scope.election.id, scope.election, user_ids)
+          .success(function(r) {
+            scope.loading = false;
+            scope.msg = "avAdmin.dashboard.removeusers";
+          })
+          .error(function(error) { scope.loading = false; scope.error = error.error; });
+        }
         return false;
       }
 
