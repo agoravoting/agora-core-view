@@ -380,6 +380,7 @@
           "sendAuthCodesHeader": "Send authentication codes",
           "sendAuthCodesBody": "This action will send a message to all the registered electors in the census. Note that sending many messages can be considered as SPAM, so proceed with caution. Also, please review first the message that will be sent.",
           "confirmSendAuthCodesButton": "SEND authentication codes to ALL census",
+          "confirmSendAuthCodesIdsButton": "SEND authentication codes to SELECTED users",
           "cancel": "Cancel"
         }
     },

@@ -50,8 +50,13 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-success" ng-click="ok()" ng-i18next>
-    avAdmin.dashboard.modals.confirmSendAuthCodesButton
+  <button class="btn btn-success" ng-click="ok()">
+    <span ng-if="!user_ids || user_ids.length === 0" ng-i18next>
+      avAdmin.dashboard.modals.confirmSendAuthCodesButton
+    </span>
+    <span ng-if="!!user_ids && user_ids.length > 0" ng-i18next>
+      avAdmin.dashboard.modals.confirmSendAuthCodesIdsButton
+    </span>
   </button>
   <button class="btn" ng-click="cancel()" ng-i18next>
     avAdmin.dashboard.modals.cancel
