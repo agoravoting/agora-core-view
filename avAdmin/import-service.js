@@ -78,7 +78,7 @@ angular.module('avAdmin')
           if (auth === "sms") {
             voter['tlf'] = x.trim();
           } else {
-            voter['email'] = x.trimp;
+            voter['email'] = x.trim();
           }
           el.census.voters.push({
             selected: false,
