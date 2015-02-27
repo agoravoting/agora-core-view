@@ -76,11 +76,15 @@ angular.module('avAdmin')
         rawel['voters'].forEach(function(x) {
           var voter = {};
           if (auth === "sms") {
-            voter['tlf'] = x;
+            voter['tlf'] = x.trim();
           } else {
-            voter['email'] = x;
+            voter['email'] = x.trimp;
           }
-          el.census.voters.push(voter);
+          el.census.voters.push({
+            selected: false,
+            vote: false,
+            username: "",
+            metadata: voter});
         });
 
         rawel['questions'].forEach(function(x) {
