@@ -55,6 +55,13 @@ angular.module('avAdmin')
               var must = ef.must;
               delete ef.disabled;
               delete ef.must;
+              if (_.contains(['bool', 'captcha'], ef.type)) {
+                delete ef.min;
+                delete ef.max;
+              } else if (ef.type === "int") {
+                ef.min = parseInt(ef.min);
+                ef.max = parseInt(ef.max);
+              }
               return !must;
             });
 

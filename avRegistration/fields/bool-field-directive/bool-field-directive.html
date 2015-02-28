@@ -12,10 +12,9 @@
     </label>
     <div class="col-sm-8">
         <label class="text-left" for="{{index}}Text">
-          <span>{{field.name}}</span>
+          <span ng-bind-html="field.name | addTargetBlank"></span>
         </label>
-        <p class="help-block" ng-if="field.help">
-          {{field.help}}
+        <p class="help-block" ng-if="field.help" ng-bind-html="field.help | addTargetBlank">
         </p>
         <div class="input-error">
         </div>

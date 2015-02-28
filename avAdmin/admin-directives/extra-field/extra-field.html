@@ -82,9 +82,6 @@
           <option value="text" ng-i18next>
             avAdmin.census.textOption
           </option>
-          <option value="tlf" ng-i18next>
-            avAdmin.census.tlfOption
-          </option>
           <option value="int" ng-i18next>
             avAdmin.census.intOption
           </option>
@@ -102,8 +99,64 @@
     </div>
   </div>
 
-  <!-- min -->
-  <div class="row" ng-if="['password', 'code', 'text', 'tlf', 'int', 'textarea'].indexOf(field.type) !== -1">
+  <!-- min num -->
+  <div class="row" ng-if="field.type === 'int'">
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="winners" ng-i18next>
+          avAdmin.census.fieldMinLabel
+        </label>
+        <div class="col-sm-8">
+            <div class="input-group col-xs-4">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="incOpt('min', -1)">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </button>
+              </span>
+              <input
+                type="text"
+                step="1"
+                class="form-control"
+                ng-model="field.min" />
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="incOpt('min', 1)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+              </span>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- max num -->
+  <div class="row" ng-if="field.type === 'int'">
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="winners" ng-i18next>
+          avAdmin.census.fieldMaxLabel
+        </label>
+        <div class="col-sm-8">
+            <div class="input-group col-xs-4">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="incOpt('max', -1)">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </button>
+              </span>
+              <input
+                type="text"
+                min="{{field.min}}" step="1"
+                class="form-control"
+                ng-model="field.max" />
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="incOpt('max', 1)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+              </span>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- min text -->
+  <div class="row" ng-if="['password', 'code', 'text', 'textarea'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         for="fieldMinInput{{$index}}"
@@ -121,8 +174,8 @@
     </div>
   </div>
 
-  <!-- max -->
-  <div class="row" ng-if="['password', 'code', 'text', 'tlf', 'int', 'textarea'].indexOf(field.type) !== -1">
+  <!-- max text -->
+  <div class="row" ng-if="['password', 'code', 'text', 'textarea'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         for="fieldMaxInput{{$index}}"
@@ -191,7 +244,7 @@
           type="checkbox"
           class="form-control"
           id="fieldRequiredAuthInput{{$index}}"
-          ng-model="field.required" />
+          ng-model="field.required_on_authentication" />
       </label>
       <div class="col-sm-8">
         <label

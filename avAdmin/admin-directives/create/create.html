@@ -6,7 +6,7 @@
       <table class="table table-bordered table-striped">
           <tr>
               <th ng-i18next> avAdmin.basic.description.label </th>
-              <td ng-bind="election.description"></td>
+              <td ng-bind-html="election.description | addTargetBlank"></td>
           </tr>
           <tr>
               <th ng-i18next> avAdmin.sidebar.questions </th>

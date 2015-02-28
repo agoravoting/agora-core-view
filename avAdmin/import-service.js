@@ -67,7 +67,7 @@ angular.module('avAdmin')
           el.census.config.msg = rawel['msg'];
         }
         var auth = rawel['auth'].toLowerCase();
-        if (auth === "sms") {
+        if (auth.indexOf("sms") !== -1) {
           el.census.auth_method = 'sms';
         } else {
           el.census.auth_method = 'email';
