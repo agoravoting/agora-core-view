@@ -58,15 +58,12 @@ angular.module('avAdmin')
               if (_.contains(['bool', 'captcha'], ef.type)) {
                 delete ef.min;
                 delete ef.max;
-              } else if (ef.type === "int") {
-                ef.min = parseInt(ef.min);
-                ef.max = parseInt(ef.max);
               } else {
-                if(!!ef.min) {
-                  ef.min = ef.min + "";
+                if (!!ef.min) {
+                  ef.min = parseInt(ef.min);
                 }
-                if(!!ef.max) {
-                  ef.max = ef.max + "";
+                if (!!ef.max) {
+                  ef.max = parseInt(ef.max);
                 }
               }
               return !must;
