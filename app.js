@@ -17,7 +17,8 @@ angular.module(
   'avTest',
   'avCrypto',
   'avAdmin',
-  'avElection'
+  'avElection',
+  'angularFileUpload'
 ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {
