@@ -61,6 +61,13 @@ angular.module('avAdmin')
               } else if (ef.type === "int") {
                 ef.min = parseInt(ef.min);
                 ef.max = parseInt(ef.max);
+              } else {
+                if(!!ef.min) {
+                  ef.min = ef.min + "";
+                }
+                if(!!ef.max) {
+                  ef.max = ef.max + "";
+                }
               }
               return !must;
             });
