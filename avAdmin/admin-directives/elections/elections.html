@@ -3,41 +3,54 @@
         avAdmin.sidebar.elections
     </h2>
 
-    <table role="table" class="table table-bordered table-hover table-striped electionlist" infinite-scroll="loadMoreElections()" infinite-scroll-distance="0">
+    <table role="table" class="table electionlist" infinite-scroll="loadMoreElections()" infinite-scroll-distance="0">
         <!-- header row -->
-        <tr>
+        <thead>
+          <tr>
             <th colspan="2">
-                <div class="input-group search">
-                  <input type="text" class="form-control" ng-model="q" placeholder="{{'avAdmin.elections.filter' | i18next}}">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
+              <div class="input-group search">
+                <input type="text" class="form-control" ng-model="q" placeholder="{{'avAdmin.elections.filter' | i18next}}">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
             </th>
             <th class="text-center" ng-i18next> avAdmin.elections.status </th>
-            <th class="text-center"ng-i18next> avAdmin.elections.participation </th>
-            <th></th>
-        </tr>
+            <th class="text-center" ng-i18next> avAdmin.elections.participation </th>
+          </tr>
+        </thead>
 
-        <tr ng-repeat="election in elections | filter:q | orderBy:'-id'">
-            <th>
-                {{ election.id }}
-            </th>
+        <tbody>
+          <tr ng-repeat="election in elections | filter:q | orderBy:'-id'">
             <td>
-                <strong>{{ election.title }}</strong> {{ election.description|truncate:150 }}
+              <a ui-sref="admin.dashboard({id: election.id})" class="padded">
+                {{ election.id }}
+              </a>
+            </td>
+            <td>
+              <a ui-sref="admin.dashboard({id: election.id})">
+                <strong>{{ election.title }}</strong>
+                <div
+                  ng-bind-html="election.description | truncate:150 | htmlToText">
+                </div>
+              </a>
             </td>
             <td class="text-center">
+              <a ui-sref="admin.dashboard({id: election.id})" class="padded text-av-secondary">
                 {{ election.status|i18next }}
+              </a>
             </td>
             <td class="text-center">
+              <a ui-sref="admin.dashboard({id: election.id})">
                 <strong>{{ election.votes }}</strong>
                 <br/>
-                {{ election.votes_percentage|number:0 }}%
+                <div clasS="italic">
+                  {{ election.votes_percentage|number:0 }}%
+                </div>
+              </a>
             </td>
-            <td class="text-center">
-                <a ui-sref="admin.dashboard({id: election.id})"><i class="fa fa-gear fa-lg"></i></a>
-            </td>
-        </tr>
+          </tr>
+        </tbody>
     </table>
     <div ng-if="loading" class="text-center bg-primary" ng-i18next>loading</div>
     <div ng-if="nomore" class="text-center bg-success" ng-i18next>nomore</div>

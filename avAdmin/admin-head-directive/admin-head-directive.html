@@ -17,7 +17,13 @@
             <li ng-if="!admin"><a ng-i18next="avAdmin.topbar.home"></a></li>
             <li ng-if="!admin"><a ng-i18next="avAdmin.topbar.features"></a></li>
 
-            <li><a><i class="fa fa-question-circle"></i></a></li>
+            <li>
+              <a
+                href="https://groups.google.com/forum/#!forum/agora-voting"
+                target="_blank">
+                <i class="fa fa-question-circle"></i>
+              </a>
+            </li>
 
             <li class="signup" ng-if="!admin"><a ng-i18next="avAdmin.topbar.freesignup"></a></li>
             <li ng-if="!nologin"><a ng-i18next="avAdmin.topbar.login"></a></li>
