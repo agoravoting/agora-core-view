@@ -2,6 +2,9 @@ angular.module('avRegistration')
   .directive('avLogin', function(Authmethod, StateDataService, $parse, $state, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+        if (!!$cookies.authevent && $cookies.authevent === '0') {
+          $state.go("admin.elections");
+        }
         var autheventid = attrs.eventId;
         scope.sendingData = false;
 
