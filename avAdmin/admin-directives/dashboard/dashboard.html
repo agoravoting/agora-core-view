@@ -1,7 +1,10 @@
 <div avb-busy overlay ng-if="loading && !intally"></div>
 
 <div class="dashboard">
-    <h2 ng-i18next>avAdmin.sidebar.dashboard</h2>
+    <h2>
+      <span ng-i18next>avAdmin.sidebar.dashboard</span>
+      <span class="text-gray-light">{{election.title | truncate:45}}</span>
+    </h2>
 
     <!-- dashboard status bar -->
     <div class="statusbar row text-center">
