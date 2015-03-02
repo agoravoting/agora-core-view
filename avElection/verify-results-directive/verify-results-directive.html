@@ -8,7 +8,7 @@
         <div class="pull-left" ng-i18next="[html]avBooth.poweredBy">
         </div>
         <div class="pull-right">
-          <a href="#/election/{{election.id}}/public/verify-results" target="_blank">
+          <a href="#/election/{{electionId}}/public/verify-results" target="_blank">
             <span
               class="glyphicon glyphicon-share">
             </span>
@@ -38,7 +38,7 @@
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-left padded-right">
           <div
           ng-if="electionState === 'results_pub'"
-          ng-i18next="[i18next:html]({title: election.title, electionId: election.id, publicURL: publicURL})avElection.verifyResults.verifyText">
+          ng-i18next="[i18next:html]({title: election.title, electionId: electionId, publicURL: publicURL})avElection.verifyResults.verifyText">
           </div>
           <div
           ng-if="electionState !== 'results_pub'"
