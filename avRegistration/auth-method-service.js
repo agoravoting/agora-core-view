@@ -2,11 +2,13 @@ angular.module('avRegistration')
 
     .factory('Authmethod', ['$http', 'ConfigService', function($http, ConfigService) {
         var backendUrl = ConfigService.authAPI;
+        var authId = ConfigService.freeAuthId;
         var authmethod = {};
-        var captcha_code = null;
+        authmethod.captcha_code = null;
+        authmethod.reload_captcha = false;
 
         authmethod.signup = function(data, authevent) {
-            var eid = authevent || '0';
+            var eid = authevent || authId;
             return $http.post(backendUrl + 'auth-event/'+eid+'/register/', data);
         };
 
@@ -19,11 +21,11 @@ angular.module('avRegistration')
         };
 
         authmethod.ping = function() {
-            return $http.get(backendUrl + 'auth-event/0/ping/');
+            return $http.get(backendUrl + 'auth-event/'+authId+'/ping/');
         };
 
         authmethod.login = function(data, authevent) {
-            var eid = authevent || '0';
+            var eid = authevent || authId;
             delete data['authevent'];
             return $http.post(backendUrl + 'auth-event/'+eid+'/authenticate/', data);
         };

@@ -9,6 +9,7 @@ var avConfigData = {
   // 'https://foo/api/v3/' and always ends in '/'.
   theme: "default",
   baseUrl: "http://agora.dev/elections/api/",
+  freeAuthId: 1,
 
   // AuthApi base url
   authAPI: "http://agora.dev/authapi/api/",

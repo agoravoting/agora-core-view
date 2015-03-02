@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-        <h2 class="registerheader" ng-i18next="avRegistration.registerHeader"></h2>
+        <h2 ng-if="!admin" class="registerheader" ng-i18next="avRegistration.registerHeader"></h2>
+        <h2 ng-if="admin" class="registerheader" ng-i18next="avRegistration.registerAdminHeader"></h2>
     </div>
   </div>
   <div class="row">
@@ -34,8 +35,14 @@
         </form>
     </div>
     <div class="col-sm-5 col-sm-offset-1 help-sidebar hidden-xs">
-      <h3 class="help-h3" ng-i18next="avRegistration.registerFormHelpTitle"></h3>
-      <p ng-i18next>avRegistration.helpRegisterForm</p>
+      <span ng-if="admin">
+          <h3 class="help-h3" ng-i18next="avRegistration.registerAdminFormHelpTitle"></h3>
+          <p ng-i18next>avRegistration.helpAdminRegisterForm</p>
+      </span>
+      <span ng-if="!admin">
+          <h3 class="help-h3" ng-i18next="avRegistration.registerFormHelpTitle"></h3>
+          <p ng-i18next>avRegistration.helpRegisterForm</p>
+      </span>
     </div>
   </div>
 </div>

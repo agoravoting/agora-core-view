@@ -5,10 +5,15 @@ angular.module('avRegistration')
         var autheventid = attrs.eventId;
         scope.register = {};
         scope.sendingData = false;
+        scope.admin = false;
 
         scope.email = null;
         if (attrs.email && attrs.email.length > 0) {
           scope.email = attrs.email;
+        }
+
+        if ("admin" in attrs) {
+          scope.admin = true;
         }
 
         scope.signUp = function(valid) {
@@ -29,7 +34,11 @@ angular.module('avRegistration')
                 .success(function(rcvData) {
                     if (rcvData.status === "ok") {
                         scope.user = rcvData.user;
-                        StateDataService.go('election.public.show.login', {id: autheventid}, data);
+                        if (!scope.admin) {
+                            StateDataService.go('election.public.show.login', {id: autheventid}, data);
+                        } else {
+                            $state.go('admin.login');
+                        }
                     } else {
                         scope.sendingData = false;
                         scope.status = 'Not found';
@@ -40,6 +49,9 @@ angular.module('avRegistration')
                     scope.sendingData = false;
                     scope.status = 'Registration error: ' + error.message;
                     scope.error = error.msg || $i18next('avRegistration.invalidRegisterData');
+                    if (error.msg === 'Invalid captcha') {
+                        Authmethod.reload_captcha = true;
+                    }
                 });
         };
 

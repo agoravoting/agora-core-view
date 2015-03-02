@@ -1,6 +1,8 @@
 angular.module('avRegistration')
-  .directive('avrCaptchaField', function(Authmethod, $state) {
+  .directive('avrCaptchaField', ['Authmethod', '$state', '$interval', function(Authmethod, $state, $interval) {
     function link(scope, element, attrs) {
+        var timeoutId = null;
+
         scope.view = function() {
             Authmethod.newCaptcha()
                 .success(function(data) {
@@ -19,6 +21,20 @@ angular.module('avRegistration')
                 });
         };
         scope.view();
+
+
+        function checkReloadCaptcha() {
+            if (Authmethod.reload_captcha) {
+                scope.view();
+                Authmethod.reload_captcha = false;
+            }
+        }
+
+        element.on('$destroy', function() {
+            $interval.cancel(timeoutId);
+        });
+
+        timeoutId = $interval(function() { checkReloadCaptcha(); }, 1000);
     }
 
     return {
@@ -27,4 +43,4 @@ angular.module('avRegistration')
       link: link,
       templateUrl: 'avRegistration/fields/captcha-field-directive/captcha-field-directive.html'
     };
-  });
+  }]);

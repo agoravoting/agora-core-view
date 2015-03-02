@@ -55,6 +55,11 @@ angular.module('agora-core-view').config(
         templateUrl: 'avAdmin/admin-login-controller/admin-login-controller.html',
         controller: "AdminLoginController"
       })
+      .state('admin.signup', {
+        url: '/signup',
+        templateUrl: 'avAdmin/admin-signup-controller/admin-signup-controller.html',
+        controller: "AdminSignUpController"
+      })
       .state('admin.logout', {
         url: '/logout',
         controller: "LogoutController"

@@ -217,7 +217,9 @@
   "avRegistration": {
     "loginHeader": "Entrar en tu cuenta de Agora Voting",
     "helpRegisterForm": "Para poder votar, tienes que registrarte primero mediante este formulario. Algunos de los campos son obligatorios: lee bien la información de ayuda",
+    "helpAdminRegisterForm": "Para poder crear votaciones tienes que registrarte primero mediante este formulario. Lee bien la información de ayuda",
     "registerFormHelpTitle": "Registrándote para votar",
+    "registerAdminFormHelpTitle": "Registrándote para crear votaciones",
     "fillValidFormText": "Para poder enviar el formulario, primero rellena correctamente todos los campos.",
     "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. Por favor, revísalos, o ponte en contacto con los administradores de la votación,",
     "logout": "Salir",
@@ -237,6 +239,7 @@
     "loginButton": "Entrar",
 
     "registerHeader": "Regístrate para votar",
+    "registerAdminHeader": "Regístrate",
     "registerButton": "Registrarse",
     "namePlaceholder": "nombre",
     "surnamePlaceholder": "apellido",
