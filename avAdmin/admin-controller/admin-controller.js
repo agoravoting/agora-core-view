@@ -3,17 +3,21 @@ angular.module('avAdmin').controller('AdminController',
     var id = $stateParams.id;
     $scope.state = $state.current.name;
     $scope.current = null;
+    $scope.noplugin = true;
+
+    // state = admin.XXX
+    $scope.shortst = $state.current.name.split(".")[1];
 
     // plugin stuff
     $scope.plugins = AdminPlugins.plugins;
     AdminPlugins.plugins.forEach(function(p) {
         if (p.directive) {
             var tpl = $compile( '<script type="text/ng-template" id="'+p.directive+'"><div class="av-plugin-'+p.directive+'"></div></script>' )($scope);
+            if ($scope.shortst === p.name) {
+                $scope.noplugin = false;
+            }
         }
     });
-
-    // state = admin.XXX
-    $scope.shortst = $state.current.name.split(".")[1];
 
     // removing autoreload stats
     ElectionsApi.autoreloadStats(null);
