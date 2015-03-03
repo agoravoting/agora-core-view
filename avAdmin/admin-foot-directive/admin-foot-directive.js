@@ -1,7 +1,8 @@
 angular.module('avAdmin')
-  .directive('avAdminFoot', function() {
+  .directive('avAdminFoot', function(ConfigService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+      scope.contact = ConfigService.contact;
     }
 
     return {
