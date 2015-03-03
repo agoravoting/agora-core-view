@@ -1,7 +1,9 @@
 angular.module('avAdmin')
-  .directive('avAdminCreate', ['$q', 'Authmethod', 'ElectionsApi', '$state', '$i18next', function($q, Authmethod, ElectionsApi, $state, $i18next) {
+  .directive('avAdminCreate', ['$q', 'Authmethod', 'ElectionsApi', '$state', '$i18next', 'ConfigService',
+    function($q, Authmethod, ElectionsApi, $state, $i18next, ConfigService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+        var adminId = ConfigService.freeAuthId;
         scope.creating = false;
         scope.log = '';
         scope.createElectionBool = true;
@@ -16,7 +18,7 @@ angular.module('avAdmin')
         function getCreatePerm(el) {
             console.log("creating perm for election " + el.title);
             var deferred = $q.defer();
-            Authmethod.getPerm("create", "AuthEvent", 0)
+            Authmethod.getPerm("create", "AuthEvent", adminId)
                 .success(function(data) {
                     var perm = data['permission-token'];
                     el.perm = perm;
