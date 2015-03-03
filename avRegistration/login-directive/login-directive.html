@@ -35,7 +35,8 @@
     <div class="col-sm-5 col-sm-offset-1 hidden-xs">
       <h3 class="help-h3" ng-i18next="avRegistration.notRegisteredYet"></h3>
       <p>
-        <a href="#/election/{{election.id}}/public/register" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="{{login_fields.length+2}}"></a><br/>
+        <a ng-if="!isAdmin" href="#/election/{{election.id}}/public/register" ng-i18next="avRegistration.registerHere" ng-click="goSignup()" tabindex="{{login_fields.length+2}}"></a><br/>
+        <a ng-if="isAdmin" ui-sref="admin.signup()" ng-i18next="avRegistration.registerHere" tabindex="{{login_fields.length+2}}"></a><br/>
         <span ng-i18next="avRegistration.fewMinutes"></span>
       </p>
     </div>
