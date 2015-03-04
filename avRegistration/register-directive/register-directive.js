@@ -37,7 +37,7 @@ angular.module('avRegistration')
                         if (!scope.admin) {
                             StateDataService.go('election.public.show.login', {id: autheventid}, data);
                         } else {
-                            $state.go('admin.login');
+                            StateDataService.go('admin.login', {}, data);
                         }
                     } else {
                         scope.sendingData = false;
@@ -50,7 +50,7 @@ angular.module('avRegistration')
                     scope.status = 'Registration error: ' + error.message;
                     scope.error = error.msg || $i18next('avRegistration.invalidRegisterData');
                     if (error.msg === 'Invalid captcha') {
-                        Authmethod.reload_captcha = true;
+                        Authmethod.newCaptcha();
                     }
                 });
         };

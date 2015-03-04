@@ -5,7 +5,8 @@ angular.module('avRegistration')
         var authId = ConfigService.freeAuthId;
         var authmethod = {};
         authmethod.captcha_code = null;
-        authmethod.reload_captcha = false;
+        authmethod.captcha_image_url = "";
+        authmethod.captcha_status = "";
 
         authmethod.signup = function(data, authevent) {
             var eid = authevent || authId;
@@ -137,8 +138,18 @@ angular.module('avRegistration')
             return fields;
         };
 
-        authmethod.newCaptcha = function() {
-            return $http.get(backendUrl + 'captcha/new/', {});
+        authmethod.newCaptcha = function(message) {
+            authmethod.captcha_status = message;
+            return $http.get(backendUrl + 'captcha/new/', {})
+              .success(function (data) {
+                console.log(data);
+                if (data.captcha_code !== null) {
+                    authmethod.captcha_code = data.captcha_code;
+                    authmethod.captcha_image_url = data.image_url;
+                } else {
+                    authmethod.captcha_status = 'Not found';
+                }
+              });
         };
 
         // TEST
