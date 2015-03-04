@@ -3,7 +3,7 @@
 <div class="dashboard">
     <h2>
       <span ng-i18next>avAdmin.sidebar.dashboard</span>
-      <span class="text-gray-light">{{election.title | truncate:45}}</span>
+      <span class="text-gray-light" ng-if="election.title">{{election.title | truncate:45}}</span>
     </h2>
 
     <!-- dashboard status bar -->
