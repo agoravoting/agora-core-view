@@ -15,19 +15,6 @@ angular.module('avAdmin')
           ElectionsApi.currentElections = [];
         }
 
-        function getCreatePerm(el) {
-            console.log("creating perm for election " + el.title);
-            var deferred = $q.defer();
-            Authmethod.getPerm("create", "AuthEvent", adminId)
-                .success(function(data) {
-                    var perm = data['permission-token'];
-                    el.perm = perm;
-                    deferred.resolve(el);
-                }).error(deferred.reject);
-
-            return deferred.promise;
-        }
-
         function logInfo(text) {
           scope.log += "<p>" + text + "</p>";
         }
@@ -128,7 +115,6 @@ angular.module('avAdmin')
 
           var promise = deferred.promise;
           promise = promise
-            .then(getCreatePerm)
             .then(createAuthEvent)
             .then(addCensus)
             .then(registerElection)
