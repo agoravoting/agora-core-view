@@ -140,7 +140,9 @@
 
     "thisisADemoNotification": "<span class=\"glyphicon glyphicon-info-sign\" aria-hidden=\"true\"></span> <strong>Warning!</strong> Demo voting booth, votes issued from this booth will not count.",
     "successBallotHash": "¡Enhorabuena! Has emitido tu voto con <strong><a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a></strong>. El localizador de tu voto es:<br/><br/></h3><p> <strong>__ballotHash__</strong><br/><br/>Puedes usar tu localizador para <a href=\"__ballotLocatorUrl__\" target=\"_blank\">verificar que tu voto ha quedado registrado</a>. Mientras que la votación esté en curso, puedes votar de nuevo, sobreescribiendo e invalidando cualquier voto que hayas emitido anteriormente en esta votación.",
-    "relatedLinksText": "Para más información sobre la votación:"
+    "relatedLinksText": "Para más información sobre la votación:",
+
+    "circleOptionExternalLink": "Ver detalles"
   },
   "avElection": {
     "resultsLoadingText": "Cargando resultados",

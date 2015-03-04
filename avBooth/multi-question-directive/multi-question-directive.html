@@ -37,6 +37,7 @@
     <div class="row">
       <!-- only shown if in mobile: a row with selected opts and filter -->
       <div
+        ng-if="!hideSelection"
         class="visible-xs col-xs-12 small-selected padded"
         ng-class="{dropdown: stateData.affixDropDownShown}">
         <div
@@ -64,7 +65,7 @@
       </div>
 
       <!-- show available options and filter -->
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12" ng-class="{'col-sm-6': !hideSelection}">
         <div class="pull-left hidden-xs">
           <h4 class="text-brand-success" ng-i18next="avBooth.questionAvailableOptionsTitle"></h4>
         </div>
@@ -91,6 +92,7 @@
       <!-- show selected options -->
       <div
         class="col-xs-12 col-sm-6 padded"
+        ng-if="!hideSelection"
         ng-class="{hidden: windowWidth < 768 && !stateData.affixDropDownShown, affixedSelection: windowWidth < 768 && stateData.affixIsSet}">
         <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h4>
         <div avb-selected-options

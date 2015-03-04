@@ -15,3 +15,15 @@
   <div avb-accordion-options>
   </div>
 </div>
+<div class="col-xs-12" ng-if="layout === 'circles'">
+  <div avb-circle-option
+    ng-repeat="option in filteredOptions"
+    class="animate-repeat"
+    ng-class="{selected: option.selected > -1}">
+  </div>
+  <div
+    class="animate-repeat padded-left"
+    ng-if="filteredOptions.length == 0"
+    ng-i18next="avBooth.noResults">
+  </div>
+</div>

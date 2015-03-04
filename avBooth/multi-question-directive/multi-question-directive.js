@@ -9,6 +9,8 @@ angular.module('avBooth')
     var link = function(scope, element, attrs) {
       scope.stateData.affixIsSet = false;
       scope.stateData.affixDropDownShown = false;
+      scope.hideSelection = false;
+
       scope.numSelectedOptions = function () {
         return _.filter(
           scope.stateData.question.answers,
@@ -20,6 +22,9 @@ angular.module('avBooth')
       var question = scope.stateData.question;
       if (question.layout === "") {
         question.layout = "simple";
+      }
+      if (question.layout === 'circles') {
+        scope.hideSelection = true;
       }
       if (question.randomize_answer_order) {
           // we can't just sample the groupedOptions list because we need to
