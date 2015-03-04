@@ -26,7 +26,7 @@
             </li>
 
             <li class="signup" ng-if="!admin"><a ui-sref="admin.signup()" ng-i18next="avAdmin.topbar.freesignup"></a></li>
-            <li ng-if="!nologin"><a ng-i18next="avAdmin.topbar.login"></a></li>
+            <li ng-if="!nologin"><a ui-sref="admin.login()" ng-i18next="avAdmin.topbar.login"></a></li>
 
             <li ng-if="admin"><a ui-sref="admin.logout()"><i class="fa fa-user"></i> {{ admin }}</a></li>
             <li ng-if="admin"><a ui-sref="admin.logout()"><i class="fa fa-power-off"></i></a></li>
