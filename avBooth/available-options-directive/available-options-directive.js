@@ -15,6 +15,25 @@ angular.module('avBooth')
         });
 
         /*
+         * Clear selection
+         */
+        scope.clearSelection = function () {
+          _.each(scope.options, function (element) {
+            if (element.selected !== -1) {
+              element.selected = -1;
+            }
+          });
+        };
+
+        scope.numSelectedOptions = function () {
+          return _.filter(
+            scope.options,
+            function (element) {
+              return element.selected > -1 || element.isSelected === true;
+            }).length;
+        };
+
+        /*
          * Toggles selection, if possible.
          */
         scope.toggleSelectItem = function(option) {

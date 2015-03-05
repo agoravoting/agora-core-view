@@ -21,6 +21,20 @@
     class="animate-repeat"
     ng-class="{selected: option.selected > -1}">
   </div>
+
+  <!-- show blank-vote as a circle -->
+  <div
+    class="animate-repeat avb-circle-blank-option"
+    ng-class="{selected: numSelectedOptions() === 0}">
+    <div class="clickable-opt" ng-click="clearSelection()">
+      <div class="image-wrap">
+        <img src="" />
+      </div>
+      <span class="show-value text-center" ng-i18next>
+        avBooth.voteInBlank
+      </span>
+    </div>
+  </div>
   <div
     class="animate-repeat padded-left"
     ng-if="filteredOptions.length == 0"
