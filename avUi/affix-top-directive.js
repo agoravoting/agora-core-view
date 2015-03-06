@@ -9,7 +9,10 @@ angular.module('avUi')
 
     // add margin-top automatically
     var updateMargin = function(el, options) {
-      $(options.avAffixTop).css("margin-top", $(el).height() + "px");
+      var minHeight = parseInt($(options.avAffixTop)
+        .css('margin-top').replace('px', ''));
+      var height = Math.max($(el).height(), minHeight);
+      $(options.avAffixTop).css("margin-top", height + "px");
     };
 
     return {
