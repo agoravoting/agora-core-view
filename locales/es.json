@@ -72,6 +72,7 @@
     "helpText": "",
     "goBack": "Volver a la cabina",
     "selectedOptionsFollow": "Las __num__ opciones que seleccionaste son:",
+    "selectedOptionFollow": "La opción que seleccionaste es:",
 
     "errorElectionUrl": "La dirección introducida tiene un formato erróneo",
     "reviewYourBallotTitle": "Falta enviar la papeleta: revísala primero",

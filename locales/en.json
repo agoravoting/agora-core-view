@@ -73,6 +73,7 @@
     "helpText": "",
     "goBack": "Go back to booth",
     "selectedOptionsFollow": "The __num__ options you chose are:",
+    "selectedOptionFollow": "The option you chose is:",
 
     "errorElectionUrl": "The introduced address has an erroneous format",
     "reviewYourBallotTitle": "Ballot not sent yet: review it first",

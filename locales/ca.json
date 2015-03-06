@@ -72,6 +72,7 @@
     "helpText": "",
     "goBack": "Torna a la cabina",
     "selectedOptionsFollow": "Les __num__ opcions que has seleccionat són:",
+    "selectedOptionFollow": "La opció que has seleccionat és:",
 
     "errorElectionUrl": "L'adreça introduïda té un format erroni",
     "reviewYourBallotTitle": "Encara no s'ha enviat la papereta: revisa-la abans",

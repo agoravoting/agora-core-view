@@ -8,7 +8,14 @@
       <span class="glyphicon glyphicon-edit"></span>
     </div>
   </h3>
-  <p ng-i18next="[i18next]({num: (question.answers | avbSelectedOptions).length})avBooth.selectedOptionsFollow"></p>
+  <p
+    ng-if="(question.answers | avbSelectedOptions).length < 2"
+    ng-i18next="avBooth.selectedOptionFollow">
+  </p>
+  <p
+    ng-if="(question.answers | avbSelectedOptions).length >= 2"
+    ng-i18next="[i18next]({num: (question.answers | avbSelectedOptions).length})avBooth.selectedOptionsFollow">
+  </p>
   <ul ng-if="!mapQuestion(question).ordered">
     <li
       ng-repeat="answer in question.answers | avbSelectedOptions"
@@ -16,6 +23,7 @@
       {{answer.text}}
     </li>
     <li
+      class="empty-answer"
       ng-if="(question.answers | avbSelectedOptions).length == 0"
       ng-i18next="avBooth.emptyAnswer">
     </li>
@@ -27,6 +35,7 @@
       {{answer.text}}
     </li>
     <li
+      class="empty-answer"
       ng-if="(question.answers | avbSelectedOptions).length == 0"
       ng-i18next="avBooth.emptyAnswer">
     </li>
