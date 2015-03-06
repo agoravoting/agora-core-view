@@ -23,3 +23,14 @@
     ng-i18next="avBooth.noOptionsSelected">
   </div>
 </div>
+<div class="col-xs-12" ng-if="layout === 'details'">
+  <div avb-detail-selected-option
+    ng-repeat="option in options | avbSelectedOptions"
+    class="animate-repeat">
+  </div>
+  <div
+    class="padded"
+    ng-if="(options | avbSelectedOptions).length == 0"
+    ng-i18next="avBooth.noOptionsSelected">
+  </div>
+</div>

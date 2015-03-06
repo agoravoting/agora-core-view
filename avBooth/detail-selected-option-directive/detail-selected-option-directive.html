@@ -1,0 +1,34 @@
+<div class="clickable-opt">
+  <div class="show-remove" ng-click="toggleSelectItem(option)">
+    <span ng-i18next="avBooth.removeSelectedItem"></span>
+    <span class="glyphicon glyphicon-remove"></span>
+  </div>
+  <span
+    class="show-value"
+    ng-if="!ordered"
+    ng-click="toggleSelectItem(option)">
+    {{option.text}}
+  </span>
+  <span
+    class="show-value"
+    ng-if="ordered"
+    ng-click="toggleSelectItem(option)">
+    {{option.selected + 1}}. {{option.text}}
+  </span>
+  <button
+    class="btn btn-default btn-right"
+    ng-class="{'in': isOpen2}"
+    ng-click="isOpen2 = !isOpen2; $event.preventDefault()">
+    <span ng-i18next="avBooth.dropdownOptionView">
+    </span>
+    <span
+      class="glyphicon"
+      ng-class="{'glyphicon-chevron-up': isOpen2, 'glyphicon-chevron-down': !isOpen2}">
+    </span>
+  </button>
+  <div
+  ng-if="isOpen2"
+  class="details"  ng-click="toggleSelectItem(option)">
+    {{option.details}}
+  </div>
+</div>

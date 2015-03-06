@@ -23,7 +23,7 @@ angular.module('avBooth')
       if (question.layout === "") {
         question.layout = "simple";
       }
-      if (_.contains(['circles', 'details'], question.layout)) {
+      if (_.contains(['circles'], question.layout)) {
         scope.hideSelection = true;
       }
       if (question.randomize_answer_order) {

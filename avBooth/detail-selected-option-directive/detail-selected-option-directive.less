@@ -1,4 +1,4 @@
-[avb-detail-option] {
+[avb-detail-selected-option] {
   cursor: pointer;
   position: relative;
   display: block;
@@ -13,8 +13,13 @@
     position: absolute;
     top: 0;
     right: 70px;
+    color: @av-primary-contrast;
 
     background-color: lighten(@brand-danger, 10%);
+
+    &:hover {
+    background-color: darken(@brand-danger, 10%);
+    }
   }
 
   .show-value {
@@ -45,31 +50,22 @@
     padding: 0 15px 15px 0;
   }
 
-  &.selected {
-    color: @av-primary-contrast;
-    background-color: @av-primary;
-
-    .btn-right {
-      background-color: lighten(@av-primary, 10%);
-      color: @av-primary-contrast;
-    }
-  }
-
-  &.selected:hover {
+  &:hover {
     background-color: @brand-danger;
     color: @av-primary-contrast;
 
-    .show-remove, .btn-right {
+    .show-remove {
       color: @av-primary-contrast;
       display: block !important;
+    }
+
+    .btn-right {
+      color: @av-primary-contrast;
+      background-color: lighten(@brand-danger, 10%);
 
       &:hover {
       background-color: darken(@brand-danger, 10%);
       }
     }
-  }
-
-  &:hover {
-    background-color: @gray-lighter;
   }
 }

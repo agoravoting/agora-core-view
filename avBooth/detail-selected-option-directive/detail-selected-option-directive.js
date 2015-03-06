@@ -2,14 +2,14 @@
  * Directive that shows an option with hidden but expandable details.
  */
 angular.module('avBooth')
-  .directive('avbDetailOption', function() {
+  .directive('avbDetailSelectedOption', function() {
 
     var link = function(scope, element, attrs) {
-      scope.isOpen = false;
+      scope.isOpen2 = false;
     };
     return {
       restrict: 'AE',
       link: link,
-      templateUrl: 'avBooth/detail-option-directive/detail-option-directive.html'
+      templateUrl: 'avBooth/detail-selected-option-directive/detail-selected-option-directive.html'
     };
   });
