@@ -20,7 +20,7 @@
   "avBooth": {
     "poweredBy": "Funciona amb <strong><a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a></strong>",
     "loadingElectionTitle": "Carregant la votació, un moment sisplau..",
-    "stepNumber": "paso %s de %s &nbsp; &nbsp; funciona amb<strong><a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a></strong>",
+    "stepNumber": "paso %s de %s &nbsp; &nbsp; funciona amb <strong><a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a></strong>",
     "stepAndQuestionNumber": "pas %s de %s, pregunta %s de %s",
     "startVoting": "Comença a votar",
     "continueButton": "Continua",
@@ -71,7 +71,7 @@
     "helpTitle": "Ajuda",
     "helpText": "",
     "goBack": "Torna a la cabina",
-    "selectedOptionsFollow": "Les __núm__ opcions que has seleccionat són:",
+    "selectedOptionsFollow": "Les __num__ opcions que has seleccionat són:",
 
     "errorElectionUrl": "L'adreça introduïda té un format erroni",
     "reviewYourBallotTitle": "Encara no s'ha enviat la papereta: revisa-la abans",
