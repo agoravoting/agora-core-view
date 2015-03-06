@@ -9,9 +9,9 @@ angular.module('avUi')
 
     // add margin-top automatically
     var updateMargin = function(el, options) {
-      var minHeight = parseInt($(options.avAffixTop)
-        .css('margin-top').replace('px', ''));
-      var height = Math.max($(el).height(), minHeight);
+      var height = Math.max(
+        $(el).height(),
+        parseInt(options.minHeight));
       $(options.avAffixTop).css("margin-top", height + "px");
     };
 
@@ -19,6 +19,10 @@ angular.module('avUi')
       restrict: 'EAC',
       link: function(scope, iElement, iAttrs) {
         updateMargin(iElement, iAttrs);
+
+        if (iAttrs.minHeight === undefined) {
+          iAttrs.minHeight = "20";
+        }
 
         // timeout is used with callCheckPos so that we do not create too many
         // calls to checkPosition, at most one per 100ms
