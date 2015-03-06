@@ -78,7 +78,7 @@
     "reviewYourBallotText": "Antes de emitir tu voto, por favor revisa el contenido de tu papeleta",
     "castTheBallot": "Enviar el voto",
     "changeAnswerToQuestion": "cambiar",
-    "emptyAnswer": "<sin respuesta>",
+    "emptyAnswer": "<voto en blanco>",
 
     "statusExecutingSanityChecks": "Verificando que el navegador es capaz de codificar el voto, por favor espera (__percentage__% completado)",
     "statusEncryptingQuestion": "Cifrando respuestas a la pregunta __questionNum__, por favor espera (__percentage__% completado)",
