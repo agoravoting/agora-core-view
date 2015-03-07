@@ -6,14 +6,14 @@
   <span
     class="show-value"
     ng-if="!ordered"
-    ng-click="toggleSelectItem(option)">
-    {{option.text}}
+    ng-click="toggleSelectItem(option)"
+    ng-bind-html="option.text">
   </span>
   <span
     class="show-value"
     ng-if="ordered"
-    ng-click="toggleSelectItem(option)">
-    {{option.selected + 1}}. {{option.text}}
+    ng-click="toggleSelectItem(option)"
+    ng-bind-html="(option.selected + 1) + '. ' + option.text">
   </span>
   <button
     class="btn btn-default btn-right"
@@ -28,7 +28,7 @@
   </button>
   <div
   ng-if="isOpen2"
-  class="details"  ng-click="toggleSelectItem(option)">
-    {{option.details}}
+  class="details"  ng-click="toggleSelectItem(option)"
+  ng-bind-html="option.details">
   </div>
 </div>
