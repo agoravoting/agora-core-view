@@ -77,6 +77,7 @@ angular.module('avRegistration')
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
+            scope.registrationAllowed = (authevent['census'] === 'open');
             scope.login_fields = Authmethod.getLoginFields(authevent);
 
             var fields = _.map(

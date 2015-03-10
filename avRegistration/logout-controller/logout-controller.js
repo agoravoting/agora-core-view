@@ -5,7 +5,7 @@ angular.module('avRegistration').controller('LogoutController',
     $cookies.auth = '';
     $cookies.authevent = '';
     $cookies.userid = '';
-    if (authevent === '0') {
+    if (parseInt(authevent) === ConfigService.freeAuthId) {
         $state.go("admin.login");
     } else {
         $state.go("registration.login", {id: $cookies.authevent});

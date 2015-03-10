@@ -1,5 +1,5 @@
 angular.module('avRegistration')
-  .directive('avRegister', function(Authmethod, StateDataService, $parse, $state, $cookies, $i18next) {
+  .directive('avRegister', function(Authmethod, StateDataService, $parse, $state, ConfigService, $cookies, $i18next) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var autheventid = attrs.eventId;
@@ -46,6 +46,15 @@ angular.module('avRegistration')
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
+
+            // if registration is closed, redirect to login
+            if (authevent['census'] !== 'open') {
+              if (authevent['id'] === ConfigService.freeAuthId) {
+                  $state.go("admin.login");
+              } else {
+                  $state.go("registration.login", {id: authevent['id']});
+              }
+            }
             scope.register_fields = Authmethod.getRegisterFields(authevent);
             var fields = _.map(
               scope.register_fields,
