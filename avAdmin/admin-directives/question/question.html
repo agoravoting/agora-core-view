@@ -1,12 +1,12 @@
 <div class="question">
-    <div class="row short">
+    <div class="row short q-title" ng-click="toggleQuestion($index)">
         <div class="col-sm-10">
             {{ q.title|truncate:200 }}
         </div>
         <div class="col-sm-2 text-right buttons">
-            <i ng-click="expandQuestion($index)" class="fa fa-chevron-down fa-sw" ng-if="!q.active"></i>
-            <i ng-click="collapseQuestion($index)" class="fa fa-chevron-up fa-sw" ng-if="q.active"></i>
-            <i ng-click="delQuestion($index)" class="fa fa-times fa-sw"></i>
+            <i class="fa fa-chevron-down fa-sw" ng-if="!q.active"></i>
+            <i class="fa fa-chevron-up fa-sw" ng-if="q.active"></i>
+            <i ng-click="delQuestion($index)" class="fa fa-times fa-sw" ng-if="electionEditable()"></i>
         </div>
     </div>
 
@@ -184,7 +184,7 @@
                                 <i
                                   class="fa fa-times fa-sw"
                                   ng-if="electionEditable()"
-                                  ng-click="delOption($parent.$index, $index)">
+                                  ng-click="delOption(questionIndex(), $index)">
                                 </i>
                             </div>
                         </div>

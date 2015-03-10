@@ -2,6 +2,7 @@ angular.module('avAdmin')
   .directive('avExtraField', function() {
     function link(scope, element, attrs) {
       scope.field.disabled = true;
+      scope.noLimitsTypes = ['bool', 'captcha'];
 
       scope.toggleEdit = function() {
         if (scope.extra_fields.editing === scope.field) {
@@ -13,6 +14,14 @@ angular.module('avAdmin')
 
       scope.beingEdited = function() {
         return scope.extra_fields.editing === scope.field;
+      };
+
+      scope.incOpt = function (option, inc) {
+        if(!scope.field[option]) {
+          scope.field[option] = 0;
+          return;
+        }
+        scope.field[option] = parseInt(scope.field[option]) + inc;
       };
 
       scope.removeField = function() {

@@ -1,7 +1,9 @@
 angular.module('avAdmin')
-  .directive('avAdminCreate', ['$q', 'Authmethod', 'ElectionsApi', '$state', '$i18next', function($q, Authmethod, ElectionsApi, $state, $i18next) {
+  .directive('avAdminCreate', ['$q', 'Authmethod', 'ElectionsApi', '$state', '$i18next', 'ConfigService',
+    function($q, Authmethod, ElectionsApi, $state, $i18next, ConfigService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+        var adminId = ConfigService.freeAuthId;
         scope.creating = false;
         scope.log = '';
         scope.createElectionBool = true;
@@ -11,19 +13,6 @@ angular.module('avAdmin')
         } else {
           scope.elections = ElectionsApi.currentElections;
           ElectionsApi.currentElections = [];
-        }
-
-        function getCreatePerm(el) {
-            console.log("creating perm for election " + el.title);
-            var deferred = $q.defer();
-            Authmethod.getPerm("create", "AuthEvent", 0)
-                .success(function(data) {
-                    var perm = data['permission-token'];
-                    el.perm = perm;
-                    deferred.resolve(el);
-                }).error(deferred.reject);
-
-            return deferred.promise;
         }
 
         function logInfo(text) {
@@ -55,6 +44,17 @@ angular.module('avAdmin')
               var must = ef.must;
               delete ef.disabled;
               delete ef.must;
+              if (_.contains(['bool', 'captcha'], ef.type)) {
+                delete ef.min;
+                delete ef.max;
+              } else {
+                if (!!ef.min) {
+                  ef.min = parseInt(ef.min);
+                }
+                if (!!ef.max) {
+                  ef.max = parseInt(ef.max);
+                }
+              }
               return !must;
             });
 
@@ -115,7 +115,6 @@ angular.module('avAdmin')
 
           var promise = deferred.promise;
           promise = promise
-            .then(getCreatePerm)
             .then(createAuthEvent)
             .then(addCensus)
             .then(registerElection)

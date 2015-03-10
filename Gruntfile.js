@@ -146,12 +146,13 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat-v1.0.17.min.js"></script><![endif]--><!--[if gte IE 9]><script src="libnocompat-v1.0.17.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat-v1.0.17.min.js"></script><!--<![endif]-->'},
-            {selector:'body',html:'<script src="lib-v1.0.17.min.js"></script>'},
-            {selector:'body',html:'<script src="avConfig-v1.0.17.js"></script>'},
-            {selector:'body',html:'<script src="avThemes-v1.0.17.js"></script>'},
-            {selector:'body',html:'<script src="app-v1.0.17.min.js"></script>'},
-            {selector:'body',html:'<script src="avPlugins-v1.0.17.js"></script>'},
+            {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat-v3.0-b1.min.js"></script><![endif]--><!--[if gte IE 9]><script src="libnocompat-v3.0-b1.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat-v3.0-b1.min.js"></script><!--<![endif]-->'},
+            {selector:'body',html:'<!--All the source code of this program under copyright. Take a look at the license details at https://github.com/agoravoting/agora-core-view/blob/master/README.md -->'},
+            {selector:'body',html:'<script src="lib-v3.0-b1.min.js"></script>'},
+            {selector:'body',html:'<script src="avConfig-v3.0-b1.js"></script>'},
+            {selector:'body',html:'<script src="avThemes-v3.0-b1.js"></script>'},
+            {selector:'body',html:'<script src="app-v3.0-b1.min.js"></script>'},
+            {selector:'body',html:'<script src="avPlugins-v3.0-b1.js"></script>'},
             {selector:'head',html:'<link rel="stylesheet" id="theme" href="themes/default/app.min.css">'}
           ]
         },
@@ -175,16 +176,16 @@ module.exports = function (grunt) {
       main: {
         files: {
           'temp/libcompat.js': [
-             'vendor/jquery.compat/jquery-1.11.1.js',
-             'vendor/json3/json-v3.3.2.js',
-             'vendor/crypto/unsupportedBrowser.js'
+            'vendor/jquery.compat/jquery-1.11.1.js',
+            'vendor/json3/json-v3.3.2.js',
+            'vendor/crypto/unsupportedBrowser.js'
           ],
           'temp/libnocompat.js': ['<%= dom_munger.data.libnocompatjs %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
           'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
-          'dist/avConfig-v1.0.17.js': ['avConfig.js'],
-          'dist/avThemes-v1.0.17.js': ['avThemes.js'],
-          'dist/avPlugins-v1.0.17.js': ['plugins/**/*.js']
+          'dist/avConfig-v3.0-b1.js': ['avConfig.js'],
+          'dist/avThemes-v3.0-b1.js': ['avThemes.js'],
+          'dist/avPlugins-v3.0-b1.js': ['plugins/**/*.js']
         }
       }
     },
@@ -192,7 +193,8 @@ module.exports = function (grunt) {
       main: {
         files: {
             "dist/locales/en.json": ["locales/en.json", "plugins/**/locales/en.json"],
-            "dist/locales/es.json": ["locales/es.json", "plugins/**/locales/es.json"]
+            "dist/locales/es.json": ["locales/es.json", "plugins/**/locales/es.json"],
+            "dist/locales/ca.json": ["locales/ca.json", "plugins/**/locales/ca.json"]
         }
       }
     },
@@ -210,14 +212,14 @@ module.exports = function (grunt) {
       main: {
         options:{
           mangle: false,
-          compress: false,
+          compress: true,
           beautify: true
         },
         files: {
-          'dist/app-v1.0.17.min.js': 'temp/app.js',
-          'dist/lib-v1.0.17.min.js': 'temp/lib.js',
-          'dist/libnocompat-v1.0.17.min.js': 'temp/libnocompat.js',
-          'dist/libcompat-v1.0.17.min.js': 'temp/libcompat.js',
+          'dist/app-v3.0-b1.min.js': 'temp/app.js',
+          'dist/lib-v3.0-b1.min.js': 'temp/lib.js',
+          'dist/libnocompat-v3.0-b1.min.js': 'temp/libnocompat.js',
+          'dist/libcompat-v3.0-b1.min.js': 'temp/libcompat.js',
           'dist/avWidgets.min.js': 'avWidgets.js'
         }
       }

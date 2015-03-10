@@ -9,6 +9,7 @@ var avConfigData = {
   // 'https://foo/api/v3/' and always ends in '/'.
   theme: "default",
   baseUrl: "http://agora.dev/elections/api/",
+  freeAuthId: 1,
 
   // AuthApi base url
   authAPI: "http://agora.dev/authapi/api/",
@@ -29,7 +30,8 @@ var avConfigData = {
   // contact data where users can reach to a human when they need it
   contact: {
     email: "contact@example.com",
-    twitter: "twitter"
+    twitter: "twitter",
+    tlf: "-no tlf-"
   },
 
   help: {

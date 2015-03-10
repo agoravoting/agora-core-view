@@ -1,7 +1,11 @@
 angular.module('avRegistration')
-  .directive('avLogin', function(Authmethod, StateDataService, $parse, $state, $cookies, $i18next) {
+  .directive('avLogin', function(Authmethod, StateDataService, $parse, $state, $cookies, $i18next, ConfigService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+        var adminId = ConfigService.freeAuthId;
+        if (!!$cookies.authevent && $cookies.authevent === adminId + '') {
+          $state.go("admin.elections");
+        }
         var autheventid = attrs.eventId;
         scope.sendingData = false;
 
@@ -17,7 +21,7 @@ angular.module('avRegistration')
         }
 
         scope.isAdmin = false;
-        if (autheventid === '0') {
+        if (autheventid === adminId + "") {
             scope.isAdmin = true;
         }
 
@@ -49,7 +53,10 @@ angular.module('avRegistration')
                         $cookies.auth = rcvData['auth-token'];
                         Authmethod.setAuth($cookies.auth);
                         if (scope.isAdmin) {
-                            $state.go('admin.elections');
+                            Authmethod.getUserInfo().success(function(d) {
+                                $cookies.user = d.email;
+                                $state.go('admin.elections');
+                            }).error(function(error) { $state.go("admin.elections"); });
                         } else {
                             // redirecting to vote link
                             Authmethod.getPerm("vote", "AuthEvent", autheventid)
@@ -125,15 +132,7 @@ angular.module('avRegistration')
                     document.querySelector(".input-error").style.display = "block";
                 });
         };
-        if (!scope.isAdmin) {
-            scope.view(autheventid);
-        } else {
-            scope.apply({
-              extra_fields: [],
-              auth_method: "user-and-password",
-              auth_method_config: {}
-            });
-        }
+        scope.view(autheventid);
 
         scope.goSignup = function() {
             $state.go('registration.register', {id: autheventid});

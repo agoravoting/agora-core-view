@@ -67,7 +67,7 @@ angular.module('avAdmin')
           el.census.config.msg = rawel['msg'];
         }
         var auth = rawel['auth'].toLowerCase();
-        if (auth === "sms") {
+        if (auth.indexOf("sms") !== -1) {
           el.census.auth_method = 'sms';
         } else {
           el.census.auth_method = 'email';
@@ -76,11 +76,15 @@ angular.module('avAdmin')
         rawel['voters'].forEach(function(x) {
           var voter = {};
           if (auth === "sms") {
-            voter['tlf'] = x;
+            voter['tlf'] = x.trim();
           } else {
-            voter['email'] = x;
+            voter['email'] = x.trim();
           }
-          el.census.voters.push(voter);
+          el.census.voters.push({
+            selected: false,
+            vote: false,
+            username: "",
+            metadata: voter});
         });
 
         rawel['questions'].forEach(function(x) {

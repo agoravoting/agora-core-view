@@ -1,5 +1,6 @@
 <div
   class="opt-data"
+  ng-class="{'hide-link': !option.urls || option.urls.length === 0}"
   ng-click="toggleSelectItem(option)">
   <h4 class="show-value">{{option.text}}</h4>
   <div class="show-remove">
@@ -8,6 +9,7 @@
   </div>
 </div>
 <a
+  ng-if="option.urls && option.urls.length > 0"
   class="btn btn-default btn-right"
   href="{{option.urls[0].url}}"
   target="_blank">

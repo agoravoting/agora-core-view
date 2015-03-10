@@ -17,7 +17,8 @@ angular.module(
   'avTest',
   'avCrypto',
   'avAdmin',
-  'avElection'
+  'avElection',
+  'angularFileUpload'
 ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {
@@ -53,6 +54,11 @@ angular.module('agora-core-view').config(
         url: '/login',
         templateUrl: 'avAdmin/admin-login-controller/admin-login-controller.html',
         controller: "AdminLoginController"
+      })
+      .state('admin.signup', {
+        url: '/signup',
+        templateUrl: 'avAdmin/admin-signup-controller/admin-signup-controller.html',
+        controller: "AdminSignUpController"
       })
       .state('admin.logout', {
         url: '/logout',

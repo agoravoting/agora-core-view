@@ -13,7 +13,7 @@ angular.module('avAdmin')
             $state.go("admin.auth");
         }
 
-        function newq() {
+        function newQuestion() {
             var el = ElectionsApi.currentElection;
             if (!el.questions) {
                 el.questions = [];
@@ -21,26 +21,33 @@ angular.module('avAdmin')
             // New question
             var q = ElectionsApi.templateQ($i18next("avAdmin.questions.new") + " " + el.questions.length);
             el.questions.push(q);
-            expand(el.questions.length - 1);
+            expandQuestion(el.questions.length - 1);
         }
 
-        function delq(index) {
-            var el = ElectionsApi.currentElection;
-            var qs = el.questions;
-            el.questions = qs.slice(0, index).concat(qs.slice(index+1,qs.length));
+        function delQuestion(index) {
+          var qs = ElectionsApi.currentElection.questions;
+          ElectionsApi.currentElection.questions = qs.slice(0, index).concat(qs.slice(index+1,qs.length));
         }
 
-        function expand(index) {
-            var el = ElectionsApi.currentElection;
-            var qs = el.questions;
-            _.map(qs, function(q) { q.active = false; });
-            qs[index].active = true;
+        function expandQuestion(index) {
+          var qs = ElectionsApi.currentElection.questions;
+          _.map(qs, function(q) { q.active = false; });
+          qs[index].active = true;
         }
 
-        function collapse(index) {
-            var el = ElectionsApi.currentElection;
-            var qs = el.questions;
-            _.map(qs, function(q) { q.active = false; });
+        function collapseQuestion(index) {
+          var qs = ElectionsApi.currentElection.questions;
+          _.map(qs, function(q) { q.active = false; });
+        }
+
+        function toggleQuestion(index) {
+          var qs = ElectionsApi.currentElection.questions;
+          var q = qs[index];
+          var active = q.active;
+          _.map(qs, function(q) { q.active = false; });
+          if (!active) {
+            q.active = true;
+          }
         }
 
         function reorderOptions(index) {
@@ -94,10 +101,11 @@ angular.module('avAdmin')
 
         angular.extend(scope, {
           saveQuestions: save,
-          newQuestion: newq,
-          delQuestion: delq,
-          expandQuestion: expand,
-          collapseQuestion: collapse,
+          newQuestion: newQuestion,
+          delQuestion: delQuestion,
+          expandQuestion: expandQuestion,
+          collapseQuestion: collapseQuestion,
+          toggleQuestion: toggleQuestion,
           addOption: addOption,
           delOption: delOption,
           incOpt: incOpt,

@@ -2,11 +2,14 @@ angular.module('avRegistration')
 
     .factory('Authmethod', ['$http', 'ConfigService', function($http, ConfigService) {
         var backendUrl = ConfigService.authAPI;
+        var authId = ConfigService.freeAuthId;
         var authmethod = {};
-        var captcha_code = null;
+        authmethod.captcha_code = null;
+        authmethod.captcha_image_url = "";
+        authmethod.captcha_status = "";
 
         authmethod.signup = function(data, authevent) {
-            var eid = authevent || '0';
+            var eid = authevent || authId;
             return $http.post(backendUrl + 'auth-event/'+eid+'/register/', data);
         };
 
@@ -19,11 +22,11 @@ angular.module('avRegistration')
         };
 
         authmethod.ping = function() {
-            return $http.get(backendUrl + 'auth-event/0/ping/');
+            return $http.get(backendUrl + 'auth-event/'+authId+'/ping/');
         };
 
         authmethod.login = function(data, authevent) {
-            var eid = authevent || '0';
+            var eid = authevent || authId;
             delete data['authevent'];
             return $http.post(backendUrl + 'auth-event/'+eid+'/authenticate/', data);
         };
@@ -135,8 +138,18 @@ angular.module('avRegistration')
             return fields;
         };
 
-        authmethod.newCaptcha = function() {
-            return $http.get(backendUrl + 'captcha/new/', {});
+        authmethod.newCaptcha = function(message) {
+            authmethod.captcha_status = message;
+            return $http.get(backendUrl + 'captcha/new/', {})
+              .success(function (data) {
+                console.log(data);
+                if (data.captcha_code !== null) {
+                    authmethod.captcha_code = data.captcha_code;
+                    authmethod.captcha_image_url = data.image_url;
+                } else {
+                    authmethod.captcha_status = 'Not found';
+                }
+              });
         };
 
         // TEST

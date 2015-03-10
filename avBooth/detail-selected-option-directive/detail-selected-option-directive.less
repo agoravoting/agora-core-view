@@ -1,0 +1,71 @@
+[avb-detail-selected-option] {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  padding-left: 15px;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+
+  .show-remove {
+    display: none;
+    padding: 4px 12px;
+    position: absolute;
+    top: 0;
+    right: 70px;
+    color: @av-primary-contrast;
+
+    background-color: lighten(@brand-danger, 10%);
+
+    &:hover {
+    background-color: darken(@brand-danger, 10%);
+    }
+  }
+
+  .show-value {
+    display: block;
+    width: 100%;
+    float: left;
+    font-weight: bold;
+    padding: 15px 80px 15px 0;
+    line-height: 15px;
+  }
+
+  .btn-right {
+    display: block;
+    width: 70px;
+    padding: 12px;
+    border: 0;
+    position: absolute;
+    border-radius: 0;
+    top: 0;
+    right: 0;
+  }
+
+  .details {
+    display: block;
+    clear: both;
+    width: 100%;
+    line-height: 15px;
+    padding: 0 15px 15px 0;
+  }
+
+  &:hover {
+    background-color: @brand-danger;
+    color: @av-primary-contrast;
+
+    .show-remove {
+      color: @av-primary-contrast;
+      display: block !important;
+    }
+
+    .btn-right {
+      color: @av-primary-contrast;
+      background-color: lighten(@brand-danger, 10%);
+
+      &:hover {
+      background-color: darken(@brand-danger, 10%);
+      }
+    }
+  }
+}

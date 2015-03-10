@@ -1,34 +1,50 @@
-.question {
-    padding: 10px;
+[av-admin-elquestions] {
+  .question {
+    padding: 0;
     background-color: @av-bg;
     margin-top: 5px;
     margin-bottom: 5px;
-}
+    transition: 0.3s linear all;
 
-.question .buttons i {
-    cursor: pointer;
-}
+    .q-title {
+      padding: 10px;
+      margin: 0;
+      cursor: pointer;
 
-.question .qform {
-    margin-top: 10px;
-}
+      &:hover {
+        background-color: darken(@av-bg, 6%);
+      }
 
-.question .option {
-    padding: 10px;
-    background-color: @av-bg-hover;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
+      > .col-sm-10, > .col-sm-2 {
+        padding: 0;
+      }
+    }
 
-.question .newopt {
-    padding: 0px;
-}
+    .buttons i {
+        cursor: pointer;
+    }
 
-.question label {
-    text-align: right;
-}
+    .qform {
+        margin-top: 10px;
+    }
 
-.question .form-group {
-    margin-top: 10px;
-}
+    .option {
+        padding: 10px;
+        background-color: @av-bg-hover;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 
+    .newopt {
+        padding: 0px;
+    }
+
+    label {
+        text-align: right;
+    }
+
+    .form-group {
+        margin-top: 10px;
+    }
+  }
+}

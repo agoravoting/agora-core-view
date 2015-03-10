@@ -191,7 +191,18 @@ angular.module('avAdmin')
           var path = 'calculate-results';
           var method = 'POST';
           // TODO add config to calculate results
-          var data = [ [ "agora_results.pipes.results.do_tallies", {"ignore_invalid_votes": true} ] ];
+          var data = [
+            [
+              "agora_results.pipes.results.do_tallies",
+              {"ignore_invalid_votes": true}
+            ],
+            [
+              "agora_results.pipes.sort.sort_non_iterative",
+              {
+                "question_indexes": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+              }
+            ]
+          ];
           ElectionsApi.command(el, path, method, data)
             .catch(function(error) { scope.loading = false; scope.error = error; });
       }

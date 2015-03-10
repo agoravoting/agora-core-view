@@ -23,7 +23,7 @@ angular.module('avAdmin')
                 required: scope.newef.required,
                 min: 2,
                 max: 200,
-                required_on_authentication: true,
+                required_on_authentication: false,
                 must: false
             };
 

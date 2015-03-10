@@ -1,6 +1,6 @@
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-4">
-        <img src={{image_url}} style="width:161px;height:65px">
+        <img src={{authMethod.captcha_image_url}} style="width:161px;height:65px">
     </div>
     <label for="{{index}}Text" class="control-label col-sm-4">
         <span>{{field.name}}</span>
@@ -20,7 +20,7 @@
         <p class="help-block" ng-if="field.help">
           {{field.help}}
         </p>
-        <div class="input-error">
+        <div class="input-error"> {{authMethod.captcha_status}}
         </div>
     </div>
 </div>
