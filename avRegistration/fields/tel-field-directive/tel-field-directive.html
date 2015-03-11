@@ -7,10 +7,15 @@
             id="{{index}}Text"
             ng-model="field.value"
             ng-disabled="field.disabled"
+            ng-pattern="tlfPattern"
             tabindex="{{index}}"
+            name="input{{index}}"
             autofocus
             required />
+        <p class="help-block" ng-i18next="avRegistration.telHelp">
+        </p>
         <div class="input-error">
+          <span class="error" ng-show="form.input{{index}}.$error.pattern" ng-i18next="avRegistration.telInvalid"></span>
         </div>
     </div>
 </div>
