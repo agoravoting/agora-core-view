@@ -1,7 +1,7 @@
 angular.module('avRegistration')
   .directive('avrTelField', function($state) {
     function link(scope, element, attrs) {
-      scope.tlfPattern = /^[+]?\d{6,14}$/;
+      scope.tlfPattern = /^[+]?\d{9,14}$/;
     }
     return {
       restrict: 'AE',

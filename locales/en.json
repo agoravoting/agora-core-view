@@ -228,7 +228,7 @@
     "emailLabel": "Email",
     "telLabel": " Mobile telephone number",
     "telInvalid": " Invalid telephone number. Example of valid number: +34666666666",
-    "telHelp": " Example: +34666666666 (only numbers, with no spaces or hyphens)",
+    "telHelp": " Example: +34666666666 (only numbers, with no spaces or hyphens. For numbers outside Spain, use the country prefix, for exampl +34)",
     "codeLabel": "Authentication Code",
     "emailPlaceholder": "john@example.com",
     "passwordLabel": "Password",
