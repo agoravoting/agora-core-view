@@ -42,6 +42,8 @@ angular.module('agora-core-view').config(
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
+    $urlRouterProvider.otherwise("/admin/login");
+
     /* App states and urls are defined here */
     // Admin interface
     $stateProvider
