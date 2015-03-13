@@ -417,7 +417,7 @@
         "min": {"label": "Mínimo de candidaturas seleccionadas", "placeholder": "¿Cuántas candidaturas debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco"},
         "max": {"label": "Máximo de candidaturas seleccionadas", "placeholder": "¿Cuántas candidaturas puede un votante seleccionar?"},
         "random": {"label": "Orden aleatorio de candidaturas", "placeholder": "Cuando está activo las candidaturas aparecerán en un orden diferente a cada votante en la cabina de votación"},
-        "candidates": {"label": "Candidatos", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
+        "candidates": {"label": "Candidaturas", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
         "newopt": "Nueva opción"
     },
     "censusConfig": {
