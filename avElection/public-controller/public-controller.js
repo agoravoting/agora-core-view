@@ -12,6 +12,7 @@ angular.module('avElection').controller('PublicController',
       "pcandidates-election": "default",
       "2questions-conditional": "default"
     };
+    $("#theme").attr("href", "themes/" + ConfigService.theme + "/app.min.css");
     $scope.layout = mapLayouts["simple"];
     $scope.statePrefix = "election.public.show.home";
         $scope.inside_iframe = InsideIframeService();
