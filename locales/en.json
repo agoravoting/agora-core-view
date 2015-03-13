@@ -477,12 +477,12 @@
         "auth": "Auth method",
         "auths": {"email": "Email links", "sms": "SMS"},
         "sms": "SMS message",
-        "smstemp": "Template used in the SMS to send to the user. Use %(code)s to insert the SMS code",
+        "smstemp": "Template used in the SMS to send to the user. Use %(code)s to insert the SMS code and %(url)s for the authentication url",
         "smsdef": "This is your vote code: %(code)",
         "email": "Email message",
-        "emailsub": "Email subject",
+        "emailsub": "Vote now with Agora Voting",
         "emailtemp": "Template used in the Email link to send to the user. Use %(code)s to insert the login code and %(url)s to insert the election link",
-        "emaildef": "Vote following this link %(url)s\nThis is your auth code: %(code)s"
+        "emaildef": "Vote in %(url)s with code %(code)s"
     },
     "create": {
         "summary": "Summary: creating __num__ elections",

@@ -472,12 +472,12 @@
         "auth": "Método de autenticación",
         "auths": {"email": "Correo electrónico", "sms": "SMS"},
         "sms": "Mensaje SMS",
-        "smstemp": "Plantilla usada en el SMS a enviar al usuario. Usa %(code)s para insertar el código SMS",
+        "smstemp": "Plantilla usada en el SMS a enviar al usuario. Usa %(code)s para insertar el código SMS y %(url)s para insertar el enlace de votación",
         "smsdef": "Este es tu código de votación %(code)s",
         "email": "Mensaje por correo elelectrónico",
-        "emailsub": "Asúnto del correo",
+        "emailsub": "Ya puedes votar con Agora Voting",
         "emailtemp": "Plantilla usada en el correo para enviar a los usuarios. Usa %(code)s para añadir el código de acceso y %(url)s para insertar el enlace de votación",
-        "emaildef": "Vota siguiendo este enlace %(url)s\nEste es tu código de autenticación: %(code)s"
+        "emaildef": "Vota en %(url)s con el codigo %(code)s"
     },
     "create": {
         "summary": "Resumen: creando __num__ votaciones",
