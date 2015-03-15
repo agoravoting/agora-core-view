@@ -21,6 +21,10 @@ angular.module('avUi')
       if (!affix) {
         el.removeClass(affixClass);
         el.attr("style", "");
+
+        if (options.affixPlaceholder !== undefined) {
+          $(options.affixPlaceholder).removeClass("affixed");
+        }
       } else {
         el.addClass(affixClass);
         el.data("page-offset", $window.pageYOffset);
@@ -30,6 +34,10 @@ angular.module('avUi')
         el.css("left", Math.floor(instance.baseOffset.left) + "px");
         el.css("width", Math.floor(instance.baseWidth) + "px");
         el.css( "z-index", "10");
+
+        if (options.affixPlaceholder !== undefined) {
+          $(options.affixPlaceholder).addClass("affixed");
+        }
       }
 
     };

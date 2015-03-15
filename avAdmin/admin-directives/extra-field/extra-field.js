@@ -29,6 +29,8 @@ angular.module('avAdmin')
         var index = ef.indexOf(scope.field);
         el.census.extra_fields = ef.slice(0, index).concat(ef.slice(index+1,ef.length));
       };
+
+      $("html,body").animate({scrollTop: $(element).offset().top - 250}, 400);
     }
 
     return {
