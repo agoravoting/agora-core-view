@@ -5,6 +5,23 @@ angular.module('avAdmin')
       scope.questionIndex = function() {
         return scope.$index;
       };
+
+      function scrollToCurrent() {
+        setTimeout(function() {
+          $("html,body").animate({scrollTop: $(element).offset().top - 250}, 400);
+        }, 200);
+      }
+
+      // scroll and show on creation
+      if (scope.q.active) {
+        scrollToCurrent();
+      }
+
+      scope.$watch("q.active", function (newValue, oldValue) {
+        if (newValue === true) {
+          scrollToCurrent();
+        }
+      });
     }
 
     return {

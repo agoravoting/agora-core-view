@@ -30,7 +30,10 @@ angular.module('avAdmin')
         el.census.extra_fields = ef.slice(0, index).concat(ef.slice(index+1,ef.length));
       };
 
-      $("html,body").animate({scrollTop: $(element).offset().top - 250}, 400);
+      // scroll and show on creation
+      if (scope.extra_fields.editing === scope.field) {
+        $("html,body").animate({scrollTop: $(element).offset().top - 250}, 400);
+      }
     }
 
     return {
