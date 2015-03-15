@@ -223,7 +223,7 @@ angular.module('avAdmin')
                     extra_fields: [ ],
                     config: {
                         "msg": $i18next('avAdmin.auth.emaildef'),
-                        "subject": $i18next('avAdmin.auth.emailsub')
+                        "subject": $i18next('avAdmin.auth.emailsubdef')
                     }
                 },
                 questions: []

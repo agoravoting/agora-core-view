@@ -480,8 +480,9 @@
         "smstemp": "Template used in the SMS to send to the user. Use %(code)s to insert the SMS code and %(url)s for the authentication url",
         "smsdef": "This is your vote code: %(code)",
         "email": "Email message",
-        "emailsub": "Vote now with Agora Voting",
+        "emailsub": "Email subject",
         "emailtemp": "Template used in the Email link to send to the user. Use %(code)s to insert the login code and %(url)s to insert the election link",
+        "emailsubdef": "Vote now with Agora Voting",
         "emaildef": "Vote in %(url)s with code %(code)s"
     },
     "create": {
