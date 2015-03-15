@@ -63,7 +63,7 @@ angular.module('avBooth')
 
             // can't select more, flash info
             if (numSelected === parseInt(scope.max,10)) {
-              $("#maxSelectedLimitReached").flash("white", "#0081B9", 200);
+              $("#maxSelectedLimitReached").flash();
               return;
             }
 

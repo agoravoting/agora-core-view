@@ -46,7 +46,7 @@ angular.module('avBooth')
       // notices.
       scope.questionNext = function() {
         if (scope.numSelectedOptions() < scope.stateData.question.min) {
-          $("#selectMoreOptsWarning").flash("white", "#d9534f", 200);
+          $("#selectMoreOptsWarning").flash();
           return;
         }
         scope.next();
