@@ -96,7 +96,7 @@ angular.module('avAdmin')
             if (!q[option]) {
                 q[option] = 0;
             }
-            q[option] += inc;
+            q[option] = parseInt(q[option]) + inc;
         }
 
         angular.extend(scope, {
