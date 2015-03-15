@@ -100,7 +100,7 @@
   </div>
 
   <!-- min num -->
-  <div class="row" ng-if="field.type === 'int'">
+  <div class="row" ng-if="['password', 'code', 'text', 'textarea', 'int'].indexOf(field.type) !== -1">
     <div class="form-group">
         <label class="col-sm-4 control-label" for="winners" ng-i18next>
           avAdmin.census.fieldMinLabel
@@ -128,7 +128,7 @@
   </div>
 
   <!-- max num -->
-  <div class="row" ng-if="field.type === 'int'">
+  <div class="row" ng-if="['password', 'code', 'text', 'textarea', 'int'].indexOf(field.type) !== -1">
     <div class="form-group">
         <label class="col-sm-4 control-label" for="winners" ng-i18next>
           avAdmin.census.fieldMaxLabel
@@ -155,46 +155,8 @@
     </div>
   </div>
 
-  <!-- min text -->
-  <div class="row" ng-if="['password', 'code', 'text', 'textarea'].indexOf(field.type) !== -1">
-    <div class="form-group">
-      <label
-        for="fieldMinInput{{$index}}"
-        class="control-label col-sm-4"
-        ng-i18next="avAdmin.census.fieldMinLabel">
-      </label>
-      <div class="col-sm-8">
-        <input
-          type="text"
-          class="form-control"
-          ng-model="field.min"
-          name="fieldMinInput{{$index}}"
-          id="fieldMinInput{{$index}}" />
-      </div>
-    </div>
-  </div>
-
-  <!-- max text -->
-  <div class="row" ng-if="['password', 'code', 'text', 'textarea'].indexOf(field.type) !== -1">
-    <div class="form-group">
-      <label
-        for="fieldMaxInput{{$index}}"
-        class="control-label col-sm-4"
-        ng-i18next="avAdmin.census.fieldMaxLabel">
-      </label>
-      <div class="col-sm-8">
-        <input
-          type="text"
-          class="form-control"
-          ng-model="field.max"
-          name="fieldMaxInput{{$index}}"
-          id="fieldMaxInput{{$index}}" />
-      </div>
-    </div>
-  </div>
-
   <!-- required -->
-  <div class="row">
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         class="control-label col-sm-4 text-right">
@@ -215,7 +177,7 @@
   </div>
 
   <!-- unique -->
-  <div class="row">
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         class="control-label col-sm-4 text-right">
@@ -236,7 +198,7 @@
   </div>
 
   <!-- required on authentication -->
-  <div class="row">
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea', 'captcha'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         class="control-label col-sm-4 text-right">

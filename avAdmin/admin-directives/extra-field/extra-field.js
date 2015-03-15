@@ -2,7 +2,6 @@ angular.module('avAdmin')
   .directive('avExtraField', function() {
     function link(scope, element, attrs) {
       scope.field.disabled = true;
-      scope.noLimitsTypes = ['bool', 'captcha'];
 
       scope.toggleEdit = function() {
         if (scope.extra_fields.editing === scope.field) {
