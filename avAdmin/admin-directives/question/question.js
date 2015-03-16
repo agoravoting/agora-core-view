@@ -6,6 +6,15 @@ angular.module('avAdmin')
         return scope.$index;
       };
 
+      // validators
+      scope.validateMaxNumOptions = function(value) {
+        return parseInt(value) <= scope.q.answers.length;
+      };
+
+      scope.validateMinMax = function(value) {
+        return parseInt(value) <= scope.q.max;
+      };
+
       function scrollToCurrent() {
         setTimeout(function() {
           $("html,body").animate({scrollTop: $(element).offset().top - 250}, 400);

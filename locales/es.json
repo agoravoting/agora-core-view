@@ -413,9 +413,24 @@
         "new": "Nueva pregunta",
         "votingSystem": "Sistema de votación",
         "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Borda Dowdall o de Nauru (1/n)", "borda": "Borda tradicional"},
-        "winners": {"label": "Número de ganadores", "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de candidaturas"},
-        "min": {"label": "Mínimo de candidaturas seleccionadas", "placeholder": "¿Cuántas candidaturas debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco"},
-        "max": {"label": "Máximo de candidaturas seleccionadas", "placeholder": "¿Cuántas candidaturas puede un votante seleccionar?"},
+        "winners": {
+          "label": "Número de ganadores",
+          "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de candidaturas",
+          "numOptionsError": "Elegiste __winners__ ganadores pero sólo hay __num_cands__ candidaturas",
+          "minError": "Tiene que haber al menos un ganador"
+          },
+        "min": {
+          "label": "Mínimo de candidaturas seleccionadas",
+          "placeholder": "¿Cuántas candidaturas debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco",
+          "maxError": "El mínimo número de candidaturas seleccionables puede ser como mucho __max__",
+          "minError": "No puede ser negativo"
+        },
+        "max": {
+          "label": "Máximo de candidaturas seleccionadas",
+          "placeholder": "¿Cuántas candidaturas puede un votante seleccionar?",
+          "numOptionsError": "Se pueden seleccionar hasta  __max__ candidaturas pero sólo hay __cands__ candidaturas",
+          "minError": "Tiene que ser al menos 1"
+        },
         "random": {"label": "Orden aleatorio de candidaturas", "placeholder": "Cuando está activo las candidaturas aparecerán en un orden diferente a cada votante en la cabina de votación"},
         "candidates": {"label": "Candidaturas", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
         "newopt": "Nueva opción"

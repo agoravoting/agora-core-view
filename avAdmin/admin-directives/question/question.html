@@ -11,7 +11,7 @@
     </div>
 
     <!-- question form -->
-    <form class="row form form-horizontal qform" ng-if="q.active">
+    <form class="row form form-horizontal qform" role="form" name="qform{{$index}}" ng-if="q.active">
         <div class="col-xs-12">
 
             <!-- title -->
@@ -73,12 +73,15 @@
                       </span>
                       <input
                         type="text"
-                        id="max"
-                        name="max"
-                        min=0 step=1
+                        name="num_winners"
+                        min=1 step=1
                         class="form-control"
                         ng-disabled="!electionEditable()"
                         ng-model="q.num_winners"
+                        ui-validate="{
+                          numoptions: 'validateMaxNumOptions($value)',
+                          'min': '$value >= 1'}"
+                        ui-validate-watch="'q.answers.length'"
                         required/>
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="incOpt($index, 'num_winners', 1)">
@@ -86,10 +89,24 @@
                         </button>
                       </span>
                     </div>
+                    <div class="col-xs-10 input-error">
+                      <span
+                        class="error text-brand-danger"
+                        ng-show="!!qform{{$index}}.num_winners.$error.numoptions"
+                        ng-i18next>
+                        [i18next]({winners: q.num_winners, cands: q.answers.length})avAdmin.questions.winners.numOptionsError
+                      </span>
+                      <span
+                        class="error text-brand-danger"
+                        ng-show="!!qform{{$index}}.num_winners.$error.min"
+                        ng-i18next>
+                        avAdmin.questions.winners.minError
+                      </span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Minium -->
+            <!-- Minimum -->
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="winners" ng-i18next>avAdmin.questions.min.label</label>
                 <div class="col-sm-10">
@@ -102,18 +119,35 @@
                       </span>
                       <input
                         type="text"
-                        id="max"
-                        name="max"
+                        name="min"
                         min=0
                         step=1
                         class="form-control"
                         ng-model="q.min"
+                        ui-validate="{
+                          numoptions: 'validateMinMax($value)',
+                          'min': '$value >= 0'}"
+                        ui-validate-watch="'q.max'"
                         ng-disabled="!electionEditable()"
                         required/>
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="incOpt($index, 'min', 1)">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
+                      </span>
+                    </div>
+                    <div class="col-xs-10 input-error">
+                      <span
+                        class="error text-brand-danger"
+                        ng-show="!!qform{{$index}}.min.$error.numoptions"
+                        ng-i18next>
+                        [i18next]({min: q.min, max: q.max})avAdmin.questions.min.maxError
+                      </span>
+                      <span
+                        class="error text-brand-danger"
+                        ng-show="!!qform{{$index}}.min.$error.min"
+                        ng-i18next>
+                        avAdmin.questions.min.minError
                       </span>
                     </div>
                 </div>
@@ -138,12 +172,30 @@
                         step=1
                         class="form-control"
                         ng-disabled="!electionEditable()"
+                        ui-validate="{
+                          numoptions: 'validateMaxNumOptions($value)',
+                          min: '$value >= 1'}"
+                        ui-validate-watch="'q.answers.length'"
                         ng-model="q.max"
                         required/>
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="incOpt($index, 'max', 1)">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
+                      </span>
+                    </div>
+                    <div class="col-xs-10 input-error">
+                      <span
+                        class="error text-brand-danger"
+                        ng-show="!!qform{{$index}}.max.$error.numoptions"
+                        ng-i18next>
+                        [i18next]({max: q.max, cands: q.answers.length})avAdmin.questions.max.numOptionsError
+                      </span>
+                      <span
+                        class="error text-brand-danger"
+                        ng-show="!!qform{{$index}}.max.$error.min"
+                        ng-i18next>
+                        [i18next]avAdmin.questions.max.minError
                       </span>
                     </div>
                 </div>

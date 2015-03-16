@@ -411,9 +411,24 @@
         "new": "New question",
         "votingSystem": "Voting System",
         "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Nauru's Borda Count or Borda Dowdall (1/n)", "borda": "Borda Count (traditional)"},
-        "winners": {"label": "Number of winners", "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options"},
-        "min": {"label": "Minimum number of selected options", "placeholder": "How many options should a voter select in this question? Minimum is zero wich would allow blank votes"},
-        "max": {"label": "Maximum number of selected options", "placeholder": "How many options can a voter select in this question?"},
+        "winners": {
+          "label": "Number of winners",
+          "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options",
+          "numOptionsError": "You choose __winners__ winners but there are only __cands__ candidates",
+          "minError": "There must be at least 1 winner"
+          },
+        "min": {
+          "label": "Minimum number of selected options",
+          "placeholder": "How many options should a voter select in this question? Minimum is zero wich would allow blank votes",
+          "maxError": "Minimum number of choosable candidatures can be at most __max__",
+          "minError": "Cannot be negative"
+          },
+        "max": {
+          "label": "Maximum number of selected options",
+          "placeholder": "How many options can a voter select in this question?",
+          "numOptionsError": "Voters can choose up to __max__ candidatures, but there are only __cands__ candidatures",
+          "minError": "Must be at least 1 "
+        },
         "random": {"label": "Randomize options order", "placeholder": "When randomization of the options order is active, each voter will see the options for this question in a different order in the voting booth"},
         "candidates": {"label": "Candidates", "placeholder": "Candidate options that can be voted for this question"},
         "newopt": "New option name"
