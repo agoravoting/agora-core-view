@@ -44,7 +44,19 @@
       </label>
     </div>
 
-    <button class="btn btn-block btn-success" ng-if="!creating" ng-click="createElections()">
+    <div class="col-xs-12 text-brand-danger input-error" ng-if="!creating && errors.length > 0">
+      <ul>
+        <li
+          class="error"
+          ng-repeat="error in errors"
+          data-i18n="{{error.data}}"
+          ng-i18next>
+          [i18next]({{error.data}})avAdmin.create.errors.{{error.key}}
+        </li>
+      </ul>
+    </div>
+
+    <button class="btn btn-block btn-success" ng-disabled="errors.length > 0" ng-if="!creating" ng-click="createElections()">
         <span ng-i18next>[i18next]({'num': elections.length})avAdmin.create.create</span>
     </button>
 

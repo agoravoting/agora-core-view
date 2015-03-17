@@ -414,7 +414,7 @@
         "winners": {
           "label": "Number of winners",
           "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options",
-          "numOptionsError": "You choose __winners__ winners but there are only __cands__ candidates",
+          "numOptionsError": "There are __winners__ winners but only __cands__ candidates",
           "minError": "There must be at least 1 winner"
           },
         "min": {
@@ -430,7 +430,11 @@
           "minError": "Must be at least 1 "
         },
         "random": {"label": "Randomize options order", "placeholder": "When randomization of the options order is active, each voter will see the options for this question in a different order in the voting booth"},
-        "candidates": {"label": "Candidates", "placeholder": "Candidate options that can be voted for this question"},
+        "candidates": {
+          "label": "Candidates",
+          "placeholder": "Candidate options that can be voted for this question",
+          "minError": "There must be at least one candidate"
+        },
         "newopt": "New option name"
     },
     "censusConfig": {
@@ -508,7 +512,24 @@
         "census": "Adding the census (id: __id__) __title__",
         "reg": "Registering the election (id: __id__) __title__",
         "creatingEl": "Creating election (id: __id__) __title__",
-        "logHeader": "Log"
+        "logHeader": "Log",
+        "errors": {
+          "election-is-array-questions": "Election '__eltitle__': list of questions is not an array",
+          "election-array-length-min-questions": "Election '__eltitle__': there must be at least __min__ questions but there are only __num__",
+          "election-array-length-max-questions": "Election '__eltitle__': there must be at most __max__ questions but there are __num__",
+          "election-question-is-array-answers": "Election '__eltitle__': list of answers is not an array",
+          "election-question-is-int-min": "Election '__eltitle__', question '__qtitle__': the minimum number of candidates that a voter can choose is not an integer",
+          "election-question-is-int-max": "Election '__eltitle__', question '__qtitle__': the maximum number of candidates that a voter can choose is not an integer",
+          "election-question-is-int-num-winners": "Election '__eltitle__', question '__qtitle__': the number of winners is not an integer",
+          "election-question-array-length-min-answers": "Election '__eltitle__', question '__qtitle__': there must be at least __min__ answers, but there are only __num__",
+          "election-question-array-length-max-answers": "Election '__eltitle__', question '__qtitle__': there must be at most __max__ answers, but there are __num__",
+          "election-question-int-size-min-min": "Election '__eltitle__', question '__qtitle__': the minimum number of candidates that a voter can choose must be a positive integer, but it's __value__",
+          "election-question-int-size-max-min": "Election '__eltitle__', question '__qtitle__': the minimum number of candidates that a voter can choose is __value__, but cannot be larger than the maximum which is __max__",
+          "election-question-int-size-min-max": "Election '__eltitle__', question '__qtitle__': the maximum number of candidates that a voter can choose is __value__, but must be bigger or equal than the minimum which is __min__",
+          "election-question-int-size-max-max": "Election '__eltitle__', question '__qtitle__': the maximum number of candidates that a voter can choose is __value__, but cannot be larger than the number of candidates which is __max__",
+          "election-question-int-size-min-num-winners": "Election '__eltitle__', question '__qtitle__': there must be at least one winner, but it is __value__ instead",
+          "election-question-int-size-max-num-winners": "Election '__eltitle__', question '__qtitle__': the number of winners is __value__, but cannot be bigger than the number of answers that is __max__"
+        }
     }
   }
 }

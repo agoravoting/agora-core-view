@@ -1,6 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminCreate', ['$q', 'Authmethod', 'ElectionsApi', '$state', '$i18next', 'ConfigService',
-    function($q, Authmethod, ElectionsApi, $state, $i18next, ConfigService) {
+  .directive('avAdminCreate', function($q, Authmethod, ElectionsApi, $state, $i18next, $filter, ConfigService, CheckerService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var adminId = ConfigService.freeAuthId;
@@ -22,6 +21,61 @@ angular.module('avAdmin')
         function logError(text) {
           scope.log += "<p class=\"text-brand-danger\">" + text + "</p>";
         }
+
+        /*
+         * Checks elections for errors
+         */
+        var checks = [
+          {
+            check: "array-group-chain",
+            prefix: "election-",
+            append: {key: "eltitle", value: "$value.title"},
+            checks: [
+              {check: "is-array", key: "questions", postfix: "-questions"},
+              {check: "array-length", key: "questions", min: 1, max: 40, postfix: "-questions"},
+              {
+                check: "array-key-group-chain",
+                key: "questions",
+                append: {key: "qtitle", value: "$value.title"},
+                prefix: "question-",
+                checks: [
+                  {check: "is-int", key: "min", postfix: "-min"},
+                  {check: "is-int", key: "max", postfix: "-max"},
+                  {check: "is-int", key: "num_winners", postfix: "-num-winners"},
+                  {check: "is-array", key: "answers", postfix: "-answers"},
+                  {check: "array-length", key: "answers", min: 1, max: 10000, postfix: "-answers"},
+                  {check: "int-size", key: "min", min: 0, max: "$value.max", postfix: "-min"},
+                  {
+                    check: "int-size",
+                    key: "max",
+                    min: "$value.min",
+                    max: "$value.answers.length",
+                    postfix: "-max"
+                  },
+                  {
+                    check: "int-size",
+                    key: "num_winners",
+                    min: 1,
+                    max: "$value.answers.length",
+                    postfix: "-num-winners"
+                  }
+                ]
+              }
+            ]
+          }
+        ];
+
+        scope.errors = [];
+        CheckerService({
+          checks: checks,
+          data: scope.elections,
+          onError: function (errorKey, errorData) {
+            scope.errors.push({
+              data: errorData,
+              key: errorKey
+            });
+          }
+        });
 
         function createAuthEvent(el) {
             console.log("creating auth event for election " + el.title);
@@ -168,4 +222,4 @@ angular.module('avAdmin')
       link: link,
       templateUrl: 'avAdmin/admin-directives/create/create.html'
     };
-  }]);
+  });

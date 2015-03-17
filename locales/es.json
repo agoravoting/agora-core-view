@@ -416,7 +416,7 @@
         "winners": {
           "label": "Número de ganadores",
           "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de candidaturas",
-          "numOptionsError": "Elegiste __winners__ ganadores pero sólo hay __num_cands__ candidaturas",
+          "numOptionsError": "Hay __winners__ ganadores pero sólo __cands__ candidaturas",
           "minError": "Tiene que haber al menos un ganador"
           },
         "min": {
@@ -432,7 +432,11 @@
           "minError": "Tiene que ser al menos 1"
         },
         "random": {"label": "Orden aleatorio de candidaturas", "placeholder": "Cuando está activo las candidaturas aparecerán en un orden diferente a cada votante en la cabina de votación"},
-        "candidates": {"label": "Candidaturas", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
+        "candidates": {
+          "label": "Candidaturas",
+          "placeholder": "Respuestas que podrán ser votadas en esta pregunta",
+          "minError": "Debe haber al menos una candidatura"
+        },
         "newopt": "Nueva opción"
     },
     "censusConfig": {
@@ -504,7 +508,24 @@
         "census": "Añadiendo el censo (id: __id__) __title__",
         "reg": "Registrando la votación (id: __id__) __title__",
         "creatingEl": "Creando la votación (id: __id__) __title__",
-        "logHeader": "Log"
+        "logHeader": "Log",
+        "errors": {
+          "election-is-array-questions": "Votación '__eltitle__': la lista de pregunta no es un array",
+          "election-array-length-min-questions": "Votación '__eltitle__': debe haber al menos __min__ preguntas, pero solo hay  __num__",
+          "election-array-length-max-questions": "Votación '__eltitle__': debe haber como mucho __max__ preguntas, pero hay __num__",
+          "election-question-is-array-answers": "Votación '__eltitle__': la lista de candidaturas no es un array",
+          "election-question-is-int-min": "Votación '__eltitle__', pregunta '__qtitle__': el mínimo número de candidaturas que puede seleccionar un votante no es un número entero",
+          "election-question-is-int-max": "Votación '__eltitle__', pregunta '__qtitle__': el máximo número de candidaturas que puede seleccionar un votante no es un número entero",
+          "election-question-is-int-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': el número de ganadores no es un número entero",
+          "election-question-array-length-min-answers": "Votación '__eltitle__', pregunta '__qtitle__': debe haber al menos  __min__ candidaturas, pero solo hay __num__",
+          "election-question-array-length-max-answers": "Votación '__eltitle__', pregunta '__qtitle__': debe haber como mucho __max__ candidaturas, pero hay __num__",
+          "election-question-int-size-min-min": "Votación '__eltitle__', pregunta '__qtitle__': el mínimo número de candidaturas que puede seleccionar un votante debe ser un número positivo, pero es __value__",
+          "election-question-int-size-max-min": "Votación '__eltitle__', pregunta '__qtitle__': el mínimo número de candidaturas que puede seleccionar un votante es __value__, pero no debe ser mayor que el máximo, que es __max__",
+          "election-question-int-size-min-max": "Votación '__eltitle__', pregunta '__qtitle__': el máximo número de candidaturas que puede seleccionar un votante es __value__, pero debe ser mayor o igual que el mínimo, que es __min__",
+          "election-question-int-size-max-max": "Votación '__eltitle__', pregunta '__qtitle__': el máximo número de candidaturas que puede seleccionar un votante es __value__, pero no debe ser mayor que el número total de candidaturas, que es __max__",
+          "election-question-int-size-min-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': debe haber al menos un ganador, pero hay __value__",
+          "election-question-int-size-max-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': el número de ganadores es __value__, pero no puede ser mayor que el número total de candidaturas, que es __max__"
+        }
     }
   }
 }
