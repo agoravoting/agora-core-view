@@ -251,7 +251,7 @@ angular.module('agora-core-view').config(
       });
 });
 
-angular.module('agora-core-view').run(function($cookies, $http, $rootScope) {
+angular.module('agora-core-view').run(function($http, $rootScope) {
 
   $rootScope.safeApply = function(fn) {
     var phase = $rootScope.$$phase;
@@ -274,10 +274,6 @@ angular.module('agora-core-view').run(function($cookies, $http, $rootScope) {
       console.log("change success");
       $("#angular-preloading").hide();
     });
-
-    if ($cookies.auth) {
-        $http.defaults.headers.common.Authorization = $cookies.auth;
-    }
 });
 
 

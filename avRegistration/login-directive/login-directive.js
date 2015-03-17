@@ -3,7 +3,7 @@ angular.module('avRegistration')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var adminId = ConfigService.freeAuthId;
-        if (!!$cookies.authevent && $cookies.authevent === adminId + '') {
+        if ($cookies.authevent && $cookies.authevent === adminId + '') {
           $state.go("admin.elections");
         }
         var autheventid = attrs.eventId;
@@ -51,7 +51,8 @@ angular.module('avRegistration')
                         $cookies.userid = rcvData.username;
                         $cookies.user = scope.email;
                         $cookies.auth = rcvData['auth-token'];
-                        Authmethod.setAuth($cookies.auth);
+                        $cookies.isAdmin = scope.isAdmin;
+                        Authmethod.setAuth($cookies.auth, scope.isAdmin);
                         if (scope.isAdmin) {
                             Authmethod.getUserInfo().success(function(d) {
                                 $cookies.user = d.email;

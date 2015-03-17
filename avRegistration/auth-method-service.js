@@ -7,6 +7,16 @@ angular.module('avRegistration')
         authmethod.captcha_code = null;
         authmethod.captcha_image_url = "";
         authmethod.captcha_status = "";
+        authmethod.admin = false;
+
+        authmethod.isAdmin = function() {
+            return authmethod.isLoggedIn() && authmethod.admin;
+        };
+
+        authmethod.isLoggedIn = function() {
+            var auth = $http.defaults.headers.common.Authorization;
+            return auth && auth.length > 0;
+        };
 
         authmethod.signup = function(data, authevent) {
             var eid = authevent || authId;
@@ -157,7 +167,8 @@ angular.module('avRegistration')
             return $http.get(backendUrl);
         };
 
-        authmethod.setAuth = function(auth) {
+        authmethod.setAuth = function(auth, isAdmin) {
+            authmethod.admin = isAdmin;
             $http.defaults.headers.common.Authorization = auth;
             return false;
         };
@@ -199,3 +210,30 @@ angular.module('avRegistration')
         return authmethod;
 
     }]);
+
+/**
+ * Caching http response error to deauthenticate
+ */
+angular.module('agora-core-view').config(
+  function($httpProvider) {
+    $httpProvider.interceptors.push(function($q) {
+      return {
+        'responseError': function(rejection) {
+            if (rejection.status === 403) {
+                $httpProvider.defaults.headers.common.Authorization = '';
+                console.log("DONE");
+            }
+            return $q.reject(rejection);
+        }
+      };
+    });
+});
+
+/**
+ * IF the cookie is there we make the autologin
+ */
+angular.module('agora-core-view').run(function($cookies, $http, Authmethod) {
+    if ($cookies.auth) {
+        Authmethod.setAuth($cookies.auth, $cookies.isAdmin);
+    }
+});
