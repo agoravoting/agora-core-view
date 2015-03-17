@@ -88,7 +88,7 @@ angular.module('avAdmin')
             reorderOptions(i1);
         }
 
-        function incOpt(index, option, inc) {
+        function incOpt(index, option, inc, event) {
             var el = ElectionsApi.currentElection;
             var qs = el.questions;
             var q = qs[index];
@@ -97,6 +97,9 @@ angular.module('avAdmin')
                 q[option] = 0;
             }
             q[option] = parseInt(q[option]) + inc;
+            if (!!event) {
+              event.preventDefault();
+            }
         }
 
         angular.extend(scope, {

@@ -116,6 +116,12 @@
                 type="text"
                 step="1"
                 class="form-control"
+                ui-keypress="{
+                  37: 'incOpt(\'min\', -1, $event)',
+                  38: 'incOpt(\'min\', 1, $event)',
+                  39: 'incOpt(\'min\', 1, $event)',
+                  40: 'incOpt(\'min\', -1, $event)'
+                }"
                 ng-model="field.min" />
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button" ng-click="incOpt('min', 1)">
@@ -143,6 +149,12 @@
               <input
                 type="text"
                 min="{{field.min}}" step="1"
+                ui-keypress="{
+                  37: 'incOpt(\'max\', -1, $event)',
+                  38: 'incOpt(\'max\', 1, $event)',
+                  39: 'incOpt(\'max\', 1, $event)',
+                  40: 'incOpt(\'max\', -1, $event)'
+                }"
                 class="form-control"
                 ng-model="field.max" />
               <span class="input-group-btn">

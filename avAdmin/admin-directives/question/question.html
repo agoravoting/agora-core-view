@@ -78,6 +78,12 @@
                         class="form-control"
                         ng-disabled="!electionEditable()"
                         ng-model="q.num_winners"
+                        ui-keypress="{
+                          37: 'incOpt($index, \'num_winners\', -1, $event)',
+                          38: 'incOpt($index, \'num_winners\', 1, $event)',
+                          39: 'incOpt($index, \'num_winners\', 1, $event)',
+                          40: 'incOpt($index, \'num_winners\', -1, $event)'
+                        }"
                         ui-validate="{
                           numoptions: 'validateMaxNumOptions($value)',
                           'min': '$value >= 1'}"
@@ -124,6 +130,12 @@
                         step=1
                         class="form-control"
                         ng-model="q.min"
+                        ui-keypress="{
+                          37: 'incOpt($index, \'min\', -1, $event)',
+                          38: 'incOpt($index, \'min\', 1, $event)',
+                          39: 'incOpt($index, \'min\', 1, $event)',
+                          40: 'incOpt($index, \'min\', -1, $event)'
+                        }"
                         ui-validate="{
                           numoptions: 'validateMinMax($value)',
                           'min': '$value >= 0'}"
@@ -172,6 +184,12 @@
                         step=1
                         class="form-control"
                         ng-disabled="!electionEditable()"
+                        ui-keypress="{
+                          37: 'incOpt($index, \'max\', -1, $event)',
+                          38: 'incOpt($index, \'max\', 1, $event)',
+                          39: 'incOpt($index, \'max\', 1, $event)',
+                          40: 'incOpt($index, \'max\', -1, $event)'
+                        }"
                         ui-validate="{
                           numoptions: 'validateMaxNumOptions($value)',
                           min: '$value >= 1'}"
