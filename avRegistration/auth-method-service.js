@@ -221,7 +221,6 @@ angular.module('agora-core-view').config(
         'responseError': function(rejection) {
             if (rejection.status === 403) {
                 $httpProvider.defaults.headers.common.Authorization = '';
-                console.log("DONE");
             }
             return $q.reject(rejection);
         }
