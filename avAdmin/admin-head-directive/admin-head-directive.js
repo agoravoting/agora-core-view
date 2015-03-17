@@ -15,7 +15,8 @@ angular.module('avAdmin')
             Authmethod.ping()
                 .success(function(data) {
                     if (data.logged) {
-                        Authmethod.setAuth(data['auth-token'], $cookies.isAdmin);
+                        $cookies.auth = data['auth-token'];
+                        Authmethod.setAuth($cookies.auth, $cookies.isAdmin);
                         Authmethod.pingTimeout = setTimeout(function() { ping(); }, 60000);
                     } else {
                         $state.go("admin.logout");
