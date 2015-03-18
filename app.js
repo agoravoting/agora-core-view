@@ -18,7 +18,8 @@ angular.module(
   'avCrypto',
   'avAdmin',
   'avElection',
-  'angularFileUpload'
+  'angularFileUpload',
+  'dndLists'
 ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {
