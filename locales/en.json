@@ -444,6 +444,7 @@
           "placeholder": "Especify how the question will be shown",
           "simple": "Simple",
           "details": "Detailed",
+          "accordion": "Accordion",
           "circles": "Images with details"
         },
         "option": {

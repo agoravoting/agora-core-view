@@ -2,8 +2,9 @@ angular.module('avAdmin')
   .directive('avAdminQuestion', function() {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
-      scope.layouts = ["simple", "circles"];
+      scope.layouts = ["simple", "circles", "accordion", "details"];
       scope.edittingIndex = -1;
+      scope.internal = {};
       scope.questionIndex = function() {
         return scope.$index;
       };

@@ -10,14 +10,14 @@ angular.module('avAdmin')
         }
 
         scope.answerBeingEdited = function() {
-          return scope.q.editingIndex === scope.answer.id;
+          return scope.internal.editingIndex === scope.answer.id;
         };
 
         scope.setEdit = function(edit, event) {
           if (edit === true) {
-            scope.q.editingIndex = scope.answer.id;
+            scope.internal.editingIndex = scope.answer.id;
           } else {
-            scope.q.editingIndex = -1;
+            scope.internal.editingIndex = -1;
           }
 
           if (!!event) {

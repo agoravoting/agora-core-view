@@ -446,6 +446,7 @@
           "placeholder": "Especifica cómo se va a mostrar la pregunta",
           "simple": "Simple",
           "details": "Detallada",
+          "accordion": "Acordeón",
           "circles": "Imágenes con detalles"
         },
         "option": {
