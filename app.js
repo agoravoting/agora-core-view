@@ -19,7 +19,8 @@ angular.module(
   'avAdmin',
   'avElection',
   'angularFileUpload',
-  'dndLists'
+  'dndLists',
+  'ng-autofocus'
 ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {

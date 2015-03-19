@@ -1,4 +1,4 @@
-[av-admin-elquestions] {
+[av-admin-question] {
   .question {
     padding: 0;
     background-color: @av-bg;
@@ -39,13 +39,6 @@
         padding: 0 8px;
     }
 
-    .option {
-        padding: 10px;
-        background-color: @av-bg-hover;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
     .newopt {
         padding: 0px;
     }
@@ -56,6 +49,40 @@
 
     .form-group {
         margin-top: 10px;
+    }
+
+    [dnd-list], [dnd-list] > div {
+      position: relative;
+    }
+
+    [dnd-list] {
+      /**
+       * The dnd-list should always have a min-height,
+       * otherwise you can't drop to it once it's empty
+       */
+      min-height: 42px;
+      margin-right: -28px;
+
+      /**
+       * The dndDraggingSource class will be applied to
+       * the source element of a drag operation. It makes
+       * sense to hide it to give the user the feeling
+       * that he's actually moving it.
+       */
+      .dndDraggingSource {
+        display: none;
+      }
+
+      /**
+       * An element with .dndPlaceholder class will be
+       * added to the dnd-list while the user is dragging
+       * over it.
+       */
+      .dndPlaceholder {
+        display: block;
+        background-color: @gray-light;
+        min-height: 42px;
+      }
     }
   }
 }

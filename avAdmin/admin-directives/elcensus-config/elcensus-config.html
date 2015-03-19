@@ -86,6 +86,8 @@
             ng-repeat="field in election.census.extra_fields"
             dnd-draggable="field"
             ng-if="!field.must"
+            dnd-disable-if="!electionEditable()"
+            ng-class="{enabled: electionEditable()}"
             dnd-moved="election.census.extra_fields.splice($index, 1)"
             dnd-effect-allowed="move">
           </div>

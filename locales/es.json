@@ -243,6 +243,9 @@
     "step": "guia paso a paso",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "loginButton": "Entrar",
+    "alreadyRegistered": "¿Ya estás registrado?",
+    "helpAlreadyRegisteredForm": "Quizás ya estés registrado y lo que necesitas realmente es autenticarte.",
+    "loginHere": "Entrar, ya me registré antes",
 
     "registerHeader": "Regístrate para votar",
     "registerAdminHeader": "Regístrate",
@@ -437,7 +440,26 @@
           "placeholder": "Respuestas que podrán ser votadas en esta pregunta",
           "minError": "Debe haber al menos una candidatura"
         },
-        "newopt": "Nueva opción"
+        "newopt": "Nueva opción",
+        "layout": {
+          "label": "Disposición",
+          "placeholder": "Especifica cómo se va a mostrar la pregunta",
+          "simple": "Simple",
+          "details": "Detallada",
+          "circles": "Imágenes con detalles"
+        },
+        "option": {
+          "textFieldLabel": "Texto",
+          "textFieldPlaceholder": "Texto de la candidatura",
+          "detailsFieldLabel": "Detalles",
+          "detailsFieldPlaceholder": "Información más detallada sobre la candidatura",
+          "categoryFieldLabel": "Categoría",
+          "categoryFieldPlaceholder": "USado para agrupar candidaturas por equipos en algunas disposiciones",
+          "urlFieldLabel": "Url",
+          "urlFieldPlaceholder": "https://example.com",
+          "imageUrlFieldLabel": "Url de Imagen",
+          "imageUrlFieldPlaceholder": "https://example.com/path/to/image.jpg"
+        }
     },
     "censusConfig": {
         "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo"

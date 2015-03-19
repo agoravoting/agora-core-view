@@ -2,6 +2,8 @@ angular.module('avAdmin')
   .directive('avAdminQuestion', function() {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
+      scope.layouts = ["simple", "circles"];
+      scope.edittingIndex = -1;
       scope.questionIndex = function() {
         return scope.$index;
       };
@@ -31,6 +33,18 @@ angular.module('avAdmin')
           scrollToCurrent();
         }
       });
+
+      // When an answer has been drag-and-drop, we have to update the indexes
+      scope.recalculateAnswerIds = function(item, newPos) {
+        // we do it a-posteriori, because the list has not been updated yet when
+        // this call happens, but it will
+        setTimeout(function() {
+          _.each(scope.q.answers, function(answer, index) {
+            answer.id = answer.sort_order = index;
+          });
+        }, 200);
+        return item;
+      };
     }
 
     return {

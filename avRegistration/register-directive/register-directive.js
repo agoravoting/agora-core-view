@@ -55,16 +55,30 @@ angular.module('avRegistration')
                 });
         };
 
+        scope.goLogin = function(event) {
+          console.log("goLogin");
+          if (event) {
+            event.preventDefault();
+          }
+
+          if (scope.authevent['id'] === ConfigService.freeAuthId+'') {
+              $state.go("admin.login");
+          } else {
+              $state.go("election.public.show.login", {id: scope.authevent['id']});
+          }
+        };
+
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
+            scope.authevent = authevent;
 
             // if registration is closed, redirect to login
             if (authevent['census'] !== 'open') {
               if (authevent['id'] === ConfigService.freeAuthId+'') {
                   $state.go("admin.login");
               } else {
-                  $state.go("registration.login", {id: authevent['id']});
+                  $state.go("election.public.show.login", {id: authevent['id']});
               }
             }
             scope.register_fields = Authmethod.getRegisterFields(authevent);

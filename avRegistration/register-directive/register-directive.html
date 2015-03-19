@@ -40,8 +40,11 @@
           <p ng-i18next>avRegistration.helpAdminRegisterForm</p>
       </span>
       <span ng-if="!admin">
-          <h3 class="help-h3" ng-i18next="avRegistration.registerFormHelpTitle"></h3>
           <p ng-i18next>avRegistration.helpRegisterForm</p>
+
+          <h3 class="help-h3" ng-i18next="avRegistration.alreadyRegistered"></h3>
+          <p ng-i18next>[html]avRegistration.helpAlreadyRegisteredForm</p>
+          <a href="" ng-click="goLogin($event)" ng-i18next="avRegistration.loginHere"></a><br/>
       </span>
     </div>
   </div>

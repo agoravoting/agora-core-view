@@ -249,6 +249,9 @@
     "surnamePlaceholder": "surname",
     "tlfPlaceholder": "phone",
     "dniPlaceholder": "DNI",
+    "alreadyRegistered": "Already registered?",
+    "helpAlreadyRegisteredForm": "Maybe you are already registered and what you really need is to authenticate.",
+    "loginHere": "Enter: I have already registered before",
 
     "tlfError": "Invalid phone",
     "dniError": "DNI example 12345678H",
@@ -435,7 +438,26 @@
           "placeholder": "Candidate options that can be voted for this question",
           "minError": "There must be at least one candidate"
         },
-        "newopt": "New option name"
+        "newopt": "New option name",
+        "layout": {
+          "label": "Layout",
+          "placeholder": "Especify how the question will be shown",
+          "simple": "Simple",
+          "details": "Detailed",
+          "circles": "Images with details"
+        },
+        "option": {
+          "textFieldLabel": "Text",
+          "textFieldPlaceholder": "Candidate option text",
+          "detailsFieldLabel": "Details",
+          "detailsFieldPlaceholder": "More detailed information about the candidate option",
+          "categoryFieldLabel": "Category",
+          "categoryFieldPlaceholder": "Used to group candidates in teams in some layouts",
+          "urlFieldLabel": "Url",
+          "urlFieldPlaceholder": "https://example.com",
+          "imageUrlFieldLabel": "Image Url",
+          "imageUrlFieldPlaceholder": "https://example.com/path/to/image.jpg"
+        }
     },
     "censusConfig": {
         "intro": "The census specifies who can vote and the details we need from each elector. Here you can configure it"
