@@ -266,7 +266,8 @@
     "successRegistration": "Success",
     "errorRegistration": "Error",
 
-    "invalidCredentials": "Invalid credentials"
+    "invalidCredentials": "Invalid credentials",
+    "invalidDataRegEx": "Invalid data"
   },
 
   "avAdmin": {
@@ -489,6 +490,8 @@
         "captchaOption": "captcha",
         "textareaOption": "textarea",
         "fieldTypeLabel": "Type",
+        "fieldRegExLabel": "Regular expression",
+        "fieldRegExPlaceholder": "Example: '^(1000|1010)$'",
         "fieldMinLabel": "Min",
         "fieldMaxLabel": "Max",
         "fieldNameLabel": "Field name",

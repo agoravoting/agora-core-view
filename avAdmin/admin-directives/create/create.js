@@ -98,6 +98,13 @@ angular.module('avAdmin')
               var must = ef.must;
               delete ef.disabled;
               delete ef.must;
+
+              // only add regex if it's filled and it's a text field
+              if (!angular.isUndefined(ef.regex) &&
+                (!_.contains(['int', 'text'], ef.type) || ef.regex.length === 0)) {
+                delete ef.regex;
+              }
+
               if (_.contains(['bool', 'captcha'], ef.type)) {
                 delete ef.min;
                 delete ef.max;
