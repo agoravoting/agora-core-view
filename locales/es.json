@@ -486,7 +486,7 @@
         "intOption": "int",
         "boolOption": "bool",
         "fieldRegExLabel": "Expresión regular",
-        "fieldRegExPlaceholder": "Ejemplo: '^(1000|1010)$'",
+        "fieldRegExPlaceholder": "Advanced users only - Ejemplo: ^(1000|1010)$",
         "captchaOption": "captcha",
         "textareaOption": "textarea",
         "configurationHeader": "Configuration",

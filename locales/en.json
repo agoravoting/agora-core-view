@@ -491,7 +491,7 @@
         "textareaOption": "textarea",
         "fieldTypeLabel": "Type",
         "fieldRegExLabel": "Regular expression",
-        "fieldRegExPlaceholder": "Example: '^(1000|1010)$'",
+        "fieldRegExPlaceholder": "Advanced users only - Example: ^(1000|1010)$",
         "fieldMinLabel": "Min",
         "fieldMaxLabel": "Max",
         "fieldNameLabel": "Field name",
