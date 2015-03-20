@@ -27,7 +27,7 @@
       </div>
       <div
         class="col-sm-9 admin-controller-content"
-        ng-repeat='template in plugins'
+        ng-repeat='template in plugins.list'
         ng-include='template.directive'
         ng-if="shortst == template.name">
       </div>

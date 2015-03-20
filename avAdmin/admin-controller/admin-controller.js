@@ -10,7 +10,7 @@ angular.module('avAdmin').controller('AdminController',
 
     // plugin stuff
     $scope.plugins = AdminPlugins.plugins;
-    AdminPlugins.plugins.forEach(function(p) {
+    AdminPlugins.plugins.list.forEach(function(p) {
         if (p.directive) {
             var tpl = $compile( '<script type="text/ng-template" id="'+p.directive+'"><div class="av-plugin-'+p.directive+'"></div></script>' )($scope);
             if ($scope.shortst === p.name) {
