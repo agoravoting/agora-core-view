@@ -24,6 +24,12 @@ angular.module('avRegistration')
         };
 
         authmethod.getUserInfo = function(userid) {
+            if (!authmethod.isLoggedIn()) {
+              return {
+                success: function () {},
+                error: function (func) { func({message:"not-logged-in"}); }
+              };
+            }
             if (typeof userid === 'undefined') {
                 return $http.get(backendUrl + 'user/', {});
             } else {

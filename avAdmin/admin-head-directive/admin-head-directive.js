@@ -10,29 +10,6 @@ angular.module('avAdmin')
         if (scope.loginrequired && !scope.admin) {
             $state.go("admin.logout");
         }
-
-        function ping() {
-            Authmethod.ping()
-                .success(function(data) {
-                    if (data.logged) {
-                        $cookies.auth = data['auth-token'];
-                        Authmethod.setAuth($cookies.auth, $cookies.isAdmin);
-                        Authmethod.pingTimeout = setTimeout(function() { ping(); }, 60000);
-                    } else {
-                        $state.go("admin.logout");
-                    }
-                })
-                .error(function(data) {
-                    $state.go("admin.logout");
-                });
-        }
-
-        // checking login status
-        if (admin) {
-            if (!Authmethod.pingTimeout) {
-                ping();
-            }
-        }
     }
 
     return {
