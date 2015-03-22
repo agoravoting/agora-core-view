@@ -101,7 +101,7 @@ angular.module('avAdmin')
 
               // only add regex if it's filled and it's a text field
               if (!angular.isUndefined(ef.regex) &&
-                (!_.contains(['int', 'text'], ef.type) || ef.regex.length === 0)) {
+                (!_.contains(['int', 'text'], ef.type) || $.trim(ef.regex).length === 0)) {
                 delete ef.regex;
               }
 
@@ -142,6 +142,12 @@ angular.module('avAdmin')
 
         function registerElection(el) {
             console.log("registering election " + el.title);
+
+            _.each(el.questions, function (q) {
+              _.each(q.answers, function (answer) {
+                answer.urls = _.filter(answer.urls, function(url) { return $.trim(url.url).length > 0;});
+              });
+            });
             var deferred = $q.defer();
             // Registering the election
             logInfo($i18next('avAdmin.create.reg', {title: el.title, id: el.id}));
