@@ -1,6 +1,6 @@
 angular.module('avRegistration')
 
-    .factory('Authmethod', ['$http', 'ConfigService', function($http, ConfigService) {
+    .factory('Authmethod', function($http, $cookies, ConfigService) {
         var backendUrl = ConfigService.authAPI;
         var authId = ConfigService.freeAuthId;
         var authmethod = {};
@@ -25,10 +25,16 @@ angular.module('avRegistration')
 
         authmethod.getUserInfo = function(userid) {
             if (!authmethod.isLoggedIn()) {
-              return {
-                success: function () {},
-                error: function (func) { func({message:"not-logged-in"}); }
+              var data = {
+                success: function () { return data; },
+                error: function (func) {
+                  setTimeout(function() {
+                    func({message:"not-logged-in"});
+                  }, 0);
+                  return data;
+                }
               };
+              return data;
             }
             if (typeof userid === 'undefined') {
                 return $http.get(backendUrl + 'user/', {});
@@ -38,6 +44,18 @@ angular.module('avRegistration')
         };
 
         authmethod.ping = function() {
+            if (!authmethod.isLoggedIn()) {
+              var data = {
+                success: function () { return data; },
+                error: function (func) {
+                  setTimeout(function() {
+                    func({message:"not-logged-in"});
+                  }, 0);
+                  return data;
+                }
+              };
+              return data;
+            }
             return $http.get(backendUrl + 'auth-event/'+authId+'/ping/');
         };
 
@@ -176,6 +194,7 @@ angular.module('avRegistration')
         authmethod.setAuth = function(auth, isAdmin) {
             authmethod.admin = isAdmin;
             $http.defaults.headers.common.Authorization = auth;
+            authmethod.launchPingDaemon();
             return false;
         };
 
@@ -213,20 +232,42 @@ angular.module('avRegistration')
             return $http.post(url, data);
         };
 
-        return authmethod;
+        authmethod.launchPingDaemon = function() {
+          // only needed if it's an admin and daemon has not been launched
+          if (!$cookies.isAdmin || !!authmethod.pingTimeout) {
+            return;
+          }
 
-    }]);
+          authmethod.ping()
+            .success(function(data) {
+              if (data.logged) {
+                $cookies.auth = data['auth-token'];
+                authmethod.setAuth($cookies.auth, $cookies.isAdmin);
+                authmethod.pingTimeout = setTimeout(
+                  function() { authmethod.launchPingDaemon(); },
+                  ConfigService.timeoutSeconds*500);
+              }
+            });
+        };
+
+        return authmethod;
+    });
 
 /**
  * Caching http response error to deauthenticate
  */
 angular.module('agora-core-view').config(
   function($httpProvider) {
-    $httpProvider.interceptors.push(function($q) {
+    $httpProvider.interceptors.push(function($q, $injector) {
       return {
         'responseError': function(rejection) {
-            if (rejection.status === 403) {
-                $httpProvider.defaults.headers.common.Authorization = '';
+            if (rejection.data && rejection.data.error_codename &&
+              _.contains(
+                ['expired_hmac_key', 'empty_hmac', 'invalid_hmac_userid'],
+                rejection.data.error_codename))
+            {
+              $httpProvider.defaults.headers.common.Authorization = '';
+              $injector.get('$state').go("admin.logout");
             }
             return $q.reject(rejection);
         }

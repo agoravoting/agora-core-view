@@ -22,6 +22,8 @@ var avConfigData = {
   // default language of the application
   language: "en",
 
+  timeoutSeconds: 3600,
+
   publicURL: "http://agora.dev/elections/public/",
 
   // if we are in debug mode or not
