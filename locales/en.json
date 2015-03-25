@@ -447,7 +447,8 @@
           "details": "Detailed",
           "accordion": "Accordion",
           "circles": "Images with details",
-          "conditional-accordion": "Conditional Accordion"
+          "conditional-accordion": "Conditional Accordion",
+          "ahoram-primaries": "ahoram-primaries"
         },
         "option": {
           "textFieldLabel": "Text",

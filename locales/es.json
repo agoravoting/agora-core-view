@@ -449,7 +449,8 @@
           "details": "Detallada",
           "accordion": "Acordeón",
           "circles": "Imágenes con detalles",
-          "conditional-accordion": "Conditional Accordion"
+          "conditional-accordion": "Conditional Accordion",
+          "ahoram-primaries": "ahoram-primaries"
         },
         "option": {
           "textFieldLabel": "Texto",
