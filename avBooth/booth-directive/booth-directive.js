@@ -61,7 +61,7 @@ angular.module('avBooth')
             sorted: true,
             ordered: false
           };
-        } else if  (question.layout === "ahoramPrimariesScreen") {
+        } else if  (question.layout === "ahoram-primaries") {
           return {
             state: stateEnum.ahoramPrimariesScreen,
             sorted: true,

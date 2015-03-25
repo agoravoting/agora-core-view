@@ -94,7 +94,7 @@
         class="col-xs-12 col-sm-6 padded"
         ng-if="!hideSelection"
         ng-class="{hidden: windowWidth < 768 && !stateData.affixDropDownShown, affixedSelection: windowWidth < 768 && stateData.affixIsSet}">
-        <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h4>
+        <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions2()})avBooth.questionSelectedOptionsTitle"></h4>
         <div avb-selected-options
           layout="stateData.question.layout"
           max="stateData.question.max"
@@ -122,7 +122,7 @@
           ng-if="numSelectedOptions() === stateData.question.max">
         </span>
         <span
-          ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numOptionsSelected"
+          ng-i18next="[i18next]({count: numSelectedOptions2()})avBooth.numOptionsSelected"
           ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
         </span>
         <span

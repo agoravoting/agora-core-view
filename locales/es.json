@@ -144,7 +144,11 @@
     "relatedLinksText": "Para más información sobre la votación:",
 
     "circleOptionExternalLink": "Ver detalles",
-    "voteInBlank": "Votar en Blanco"
+    "voteInBlank": "Votar en Blanco",
+
+    "ahoramPrimaries": {
+      "selectAll": "Seleccionar todo el equipo"
+    }
   },
   "avElection": {
     "resultsLoadingText": "Cargando resultados",

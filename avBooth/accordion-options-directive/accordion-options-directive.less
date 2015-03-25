@@ -1,4 +1,20 @@
 [avb-accordion-options] [accordion] {
+
+
+  .btn {
+    border-radius: 0;
+    border: none;
+    background-color: @gray-lighter;
+    transition: 0.2s;
+    font-weight:bold;
+    color: @gray-dark;
+
+    &:hover {
+      color: @av-secondary-contrast;
+      background-color: darken(@av-secondary, 10%);
+    }
+  }
+
   .panel {
     border: 0 none;
     border-radius: 0 !important;

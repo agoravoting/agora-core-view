@@ -143,7 +143,11 @@
     "relatedLinksText": "Para más información sobre la votación:",
 
     "circleOptionExternalLink": "View details",
-    "voteInBlank": "Blank Vote"
+    "voteInBlank": "Blank Vote",
+
+    "ahoramPrimaries": {
+      "selectAll": "Select the whole team"
+    }
   },
   "avElection": {
     "resultsLoadingText": "Loading results",
