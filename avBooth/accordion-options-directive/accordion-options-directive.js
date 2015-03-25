@@ -26,8 +26,7 @@ angular.module('avBooth')
         var title = pair[0];
         var answers = pair[1];
 
-        // TODO HACK Candidaturas sin agrupar
-        if (scope.layout !== 'ahoram-primaries' || title === 'Candidaturas no agrupadas')
+        if (scope.layout !== 'ahoram-primaries' || title === 'Candidaturas sin agrupar')
         {
           // randomize orden inside the category
           // we can't just sample the groupedOptions list because we need to
@@ -89,7 +88,7 @@ angular.module('avBooth')
       };
 
       scope.blankVote = _.filter(
-        scope.soptions,
+        scope.options,
         function (el) {
           return (el.category === "Voto en blanco a la alcaldía");
         })[0];
@@ -107,12 +106,12 @@ angular.module('avBooth')
         var elIsAlcaldable;
 
         if (option.selected > -1) {
+          elIsAlcaldable = (option.category !== option.categoryUnified && option.selected === 0);
           _.each(scope.options, function (element) {
             if (element.selected > option.selected) {
               element.selected -= 1;
             }
           });
-          elIsAlcaldable = (element.category !== element.categoryUnified && element.selected === 0);
 
           if (elIsAlcaldable) {
             scope.blankVote.selected = 0;
@@ -123,7 +122,7 @@ angular.module('avBooth')
           var numSelected = scope.numSelectedOptions();
           var numSelected2 = scope.numSelectedOptions2();
           var alcaldableSelected = (numSelected === numSelected2);
-          elIsAlcaldable = (element.category !== element.categoryUnified);
+          elIsAlcaldable = (option.category !== option.categoryUnified);
           var max = parseInt(scope.max,10);
 
           if (elIsAlcaldable) {

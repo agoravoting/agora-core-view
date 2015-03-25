@@ -43,12 +43,12 @@ angular.module('avBooth')
       scope.toggleSelectItem2 = function(option) {
         var elIsAlcaldable;
         if (option.selected > -1) {
+          elIsAlcaldable = (option.category !== option.categoryUnified && option.selected === 0);
           _.each(scope.options, function (element) {
             if (element.selected > option.selected) {
               element.selected -= 1;
             }
           });
-          elIsAlcaldable = (element.category !== element.categoryUnified && element.selected === 0);
 
           if (elIsAlcaldable) {
             scope.blankVote.selected = 0;
@@ -58,7 +58,7 @@ angular.module('avBooth')
           var numSelected = scope.numSelectedOptions();
           var numSelected2 = scope.numSelectedOptions2();
           var alcaldableSelected = (numSelected === numSelected2);
-          elIsAlcaldable = (element.category !== element.categoryUnified);
+          elIsAlcaldable = (option.category !== option.categoryUnified);
           var max = parseInt(scope.max,10);
 
           if (elIsAlcaldable) {
