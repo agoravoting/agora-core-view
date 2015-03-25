@@ -11,7 +11,7 @@
     ng-i18next="avBooth.noOptionsSelected">
   </div>
 </div>
-<div class="col-xs-12" ng-if="layout === 'accordion'">
+<div class="col-xs-12" ng-if="layout === 'accordion' || layout === 'conditional-accordion'">
   <div avb-accordion-selected-option
     ng-repeat="option in options | avbSelectedOptions"
     class="animate-repeat"

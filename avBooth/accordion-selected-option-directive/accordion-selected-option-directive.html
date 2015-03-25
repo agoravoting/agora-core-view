@@ -3,10 +3,16 @@
   ng-class="{'hide-link': !option.urls || option.urls.length === 0}"
   ng-click="toggleSelectItem(option)">
   <div ng-if="!option.details || option.details.length === 0">
-    <h4 class="show-value">{{option.text}}</h4>
+    <h4 class="show-value">
+      <span ng-if="ordered">{{option.selected + 1}}.</span>
+      <span>{{option.text}}</span>
+    </h4>
   </div>
   <div ng-if="option.details && option.details.length > 1">
-    <h3 class="show-value">{{option.text}}</h3>
+    <h3 class="show-value">
+      <span ng-if="ordered">{{option.selected + 1}}.</span>
+      <span>{{option.text}}</span>
+    </h3>
     <p>{{option.details}}</p>
   </div>
   <div class="show-remove">

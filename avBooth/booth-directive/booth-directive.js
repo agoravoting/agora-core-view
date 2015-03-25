@@ -37,6 +37,7 @@ angular.module('avBooth')
         auditBallotScreen: 'auditBallotScreen',
         pcandidatesElectionScreen: 'pcandidatesElectionScreen',
         "2questionsConditionalScreen": '2questionsConditionalScreen',
+        conditionalAccordionScreen: 'conditionalAccordionScreen',
         encryptingBallotScreen: 'encryptingBallotScreen',
         castOrCancelScreen: 'castOrCancelScreen',
         reviewScreen: 'reviewScreen',
@@ -53,6 +54,13 @@ angular.module('avBooth')
       }
 
       scope.mapQuestion = function(question) {
+        if (question.layout === "conditional-accordion") {
+          return {
+            state: stateEnum.conditionalAccordionScreen,
+            sorted: true,
+            ordered: false
+          };
+        }
         var map = {
           "plurality-at-large": {
             state: stateEnum.multiQuestion,

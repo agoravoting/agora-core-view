@@ -446,7 +446,8 @@
           "simple": "Simple",
           "details": "Detailed",
           "accordion": "Accordion",
-          "circles": "Images with details"
+          "circles": "Images with details",
+          "conditional-accordion": "Conditional Accordion"
         },
         "option": {
           "textFieldLabel": "Text",
