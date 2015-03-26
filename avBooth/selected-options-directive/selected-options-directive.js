@@ -124,7 +124,9 @@ angular.module('avBooth')
             if (el.id === moved.id) {
               el.selected = moved.selected = newPos;
             } else  if (scope.blankVote.selected === 0 && newPos === 0) {
-              return;
+              if (el.selected > oldPos) {
+                el.selected -= 1;
+              }
             } else if (el.selected >= newPos && el.selected <= oldPos &&
               el.id !== scope.blankVote.id)
             {
