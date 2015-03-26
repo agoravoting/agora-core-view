@@ -41,6 +41,44 @@ angular.module('avBooth')
           }).length;
       };
 
+      scope.moveOption = function (moved, newPos) {
+        var oldPos = moved.selected;
+        newPos -= 1;
+        if (oldPos === newPos) {
+          return false;
+        }
+
+        if (newPos > oldPos) {
+          _.each(scope.options, function (el) {
+            if (el.selected === -1) {
+              return;
+            }
+
+            if (el.id === moved.id) {
+              el.selected = moved.selected = newPos;
+            } else if (el.selected > oldPos && el.selected <= newPos) {
+              el.selected -= 1;
+              console.log("-- el.selected " + el.selected + ", el.text " + el.text);
+            }
+          });
+        } else if (newPos < oldPos) {
+          newPos += 1;
+          _.each(scope.options, function (el) {
+            if (el.selected === -1) {
+              return;
+            }
+
+            if (el.id === moved.id) {
+              el.selected = moved.selected = newPos;
+            } else  if (el.selected >= newPos && el.selected < oldPos) {
+              el.selected += 1;
+              console.log("++ el.selected " + el.selected + ", el.text " + el.text);
+            }
+          });
+        }
+        return false;
+      };
+
       scope.blankVote = _.filter(
         scope.options,
         function (el) {

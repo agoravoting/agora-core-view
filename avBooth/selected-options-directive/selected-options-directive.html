@@ -24,8 +24,15 @@
     ng-i18next="avBooth.noOptionsSelected">
   </div>
 </div>
-<div class="col-xs-12" ng-if="layout === 'accordion' || layout === 'conditional-accordion'">
+<div
+  class="col-xs-12"
+  ng-if="layout === 'accordion' || layout === 'conditional-accordion'"
+  dnd-list="options"
+  dnd-drop="moveOption(item, index)">
   <div avb-accordion-selected-option
+    dnd-draggable="option"
+    dnd-effect-allowed="move"
+    dnd-disable-if="!ordered || (options | avbSelectedOptions).length < 2"
     ng-repeat="option in options | avbSelectedOptions"
     class="animate-repeat"
     ng-class="{selected: option.selected > -1}">

@@ -49,6 +49,8 @@
 
     "questionSelectedOptionsTitle": "selected options (__count__)",
     "questionSelectedOptionsTitle_plural": "selected options (__count__)",
+    "questionSelectedOptionsTitleOrdered": "selected options (__count__) in order, drag and drop to reorder it",
+    "questionSelectedOptionsTitleOrdered_plural": "selected options (__count__) in order, drag and drop to reorder it",
     "questionAvailableOptionsTitle": "available options",
     "numOptionsSelected": "__count__ options selected.",
     "numOptionsSelected_plural": "__count__ options selected.",

@@ -50,6 +50,8 @@
 
     "questionSelectedOptionsTitle": "candidaturas seleccionadas (__count__)",
     "questionSelectedOptionsTitle_plural": "candidaturas seleccionadas (__count__)",
+    "questionSelectedOptionsTitleOrdered": "candidaturas seleccionadas (__count__) en orden, pincha y arrastra para ordenarlas",
+    "questionSelectedOptionsTitleOrdered_plural": "candidaturas seleccionadas (__count__) en orden, pincha y arrastra para ordenarlas",
     "questionAvailableOptionsTitle": "candidaturas disponibles",
     "numOptionsSelected": "__count__ candidaturas seleccionadas.",
     "numOptionsSelected_plural": "__count__ candidaturas seleccionadas.",

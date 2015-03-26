@@ -43,7 +43,11 @@
         <div
           class="pull-left"
           ng-click="stateData.affixDropDownShown = !stateData.affixDropDownShown">
-          <h4 class="text-brand-success" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numSelectedOptionsSmall"></h4>
+          <h4
+            class="text-brand-success padded-left"
+            ng-i18next>
+            [i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitleOrdered
+          </h4>
           <span
             class="text-brand-success glyphicon glyphicon-play avb-toggle-span">
             </span>
@@ -94,7 +98,11 @@
         class="col-xs-12 col-sm-6 padded"
         ng-if="!hideSelection"
         ng-class="{hidden: windowWidth < 768 && !stateData.affixDropDownShown, affixedSelection: windowWidth < 768 && stateData.affixIsSet}">
-        <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h4>
+        <h4
+          class="text-brand-success padded-left"
+          ng-i18next>
+          [i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitleOrdered
+        </h4>
         <div avb-selected-options
           layout="stateData.question.layout"
           max="stateData.question.max"

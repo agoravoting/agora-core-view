@@ -105,7 +105,7 @@ angular.module('avBooth')
           }).length;
       };
 
-      if (scope.numSelectedOptions() === 0) {
+      if (scope.numSelectedOptions() === 0 && !!scope.blankVote) {
         scope.blankVote.selected = 0;
       }
 
