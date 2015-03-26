@@ -83,7 +83,7 @@ angular.module('avBooth')
       scope.moveOption2 = function (moved, newPos) {
         var oldPos = moved.selected;
         var movedAlcaldable = (moved.category !== moved.categoryUnified);
-        if (oldPos === newPos || (newPos === -1 && !movedAlcaldable)) {
+        if (oldPos === newPos || (newPos === 0 && !movedAlcaldable)) {
           return false;
         }
 
