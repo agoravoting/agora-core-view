@@ -7,13 +7,13 @@ angular.module('avElection')
       scope.fileDataHtml = null;
       scope.fileDataError = false;
 
-      if (EndsWithService(scope.name, ".pdf")) {
+      if (EndsWithService(scope.pageName(), ".pdf")) {
         scope.getNewElection = function () {
-          $window.location.href = ConfigService.publicURL + scope.pageName;
+          $window.location.href = ConfigService.publicURL + scope.pageName();
         };
       } else {
         scope.getNewElection = function () {
-          $http.get(ConfigService.publicURL + scope.pageName)
+          $http.get(ConfigService.publicURL + scope.pageName())
             .success(function(value) {
               scope.fileDataHtml = value;
             })
