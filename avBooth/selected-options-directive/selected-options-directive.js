@@ -79,6 +79,67 @@ angular.module('avBooth')
         return false;
       };
 
+
+      scope.moveOption2 = function (moved, newPos) {
+        var oldPos = moved.selected;
+        var movedAlcaldable = (moved.category !== moved.categoryUnified);
+        if (oldPos === newPos || (newPos === -1 && !movedAlcaldable)) {
+          return false;
+        }
+
+        if (newPos > oldPos) {
+          newPos -= 1;
+          _.each(scope.options, function (el) {
+            if (el.selected === -1) {
+              return;
+            }
+
+            if (el.id === moved.id) {
+              if (oldPos === 0) {
+                el.selected = moved.selected = newPos + 1;
+              } else {
+                el.selected = moved.selected = newPos;
+              }
+            } else if (oldPos > 0 && el.selected > oldPos && el.selected <= newPos) {
+              el.selected -= 1;
+            } else if (oldPos === 0 && el.selected > newPos) {
+              if (el.selected + 1 === scope.max) {
+                el.selected = -1;
+              } else {
+                el.selected += 1;
+              }
+              console.log("-- el.selected " + el.selected + ", el.text " + el.text);
+            }
+
+            if (movedAlcaldable) {
+              scope.blankVote.selected = 0;
+            }
+          });
+        } else if (newPos < oldPos) {
+          _.each(scope.options, function (el) {
+            if (el.selected === -1) {
+              return;
+            }
+
+            if (el.id === moved.id) {
+              el.selected = moved.selected = newPos;
+            } else  if (scope.blankVote.selected === 0 && newPos === 0) {
+              return;
+            } else if (el.selected >= newPos && el.selected <= oldPos &&
+              el.id !== scope.blankVote.id)
+            {
+              el.selected += 1;
+              console.log("++ el.selected " + el.selected + ", el.text " + el.text);
+            }
+          });
+
+          if (scope.blankVote.selected === 0 && newPos === 0) {
+            scope.blankVote.selected = -1;
+          }
+        }
+        return false;
+      };
+
       scope.blankVote = _.filter(
         scope.options,
         function (el) {

@@ -11,10 +11,17 @@
     ng-i18next="avBooth.noOptionsSelected">
   </div>
 </div>
-<div class="col-xs-12" ng-if="layout === 'ahoram-primaries'">
+<div
+  class="col-xs-12"
+  ng-if="layout === 'ahoram-primaries'"
+  dnd-list="options"
+  dnd-drop="moveOption2(item, index)">
   <div avb-ahoram-primaries-selected-option
     ng-repeat="option in options | avbSelectedOptions"
     class="animate-repeat"
+    dnd-draggable="option"
+    dnd-effect-allowed="move"
+    dnd-disable-if="option.id === 0"
     ng-class="{selected: option.selected > -1}"
     ng-click="toggleSelectItem2(option)">
   </div>
