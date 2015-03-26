@@ -5,13 +5,22 @@
     border-radius: 0;
     border: none;
     background-color: @gray-lighter;
-    transition: 0.2s;
+    transition: 0;
     font-weight:bold;
     color: @gray-dark;
 
     &:hover {
       color: @av-secondary-contrast;
       background-color: darken(@av-secondary, 10%);
+    }
+
+    &.btn-danger {
+      background-color: @btn-danger-bg;
+      color: @btn-danger-color;
+
+      &:hover {
+        background-color: darken(@btn-danger-bg, 10%);
+      }
     }
   }
 

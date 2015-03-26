@@ -147,7 +147,8 @@
 
     "ahoramPrimaries": {
       "selectAll": "Select the whole team",
-      "selectedOptions": "Selected options (in order)",
+      "deselectAll": "Deelect the whole team",
+      "selectedOptions": "Selected options (in order, drag and drop to change it)",
       "mayoral": "Mayoral (__count__)",
       "mayoral_plural": "Mayoral (__count__)",
       "councils": "Councils (__count__)",

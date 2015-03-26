@@ -38,6 +38,20 @@ angular.module('avBooth')
         };
       });
 
+      scope.categoryIsSelected = function(category) {
+        return _.filter(category.options, function (el) {
+          return el.selected > -1;
+        }).length === category.options.length;
+      };
+
+      scope.deselectAll = function(category) {
+        _.each(category.options, function(el) {
+          if (el.selected > -1) {
+            scope.toggleSelectItem2(el);
+          }
+        });
+      };
+
       scope.selectAll = function(category) {
 
         // if has alcaldable
