@@ -1,5 +1,5 @@
 angular.module('avRegistration')
-  .directive('avRegister', function(Authmethod, StateDataService, $parse, $state, ConfigService, $cookies, $i18next) {
+  .directive('avRegister', function(Authmethod, StateDataService, $parse, $state, ConfigService, $cookies, $i18next, $sce) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var autheventid = attrs.eventId;
@@ -16,6 +16,14 @@ angular.module('avRegistration')
           scope.admin = true;
         }
 
+        scope.getLoginDetails = function (eventId) {
+          if (!scope.admin) {
+              return {path: 'election.public.show.login', data: {id: eventId}};
+          } else {
+              return {path: 'admin.login', data:{}};
+          }
+        };
+
         scope.signUp = function(valid) {
             if (!valid) {
                 return;
@@ -30,25 +38,32 @@ angular.module('avRegistration')
                 scope.email = field.value;
               }
             });
+            var details;
             Authmethod.signup(data, autheventid)
                 .success(function(rcvData) {
+                    details = scope.getLoginDetails(autheventid);
                     if (rcvData.status === "ok") {
                         scope.user = rcvData.user;
-                        if (!scope.admin) {
-                            StateDataService.go('election.public.show.login', {id: autheventid}, data);
-                        } else {
-                            StateDataService.go('admin.login', {}, data);
-                        }
+                        StateDataService.go(details.path, details.data, data);
+                        // TEST
+                        scope.error = rcvData.msg || $sce.trustAsHtml($i18next('avRegistration.invalidRegisterData', {
+                          url: $state.href(details.path, details.data)
+                        }));
                     } else {
                         scope.sendingData = false;
                         scope.status = 'Not found';
-                        scope.error = rcvData.msg || $i18next('avRegistration.invalidRegisterData');
+                        scope.error = rcvData.msg || $sce.trustAsHtml($i18next('avRegistration.invalidRegisterData', {
+                          url: $state.href(details.path, details.data)
+                        }));
                     }
                 })
                 .error(function(error) {
+                    details = scope.getLoginDetails(autheventid);
                     scope.sendingData = false;
                     scope.status = 'Registration error: ' + error.message;
-                    scope.error = error.msg || $i18next('avRegistration.invalidRegisterData');
+                    scope.error = error.msg || $sce.trustAsHtml($i18next('avRegistration.invalidRegisterData', {
+                      url: $state.href(details.path, details.data)
+                    }));
                     if (error.msg === 'Invalid captcha') {
                         Authmethod.newCaptcha();
                     }
@@ -59,6 +74,10 @@ angular.module('avRegistration')
           console.log("goLogin");
           if (event) {
             event.preventDefault();
+          }
+
+          if (!scope.authevent) {
+            return;
           }
 
           if (scope.authevent['id'] === ConfigService.freeAuthId+'') {

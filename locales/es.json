@@ -237,7 +237,7 @@
     "registerFormHelpTitle": "Registrándote para votar",
     "registerAdminFormHelpTitle": "Registrándote para crear votaciones",
     "fillValidFormText": "Para poder enviar el formulario, primero rellena correctamente todos los campos.",
-    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. Por favor, revísalos, o ponte en contacto con los administradores de la votación,",
+    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. <strong>Lo más probable es que ya estés registrado, <a href=\"__url__\">accede usando tus credenciales pinchando aquí</a></strong>. También puede que el periodo de votación haya finalizado. Comprueba todo lo anterior, y en caso de que sigas teniendo problemas, revisa tus datos, o ponte en contacto con los administradores de la votación,",
     "logout": "Salir",
     "codeLabel": "Código de Autenticación",
     "emailLabel": "Correo electrónico",
@@ -257,7 +257,7 @@
     "loginButton": "Entrar",
     "alreadyRegistered": "¿Ya estás registrado?",
     "helpAlreadyRegisteredForm": "Quizás ya estés registrado y lo que necesitas realmente es autenticarte.",
-    "loginHere": "Entrar, ya me registré antes",
+    "loginHere": "Acceder usando mis credenciales, ya me registré antes",
 
     "registerHeader": "Regístrate para votar",
     "registerAdminHeader": "Regístrate",
