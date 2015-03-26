@@ -6,7 +6,7 @@
   <ul class="list-unstyled">
     <li ng-repeat="auth in auths">
       <a href="{{auth.url}}" alt="{{auth.name}}" target="_blank">
-        <img src="{{auth.image}}" alt="{{auth.name}}" />
+        <img ng-src="{{auth.image}}" alt="{{auth.name}}" />
       </a>
       <p class="description">
         <strong>{{auth.name}}</strong>.
