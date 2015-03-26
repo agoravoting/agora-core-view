@@ -16,16 +16,15 @@
         ng-model-options="{debounce: 500}"
         ng-disabled="field.disabled"
         tabindex="{{index}}"
-        ng-pattern="getRe()"
+        ui-validate="{dni: 'validateDni($value)'}"
         ng-required={{field.required}} />
-      <p class="help-block" ng-if="field.help">
-        {{field.help}}
+      <p class="help-block" ng-i18next="avRegistration.dniHelp">
       </p>
       <div class="input-error">
         <span
           class="error text-brand-danger"
           ng-show="fieldForm.input.$dirty && fieldForm.input.$invalid"
-          ng-i18next="avRegistration.invalidDataRegEx"></span>
+          ng-i18next="avRegistration.invalidDni"></span>
       </div>
     </div>
   </div>

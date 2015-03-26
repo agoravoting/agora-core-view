@@ -278,7 +278,9 @@
     "errorRegistration": "Error",
 
     "invalidCredentials": "Credenciales no válidas",
-    "invalidDataRegEx": "Datos inválidos"
+    "invalidDataRegEx": "Datos inválidos",
+    "invalidDni": "DNI/NIE inválido",
+    "dniHelp": "Introduce un DNI/NIE válido. Ejemplos: 12343567R o X01234356R"
   },
 
   "avAdmin": {

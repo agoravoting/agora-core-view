@@ -237,7 +237,7 @@
     "emailLabel": "Email",
     "telLabel": " Mobile telephone number",
     "telInvalid": " Invalid telephone number. Example of valid number: +34666666666",
-    "telHelp": " Example: +34666666666 (only numbers, with no spaces or hyphens. For numbers outside Spain, use the country prefix, for exampl +34)",
+    "telHelp": " Example: +34666666666 (only numbers, with no spaces or hyphens. For numbers outside Spain, use the country prefix, for example +34)",
     "codeLabel": "Authentication Code",
     "emailPlaceholder": "john@example.com",
     "passwordLabel": "Password",
@@ -276,7 +276,9 @@
     "errorRegistration": "Error",
 
     "invalidCredentials": "Invalid credentials",
-    "invalidDataRegEx": "Invalid data"
+    "invalidDataRegEx": "Invalid data",
+    "invalidDni": "Invalid DNI/NIE",
+    "dniHelp": "Specify a valid  DNI/NIE. Examples: 12343567R or X01234356R"
   },
 
   "avAdmin": {
