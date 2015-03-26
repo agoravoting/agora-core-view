@@ -59,13 +59,13 @@ angular.module('avBooth')
           return {
             state: stateEnum.conditionalAccordionScreen,
             sorted: true,
-            ordered: false
+            ordered: true
           };
         } else if  (question.layout === "ahoram-primaries") {
           return {
             state: stateEnum.ahoramPrimariesScreen,
             sorted: true,
-            ordered: false
+            ordered: true
           };
         }
         var map = {
