@@ -127,7 +127,10 @@ angular.module('avBooth')
       // changes state to the next one, calculating it and setting some scope
       // vars
       function next() {
-        var questionStates = [stateEnum.multiQuestion];
+        var questionStates = [
+          stateEnum.multiQuestion,
+          stateEnum.ahoramPrimariesScreen
+        ];
         if (scope.state === stateEnum.startScreen)
         {
           goToQuestion(0, false);
