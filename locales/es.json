@@ -30,7 +30,7 @@
     "reviewOptionsTitle": "2. Revisa tu papeleta",
     "reviewOptionsText": "Una vez has elegido tus candidaturas, procederemos a cifrarlas y obtendrás un localizador. Te mostraremos el contenido de tu papeleta para que puedas revisarla.",
     "emitBallotTitle": "3. Envía tu voto",
-    "emitBallotText": "Puedes enviar tu voto a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditarlo que tu voto fue correctamente cifrado.",
+    "emitBallotText": "Puedes enviar tu voto a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditar que tu voto fue correctamente cifrado.",
 
     "errorTitle": "Oops. Ocurrió algo inesperado",
     "errorHtml": "<p>Ocurrió el siguiente problema (identificador __errorId__): </p><p>__error__</p><p>En caso de que creas que debes contactar con nosotros, puedes hacerlo enviándonos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
