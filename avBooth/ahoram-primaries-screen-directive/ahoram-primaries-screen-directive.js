@@ -19,12 +19,6 @@ angular.module('avBooth')
           }).length;
       };
 
-      scope.blankVote = _.filter(
-        scope.stateData.question.answers,
-        function (el) {
-          return (el.category === "Voto en blanco a la alcaldía");
-        })[0];
-
       // doesn't count the first option which implies a blank vote in the first "round/question"
       scope.numSelectedOptions2 = function () {
         return _.filter(
@@ -32,66 +26,6 @@ angular.module('avBooth')
           function (element) {
             return (element.selected > -1 || element.isSelected === true) && element.id !== 0;
           }).length;
-      };
-
-      // select the blank alcaldia if no selection, because no selection is
-      // ambiguous
-      if (scope.numSelectedOptions() === 0)  {
-        scope.blankVote.selected = 0;
-      }
-
-      scope.toggleSelectItem2 = function(option) {
-        var elIsAlcaldable;
-        if (option.selected > -1) {
-          elIsAlcaldable = (option.category !== option.categoryUnified && option.selected === 0);
-          _.each(scope.options, function (element) {
-            if (element.selected > option.selected) {
-              element.selected -= 1;
-            }
-          });
-
-          if (elIsAlcaldable) {
-            scope.blankVote.selected = 0;
-          }
-          option.selected = -1;
-        } else {
-          var numSelected = scope.numSelectedOptions();
-          var numSelected2 = scope.numSelectedOptions2();
-          var alcaldableSelected = (numSelected === numSelected2);
-          elIsAlcaldable = (option.category !== option.categoryUnified);
-          var max = parseInt(scope.max,10);
-
-          if (elIsAlcaldable) {
-            if (!alcaldableSelected) {
-              option.selected = 0;
-              scope.blankVote.selected = -1;
-            } else {
-
-              // can't select more, flash info
-              if (numSelected === parseInt(scope.max,10)) {
-                $("#maxSelectedLimitReached").flash();
-                return;
-              }
-
-              // put first in the list of concejalias as requested by client
-              _.each(scope.options, function(el) {
-                if (el.selected > 0) {
-                  el.selected += 1;
-                }
-              });
-              option.selected = 1;
-            }
-          } else {
-            // can't select more, flash info
-            if (numSelected === parseInt(scope.max,10)) {
-              $("#maxSelectedLimitReached").flash();
-              return;
-            }
-
-            option.selected = numSelected;
-          }
-
-        }
       };
 
       var question = scope.stateData.question;

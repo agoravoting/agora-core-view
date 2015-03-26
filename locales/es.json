@@ -147,7 +147,12 @@
     "voteInBlank": "Votar en Blanco",
 
     "ahoramPrimaries": {
-      "selectAll": "Seleccionar todo el equipo"
+      "selectAll": "Seleccionar todo el equipo",
+      "selectedOptions": "Opciones seleccionadas (en orden)",
+      "mayoral": "Alcaldía (__count__)",
+      "mayoral_plural": "Alcaldía (__count__)",
+      "councils": "Concejalías (__count__)",
+      "councils_plural": "Concejalías (__count__)"
     }
   },
   "avElection": {

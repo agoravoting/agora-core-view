@@ -91,16 +91,24 @@ angular.module('avBooth')
           }).length;
       };
 
+      if (scope.numSelectedOptions() === 0) {
+        scope.blankVote.selected = 0;
+      }
+
       scope.toggleSelectItem2 = function(option) {
         var elIsAlcaldable;
 
         if (option.selected > -1) {
           elIsAlcaldable = (option.category !== option.categoryUnified && option.selected === 0);
-          _.each(scope.options, function (element) {
-            if (element.selected > option.selected) {
-              element.selected -= 1;
-            }
-          });
+          if (elIsAlcaldable) {
+            scope.blankVote.selected = 0;
+          } else {
+            _.each(scope.options, function (element) {
+              if (element.selected > option.selected) {
+                element.selected -= 1;
+              }
+            });
+          }
 
           if (elIsAlcaldable) {
             scope.blankVote.selected = 0;

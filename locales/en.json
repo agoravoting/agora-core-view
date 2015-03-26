@@ -146,7 +146,12 @@
     "voteInBlank": "Blank Vote",
 
     "ahoramPrimaries": {
-      "selectAll": "Select the whole team"
+      "selectAll": "Select the whole team",
+      "selectedOptions": "Selected options (in order)",
+      "mayoral": "Mayoral (__count__)",
+      "mayoral_plural": "Mayoral (__count__)",
+      "councils": "Councils (__count__)",
+      "councils_plural": "Councils (__count__)"
     }
   },
   "avElection": {
