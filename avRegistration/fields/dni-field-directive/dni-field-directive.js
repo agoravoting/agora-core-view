@@ -18,6 +18,11 @@ angular.module('avRegistration')
         if (index > -1) {
           niePrefix = index;
           str = str.substr(1);
+          if (prefix === 'Y') {
+              str = "1" + str;
+          } else if (prefix === 'Z') {
+              str = "2" + str;
+          }
         }
         var dni_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
         var letter = dni_letters.charAt( parseInt( str, 10 ) % 23 );
