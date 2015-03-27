@@ -14,7 +14,7 @@
             ng-if="(category.options | avbSelectedOptions).length > 0">
             {{(category.options | avbSelectedOptions).length }}
           </span>
-      </div>
+        </div>
         <div avb-accordion-option
           ng-repeat="option in category.options"
           class="animate-repeat"
@@ -55,27 +55,28 @@
             ng-if="(category.options | avbSelectedOptions).length > 0">
             {{(category.options | avbSelectedOptions).length }}
           </span>
-      </div>
-      <div ng-if="category.title !== 'Candidaturas sin agrupar'">
-        <div
-          ng-if="!categoryIsSelected(category)"
-          class="btn btn-block btn-default select-all"
-          ng-click="selectAll(category)"
-          ng-i18next>
-          avBooth.ahoramPrimaries.selectAll
         </div>
-        <div
-          ng-if="categoryIsSelected(category)"
-          class="btn btn-block btn-danger select-all"
-          ng-click="deselectAll(category)"
-          ng-i18next>
-          avBooth.ahoramPrimaries.deselectAll
+        <div ng-if="category.title !== 'Candidaturas sin agrupar'">
+          <div
+            ng-if="!categoryIsSelected(category)"
+            class="btn btn-block btn-default select-all"
+            ng-click="selectAll(category)"
+            ng-i18next>
+            avBooth.ahoramPrimaries.selectAll
+          </div>
+          <div
+            ng-if="categoryIsSelected(category)"
+            class="btn btn-block btn-danger select-all"
+            ng-click="deselectAll(category)"
+            ng-i18next>
+            avBooth.ahoramPrimaries.deselectAll
+          </div>
         </div>
-      </div>
-      <div avb-ahoram-primaries-option
-        ng-repeat="option in category.options"
-        class="animate-repeat"
-        ng-class="{selected: option.selected > -1}">
+        <div avb-ahoram-primaries-option
+          ng-repeat="option in category.options"
+          class="animate-repeat"
+          ng-class="{selected: option.selected > -1}">
+        </div>
       </div>
     </div>
   </div>
