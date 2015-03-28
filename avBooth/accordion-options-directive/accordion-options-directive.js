@@ -11,6 +11,7 @@ angular.module('avBooth')
       // group by category
       _.each(scope.options, function (opt) {
         if (scope.layout === 'ahoram-primaries') {
+          opt.category = opt.category.replace(" - Equipo Manuela Carmena", "");
           opt.categoryUnified = opt.category.replace(/^alcaldable:/, "");
         } else {
           opt.categoryUnified = opt.category;
