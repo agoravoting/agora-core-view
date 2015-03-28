@@ -89,6 +89,7 @@ angular.module('avAdmin')
         var csExport = _.map(cs, function (i) {
           var ret = angular.copy(i.metadata);
           ret.vote = i.vote;
+          ret.voterid = i.username;
           return ret;
         });
         var text = $window.Papa.unparse(angular.toJson(csExport));
