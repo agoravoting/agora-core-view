@@ -60,6 +60,9 @@ angular.module('avAdmin')
               var lf = l.split(";");
               var nv = {};
               fields.forEach(function(f, i) { nv[f.name] = lf[i]; });
+              if (nv.tlf) {
+                nv.replace(" ", "");
+              }
               cs.push({selected: false, vote: false, username: "", metadata: nv});
           });
 
