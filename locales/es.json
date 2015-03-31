@@ -164,7 +164,7 @@
     "defaultShareText": "Vota en __title__ con @agoravoting __url__",
 
     "resultsHeader": "__title__: Resultados",
-    "resultsTableNPositionHeader": "Number of votes by position:",
+    "resultsTableNPositionHeader": "Número de votos por posición:",
     "resultsTableCandidateHeader": "Candidatura",
     "resultsTableVotesHeader": "Votos",
     "resultsTableVotesPercentageHeader": "",
