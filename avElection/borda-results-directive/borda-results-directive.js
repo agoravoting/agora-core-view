@@ -3,7 +3,7 @@
  * is of show with the plurality at large layout
  */
 angular.module('avElection')
-  .directive('avPluralityAtLargeResults', function(AddDotsToIntService, PercentVotesService) {
+  .directive('avBordaResults', function(AddDotsToIntService, PercentVotesService) {
     // works like a controller
     function link(scope, element, attrs) {
 
@@ -38,7 +38,7 @@ angular.module('avElection')
 
       scope.addDotsToIntNumber = AddDotsToIntService;
       scope.numVotes = function (votes) {
-        return AddDotsToIntService(votes);
+        return AddDotsToIntService(votes, 2);
       };
       scope.percentVotes = PercentVotesService;
 
@@ -57,6 +57,6 @@ angular.module('avElection')
       restrict: 'AE',
       scope: true,
       link: link,
-      templateUrl: 'avElection/plurality-at-large-results-directive/plurality-at-large-results-directive.html'
+      templateUrl: 'avElection/borda-results-directive/borda-results-directive.html'
     };
   });

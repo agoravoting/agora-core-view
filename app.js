@@ -200,6 +200,9 @@ angular.module('agora-core-view').config(
       .state('election.public.show.home.plurality-at-large', {
         template: '<div av-plurality-at-large-results></div>',
       })
+      .state('election.public.show.home.borda', {
+        template: '<div av-borda-results></div>',
+      })
       .state('election.public.show.register', {
         url: '/register',
         templateUrl: 'avRegistration/register-controller/register-controller.html',
@@ -241,6 +244,9 @@ angular.module('agora-core-view').config(
       })
       .state('election.results.show.unknown', {
         templateUrl: 'avElection/question-results-directive/unknown.html'
+      })
+      .state('election.results.show.home.borda', {
+        template: '<div av-borda-results></div>',
       })
       .state('election.results.show.plurality-at-large', {
         template: '<div av-plurality-at-large-results></div>',

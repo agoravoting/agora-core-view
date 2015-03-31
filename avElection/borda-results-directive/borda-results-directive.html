@@ -34,7 +34,7 @@
     </tbody>
   </table>
 </div>
-<div class="col-xs-12 col-md-7 no-padding-left">
+<div class="col-xs-12 col-md-7 no-padding-left table-responsive">
   <table class="table table-hover table-condensed results">
     <thead>
       <tr>
@@ -42,6 +42,16 @@
         <th ng-i18next="avElection.resultsTableVotesHeader" class="text-right"></th>
         <th ng-i18next="avElection.resultsTableVotesPercentageHeader" class="text-right"></th>
         <th ng-i18next="avElection.resultsTablePositionHeader" class="text-right"></th>
+        <th ng-if="!!question.answers[0].voters_by_position"
+          ng-i18next>
+          avElection.resultsTableNPositionHeader
+        </th>
+        <th
+          class="text-right"
+          ng-if="!!question.answers[0].voters_by_position"
+          ng-repeat="voters_nth_position in question.answers[0].voters_by_position track by $index">
+          {{$index+1}}
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -53,6 +63,13 @@
         <td class="text-right">{{numVotes(answer.total_count)}}</td>
         <td class="text-right">{{percentVotes(answer.total_count, question)}}</td>
         <td class="text-right">{{winnerPosition(answer)}}</td>
+        <td ng-if="!!answer.voters_by_position"></td>
+        <td
+          class="text-right"
+          ng-if="!!answer.voters_by_position"
+          ng-repeat="voters_nth_position in answer.voters_by_position track by $index">
+          {{voters_nth_position}}
+        </td>
       </tr>
     </tbody>
   </table>

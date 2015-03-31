@@ -163,6 +163,7 @@
     "defaultShareText": "Vote in __title__ with @agoravoting __url__",
 
     "resultsHeader": "__title__: Results",
+    "resultsTableNPositionHeader": "Number of votes by position:",
     "resultsTableCandidateHeader": "Candidature",
     "resultsTableVotesHeader": "Votes",
     "resultsTableVotesPercentageHeader": "",
