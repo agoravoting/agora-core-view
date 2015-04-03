@@ -102,7 +102,7 @@ angular.module('avRegistration')
                   el.value = scope.email;
                   el.disabled = true;
                 } else if (el.type === "code" && scope.code !== null) {
-                  el.value = scope.code;
+                  el.value = scope.code.trim().toUpperCase();
                   el.disabled = true;
                 }
                 return el;

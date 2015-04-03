@@ -8,6 +8,10 @@
             ng-model="field.value"
             ng-disabled="field.disabled"
             tabindex="{{index}}"
+            autocomplete="off"
+            minlength="8"
+            maxlength="8"
+            ng-pattern="codePattern"
             required />
         <div class="input-error">
         </div>
