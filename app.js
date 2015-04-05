@@ -213,7 +213,7 @@ angular.module('agora-core-view').config(
         templateUrl: 'avRegistration/login-controller/login-controller.html',
         controller: "LoginController"
       })
-      .state('election.public.show.login_user', {
+      .state('election.public.show.login_email', {
         url: '/login/:email',
         templateUrl: 'avRegistration/login-controller/login-controller.html',
         controller: "LoginController"

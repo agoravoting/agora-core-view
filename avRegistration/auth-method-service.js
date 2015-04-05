@@ -65,6 +65,10 @@ angular.module('avRegistration')
             return $http.post(backendUrl + 'auth-event/'+eid+'/authenticate/', data);
         };
 
+        authmethod.resendAuthCode = function(data, eid) {
+            return $http.post(backendUrl + 'auth-event/'+eid+'/resend_auth_code/', data);
+        };
+
         authmethod.getPerm = function(perm, object_type, object_id) {
             var data = {
                 permission: perm,
