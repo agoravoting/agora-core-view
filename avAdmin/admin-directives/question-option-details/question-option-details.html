@@ -3,7 +3,10 @@
   <div class="col-sm-10">
     <span
       class="text"
-      ng-click="setEdit(electionEditable() && true)">{{ answer.text }}</span>
+      ng-click="setEdit(electionEditable() && true)">
+      <span class="glyphicon glyphicon-edit"></span>
+      {{ answer.text }}
+    </span>
   </div>
   <div class="col-sm-2 buttons text-right">
       <i

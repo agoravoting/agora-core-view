@@ -2,7 +2,10 @@
   <span
     class="text"
     ng-if="!editing"
-    ng-click="setEdit(electionEditable() && true)">{{ answer.text }}</span>
+    ng-click="setEdit(electionEditable() && true)">
+      <span class="glyphicon glyphicon-edit"></span>
+      {{ answer.text }}
+    </span>
   <input
     type="text"
     ng-if="editing"
