@@ -421,9 +421,9 @@
         }
     },
     "basic": {
-        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. No te pongas nerviso y adelante, sólo te llevará 5 minutos",
+        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. Sólo te llevará 5 minutos, por favor lee el Manual de Administrador, enlazado en el icono de ayuda de la barra superior.",
         "title": { "label": "Título", "placeholder": "ej.Nueva junta de dirección", "labelH3": "__index__. Votación titulada: __title__" },
-        "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará" },
+        "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará. Aquí debe de identificarse la organización que va a llevar el proceso electoral, así como los métodos de contacto con los electores." },
         "share": { "label": "Texto para compartir", "placeholder": "Texto para usar en los enlaces a redes sociales" },
         "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votación" },
         "layouts": { "simple": "Simple", "2questions-conditional": "Sí/No", "pcandidates-election": "Table Candidates" },

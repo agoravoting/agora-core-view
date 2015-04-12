@@ -419,7 +419,7 @@
         }
     },
     "basic": {
-        "intro": "Creating an election involves multiple steps, but it's not hard. Don't panic and go ahead, it only takes 5 minutes",
+        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. Sólo te llevará 5 minutos, por favor lee el Manual de Administrador, enlazado en el icono de ayuda de la barra superior.",
         "title": { "label": "Title", "placeholder": "eg.New Board of Directors", "labelH3": "__index__. Election titled: __title__" },
         "description": { "label": "Description", "placeholder": "Description will be shown" },
         "share": { "label": "Share text", "placeholder": "Text to use for social sharing" },
