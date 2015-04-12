@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminElcensus', function($window, $state, ElectionsApi, Authmethod, $modal, MustExtraFieldsService) {
+  .directive('avAdminElcensus', function($window, $state, ElectionsApi, Authmethod, $modal, MustExtraFieldsService, $filter) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
       scope.census = ['open', 'close'];
@@ -10,6 +10,7 @@ angular.module('avAdmin')
       scope.error = null;
       scope.msg = null;
       scope.loadingcensus = !ElectionsApi.newElection;
+      scope.$filter = $filter;
 
       function addToCensus() {
           var el = scope.election;
@@ -149,12 +150,20 @@ angular.module('avAdmin')
         return false;
       }
 
+      function selectQueried(selectStatus) {
+        _.each($filter('filter')(scope.election.census.voters, scope.q),
+          function (i) {
+            i.selected = selectStatus;
+          });
+      }
+
       angular.extend(scope, {
         addToCensus: addToCensus,
         delVoter: delVoter,
         massiveAdd: massiveAdd,
         exportCensus: exportCensus,
         removeSelected: removeSelected,
+        selectQueried: selectQueried,
         sendAuthCodesSelected: sendAuthCodesSelected,
         numSelected: function () {
           return _.filter(scope.election.census.voters, function (v) {
