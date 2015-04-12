@@ -486,10 +486,10 @@
         }
     },
     "censusConfig": {
-        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo"
+        "intro": "El censo se especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo"
     },
     "census": {
-        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes gestionarlo",
+        "intro": "El censo se especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes gestionarlo",
         "reg": { "label": "Registro", "placeholder": "¿Cómo se genera el censo?" },
         "census": {"open": "Registro abierto", "close": "Registro cerrado"},
         "fields": {"label": "Campos extra", "placeholder": "Campos extra del votante"},
