@@ -1,11 +1,19 @@
 <div class="question">
     <div class="row short q-title" ng-click="toggleQuestion($index)">
         <div class="col-sm-10">
+            <span
+              class="glyphicon glyphicon-chevron-down"
+              ng-if="!q.active"
+              aria-hidden="true">
+            </span>
+            <span
+              class="glyphicon glyphicon-chevron-up"
+              ng-if="q.active"
+              aria-hidden="true">
+            </span>
             {{ q.title|truncate:200 }}
         </div>
         <div class="col-sm-2 text-right buttons">
-            <i class="fa fa-chevron-down fa-sw" ng-if="!q.active"></i>
-            <i class="fa fa-chevron-up fa-sw" ng-if="q.active"></i>
             <i ng-click="delQuestion($index)" class="fa fa-times fa-sw" ng-if="electionEditable()"></i>
         </div>
     </div>
