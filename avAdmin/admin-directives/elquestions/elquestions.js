@@ -102,6 +102,11 @@ angular.module('avAdmin')
             }
         }
 
+        // an election should surely always have at least one question, right?
+        if (scope.electionEditable() && scope.election.questions.length === 0) {
+          newQuestion();
+        }
+
         angular.extend(scope, {
           saveQuestions: save,
           newQuestion: newQuestion,
