@@ -102,6 +102,12 @@ angular.module('avAdmin')
             }
         }
 
+        // if there's only one question, just expand it, doesn't make sense to
+        // show it collapsed
+        if (scope.election.questions.length === 1) {
+          expandQuestion(0);
+        }
+
         // an election should surely always have at least one question, right?
         if (scope.electionEditable() && scope.election.questions.length === 0) {
           newQuestion();
