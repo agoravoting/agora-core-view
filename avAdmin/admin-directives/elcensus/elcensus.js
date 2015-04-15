@@ -15,10 +15,38 @@ angular.module('avAdmin')
 
       scope.commands = [
         {
+          i18nString: 'addPersonAction',
+          iconClass: 'fa fa-plus',
+          actionFunc: function() { return scope.addPersonModal(); },
+          enableFunc: function() { return true; }
+        },
+        {
+          i18nString: 'addCsvAction',
+          iconClass: 'fa fa-plus',
+          actionFunc: function() { return scope.addCsvModal(); },
+          enableFunc: function() { return true; }
+        },
+        {
           i18nString: 'exportCensusAction',
           iconClass: 'fa fa-download',
           actionFunc: function() { return scope.exportCensus(); },
-          enableFunc: function() { return scope.election.census.voters.length; }
+          enableFunc: function() {
+            return (
+              scope.election && scope.election.census &&
+              scope.election.census.voters &&
+              scope.election.census.voters.length);
+          }
+        },
+        {
+          i18nString: 'exportCensusAction',
+          iconClass: 'fa fa-download',
+          actionFunc: function() { return scope.exportCensus(); },
+          enableFunc: function() {
+            return (
+              scope.election && scope.election.census &&
+              scope.election.census.voters &&
+              scope.election.census.voters.length);
+          }
         },
         {
           i18nString: 'selectAllShownAction',
@@ -189,8 +217,39 @@ angular.module('avAdmin')
           });
       }
 
+      function addCsvModal() {
+        $modal.open({
+          templateUrl: "avAdmin/admin-directives/elcensus/add-csv-modal.html",
+          controller: "AddCsvModal",
+          size: 'lg',
+          resolve: {
+            election: function () { return scope.election; }
+          }
+        }).result.then(function(text) {
+          scope.massiveef = text;
+          scope.masiveAdd();
+        });
+      }
+
+      function addPersonModal() {
+        $modal.open({
+          templateUrl: "avAdmin/admin-directives/elcensus/add-person-modal.html",
+          controller: "AddPersonModal",
+          size: 'lg',
+          resolve: {
+            election: function () { return scope.election; },
+            newcensus: function() { return scope.newcensus; }
+          }
+        }).result.then(function(text) {
+          scope.massiveef = text;
+          scope.addToCensus();
+        });
+      }
+
       angular.extend(scope, {
         addToCensus: addToCensus,
+        addPersonModal: addPersonModal,
+        addCsvModal: addCsvModal,
         delVoter: delVoter,
         massiveAdd: massiveAdd,
         exportCensus: exportCensus,
@@ -202,14 +261,22 @@ angular.module('avAdmin')
         },
         selected: function (l) {
           if (l === undefined) {
-            l = scope.election.census.voters;
+            if (scope.election && scope.election.census && scope.election.census.voters) {
+              l = scope.election.census.voters;
+            } else {
+              l = [];
+            }
           }
           return _.filter(l, function (v) {
             return v.selected === true;
           });
         },
         shown: function(d) {
-          return $filter('filter')(scope.election.census.voters, scope.q);
+          if (scope.election && scope.election.census && scope.election.census.voters) {
+            return $filter('filter')(scope.election.census.voters, scope.q);
+          }
+
+          return [];
         }
       });
 

@@ -5,56 +5,6 @@
 
     <p class="text-muted" ng-i18next>avAdmin.census.intro</p>
 
-    <div class="well">
-      <div class="row">
-        <div class="col-sm-6">
-          <p class="text-muted" ng-i18next>avAdmin.census.manualAdd</p>
-          <form class="form">
-            <div
-              class="form-group"
-              ng-repeat="ef in election.census.extra_fields">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="{{ef.name | htmlToText}}"
-                ng-model="newcensus[ef.name]"/>
-            </div>
-            <button
-              class="btn btn-success btn-block"
-              type="button"
-              ng-click="addToCensus()" ng-i18next>
-              avAdmin.census.addCensusElement
-            </button>
-          </form>
-        </div>
-        <div class="col-sm-6">
-          <p class="text-muted" ng-i18next> avAdmin.census.massive1 </p>
-          <p class="text-muted">
-            <span ng-i18next>eg</span>
-            <span ng-repeat="ef in election.census.extra_fields">
-              {{ ef.name | htmlToText }}<span ng-if="!$last">;<span>
-            </span>
-          </p>
-          <form class="form">
-            <div class="form-group">
-              <textarea
-                class="form-control"
-                ng-i18next="[placeholder]avAdmin.census.massive2"
-                ng-model="massiveef">
-              </textarea>
-            </div>
-            <button
-              class="btn btn-success btn-block"
-              type="button"
-              ng-click="massiveAdd()"
-              ng-i18next>
-              avAdmin.census.addCensus
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
     <div ng-if="error" class="bg-danger">
         <span ng-if="error.payload">{{ error.payload }}</span>
         <span ng-if="!error.payload">{{ error }}</span>
