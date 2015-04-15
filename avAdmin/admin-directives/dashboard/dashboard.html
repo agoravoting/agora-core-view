@@ -137,7 +137,6 @@
     <!-- endof general -->
 
     <!-- results -->
-    <a class="pull-right" ng-if="election.results.questions" ui-sref="election.results({ id: election.id })" ng-i18next>avAdmin.dashboard.publicResultsUrl</a>
     <h2 ng-if="election.results.questions" ng-i18next>avAdmin.dashboard.results</h2>
     <div class="well question-result" ng-repeat="q in election.results.questions">
         <div class="row">
