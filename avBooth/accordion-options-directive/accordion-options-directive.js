@@ -50,6 +50,18 @@ angular.module('avBooth')
         };
       });
 
+      scope.nonEmptyCategories = _.filter(scope.categories, function (cat) {
+        return !!cat.title && cat.title.length > 0;
+      });
+
+      scope.emptyCategory = _.find(scope.categories, function (cat) {
+        return !!cat.title || cat.title.length === 0;
+      });
+
+      if (!scope.emptyCategory) {
+        scope.emptyCategory = {title: "", options: [], isOpen: true};
+      }
+
       scope.categoryIsSelected = function(category) {
         return _.filter(category.options, function (el) {
           return el.selected > -1;

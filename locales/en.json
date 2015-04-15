@@ -463,9 +463,7 @@
         "layout": {
           "label": "Layout",
           "placeholder": "Especify how the question will be shown",
-          "simple": "Simple",
-          "details": "Detailed",
-          "accordion": "Accordion",
+          "accordion": "Normal",
           "circles": "Images with details",
           "conditional-accordion": "Conditional Accordion",
           "ahoram-primaries": "ahoram-primaries"

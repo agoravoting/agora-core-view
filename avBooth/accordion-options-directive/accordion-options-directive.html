@@ -1,8 +1,13 @@
 <div ng-if="layout !== 'ahoram-primaries'">
 <!-- shown when no filter is being applied (i.e. by default) -->
-  <div ng-if="filter.length == 0 && layout !== 'ahoram-primaries'" class="accordion-mode">
+  <div ng-if="filter.length == 0" class="accordion-mode">
+    <div avb-accordion-option
+      ng-repeat="option in emptyCategory.options"
+      class="animate-repeat highlight-selected"
+      ng-class="{selected: option.selected > -1}">
+    </div>
     <div accordion close-others="true">
-      <div accordion-group ng-repeat="category in categories" is-open="category.isOpen"
+      <div accordion-group ng-repeat="category in nonEmptyCategories" is-open="category.isOpen"
           ng-class="{'in': category.isOpen}">
         <div accordion-heading>
           <span>{{category.title}}</span>
@@ -17,7 +22,7 @@
         </div>
         <div avb-accordion-option
           ng-repeat="option in category.options"
-          class="animate-repeat"
+          class="animate-repeat highlight-selected"
           ng-class="{selected: option.selected > -1}">
         </div>
       </div>
@@ -28,7 +33,8 @@
   <div ng-if="filter.length > 0" class="filter-mode">
     <div avb-accordion-option
       ng-repeat="option in filteredOptions"
-      class="animate-repeat"
+      show-category="true"
+      class="animate-repeat highlight-selected"
       ng-class="{selected: option.selected > -1}">
     </div>
     <div

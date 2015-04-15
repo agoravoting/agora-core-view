@@ -3,10 +3,8 @@ angular.module('avAdmin')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
       scope.layouts = [
-        "simple",
         "circles",
         "accordion",
-        "details",
         /*"conditional-accordion",
         "ahoram-primaries"*/
       ];

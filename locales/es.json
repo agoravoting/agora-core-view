@@ -465,9 +465,7 @@
         "layout": {
           "label": "Disposición",
           "placeholder": "Especifica cómo se va a mostrar la pregunta",
-          "simple": "Simple",
-          "details": "Detallada",
-          "accordion": "Acordeón",
+          "accordion": "Normal",
           "circles": "Imágenes con detalles",
           "conditional-accordion": "Conditional Accordion",
           "ahoram-primaries": "ahoram-primaries"
