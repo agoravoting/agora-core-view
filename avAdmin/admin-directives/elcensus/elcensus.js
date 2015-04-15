@@ -38,17 +38,6 @@ angular.module('avAdmin')
           }
         },
         {
-          i18nString: 'exportCensusAction',
-          iconClass: 'fa fa-download',
-          actionFunc: function() { return scope.exportCensus(); },
-          enableFunc: function() {
-            return (
-              scope.election && scope.election.census &&
-              scope.election.census.voters &&
-              scope.election.census.voters.length);
-          }
-        },
-        {
           i18nString: 'selectAllShownAction',
           iconClass: 'fa fa-check-square-o',
           actionFunc: function() { return scope.selectQueried(true); },

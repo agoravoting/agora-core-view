@@ -43,22 +43,22 @@
           </li>
         </ul>
       </div>
-    </h4>
 
-    <div class="input-group search col-sm-6">
-      <input
-        type="text"
-        class="form-control"
-        ng-model="q"
-        placeholder="{{'avAdmin.elections.filter' | i18next}}">
-      <span class="input-group-btn">
-        <button
-          class="btn btn-default"
-          type="button">
-          <i class="fa fa-search"></i>
-        </button>
-      </span>
-    </div>
+      <div class="input-group search pull-right col-xs-3">
+        <input
+          type="text"
+          class="form-control"
+          ng-model="q"
+          placeholder="{{'avAdmin.elections.filter' | i18next}}">
+        <span class="input-group-btn">
+          <button
+            class="btn btn-default"
+            type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </h4>
 
     <table class="table table-bordered table-striped censustable">
       <tr ng-if="loadingcensus">
