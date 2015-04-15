@@ -18,6 +18,10 @@
 
     &.show-category {
       margin-top: 15px;
+
+      .show-remove {
+        top: 28px;
+      }
     }
 
     &.hide-link {
@@ -56,8 +60,6 @@
       line-height: 15px !important;
       display: block;
       padding-right: 5px;
-      overflow: hidden;
-      max-height: 30px;
     }
   }
 
@@ -69,6 +71,12 @@
     width: 34px;
     padding: 5px;
     margin-right: 5px;
+    background-color: transparent;
+    color: @av-secondary;
+
+    &.show-category {
+      top: 22px;
+    }
   }
 
 
@@ -84,6 +92,12 @@
   &.selected.highlight-selected {
     color: white;
     background-color: @av-primary;
+
+
+    a.btn-right {
+      color: white;
+      background-color: transparent;
+    }
   }
 
   &.selected:hover {
@@ -93,6 +107,14 @@
     .show-remove {
       color: white;
       display: block !important;
+    }
+
+
+    a.btn-right {
+      color: white;
+      &:hover {
+        background-color: @av-secondary;
+      }
     }
   }
 

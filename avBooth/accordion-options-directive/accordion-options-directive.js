@@ -55,7 +55,7 @@ angular.module('avBooth')
       });
 
       scope.emptyCategory = _.find(scope.categories, function (cat) {
-        return !!cat.title || cat.title.length === 0;
+        return !(!!cat.title && cat.title.length > 0);
       });
 
       if (!scope.emptyCategory) {

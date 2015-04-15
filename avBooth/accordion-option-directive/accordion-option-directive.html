@@ -48,8 +48,10 @@
 <a
   ng-if="!!urls.URL"
   class="btn btn-default btn-right"
+  ng-class="{'show-category': showCategory && !!option.category}"
   href="{{urls.URL}}"
+  ng-i18next="[alt]avBooth.openOptionLink"
   target="_blank">
-  <span class="glyphicon glyphicon-new-window">
+  <span class="glyphicon glyphicon-link">
   </span>
 </a>
