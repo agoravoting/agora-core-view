@@ -81,43 +81,13 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li ng-if="election.census.voters.length">
-            <a ng-click="exportCensus()">
-              <i class="fa fa-download"></i>
+          <li
+            ng-repeat="command in commands"
+            ng-class="{'disabled': !command.enableFunc()}">
+            <a ng-click="command.actionFunc()">
+              <i class="{{command.iconClass}}"></i>
               <span ng-i18next>
-                avAdmin.census.exportCensusAction
-              </span>
-            </a>
-          </li>
-          <li ng-if="election.census.voters.length">
-            <a ng-click="selectQueried(true)">
-              <i class="fa fa-download"></i>
-              <span ng-i18next>
-                avAdmin.census.selectAllShownAction
-              </span>
-            </a>
-          </li>
-          <li ng-if="election.census.voters.length">
-            <a ng-click="selectQueried(false)">
-              <i class="fa fa-download"></i>
-              <span ng-i18next>
-                avAdmin.census.deselectAllShownAction
-              </span>
-            </a>
-          </li>
-          <li ng-if="election.census.voters.length">
-            <a ng-click="removeSelected()">
-              <i class="fa fa-download"></i>
-              <span ng-i18next>
-                [i18next]({num: numSelected()})avAdmin.census.removeCensusAction
-              </span>
-            </a>
-          </li>
-          <li ng-if="election.census.voters.length && election.status === 'started'">
-            <a ng-click="sendAuthCodesSelected()">
-              <i class="fa fa-download"></i>
-              <span ng-i18next>
-                [i18next]({num: numSelected()})avAdmin.census.sendAuthCodesAction
+                [i18next]({num: numSelected()})avAdmin.census.{{command.i18nString}}
               </span>
             </a>
           </li>

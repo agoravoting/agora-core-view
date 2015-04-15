@@ -12,6 +12,42 @@ angular.module('avAdmin')
       scope.loadingcensus = !ElectionsApi.newElection;
       scope.$filter = $filter;
 
+
+      scope.commands = [
+        {
+          i18nString: 'exportCensusAction',
+          iconClass: 'fa fa-download',
+          actionFunc: function() { return scope.exportCensus(); },
+          enableFunc: function() { return scope.election.census.voters.length; }
+        },
+        {
+          i18nString: 'selectAllShownAction',
+          iconClass: 'fa fa-check-square-o',
+          actionFunc: function() { return scope.selectQueried(true); },
+          enableFunc: function() { return scope.shown().length > 0; }
+        },
+        {
+          i18nString: 'deselectAllShownAction',
+          iconClass: 'fa fa-square-o',
+          actionFunc: function() { return selectQueried(false); },
+          enableFunc: function() { return scope.numSelected(scope.shown()) > 0; }
+        },
+        {
+          i18nString: 'removeCensusAction',
+          iconClass: 'fa fa-trash-o',
+          actionFunc: function() { return scope.removeSelected(); },
+          enableFunc: function() { return scope.numSelected(scope.shown()) > 0; }
+        },
+        {
+          i18nString: 'sendAuthCodesAction',
+          iconClass: 'fa fa-paper-plane-o',
+          actionFunc: function() { return sendAuthCodesSelected(); },
+          enableFunc: function() {
+            return scope.election.status === 'started' && scope.numSelected(scope.shown()) > 0;
+          }
+        }
+      ];
+
       function addToCensus() {
           var el = scope.election;
           var cs = [];
@@ -103,9 +139,7 @@ angular.module('avAdmin')
       }
 
       function removeSelected() {
-        var selectedList = _.filter(scope.election.census.voters, function (v) {
-          return v.selected === true;
-        });
+        var selectedList = scope.selected(scope.shown());
         if (!scope.election.id) {
           _.each(selectedList, function (selected) {
             var i = scope.election.census.voters.indexOf(selected);
@@ -134,9 +168,7 @@ angular.module('avAdmin')
       }
 
       function sendAuthCodesSelected() {
-        var selectedList = _.filter(scope.election.census.voters, function (v) {
-          return v.selected === true;
-        });
+        var selectedList = scope.selected(scope.shown());
         var user_ids = _.pluck(selectedList, "id");
         $modal.open({
           templateUrl: "avAdmin/admin-directives/dashboard/send-auth-codes-modal.html",
@@ -165,10 +197,19 @@ angular.module('avAdmin')
         removeSelected: removeSelected,
         selectQueried: selectQueried,
         sendAuthCodesSelected: sendAuthCodesSelected,
-        numSelected: function () {
-          return _.filter(scope.election.census.voters, function (v) {
+        numSelected: function (l) {
+          return scope.selected(l).length;
+        },
+        selected: function (l) {
+          if (l === undefined) {
+            l = scope.election.census.voters;
+          }
+          return _.filter(l, function (v) {
             return v.selected === true;
-          }).length;
+          });
+        },
+        shown: function(d) {
+          return $filter('filter')(scope.election.census.voters, scope.q);
         }
       });
 
