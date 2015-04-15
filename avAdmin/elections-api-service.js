@@ -236,7 +236,7 @@ angular.module('avAdmin')
                 "answer_total_votes_percentage": "over-total-valid-votes",
                 "answers": [],
                 "description": "",
-                "layout": "simple",
+                "layout": "accordion",
                 "max": 1,
                 "min": 1,
                 "num_winners": 1,
