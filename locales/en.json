@@ -503,7 +503,11 @@
 
           "addPersonHeader": "Add Person to census",
           "addPersonBody": "Manually add a single person to the census. Note that no data validation is done, so it's up to you to insert valid data.",
-          "confirmAddPersonButton": "Confirm and ADD person to census"
+          "confirmAddPersonButton": "Confirm and ADD person to census",
+
+          "removePeopleHeader": "Remove selected people from census",
+          "removePeopleBody": "Removing the selected __num__ people from the census is definitive. Note that this will not remove their votes if they have voted.",
+          "confirmRemovePeopleButton": "Confirm and REMOVE selected __num__ people from census"
         },
         "addPersonAction": "Add person..",
         "addCsvAction": "Add CSV to census..",
@@ -515,7 +519,7 @@
         "selectAllShownAction": "Select all people shown",
         "deselectAllShownAction": "Deselect all people shown",
         "exportCensusAction": "Export all census to CSV",
-        "removeCensusAction": "Remove __num__ selected people",
+        "removeCensusAction": "Remove __num__ selected people..",
         "sendAuthCodesAction": "Send auth codes to __num__ selected..",
         "idColumnHeader": "Id",
         "selectedColumnHeader": "Select",

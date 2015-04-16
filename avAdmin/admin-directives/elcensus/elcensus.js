@@ -51,7 +51,19 @@ angular.module('avAdmin')
         {
           i18nString: 'removeCensusAction',
           iconClass: 'fa fa-trash-o',
-          actionFunc: function() { return scope.removeSelected(); },
+          actionFunc: function() {
+            $modal.open({
+              templateUrl: "avAdmin/admin-directives/elcensus/confirm-remove-people-modal.html",
+              controller: "ConfirmRemovePeopleModal",
+              size: 'lg',
+              resolve: {
+                election: function () { return scope.election; },
+                numSelectedShown: function() {
+                  return scope.numSelected(scope.shown());
+                }
+              }
+            }).result.then(scope.removeSelected);
+          },
           enableFunc: function() { return scope.numSelected(scope.shown()) > 0; }
         },
         {
