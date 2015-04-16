@@ -28,7 +28,7 @@ angular.module('avAdmin')
         {
           i18nString: 'exportCensusAction',
           iconClass: 'fa fa-download',
-          actionFunc: function() { return scope.exportCensus(); },
+          actionFunc: function() { return scope.exportCensusModal(); },
           enableFunc: function() {
             return (
               scope.election && scope.election.census &&
@@ -151,8 +151,18 @@ angular.module('avAdmin')
           }
       }
 
-      function exportCensus() {
-        var el = scope.election;
+      function exportCensusModal() {
+        $modal.open({
+          templateUrl: "avAdmin/admin-directives/elcensus/export-all-census-modal.html",
+          controller: "ExportAllCensusModal",
+          size: 'lg',
+          resolve: {
+            election: function () { return scope.election; }
+          }
+        }).result.then(exportCensus);
+      }
+
+      function exportCensus(el) {
         var cs = el.census.voters;
         var csExport = _.map(cs, function (i) {
           var ret = angular.copy(i.metadata);
@@ -285,6 +295,7 @@ angular.module('avAdmin')
         delVoter: delVoter,
         massiveAdd: massiveAdd,
         exportCensus: exportCensus,
+        exportCensusModal: exportCensusModal,
         loadMoreCensus: loadMoreCensus,
         reloadCensus: reloadCensus,
         removeSelected: removeSelected,

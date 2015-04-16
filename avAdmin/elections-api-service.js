@@ -247,8 +247,16 @@ angular.module('avAdmin')
             return q;
         };
 
-        electionsapi.getCensus = function(el, page) {
+        electionsapi.getCensus = function(el, page, size) {
             var deferred = $q.defer();
+
+            if (size === 'max') {
+              size = 500;
+            } else if (angular.isNumber(size) && size > 0 && size < 500) {
+              size = parseInt(size);
+            } else {
+              size = 10;
+            }
 
             function getAuthCensus(d) {
               var voters = d.payload;
@@ -258,7 +266,7 @@ angular.module('avAdmin')
                 page = 1;
               }
 
-              Authmethod.getCensus(el.id, "page=" + page)
+              Authmethod.getCensus(el.id, "page=" + page + "&n=" + size)
                 .success(function(data) {
                   _.each(data.object_list, function(user) {
                     user.vote = false;
