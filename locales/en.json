@@ -507,6 +507,8 @@
         },
         "addPersonAction": "Add person..",
         "addCsvAction": "Add CSV to census..",
+        "filteredEmptyResults": "No person matched the current filter.",
+        "emptyCensus": "Census is currently empty. You can add people through the Actions button.",
 
         "censusadd": "Voters added to the census",
         "actionsDropdown": "Actions",

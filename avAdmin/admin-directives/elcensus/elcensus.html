@@ -3,7 +3,12 @@
 <div>
     <h2 ng-i18next>avAdmin.sidebar.census</h2>
 
-    <p class="text-muted" ng-i18next>avAdmin.census.intro</p>
+    <p class="text-muted">
+      <span ng-i18next>avAdmin.census.intro</span>
+      <a href="" class="learn-more" target="_blank" ng-i18next>
+        avAdmin.learnMore
+      </a>
+    </p>
 
     <div ng-if="error" class="bg-danger">
         <span ng-if="error.payload">{{ error.payload }}</span>
@@ -37,7 +42,7 @@
             <a ng-click="command.actionFunc()">
               <i class="{{command.iconClass}}"></i>
               <span ng-i18next>
-                [i18next]({num: numSelected()})avAdmin.census.{{command.i18nString}}
+                [i18next]({num: numSelected(shown())})avAdmin.census.{{command.i18nString}}
               </span>
             </a>
           </li>
@@ -79,7 +84,7 @@
           avAdmin.census.selectedColumnHeader
         </th>
       </tr>
-      <tr ng-repeat="c in election.census.voters | filter:q">
+      <tr ng-repeat="c in filteredVoters = (election.census.voters | filter:q)">
         <td>
           {{c.id}}
         </td>
@@ -88,6 +93,22 @@
         </td>
         <td>
           <input type="checkbox" ng-model="c.selected" />
+        </td>
+      </tr>
+      <tr ng-if="!loadingcensus && filteredVoters.length === 0 && election.census.voters.length > 0">
+        <td
+          class="wide text-muted"
+          colspan="{{election.census.extra_fields.length + 2}}"
+          ng-i18next>
+          avAdmin.census.filteredEmptyResults
+        </td>
+      </tr>
+      <tr ng-if="!loadingcensus && election.census.voters.length === 0">
+        <td
+          class="wide text-muted"
+          colspan="{{election.census.extra_fields.length + 2}}"
+          ng-i18next>
+          avAdmin.census.emptyCensus
         </td>
       </tr>
     </table>
