@@ -2,9 +2,9 @@ angular.module('avAdmin')
   .controller('AddCsvModal',
     function($scope, $modalInstance, election) {
       $scope.election = election;
-      $scope.massiveef = "";
+      $scope.textarea = "";
       $scope.ok = function () {
-        $modalInstance.close($scope.massiveef);
+        $modalInstance.close($("#csv-textarea").val());
       };
 
       $scope.cancel = function () {

@@ -1,5 +1,3 @@
-<div avb-busy overlay ng-if="loading"></div>
-
 <div>
     <h2 ng-i18next>avAdmin.sidebar.census</h2>
 
@@ -65,13 +63,10 @@
       </div>
     </h4>
 
-    <table class="table table-bordered table-striped censustable">
-      <tr ng-if="loadingcensus">
-        <td>
-          <i class="fa fa-cog fa-spin fa-sw"></i>
-          <span ng-i18next>loading</span>
-        </td>
-      </tr>
+    <table
+      class="table table-bordered table-striped censustable"
+      infinite-scroll="loadMoreCensus()"
+      infinite-scroll-distance="0">
 
       <tr>
         <th ng-i18next>
@@ -95,7 +90,7 @@
           <input type="checkbox" ng-model="c.selected" />
         </td>
       </tr>
-      <tr ng-if="!loadingcensus && filteredVoters.length === 0 && election.census.voters.length > 0">
+      <tr ng-if="!loading && filteredVoters.length === 0 && election.census.voters.length > 0">
         <td
           class="wide text-muted"
           colspan="{{election.census.extra_fields.length + 2}}"
@@ -103,12 +98,20 @@
           avAdmin.census.filteredEmptyResults
         </td>
       </tr>
-      <tr ng-if="!loadingcensus && election.census.voters.length === 0">
+      <tr ng-if="!loading && election.census.voters.length === 0">
         <td
           class="wide text-muted"
           colspan="{{election.census.extra_fields.length + 2}}"
           ng-i18next>
           avAdmin.census.emptyCensus
+        </td>
+      </tr>
+      <tr ng-if="loading">
+        <td
+          class="wide text-muted"
+          colspan="{{election.census.extra_fields.length + 2}}">
+          <i class="fa fa-cog fa-spin fa-sw"></i>
+          <span ng-i18next>loading</span>
         </td>
       </tr>
     </table>

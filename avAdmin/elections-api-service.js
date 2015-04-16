@@ -247,26 +247,35 @@ angular.module('avAdmin')
             return q;
         };
 
-        electionsapi.getCensus = function(el) {
-            el.census.voters = [];
+        electionsapi.getCensus = function(el, page) {
             var deferred = $q.defer();
 
             function getAuthCensus(d) {
-                var voters = d.payload;
-                var deferred = $q.defer();
-                Authmethod.getCensus(el.id)
-                    .success(function(data) {
-                        el.census.voters = data.object_list;
-                        _.each(data.object_list, function(user) {
-                            user.vote = false;
-                            if (voters.indexOf(user.username) >= 0) {
-                                user.vote = true;
-                            }
-                        });
-                        // TODO merge with voters
-                        deferred.resolve(el);
-                    })
-                    .error(deferred.reject);
+              var voters = d.payload;
+              var deferred = $q.defer();
+
+              if (!angular.isNumber(page)) {
+                page = 1;
+              }
+
+              Authmethod.getCensus(el.id, "page=" + page)
+                .success(function(data) {
+                  _.each(data.object_list, function(user) {
+                    user.vote = false;
+                    if (voters.indexOf(user.username) >= 0) {
+                      user.vote = true;
+                    }
+                  });
+                  if (!angular.isArray(el.census.voters)) {
+                    el.census.voters = [];
+                  }
+                  _.each(data.object_list, function (obj) {
+                    el.census.voters.push(obj);
+                  });
+                  el.data = data;
+                  deferred.resolve(el);
+                })
+                .error(deferred.reject);
                 return deferred.promise;
             }
 

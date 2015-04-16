@@ -5,13 +5,12 @@ angular.module('avAdmin')
       scope.census = ['open', 'close'];
       scope.election = ElectionsApi.currentElection;
       scope.newcensus = {};
-      scope.massiveef = "";
       scope.loading = false;
+      scope.nomore = false;
       scope.error = null;
+      scope.page = 1;
       scope.msg = null;
-      scope.loadingcensus = !ElectionsApi.newElection;
       scope.$filter = $filter;
-
 
       scope.commands = [
         {
@@ -65,7 +64,7 @@ angular.module('avAdmin')
         }
       ];
 
-      function addToCensus() {
+      function addToCensus(textarea) {
           var el = scope.election;
           var cs = [];
           if (!el.id) {
@@ -98,7 +97,7 @@ angular.module('avAdmin')
           el.census.voters = cs.slice(0, index).concat(cs.slice(index+1,cs.length));
       }
 
-      function massiveAdd() {
+      function massiveAdd(textarea) {
           var el = scope.election;
           var cs;
           if (!el.id) {
@@ -109,7 +108,7 @@ angular.module('avAdmin')
 
           var fields = el.census.extra_fields;
 
-          var lines = scope.massiveef.split("\n");
+          var lines = textarea.split("\n");
           lines.forEach(function(l) {
               var lf = l.split(";");
               var nv = {};
@@ -136,8 +135,6 @@ angular.module('avAdmin')
                 console.log("not added to census");
               });
           }
-
-          scope.massiveef = "";
       }
 
       function exportCensus() {
@@ -214,9 +211,8 @@ angular.module('avAdmin')
           resolve: {
             election: function () { return scope.election; }
           }
-        }).result.then(function(text) {
-          scope.massiveef = text;
-          scope.masiveAdd();
+        }).result.then(function(textarea) {
+          scope.massiveAdd(textarea);
         });
       }
 
@@ -229,9 +225,38 @@ angular.module('avAdmin')
             election: function () { return scope.election; },
             newcensus: function() { return scope.newcensus; }
           }
-        }).result.then(function(text) {
-          scope.massiveef = text;
-          scope.addToCensus();
+        }).result.then(function(textarea) {
+          scope.addToCensus(textarea);
+        });
+      }
+
+      /**
+       * Load more census in infinite scrolling mode
+       */
+      function loadMoreCensus() {
+        if (scope.loading || scope.nomore || ElectionsApi.newElection) {
+          return;
+        }
+        scope.loading = true;
+
+        ElectionsApi.waitForCurrent(function () {
+          ElectionsApi.getCensus(scope.election, scope.page)
+            .then(function(el) {
+              scope.page += 1;
+
+              if (el.data.end_index === el.data.total_count) {
+                scope.nomore = true;
+              }
+
+              _.each(el.census.voters, function(voter) {
+                voter.selected = false;
+              });
+              scope.loading = false;
+            })
+            .catch(function(data) {
+              scope.error = data;
+              scope.loading = false;
+            });
         });
       }
 
@@ -242,6 +267,7 @@ angular.module('avAdmin')
         delVoter: delVoter,
         massiveAdd: massiveAdd,
         exportCensus: exportCensus,
+        loadMoreCensus: loadMoreCensus,
         removeSelected: removeSelected,
         selectQueried: selectQueried,
         sendAuthCodesSelected: sendAuthCodesSelected,
@@ -272,21 +298,6 @@ angular.module('avAdmin')
       function main() {
         scope.election = ElectionsApi.currentElection;
         MustExtraFieldsService(scope.election);
-
-        if (!ElectionsApi.newElection) {
-          ElectionsApi.getCensus(scope.election)
-            .then(function(el) {
-              _.each(el.census.voters, function(voter) {
-                voter.selected = false;
-              });
-              scope.loadingcensus = false;
-            })
-            .catch(function(error) {
-              // TODO show error
-              console.log("error loading census");
-              scope.loadingcensus = false;
-            });
-        }
       }
 
       ElectionsApi.waitForCurrent(main);
