@@ -93,6 +93,7 @@ angular.module('avAdmin')
                 scope.loading = false;
                 scope.msg = "avAdmin.census.censusadd";
                   console.log("added to census");
+                scope.reloadCensus();
               })
               .error(function(error) {
                 scope.loading = false;
@@ -140,6 +141,7 @@ angular.module('avAdmin')
                 scope.loading = false;
                 scope.msg = "avAdmin.census.censusadd";
                 console.log("added to census");
+                scope.reloadCensus();
               })
               .error(function(error) {
                 scope.loading = false;
@@ -176,7 +178,8 @@ angular.module('avAdmin')
           Authmethod.removeUsersIds(scope.election.id, scope.election, user_ids)
           .success(function(r) {
             scope.loading = false;
-            scope.msg = "avAdmin.dashboard.removeusers";
+            scope.msg = "avAdmin.census.removedCensusSuccessfully";
+            scope.reloadCensus();
           })
           .error(function(error) { scope.loading = false; scope.error = error.error; });
         }
@@ -188,7 +191,7 @@ angular.module('avAdmin')
         Authmethod.sendAuthCodes(scope.election.id, scope.election, user_ids)
           .success(function(r) {
             scope.loading = false;
-            scope.msg = "avAdmin.dashboard.censussend";
+            scope.msg = "avAdmin.census.sentCodesSuccessfully";
           })
           .error(function(error) { scope.loading = false; scope.error = error.error; });
       }
@@ -268,6 +271,13 @@ angular.module('avAdmin')
         });
       }
 
+      function reloadCensus() {
+        scope.nomore = false;
+        scope.page = 1;
+        scope.election.census.voters.splice(0, scope.election.census.voters.length);
+        loadMoreCensus();
+      }
+
       angular.extend(scope, {
         addToCensus: addToCensus,
         addPersonModal: addPersonModal,
@@ -276,6 +286,7 @@ angular.module('avAdmin')
         massiveAdd: massiveAdd,
         exportCensus: exportCensus,
         loadMoreCensus: loadMoreCensus,
+        reloadCensus: reloadCensus,
         removeSelected: removeSelected,
         selectQueried: selectQueried,
         sendAuthCodesSelected: sendAuthCodesSelected,

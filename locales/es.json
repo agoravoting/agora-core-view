@@ -516,6 +516,8 @@
         "addCsvAction": "Add CSV to census..",
         "filteredEmptyResults": "No person matched the current filter.",
         "emptyCensus": "Census is currently empty. You can add people through the Actions button.",
+        "removedCensusSuccessfully": "Removed selected people from census successfully",
+        "sentCodesSuccessfully": "Sent authentication codes successfully",
 
         "censusadd": "Voters added to the census",
         "actionsDropdown": "Actions",
