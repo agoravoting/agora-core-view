@@ -73,6 +73,9 @@
           <th class="small-col text-right" ng-i18next>
             avAdmin.census.idColumnHeader
           </th>
+          <th class="small-col text-right" ng-i18next>
+            avAdmin.census.votedColumnHeader
+          </th>
           <th ng-repeat="field in election.census.extra_fields">
             {{ field.name| htmlToText }}
           </th>
@@ -86,6 +89,14 @@
             <input type="checkbox" ng-model="c.selected" />
             <div class="text-right">{{c.id}}</div>
           </td>
+          <td class="small-col text-right">
+            <strong ng-if="c.vote" ng-i18next>
+              avAdmin.census.voted
+            </strong>
+            <span ng-if="!c.vote" ng-i18next>
+              avAdmin.census.notVoted
+            </span>
+          </td>
           <td ng-repeat="field in election.census.extra_fields">
             {{ c.metadata[field.name] }}
           </td>
@@ -93,7 +104,7 @@
         <tr ng-if="!loading && filteredVoters.length === 0 && election.census.voters.length > 0">
           <td
             class="wide text-muted"
-            colspan="{{election.census.extra_fields.length + 1}}"
+            colspan="{{election.census.extra_fields.length + 2}}"
             ng-i18next>
             avAdmin.census.filteredEmptyResults
           </td>
@@ -101,7 +112,7 @@
         <tr ng-if="!loading && election.census.voters.length === 0">
           <td
             class="wide text-muted"
-            colspan="{{election.census.extra_fields.length + 1}}"
+            colspan="{{election.census.extra_fields.length + 2}}"
             ng-i18next>
             avAdmin.census.emptyCensus
           </td>
@@ -109,7 +120,7 @@
         <tr ng-if="loading">
           <td
             class="wide text-muted"
-            colspan="{{election.census.extra_fields.length + 1}}">
+            colspan="{{election.census.extra_fields.length + 2}}">
             <i class="fa fa-cog fa-spin fa-sw"></i>
             <span ng-i18next>loading</span>
           </td>

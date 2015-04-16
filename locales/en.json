@@ -516,6 +516,10 @@
         "removedCensusSuccessfully": "Removed selected people from census successfully",
         "sentCodesSuccessfully": "Sent authentication codes successfully",
 
+        "voted": "voted",
+        "notVoted": "not voted",
+        "votedColumnHeader": "Voted?",
+
         "censusadd": "Voters added to the census",
         "actionsDropdown": "Actions",
         "selectAllShownAction": "Select all people shown",
