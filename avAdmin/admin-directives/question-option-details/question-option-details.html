@@ -4,7 +4,10 @@
     <span
       class="text"
       ng-click="setEdit(electionEditable() && true)">
-      <span class="glyphicon glyphicon-edit"></span>
+      <span
+        ng-if="electionEditable()"
+        class="glyphicon glyphicon-edit">
+      </span>
       {{ answer.text }}
     </span>
   </div>
