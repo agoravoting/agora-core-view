@@ -270,6 +270,7 @@ angular.module('avAdmin')
                     el.census.voters = [];
                   }
                   _.each(data.object_list, function (obj) {
+                    obj.selected = false;
                     el.census.voters.push(obj);
                   });
                   el.data = data;

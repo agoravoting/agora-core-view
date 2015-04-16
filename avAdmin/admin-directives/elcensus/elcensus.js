@@ -259,10 +259,6 @@ angular.module('avAdmin')
               if (el.data.end_index === el.data.total_count) {
                 scope.nomore = true;
               }
-
-              _.each(el.census.voters, function(voter) {
-                voter.selected = false;
-              });
               scope.loading = false;
             })
             .catch(function(data) {
