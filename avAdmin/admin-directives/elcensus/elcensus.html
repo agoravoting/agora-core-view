@@ -64,56 +64,57 @@
     </h4>
 
     <table
-      class="table table-bordered table-striped censustable"
+      class="table censustable"
       infinite-scroll="loadMoreCensus()"
       infinite-scroll-distance="0">
 
-      <tr>
-        <th ng-i18next>
-          avAdmin.census.idColumnHeader
-        </th>
-        <th ng-repeat="field in election.census.extra_fields">
-          {{ field.name| htmlToText }}
-        </th>
-        <th ng-i18next>
-          avAdmin.census.selectedColumnHeader
-        </th>
-      </tr>
-      <tr ng-repeat="c in filteredVoters = (election.census.voters | filter:q)">
-        <td>
-          {{c.id}}
-        </td>
-        <td ng-repeat="field in election.census.extra_fields">
-          {{ c.metadata[field.name] }}
-        </td>
-        <td>
-          <input type="checkbox" ng-model="c.selected" />
-        </td>
-      </tr>
-      <tr ng-if="!loading && filteredVoters.length === 0 && election.census.voters.length > 0">
-        <td
-          class="wide text-muted"
-          colspan="{{election.census.extra_fields.length + 2}}"
-          ng-i18next>
-          avAdmin.census.filteredEmptyResults
-        </td>
-      </tr>
-      <tr ng-if="!loading && election.census.voters.length === 0">
-        <td
-          class="wide text-muted"
-          colspan="{{election.census.extra_fields.length + 2}}"
-          ng-i18next>
-          avAdmin.census.emptyCensus
-        </td>
-      </tr>
-      <tr ng-if="loading">
-        <td
-          class="wide text-muted"
-          colspan="{{election.census.extra_fields.length + 2}}">
-          <i class="fa fa-cog fa-spin fa-sw"></i>
-          <span ng-i18next>loading</span>
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <th class="small-col text-right" ng-i18next>
+            avAdmin.census.idColumnHeader
+          </th>
+          <th ng-repeat="field in election.census.extra_fields">
+            {{ field.name| htmlToText }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          ng-class="{'success': c.selected}"
+          ng-repeat="c in filteredVoters = (election.census.voters | filter:q)">
+          <td class="small-col">
+            <input type="checkbox" ng-model="c.selected" />
+            <div class="text-right">{{c.id}}</div>
+          </td>
+          <td ng-repeat="field in election.census.extra_fields">
+            {{ c.metadata[field.name] }}
+          </td>
+        </tr>
+        <tr ng-if="!loading && filteredVoters.length === 0 && election.census.voters.length > 0">
+          <td
+            class="wide text-muted"
+            colspan="{{election.census.extra_fields.length + 1}}"
+            ng-i18next>
+            avAdmin.census.filteredEmptyResults
+          </td>
+        </tr>
+        <tr ng-if="!loading && election.census.voters.length === 0">
+          <td
+            class="wide text-muted"
+            colspan="{{election.census.extra_fields.length + 1}}"
+            ng-i18next>
+            avAdmin.census.emptyCensus
+          </td>
+        </tr>
+        <tr ng-if="loading">
+          <td
+            class="wide text-muted"
+            colspan="{{election.census.extra_fields.length + 1}}">
+            <i class="fa fa-cog fa-spin fa-sw"></i>
+            <span ng-i18next>loading</span>
+          </td>
+        </tr>
+      <tobdy>
     </table>
 
     <button
