@@ -5,6 +5,7 @@ angular.module('avAdmin')
       scope.census = ['open', 'close'];
       scope.election = ElectionsApi.currentElection;
       scope.newcensus = {};
+      scope.electionLoaded = false;
       scope.loading = false;
       scope.nomore = false;
       scope.error = null;
@@ -88,19 +89,16 @@ angular.module('avAdmin')
             cs.push({selected: false, vote: false, username: "", metadata: scope.newcensus});
 
             var csExport = _.map(cs, function (i) { return i.metadata; });
-            console.log("add to census");
             scope.loading = true;
             Authmethod.addCensus(el.id, csExport, 'disabled')
               .success(function(r) {
                 scope.loading = false;
                 scope.msg = "avAdmin.census.censusadd";
-                  console.log("added to census");
                 scope.reloadCensus();
               })
               .error(function(error) {
                 scope.loading = false;
                 scope.error = error.error;
-                console.log("not added to census");
               });
           }
           scope.newcensus = {};
@@ -135,20 +133,17 @@ angular.module('avAdmin')
           });
 
           if (!!el.id) {
-            console.log("add to census");
             var csExport = _.map(cs, function (i) { return i.metadata; });
             scope.loading = true;
             Authmethod.addCensus(el.id, csExport, 'disabled')
               .success(function(r) {
                 scope.loading = false;
                 scope.msg = "avAdmin.census.censusadd";
-                console.log("added to census");
                 scope.reloadCensus();
               })
               .error(function(error) {
                 scope.loading = false;
                 scope.error = error.error;
-                console.log("not added to census");
               });
           }
       }
@@ -286,12 +281,29 @@ angular.module('avAdmin')
       function reloadCensus() {
         scope.nomore = false;
         scope.page = 1;
+        if (!scope.election || !scope.election.census || !scope.election.census.voters) {
+          return;
+        }
         scope.election.census.voters.splice(0, scope.election.census.voters.length);
+
         loadMoreCensus();
+      }
+
+      function filteredVoters() {
+        if (!scope.election || !scope.election.census || !scope.election.census.voters) {
+          return [];
+        } else if (!scope.filterStr || scope.electionLoaded && !!scope.election.id) {
+          return scope.election.census.voters;
+        } else {
+          return $filter('filter')(scope.election.census.voters, scope.filterStr);
+        }
       }
 
       // debounced filter
       scope.$watch("filterStr", function(newStr) {
+        if (!scope.electionLoaded || !scope.election.id) {
+          return;
+        }
         $timeout.cancel(scope.filterTimeout);
         scope.filterTimeout = $timeout(function() {
           scope.reloadCensus();
@@ -304,6 +316,7 @@ angular.module('avAdmin')
         addCsvModal: addCsvModal,
         delVoter: delVoter,
         massiveAdd: massiveAdd,
+        filteredVoters: filteredVoters,
         exportCensus: exportCensus,
         exportCensusModal: exportCensusModal,
         loadMoreCensus: loadMoreCensus,
@@ -336,8 +349,12 @@ angular.module('avAdmin')
       });
 
       function main() {
+        scope.electionLoaded = true;
         scope.election = ElectionsApi.currentElection;
         MustExtraFieldsService(scope.election);
+        if (scope.page === 1) {
+          loadMoreCensus();
+        }
       }
 
       ElectionsApi.waitForCurrent(main);
