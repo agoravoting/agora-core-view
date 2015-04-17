@@ -105,11 +105,14 @@ angular.module('avRegistration')
             return $http.post(backendUrl + 'auth-event/' + id + '/census/', d);
         };
 
-        authmethod.getCensus = function(id, query) {
-          if (!angular.isString(query)) {
+        authmethod.getCensus = function(id, params) {
+          if (!angular.isObject(params)) {
             return $http.get(backendUrl + 'auth-event/' + id + '/census/');
           }
-          return $http.get(backendUrl + 'auth-event/' + id + '/census/?' + query);
+
+          return $http.get(
+            backendUrl + 'auth-event/' + id + '/census/',
+            {params:params});
         };
 
         authmethod.getRegisterFields = function (viewEventData) {

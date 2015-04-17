@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminElcensus', function($window, $state, ElectionsApi, Authmethod, $modal, MustExtraFieldsService, $filter) {
+  .directive('avAdminElcensus', function($window, $state, ElectionsApi, Authmethod, $modal, MustExtraFieldsService, $filter, $timeout) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
       scope.census = ['open', 'close'];
@@ -10,7 +10,9 @@ angular.module('avAdmin')
       scope.error = null;
       scope.page = 1;
       scope.msg = null;
+      scope.filterStr = "";
       scope.$filter = $filter;
+      scope.filterTimeout = null;
 
       scope.commands = [
         {
@@ -222,7 +224,7 @@ angular.module('avAdmin')
       }
 
       function selectQueried(selectStatus) {
-        _.each($filter('filter')(scope.election.census.voters, scope.q),
+        _.each(scope.election.census.voters,
           function (i) {
             i.selected = selectStatus;
           });
@@ -265,7 +267,7 @@ angular.module('avAdmin')
         scope.loading = true;
 
         ElectionsApi.waitForCurrent(function () {
-          ElectionsApi.getCensus(scope.election, scope.page)
+          ElectionsApi.getCensus(scope.election, scope.page, null, scope.filterStr)
             .then(function(el) {
               scope.page += 1;
 
@@ -287,6 +289,14 @@ angular.module('avAdmin')
         scope.election.census.voters.splice(0, scope.election.census.voters.length);
         loadMoreCensus();
       }
+
+      // debounced filter
+      scope.$watch("filterStr", function(newStr) {
+        $timeout.cancel(scope.filterTimeout);
+        scope.filterTimeout = $timeout(function() {
+          scope.reloadCensus();
+        }, 500);
+      });
 
       angular.extend(scope, {
         addToCensus: addToCensus,
@@ -318,7 +328,7 @@ angular.module('avAdmin')
         },
         shown: function(d) {
           if (scope.election && scope.election.census && scope.election.census.voters) {
-            return $filter('filter')(scope.election.census.voters, scope.q);
+            return scope.election.census.voters;
           }
 
           return [];

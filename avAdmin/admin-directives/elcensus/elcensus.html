@@ -51,7 +51,7 @@
         <input
           type="text"
           class="form-control"
-          ng-model="q"
+          ng-model="filterStr"
           placeholder="{{'avAdmin.elections.filter' | i18next}}">
         <span class="input-group-btn">
           <button
@@ -84,7 +84,7 @@
       <tbody>
         <tr
           ng-class="{'success': c.selected}"
-          ng-repeat="c in filteredVoters = (election.census.voters | filter:q)">
+          ng-repeat="c in election.census.voters">
           <td class="small-col">
             <input type="checkbox" ng-model="c.selected" />
             <div class="text-right">{{c.id}}</div>
