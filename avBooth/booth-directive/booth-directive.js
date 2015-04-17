@@ -14,8 +14,8 @@ angular.module('avBooth')
       scope.isDemo = !InsideIframeService() && !scope.voterId;
 
       function updateWidth() {
+        $timeout.cancel(timeoutWidth);
         timeoutWidth = $timeout(function() {
-          $timeout.cancel(timeoutWidth);
           scope.windowWidth = w.width();
           console.log("scope.windowWidth = " + scope.windowWidth);
           scope.$apply();
