@@ -1,9 +1,11 @@
 angular.module('avAdmin')
-    .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$i18next', '$http', function($q, Authmethod, ConfigService, $i18next, $http) {
+    .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$i18next', '$http', '$cookies', '$rootScope',
+                      function($q, Authmethod, ConfigService, $i18next, $http, $cookies, $rootScope) {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}, permcache: {}};
         electionsapi.waitingCurrent = [];
         electionsapi.currentElection = {};
+
         electionsapi.currentElections = [];
         electionsapi.newElection = false;
 
@@ -17,11 +19,27 @@ angular.module('avAdmin')
 
         electionsapi.setCurrent = function(el) {
             electionsapi.currentElection = el;
+
+            $rootScope.currentElection = el;
+            $rootScope.$watch('currentElection', function() {
+                $cookies.currentElection = JSON.stringify($rootScope.currentElection);
+            }, true);
+
             electionsapi.waitingCurrent.forEach(function(f) {
                 f();
             });
             electionsapi.waitingCurrent = [];
         };
+
+        if ($cookies.currentElection) {
+            console.log($cookies.currentElection);
+            try {
+                var el = JSON.parse($cookies.currentElection);
+                electionsapi.setCurrent(el);
+            } catch (e) {
+                $cookies.currentElection = electionsapi.currentElection;
+            }
+        }
 
         function asyncElection(id) {
             var deferred = $q.defer();
