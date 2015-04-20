@@ -7,7 +7,14 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-        <form name="form" id="registerForm" role="form" class="form-horizontal">
+        <div ng-if="method == 'dnie'">
+          <a type="submit"
+            class="btn btn-block btn-success"
+            ng-i18next="avRegistration.registerButton"
+            ng-href="{{ dnieurl }}/">
+          </a>
+        </div>
+        <form ng-if="method != 'dnie'" name="form" id="registerForm" role="form" class="form-horizontal">
             <div ng-repeat="field in register_fields" avr-field index="{{$index+1}}">
             </div>
 

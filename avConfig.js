@@ -13,6 +13,7 @@ var avConfigData = {
 
   // AuthApi base url
   authAPI: "http://agora.dev/authapi/api/",
+  dnieUrl: "https://agora.dev/authapi/api/authmethod/dnie/auth/",
   // Agora Elections base url
   electionsAPI: "http://agora.dev/elections/api/",
 

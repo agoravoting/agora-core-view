@@ -569,7 +569,7 @@
     "auth": {
         "intro": "Authentication is the means used to ensure that an elector is who he sais he is. Here you need to find a balance between security, usability an cost",
         "auth": "Auth method",
-        "auths": {"email": "Email links", "sms": "SMS"},
+        "auths": {"email": "Email links", "sms": "SMS", "dnie": "spanish eDNI"},
         "sms": "SMS message",
         "smstemp": "Template used in the SMS to send to the user. Use %(code)s to insert the SMS code and %(url)s for the authentication url",
         "smsdef": "This is your vote code: %(code)",

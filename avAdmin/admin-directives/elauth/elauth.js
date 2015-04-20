@@ -4,6 +4,7 @@ angular.module('avAdmin')
     function link(scope, element, attrs) {
         scope.election = ElectionsApi.currentElection;
         scope.auth = ['email', 'sms'];
+        //scope.auth = ['email', 'sms', 'dnie'];
         scope.electionEditable = function() {
           return !scope.election.id || scope.election.status === "registered";
         };

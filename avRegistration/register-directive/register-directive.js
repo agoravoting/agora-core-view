@@ -3,6 +3,7 @@ angular.module('avRegistration')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var autheventid = attrs.eventId;
+        scope.dnieurl = ConfigService.dnieUrl + autheventid + '/';
         scope.register = {};
         scope.sendingData = false;
         scope.admin = false;

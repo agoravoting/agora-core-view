@@ -28,6 +28,17 @@ angular.module('avAdmin')
           "max": 200,
           "required_on_authentication": true
         };
+      } else if (el.census.auth_method === 'dnie') {
+        name = 'dni';
+        must = {
+          "must": true,
+          "name": "dni",
+          "type": "text",
+          "required": true,
+          "min": 2,
+          "max": 200,
+          "required_on_authentication": true
+        };
       }
 
       var found = false;
