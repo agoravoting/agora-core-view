@@ -26,6 +26,8 @@
         "expect": true,
         "xdescribe": true,
         "xit": true,
-        "spyOn": true
+        "spyOn": true,
+        "define": true,
+        "require": true
     }
 }
