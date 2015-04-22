@@ -554,6 +554,7 @@
         "fieldRequiredLabel": "Required",
         "fieldUniqueLabel": "Unique",
         "fieldRequiredAuthLabel": "Checked against census in authentication",
+        "fieldPrivateLabel": "Private (only administrators can see and use this field)",
         "extraFieldsHeader": "Extra fields",
         "extraFieldsInfo": "Here you can define extra fields in the census in a versatile way. This allows you to do a range of things: adding extra checks against census in closed registration, registering new fields in open registration, etc.",
         "fields": {"label": "Extra fields", "placeholder": "Voter extra fields"},

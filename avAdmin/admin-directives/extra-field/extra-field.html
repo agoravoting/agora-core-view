@@ -231,6 +231,27 @@
     </div>
   </div>
 
+  <!-- private -->
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea'].indexOf(field.type) !== -1">
+    <div class="form-group">
+      <label
+        class="control-label col-sm-4 text-right">
+        <input
+          type="checkbox"
+          class="form-control"
+          id="fieldPrivateInput{{$index}}"
+          ng-model="field.private" />
+      </label>
+      <div class="col-sm-8">
+        <label
+          ng-i18next="avAdmin.census.fieldPrivateLabel"
+          class="text-left"
+          for="fieldPrivateInput{{$index}}">
+        </label>
+      </div>
+    </div>
+  </div>
+
   <!-- required on authentication -->
   <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea', 'captcha'].indexOf(field.type) !== -1">
     <div class="form-group">

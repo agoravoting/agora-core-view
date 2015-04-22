@@ -23,8 +23,10 @@ angular.module('avAdmin')
                 required: scope.newef.required,
                 min: 2,
                 max: 200,
+                private: false,
                 required_on_authentication: false,
-                must: false
+                must: false,
+                "register-pipeline": []
             };
 
             scope.extra_fields.editing = ef;
