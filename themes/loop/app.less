@@ -1,0 +1,97 @@
+@import "../../external.less";
+
+/* Global Config */
+@av-primary: white;
+@av-secondary: #8A8A8A;
+@av-primary-contrast: #E65C56;
+@av-secondary-contrast: white;
+@brand-primary: @av-primary;
+@brand-success: @av-secondary;
+@link-color: @av-secondary;
+@text-success: @av-secondary;
+@state-success-text: @av-secondary;
+
+
+
+/* Admin Config */
+@av-bg: #EEE;
+@av-bg-hover: #DDD;
+@av-error-bg: #fff;
+@av-error-color: #990000;
+
+@imgdir: "../../img";
+
+/* theme config */
+.navbar-admin .navbar-brand {
+  background-image: url("loop_logo.png") !important;
+  background-size: 100% !important;
+  height: 45px !important;
+}
+
+.top-section .btn-transparent {
+  color: @av-primary-contrast;
+
+  &:hover {
+    color: @av-primary;
+    background-color: @av-primary-contrast;
+  }
+}
+
+[ave-default-election] .top-section {
+  ul.election-links > li.selected > a, ul.election-links > li > a {
+    color: @av-secondary !important;
+  }
+}
+
+[av-booth] {
+  .navbar-unfixed-top {
+    color: @av-primary-contrast !important;
+  }
+
+  .avb-top-navbar {
+    .pull-left[ng-i18next="[html]avBooth.poweredBy"] {
+      display: block;
+      background-image: url("loop_logo.png") !important;
+      background-size: 100% !important;
+      height: 45px !important;
+      width: 100px !important;
+      color: transparent;
+
+      span, strong {
+        display: none;
+      }
+    }
+  }
+
+  [avb-accordion-option] {
+    &.selected.highlight-selected {
+      background-color: @gray-light;
+      color: white;
+
+      &:hover {
+        background-color: @brand-danger;
+      }
+    }
+  }
+
+  .warnings {
+    color: white !important;
+  }
+}
+
+
+[av-change-lang] {
+  &:hover {
+    background-color: @gray-lighter !important;
+    border-color: @gray-lighter !important;
+  }
+
+  a.dropdown-toggle {
+    color: @av-primary-contrast !important;
+  }
+}
+
+/* end theme config */
+
+@import "../../app.less";
+
