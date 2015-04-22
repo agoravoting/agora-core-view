@@ -105,7 +105,16 @@ module.exports = function (grunt) {
       main: {
         files: [
           {src: ['img/**'], dest: 'dist/'},
+          {src: ['img/**'], dest: 'dist/'},
           {src: ['temp_data/**'], dest: 'dist/'},
+          {
+            expand: true,
+            cwd:'themes',
+            src: ['**/*.png'],
+            dest: 'dist/themes/',
+            ext: '.png',
+            extDot: 'first'
+          },
           {
             expand: true,
             cwd: 'bower_components/bootstrap/fonts/',
