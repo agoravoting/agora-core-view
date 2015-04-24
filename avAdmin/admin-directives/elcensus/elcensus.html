@@ -76,6 +76,9 @@
           <th class="small-col text-right" ng-i18next>
             avAdmin.census.votedColumnHeader
           </th>
+          <th class="small-col text-right" ng-i18next>
+            avAdmin.census.activeColumnHeader
+          </th>
           <th ng-repeat="field in election.census.extra_fields">
             {{ field.name| htmlToText }}
           </th>
@@ -95,6 +98,14 @@
             </strong>
             <span ng-if="!c.vote" ng-i18next>
               avAdmin.census.notVoted
+            </span>
+          </td>
+          <td class="small-col text-right">
+            <strong ng-if="c.active" ng-i18next>
+                yes
+            </strong>
+            <span ng-if="!c.active" ng-i18next>
+                no
             </span>
           </td>
           <td ng-repeat="field in election.census.extra_fields">

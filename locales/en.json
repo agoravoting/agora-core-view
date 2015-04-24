@@ -1,4 +1,6 @@
 {
+  "yes": "yes",
+  "no": "no",
   "eg": "eg.",
   "next": "Next",
   "done": "Done",
@@ -509,20 +511,27 @@
           "removePeopleBody": "Removing the selected __num__ people from the census is definitive. Note that this will not remove their votes if they have voted.",
           "confirmRemovePeopleButton": "Confirm and REMOVE selected __num__ people from census",
 
+          "activatePeopleHeader": "Activate selected people from census",
+          "activatePeopleBody": "Activating the selected __num__ people. This will allow this people to vote",
+          "confirmActivatePeopleButton": "Confirm and activate selected __num__ people in census",
+
           "exportAllCensusHeader": "Export all census in CSV",
           "exportAllCensusBody": "Here you can download the whole census in a CSV (Comma Separated Values) spreadsheet format, so that you can process it elsewhere. There are __total__ people in your census. Depending on the size of the census, the process of downloading the whole census can take a while. Once it finishes, you will be prompted to download the census. If you have any filter active, this filter will also be applied to the downloaded CSV file.",
           "confirmexportAllCensusButton": "Confirm and download the census, with __total__ people"
         },
         "addPersonAction": "Add person..",
         "addCsvAction": "Add CSV to census..",
+        "activateAction": "Activate",
         "filteredEmptyResults": "No person matched the current filter.",
         "emptyCensus": "Census is currently empty. You can add people through the Actions button.",
         "removedCensusSuccessfully": "Removed selected people from census successfully",
+        "activatedCensusSuccessfully": "Activated selected people in census successfully",
         "sentCodesSuccessfully": "Sent authentication codes successfully",
 
         "voted": "voted",
         "notVoted": "not voted",
         "votedColumnHeader": "Voted?",
+        "activeColumnHeader": "Active?",
 
         "censusadd": "Voters added to the census",
         "actionsDropdown": "Actions",

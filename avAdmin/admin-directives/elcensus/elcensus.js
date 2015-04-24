@@ -17,6 +17,26 @@ angular.module('avAdmin')
 
       scope.commands = [
         {
+          i18nString: 'activateAction',
+          iconClass: 'fa fa-check',
+          actionFunc: function() {
+            $modal.open({
+              templateUrl: "avAdmin/admin-directives/elcensus/confirm-activate-people-modal.html",
+              controller: "ConfirmActivatePeopleModal",
+              size: 'lg',
+              resolve: {
+                election: function () { return scope.election; },
+                numSelectedShown: function() {
+                  return scope.numSelected(scope.shown());
+                }
+              }
+            }).result.then(scope.activateSelected);
+          },
+          enableFunc: function() {
+            return scope.election && scope.election.id && scope.numSelected(scope.shown()) > 0;
+          }
+        },
+        {
           i18nString: 'addPersonAction',
           iconClass: 'fa fa-plus',
           actionFunc: function() { return scope.addPersonModal(); },
@@ -193,6 +213,19 @@ angular.module('avAdmin')
         return false;
       }
 
+      function activateSelected() {
+        var selectedList = scope.selected(scope.shown());
+          var user_ids = _.pluck(selectedList, "id");
+          Authmethod.activateUsersIds(scope.election.id, scope.election, user_ids)
+          .success(function(r) {
+            scope.loading = false;
+            scope.msg = "avAdmin.census.activatedCensusSuccessfully";
+            scope.reloadCensus();
+          })
+          .error(function(error) { scope.loading = false; scope.error = error.error; });
+        return false;
+      }
+
       function sendAuthCodes(user_ids) {
         scope.loading = true;
         Authmethod.sendAuthCodes(scope.election.id, scope.election, user_ids)
@@ -322,6 +355,7 @@ angular.module('avAdmin')
         loadMoreCensus: loadMoreCensus,
         reloadCensus: reloadCensus,
         removeSelected: removeSelected,
+        activateSelected: activateSelected,
         selectQueried: selectQueried,
         sendAuthCodesSelected: sendAuthCodesSelected,
         numSelected: function (l) {
