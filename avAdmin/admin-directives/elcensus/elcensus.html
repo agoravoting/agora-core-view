@@ -108,8 +108,7 @@
                 no
             </span>
           </td>
-          <td ng-repeat="field in election.census.extra_fields">
-            {{ c.metadata[field.name] }}
+          <td ng-repeat="field in election.census.extra_fields" av-census-field>
           </td>
         </tr>
         <tr ng-if="!loading && filteredVoters().length === 0 && election.census.voters.length > 0">

@@ -551,6 +551,7 @@
         "boolOption": "bool",
         "captchaOption": "captcha",
         "textareaOption": "textarea",
+        "dictOption": "Key-value",
         "fieldTypeLabel": "Type",
         "fieldRegExLabel": "Regular expression",
         "fieldRegExPlaceholder": "Advanced users only - Example: ^(1000|1010)$",

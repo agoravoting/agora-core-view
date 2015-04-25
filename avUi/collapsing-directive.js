@@ -3,7 +3,7 @@
  * collapsable if it exceeds the max-height of the selector.
  *  - if the element's height doesn't exceed its maximum height, the
  *    data-toggle-selector element will be set to hidden
- *  - if the element's height doesn't exceed its maximum height, the
+ *  - if the element's height exceeds its maximum height, the
  *    data-toggle-selector element will be removed the class "hidden".
  *  - if the data-toggle-selector element it contains is clicked, they will be
  *    added the class ".in".
@@ -12,14 +12,42 @@
  *    the data-toggle-selector element is not hidden.
  *  - it will watch the element and window resizes to see if the conditions
  *    change.
+ * - both maxHeightSelector and data-toggle-selector will be found using the
+ *   parent selector as a base if the attribute "parent-selector" is set.
+ *   Otherwise, it will directly a global angular.element() to find them.
  */
 angular.module('avUi')
   .directive('avCollapsing', function($window, $timeout) {
 
+
+    function collapseEl(instance, el) {
+      var val = null;
+      console.log("collapseEl, instance.collapseSelector = " + instance.collapseSelector);
+      if (!!instance.collapseSelector) {
+        val = select(instance, el, instance.collapseSelector);
+      } else {
+        val = angular.element(el);
+      }
+      return val;
+    }
+
+    function select(instance, el, selector) {
+      var val;
+      if (!!instance.parentSelector) {
+        val = el.closest(instance.parentSelector).find(selector);
+      } else {
+        val = angular.element(selector);
+      }
+      console.log("select = ");
+      console.log(val);
+      console.log("select.parent = ");
+      console.log(el.closest(instance.parentSelector));
+      return val;
+    }
+
     var checkCollapse = function(instance, el, options) {
-      var maxHeight = angular.element(instance.maxHeightSelector).css("max-height");
-      var jel = angular.element(el);
-      var height = jel[0].scrollHeight;
+      var maxHeight = select(instance, el, instance.maxHeightSelector).css("max-height");
+      var height = angular.element(el)[0].scrollHeight;
 
       if (maxHeight.indexOf("px") === -1) {
         console.log("invalid non-pixels max-height for " + instance.maxHeightSelector);
@@ -35,8 +63,8 @@ angular.module('avUi')
           return;
         }
         instance.isCollapsed = true;
-        jel.addClass("collapsed");
-        angular.element(instance.toggleSelector).removeClass("hidden in");
+        collapseEl(instance, el).addClass("collapsed");
+        select(instance, el, instance.toggleSelector).removeClass("hidden in");
 
       // removed collapsed and hide toggle otherwise
       } else {
@@ -45,23 +73,21 @@ angular.module('avUi')
           return;
         }
         instance.isCollapsed = false;
-        jel.removeClass("collapsed");
-        angular.element(instance.toggleSelector).addClass("hidden");
+        collapseEl(instance, el).removeClass("collapsed");
+        select(instance, el, instance.toggleSelector).addClass("hidden");
       }
     };
 
     var toggleCollapse = function(instance, el, options) {
-      var jel = angular.element(el);
-
       // if it's collapsed, uncollapse
       if (instance.isCollapsed) {
-        jel.removeClass("collapsed");
-        angular.element(instance.toggleSelector).addClass("in");
+        collapseEl(instance, el).removeClass("collapsed");
+        select(instance, el, instance.toggleSelector).addClass("in");
 
       // collapse otherwise
       } else {
-        jel.addClass("collapsed");
-        angular.element(instance.toggleSelector).removeClass("in");
+        collapseEl(instance, el).addClass("collapsed");
+        select(instance, el, instance.toggleSelector).removeClass("in");
       }
 
 
@@ -74,7 +100,9 @@ angular.module('avUi')
         var instance = {
           isCollapsed: false,
           maxHeightSelector: iAttrs.avCollapsing,
-          toggleSelector: iAttrs.toggleSelector
+          toggleSelector: iAttrs.toggleSelector,
+          parentSelector: iAttrs.parentSelector,
+          collapseSelector: iAttrs.collapseSelector
         };
 
         // timeout is used with callCheck so that we do not create too many

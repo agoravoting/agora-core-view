@@ -94,6 +94,9 @@
           <option value="textarea" ng-i18next>
             avAdmin.census.textareaOption
           </option>
+          <option value="dict" ng-i18next>
+            avAdmin.census.dictOption
+          </option>
         </select>
       </div>
     </div>
@@ -311,6 +314,9 @@
       <div avr-bool-field ng-switch-when="bool"></div>
       <div avr-captcha-field ng-switch-when="captcha"></div>
       <div avr-textarea-field ng-switch-when="textarea"></div>
+      <div ng-switch-when="dict" class="col-sm-4 text-right dict-field">
+        <span>{{field.name}}</span>
+      </div>
     </div>
   </div>
 </div>

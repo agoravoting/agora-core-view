@@ -556,6 +556,7 @@
         "fieldRegExPlaceholder": "Sólo usuarios avanzados - Ejemplo: ^(1000|1010)$",
         "captchaOption": "captcha",
         "textareaOption": "cuadro de texto",
+        "dictOption": "Clave-valor",
         "configurationHeader": "Configuración",
         "fieldTypeLabel": "Tipo",
         "fieldMinLabel": "Min",

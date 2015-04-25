@@ -34,6 +34,12 @@ angular.module('avAdmin')
       if (scope.extra_fields.editing === scope.field) {
         $("html,body").animate({scrollTop: $(element).offset().top - 250}, 400);
       }
+
+      scope.$watch('field.type', function(now, Before) {
+        if (scope.field.type === 'dict') {
+          scope.field.private = true;
+        }
+      });
     }
 
     return {
