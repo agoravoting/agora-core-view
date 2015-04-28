@@ -521,7 +521,7 @@
         },
         "addPersonAction": "Add person..",
         "addCsvAction": "Add CSV to census..",
-        "activateAction": "Activate",
+        "activateAction": "Activate __num__ selected people..",
         "filteredEmptyResults": "No person matched the current filter.",
         "emptyCensus": "Census is currently empty. You can add people through the Actions button.",
         "removedCensusSuccessfully": "Removed selected people from census successfully",
