@@ -1,6 +1,15 @@
 angular.module('avAdmin')
-    .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$i18next', '$http', '$cookies', '$rootScope',
-                      function($q, Authmethod, ConfigService, $i18next, $http, $cookies, $rootScope) {
+    .factory(
+      'ElectionsApi',
+      function(
+        $q,
+        Authmethod,
+        ConfigService,
+        $i18next,
+        $http,
+        $cookies,
+        $rootScope)
+      {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}, permcache: {}};
         electionsapi.waitingCurrent = [];
@@ -22,7 +31,9 @@ angular.module('avAdmin')
 
             $rootScope.currentElection = el;
             $rootScope.$watch('currentElection', function() {
-                $cookies.currentElection = JSON.stringify($rootScope.currentElection);
+                if (!$rootScope.currentElection.id) {
+                  $cookies.currentElection = JSON.stringify($rootScope.currentElection);
+                }
             }, true);
 
             electionsapi.waitingCurrent.forEach(function(f) {
@@ -36,6 +47,7 @@ angular.module('avAdmin')
             try {
                 var el = JSON.parse($cookies.currentElection);
                 electionsapi.setCurrent(el);
+                electionsapi.newElection = true;
             } catch (e) {
                 $cookies.currentElection = electionsapi.currentElection;
             }
@@ -321,4 +333,4 @@ angular.module('avAdmin')
         };
 
         return electionsapi;
-    }]);
+    });
