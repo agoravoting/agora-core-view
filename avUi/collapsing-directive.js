@@ -22,7 +22,6 @@ angular.module('avUi')
 
     function collapseEl(instance, el) {
       var val = null;
-      console.log("collapseEl, instance.collapseSelector = " + instance.collapseSelector);
       if (!!instance.collapseSelector) {
         val = select(instance, el, instance.collapseSelector);
       } else {
@@ -38,9 +37,6 @@ angular.module('avUi')
       } else {
         val = angular.element(selector);
       }
-      console.log("select = ");
-      console.log(val);
-      console.log("select.parent = ");
       console.log(el.closest(instance.parentSelector));
       return val;
     }
