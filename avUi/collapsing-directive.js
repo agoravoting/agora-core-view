@@ -37,7 +37,6 @@ angular.module('avUi')
       } else {
         val = angular.element(selector);
       }
-      console.log(el.closest(instance.parentSelector));
       return val;
     }
 
