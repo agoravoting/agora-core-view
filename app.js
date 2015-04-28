@@ -20,6 +20,7 @@ angular.module(
   'avElection',
   'angularFileUpload',
   'dndLists',
+  'angularLoad',
   'ng-autofocus'
 ]);
 

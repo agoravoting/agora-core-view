@@ -229,7 +229,10 @@ module.exports = function (grunt) {
           'dist/lib-v3.0-b1.min.js': 'temp/lib.js',
           'dist/libnocompat-v3.0-b1.min.js': 'temp/libnocompat.js',
           'dist/libcompat-v3.0-b1.min.js': 'temp/libcompat.js',
-          'dist/avWidgets.min.js': 'avWidgets.js'
+          'dist/avWidgets.min.js': 'avWidgets.js',
+
+          "dist/locales/moment/es.js": "bower_components/moment/lang/es.js",
+          "dist/locales/moment/ca.js": "bower_components/moment/lang/ca.js"
         }
       }
     },
