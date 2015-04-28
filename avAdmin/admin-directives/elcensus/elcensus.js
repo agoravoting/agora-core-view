@@ -1,5 +1,17 @@
 angular.module('avAdmin')
-  .directive('avAdminElcensus', function($window, $state, ElectionsApi, Authmethod, $modal, MustExtraFieldsService, $filter, $timeout) {
+  .directive(
+    'avAdminElcensus',
+    function(
+      $window,
+      $state,
+      ElectionsApi,
+      Authmethod,
+      $modal,
+      MustExtraFieldsService,
+      $filter,
+      $stateParams,
+      $timeout)
+    {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
       scope.census = ['open', 'close'];
@@ -14,6 +26,10 @@ angular.module('avAdmin')
       scope.filterStr = "";
       scope.$filter = $filter;
       scope.filterTimeout = null;
+
+      function newElection() {
+        return !$stateParams.id;
+      }
 
       scope.commands = [
         {
@@ -289,7 +305,7 @@ angular.module('avAdmin')
        * Load more census in infinite scrolling mode
        */
       function loadMoreCensus() {
-        if (scope.loading || scope.nomore || ElectionsApi.newElection) {
+        if (!scope.electionLoaded || scope.loading || scope.nomore || newElection()) {
           return;
         }
         scope.loading = true;
@@ -314,7 +330,7 @@ angular.module('avAdmin')
       function reloadCensus() {
         scope.nomore = false;
         scope.page = 1;
-        if (!scope.election || !scope.election.census || !scope.election.census.voters) {
+        if (!scope.electionLoaded || !scope.election || !scope.election.census || !scope.election.census.voters) {
           return;
         }
         scope.election.census.voters.splice(0, scope.election.census.voters.length);
@@ -333,8 +349,8 @@ angular.module('avAdmin')
       }
 
       // debounced filter
-      scope.$watch("filterStr", function(newStr) {
-        if (!scope.electionLoaded || !scope.election.id) {
+      scope.$watch("filterStr", function(newStr, oldStr) {
+        if (!scope.electionLoaded || !scope.election.id || newStr === oldStr) {
           return;
         }
         $timeout.cancel(scope.filterTimeout);
@@ -358,6 +374,7 @@ angular.module('avAdmin')
         activateSelected: activateSelected,
         selectQueried: selectQueried,
         sendAuthCodesSelected: sendAuthCodesSelected,
+        newElection: newElection,
         numSelected: function (l) {
           return scope.selected(l).length;
         },
@@ -386,8 +403,8 @@ angular.module('avAdmin')
         scope.electionLoaded = true;
         scope.election = ElectionsApi.currentElection;
         MustExtraFieldsService(scope.election);
-        if (scope.page === 1) {
-          loadMoreCensus();
+        if (scope.page === 1 && !newElection()) {
+          reloadCensus();
         }
       }
 

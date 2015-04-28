@@ -19,7 +19,7 @@ angular.module('avAdmin')
         electionsapi.newElection = false;
 
         electionsapi.waitForCurrent = function(f) {
-            if (electionsapi.currentElection.title) {
+            if (electionsapi.currentElection.id) {
                 f();
             } else {
                 electionsapi.waitingCurrent.push(f);
@@ -28,12 +28,13 @@ angular.module('avAdmin')
 
         electionsapi.setCurrent = function(el) {
             electionsapi.currentElection = el;
+            electionsapi.newElection = !el.id;
 
             $rootScope.currentElection = el;
             $rootScope.$watch('currentElection', function() {
-                if (!$rootScope.currentElection.id) {
-                  $cookies.currentElection = JSON.stringify($rootScope.currentElection);
-                }
+              if (!$rootScope.currentElection.id) {
+                $cookies.currentElection = JSON.stringify($rootScope.currentElection);
+              }
             }, true);
 
             electionsapi.waitingCurrent.forEach(function(f) {
@@ -47,7 +48,6 @@ angular.module('avAdmin')
             try {
                 var el = JSON.parse($cookies.currentElection);
                 electionsapi.setCurrent(el);
-                electionsapi.newElection = true;
             } catch (e) {
                 $cookies.currentElection = electionsapi.currentElection;
             }
