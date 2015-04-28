@@ -544,6 +544,7 @@
         "removeCensusAction": "Eliminar los __num__ seleccionados..",
         "sendAuthCodesAction": "Enviar códigos de autenticación a los __num__ seleccionados..",
         "idColumnHeader": "Id",
+        "creationDateHeader": "Created date",
         "selectedColumnHeader": "Seleccionar",
         "emailOption": "email",
         "passwordOption": "contraseña",

@@ -74,6 +74,9 @@
             avAdmin.census.idColumnHeader
           </th>
           <th class="small-col text-right" ng-i18next>
+            avAdmin.census.creationDateHeader
+          </th>
+          <th class="small-col text-right" ng-i18next>
             avAdmin.census.votedColumnHeader
           </th>
           <th class="small-col text-right" ng-i18next>
@@ -91,6 +94,14 @@
           <td class="small-col">
             <input type="checkbox" ng-model="c.selected" />
             <div class="text-right">{{c.id}}</div>
+          </td>
+          <td class="small-col text-right">
+            <span
+              am-time-ago="c.date_joined"
+              popover="{{c.date_joined | amDateFormat:'LLLL'}}"
+              popover-placement="right"
+              popover-trigger="mouseenter click">
+            </span>
           </td>
           <td class="small-col text-right">
             <strong ng-if="c.vote" ng-i18next>
@@ -114,7 +125,7 @@
         <tr ng-if="!loading && filteredVoters().length === 0 && election.census.voters.length > 0">
           <td
             class="wide text-muted"
-            colspan="{{election.census.extra_fields.length + 3}}"
+            colspan="{{election.census.extra_fields.length + 4}}"
             ng-i18next>
             avAdmin.census.filteredEmptyResults
           </td>
@@ -122,7 +133,7 @@
         <tr ng-if="!loading && election.census.voters.length === 0">
           <td
             class="wide text-muted"
-            colspan="{{election.census.extra_fields.length + 3}}"
+            colspan="{{election.census.extra_fields.length + 4}}"
             ng-i18next>
             avAdmin.census.emptyCensus
           </td>
@@ -130,7 +141,7 @@
         <tr ng-if="loading">
           <td
             class="wide text-muted"
-            colspan="{{election.census.extra_fields.length + 3}}">
+            colspan="{{election.census.extra_fields.length + 4}}">
             <i class="fa fa-cog fa-spin fa-sw"></i>
             <span ng-i18next>loading</span>
           </td>
