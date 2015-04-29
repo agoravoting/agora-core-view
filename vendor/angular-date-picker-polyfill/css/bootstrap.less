@@ -19,11 +19,11 @@
 @import "_popup.less";
 
 .aa-cal {
-  border-radius: 5px;
+  border-radius: 0;
 }
 // Inside Popup
 .aa-datepicker-popup {
-  box-shadow: 0px 10px 30px rgba(25, 25, 25, 0.92);
+  box-shadow: 0px 5px 10px rgba(25, 25, 25, 0.92);
   border-radius: 3px;
   .aa-cal {
     padding-top: 15px;
@@ -35,13 +35,13 @@
 }
 td.aa-cal-selected {
   span {
-    border-radius: 5px;
+    border-radius: 0;
     background-color: @bootstrap-blue;
+    color: @cell-bg-color;
   }
   &:hover {
     background-color: #fff;
     span {
-      border-color: @bootstrap-blue;
       background-color: darken(@bootstrap-blue, 15%);
     }
   }

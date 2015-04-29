@@ -73,11 +73,10 @@ td.aa-cal-other-month {
   background-color: @other-month-cell-bg-color;
   font-weight: @other-month-cell-font-weight;
   span {
-    border: 1px solid @other-month-cell-bg-color;
+    border: none;
   }
   &:hover {
     background-color: @other-month-cell-hover-bg-color;
-    span { border-color: @other-month-cell-hover-bg-color; }
   }
 }
 td.aa-cal-selected {
@@ -85,11 +84,10 @@ td.aa-cal-selected {
   background-color: @selected-cell-bg-color;
   font-weight: @selected-cell-font-weight;
   span {
-    border: 1px solid @selected-cell-inner-border-color;
+    border: none;
   }
   &:hover {
     background-color: @selected-cell-hover-bg-color;
-    span { border-color: darken(@selected-cell-hover-inner-border-color, 10%); }
   }
 }
 
@@ -98,22 +96,20 @@ td.aa-cal-today {
   background-color: @today-cell-bg-color;
   font-weight: @today-cell-font-weight;
   span {
-    border: 1px solid @today-cell-bg-color;
+    border: none;
   }
   &:hover {
     background-color: @today-cell-hover-bg-color;
-    span { border-color: @today-cell-hover-bg-color; }
   }
   &.aa-cal-selected {
     color: @today-cell-color;
     background-color: @today-cell-bg-color;
     font-weight: @today-cell-font-weight;
     span {
-      border: 1px solid @selected-cell-inner-border-color;
+      border: none;
     }
     &:hover {
       background-color: darken(@today-cell-bg-color, 10%);
-      span { border-color: darken(@selected-cell-bg-color, 10%); }
     }
   }
 }
@@ -123,10 +119,9 @@ td.aa-cal-disabled {
   background-color: @disabled-cell-bg-color;
   font-weight: @disabled-cell-font-weight;
   span {
-    border: 1px solid @disabled-cell-bg-color;
+    border: none;
   }
   &:hover {
     background-color: @disabled-cell-hover-bg-color;
-    span { border-color: @disabled-cell-hover-bg-color; }
   }
 }
