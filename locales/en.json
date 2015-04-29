@@ -594,6 +594,8 @@
     "columnFilter": {
       "sort": "Sort:",
       "filter": "Filter:",
+      "minDate": "From:",
+      "maxDate": "To:",
       "noFilter": "No",
       "noSort": "No",
       "sortAsc": "Asc",

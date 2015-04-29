@@ -76,11 +76,13 @@
               filter-i18n="avAdmin.census.idColumnHeader">
             </div>
           </th>
-          <th class="small-col text-right" ng-i18next>
-            avAdmin.census.creationDateHeader
-          </th>
-          <th class="small-col text-right" ng-i18next>
-            avAdmin.census.votedColumnHeader
+          <th class="small-col text-right">
+            <div
+              av-column-filter-datetime
+              filter-options-var="filterOptions"
+              filter-prefix="census__user__user__date_joined"
+              filter-i18n="avAdmin.census.creationDateHeader">
+            </div>
           </th>
           <th class="small-col text-right">
             <div
@@ -91,6 +93,9 @@
               filter-i18n-yes="yes"
               filter-i18n-no="no">
             </div>
+          </th>
+          <th class="small-col text-right" ng-i18next>
+            avAdmin.census.votedColumnHeader
           </th>
           <th ng-repeat="field in election.census.extra_fields">
             {{ field.name| htmlToText }}
@@ -114,19 +119,19 @@
             </span>
           </td>
           <td class="small-col text-right">
-            <strong ng-if="c.vote" ng-i18next>
-              avAdmin.census.voted
-            </strong>
-            <span ng-if="!c.vote" ng-i18next>
-              avAdmin.census.notVoted
-            </span>
-          </td>
-          <td class="small-col text-right">
             <strong ng-if="c.active" ng-i18next>
                 yes
             </strong>
             <span ng-if="!c.active" ng-i18next>
                 no
+            </span>
+          </td>
+          <td class="small-col text-right">
+            <strong ng-if="c.vote" ng-i18next>
+              avAdmin.census.voted
+            </strong>
+            <span ng-if="!c.vote" ng-i18next>
+              avAdmin.census.notVoted
             </span>
           </td>
           <td ng-repeat="field in election.census.extra_fields" av-census-field>
