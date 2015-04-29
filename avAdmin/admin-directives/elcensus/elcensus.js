@@ -26,6 +26,7 @@ angular.module('avAdmin')
       scope.filterStr = "";
       scope.$filter = $filter;
       scope.filterTimeout = null;
+      scope.filterOptions = {};
 
       function newElection() {
         return !$stateParams.id;
@@ -311,7 +312,12 @@ angular.module('avAdmin')
         scope.loading = true;
 
         ElectionsApi.waitForCurrent(function () {
-          ElectionsApi.getCensus(scope.election, scope.page, null, scope.filterStr)
+          ElectionsApi.getCensus(
+              scope.election,
+              scope.page,
+              null,
+              scope.filterStr,
+              scope.filterOptions)
             .then(function(el) {
               scope.page += 1;
 
@@ -348,15 +354,27 @@ angular.module('avAdmin')
         }
       }
 
+      function reloadCensusDebounce() {
+        $timeout.cancel(scope.filterTimeout);
+        scope.filterTimeout = $timeout(function() {
+          scope.reloadCensus();
+        }, 500);
+      }
+
+      // debounced filter options
+      scope.$watch("filterOptions", function(newOpts, oldOpts) {
+        if (!scope.electionLoaded || !scope.election.id || _.isEqual(newOpts, oldOpts)) {
+          return;
+        }
+        reloadCensusDebounce();
+      });
+
       // debounced filter
       scope.$watch("filterStr", function(newStr, oldStr) {
         if (!scope.electionLoaded || !scope.election.id || newStr === oldStr) {
           return;
         }
-        $timeout.cancel(scope.filterTimeout);
-        scope.filterTimeout = $timeout(function() {
-          scope.reloadCensus();
-        }, 500);
+        reloadCensusDebounce();
       });
 
       angular.extend(scope, {

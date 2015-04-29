@@ -62,16 +62,19 @@
         </span>
       </div>
     </h4>
-
     <table
       class="table censustable"
       infinite-scroll="loadMoreCensus()"
       infinite-scroll-distance="0">
-
       <thead>
         <tr>
-          <th class="small-col text-right" ng-i18next>
-            avAdmin.census.idColumnHeader
+          <th class="small-col text-right">
+            <div
+              av-column-filter-int
+              filter-options-var="filterOptions"
+              filter-prefix="user__user__id"
+              filter-i18n="avAdmin.census.idColumnHeader">
+            </div>
           </th>
           <th class="small-col text-right" ng-i18next>
             avAdmin.census.creationDateHeader
@@ -98,9 +101,9 @@
           <td class="small-col text-right">
             <span
               am-time-ago="c.date_joined"
-              popover="{{c.date_joined | amDateFormat:'LLLL'}}"
-              popover-placement="right"
-              popover-trigger="mouseenter click">
+              tooltip="{{c.date_joined | amDateFormat:'LLLL'}}"
+              tooltip-placement="right"
+              popover-trigger="mouseenter">
             </span>
           </td>
           <td class="small-col text-right">

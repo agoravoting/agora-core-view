@@ -277,7 +277,7 @@ angular.module('avAdmin')
             return q;
         };
 
-        electionsapi.getCensus = function(el, page, size, filterStr) {
+        electionsapi.getCensus = function(el, page, size, filterStr, filterOptions) {
             var deferred = $q.defer();
 
             if (size === 'max') {
@@ -298,6 +298,7 @@ angular.module('avAdmin')
               }
               params.page = page;
               params.size = size;
+              _.extend(params, filterOptions);
               if (filterStr && filterStr.length > 0) {
                 params.filter = filterStr;
               }
