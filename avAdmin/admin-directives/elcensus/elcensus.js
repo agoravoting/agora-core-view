@@ -28,6 +28,7 @@ angular.module('avAdmin')
       scope.$filter = $filter;
       scope.filterTimeout = null;
       scope.filterOptions = {};
+      scope.resizeSensor = null;
 
       function newElection() {
         return !$stateParams.id;
@@ -388,14 +389,17 @@ angular.module('avAdmin')
         reloadCensusDebounce();
       });
 
-
       // overflow-x needs to resize the height
-      var ael = angular.element(element);
+      var ael = angular.element(".censustable");
       /* jshint ignore:start */
-      new ResizeSensor(ael, function() {
-        $(element).height(ael.prop('scrollHeight'));
+      scope.resizeSensor = new ResizeSensor(ael, function() {
+        if (ael.width() > $(element).width()) {
+          $(element).width(ael.width());
+          $(element).parent().css('overflow-x', 'auto');
+        }
       });
       /* jshint ignore:end */
+      scope.$on("$destroy", function() { delete scope.resizeSensor; });
 
       angular.extend(scope, {
         addToCensus: addToCensus,
