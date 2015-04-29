@@ -90,7 +90,7 @@
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody ng-if="!reloadingCensus">
         <tr
           ng-class="{'success': c.selected}"
           ng-repeat="c in filteredVoters()">
@@ -125,6 +125,8 @@
           <td ng-repeat="field in election.census.extra_fields" av-census-field>
           </td>
         </tr>
+      </tbody>
+      <tbody>
         <tr ng-if="!loading && filteredVoters().length === 0 && election.census.voters.length > 0">
           <td
             class="wide text-muted"

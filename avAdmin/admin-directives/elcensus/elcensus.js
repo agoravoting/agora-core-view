@@ -18,6 +18,7 @@ angular.module('avAdmin')
       scope.election = ElectionsApi.currentElection;
       scope.newcensus = {};
       scope.electionLoaded = false;
+      scope.reloadingCensus = false;
       scope.loading = false;
       scope.nomore = false;
       scope.error = null;
@@ -305,8 +306,11 @@ angular.module('avAdmin')
       /**
        * Load more census in infinite scrolling mode
        */
-      function loadMoreCensus() {
+      function loadMoreCensus(reload) {
         if (!scope.electionLoaded || scope.loading || scope.nomore || newElection()) {
+          if (scope.reloadingCensus) {
+            scope.reloadingCensus = false;
+          }
           return;
         }
         scope.loading = true;
@@ -320,6 +324,9 @@ angular.module('avAdmin')
               scope.filterOptions)
             .then(function(el) {
               scope.page += 1;
+              if (scope.reloadingCensus) {
+                scope.reloadingCensus = false;
+              }
 
               if (el.data.end_index === el.data.total_count) {
                 scope.nomore = true;
@@ -329,6 +336,9 @@ angular.module('avAdmin')
             .catch(function(data) {
               scope.error = data;
               scope.loading = false;
+              if (scope.reloadingCensus) {
+                scope.reloadingCensus = false;
+              }
             });
         });
       }
@@ -339,6 +349,7 @@ angular.module('avAdmin')
         if (!scope.electionLoaded || !scope.election || !scope.election.census || !scope.election.census.voters) {
           return;
         }
+        scope.reloadingCensus = true;
         scope.election.census.voters.splice(0, scope.election.census.voters.length);
 
         loadMoreCensus();
@@ -366,8 +377,9 @@ angular.module('avAdmin')
         if (!scope.electionLoaded || !scope.election.id || _.isEqual(newOpts, oldOpts)) {
           return;
         }
+        console.log("filterOptions");
         reloadCensusDebounce();
-      });
+      }, true);
 
       // debounced filter
       scope.$watch("filterStr", function(newStr, oldStr) {
