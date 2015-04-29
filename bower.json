@@ -31,7 +31,8 @@
     "file-saver": "*",
     "ng-file-upload": "3.0.7",
     "ng-autofocus": "~0.0.1",
-    "angular-load": "~0.2.0"
+    "angular-load": "~0.2.0",
+    "css-element-queries": "~0.0.2"
   },
   "resolutions": {
     "angular": "1.2.28"

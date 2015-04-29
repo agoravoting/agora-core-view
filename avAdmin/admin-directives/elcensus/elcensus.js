@@ -388,6 +388,15 @@ angular.module('avAdmin')
         reloadCensusDebounce();
       });
 
+
+      // overflow-x needs to resize the height
+      var ael = angular.element(element);
+      /* jshint ignore:start */
+      new ResizeSensor(ael, function() {
+        $(element).height(ael.prop('scrollHeight'));
+      });
+      /* jshint ignore:end */
+
       angular.extend(scope, {
         addToCensus: addToCensus,
         addPersonModal: addPersonModal,
