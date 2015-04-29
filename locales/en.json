@@ -594,6 +594,7 @@
     "columnFilter": {
       "sort": "Sort:",
       "filter": "Filter:",
+      "noFilter": "No",
       "noSort": "No",
       "sortAsc": "Asc",
       "sortDesc": "Desc",

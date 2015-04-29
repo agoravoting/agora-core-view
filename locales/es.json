@@ -598,6 +598,7 @@
     "columnFilter": {
       "sort": "Orden:",
       "filter": "Filtro:",
+      "noFilter": "No",
       "noSort": "No",
       "sortAsc": "Asc",
       "sortDesc": "Desc",

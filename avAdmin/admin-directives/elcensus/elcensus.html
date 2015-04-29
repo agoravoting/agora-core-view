@@ -82,8 +82,15 @@
           <th class="small-col text-right" ng-i18next>
             avAdmin.census.votedColumnHeader
           </th>
-          <th class="small-col text-right" ng-i18next>
-            avAdmin.census.activeColumnHeader
+          <th class="small-col text-right">
+            <div
+              av-column-filter-bool
+              filter-options-var="filterOptions"
+              filter-prefix="census__user__user__is_active"
+              filter-i18n="avAdmin.census.activeColumnHeader"
+              filter-i18n-yes="yes"
+              filter-i18n-no="no">
+            </div>
           </th>
           <th ng-repeat="field in election.census.extra_fields">
             {{ field.name| htmlToText }}
