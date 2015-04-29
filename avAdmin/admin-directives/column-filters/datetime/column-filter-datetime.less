@@ -62,13 +62,31 @@
 
       .aa-date-input, [aa-date-time-input] {
         display: inline-block;
-        width: 200px;
+        width: 180px;
         border: none;
         box-shadow: none;
       }
 
       [aa-date-time-input] {
         padding: 5px;
+      }
+
+      // reset date link
+      a.times {
+        color: @gray;
+        font-size: 15px;
+        display: inline-block;
+        padding-left: 5px;
+
+        &[disabled=disabled] {
+          color: @gray-lighter !important;
+        }
+
+        // on hover only highlight caret
+        &:hover {
+          text-decoration: none;
+          color: @link-color;
+        }
       }
     }
   }

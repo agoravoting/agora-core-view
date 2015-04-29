@@ -25,9 +25,12 @@ angular.module('avAdmin')
           return;
         }
 
+        var minStr = (!scope.filter.min) ? "" : scope.filter.min.toISOString();
+        var maxStr = (!scope.filter.max) ? "" : scope.filter.max.toISOString();
+
         setkey(scope.filterOptionsVar, scope.filterPrefix + "__sort", scope.filter.sort);
-        setkey(scope.filterOptionsVar, scope.filterPrefix + "__gt", scope.filter.min);
-        setkey(scope.filterOptionsVar, scope.filterPrefix + "__lt", scope.filter.max);
+        setkey(scope.filterOptionsVar, scope.filterPrefix + "__gt", minStr);
+        setkey(scope.filterOptionsVar, scope.filterPrefix + "__lt", maxStr);
       }, true);
     }
 

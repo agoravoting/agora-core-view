@@ -377,7 +377,6 @@ angular.module('avAdmin')
         if (!scope.electionLoaded || !scope.election.id || _.isEqual(newOpts, oldOpts)) {
           return;
         }
-        console.log("filterOptions");
         reloadCensusDebounce();
       }, true);
 

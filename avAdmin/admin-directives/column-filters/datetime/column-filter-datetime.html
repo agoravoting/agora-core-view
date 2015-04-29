@@ -38,19 +38,25 @@
         <span class="spaced" ng-i18next>
           avAdmin.columnFilter.minDate
         </span>
-        <button type='button' tabindex='0' ng-model='min' aa-date-time-input>
-          <span ng-show='min'>{{ min | date:'short'}}</span>
-          <span ng-hide='min'>-</span>
+        <button type='button' tabindex='0' ng-model='filter.min' aa-date-time-input>
+          <span ng-show='filter.min'>{{ filter.min | date:'short'}}</span>
+          <span ng-hide='filter.min'>-</span>
         </button>
+        <a ng-click="filter.min=''" ng-disabled="!filter.min" class="times">
+          <i class="fa fa-times"></i>
+        </a>
       </div>
       <div class="block" ng-click="$event.preventDefault(); $event.stopPropagation()">
         <span class="spaced" ng-i18next>
           avAdmin.columnFilter.maxDate
         </span>
-        <button type='button' tabindex='0' ng-model='max' aa-date-time-input>
-          <span ng-show='max'>{{ max | date:'short'}}</span>
-          <span ng-hide='max'>-</span>
+        <button type='button' tabindex='0' ng-model='filter.max' aa-date-time-input>
+          <span ng-show='filter.max'>{{ filter.max | date:'short'}}</span>
+          <span ng-hide='filter.max'>-</span>
         </button>
+        <a ng-click="filter.max=''" ng-disabled="!filter.max" class="times">
+          <i class="fa fa-times"></i>
+        </a>
       </div>
     </li>
   </ul>
