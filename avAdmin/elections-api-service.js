@@ -19,7 +19,7 @@ angular.module('avAdmin')
         electionsapi.newElection = false;
 
         electionsapi.waitForCurrent = function(f) {
-            if (electionsapi.currentElection.id) {
+            if (electionsapi.currentElection.id || electionsapi.newElection) {
                 f();
             } else {
                 electionsapi.waitingCurrent.push(f);
