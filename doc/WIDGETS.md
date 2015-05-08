@@ -11,12 +11,12 @@ integrate with Agora Voting.
 
 To embed the voting booth widget, you need to add something like:
 
-    <a class="agoravoting-voting-booth" href="https://<AGORAFQDN>/#/election/<ELECTION-ID>" data-authorization-funcname="getHMAC" seed-funcname="getSeed">Votar con Agora Voting</a>
+    <a class="agoravoting-voting-booth" href="https://<AGORAFQDN>/#/election/<ELECTION-ID>" data-authorization-funcname="getHMAC" data-seed-funcname="getSeed">Votar con Agora Voting</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://<AGORAFQDN>/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","agoravoting-widgets-js");</script>
 
 You need to provide a function name using the data-authorization-funcname. Using the Web Messaging API, this function will be called when the cast ballot widget needs authorization to send the ballot. The function will receive as an argument the callback function to be called once the authorization is available, to make the call asynchronous.
 
-The seed-funcname is optional, follows exactly the same signature and inner working as data-authorization-funcname, and uses de authenticated voterid as a seed for randomizing sorting options.
+The data-seed-funcname is optional, follows exactly the same signature and inner working as data-authorization-funcname, and uses de authenticated voterid as a seed for randomizing sorting options.
 
 ### Verify ballot
 
