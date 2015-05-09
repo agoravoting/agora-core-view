@@ -167,7 +167,7 @@
     "pairwiseBeta": {
       "web": "Web",
       "warning": "Click to choose. __count__ of __max__ comparison done.",
-      "warning_plural": "Click to choose. __count__ of __max__ comparison done."
+      "warning_plural": "Click to choose. __count__ of __max__ comparisons done."
     }
   },
   "avElection": {
@@ -381,6 +381,7 @@
         "dropFilesHere": "Drop CSV file here"
     },
     "dashboard": {
+        "duplicateElection": "Duplicate election",
         "sendAuthCodes": "Send auth codes",
         "donow": "click to do now",
         "votes": "Votes",

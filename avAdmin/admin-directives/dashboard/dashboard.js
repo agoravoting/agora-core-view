@@ -231,10 +231,21 @@ angular.module('avAdmin')
           .error(function(error) { scope.loading = false; scope.error = error.error; });
       }
 
+      function duplicateElection() {
+        var el = ElectionsApi.templateEl();
+        _.extend(el, angular.copy(scope.election));
+        scope.current = el;
+        el.id = null;
+        ElectionsApi.setCurrent(el);
+        ElectionsApi.newElection = true;
+        $state.go("admin.basic");
+      }
+
       angular.extend(scope, {
         doAction: doAction,
         doActionConfirm: doActionConfirm,
-        sendAuthCodesModal: sendAuthCodesModal
+        sendAuthCodesModal: sendAuthCodesModal,
+        duplicateElection: duplicateElection
       });
     }
 

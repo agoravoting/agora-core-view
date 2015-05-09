@@ -112,6 +112,14 @@
             </div>
 
             <button ng-click="doActionConfirm(index)" class="btn btn-block btn-lg btn-success" ng-if="nextaction" ng-i18next="{{ nextaction }}"></button>
+
+            <button
+              ng-click="duplicateElection()"
+              class="btn btn-block btn-lg btn-success"
+              ng-i18next>
+              avAdmin.dashboard.duplicateElection
+            </button>
+
             <button class="btn btn-block btn-lg btn-warning" ng-if="intally">
                 <i class="fa fa-cog fa-spin fa-sw fa-2x"></i><br/>
                 <span ng-i18next="avAdmin.dashboard.doingtally"></span>

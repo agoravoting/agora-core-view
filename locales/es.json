@@ -383,6 +383,7 @@
         "dropFilesHere": "Drop CSV file here"
     },
     "dashboard": {
+        "duplicateElection": "Duplicar votación",
         "sendAuthCodes": "Enviar autenticación",
         "donow": "pulsa para hacer ahora",
         "votes": "Votos",
