@@ -159,6 +159,16 @@
       "mayoral_plural": "Alcaldía (__count__)",
       "councils": "Concejalías (__count__)",
       "councils_plural": "Concejalías (__count__)"
+    },
+
+    "reviewScreen": {
+      "pair": "__one__ > __two__"
+    },
+
+    "pairwiseBeta": {
+      "web": "Web",
+      "warning": "Clic para seleccionar. __count__ de __max__ comparaciones realizadas.",
+      "warning_plural": "Clic para seleccionar. __count__ de __max__ comparaciones realizadas"
     }
   },
   "avElection": {

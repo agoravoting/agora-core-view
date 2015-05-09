@@ -33,6 +33,7 @@ angular.module('avBooth')
         helpScreen: 'helpScreen',
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion',
+        pairwiseBeta: 'pairwiseBeta',
         draftsElectionScreen: 'draftsElectionScreen',
         auditBallotScreen: 'auditBallotScreen',
         ahoramPrimariesScreen: 'ahoramPrimariesScreen',
@@ -83,6 +84,11 @@ angular.module('avBooth')
             state: stateEnum.multiQuestion,
             sorted: true,
             ordered: true
+          },
+          "pairwise-beta": {
+            state: stateEnum.pairwiseBeta,
+            sorted: true,
+            ordered: true
           }
         };
         return map[question.tally_type];
@@ -120,7 +126,9 @@ angular.module('avBooth')
           reviewMode: reviewMode,
           filter: "",
           sorted: mapped.sorted,
-          ordered: mapped.ordered
+          ordered: mapped.ordered,
+          affixIsSet: false,
+          pairNum: 0 // only used for pairwise comparison
         });
       }
 

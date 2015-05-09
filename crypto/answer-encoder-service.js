@@ -75,6 +75,36 @@ angular.module('avCrypto')
         },
 
         /**
+         * Returns extracted answers from a question.
+         *
+         * The question objects needs to have an "answers" key, and each
+         * selected asnwer will be marked by a "selected" attribute. We will
+         * order by this attribute, and return an ordered array with all the
+         * answers' ids. An answer id is set by its "id" attribute.
+         */
+        extractAnswers: function(question) {
+          // first, convert the question answers into a list of selected options
+          // get only selected
+          var filtered = _.filter(question.answers, function (option) {
+              return option.selected > -1;
+          });
+
+          // sort by selected
+          var sorted = _.sortBy(filtered, function (option) {
+            return option.selected;
+          });
+
+          // get the selected sorted options as a list of int ids
+          var answers = _.pluck(sorted, "id");
+
+          if (answers.length > question.max || answers.length < question.min) {
+            throw "error in the number of selected answers";
+          }
+
+          return answers;
+        },
+
+        /**
          * Does exactly the reverse of of encodeQuestionAnswer. It should be
          * such as the following statement is always true:
          *
@@ -159,7 +189,33 @@ angular.module('avCrypto')
           return true;
         }
       };
-      var codecs = [multi];
+
+
+      var pairwise = _.extend(_.clone(multi), {
+        validCodecs: ["pairwise-beta"],
+
+        /**
+         * Returns extracted answers from a question.
+         *
+         * The question objects needs to have an "answers" key, and each
+         * selected asnwer will be marked by a "selected" attribute. We will
+         * order by this attribute, and return an ordered array with all the
+         * answers' ids. An answer id is set by its "id" attribute.
+         */
+        extractAnswers: function(question) {
+          // get the selected sorted options as a list of int ids
+          var answers = _.pluck(_.flatten(question.selection), "id");
+
+          if (answers.length > question.max*2 || answers.length < question.min*2) {
+            throw "error in the number of selected answers";
+          }
+
+          return answers;
+        }
+      });
+
+
+      var codecs = [multi, pairwise];
 
       var foundCodec = _.find(codecs, function (codec) {
         return _.contains(codec.validCodecs, requestedCodec);

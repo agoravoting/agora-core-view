@@ -158,6 +158,16 @@
       "mayoral_plural": "Mayoral (__count__)",
       "councils": "Councils (__count__)",
       "councils_plural": "Councils (__count__)"
+    },
+
+    "reviewScreen": {
+      "pair": "__one__ > __two__"
+    },
+
+    "pairwiseBeta": {
+      "web": "Web",
+      "warning": "Click to choose. __count__ of __max__ comparison done.",
+      "warning_plural": "Click to choose. __count__ of __max__ comparison done."
     }
   },
   "avElection": {
@@ -437,7 +447,7 @@
     "questions": {
         "new": "New question",
         "votingSystem": "Voting System",
-        "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Nauru's Borda Count or Borda Dowdall (1/n)", "borda": "Borda Count (traditional)"},
+        "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Nauru's Borda Count or Borda Dowdall (1/n)", "borda": "Borda Count (traditional)", "pairwise-beta": "Pairwise (beta-distribution)"},
         "winners": {
           "label": "Number of winners",
           "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options",
