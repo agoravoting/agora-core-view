@@ -75,7 +75,11 @@ angular.module('avBooth')
         var i = -1;
         var seedQuery = $location.search()['seed'];
         var seed = (!!seedQuery) ? seedQuery : null;
-        RandomHelper.shuffle(question.answers, RandomHelper.prng(seed));
+
+        if (!question.shuffled) {
+          RandomHelper.shuffle(question.answers, RandomHelper.prng(seed));
+          question.shuffled = true;
+        }
 
         // initializes selection
         if (!question.selection) {

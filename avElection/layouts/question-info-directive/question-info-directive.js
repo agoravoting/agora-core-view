@@ -5,6 +5,7 @@ angular.module('avElection')
         "simple.plurality-at-large": "simple",
         "simple.borda-nauru": "simple",
         "simple.borda": "simple",
+        "simple.pairwise-beta": "simple",
         "circles.plurality-at-large": "simple",
         "circles.borda": "simple",
         "circles.borda-nauru": "simple",

@@ -13,12 +13,16 @@
 
   <!-- "Selected items:" line -->
   <p
-    ng-if="(question.answers | avbSelectedOptions).length < 2"
+    ng-if="!question.isPairWise && (question.answers | avbSelectedOptions).length < 2"
     ng-i18next="avBooth.selectedOptionFollow">
   </p>
   <p
-    ng-if="(question.answers | avbSelectedOptions).length >= 2"
+    ng-if="!question.isPairWise && (question.answers | avbSelectedOptions).length >= 2"
     ng-i18next="[i18next]({num: (question.answers | avbSelectedOptions).length})avBooth.selectedOptionsFollow">
+  </p>
+  <p
+    ng-if="question.isPairWise && question.min > 1"
+    ng-i18next="[i18next]({num: question.selection.length})avBooth.selectedOptionsFollow">
   </p>
 
   <!-- items list -->

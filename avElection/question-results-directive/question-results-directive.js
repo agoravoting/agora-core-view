@@ -8,7 +8,8 @@ angular.module('avElection')
       var mappings = {
         "plurality-at-large": "plurality-at-large",
         "borda-nauru": "borda",
-        "borda": "borda"
+        "borda": "borda",
+        "pairwise-beta": "borda"
       };
 
       var key = scope.question.layout + "." + scope.question.tally_type;

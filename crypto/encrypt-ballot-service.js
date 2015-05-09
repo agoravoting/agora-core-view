@@ -268,7 +268,12 @@ angular.module('avCrypto')
 
         // we always verify plaintext just to be sure, because it takes very
         // little CPU time
-        var plaintext = getPlainText(question, true);
+        var plaintext = null;
+        try {
+          plaintext = getPlainText(question, true);
+        } catch(e) {
+        }
+
         if (!plaintext) {
           data.error("errorEncoding", "error while encoding the answer to a question");
           return;

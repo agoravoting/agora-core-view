@@ -34,10 +34,9 @@
 <div class="content avb-content">
   <div class="container">
     <div class="row question-details">
-      <!--ng-bind-html="stateData.question.description | addTargetBlank"-->
       <p
+      ng-bind-html="stateData.question.description | addTargetBlank"
       class="description">
-      ¿qué proyecto prefieres apoyar?
       </p>
       <span class="selection-info" ng-i18next>
         [i18next]({max: stateData.question.max, count: stateData.pairNum})avBooth.pairwiseBeta.warning
@@ -47,7 +46,7 @@
   <div class="container">
     <div class="row pairs">
       <!-- first item of the pair -->
-      <div class="col-xs-12 col-sm-offset-1 col-sm-5">
+      <div class="col-xs-6 col-sm-offset-1 col-sm-5">
         <div class="clickable" ng-click="selectAnswer(1)">
           <div class="img-wrapper">
             <img
@@ -71,12 +70,12 @@
               {{one.category}}
             </div>
           </div>
-          <p class="description">Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem</p>
+          <p class="description">{{two.details}}</p>
         </div>
       </div>
 
       <!-- second item of the pair -->
-      <div class="col-xs-12 col-sm-5">
+      <div class="col-xs-6 col-sm-5">
         <div class="clickable" ng-click="selectAnswer(2)">
           <div class="img-wrapper">
             <img
@@ -100,7 +99,7 @@
               {{two.category}}
             </div>
           </div>
-          <p class="description">Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem</p>
+          <p class="description">{{two.details}}</p>
         </div>
       </div>
     </div>
