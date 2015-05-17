@@ -66,6 +66,11 @@ angular.module('avBooth')
         }));
       };
 
+      scope.isYoutube = function (answer) {
+        var url = scope.getUrls(answer)['Image URL'];
+        return !!url && url.indexOf("https://youtube.com") === 0;
+      };
+
       /**
        *  initializes the directive
        */

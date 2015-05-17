@@ -30,7 +30,7 @@
     <li
       ng-repeat="pair in question.selection"
       class="animate-repeat selected-answer" ng-i18next>
-        [i18next]({one: pair[0].text, two: pair[1].text})avBooth.reviewScreen.pair
+        [html:i18next]({one: pair[0].text, two: pair[1].text})avBooth.reviewScreen.pair
     </li>
   </ul>
   <ul ng-if="!question.isPairWise && !mapQuestion(question).ordered">

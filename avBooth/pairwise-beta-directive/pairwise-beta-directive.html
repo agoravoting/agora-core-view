@@ -49,7 +49,16 @@
       <div class="col-xs-6 col-sm-offset-1 col-sm-5">
         <div class="clickable" ng-click="selectAnswer(1)">
           <div class="img-wrapper">
+            <iframe
+              ng-if="isYoutube(one)"
+              width="560"
+              height="315"
+              ng-src="{{getUrls(one)['Image URL']}}"
+              frameborder="0"
+              allowfullscreen>
+            </iframe>
             <img
+              ng-if="!isYoutube(one)"
               alt="{{one.text}}"
               ng-if="!!getUrls(one)['Image URL']"
               ng-src="{{getUrls(one)['Image URL']}}" />
@@ -79,7 +88,16 @@
       <div class="col-xs-6 col-sm-5">
         <div class="clickable" ng-click="selectAnswer(2)">
           <div class="img-wrapper">
+            <iframe
+              ng-if="isYoutube(two)"
+              width="560"
+              height="315"
+              ng-src="{{getUrls(two)['Image URL']}}"
+              frameborder="0"
+              allowfullscreen>
+            </iframe>
             <img
+              ng-if="!isYoutube(two)"
               alt="{{two.text}}"
               ng-if="!!getUrls(two)['Image URL']"
               ng-src="{{getUrls(two)['Image URL']}}" />
