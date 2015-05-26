@@ -203,6 +203,7 @@ module.exports = function (grunt) {
         files: {
             "dist/locales/en.json": ["locales/en.json", "plugins/**/locales/en.json"],
             "dist/locales/es.json": ["locales/es.json", "plugins/**/locales/es.json"],
+            "dist/locales/gl.json": ["locales/gl.json", "plugins/**/locales/gl.json"],
             "dist/locales/ca.json": ["locales/ca.json", "plugins/**/locales/ca.json"]
         }
       }
@@ -232,6 +233,7 @@ module.exports = function (grunt) {
           'dist/avWidgets.min.js': 'avWidgets.js',
 
           "dist/locales/moment/es.js": "bower_components/moment/lang/es.js",
+          "dist/locales/moment/gl.js": "bower_components/moment/lang/gl.js",
           "dist/locales/moment/ca.js": "bower_components/moment/lang/ca.js"
         }
       }
