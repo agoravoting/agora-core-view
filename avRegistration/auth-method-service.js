@@ -242,6 +242,12 @@ angular.module('avRegistration')
             return $http.post(url, data);
         };
 
+        authmethod.deactivateUsersIds = function(eid, election, user_ids) {
+            var url = backendUrl + 'auth-event/'+eid+'/census/deactivate/';
+            var data = {"user-ids": user_ids};
+            return $http.post(url, data);
+        };
+
         authmethod.changeAuthEvent = function(eid, st) {
             var url = backendUrl + 'auth-event/'+eid+'/'+st+'/';
             var data = {};

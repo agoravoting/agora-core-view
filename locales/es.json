@@ -529,17 +529,22 @@
           "activatePeopleBody": "Activar a las __num__ personas. Esta acción permite a las personas seleccionadas votar. Se enviará el código de autenticación automáticamente",
           "confirmActivatePeopleButton": "Confirmar y activar a las  __num__ personas en el censo",
 
+          "deactivatePeopleHeader": "Desactivar personas seleccionadas en el censo",
+          "deactivatePeopleBody": "Desactivar a las __num__ personas. Esta acción hace que las personas seleccionadas no puedan votar",
+          "confirmDeactivatePeopleButton": "Confirmar y desactivar a las  __num__ personas en el censo",
+
           "exportAllCensusHeader": "Exportar todo el censo en CSV",
           "exportAllCensusBody": "Desde aquí puedes descargar la totalidad del censo en un fichero con formato de hoja de cálculo CSV (Comma Separated Values), de manera que puedes abrirlo y procesarlo autónomamente. Dependiendo del tamaño del censo, el proceso de descarga de todo el censo puede tomar un rato. Una vez ha terminado, se te mostrará la posibilidad de descargar el como un fichero. Si tienes algún filtro activo, este filtro también será aplicado al fichero CSV.",
           "confirmexportAllCensusButton": "Confirmar y descargar el censo con un total de __total__ personas"
         },
-        "addPersonAction": "Añadir persona..",
-        "addCsvAction": "Añadir CSV al censo..",
-        "activateAction": "Activar los __num__ seleccionados..",
+        "addPersonAction": "Añadir persona...",
+        "addCsvAction": "Añadir CSV al censo...",
+        "activateAction": "Activar los __num__ seleccionados...",
+        "deactivateAction": "Desactivar los __num__ seleccionados...",
         "filteredEmptyResults": "No se encontró a ninguna persona que coincida con el filtro.",
         "emptyCensus": "El censo está actualmente vacío. Puedes añadir personas a través del botón de Acciones.",
         "removedCensusSuccessfully": "Se eliminaron a las personas seleccionadas correctamente",
-        "activatedCensusSuccessfully": "Se activaron las personas seleccionadas correctamente",
+        "deactivatedCensusSuccessfully": "Se desactivaron las personas seleccionadas correctamente",
         "sentCodesSuccessfully": "Enviados los códigos de autenticación correctamente",
 
         "voted": "votó",

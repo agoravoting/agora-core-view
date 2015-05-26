@@ -36,26 +36,6 @@ angular.module('avAdmin')
 
       scope.commands = [
         {
-          i18nString: 'activateAction',
-          iconClass: 'fa fa-check',
-          actionFunc: function() {
-            $modal.open({
-              templateUrl: "avAdmin/admin-directives/elcensus/confirm-activate-people-modal.html",
-              controller: "ConfirmActivatePeopleModal",
-              size: 'lg',
-              resolve: {
-                election: function () { return scope.election; },
-                numSelectedShown: function() {
-                  return scope.numSelected(scope.shown());
-                }
-              }
-            }).result.then(scope.activateSelected);
-          },
-          enableFunc: function() {
-            return scope.election && scope.election.id && scope.numSelected(scope.shown()) > 0;
-          }
-        },
-        {
           i18nString: 'addPersonAction',
           iconClass: 'fa fa-plus',
           actionFunc: function() { return scope.addPersonModal(); },
@@ -89,6 +69,46 @@ angular.module('avAdmin')
           iconClass: 'fa fa-square-o',
           actionFunc: function() { return selectQueried(false); },
           enableFunc: function() { return scope.numSelected(scope.shown()) > 0; }
+        },
+        {
+          i18nString: 'activateAction',
+          iconClass: 'fa fa-user',
+          actionFunc: function() {
+            $modal.open({
+              templateUrl: "avAdmin/admin-directives/elcensus/confirm-activate-people-modal.html",
+              controller: "ConfirmActivatePeopleModal",
+              size: 'lg',
+              resolve: {
+                election: function () { return scope.election; },
+                numSelectedShown: function() {
+                  return scope.numSelected(scope.shown());
+                }
+              }
+            }).result.then(scope.activateSelected);
+          },
+          enableFunc: function() {
+            return scope.election && scope.election.id && scope.numSelected(scope.shown()) > 0;
+          }
+        },
+        {
+          i18nString: 'deactivateAction',
+          iconClass: 'fa fa-user-times',
+          actionFunc: function() {
+            $modal.open({
+              templateUrl: "avAdmin/admin-directives/elcensus/confirm-deactivate-people-modal.html",
+              controller: "ConfirmDeactivatePeopleModal",
+              size: 'lg',
+              resolve: {
+                election: function () { return scope.election; },
+                numSelectedShown: function() {
+                  return scope.numSelected(scope.shown());
+                }
+              }
+            }).result.then(scope.deactivateSelected);
+          },
+          enableFunc: function() {
+            return scope.election && scope.election.id && scope.numSelected(scope.shown()) > 0;
+          }
         },
         {
           i18nString: 'removeCensusAction',
@@ -236,6 +256,19 @@ angular.module('avAdmin')
         var selectedList = scope.selected(scope.shown());
           var user_ids = _.pluck(selectedList, "id");
           Authmethod.activateUsersIds(scope.election.id, scope.election, user_ids)
+          .success(function(r) {
+            scope.loading = false;
+            scope.msg = "avAdmin.census.activatedCensusSuccessfully";
+            scope.reloadCensus();
+          })
+          .error(function(error) { scope.loading = false; scope.error = error.error; });
+        return false;
+      }
+
+      function deactivateSelected() {
+        var selectedList = scope.selected(scope.shown());
+          var user_ids = _.pluck(selectedList, "id");
+          Authmethod.deactivateUsersIds(scope.election.id, scope.election, user_ids)
           .success(function(r) {
             scope.loading = false;
             scope.msg = "avAdmin.census.activatedCensusSuccessfully";
@@ -414,6 +447,7 @@ angular.module('avAdmin')
         reloadCensus: reloadCensus,
         removeSelected: removeSelected,
         activateSelected: activateSelected,
+        deactivateSelected: deactivateSelected,
         selectQueried: selectQueried,
         sendAuthCodesSelected: sendAuthCodesSelected,
         newElection: newElection,
