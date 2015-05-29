@@ -30,8 +30,7 @@
           </span>
           <span>{{option.text}}</span>
         </strong>
-        <p class="details" ng-if="option.details && option.details.length > 1">
-          {{option.details}}
+        <p class="details" ng-if="option.details && option.details.length > 1" ng-bind-html="option.details">
         </p>
       </div>
     </div>
