@@ -14,6 +14,7 @@ angular.module('avElection')
           answers.sort(function (item1, item2) { return item1.sort_order - item2.sort_order; });
           scope.question.answers = answers;
       }
+      scope.qindex = parseInt(scope.question_index) + 1;
     }
     return {
       restrict: 'AE',
