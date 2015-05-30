@@ -371,6 +371,7 @@
         "dropFilesHere": "Drop CSV file here"
     },
     "dashboard": {
+        "duplicateElection": "Duplicar votación",
         "sendAuthCodes": "Enviar autenticación",
         "donow": "pulsa para facer agora",
         "votes": "Votos",
@@ -518,14 +519,18 @@
         },
         "addPersonAction": "Engadir persoa..",
         "addCsvAction": "Engadir CSV ao censo..",
+        "activateAction": "Activar los __num__ seleccionados...",
+        "deactivateAction": "Desactivar los __num__ seleccionados...",
         "filteredEmptyResults": "Non se atopou a ningunha persoa que coincida co filtro.",
         "emptyCensus": "O censo está actualmente baleiro. Podes engadir persoas a través do botón de Accións.",
         "removedCensusSuccessfully": "Elimináronse ás persoas seleccionadas correctamente",
+        "deactivatedCensusSuccessfully": "Se desactivaron las personas seleccionadas correctamente",
         "sentCodesSuccessfully": "Enviados os códigos de autenticación correctamente",
 
         "voted": "votou",
         "notVoted": "non votou",
         "votedColumnHeader": "Votou?",
+        "activeColumnHeader": "Activo?",
 
         "censusadd": "Votante engadido ao censo",
         "actionsDropdown": "Accións",
@@ -535,6 +540,7 @@
         "removeCensusAction": "Eliminar os __num__ seleccionados..",
         "sendAuthCodesAction": "Enviar códigos de autenticación aos __num__ seleccionados..",
         "idColumnHeader": "Ide",
+        "creationDateHeader": "Created date",
         "selectedColumnHeader": "Seleccionar",
         "emailOption": "email",
         "passwordOption": "contrasinal",
