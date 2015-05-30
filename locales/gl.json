@@ -514,6 +514,14 @@
           "removePeopleBody": "Eliminar ás __num__ persoas seleccionadas do censo de forma definitiva. Nótese que isto NON eliminará os seus votos se xa votaron.",
           "confirmRemovePeopleButton": "Confirmar e ELIMINAR ás __num__ persoas seleccionadas do censo",
 
+          "activatePeopleHeader": "Activar personas seleccionadas en el censo",
+          "activatePeopleBody": "Activar a las __num__ personas. Esta acción permite a las personas seleccionadas votar. Se enviará el código de autenticación automáticamente",
+          "confirmActivatePeopleButton": "Confirmar y activar a las  __num__ personas en el censo",
+
+          "deactivatePeopleHeader": "Desactivar personas seleccionadas en el censo",
+          "deactivatePeopleBody": "Desactivar a las __num__ personas. Esta acción hace que las personas seleccionadas no puedan votar",
+          "confirmDeactivatePeopleButton": "Confirmar y desactivar a las  __num__ personas en el censo",
+
           "exportAllCensusHeader": "Exportar todo o censo en CSV",
           "exportAllCensusBody": "Desde aquí podes descargar a totalidade do censo nun ficheiro con formato de folla de cálculo CSV (Comma Separated Values), de maneira que podes abrilo e procesalo autónomamente. Dependendo do tamaño do censo, o proceso de descarga de todo o censo pode tomar un intre. Unha vez terminou, mostraráseche a posibilidade de descargar o como un ficheiro. Se tes algún filtro activo, leste filtro tamén será aplicado ao ficheiro CSV.",
           "confirmexportAllCensusButton": "Confirmar e descargar o censo cun total de __total__ persoas"
