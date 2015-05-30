@@ -240,7 +240,7 @@
     "registerAdminFormHelpTitle": "Rexistrándote para crear votacións",
     "fillValidFormText": "Para poder enviar o formulario, primeiro enche correctamente todos os campos.",
     "invalidRegisterData": "Non foi posible rexistrarche cos datos achegados. <strong>O máis probable é que xa esteas rexistrado, <a href=\"__url__\">accede usando as túas credenciais picando aquí</a></strong>. Tamén poida que o período de votación finalizase. Comproba todo o anterior, e no caso de que sigas tendo problemas, revisa os teus datos, ou ponche en contacto cos administradores da votación,",
-    "invalidRegisterDNI": "No ha sido posible registrarte con los datos aportados. <strong>HAs insertado un número de DNI inválido</strong>. Por favor, revísalo.",
+    "invalidRegisterDNI": "No ha sido posible registrarte con los datos aportados. <strong>Has insertado un número de DNI inválido</strong>. Por favor, revísalo.",
     "logout": "Saír",
     "codeLabel": "Código de Autenticación",
     "codePlaceholder": "Introduce o código",
