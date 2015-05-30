@@ -62,11 +62,16 @@ angular.module('avRegistration')
                     details = scope.getLoginDetails(autheventid);
                     scope.sendingData = false;
                     scope.status = 'Registration error: ' + error.message;
-                    scope.error = error.msg || $sce.trustAsHtml($i18next('avRegistration.invalidRegisterData', {
-                      url: $state.href(details.path, details.data)
-                    }));
-                    if (error.msg === 'Invalid captcha') {
-                        Authmethod.newCaptcha();
+
+                    if (!!error.error_codename && error.error_codename === 'invalid-dni') {
+                      scope.error = $sce.trustAsHtml($i18next('avRegistration.invalidRegisterDNI'));
+                    } else {
+                        scope.error = error.msg || $sce.trustAsHtml($i18next('avRegistration.invalidRegisterData', {
+                          url: $state.href(details.path, details.data)
+                        }));
+                        if (error.msg === 'Invalid captcha') {
+                            Authmethod.newCaptcha();
+                        }
                     }
                 });
         };

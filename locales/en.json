@@ -250,6 +250,7 @@
     "registerAdminFormHelpTitle": "Registering to create elections",
     "fillValidFormText": "To be able to send the form, please fill correctly first all the fields.",
     "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. <strong>Lo más probable es que ya estés registrado, <a href=\"__url__\">accede usando tus credenciales pinchando aquí</a></strong>. También puede que el periodo de votación haya finalizado. Comprueba todo lo anterior, y en caso de que sigas teniendo problemas, revisa tus datos, o ponte en contacto con los administradores de la votación,",
+    "invalidRegisterDNI": "No ha sido posible registrarte con los datos aportados. <strong>HAs insertado un número de DNI inválido</strong>. Por favor, revísalo.",
     "logout": "Logout",
     "emailLabel": "Email",
     "codePlaceholder": "Insert the code",
