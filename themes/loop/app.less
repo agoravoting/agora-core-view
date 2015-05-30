@@ -7,7 +7,7 @@
 @av-secondary-contrast: white;
 @brand-primary: @av-primary;
 @brand-success: @av-secondary;
-@link-color: @av-secondary;
+@link-color: #7E93E6;
 @text-success: @av-secondary;
 @state-success-text: @av-secondary;
 
@@ -47,6 +47,12 @@
 [ave-default-election] .top-section {
   ul.election-links > li.selected > a, ul.election-links > li > a, [ave-simple-question] h3 {
     color: @av-secondary !important;
+  }
+}
+
+[avr-code-field] {
+  label, .help-block {
+    color: @av-primary-contrast;
   }
 }
 
