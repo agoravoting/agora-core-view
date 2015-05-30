@@ -592,6 +592,18 @@
         "emailsubdef": "Xa podes votar con Agora Voting",
         "emaildef": "Vota en %(url)s co codigo %(code)s"
     },
+    "columnFilter": {
+      "sort": "Orden:",
+      "filter": "Filtro:",
+      "minDate": "Desde:",
+      "maxDate": "Hasta:",
+      "noFilter": "No",
+      "noSort": "No",
+      "sortAsc": "Asc",
+      "sortDesc": "Desc",
+      "min": "min",
+      "max": "max"
+    },
     "create": {
         "summary": "Resumo: creando __num__ votacións",
         "summary__plural": "Resumo: creando __num__ votacións",
