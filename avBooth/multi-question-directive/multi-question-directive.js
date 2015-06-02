@@ -4,7 +4,7 @@
  * Shows a question and its possible answers to the user.
  */
 angular.module('avBooth')
-  .directive('avbMultiQuestion', function() {
+  .directive('avbMultiQuestion', function($modal) {
 
     var link = function(scope, element, attrs) {
       scope.stateData.affixIsSet = false;
@@ -49,7 +49,17 @@ angular.module('avBooth')
           $("#selectMoreOptsWarning").flash();
           return;
         }
-        scope.next();
+
+        // show null vote warning
+        if (scope.numSelectedOptions() === 0) {
+          $modal.open({
+            templateUrl: "avBooth/confirm-null-vote-controller/confirm-null-vote-controller.html",
+            controller: "ConfirmNullVoteController",
+            size: 'md'
+          }).result.then(scope.next);
+        } else {
+          scope.next();
+        }
       };
     };
 

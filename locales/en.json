@@ -168,6 +168,12 @@
       "web": "Web",
       "warning": "Click to choose. __count__ of __max__ comparison done.",
       "warning_plural": "Click to choose. __count__ of __max__ comparisons done."
+    },
+
+    "confirmNullVote": {
+      "header": "Voto en blanco",
+      "body": "No has seleccionado ninguna opción, lo que equivale a votar en blanco en esta pregunta.",
+      "confirm": "Sí, quiero votar en blanco en esta pregunta"
     }
   },
   "avElection": {

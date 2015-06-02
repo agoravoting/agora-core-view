@@ -157,6 +157,12 @@
       "mayoral_plural": "Alcaldía (__count__)",
       "councils": "Concellerías (__count__)",
       "councils_plural": "Concellerías(__count__)"
+    },
+
+    "confirmNullVote": {
+      "header": "Voto en blanco",
+      "body": "No has seleccionado ninguna opción, lo que equivale a votar en blanco en esta pregunta.",
+      "confirm": "Sí, quiero votar en blanco en esta pregunta"
     }
   },
   "avElection": {
