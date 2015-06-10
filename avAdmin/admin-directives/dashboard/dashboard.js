@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminDashboard', function($state, Authmethod, ElectionsApi, $stateParams, $modal) {
+  .directive('avAdminDashboard', function($state, Authmethod, ElectionsApi, $stateParams, $modal, PercentVotesService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
       var id = $stateParams.id;
@@ -69,6 +69,7 @@ angular.module('avAdmin')
       scope.error = null;
       scope.msg = null;
       scope.prevStatus = null;
+      scope.percentVotes = PercentVotesService;
 
       ElectionsApi.getElection(id)
         .then(function(el) {

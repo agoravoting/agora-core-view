@@ -175,7 +175,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ an.text }}</td>
                 <td>{{ an.total_count|number }}</td>
-                <td>{{ an.total_count * 100/ q.totals.valid_votes }} %</td>
+                <td>{{ percentVotes(an.total_count, q.totals.valid_votes) }}</td>
                 <td ng-if="an.winner_position === 0 || an.winner_positon">{{ an.winner_positon + 1}}</td>
                 <td ng-if="!(an.winner_position === 0 || an.winner_positon)">--</td>
             </tr>
