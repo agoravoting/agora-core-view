@@ -155,12 +155,14 @@
                 <dl class="dl-horizontal">
                   <dt>{{ (q.totals.valid_votes + q.totals.null_votes + q.totals.blank_votes) }}</dt>
                   <dd ng-i18next>avAdmin.dashboard.votes</dd>
+                  <dt></dt>
+                  <dd>--</dd>
+                  <dt>{{ q.totals.valid_votes|number }}</dt>
+                  <dd ng-i18next>avAdmin.dashboard.optionvotes</dd>
                   <dt>{{ q.totals.blank_votes }}</dt>
                   <dd ng-i18next>avAdmin.dashboard.blankvotes</dd>
                   <dt>{{ q.totals.null_votes }}</dt>
                   <dd ng-i18next>avAdmin.dashboard.nullvotes</dd>
-                  <dt>{{ q.totals.valid_votes|number }}</dt>
-                  <dd ng-i18next>avAdmin.dashboard.optionvotes</dd>
                 </dl>
             </div>
         </div>
