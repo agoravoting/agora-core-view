@@ -1,4 +1,27 @@
-[avb-accordion-options] [accordion] {
+[avb-accordion-options] [accordion], [avb-accordion-option] {
+
+
+  .btn {
+    border-radius: 0;
+    border: none;
+    transition: 0;
+    font-weight:bold;
+
+    &:hover {
+      color: @av-secondary-contrast;
+      background-color: darken(@av-secondary, 10%);
+    }
+
+    &.btn-danger {
+      background-color: @btn-danger-bg;
+      color: @btn-danger-color;
+
+      &:hover {
+        background-color: darken(@btn-danger-bg, 10%);
+      }
+    }
+  }
+
   .panel {
     border: 0 none;
     border-radius: 0 !important;
@@ -13,6 +36,7 @@
         padding: 10px 15px;
         cursor: pointer;
         display: block;
+        min-height: 37px;
         width: 100%;
         transition: all .4s ease;
 

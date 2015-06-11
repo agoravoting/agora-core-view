@@ -96,22 +96,9 @@ angular.module('avCrypto')
     }
 
     function getPlainText(question, verify) {
-      // first, convert the question answers into a list of selected options
-      // get only selected
-      var filtered = _.filter(question.answers, function (option) {
-          return option.selected > -1;
-      });
-
-      // sort by selected
-      var sorted = _.sortBy(filtered, function (option) {
-        return option.selected;
-      });
-
-      // get the selected sorted options as a list of int ids
-      var answers = _.pluck(sorted, "id");
-
       // encode the answers
       var codec = AnswerEncoderService(question.tally_type, question.answers.length);
+      var answers = codec.extractAnswers(question);
       var encoded = codec.encode(answers);
       if (verify) {
         var decoded = codec.decode(encoded);
@@ -281,7 +268,12 @@ angular.module('avCrypto')
 
         // we always verify plaintext just to be sure, because it takes very
         // little CPU time
-        var plaintext = getPlainText(question, true);
+        var plaintext = null;
+        try {
+          plaintext = getPlainText(question, true);
+        } catch(e) {
+        }
+
         if (!plaintext) {
           data.error("errorEncoding", "error while encoding the answer to a question");
           return;

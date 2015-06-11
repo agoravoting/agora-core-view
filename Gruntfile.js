@@ -105,7 +105,16 @@ module.exports = function (grunt) {
       main: {
         files: [
           {src: ['img/**'], dest: 'dist/'},
+          {src: ['img/**'], dest: 'dist/'},
           {src: ['temp_data/**'], dest: 'dist/'},
+          {
+            expand: true,
+            cwd:'themes',
+            src: ['**/*.png'],
+            dest: 'dist/themes/',
+            ext: '.png',
+            extDot: 'first'
+          },
           {
             expand: true,
             cwd: 'bower_components/bootstrap/fonts/',
@@ -194,6 +203,7 @@ module.exports = function (grunt) {
         files: {
             "dist/locales/en.json": ["locales/en.json", "plugins/**/locales/en.json"],
             "dist/locales/es.json": ["locales/es.json", "plugins/**/locales/es.json"],
+            "dist/locales/gl.json": ["locales/gl.json", "plugins/**/locales/gl.json"],
             "dist/locales/ca.json": ["locales/ca.json", "plugins/**/locales/ca.json"]
         }
       }
@@ -220,7 +230,11 @@ module.exports = function (grunt) {
           'dist/lib-v3.0-b1.min.js': 'temp/lib.js',
           'dist/libnocompat-v3.0-b1.min.js': 'temp/libnocompat.js',
           'dist/libcompat-v3.0-b1.min.js': 'temp/libcompat.js',
-          'dist/avWidgets.min.js': 'avWidgets.js'
+          'dist/avWidgets.min.js': 'avWidgets.js',
+
+          "dist/locales/moment/es.js": "bower_components/moment/lang/es.js",
+          "dist/locales/moment/gl.js": "bower_components/moment/lang/gl.js",
+          "dist/locales/moment/ca.js": "bower_components/moment/lang/ca.js"
         }
       }
     },

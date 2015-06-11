@@ -18,7 +18,11 @@ angular.module(
   'avCrypto',
   'avAdmin',
   'avElection',
-  'angularFileUpload'
+  'angularFileUpload',
+  'dndLists',
+  'angularLoad',
+  'angular-date-picker-polyfill',
+  'ng-autofocus'
 ]);
 
 angular.module('jm.i18next').config(function ($i18nextProvider) {
@@ -41,6 +45,8 @@ angular.module('agora-core-view').config(
     // CSRF verification
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+    $urlRouterProvider.otherwise("/admin/login");
 
     /* App states and urls are defined here */
     // Admin interface
@@ -196,6 +202,9 @@ angular.module('agora-core-view').config(
       .state('election.public.show.home.plurality-at-large', {
         template: '<div av-plurality-at-large-results></div>',
       })
+      .state('election.public.show.home.borda', {
+        template: '<div av-borda-results></div>',
+      })
       .state('election.public.show.register', {
         url: '/register',
         templateUrl: 'avRegistration/register-controller/register-controller.html',
@@ -206,7 +215,7 @@ angular.module('agora-core-view').config(
         templateUrl: 'avRegistration/login-controller/login-controller.html',
         controller: "LoginController"
       })
-      .state('election.public.show.login_user', {
+      .state('election.public.show.login_email', {
         url: '/login/:email',
         templateUrl: 'avRegistration/login-controller/login-controller.html',
         controller: "LoginController"
@@ -238,6 +247,9 @@ angular.module('agora-core-view').config(
       .state('election.results.show.unknown', {
         templateUrl: 'avElection/question-results-directive/unknown.html'
       })
+      .state('election.results.show.home.borda', {
+        template: '<div av-borda-results></div>',
+      })
       .state('election.results.show.plurality-at-large', {
         template: '<div av-plurality-at-large-results></div>',
       });
@@ -249,7 +261,7 @@ angular.module('agora-core-view').config(
       });
 });
 
-angular.module('agora-core-view').run(function($cookies, $http, $rootScope) {
+angular.module('agora-core-view').run(function($http, $rootScope) {
 
   $rootScope.safeApply = function(fn) {
     var phase = $rootScope.$$phase;
@@ -272,10 +284,6 @@ angular.module('agora-core-view').run(function($cookies, $http, $rootScope) {
       console.log("change success");
       $("#angular-preloading").hide();
     });
-
-    if ($cookies.auth) {
-        $http.defaults.headers.common.Authorization = $cookies.auth;
-    }
 });
 
 

@@ -7,13 +7,20 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-        <form name="form" id="registerForm" role="form" class="form-horizontal">
+        <div ng-if="method == 'dnie'">
+          <a type="submit"
+            class="btn btn-block btn-success"
+            ng-i18next="avRegistration.registerButton"
+            ng-href="{{ dnieurl }}/">
+          </a>
+        </div>
+        <form ng-if="method != 'dnie'" name="form" id="registerForm" role="form" class="form-horizontal">
             <div ng-repeat="field in register_fields" avr-field index="{{$index+1}}">
             </div>
 
           <div class="col-sm-offset-4 col-sm-8 button-group">
               <div class="input-error">
-                  <div class="error text-danger" ng-if="error">{{ error }}</div>
+                  <div class="error text-danger" ng-if="error" ng-bind-html="error"></div>
               </div>
               <div class="input-warn">
                 <span
@@ -40,8 +47,11 @@
           <p ng-i18next>avRegistration.helpAdminRegisterForm</p>
       </span>
       <span ng-if="!admin">
-          <h3 class="help-h3" ng-i18next="avRegistration.registerFormHelpTitle"></h3>
           <p ng-i18next>avRegistration.helpRegisterForm</p>
+
+          <h3 class="help-h3" ng-i18next="avRegistration.alreadyRegistered"></h3>
+          <p ng-i18next>[html]avRegistration.helpAlreadyRegisteredForm</p>
+          <a href="" ng-click="goLogin($event)" ng-i18next="avRegistration.loginHere"></a><br/>
       </span>
     </div>
   </div>

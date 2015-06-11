@@ -1,12 +1,22 @@
 angular.module('avRegistration')
 
-    .factory('Authmethod', ['$http', 'ConfigService', function($http, ConfigService) {
+    .factory('Authmethod', function($http, $cookies, ConfigService) {
         var backendUrl = ConfigService.authAPI;
         var authId = ConfigService.freeAuthId;
         var authmethod = {};
         authmethod.captcha_code = null;
         authmethod.captcha_image_url = "";
         authmethod.captcha_status = "";
+        authmethod.admin = false;
+
+        authmethod.isAdmin = function() {
+            return authmethod.isLoggedIn() && authmethod.admin;
+        };
+
+        authmethod.isLoggedIn = function() {
+            var auth = $http.defaults.headers.common.Authorization;
+            return auth && auth.length > 0;
+        };
 
         authmethod.signup = function(data, authevent) {
             var eid = authevent || authId;
@@ -14,6 +24,18 @@ angular.module('avRegistration')
         };
 
         authmethod.getUserInfo = function(userid) {
+            if (!authmethod.isLoggedIn()) {
+              var data = {
+                success: function () { return data; },
+                error: function (func) {
+                  setTimeout(function() {
+                    func({message:"not-logged-in"});
+                  }, 0);
+                  return data;
+                }
+              };
+              return data;
+            }
             if (typeof userid === 'undefined') {
                 return $http.get(backendUrl + 'user/', {});
             } else {
@@ -22,6 +44,18 @@ angular.module('avRegistration')
         };
 
         authmethod.ping = function() {
+            if (!authmethod.isLoggedIn()) {
+              var data = {
+                success: function () { return data; },
+                error: function (func) {
+                  setTimeout(function() {
+                    func({message:"not-logged-in"});
+                  }, 0);
+                  return data;
+                }
+              };
+              return data;
+            }
             return $http.get(backendUrl + 'auth-event/'+authId+'/ping/');
         };
 
@@ -29,6 +63,10 @@ angular.module('avRegistration')
             var eid = authevent || authId;
             delete data['authevent'];
             return $http.post(backendUrl + 'auth-event/'+eid+'/authenticate/', data);
+        };
+
+        authmethod.resendAuthCode = function(data, eid) {
+            return $http.post(backendUrl + 'auth-event/'+eid+'/resend_auth_code/', data);
         };
 
         authmethod.getPerm = function(perm, object_type, object_id) {
@@ -67,8 +105,14 @@ angular.module('avRegistration')
             return $http.post(backendUrl + 'auth-event/' + id + '/census/', d);
         };
 
-        authmethod.getCensus = function(id) {
+        authmethod.getCensus = function(id, params) {
+          if (!angular.isObject(params)) {
             return $http.get(backendUrl + 'auth-event/' + id + '/census/');
+          }
+
+          return $http.get(
+            backendUrl + 'auth-event/' + id + '/census/',
+            {params:params});
         };
 
         authmethod.getRegisterFields = function (viewEventData) {
@@ -157,8 +201,10 @@ angular.module('avRegistration')
             return $http.get(backendUrl);
         };
 
-        authmethod.setAuth = function(auth) {
+        authmethod.setAuth = function(auth, isAdmin) {
+            authmethod.admin = isAdmin;
             $http.defaults.headers.common.Authorization = auth;
+            authmethod.launchPingDaemon();
             return false;
         };
 
@@ -190,12 +236,72 @@ angular.module('avRegistration')
             return $http.post(url, data);
         };
 
+        authmethod.activateUsersIds = function(eid, election, user_ids) {
+            var url = backendUrl + 'auth-event/'+eid+'/census/activate/';
+            var data = {"user-ids": user_ids};
+            return $http.post(url, data);
+        };
+
+        authmethod.deactivateUsersIds = function(eid, election, user_ids) {
+            var url = backendUrl + 'auth-event/'+eid+'/census/deactivate/';
+            var data = {"user-ids": user_ids};
+            return $http.post(url, data);
+        };
+
         authmethod.changeAuthEvent = function(eid, st) {
             var url = backendUrl + 'auth-event/'+eid+'/'+st+'/';
             var data = {};
             return $http.post(url, data);
         };
 
-        return authmethod;
+        authmethod.launchPingDaemon = function() {
+          // only needed if it's an admin and daemon has not been launched
+          if (!$cookies.isAdmin || !!authmethod.pingTimeout) {
+            return;
+          }
 
-    }]);
+          authmethod.ping()
+            .success(function(data) {
+              if (data.logged) {
+                $cookies.auth = data['auth-token'];
+                authmethod.setAuth($cookies.auth, $cookies.isAdmin);
+                authmethod.pingTimeout = setTimeout(
+                  function() { authmethod.launchPingDaemon(); },
+                  ConfigService.timeoutSeconds*500);
+              }
+            });
+        };
+
+        return authmethod;
+    });
+
+/**
+ * Caching http response error to deauthenticate
+ */
+angular.module('agora-core-view').config(
+  function($httpProvider) {
+    $httpProvider.interceptors.push(function($q, $injector) {
+      return {
+        'responseError': function(rejection) {
+            if (rejection.data && rejection.data.error_codename &&
+              _.contains(
+                ['expired_hmac_key', 'empty_hmac', 'invalid_hmac_userid'],
+                rejection.data.error_codename))
+            {
+              $httpProvider.defaults.headers.common.Authorization = '';
+              $injector.get('$state').go("admin.logout");
+            }
+            return $q.reject(rejection);
+        }
+      };
+    });
+});
+
+/**
+ * IF the cookie is there we make the autologin
+ */
+angular.module('agora-core-view').run(function($cookies, $http, Authmethod) {
+    if ($cookies.auth) {
+        Authmethod.setAuth($cookies.auth, $cookies.isAdmin);
+    }
+});

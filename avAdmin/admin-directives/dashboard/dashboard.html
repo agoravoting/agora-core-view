@@ -112,6 +112,14 @@
             </div>
 
             <button ng-click="doActionConfirm(index)" class="btn btn-block btn-lg btn-success" ng-if="nextaction" ng-i18next="{{ nextaction }}"></button>
+
+            <button
+              ng-click="duplicateElection()"
+              class="btn btn-block btn-lg btn-success"
+              ng-i18next>
+              avAdmin.dashboard.duplicateElection
+            </button>
+
             <button class="btn btn-block btn-lg btn-warning" ng-if="intally">
                 <i class="fa fa-cog fa-spin fa-sw fa-2x"></i><br/>
                 <span ng-i18next="avAdmin.dashboard.doingtally"></span>
@@ -137,7 +145,6 @@
     <!-- endof general -->
 
     <!-- results -->
-    <a class="pull-right" ng-if="election.results.questions" ui-sref="election.results({ id: election.id })" ng-i18next>avAdmin.dashboard.publicResultsUrl</a>
     <h2 ng-if="election.results.questions" ng-i18next>avAdmin.dashboard.results</h2>
     <div class="well question-result" ng-repeat="q in election.results.questions">
         <div class="row">
@@ -146,12 +153,25 @@
             </div>
             <div class="col-md-5">
                 <dl class="dl-horizontal">
-                  <dt>{{ q.totals.blank_votes }}</dt>
-                  <dd ng-i18next>avAdmin.dashboard.blankvotes</dd>
-                  <dt>{{ q.totals.null_votes }}</dt>
-                  <dd ng-i18next>avAdmin.dashboard.nullvotes</dd>
+                  <dt>{{ (q.totals.valid_votes + q.totals.null_votes + q.totals.blank_votes) }}</dt>
+                  <dd ng-i18next>avAdmin.dashboard.votes</dd>
+                  <dt></dt>
+                  <dd>--</dd>
                   <dt>{{ q.totals.valid_votes|number }}</dt>
-                  <dd ng-i18next>avAdmin.dashboard.optionvotes</dd>
+                  <dd>
+                      <span ng-i18next>avAdmin.dashboard.optionvotes</span>
+                      <span>({{ percentVotes(q.totals.valid_votes, q) }})</span>
+                  </dd>
+                  <dt>{{ q.totals.blank_votes }}</dt>
+                  <dd>
+                      <span ng-i18next>avAdmin.dashboard.blankvotes</span>
+                      <span>({{ percentVotes(q.totals.blank_votes, q) }})</span>
+                  </dd>
+                  <dt>{{ q.totals.null_votes }}</dt>
+                  <dd>
+                      <span ng-i18next>avAdmin.dashboard.nullvotes</span>
+                      <span>({{ percentVotes(q.totals.null_votes, q) }})</span>
+                  </dd>
                 </dl>
             </div>
         </div>
@@ -168,7 +188,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ an.text }}</td>
                 <td>{{ an.total_count|number }}</td>
-                <td>{{ an.total_count * 100/ q.totals.valid_votes }} %</td>
+                <td>{{ percentVotes(an.total_count, q, "over-valid-votes") }}</td>
                 <td ng-if="an.winner_position === 0 || an.winner_positon">{{ an.winner_positon + 1}}</td>
                 <td ng-if="!(an.winner_position === 0 || an.winner_positon)">--</td>
             </tr>

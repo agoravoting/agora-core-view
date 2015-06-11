@@ -129,11 +129,44 @@
   }
 
   .warning-demo {
-    background-color: @av-secondary;
+    background-color: @btn-warning-bg;
+    color: @av-primary-contrast;
     color: white;
     margin-top: -30px;
     padding-top: 10px;
     margin-bottom: 30px;
+  }
+
+  .warnings {
+    .text-brand-warning {
+      display: inline-block;
+      background-color: @btn-warning-bg;
+      color: @av-primary-contrast;
+
+      &.flashing, &.flashing-out {
+        transition: color .4s ease, background-color .4s ease;
+      }
+
+      &.flashing {
+        color: @btn-warning-bg !important;
+        background-color: @av-primary-contrast !important;
+      }
+    }
+
+    .text-brand-primary {
+      display: inline-block;
+      background-color: @btn-primary-bg;
+      color: @av-primary-contrast;
+
+      &.flashing, &.flashing-out {
+        transition: color .4s ease, background-color .4s ease;
+      }
+
+      &.flashing {
+        color: @btn-primary-bg !important;
+        background-color: @av-primary-contrast !important;
+      }
+    }
   }
 }
 

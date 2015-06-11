@@ -6,19 +6,21 @@ angular.module('avElection')
     // works like a controller
     function link(scope, element, attrs) {
       var mappings = {
-        "simple.plurality-at-large": "plurality-at-large",
-        "simple.borda-nauru": "plurality-at-large",
-        "simple.borda": "plurality-at-large",
-        "pcandidates-election.pcandidates-election": "plurality-at-large"
+        "plurality-at-large": "plurality-at-large",
+        "borda-nauru": "borda",
+        "borda": "borda",
+        "pairwise-beta": "borda"
       };
 
       var key = scope.question.layout + "." + scope.question.tally_type;
-      if (scope.$parent.election.layout === "pcandidates-election") {
-        $state.go(scope.statePrefix + "." + mappings["pcandidates-election"]);
-      } else if (key in mappings) {
+      if (key in mappings) {
         $state.go(scope.statePrefix + "." + mappings[key]);
       } else {
-        $state.go(scope.statePrefix + ".unknown");
+        if (scope.question.tally_type in mappings) {
+          $state.go(scope.statePrefix + "." + mappings[scope.question.tally_type]);
+        } else {
+          $state.go(scope.statePrefix + ".unknown");
+        }
       }
       scope.question_index = attrs.index;
     }

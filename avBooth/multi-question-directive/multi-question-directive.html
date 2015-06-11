@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row avb-top-navbar">
       <div class="pull-left"
-        ng-i18next="[i18next]({sprintf:['2','3', stateData.questionNum+1, election.questions.length]})avBooth.stepAndQuestionNumber">
+        ng-i18next="[i18next]({sprintf:['1','3', stateData.questionNum+1, election.questions.length]})avBooth.stepAndQuestionNumber">
       </div>
       <div class="pull-right">
         <span
@@ -94,7 +94,18 @@
         class="col-xs-12 col-sm-6 padded"
         ng-if="!hideSelection"
         ng-class="{hidden: windowWidth < 768 && !stateData.affixDropDownShown, affixedSelection: windowWidth < 768 && stateData.affixIsSet}">
-        <h4 class="text-brand-success padded-left" ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle"></h4>
+        <h4
+          class="text-brand-success padded-left"
+          ng-if="!stateData.ordered"
+          ng-i18next>
+          [i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitle
+        </h4>
+        <h4
+          class="text-brand-success padded-left"
+          ng-if="stateData.ordered"
+          ng-i18next>
+          [i18next]({count: numSelectedOptions()})avBooth.questionSelectedOptionsTitleOrdered
+        </h4>
         <div avb-selected-options
           layout="stateData.question.layout"
           max="stateData.question.max"
@@ -108,7 +119,7 @@
 
     <!-- next button -->
     <div class="row hidden" ng-cloak av-affix-bottom="stateData.affixIsSet" data-force-affix-width="768">
-      <p>
+      <p class="warnings">
         <span
           class="text-brand-warning"
           id="selectMoreOptsWarning"

@@ -1,5 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminHead', ['Authmethod', '$state', '$cookies', '$i18next', function(Authmethod, $state, $cookies, $i18next) {
+  .directive('avAdminHead', function(Authmethod, $state, $cookies, $i18next, ConfigService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var admin = $cookies.user;
@@ -10,28 +10,6 @@ angular.module('avAdmin')
         if (scope.loginrequired && !scope.admin) {
             $state.go("admin.logout");
         }
-
-        function ping() {
-            Authmethod.ping()
-                .success(function(data) {
-                    if (data.logged) {
-                        Authmethod.setAuth(data['auth-token']);
-                        Authmethod.pingTimeout = setTimeout(function() { ping(); }, 60000);
-                    } else {
-                        $state.go("admin.logout");
-                    }
-                })
-                .error(function(data) {
-                    $state.go("admin.logout");
-                });
-        }
-
-        // checking login status
-        if (admin) {
-            if (!Authmethod.pingTimeout) {
-                ping();
-            }
-        }
     }
 
     return {
@@ -41,4 +19,4 @@ angular.module('avAdmin')
       link: link,
       templateUrl: 'avAdmin/admin-head-directive/admin-head-directive.html'
     };
-  }]);
+  });

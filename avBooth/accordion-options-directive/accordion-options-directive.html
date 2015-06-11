@@ -1,39 +1,104 @@
-
+<div ng-if="layout !== 'ahoram-primaries'">
 <!-- shown when no filter is being applied (i.e. by default) -->
-<div ng-if="filter.length == 0" class="accordion-mode">
-  <div accordion close-others="true">
-    <div accordion-group ng-repeat="category in categories" is-open="category.isOpen"
-        ng-class="{'in': category.isOpen}">
-      <div accordion-heading>
-      <span>{{category.title}}</span>
-      <span
-        class="pull-right glyphicon"
-        ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
-      </span>
-      <span class="accordion-num-label pull-right label label-primary"
-        ng-if="(category.options | avbSelectedOptions).length > 0">
-        {{(category.options | avbSelectedOptions).length }}
-      </span>
-  </div>
-      <div avb-accordion-option
-        ng-repeat="option in category.options"
-        class="animate-repeat"
-        ng-class="{selected: option.selected > -1}">
+  <div ng-if="filter.length == 0" class="accordion-mode">
+    <div avb-accordion-option
+      ng-repeat="option in emptyCategory.options"
+      class="animate-repeat highlight-selected"
+      ng-class="{selected: option.selected > -1}">
+    </div>
+    <div accordion close-others="true">
+      <div accordion-group ng-repeat="category in nonEmptyCategories" is-open="category.isOpen"
+          ng-class="{'in': category.isOpen}">
+        <div accordion-heading>
+          <span>{{category.title}}</span>
+          <span
+            class="pull-right glyphicon"
+            ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
+          </span>
+          <span class="accordion-num-label pull-right label label-primary"
+            ng-if="(category.options | avbSelectedOptions).length > 0">
+            {{(category.options | avbSelectedOptions).length }}
+          </span>
+        </div>
+        <div avb-accordion-option
+          ng-repeat="option in category.options"
+          class="animate-repeat highlight-selected"
+          ng-class="{selected: option.selected > -1}">
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- shown when user has entered a filter -->
+  <div ng-if="filter.length > 0" class="filter-mode">
+    <div avb-accordion-option
+      ng-repeat="option in filteredOptions"
+      show-category="true"
+      class="animate-repeat highlight-selected"
+      ng-class="{selected: option.selected > -1}">
+    </div>
+    <div
+      class="animate-repeat padded-left"
+      ng-if="filteredOptions.length == 0"
+      ng-i18next="avBooth.noResults">
     </div>
   </div>
 </div>
 
-<!-- shown when user has entered a filter -->
-<div ng-if="filter.length > 0" class="filter-mode">
-  <div avb-accordion-option
-    ng-repeat="option in filteredOptions"
-    class="animate-repeat"
-    ng-class="{selected: option.selected > -1}">
+<div ng-if="layout === 'ahoram-primaries'">
+  <!-- shown when no filter is being applied (i.e. by default) -->
+  <div ng-if="filter.length == 0" class="accordion-mode">
+    <div accordion close-others="true">
+      <div accordion-group ng-repeat="category in categories" is-open="category.isOpen"
+          ng-class="{'in': category.isOpen}" ng-if="category.title !== 'Voto en blanco a la alcaldía'">
+        <div accordion-heading>
+          <span>{{category.title}}</span>
+          <span
+            class="pull-right glyphicon"
+            ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
+          </span>
+          <span class="accordion-num-label pull-right label label-primary"
+            ng-if="(category.options | avbSelectedOptions).length > 0">
+            {{(category.options | avbSelectedOptions).length }}
+          </span>
+        </div>
+        <div ng-if="category.title !== 'Candidaturas sin agrupar'">
+          <div
+            ng-if="!categoryIsSelected(category)"
+            class="btn btn-block btn-default select-all"
+            ng-click="selectAll(category)"
+            ng-i18next>
+            avBooth.ahoramPrimaries.selectAll
+          </div>
+          <div
+            ng-if="categoryIsSelected(category)"
+            class="btn btn-block btn-danger select-all"
+            ng-click="deselectAll(category)"
+            ng-i18next>
+            avBooth.ahoramPrimaries.deselectAll
+          </div>
+        </div>
+        <div avb-ahoram-primaries-option
+          ng-repeat="option in category.options"
+          class="animate-repeat"
+          ng-class="{selected: option.selected > -1}">
+        </div>
+      </div>
+    </div>
   </div>
-  <div
-    class="animate-repeat padded-left"
-    ng-if="filteredOptions.length == 0"
-    ng-i18next="avBooth.noResults">
+
+  <!-- shown when user has entered a filter -->
+  <div ng-if="filter.length > 0" class="filter-mode">
+    <div avb-ahoram-primaries-option
+      ng-if="option.text !== 'Voto en blanco a la alcaldía'"
+      ng-repeat="option in filteredOptions"
+      class="animate-repeat"
+      ng-class="{selected: option.selected > -1}">
+    </div>
+    <div
+      class="animate-repeat padded-left"
+      ng-if="filteredOptions.length == 0"
+      ng-i18next="avBooth.noResults">
+    </div>
   </div>
 </div>

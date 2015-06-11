@@ -1,6 +1,5 @@
 angular.module('avAdmin')
-  .directive('avAdminCreate', ['$q', 'Authmethod', 'ElectionsApi', '$state', '$i18next', 'ConfigService',
-    function($q, Authmethod, ElectionsApi, $state, $i18next, ConfigService) {
+  .directive('avAdminCreate', function($q, Authmethod, ElectionsApi, $state, $i18next, $filter, ConfigService, CheckerService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var adminId = ConfigService.freeAuthId;
@@ -23,6 +22,113 @@ angular.module('avAdmin')
           scope.log += "<p class=\"text-brand-danger\">" + text + "</p>";
         }
 
+        /*
+         * Checks elections for errors
+         */
+        var checks = [
+          {
+            check: "array-group-chain",
+            prefix: "election-",
+            append: {key: "eltitle", value: "$value.title"},
+            checks: [
+              {check: "is-array", key: "questions", postfix: "-questions"},
+              {check: "array-length", key: "questions", min: 1, max: 40, postfix: "-questions"},
+              {check: "array-length", key: "description", min: 0, max: 3000, postfix: "-description"},
+              {check: "array-length", key: "title", min: 0, max: 3000, postfix: "-title"},
+              {check: "is-string", key: "description", postfix: "-description"},
+              {check: "is-string", key: "title", postfix: "-title"},
+              {
+                check: "array-key-group-chain",
+                key: "questions",
+                append: {key: "qtitle", value: "$value.title"},
+                prefix: "question-",
+                checks: [
+                  {check: "is-int", key: "min", postfix: "-min"},
+                  {check: "is-int", key: "max", postfix: "-max"},
+                  {check: "is-int", key: "num_winners", postfix: "-num-winners"},
+                  {check: "is-array", key: "answers", postfix: "-answers"},
+                  {check: "array-length", key: "answers", min: 1, max: 10000, postfix: "-answers"},
+                  {check: "int-size", key: "min", min: 0, max: "$value.max", postfix: "-min"},
+                  {check: "is-string", key: "description", postfix: "-description"},
+                  {check: "array-length", key: "description", min: 0, max: 3000, postfix: "-description"},
+                  {check: "is-string", key: "title", postfix: "-title"},
+                  {check: "array-length", key: "title", min: 0, max: 3000, postfix: "-title"},
+                  {
+                    check: "int-size",
+                    key: "max",
+                    min: "$value.min",
+                    max: "$value.answers.length",
+                    postfix: "-max"
+                  },
+                  {
+                    check: "int-size",
+                    key: "num_winners",
+                    min: 1,
+                    max: "$value.answers.length",
+                    postfix: "-num-winners"
+                  },
+                  {
+                      check: "array-key-group-chain",
+                      key: "answers",
+                      append: {key: "atext", value: "$value.text"},
+                      prefix: "answer-",
+                      checks: [
+                        {
+                          check: "is-string",
+                          key: "text",
+                          postfix: "-text"
+                        },
+                        {
+                          check: "is-string",
+                          key: "details",
+                          postfix: "-details"
+                        },
+                        {
+                          check: "is-string",
+                          key: "category",
+                          postfix: "-category"
+                        },
+                        {
+                          check: "array-length",
+                          key: "details",
+                          min: 0,
+                          max: 3000,
+                          postfix: "-details"
+                        },
+                        {
+                          check: "array-length",
+                          key: "text",
+                          min: 1,
+                          max: 3000,
+                          postfix: "-text"
+                        },
+                        {
+                          check: "array-length",
+                          key: "category",
+                          min: 0,
+                          max: 300,
+                          postfix: "-category"
+                        },
+                      ]
+                  }
+                ]
+              }
+            ]
+          }
+        ];
+
+        scope.errors = [];
+        CheckerService({
+          checks: checks,
+          data: scope.elections,
+          onError: function (errorKey, errorData) {
+            scope.errors.push({
+              data: errorData,
+              key: errorKey
+            });
+          }
+        });
+
         function createAuthEvent(el) {
             console.log("creating auth event for election " + el.title);
             var deferred = $q.defer();
@@ -44,6 +150,13 @@ angular.module('avAdmin')
               var must = ef.must;
               delete ef.disabled;
               delete ef.must;
+
+              // only add regex if it's filled and it's a text field
+              if (!angular.isUndefined(ef.regex) &&
+                (!_.contains(['int', 'text'], ef.type) || $.trim(ef.regex).length === 0)) {
+                delete ef.regex;
+              }
+
               if (_.contains(['bool', 'captcha'], ef.type)) {
                 delete ef.min;
                 delete ef.max;
@@ -81,6 +194,12 @@ angular.module('avAdmin')
 
         function registerElection(el) {
             console.log("registering election " + el.title);
+
+            _.each(el.questions, function (q) {
+              _.each(q.answers, function (answer) {
+                answer.urls = _.filter(answer.urls, function(url) { return $.trim(url.url).length > 0;});
+              });
+            });
             var deferred = $q.defer();
             // Registering the election
             logInfo($i18next('avAdmin.create.reg', {title: el.title, id: el.id}));
@@ -168,4 +287,4 @@ angular.module('avAdmin')
       link: link,
       templateUrl: 'avAdmin/admin-directives/create/create.html'
     };
-  }]);
+  });

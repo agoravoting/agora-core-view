@@ -5,7 +5,13 @@ angular.module('avElection')
         "simple.plurality-at-large": "simple",
         "simple.borda-nauru": "simple",
         "simple.borda": "simple",
-        "pcandidates-election.pcandidates-election": "simple"
+        "simple.pairwise-beta": "simple",
+        "circles.plurality-at-large": "simple",
+        "circles.borda": "simple",
+        "circles.borda-nauru": "simple",
+        "details.plurality-at-large": "simple",
+        "details.borda": "simple",
+        "details.borda-nauru": "simple"
       };
 
       scope.question_index = attrs.index;

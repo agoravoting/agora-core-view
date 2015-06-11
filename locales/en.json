@@ -1,4 +1,6 @@
 {
+  "yes": "yes",
+  "no": "no",
   "eg": "eg.",
   "next": "Next",
   "done": "Done",
@@ -49,6 +51,8 @@
 
     "questionSelectedOptionsTitle": "selected options (__count__)",
     "questionSelectedOptionsTitle_plural": "selected options (__count__)",
+    "questionSelectedOptionsTitleOrdered": "selected options (__count__) in order, drag and drop to reorder it",
+    "questionSelectedOptionsTitleOrdered_plural": "selected options (__count__) in order, drag and drop to reorder it",
     "questionAvailableOptionsTitle": "available options",
     "numOptionsSelected": "__count__ options selected.",
     "numOptionsSelected_plural": "__count__ options selected.",
@@ -143,7 +147,34 @@
     "relatedLinksText": "Para más información sobre la votación:",
 
     "circleOptionExternalLink": "View details",
-    "voteInBlank": "Blank Vote"
+    "voteInBlank": "Blank Vote",
+    "openOptionLink": "Open link in a new tab",
+
+    "ahoramPrimaries": {
+      "selectAll": "Select the whole team",
+      "deselectAll": "Deselect the whole team",
+      "selectedOptions": "Selected options (in order, drag and drop to change it)",
+      "mayoral": "Mayoral (__count__)",
+      "mayoral_plural": "Mayoral (__count__)",
+      "councils": "Councils (__count__)",
+      "councils_plural": "Councils (__count__)"
+    },
+
+    "reviewScreen": {
+      "pair": "__one__ > __two__"
+    },
+
+    "pairwiseBeta": {
+      "web": "Web",
+      "warning": "Click to choose. __count__ of __max__ comparison done.",
+      "warning_plural": "Click to choose. __count__ of __max__ comparisons done."
+    },
+
+    "confirmNullVote": {
+      "header": "Voto en blanco",
+      "body": "No has seleccionado ninguna opción, lo que equivale a votar en blanco en esta pregunta.",
+      "confirm": "Sí, quiero votar en blanco en esta pregunta"
+    }
   },
   "avElection": {
     "resultsLoadingText": "Loading results",
@@ -151,6 +182,7 @@
     "defaultShareText": "Vote in __title__ with @agoravoting __url__",
 
     "resultsHeader": "__title__: Results",
+    "resultsTableNPositionHeader": "Number of votes by position:",
     "resultsTableCandidateHeader": "Candidature",
     "resultsTableVotesHeader": "Votes",
     "resultsTableVotesPercentageHeader": "",
@@ -223,10 +255,19 @@
     "registerFormHelpTitle": "Registering to vote",
     "registerAdminFormHelpTitle": "Registering to create elections",
     "fillValidFormText": "To be able to send the form, please fill correctly first all the fields.",
-    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. Por favor, revísalos, o ponte en contacto con los administradores de la votación,",
+    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. <strong>Lo más probable es que ya estés registrado, <a href=\"__url__\">accede usando tus credenciales pinchando aquí</a></strong>. También puede que el periodo de votación haya finalizado. Comprueba todo lo anterior, y en caso de que sigas teniendo problemas, revisa tus datos, o ponte en contacto con los administradores de la votación,",
+    "invalidRegisterDNI": "No ha sido posible registrarte con los datos aportados. <strong>Has insertado un número de DNI inválido</strong>. Por favor, revísalo.",
     "logout": "Logout",
     "emailLabel": "Email",
-    "telLabel": "Phone",
+    "codePlaceholder": "Insert the code",
+    "codeHelp": "Please use the last code we have sent to your phone. The code will have 8 alphanumeric characters.",
+    "noCodeReceivedQuestion": "Did not receive your code yet?",
+    "sendCodeAgain": "Send code again",
+    "telLabel": " Mobile telephone number",
+    "telInvalid": " Invalid telephone number. Example of valid number: +34666666666",
+    "telPlaceholder": "Example: +34666666666",
+    "telHelp": "Only numbers, with no spaces or hyphens. For numbers outside Spain, use the country prefix, for example +34.",
+    "errorSendingAuthCode": "Error sending the code. Please review that you wrote correctly your phone, or maybe you sent the code too many times. If the problem persist, contact with the organization.",
     "codeLabel": "Authentication Code",
     "emailPlaceholder": "john@example.com",
     "passwordLabel": "Password",
@@ -247,6 +288,9 @@
     "surnamePlaceholder": "surname",
     "tlfPlaceholder": "phone",
     "dniPlaceholder": "DNI",
+    "alreadyRegistered": "Already registered?",
+    "helpAlreadyRegisteredForm": "Maybe you are already registered and what you really need is to authenticate.",
+    "loginHere": "Access using my credentials, I have already registered before",
 
     "tlfError": "Invalid phone",
     "dniError": "DNI example 12345678H",
@@ -255,13 +299,15 @@
 
     "validateHeader": "Validate code",
     "validateButton": "Validate",
-    "codePlaceholder": "code",
 
     "loadingRegistration": "Loading",
     "successRegistration": "Success",
     "errorRegistration": "Error",
 
-    "invalidCredentials": "Invalid credentials"
+    "invalidCredentials": "Invalid credentials",
+    "invalidDataRegEx": "Invalid data",
+    "invalidDni": "Invalid DNI/NIE",
+    "dniHelp": "Specify a valid  DNI/NIE. Examples: 12343567R or X01234356R"
   },
 
   "avAdmin": {
@@ -270,7 +316,7 @@
         "features": "Features",
         "help": "Help",
         "freesignup": "Free sign up",
-        "login": "login",
+        "login": "Enter",
         "logout": "logout"
     },
     "learnMore": "Learn more..",
@@ -342,6 +388,7 @@
         "dropFilesHere": "Drop CSV file here"
     },
     "dashboard": {
+        "duplicateElection": "Duplicate election",
         "sendAuthCodes": "Send auth codes",
         "donow": "click to do now",
         "votes": "Votes",
@@ -393,7 +440,7 @@
         }
     },
     "basic": {
-        "intro": "Creating an election involves multiple steps, but it's not hard. Don't panic and go ahead, it only takes 5 minutes",
+        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. Sólo te llevará 5 minutos, por favor lee el Manual de Administrador, enlazado en el icono de ayuda de la barra superior.",
         "title": { "label": "Title", "placeholder": "eg.New Board of Directors", "labelH3": "__index__. Election titled: __title__" },
         "description": { "label": "Description", "placeholder": "Description will be shown" },
         "share": { "label": "Share text", "placeholder": "Text to use for social sharing" },
@@ -408,13 +455,52 @@
     "questions": {
         "new": "New question",
         "votingSystem": "Voting System",
-        "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Nauru's Borda Count or Borda Dowdall (1/n)", "borda": "Borda Count (traditional)"},
-        "winners": {"label": "Number of winners", "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options"},
-        "min": {"label": "Minimum number of selected options", "placeholder": "How many options should a voter select in this question? Minimum is zero wich would allow blank votes"},
-        "max": {"label": "Maximum number of selected options", "placeholder": "How many options can a voter select in this question?"},
+        "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Nauru's Borda Count or Borda Dowdall (1/n)", "borda": "Borda Count (traditional)", "pairwise-beta": "Pairwise (beta-distribution)"},
+        "winners": {
+          "label": "Number of winners",
+          "placeholder": "How many winners should be? Minimum is 1 and maximum is the number of options",
+          "numOptionsError": "There are __winners__ winners but only __cands__ candidates",
+          "minError": "There must be at least 1 winner"
+          },
+        "min": {
+          "label": "Minimum number of selected options",
+          "placeholder": "How many options should a voter select in this question? Minimum is zero wich would allow blank votes",
+          "maxError": "Minimum number of choosable candidatures can be at most __max__",
+          "minError": "Cannot be negative"
+          },
+        "max": {
+          "label": "Maximum number of selected options",
+          "placeholder": "How many options can a voter select in this question?",
+          "numOptionsError": "Voters can choose up to __max__ candidatures, but there are only __cands__ candidatures",
+          "minError": "Must be at least 1 "
+        },
         "random": {"label": "Randomize options order", "placeholder": "When randomization of the options order is active, each voter will see the options for this question in a different order in the voting booth"},
-        "candidates": {"label": "Candidates", "placeholder": "Candidate options that can be voted for this question"},
-        "newopt": "New option name"
+        "candidates": {
+          "label": "Candidates",
+          "placeholder": "Candidate options that can be voted for this question",
+          "minError": "There must be at least one candidate"
+        },
+        "newopt": "New option name",
+        "layout": {
+          "label": "Layout",
+          "placeholder": "Especify how the question will be shown",
+          "accordion": "Normal",
+          "circles": "Images with details",
+          "conditional-accordion": "Conditional Accordion",
+          "ahoram-primaries": "ahoram-primaries"
+        },
+        "option": {
+          "textFieldLabel": "Text",
+          "textFieldPlaceholder": "Candidate option text",
+          "detailsFieldLabel": "Details",
+          "detailsFieldPlaceholder": "More detailed information about the candidate option",
+          "categoryFieldLabel": "Category",
+          "categoryFieldPlaceholder": "Used to group candidates in teams in some layouts",
+          "urlFieldLabel": "Url",
+          "urlFieldPlaceholder": "https://example.com",
+          "imageUrlFieldLabel": "Image Url",
+          "imageUrlFieldPlaceholder": "https://example.com/path/to/image.jpg"
+        }
     },
     "censusConfig": {
         "intro": "The census specifies who can vote and the details we need from each elector. Here you can configure it"
@@ -428,12 +514,58 @@
           "close": "Closed registration",
           "closeDescription": "The census is generated by administrators. Third parties cannot register into the census. "
         },
+
+        "modals": {
+          "addCsvHeader": "Add CSV to census",
+          "addCsvBody": "Here you can add many people at once. The format is CSV, one person per line. Use semicolon to split fields, in order. Note that no data validation is done, so it's up to you to insert valid data.",
+          "addCsvTextareaPlaceholder": "one voter per line, keep the field order",
+          "confirmAddCsvButton": "Confirm and ADD CSV to census",
+
+          "addPersonHeader": "Add Person to census",
+          "addPersonBody": "Manually add a single person to the census. Note that no data validation is done, so it's up to you to insert valid data.",
+          "confirmAddPersonButton": "Confirm and ADD person to census",
+
+          "removePeopleHeader": "Remove selected people from census",
+          "removePeopleBody": "Removing the selected __num__ people from the census is definitive. Note that this will not remove their votes if they have voted.",
+          "confirmRemovePeopleButton": "Confirm and REMOVE selected __num__ people from census",
+
+          "activatePeopleHeader": "Activate selected people from census",
+          "activatePeopleBody": "Activating the selected __num__ people. This will allow this people to vote",
+          "confirmActivatePeopleButton": "Confirm and activate selected __num__ people in census",
+
+          "deactivatePeopleHeader": "Deactivate selected people from census",
+          "deactivatePeopleBody": "Deactivating the selected __num__ people. This will NOT allow this people to vote",
+          "confirmDeactivatePeopleButton": "Confirm and deactivate selected __num__ people in census",
+
+          "exportAllCensusHeader": "Export all census in CSV",
+          "exportAllCensusBody": "Here you can download the whole census in a CSV (Comma Separated Values) spreadsheet format, so that you can process it elsewhere. There are __total__ people in your census. Depending on the size of the census, the process of downloading the whole census can take a while. Once it finishes, you will be prompted to download the census. If you have any filter active, this filter will also be applied to the downloaded CSV file.",
+          "confirmexportAllCensusButton": "Confirm and download the census, with __total__ people"
+        },
+        "addPersonAction": "Add person...",
+        "addCsvAction": "Add CSV to census...",
+        "activateAction": "Activate __num__ selected people...",
+        "deactivateAction": "Deactivate __num__ selected people...",
+        "filteredEmptyResults": "No person matched the current filter.",
+        "emptyCensus": "Census is currently empty. You can add people through the Actions button.",
+        "removedCensusSuccessfully": "Removed selected people from census successfully",
+        "activatedCensusSuccessfully": "Activated selected people in census successfully",
+        "deactivatedCensusSuccessfully": "Deactivated selected people in census successfully",
+        "sentCodesSuccessfully": "Sent authentication codes successfully",
+
+        "voted": "voted",
+        "notVoted": "not voted",
+        "votedColumnHeader": "Voted?",
+        "activeColumnHeader": "Active?",
+
         "censusadd": "Voters added to the census",
         "actionsDropdown": "Actions",
-        "exportCensusAction": "Export all census to CSV",
-        "removeCensusAction": "Remove __num__ selected people",
+        "selectAllShownAction": "Select all people shown",
+        "deselectAllShownAction": "Deselect all people shown",
+        "exportCensusAction": "Export all census to CSV..",
+        "removeCensusAction": "Remove __num__ selected people..",
         "sendAuthCodesAction": "Send auth codes to __num__ selected..",
         "idColumnHeader": "Id",
+        "creationDateHeader": "Created date",
         "selectedColumnHeader": "Select",
         "emailOption": "email",
         "passwordOption": "password",
@@ -444,7 +576,10 @@
         "boolOption": "bool",
         "captchaOption": "captcha",
         "textareaOption": "textarea",
+        "dictOption": "Key-value",
         "fieldTypeLabel": "Type",
+        "fieldRegExLabel": "Regular expression",
+        "fieldRegExPlaceholder": "Advanced users only - Example: ^(1000|1010)$",
         "fieldMinLabel": "Min",
         "fieldMaxLabel": "Max",
         "fieldNameLabel": "Field name",
@@ -454,6 +589,7 @@
         "fieldRequiredLabel": "Required",
         "fieldUniqueLabel": "Unique",
         "fieldRequiredAuthLabel": "Checked against census in authentication",
+        "fieldPrivateLabel": "Private (only administrators can see and use this field)",
         "extraFieldsHeader": "Extra fields",
         "extraFieldsInfo": "Here you can define extra fields in the census in a versatile way. This allows you to do a range of things: adding extra checks against census in closed registration, registering new fields in open registration, etc.",
         "fields": {"label": "Extra fields", "placeholder": "Voter extra fields"},
@@ -462,25 +598,34 @@
         "name": "Name",
         "required": "Required",
         "add": "Add a new field",
-        "addCensusElement": "Add person",
-        "addCensus": "Add CSV to census",
         "nonEditableField": "(Required by auth method)",
         "manualAdd": "Manual add",
-        "massive1": "CSV file, use semicolon to split fields",
-        "massive2": "one voter per line, keep the field order",
         "export": "Export"
     },
     "auth": {
         "intro": "Authentication is the means used to ensure that an elector is who he sais he is. Here you need to find a balance between security, usability an cost",
         "auth": "Auth method",
-        "auths": {"email": "Email links", "sms": "SMS"},
+        "auths": {"email": "Email links", "sms": "SMS", "dnie": "spanish eDNI"},
         "sms": "SMS message",
-        "smstemp": "Template used in the SMS to send to the user. Use %(code)s to insert the SMS code",
+        "smstemp": "Template used in the SMS to send to the user. Use %(code)s to insert the SMS code and %(url)s for the authentication url",
         "smsdef": "This is your vote code: %(code)",
         "email": "Email message",
         "emailsub": "Email subject",
         "emailtemp": "Template used in the Email link to send to the user. Use %(code)s to insert the login code and %(url)s to insert the election link",
-        "emaildef": "Vote following this link %(url)s\nThis is your auth code: %(code)s"
+        "emailsubdef": "Vote now with Agora Voting",
+        "emaildef": "Vote in %(url)s with code %(code)s"
+    },
+    "columnFilter": {
+      "sort": "Sort:",
+      "filter": "Filter:",
+      "minDate": "From:",
+      "maxDate": "To:",
+      "noFilter": "No",
+      "noSort": "No",
+      "sortAsc": "Asc",
+      "sortDesc": "Desc",
+      "min": "min",
+      "max": "max"
     },
     "create": {
         "summary": "Summary: creating __num__ elections",
@@ -490,7 +635,39 @@
         "census": "Adding the census (id: __id__) __title__",
         "reg": "Registering the election (id: __id__) __title__",
         "creatingEl": "Creating election (id: __id__) __title__",
-        "logHeader": "Log"
+        "logHeader": "Log",
+        "errors": {
+          "election-is-array-questions": "Election '__eltitle__': list of questions is not an array",
+          "election-array-length-min-questions": "Election '__eltitle__': there must be at least __min__ questions but there are only __num__",
+          "election-array-length-max-questions": "Election '__eltitle__': there must be at most __max__ questions but there are __num__",
+          "election-array-length-max-description": "Election '__eltitle__': description length is __num__, exceeding the maximum of __max__",
+          "election-is-string-description": "Election '__eltitle__': description is not a string",
+          "election-array-length-max-title": "Election '__eltitle__': title length is __num__, exceeding the maximum of __max__",
+          "election-is-string-title": "Election '__eltitle__': title is not a string",
+          "election-question-array-length-max-description": "Election '__eltitle__', question '__qtitle__': description length is __num__, exceeding the maximum of __max__",
+          "election-question-is-string-description": "Election '__eltitle__', question '__qtitle__': description is not a string",
+          "election-question-array-length-max-title": "Election '__eltitle__', question '__qtitle__': title length is __num__, exceeding the maximum of __max__",
+          "election-question-is-string-title": "Election '__eltitle__', question '__qtitle__': title is not a string",
+          "election-question-answer-array-length-max-text": "Election '__eltitle__', question '__qtitle__', answer '__atext__': text length is __num__, exceeding the maximum of __max__",
+          "election-question-answer-is-string-text": "Election '__eltitle__', question '__qtitle__', answer '__atext__': text is not a string",
+          "election-question-answer-array-length-min-text": "Election '__eltitle__', question '__qtitle__', answer '__atext__': text length is __num__, but it has to be at least __min__ characters long",
+          "election-question-answer-array-length-max-details": "Election '__eltitle__', question '__qtitle__', answer '__atext__': details length is __num__, exceeding the maximum of __max__",
+          "election-question-answer-is-string-details": "Election '__eltitle__', question '__qtitle__', answer '__atext__': details is not a string",
+          "election-question-answer-array-length-max-category": "Election '__eltitle__', question '__qtitle__', answer '__atext__': category length is __num__, exceeding the maximum of __max__",
+          "election-question-answer-is-string-category": "Election '__eltitle__', question '__qtitle__', answer '__atext__': category is not a string",
+          "election-question-is-array-answers": "Election '__eltitle__': list of answers is not an array",
+          "election-question-is-int-min": "Election '__eltitle__', question '__qtitle__': the minimum number of candidates that a voter can choose is not an integer",
+          "election-question-is-int-max": "Election '__eltitle__', question '__qtitle__': the maximum number of candidates that a voter can choose is not an integer",
+          "election-question-is-int-num-winners": "Election '__eltitle__', question '__qtitle__': the number of winners is not an integer",
+          "election-question-array-length-min-answers": "Election '__eltitle__', question '__qtitle__': there must be at least __min__ answers, but there are only __num__",
+          "election-question-array-length-max-answers": "Election '__eltitle__', question '__qtitle__': there must be at most __max__ answers, but there are __num__",
+          "election-question-int-size-min-min": "Election '__eltitle__', question '__qtitle__': the minimum number of candidates that a voter can choose must be a positive integer, but it's __value__",
+          "election-question-int-size-max-min": "Election '__eltitle__', question '__qtitle__': the minimum number of candidates that a voter can choose is __value__, but cannot be larger than the maximum which is __max__",
+          "election-question-int-size-min-max": "Election '__eltitle__', question '__qtitle__': the maximum number of candidates that a voter can choose is __value__, but must be bigger or equal than the minimum which is __min__",
+          "election-question-int-size-max-max": "Election '__eltitle__', question '__qtitle__': the maximum number of candidates that a voter can choose is __value__, but cannot be larger than the number of candidates which is __max__",
+          "election-question-int-size-min-num-winners": "Election '__eltitle__', question '__qtitle__': there must be at least one winner, but it is __value__ instead",
+          "election-question-int-size-max-num-winners": "Election '__eltitle__', question '__qtitle__': the number of winners is __value__, but cannot be bigger than the number of answers that is __max__"
+        }
     }
   }
 }

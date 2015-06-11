@@ -38,11 +38,7 @@ angular.module('avElection')
 
       scope.addDotsToIntNumber = AddDotsToIntService;
       scope.numVotes = function (votes) {
-        if (scope.question.tally_type !== 'plurality-at-large') {
-          return AddDotsToIntService(votes, 2);
-        } else {
-          return AddDotsToIntService(votes);
-        }
+        return AddDotsToIntService(votes);
       };
       scope.percentVotes = PercentVotesService;
 

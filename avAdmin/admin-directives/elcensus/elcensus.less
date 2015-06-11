@@ -1,4 +1,13 @@
 [av-admin-elcensus] {
+
+  .input-group.search {
+    margin-right: 10px;
+  }
+
+  .header-block.affix-top {
+    margin-top: 0;
+  }
+
   .form-group .radio {
     border: 2px solid transparent;
     border-radius: 4px;
@@ -35,6 +44,12 @@
     }
   }
 
+  .affixed.affix-placeholder {
+    display: block;
+    width: 100%;
+    height: 91px;
+  }
+
   .form-group {
     margin-left: 0;
     margin-right: 0;
@@ -56,4 +71,34 @@
       }
     }
   }
+
+  .censustable {
+    overflow-x: auto;
+
+    tr td.wide {
+      text-align: center;
+      padding: 30px;
+    }
+
+    thead > tr > th {
+      vertical-align: top;
+    }
+
+    tbody > tr {
+      transition: all 0.5s ease;
+    }
+
+    .small-col {
+      width: 95px;
+
+      input {
+        margin-right: 5px;
+        float: left;
+      }
+    }
+  }
+}
+
+.export-all-census-modal progressbar {
+  margin-top: 15px;
 }

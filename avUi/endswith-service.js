@@ -5,6 +5,6 @@ angular.module('avUi')
           return false;
         }
         var lastIndex = originString.indexOf(searchString);
-        return lastIndex !== -1 && lastIndex === originString - searchString.length;
+        return lastIndex !== -1 && lastIndex === originString.length - searchString.length;
       };
     });

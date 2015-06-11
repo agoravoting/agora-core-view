@@ -1,4 +1,6 @@
 {
+  "yes": "sí",
+  "no": "no",
   "eg": "ej.",
   "next": "Siguiente",
   "done": "Hecho",
@@ -30,7 +32,7 @@
     "reviewOptionsTitle": "2. Revisa tu papeleta",
     "reviewOptionsText": "Una vez has elegido tus candidaturas, procederemos a cifrarlas y obtendrás un localizador. Te mostraremos el contenido de tu papeleta para que puedas revisarla.",
     "emitBallotTitle": "3. Envía tu voto",
-    "emitBallotText": "Puedes enviar tu voto a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditarlo que tu voto fue correctamente cifrado.",
+    "emitBallotText": "Puedes enviar tu voto a la urna electrónica para que sea debidamente registrado. Alternativamente, puedes auditar que tu voto fue correctamente cifrado.",
 
     "errorTitle": "Oops. Ocurrió algo inesperado",
     "errorHtml": "<p>Ocurrió el siguiente problema (identificador __errorId__): </p><p>__error__</p><p>En caso de que creas que debes contactar con nosotros, puedes hacerlo enviándonos un email a <a href=\"mailto:__email__\" target=\"_blank\">__email__</a>.</p>",
@@ -50,6 +52,8 @@
 
     "questionSelectedOptionsTitle": "candidaturas seleccionadas (__count__)",
     "questionSelectedOptionsTitle_plural": "candidaturas seleccionadas (__count__)",
+    "questionSelectedOptionsTitleOrdered": "candidaturas seleccionadas (__count__) en orden, pincha y arrastra para ordenarlas",
+    "questionSelectedOptionsTitleOrdered_plural": "candidaturas seleccionadas (__count__) en orden, pincha y arrastra para ordenarlas",
     "questionAvailableOptionsTitle": "candidaturas disponibles",
     "numOptionsSelected": "__count__ candidaturas seleccionadas.",
     "numOptionsSelected_plural": "__count__ candidaturas seleccionadas.",
@@ -144,7 +148,34 @@
     "relatedLinksText": "Para más información sobre la votación:",
 
     "circleOptionExternalLink": "Ver detalles",
-    "voteInBlank": "Votar en Blanco"
+    "voteInBlank": "Votar en Blanco",
+    "openOptionLink": "Abrir enlace en nueva pestaña",
+
+    "ahoramPrimaries": {
+      "selectAll": "Seleccionar todo el equipo",
+      "deselectAll": "Deseleccionar todo el equipo",
+      "selectedOptions": "Opciones seleccionadas (en orden, pincha y arrastra para cambiarlo)",
+      "mayoral": "Alcaldía (__count__)",
+      "mayoral_plural": "Alcaldía (__count__)",
+      "councils": "Concejalías (__count__)",
+      "councils_plural": "Concejalías (__count__)"
+    },
+
+    "reviewScreen": {
+      "pair": "__one__ > __two__"
+    },
+
+    "pairwiseBeta": {
+      "web": "Web",
+      "warning": "Clic para seleccionar. __count__ de __max__ comparaciones realizadas.",
+      "warning_plural": "Clic para seleccionar. __count__ de __max__ comparaciones realizadas"
+    },
+
+    "confirmNullVote": {
+      "header": "Voto en blanco",
+      "body": "No has seleccionado ninguna opción, lo que equivale a votar en blanco en esta pregunta.",
+      "confirm": "Sí, quiero votar en blanco en esta pregunta"
+    }
   },
   "avElection": {
     "resultsLoadingText": "Cargando resultados",
@@ -152,6 +183,7 @@
     "defaultShareText": "Vota en __title__ con @agoravoting __url__",
 
     "resultsHeader": "__title__: Resultados",
+    "resultsTableNPositionHeader": "Número de votos por posición:",
     "resultsTableCandidateHeader": "Candidatura",
     "resultsTableVotesHeader": "Votos",
     "resultsTableVotesPercentageHeader": "",
@@ -225,11 +257,20 @@
     "registerFormHelpTitle": "Registrándote para votar",
     "registerAdminFormHelpTitle": "Registrándote para crear votaciones",
     "fillValidFormText": "Para poder enviar el formulario, primero rellena correctamente todos los campos.",
-    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. Por favor, revísalos, o ponte en contacto con los administradores de la votación,",
+    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. <strong>Lo más probable es que ya estés registrado, <a href=\"__url__\">accede usando tus credenciales pinchando aquí</a></strong>. También puede que el periodo de votación haya finalizado. Comprueba todo lo anterior, y en caso de que sigas teniendo problemas, revisa tus datos, o ponte en contacto con los administradores de la votación,",
+    "invalidRegisterDNI": "No ha sido posible registrarte con los datos aportados. <strong>Has insertado un número de DNI inválido</strong>. Por favor, revísalo.",
     "logout": "Salir",
     "codeLabel": "Código de Autenticación",
+    "codePlaceholder": "Introduce el código",
+    "codeHelp": "Por favor usa el último código que te enviamos al teléfono. Es un código alfanumérico de 8 caracters.",
+    "errorSendingAuthCode": "Error enviando el código. Revisa que no pusiste mal tu teléfono, o quizás lo enviaste demasiadas veces. Si persiste el problema, contacta con los organizadores.",
+    "noCodeReceivedQuestion": "¿Todavía no has recibido el código?",
+    "sendCodeAgain": "Volver a enviar el código",
     "emailLabel": "Correo electrónico",
-    "telLabel": "Teléfono",
+    "telLabel": " Número de teléfono móvil",
+    "telInvalid": " Número de teléfono inválido. Ejemplo de número válido: 666666666",
+    "telPlaceholder": "Ejemplo: 666666666",
+    "telHelp": "Ssólo números, sin espacios ni guiones. Para números extranjeros, usa un prefijo tipo +34",
     "emailPlaceholder": "fulanito@ejemplo.com",
     "passwordLabel": "Contraseña",
     "passwordPlaceholder": "contraseña",
@@ -241,6 +282,9 @@
     "step": "guia paso a paso",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "loginButton": "Entrar",
+    "alreadyRegistered": "¿Ya estás registrado?",
+    "helpAlreadyRegisteredForm": "Quizás ya estés registrado y lo que necesitas realmente es autenticarte.",
+    "loginHere": "Acceder usando mis credenciales, ya me registré antes",
 
     "registerHeader": "Regístrate para votar",
     "registerAdminHeader": "Regístrate",
@@ -257,13 +301,15 @@
 
     "validateHeader": "Código de validación",
     "validateButton": "Validar",
-    "codePlaceholder": "código",
 
     "loadingRegistration": "Cargando",
     "successRegistration": "Exitoso",
     "errorRegistration": "Error",
 
-    "invalidCredentials": "Credenciales no válidas"
+    "invalidCredentials": "Credenciales no válidas",
+    "invalidDataRegEx": "Datos inválidos",
+    "invalidDni": "DNI/NIE inválido",
+    "dniHelp": "Introduce un DNI/NIE válido. Ejemplos: 12343567R o X01234356R"
   },
 
   "avAdmin": {
@@ -272,7 +318,7 @@
         "features": "Funcionalidad",
         "help": "Ayuda",
         "freesignup": "Registro gratuito",
-        "login": "Acceso",
+        "login": "Entrar",
         "logout": "salir"
     },
     "learnMore": "Learn more..",
@@ -318,7 +364,7 @@
         "questions": "Preguntas",
         "censusConfig": "Configuración Censal",
         "census": "Datos censales",
-        "auth": "Autorización",
+        "auth": "Autenticación",
         "tally": "Recuento",
         "create": "Crear Votación",
         "myAccount": "Mi cuenta",
@@ -344,6 +390,7 @@
         "dropFilesHere": "Drop CSV file here"
     },
     "dashboard": {
+        "duplicateElection": "Duplicar votación",
         "sendAuthCodes": "Enviar autenticación",
         "donow": "pulsa para hacer ahora",
         "votes": "Votos",
@@ -372,87 +419,180 @@
         "censussend": "Se ha enviado el censo correctamente",
         "preview": "Demo de cabina de votación",
         "modals": {
-          "createHeader": "Create election",
-          "createBody": "To create the election, its configuration is sent to the election authorities and they create election public encryption keys. After that, the election is no longer editable. Before doing this, please check that the configuration is correct (for example taking a look at the demo voting booth). If you need to change the election after this, you will have to create a new one.",
-          "confirmCreateButton": "Confirm and CREATE election",
-          "startHeader": "Start election",
-          "startBody": "Please be aware that once you start the elections, voters will be able to vote until the election is stopped",
-          "confirmStartButton": "Confirm and START the election",
-          "stopHeader": "Stop election",
-          "stopBody": "Once you stop the election, people will not be able to vote anymore.  Please be aware and exercise caution",
-          "confirmStopButton": "Confirm and STOP the election",
-          "tallyHeader": "Tally election",
-          "tallyBody": "The tally process is run by the election authorities and it might take a while, depending on the number of votes. It involves a mathematically verifiable cryptographic process that anonymizes and obtains the content of each vote.",
-          "confirmTallyButton": "Confirm and TALLY the election",
-          "publishResultsHeader": "Publish election results",
-          "publishResultsBody": "Currently only the election administrators have access to the calculated election results. When you publish the results, these will be made public for everyone to see.",
-          "confirmPublishResultsButton": "Confirm and PUBLISH election results",
-          "sendAuthCodesHeader": "Send authentication codes",
-          "sendAuthCodesBody": "This action will send a message to all the registered electors in the census. Note that sending many messages can be considered as SPAM, so proceed with caution. Also, please review first the message that will be sent.",
-          "confirmSendAuthCodesButton": "SEND authentication codes to ALL census",
-          "confirmSendAuthCodesIdsButton": "SEND authentication codes to SELECTED users",
-          "cancel": "Cancel"
+          "createHeader": "Crear votación",
+          "createBody": "Para crear la votación, su configuración es enviada a las autoridades y estas crean las claves públicas de la votación. Tras esto, la votación ya no es editable. Antes de proceder a realizar este paso, por favor comprueba que la configuración es correcta (por ejemplo comprobándolo en la cabina de votación de prueba). Si necesitas cambiar la votación pasado este paso, deberás crear una nueva.",
+          "confirmCreateButton": "Confirmar y CREAR la votación",
+          "startHeader": "Comenzar votación",
+          "startBody": "Por favor ten en cuenta que una vez que se comienza una votación, los votantes podrán votar hasta que no se para y así se termine el periodo de voto",
+          "confirmStartButton": "Confirmar y COMENZAR la votación",
+          "stopHeader": "Parar votación",
+          "stopBody": "Una vez se para la votación, los electores dejarán de poder votar. Por favor, tenlo en cuenta y procede con cuidado.",
+          "confirmStopButton": "Confirmar y PARAR la votación",
+          "tallyHeader": "Recuento de votos",
+          "tallyBody": "El proceso de recuento es llevado a cabo por las autoridades y podría tomar algún tiempo, dependiendo del número de votos. Incluye un proceso matemático criptográfico y matemáticamente verificable que anonimiza y obtiene el contenido de cada voto.",
+          "confirmTallyButton": "Confirmar y  comenzar el RECUENTO",
+          "publishResultsHeader": "Publicar resultados",
+          "publishResultsBody": "Hasta el momento solo los administradores de la votación han tenido acceso directo a los resultados calculados de la votación. Cuando se publican los resultados, se ponen a disposición pública para que cualquiera pueda verlos.",
+          "confirmPublishResultsButton": "Confirmar y PUBLICAR resultados",
+          "sendAuthCodesHeader": "Enviar códigos de autenticación",
+          "sendAuthCodesBody": "Esta votación enviará un mensaje a todos los electores registrados en el censo. Nótese que enviar muchos mensajes puede considerarse SPAM, así que procede con precaución. Además, por favor comprueba primero el texto del mensaje que vas a enviar.",
+          "confirmSendAuthCodesButton": "ENVIAR códigos de autenticación a TODO el censo",
+          "confirmSendAuthCodesIdsButton": "ENVIAR códigos de autenticación a los usuarios SELECCIONADOS",
+          "cancel": "Cancelar"
         }
     },
     "basic": {
-        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. No te pongas nerviso y adelante, sólo te llevará 5 minutos",
+        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. Sólo te llevará 5 minutos, por favor lee el Manual de Administrador, enlazado en el icono de ayuda de la barra superior.",
         "title": { "label": "Título", "placeholder": "ej.Nueva junta de dirección", "labelH3": "__index__. Votación titulada: __title__" },
-        "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará" },
+        "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará. Aquí debe de identificarse la organización que va a llevar el proceso electoral, así como los métodos de contacto con los electores." },
         "share": { "label": "Texto para compartir", "placeholder": "Texto para usar en los enlaces a redes sociales" },
         "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votación" },
-        "layouts": { "simple": "Simple", "2questions-conditional": "Sí/No", "pcandidates-election": "Table Candidates" },
+        "layouts": { "simple": "Simple", "2questions-conditional": "Sí/No", "pcandidates-election": "Tabla de candidatos" },
         "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votación?" },
-        "themes": { "default": "Por defecto", "podemos": "Purple" },
-        "questionOptionsSummary": "<strong>__num_answers__</strong> candidates. Voters select between <strong>__min__</strong> and <strong>__max__</strong> options (randomize: <strong>__random__</strong>) and there are <strong>__num_winners__</strong> winners. The tally method is <strong>__tally_method__</strong>.",
+        "themes": { "default": "Por defecto", "podemos": "Morado" },
+        "questionOptionsSummary": "<strong>__num_answers__</strong> candidatos. Los votantes seleccionan entre <strong>__min__</strong> y <strong>__max__</strong> opciones (orden aleatorio: <strong>__random__</strong>) y hay <strong>__num_winners__</strong> ganadores. El método de recuento es <strong>__tally_method__</strong>.",
         "censusSize": "__num__ personas",
-        "registerAndCreateElection": "Not only register the election, but also create it on the election authorities. This means you won't be able to modify the election."
+        "registerAndCreateElection": "No sólo registrar la votación, sino crearla en las autoridades de votación. Esto significa que ya no se podrá modificar la votación."
     },
     "questions": {
         "new": "Nueva pregunta",
         "votingSystem": "Sistema de votación",
         "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Borda Dowdall o de Nauru (1/n)", "borda": "Borda tradicional"},
-        "winners": {"label": "Número de ganadores", "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de candidaturas"},
-        "min": {"label": "Mínimo de candidaturas seleccionadas", "placeholder": "¿Cuántas candidaturas debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco"},
-        "max": {"label": "Máximo de candidaturas seleccionadas", "placeholder": "¿Cuántas candidaturas puede un votante seleccionar?"},
+        "winners": {
+          "label": "Número de ganadores",
+          "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de candidaturas",
+          "numOptionsError": "Hay __winners__ ganadores pero sólo __cands__ candidaturas",
+          "minError": "Tiene que haber al menos un ganador"
+          },
+        "min": {
+          "label": "Mínimo de candidaturas seleccionadas",
+          "placeholder": "¿Cuántas candidaturas debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco",
+          "maxError": "El mínimo número de candidaturas seleccionables puede ser como mucho __max__",
+          "minError": "No puede ser negativo"
+        },
+        "max": {
+          "label": "Máximo de candidaturas seleccionadas",
+          "placeholder": "¿Cuántas candidaturas puede un votante seleccionar?",
+          "numOptionsError": "Se pueden seleccionar hasta  __max__ candidaturas pero sólo hay __cands__ candidaturas",
+          "minError": "Tiene que ser al menos 1"
+        },
         "random": {"label": "Orden aleatorio de candidaturas", "placeholder": "Cuando está activo las candidaturas aparecerán en un orden diferente a cada votante en la cabina de votación"},
-        "candidates": {"label": "Candidatos", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
-        "newopt": "Nueva opción"
+        "candidates": {
+          "label": "Candidaturas",
+          "placeholder": "Respuestas que podrán ser votadas en esta pregunta",
+          "minError": "Debe haber al menos una candidatura"
+        },
+        "newopt": "Nueva opción",
+        "layout": {
+          "label": "Disposición",
+          "placeholder": "Especifica cómo se va a mostrar la pregunta",
+          "accordion": "Normal",
+          "circles": "Imágenes con detalles",
+          "conditional-accordion": "Conditional Accordion",
+          "ahoram-primaries": "Primarias AhoraM"
+        },
+        "option": {
+          "textFieldLabel": "Texto",
+          "textFieldPlaceholder": "Texto de la candidatura",
+          "detailsFieldLabel": "Detalles",
+          "detailsFieldPlaceholder": "Información más detallada sobre la candidatura",
+          "categoryFieldLabel": "Categoría",
+          "categoryFieldPlaceholder": "USado para agrupar candidaturas por equipos en algunas disposiciones",
+          "urlFieldLabel": "Url",
+          "urlFieldPlaceholder": "https://example.com",
+          "imageUrlFieldLabel": "Url de Imagen",
+          "imageUrlFieldPlaceholder": "https://example.com/path/to/image.jpg"
+        }
     },
     "censusConfig": {
-        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo"
+        "intro": "El censo se especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes configurarlo"
     },
     "census": {
-        "intro": "El censos especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes gestionarlo",
+        "intro": "El censo se especifica quién puede votar y los detalles necesarios de cada elector. Aquí puedes gestionarlo",
         "reg": { "label": "Registro", "placeholder": "¿Cómo se genera el censo?" },
-        "census": {"open": "Registro abierto", "close": "Registro cerrado"},
+        "census": {
+            "open": "Registro abierto",
+            "openDescription": "El censo solo puede generarse por los administradores de la votación, pero cada individuo puede registrarse usando el proceso de registro.",
+            "close": "Registro cerrado",
+            "closeDescription": "El censo es generado por los admistradores. Terceros no pueden registrarse en el censo."
+          },
         "fields": {"label": "Campos extra", "placeholder": "Campos extra del votante"},
-        "censusadd": "Voters added to the census",
-        "actionsDropdown": "Actions",
-        "exportCensusAction": "Export all census to CSV",
-        "removeCensusAction": "Remove __num__ selected people",
-        "sendAuthCodesAction": "Send auth codes to __num__ selected..",
+
+        "modals": {
+          "addCsvHeader": "Añadir CSV al censo",
+          "addCsvBody": "Aqui puedes añadir muchas personas al censo de una tacada. El formato es CSV, con una persona por línea de texto. Se utiliza el punto y coma como separador de campos, en orden. Nótese que no se realiza validación alguna de los datos, así que es tu responsabilidad insertar datos correctos.",
+          "addCsvTextareaPlaceholder": "Un elector por línea, siguiendo el orden de los campos separando por punto y coma",
+          "confirmAddCsvButton": "Confirmar y AÑADIR CSV al censo",
+
+          "addPersonHeader": "Añadir persona al censo",
+          "addPersonBody": "Manualmente añade una sola persona al censo. Nótese que no se realiza validación alguna de los datos, así que es tu responsabilidad insertar datos correctos.",
+          "confirmAddPersonButton": "Confirmar y AÑADIR persona al censo",
+
+          "removePeopleHeader": "Eliminar personas seleccionadas del censo",
+          "removePeopleBody": "Eliminar a las __num__ personas seleccionadas del censo de forma definitiva. Nótese que esto NO eliminará sus votos si ya han votado.",
+          "confirmRemovePeopleButton": "Confirmar y ELIMINAR a las __num__ personas seleccionadas del censo",
+
+          "activatePeopleHeader": "Activar personas seleccionadas en el censo",
+          "activatePeopleBody": "Activar a las __num__ personas. Esta acción permite a las personas seleccionadas votar. Se enviará el código de autenticación automáticamente",
+          "confirmActivatePeopleButton": "Confirmar y activar a las  __num__ personas en el censo",
+
+          "deactivatePeopleHeader": "Desactivar personas seleccionadas en el censo",
+          "deactivatePeopleBody": "Desactivar a las __num__ personas. Esta acción hace que las personas seleccionadas no puedan votar",
+          "confirmDeactivatePeopleButton": "Confirmar y desactivar a las  __num__ personas en el censo",
+
+          "exportAllCensusHeader": "Exportar todo el censo en CSV",
+          "exportAllCensusBody": "Desde aquí puedes descargar la totalidad del censo en un fichero con formato de hoja de cálculo CSV (Comma Separated Values), de manera que puedes abrirlo y procesarlo autónomamente. Dependiendo del tamaño del censo, el proceso de descarga de todo el censo puede tomar un rato. Una vez ha terminado, se te mostrará la posibilidad de descargar el como un fichero. Si tienes algún filtro activo, este filtro también será aplicado al fichero CSV.",
+          "confirmexportAllCensusButton": "Confirmar y descargar el censo con un total de __total__ personas"
+        },
+        "addPersonAction": "Añadir persona...",
+        "addCsvAction": "Añadir CSV al censo...",
+        "activateAction": "Activar los __num__ seleccionados...",
+        "deactivateAction": "Desactivar los __num__ seleccionados...",
+        "filteredEmptyResults": "No se encontró a ninguna persona que coincida con el filtro.",
+        "emptyCensus": "El censo está actualmente vacío. Puedes añadir personas a través del botón de Acciones.",
+        "removedCensusSuccessfully": "Se eliminaron a las personas seleccionadas correctamente",
+        "deactivatedCensusSuccessfully": "Se desactivaron las personas seleccionadas correctamente",
+        "sentCodesSuccessfully": "Enviados los códigos de autenticación correctamente",
+
+        "voted": "votó",
+        "notVoted": "no votó",
+        "votedColumnHeader": "Votó?",
+        "activeColumnHeader": "Activo?",
+
+        "censusadd": "Votante añadido al censo",
+        "actionsDropdown": "Acciones",
+        "selectAllShownAction": "Selectionar a todas las personas visibles",
+        "deselectAllShownAction": "Deselectionar a todas las personas visibles",
+        "exportCensusAction": "Exportar todo el censo en CSV..",
+        "removeCensusAction": "Eliminar los __num__ seleccionados..",
+        "sendAuthCodesAction": "Enviar códigos de autenticación a los __num__ seleccionados..",
         "idColumnHeader": "Id",
-        "selectedColumnHeader": "Select",
+        "creationDateHeader": "Created date",
+        "selectedColumnHeader": "Seleccionar",
         "emailOption": "email",
-        "passwordOption": "password",
-        "codeOption": "code",
-        "textOption": "text",
-        "tlfOption": "tlf",
-        "intOption": "int",
-        "boolOption": "bool",
+        "passwordOption": "contraseña",
+        "codeOption": "código",
+        "textOption": "texto",
+        "tlfOption": "teléfono",
+        "intOption": "entero",
+        "boolOption": "booleano",
+        "fieldRegExLabel": "Expresión regular",
+        "fieldRegExPlaceholder": "Sólo usuarios avanzados - Ejemplo: ^(1000|1010)$",
         "captchaOption": "captcha",
-        "textareaOption": "textarea",
-        "configurationHeader": "Configuration",
-        "fieldTypeLabel": "Type",
+        "textareaOption": "cuadro de texto",
+        "dictOption": "Clave-valor",
+        "configurationHeader": "Configuración",
+        "fieldTypeLabel": "Tipo",
         "fieldMinLabel": "Min",
         "fieldMaxLabel": "Max",
-        "fieldNameLabel": "Field name",
-        "fieldNamePlaceholder": "Example: Name and Surname",
-        "fieldHelpLabel": "Help text",
-        "fieldHelpPlaceholder": "Example: Insert both your name and surname",
-        "fieldRequiredAuthLabel": "Checked against census in authentication",
-        "extraFieldsHeader": "Extra fields",
-        "extraFieldsInfo": "Here you can define extra fields in the census in a versatile way. This allows you to do a range of things: adding extra checks against census in closed registration, registering new fields in open registration, etc.",
+        "fieldNameLabel": "Nombre del campo",
+        "fieldNamePlaceholder": "Ejemplo: Nombre y Apellidos",
+        "fieldHelpLabel": "Texto de ayuda",
+        "fieldHelpPlaceholder": "Ejemplo: Inserta tanto tu nombre como apellidos",
+        "fieldRequiredAuthLabel": "Contrastar con el censo durante la autenticación",
+        "fieldUniqueLabel": "Privado (solo los administradores pueden ver y usar este campo)",
+        "extraFieldsHeader": "Campos extra",
+        "extraFieldsInfo": "Aqui puedes definir los campos extra del censo de una forma versátil. Esto te permite hacer un buen abanico de cosas: añadir comprobaciones extra al censo cuando el censo es cerrado, solicitar más campos de registro cuando el censo es abierto, etc.",
         "manage": "Administrar censo",
         "name": "Nombre",
         "required": "Obligatorio",
@@ -468,14 +608,27 @@
     "auth": {
         "intro": "La autenticación se usa para asegurar que un elector es quien dice ser. Aquí tienes que llegar a un compromiso entre seguridad, usabilidad y coste",
         "auth": "Método de autenticación",
-        "auths": {"email": "Correo electrónico", "sms": "SMS"},
+        "auths": {"email": "Correo electrónico", "sms": "SMS", "dnie": "DNI electrónico"},
         "sms": "Mensaje SMS",
-        "smstemp": "Plantilla usada en el SMS a enviar al usuario. Usa %(code)s para insertar el código SMS",
+        "smstemp": "Plantilla usada en el SMS a enviar al usuario. Usa %(code)s para insertar el código SMS y %(url)s para insertar el enlace de votación",
         "smsdef": "Este es tu código de votación %(code)s",
-        "email": "Mensaje por correo elelectrónico",
-        "emailsub": "Asúnto del correo",
+        "email": "Cuerpo del mensaje",
+        "emailsub": "Asunto del email",
         "emailtemp": "Plantilla usada en el correo para enviar a los usuarios. Usa %(code)s para añadir el código de acceso y %(url)s para insertar el enlace de votación",
-        "emaildef": "Vota siguiendo este enlace %(url)s\nEste es tu código de autenticación: %(code)s"
+        "emailsubdef": "Ya puedes votar con Agora Voting",
+        "emaildef": "Vota en %(url)s con el codigo %(code)s"
+    },
+    "columnFilter": {
+      "sort": "Orden:",
+      "filter": "Filtro:",
+      "minDate": "Desde:",
+      "maxDate": "Hasta:",
+      "noFilter": "No",
+      "noSort": "No",
+      "sortAsc": "Asc",
+      "sortDesc": "Desc",
+      "min": "min",
+      "max": "max"
     },
     "create": {
         "summary": "Resumen: creando __num__ votaciones",
@@ -486,7 +639,40 @@
         "census": "Añadiendo el censo (id: __id__) __title__",
         "reg": "Registrando la votación (id: __id__) __title__",
         "creatingEl": "Creando la votación (id: __id__) __title__",
-        "logHeader": "Log"
+        "logHeader": "Log",
+        "errors": {
+          "election-is-array-questions": "Votación '__eltitle__': la lista de pregunta no es un array",
+          "election-array-length-min-questions": "Votación '__eltitle__': debe haber al menos __min__ preguntas, pero solo hay  __num__",
+          "election-array-length-max-questions": "Votación '__eltitle__': debe haber como mucho __max__ preguntas, pero hay __num__",
+          "election-question-is-array-answers": "Votación '__eltitle__': la lista de candidaturas no es un array",
+
+          "election-array-length-max-description": "Votación '__eltitle__': la descripción tiene una longitud de __num__ caracteres, sobrepasando el máximo de __max__ caracteres",
+          "election-is-string-description": "Votación '__eltitle__': la descripción no es una cadena de texto",
+          "election-array-length-max-title": "Votación '__eltitle__': el título tiene una longitud de __num__ caracteres, sobrepasando el máximo de __max__ caracteres",
+          "election-is-string-title": "Votación '__eltitle__': el título no es una cadena de texto",
+          "election-question-array-length-max-description": "Votación '__eltitle__', pregunta '__qtitle__': la descripción tiene una longitud de __num__ caracteres, sobrepasando el máximo de __max__ caracteres",
+          "election-question-is-string-description": "Votación '__eltitle__', pregunta '__qtitle__': la descripción no es una cadena de texto",
+          "election-question-array-length-max-title": "Votación '__eltitle__', pregunta '__qtitle__': el título tiene una longitud de __num__ caracteres, sobrepasando el máximo de __max__ caracteres",
+          "election-question-is-string-title": "Votación '__eltitle__', pregunta '__qtitle__': el título no es una cadena de texto",
+          "election-question-answer-array-length-max-text": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': el texto tiene una longitud de __num__ caracteres, sobrepasando el máximo de __max__ caracteres",
+          "election-question-answer-is-string-description": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': la descripción no es una cadena de texto",
+          "election-question-answer-array-length-min-text": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': el texto tiene una longitud de __num__ caracteres, pero debe tener al menos __min__ caracteres",
+          "election-question-answer-is-string-text": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': el texto no es una cadena de texto",
+          "election-question-answer-array-length-max-description": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': la descripción tiene una longitud de __num__ caracteres, sobrepasando el máximo de __max__ caracteres",
+          "election-question-answer-array-length-max-category": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': la categoría tiene una longitud de __num__ caracteres, sobrepasando el máximo de __max__ caracteres",
+          "election-question-answer-is-string-category": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': la categoría no es una cadena de texto",
+          "election-question-is-int-min": "Votación '__eltitle__', pregunta '__qtitle__': el mínimo número de candidaturas que puede seleccionar un votante no es un número entero",
+          "election-question-is-int-max": "Votación '__eltitle__', pregunta '__qtitle__': el máximo número de candidaturas que puede seleccionar un votante no es un número entero",
+          "election-question-is-int-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': el número de ganadores no es un número entero",
+          "election-question-array-length-min-answers": "Votación '__eltitle__', pregunta '__qtitle__': debe haber al menos  __min__ candidaturas, pero solo hay __num__",
+          "election-question-array-length-max-answers": "Votación '__eltitle__', pregunta '__qtitle__': debe haber como mucho __max__ candidaturas, pero hay __num__",
+          "election-question-int-size-min-min": "Votación '__eltitle__', pregunta '__qtitle__': el mínimo número de candidaturas que puede seleccionar un votante debe ser un número positivo, pero es __value__",
+          "election-question-int-size-max-min": "Votación '__eltitle__', pregunta '__qtitle__': el mínimo número de candidaturas que puede seleccionar un votante es __value__, pero no debe ser mayor que el máximo, que es __max__",
+          "election-question-int-size-min-max": "Votación '__eltitle__', pregunta '__qtitle__': el máximo número de candidaturas que puede seleccionar un votante es __value__, pero debe ser mayor o igual que el mínimo, que es __min__",
+          "election-question-int-size-max-max": "Votación '__eltitle__', pregunta '__qtitle__': el máximo número de candidaturas que puede seleccionar un votante es __value__, pero no debe ser mayor que el número total de candidaturas, que es __max__",
+          "election-question-int-size-min-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': debe haber al menos un ganador, pero hay __value__",
+          "election-question-int-size-max-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': el número de ganadores es __value__, pero no puede ser mayor que el número total de candidaturas, que es __max__"
+        }
     }
   }
 }

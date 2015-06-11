@@ -4,12 +4,19 @@
  * <li class="dropdown" av-change-lang></li>
  */
 angular.module('avUi')
-  .directive('avChangeLang', function($i18next) {
+  .directive('avChangeLang', function($i18next, angularLoad, amMoment) {
     function link(scope, element, attrs) {
       scope.deflang = $i18next.options.lng || navigator.language;
       scope.changeLang = function(newl) {
         $i18next.options.lng = newl;
         scope.deflang = $i18next.options.lng;
+
+        // async load moment i18n
+        angularLoad
+          .loadScript('/locales/moment/' + newl + '.js')
+          .then(function () {
+            amMoment.changeLocale(newl);
+          });
       };
     }
 

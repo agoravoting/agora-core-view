@@ -2,7 +2,7 @@
   <div av-admin-head loginrequired>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid admin-unfixed-top">
     <div class="row" id="container">
       <div av-admin-sidebar id="sidebar" class="col-sm-3">
       </div>
@@ -27,7 +27,7 @@
       </div>
       <div
         class="col-sm-9 admin-controller-content"
-        ng-repeat='template in plugins'
+        ng-repeat='template in plugins.list'
         ng-include='template.directive'
         ng-if="shortst == template.name">
       </div>

@@ -94,13 +94,38 @@
           <option value="textarea" ng-i18next>
             avAdmin.census.textareaOption
           </option>
+          <option value="dict" ng-i18next>
+            avAdmin.census.dictOption
+          </option>
         </select>
       </div>
     </div>
   </div>
 
+  <!-- reg expr -->
+  <div
+    class="row"
+    ng-if="['text', 'int'].indexOf(field.type) !== -1">
+    <div class="form-group">
+      <label
+        for="fieldRegExInput{{$index}}"
+        class="control-label col-sm-4"
+        ng-i18next="avAdmin.census.fieldRegExLabel">
+      </label>
+      <div class="col-sm-8">
+        <input
+          type="text"
+          class="form-control"
+          ng-model="field.regex"
+          name="fieldRegExInput{{$index}}"
+          id="fieldRegExInput{{$index}}"
+          ng-i18next="[placeholder]avAdmin.census.fieldRegExPlaceholder" />
+      </div>
+    </div>
+  </div>
+
   <!-- min num -->
-  <div class="row" ng-if="field.type === 'int'">
+  <div class="row" ng-if="['password', 'code', 'text', 'textarea', 'int'].indexOf(field.type) !== -1">
     <div class="form-group">
         <label class="col-sm-4 control-label" for="winners" ng-i18next>
           avAdmin.census.fieldMinLabel
@@ -116,6 +141,12 @@
                 type="text"
                 step="1"
                 class="form-control"
+                ui-keypress="{
+                  37: 'incOpt(\'min\', -1, $event)',
+                  38: 'incOpt(\'min\', 1, $event)',
+                  39: 'incOpt(\'min\', 1, $event)',
+                  40: 'incOpt(\'min\', -1, $event)'
+                }"
                 ng-model="field.min" />
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button" ng-click="incOpt('min', 1)">
@@ -128,7 +159,7 @@
   </div>
 
   <!-- max num -->
-  <div class="row" ng-if="field.type === 'int'">
+  <div class="row" ng-if="['password', 'code', 'text', 'textarea', 'int'].indexOf(field.type) !== -1">
     <div class="form-group">
         <label class="col-sm-4 control-label" for="winners" ng-i18next>
           avAdmin.census.fieldMaxLabel
@@ -143,6 +174,12 @@
               <input
                 type="text"
                 min="{{field.min}}" step="1"
+                ui-keypress="{
+                  37: 'incOpt(\'max\', -1, $event)',
+                  38: 'incOpt(\'max\', 1, $event)',
+                  39: 'incOpt(\'max\', 1, $event)',
+                  40: 'incOpt(\'max\', -1, $event)'
+                }"
                 class="form-control"
                 ng-model="field.max" />
               <span class="input-group-btn">
@@ -155,46 +192,8 @@
     </div>
   </div>
 
-  <!-- min text -->
-  <div class="row" ng-if="['password', 'code', 'text', 'textarea'].indexOf(field.type) !== -1">
-    <div class="form-group">
-      <label
-        for="fieldMinInput{{$index}}"
-        class="control-label col-sm-4"
-        ng-i18next="avAdmin.census.fieldMinLabel">
-      </label>
-      <div class="col-sm-8">
-        <input
-          type="text"
-          class="form-control"
-          ng-model="field.min"
-          name="fieldMinInput{{$index}}"
-          id="fieldMinInput{{$index}}" />
-      </div>
-    </div>
-  </div>
-
-  <!-- max text -->
-  <div class="row" ng-if="['password', 'code', 'text', 'textarea'].indexOf(field.type) !== -1">
-    <div class="form-group">
-      <label
-        for="fieldMaxInput{{$index}}"
-        class="control-label col-sm-4"
-        ng-i18next="avAdmin.census.fieldMaxLabel">
-      </label>
-      <div class="col-sm-8">
-        <input
-          type="text"
-          class="form-control"
-          ng-model="field.max"
-          name="fieldMaxInput{{$index}}"
-          id="fieldMaxInput{{$index}}" />
-      </div>
-    </div>
-  </div>
-
   <!-- required -->
-  <div class="row">
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         class="control-label col-sm-4 text-right">
@@ -215,7 +214,7 @@
   </div>
 
   <!-- unique -->
-  <div class="row">
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         class="control-label col-sm-4 text-right">
@@ -235,8 +234,29 @@
     </div>
   </div>
 
+  <!-- private -->
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea'].indexOf(field.type) !== -1">
+    <div class="form-group">
+      <label
+        class="control-label col-sm-4 text-right">
+        <input
+          type="checkbox"
+          class="form-control"
+          id="fieldPrivateInput{{$index}}"
+          ng-model="field.private" />
+      </label>
+      <div class="col-sm-8">
+        <label
+          ng-i18next="avAdmin.census.fieldPrivateLabel"
+          class="text-left"
+          for="fieldPrivateInput{{$index}}">
+        </label>
+      </div>
+    </div>
+  </div>
+
   <!-- required on authentication -->
-  <div class="row">
+  <div class="row"  ng-if="['email', 'text', 'int', 'bool', 'textarea', 'captcha'].indexOf(field.type) !== -1">
     <div class="form-group">
       <label
         class="control-label col-sm-4 text-right">
@@ -294,6 +314,9 @@
       <div avr-bool-field ng-switch-when="bool"></div>
       <div avr-captcha-field ng-switch-when="captcha"></div>
       <div avr-textarea-field ng-switch-when="textarea"></div>
+      <div ng-switch-when="dict" class="col-sm-4 text-right dict-field">
+        <span>{{field.name}}</span>
+      </div>
     </div>
   </div>
 </div>

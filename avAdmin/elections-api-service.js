@@ -1,14 +1,25 @@
 angular.module('avAdmin')
-    .factory('ElectionsApi', ['$q', 'Authmethod', 'ConfigService', '$i18next', '$http', function($q, Authmethod, ConfigService, $i18next, $http) {
+    .factory(
+      'ElectionsApi',
+      function(
+        $q,
+        Authmethod,
+        ConfigService,
+        $i18next,
+        $http,
+        $cookies,
+        $rootScope)
+      {
         var backendUrl = ConfigService.electionsAPI;
         var electionsapi = {cache: {}, permcache: {}};
         electionsapi.waitingCurrent = [];
         electionsapi.currentElection = {};
+
         electionsapi.currentElections = [];
         electionsapi.newElection = false;
 
         electionsapi.waitForCurrent = function(f) {
-            if (electionsapi.currentElection.title) {
+            if (electionsapi.currentElection.id || electionsapi.newElection) {
                 f();
             } else {
                 electionsapi.waitingCurrent.push(f);
@@ -17,11 +28,30 @@ angular.module('avAdmin')
 
         electionsapi.setCurrent = function(el) {
             electionsapi.currentElection = el;
+            electionsapi.newElection = !el.id;
+
+            $rootScope.currentElection = el;
+            $rootScope.$watch('currentElection', function() {
+              if (!$rootScope.currentElection.id) {
+                $cookies.currentElection = JSON.stringify($rootScope.currentElection);
+              }
+            }, true);
+
             electionsapi.waitingCurrent.forEach(function(f) {
                 f();
             });
             electionsapi.waitingCurrent = [];
         };
+
+        if ($cookies.currentElection) {
+            console.log($cookies.currentElection);
+            try {
+                var el = JSON.parse($cookies.currentElection);
+                electionsapi.setCurrent(el);
+            } catch (e) {
+                $cookies.currentElection = electionsapi.currentElection;
+            }
+        }
 
         function asyncElection(id) {
             var deferred = $q.defer();
@@ -223,7 +253,7 @@ angular.module('avAdmin')
                     extra_fields: [ ],
                     config: {
                         "msg": $i18next('avAdmin.auth.emaildef'),
-                        "subject": $i18next('avAdmin.auth.emailsub')
+                        "subject": $i18next('avAdmin.auth.emailsubdef')
                     }
                 },
                 questions: []
@@ -236,7 +266,7 @@ angular.module('avAdmin')
                 "answer_total_votes_percentage": "over-total-valid-votes",
                 "answers": [],
                 "description": "",
-                "layout": "simple",
+                "layout": "accordion",
                 "max": 1,
                 "min": 1,
                 "num_winners": 1,
@@ -247,26 +277,51 @@ angular.module('avAdmin')
             return q;
         };
 
-        electionsapi.getCensus = function(el) {
-            el.census.voters = [];
+        electionsapi.getCensus = function(el, page, size, filterStr, filterOptions) {
             var deferred = $q.defer();
 
+            if (size === 'max') {
+              size = 500;
+            } else if (angular.isNumber(size) && size > 0 && size < 500) {
+              size = parseInt(size);
+            } else {
+              size = 10;
+            }
+
             function getAuthCensus(d) {
-                var voters = d.payload;
-                var deferred = $q.defer();
-                Authmethod.getCensus(el.id)
-                    .success(function(data) {
-                        el.census.voters = data.object_list;
-                        _.each(data.object_list, function(user) {
-                            user.vote = false;
-                            if (voters.indexOf(user.username) >= 0) {
-                                user.vote = true;
-                            }
-                        });
-                        // TODO merge with voters
-                        deferred.resolve(el);
-                    })
-                    .error(deferred.reject);
+              var voters = d.payload;
+              var deferred = $q.defer();
+              var params = {};
+
+              if (!angular.isNumber(page)) {
+                page = 1;
+              }
+              params.page = page;
+              params.size = size;
+              _.extend(params, filterOptions);
+              if (filterStr && filterStr.length > 0) {
+                params.filter = filterStr;
+              }
+
+              Authmethod.getCensus(el.id, params)
+                .success(function(data) {
+                  _.each(data.object_list, function(user) {
+                    user.vote = false;
+                    if (voters.indexOf(user.username) >= 0) {
+                      user.vote = true;
+                    }
+                  });
+                  if (!angular.isArray(el.census.voters)) {
+                    el.census.voters = [];
+                  }
+                  _.each(data.object_list, function (obj) {
+                    obj.selected = false;
+                    el.census.voters.push(obj);
+                  });
+                  el.data = data;
+                  deferred.resolve(el);
+                })
+                .error(deferred.reject);
                 return deferred.promise;
             }
 
@@ -279,4 +334,4 @@ angular.module('avAdmin')
         };
 
         return electionsapi;
-    }]);
+    });

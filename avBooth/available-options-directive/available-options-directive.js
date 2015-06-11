@@ -45,13 +45,25 @@ angular.module('avBooth')
             });
             option.selected = -1;
           } else {
+            // if max options selectable is 1, deselect any other and select
+            // this
+            if (scope.max === 1) {
+              _.each(scope.options, function (element) {
+                if (element.selected > option.selected) {
+                  element.selected -= 1;
+                }
+              });
+              option.selected = 0;
+              return;
+            }
+
             var numSelected = _.filter(scope.options, function (element) {
               return element.selected > -1;
             }).length;
 
             // can't select more, flash info
             if (numSelected === parseInt(scope.max,10)) {
-              $("#maxSelectedLimitReached").flash("white", "#0081B9", 200);
+              $("#maxSelectedLimitReached").flash();
               return;
             }
 

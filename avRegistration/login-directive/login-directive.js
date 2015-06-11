@@ -1,9 +1,16 @@
 angular.module('avRegistration')
-  .directive('avLogin', function(Authmethod, StateDataService, $parse, $state, $cookies, $i18next, ConfigService) {
+  .directive('avLogin', function(Authmethod,
+                                 StateDataService,
+                                 $parse,
+                                 $state,
+                                 $cookies,
+                                 $i18next,
+                                 $timeout,
+                                 ConfigService) {
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         var adminId = ConfigService.freeAuthId;
-        if (!!$cookies.authevent && $cookies.authevent === adminId + '') {
+        if ($cookies.authevent && $cookies.authevent === adminId + '') {
           $state.go("admin.elections");
         }
         var autheventid = attrs.eventId;
@@ -24,6 +31,40 @@ angular.module('avRegistration')
         if (autheventid === adminId + "") {
             scope.isAdmin = true;
         }
+
+        scope.resendAuthCode = function(field) {
+          if (scope.sendingData || scope.method !== "sms") {
+              return;
+          }
+
+          if (scope.telIndex === -1) {
+            return;
+          }
+
+          if (scope.form["input" + scope.telIndex].$invalid) {
+            return;
+          }
+
+          // reset code field, as we are going to send a new one
+          field.value = "";
+
+          var data = {};
+          data['tlf'] = scope.telField.value;
+
+          scope.sendingData = true;
+          Authmethod.resendAuthCode(data, autheventid)
+            .success(function(rcvData) {
+              $timeout(scope.sendingDataTimeout, 3000);
+            })
+            .error(function(error) {
+              $timeout(scope.sendingDataTimeout, 3000);
+              scope.error = $i18next('avRegistration.errorSendingAuthCode');
+            });
+        };
+
+        scope.sendingDataTimeout = function () {
+          scope.sendingData = false;
+        };
 
         scope.loginUser = function(valid) {
             if (!valid) {
@@ -51,7 +92,8 @@ angular.module('avRegistration')
                         $cookies.userid = rcvData.username;
                         $cookies.user = scope.email;
                         $cookies.auth = rcvData['auth-token'];
-                        Authmethod.setAuth($cookies.auth);
+                        $cookies.isAdmin = scope.isAdmin;
+                        Authmethod.setAuth($cookies.auth, scope.isAdmin);
                         if (scope.isAdmin) {
                             Authmethod.getUserInfo().success(function(d) {
                                 $cookies.user = d.email;
@@ -84,11 +126,14 @@ angular.module('avRegistration')
         scope.apply = function(authevent) {
             scope.method = authevent['auth_method'];
             scope.name = authevent['name'];
+            scope.registrationAllowed = (authevent['census'] === 'open');
             scope.login_fields = Authmethod.getLoginFields(authevent);
+            scope.telIndex = -1;
+            scope.telField = null;
 
             var fields = _.map(
               scope.login_fields,
-              function (el) {
+              function (el, index) {
                 if (!!scope.stateData[el.name]) {
                   el.value = scope.stateData[el.name];
                   el.disabled = true;
@@ -100,8 +145,11 @@ angular.module('avRegistration')
                   el.value = scope.email;
                   el.disabled = true;
                 } else if (el.type === "code" && scope.code !== null) {
-                  el.value = scope.code;
+                  el.value = scope.code.trim().toUpperCase();
                   el.disabled = true;
+                } else if (el.type === "tlf" && scope.method === "sms") {
+                  scope.telIndex = index+1;
+                  scope.telField = el;
                 }
                 return el;
               });

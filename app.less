@@ -1,4 +1,7 @@
+
 @import "avb-start-loading.less";
+@import "avUi/global.less";
+@import "vendor/angular-date-picker-polyfill/css/bootstrap.less";
 
 /* avUi */
 @import "avUi/simple-error-directive/simple-error-directive.less";
@@ -6,9 +9,12 @@
 
 /* avBooth */
 @import "avBooth/2questions-conditional-screen-directive/2questions-conditional-screen-directive.less";
+@import "avBooth/ahoram-primaries-screen-directive/ahoram-primaries-screen-directive.less";
+@import "avBooth/ahoram-primaries-option-directive/ahoram-primaries-option-directive.less";
+@import "avBooth/ahoram-primaries-selected-option-directive/ahoram-primaries-selected-option-directive.less";
 @import "avBooth/accordion-option-directive/accordion-option-directive.less";
 @import "avBooth/accordion-options-directive/accordion-options-directive.less";
-@import "avBooth/accordion-selected-option-directive/accordion-selected-option-directive.less";
+@import "avBooth/conditional-accordion-screen-directive/conditional-accordion-screen-directive.less";
 @import "avBooth/available-options-directive/available-options-directive.less";
 @import "avBooth/audit-ballot-screen-directive/audit-ballot-screen-directive.less";
 @import "avBooth/ballot-locator-screen-directive/ballot-locator-screen-directive.less";
@@ -16,8 +22,6 @@
 @import "avBooth/busy-directive/busy-directive.less";
 @import "avBooth/casting-ballot-screen-directive/casting-ballot-screen-directive.less";
 @import "avBooth/encrypting-ballot-screen-directive/encrypting-ballot-screen-directive.less";
-@import "avBooth/simple-option-directive/simple-option-directive.less";
-@import "avBooth/simple-selected-option-directive/simple-selected-option-directive.less";
 @import "avBooth/error-screen-directive/error-screen-directive.less";
 @import "avBooth/help-screen-directive/help-screen-directive.less";
 @import "avBooth/review-screen-directive/review-screen-directive.less";
@@ -26,12 +30,11 @@
 @import "avBooth/pcandidates-rows-directive/pcandidates-rows-directive.less";
 @import "avBooth/pcandidates-row-directive/pcandidates-row-directive.less";
 @import "avBooth/pcandidates-cell-directive/pcandidates-cell-directive.less";
+@import "avBooth/pairwise-beta-directive/pairwise-beta-directive.less";
 @import "avBooth/multi-question-directive/multi-question-directive.less";
 @import "avBooth/selected-options-directive/selected-options-directive.less";
 @import "avBooth/start-screen-directive/start-screen-directive.less";
 @import "avBooth/circle-option-directive/circle-option-directive.less";
-@import "avBooth/detail-option-directive/detail-option-directive.less";
-@import "avBooth/detail-selected-option-directive/detail-selected-option-directive.less";
 @import "avBooth/success-screen-directive/success-screen-directive.less";
 
 /* election */
@@ -45,6 +48,7 @@
 @import "avElection/layouts/public-view-directive/public-view-directive.less";
 @import "avElection/question-results-directive/question-results-directive.less";
 @import "avElection/plurality-at-large-results-directive/plurality-at-large-results-directive.less";
+@import "avElection/borda-results-directive/borda-results-directive.less";
 @import "avElection/verify-results-directive/verify-results-directive.less";
 @import "avElection/authorities-directive/authorities-directive.less";
 
@@ -56,6 +60,8 @@
 @import "avRegistration/fields/email-field-directive/email-field-directive.less";
 @import "avRegistration/fields/password-field-directive/password-field-directive.less";
 @import "avRegistration/fields/text-field-directive/text-field-directive.less";
+@import "avRegistration/fields/dni-field-directive/dni-field-directive.less";
+@import "avRegistration/fields/tel-field-directive/tel-field-directive.less";
 @import "avRegistration/fields/code-field-directive/code-field-directive.less";
 @import "avRegistration/fields/bool-field-directive/bool-field-directive.less";
 
@@ -68,9 +74,11 @@
 @import "avAdmin/admin-directives/elections/elections.less";
 @import "avAdmin/admin-directives/extra-field/extra-field.less";
 @import "avAdmin/admin-directives/create/create.less";
+@import "avAdmin/admin-directives/census-field/census-field.less";
 @import "avAdmin/admin-directives/dashboard/dashboard.less";
 @import "avAdmin/admin-directives/question/question.less";
 @import "avAdmin/admin-directives/elauth/elauth.less";
+@import "avAdmin/admin-directives/elquestions/elquestions.less";
 @import "avAdmin/admin-directives/elcensus/elcensus.less";
 @import "avAdmin/admin-directives/elcensus-config/elcensus-config.less";
 @import "avAdmin/admin-directives/import/import.less";
@@ -78,8 +86,12 @@
 @import "avAdmin/admin-directives/account/account.less";
 @import "avAdmin/admin-directives/billinghistory/billinghistory.less";
 @import "avAdmin/admin-directives/billinginfo/billinginfo.less";
-@import "avAdmin/admin-directives/elquestions/elquestions.less";
+@import "avAdmin/admin-directives/question-option-simple/question-option-simple.less";
+@import "avAdmin/admin-directives/question-option-details/question-option-details.less";
 @import "avAdmin/admin-directives/eltally/eltally.less";
+@import "avAdmin/admin-directives/column-filters/int/column-filter-int.less";
+@import "avAdmin/admin-directives/column-filters/bool/column-filter-bool.less";
+@import "avAdmin/admin-directives/column-filters/datetime/column-filter-datetime.less";
 
 /* Add Component LESS Above */
 

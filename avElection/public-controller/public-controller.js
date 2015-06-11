@@ -10,8 +10,11 @@ angular.module('avElection').controller('PublicController',
       "": "default",
       "simple": "default",
       "pcandidates-election": "default",
-      "2questions-conditional": "default"
+      "2questions-conditional": "default",
+      "conditional-accordion": "default",
+      "ahoram-primaries": "default"
     };
+    $("#theme").attr("href", "themes/" + ConfigService.theme + "/app.min.css");
     $scope.layout = mapLayouts["simple"];
     $scope.statePrefix = "election.public.show.home";
         $scope.inside_iframe = InsideIframeService();

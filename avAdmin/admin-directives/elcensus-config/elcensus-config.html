@@ -48,7 +48,11 @@
     </div>
   </form>
 
-  <h4 class="header-block">
+  <div class="extra-fields-affix-placeholder"></div>
+  <h4
+    class="header-block extra-fields"
+    av-affix-top-offset="50"
+    affix-placeholder=".extra-fields-affix-placeholder">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span ng-i18next>avAdmin.census.extraFieldsHeader</span>
 
@@ -74,15 +78,24 @@
       </p>
 
       <div ng-if="electionEditable()">
-        <div class="extra-fields-wrapper disable-select" dnd-list="list">
+        <div
+          class="extra-fields-wrapper disable-select"
+          dnd-list="election.census.extra_fields">
           <div
             av-extra-field
             ng-repeat="field in election.census.extra_fields"
             dnd-draggable="field"
-            dnd-dragstart="console.log('Started to drag an item')"
-            dnd-moved="election.census.extra_fields.splice($index, 1); console.log('item moved')"
+            ng-if="!field.must"
+            dnd-disable-if="!electionEditable() || extra_fields.editing === election.census.extra_fields[$index]"
+            ng-class="{enabled: electionEditable()}"
+            dnd-moved="election.census.extra_fields.splice($index, 1)"
             dnd-effect-allowed="move">
           </div>
+        </div>
+        <div
+          av-extra-field
+          ng-repeat="field in election.census.extra_fields"
+          ng-if="field.must">
         </div>
       </div>
       <div ng-if="!electionEditable()">

@@ -14,8 +14,8 @@ angular.module('avBooth')
       scope.isDemo = !InsideIframeService() && !scope.voterId;
 
       function updateWidth() {
+        $timeout.cancel(timeoutWidth);
         timeoutWidth = $timeout(function() {
-          $timeout.cancel(timeoutWidth);
           scope.windowWidth = w.width();
           console.log("scope.windowWidth = " + scope.windowWidth);
           scope.$apply();
@@ -33,10 +33,13 @@ angular.module('avBooth')
         helpScreen: 'helpScreen',
         startScreen: 'startScreen',
         multiQuestion: 'multiQuestion',
+        pairwiseBeta: 'pairwiseBeta',
         draftsElectionScreen: 'draftsElectionScreen',
         auditBallotScreen: 'auditBallotScreen',
+        ahoramPrimariesScreen: 'ahoramPrimariesScreen',
         pcandidatesElectionScreen: 'pcandidatesElectionScreen',
         "2questionsConditionalScreen": '2questionsConditionalScreen',
+        conditionalAccordionScreen: 'conditionalAccordionScreen',
         encryptingBallotScreen: 'encryptingBallotScreen',
         castOrCancelScreen: 'castOrCancelScreen',
         reviewScreen: 'reviewScreen',
@@ -53,6 +56,19 @@ angular.module('avBooth')
       }
 
       scope.mapQuestion = function(question) {
+        if (question.layout === "conditional-accordion") {
+          return {
+            state: stateEnum.conditionalAccordionScreen,
+            sorted: true,
+            ordered: true
+          };
+        } else if  (question.layout === "ahoram-primaries") {
+          return {
+            state: stateEnum.ahoramPrimariesScreen,
+            sorted: true,
+            ordered: true
+          };
+        }
         var map = {
           "plurality-at-large": {
             state: stateEnum.multiQuestion,
@@ -66,6 +82,11 @@ angular.module('avBooth')
           },
           "borda": {
             state: stateEnum.multiQuestion,
+            sorted: true,
+            ordered: true
+          },
+          "pairwise-beta": {
+            state: stateEnum.pairwiseBeta,
             sorted: true,
             ordered: true
           }
@@ -105,14 +126,19 @@ angular.module('avBooth')
           reviewMode: reviewMode,
           filter: "",
           sorted: mapped.sorted,
-          ordered: mapped.ordered
+          ordered: mapped.ordered,
+          affixIsSet: false,
+          pairNum: 0 // only used for pairwise comparison
         });
       }
 
       // changes state to the next one, calculating it and setting some scope
       // vars
       function next() {
-        var questionStates = [stateEnum.multiQuestion];
+        var questionStates = [
+          stateEnum.multiQuestion,
+          stateEnum.ahoramPrimariesScreen
+        ];
         if (scope.state === stateEnum.startScreen)
         {
           goToQuestion(0, false);

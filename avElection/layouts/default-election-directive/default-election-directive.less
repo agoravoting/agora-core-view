@@ -22,7 +22,8 @@
 
     .top-section {
       border-radius: 5px;
-      background-color: @av-primary-contrast;
+      color: @av-secondary;
+      background-color: @av-secondary-contrast;
       margin-top: 14px;
       padding: 10px;
       min-height: 100px;
@@ -52,7 +53,7 @@
 }
 
 @media(max-width: @screen-sm-max) {
-  .background > .container {
+  .background > .container, .background  .top-section > .pad {
     padding: 0;
   }
 }

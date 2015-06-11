@@ -3,7 +3,7 @@ angular.module('avAdmin')
     // we use it as something similar to a controller here
     function link(scope, element, attrs) {
         scope.election = ElectionsApi.currentElection;
-        scope.vsystems = ['plurality-at-large', 'borda-nauru', 'borda'];
+        scope.vsystems = ['plurality-at-large', 'borda-nauru', 'borda', 'pairwise-beta'];
 
         scope.electionEditable = function() {
           return !scope.election.id || scope.election.status === "registered";
@@ -88,7 +88,7 @@ angular.module('avAdmin')
             reorderOptions(i1);
         }
 
-        function incOpt(index, option, inc) {
+        function incOpt(index, option, inc, event) {
             var el = ElectionsApi.currentElection;
             var qs = el.questions;
             var q = qs[index];
@@ -96,7 +96,21 @@ angular.module('avAdmin')
             if (!q[option]) {
                 q[option] = 0;
             }
-            q[option] += inc;
+            q[option] = parseInt(q[option]) + inc;
+            if (!!event) {
+              event.preventDefault();
+            }
+        }
+
+        // if there's only one question, just expand it, doesn't make sense to
+        // show it collapsed
+        if (scope.election.questions.length === 1) {
+          expandQuestion(0);
+        }
+
+        // an election should surely always have at least one question, right?
+        if (scope.electionEditable() && scope.election.questions.length === 0) {
+          newQuestion();
         }
 
         angular.extend(scope, {

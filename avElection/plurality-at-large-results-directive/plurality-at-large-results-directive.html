@@ -4,6 +4,14 @@
     <caption ng-i18next="avElection.resultsSummary"></caption>
     <tbody>
       <tr>
+        <td ng-i18next="avAdmin.questions.votingSystem" class="title"></td>
+        <td
+          colspan="2"
+          class="text-right"
+          ng-i18next="avAdmin.questions.votings.{{question.tally_type}}">
+        </td>
+      </tr>
+      <tr>
         <td ng-i18next="avElection.totalNumberOfVotes" class="title"></td>
         <td class="text-right">{{addDotsToIntNumber(question.totals.valid_votes + question.totals.null_votes + question.totals.blank_votes)}}</td>
         <td></td>
