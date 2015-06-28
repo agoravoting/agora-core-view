@@ -186,7 +186,7 @@ angular.module('avAdmin')
               var nv = {};
               fields.forEach(function(f, i) { nv[f.name] = lf[i]; });
               if (nv.tlf) {
-                nv.replace(" ", "");
+                nv.tlf.replace(" ", "");
               }
               cs.push({selected: false, vote: false, username: "", metadata: nv});
           });
