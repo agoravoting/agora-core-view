@@ -3,8 +3,7 @@
   <span class="caret"></span>
 </a>
 <ul class="dropdown-menu" role="menu">
-  <li><a ng-click="changeLang('en')">en</a></li>
-  <li><a ng-click="changeLang('es')">es</a></li>
-  <li><a ng-click="changeLang('ca')">ca</a></li>
-  <li><a ng-click="changeLang('gl')">gl</a></li>
+  <li ng-repeat="lang in langs">
+    <a ng-click="changeLang(lang)">{{lang}}</a>
+  </li>
 </ul>

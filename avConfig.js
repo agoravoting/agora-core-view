@@ -13,15 +13,60 @@ var avConfigData = {
 
   // AuthApi base url
   authAPI: "http://agora.dev/authapi/api/",
-  dnieUrl: "https://agora.dev/authapi/api/authmethod/dnie/auth/",
+  dnieUrl: "http://agora.dev/authapi/api/authmethod/dnie/auth/",
   // Agora Elections base url
   electionsAPI: "http://agora.dev/elections/api/",
 
   authorities: [ "local-auth2" ],
   director: "local-auth1",
 
-  // default language of the application
-  language: "en",
+  // i18next language options, see http://i18next.com/pages/doc_init.html for
+  // details
+  i18nextInitOptions: {
+    // Default language of the application.
+    //
+    // Default: 'en'
+    //
+    // language: "en",
+
+
+    // Forces a specific language.
+    //
+    // Default: not set
+    //
+    // lng: "en",
+
+
+    // specifies the set language query string.
+    //
+    // Default: "lang"
+    //
+    // detectLngQS: 'lang',
+
+
+    // Specifies what translations will be available.
+    //
+    // Default: ['en', 'es', 'gl', 'ca']
+    //
+    // lngWhitelist: ['en', 'es', 'gl', 'ca'],
+  },
+
+  // specifies the language cookie options,
+  // see https://github.com/ivpusic/angular-cookie#options
+  i18nextCookieOptions: {
+    // Expiration in days
+    //
+    // Default: 360
+    //
+    // expires: 360,
+
+
+    // Cookie domain
+    //
+    // Default: not set
+    //
+    // domain: 'foobar',
+  },
 
   timeoutSeconds: 3600,
 
@@ -53,5 +98,14 @@ var avConfigData = {
 
 angular.module('avConfig', [])
   .factory('ConfigService', function() {
-      return avConfigData;
+    return avConfigData;
+  });
+
+angular.module('avConfig')
+  .provider('ConfigService', function ConfigServiceProvider() {
+    _.extend(this, avConfigData);
+
+    this.$get = [function ConfigServiceProviderFactory() {
+    return new ConfigServiceProvider();
+    }];
   });
