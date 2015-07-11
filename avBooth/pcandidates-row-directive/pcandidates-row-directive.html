@@ -21,8 +21,8 @@
   </button>
 </div>
 <div
-  class="col-xs-11 col-sm-offset-0 col-sm-{{6 / election.questions.length}}"
+  class="col-xs-11 col-sm-offset-0 col-sm-{{6 / groupQuestions.length}}"
   avb-pcandidates-cell="{{$index}}"
-  ng-repeat="question in election.questions"
+  ng-repeat="question in groupQuestions"
   ng-class="{'empty-cell': team.options[$index].length === 0}">
 </div>

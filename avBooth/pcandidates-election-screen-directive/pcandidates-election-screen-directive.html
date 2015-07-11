@@ -88,9 +88,9 @@
         <div class="title-help important" ng-i18next="avBooth.helpTextViewSingleCandidates"></div>
         <div class="title-help" ng-i18next="avBooth.helpTextViewCell"></div>
       </div>
-      <div class="hidden-xs col-xs-{{6 / election.questions.length}} affix-docs-header"
+      <div class="hidden-xs col-xs-{{6 / groupQuestions.length}} affix-docs-header"
         ng-class="{titleSelected: stateData.selectionDropDown}"
-        ng-repeat="question in election.questions">
+        ng-repeat="question in groupQuestions">
         {{question.title}}
         <!--<div
           class="title-help"
@@ -151,8 +151,8 @@
       </p>
       <button
         class="btn btn-block btn-lg btn-success btn-plain"
-        ng-i18next="avBooth.continueButton"
         ng-click="showNext()">
+        {{nextButtonText}}
       </button>
     </div>
   </div>

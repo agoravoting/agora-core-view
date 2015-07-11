@@ -68,7 +68,14 @@ angular.module('avBooth')
             sorted: true,
             ordered: true
           };
+        } else if  (question.layout === "pcandidates-election") {
+          return {
+            state: stateEnum.pcandidatesElectionScreen,
+            sorted: true,
+            ordered: true
+          };
         }
+
         var map = {
           "plurality-at-large": {
             state: stateEnum.multiQuestion,
@@ -100,14 +107,7 @@ angular.module('avBooth')
       function goToQuestion(n, reviewMode) {
         // first check for special election-wide layouts
         var layout = scope.election.layout;
-        if (layout === "pcandidates-election") {
-          scope.setState(stateEnum.pcandidatesElectionScreen, {
-            isLastQuestion: true,
-            reviewMode: true,
-            filter: ""
-          });
-          return;
-        } else if (layout === "2questions-conditional") {
+        if (layout === "2questions-conditional") {
           scope.setState(stateEnum["2questionsConditionalScreen"], {
             isLastQuestion: true,
             reviewMode: true,
@@ -137,7 +137,8 @@ angular.module('avBooth')
       function next() {
         var questionStates = [
           stateEnum.multiQuestion,
-          stateEnum.ahoramPrimariesScreen
+          stateEnum.ahoramPrimariesScreen,
+          stateEnum.pcandidatesElectionScreen
         ];
         if (scope.state === stateEnum.startScreen)
         {
@@ -273,6 +274,10 @@ angular.module('avBooth')
               }
 
               scope.election = angular.fromJson(value.payload.configuration);
+
+              // index questions
+              _.each(scope.election.questions, function(q, num) { q.num = num; });
+
               scope.pubkeys = angular.fromJson(value.payload.pks);
               // initialize ballotClearText as a list of lists
               scope.ballotClearText = _.map(

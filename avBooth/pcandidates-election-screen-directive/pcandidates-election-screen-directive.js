@@ -17,6 +17,42 @@ angular.module('avBooth')
       scope.stateData.affixIsSet = false;
       scope.stateData.affixDropDownShown = false;
 
+      // get the name of our question group. A question group allows to know
+      // what questions shold be shown together in a pcandidates layout, where
+      // questions are shown as columns and candidate groups as rows
+      var group = scope.stateData.question.extra_options.group;
+
+      // filter the list of questions to get the list of questions of our group
+      var groupQuestions = scope.groupQuestions = _.filter(
+        scope.election.questions,
+        function (q) {
+          return q.extra_options.group === group;
+        });
+
+      var lastGroupQuestion = groupQuestions[groupQuestions.length-1];
+      var lastGroupQuestionIndex = lastGroupQuestion.num;
+      // update if it's last question and set questionNum to the last in the
+      // group
+
+      scope.stateData.isLastQuestion = (
+        scope.stateData.isLastQuestion ||
+        scope.election.questions.length === lastGroupQuestionIndex + 1);
+      scope.stateData.questionNum = lastGroupQuestionIndex;
+
+      // from each question of our group, get the extra_data, and then fusion
+      // all the extra_datas of our question group into one
+      var groupExtraData = _.extend.apply(_,
+        _.union(
+          [{}],
+          _.map(groupQuestions, function (q) { return q.extra_options; })));
+
+      // set next button text by default if it has not been specified
+      if (!!groupExtraData.next_button && !scope.stateData.isLastQuestion) {
+        scope.nextButtonText = groupExtraData.next_button;
+      } else {
+        scope.nextButtonText = $i18next('avBooth.continueButton');
+      }
+
       /*
        * Toggles selection, if possible.
        */
@@ -59,7 +95,7 @@ angular.module('avBooth')
             // the maximum number of selected items for this question
             if (_.filter(scope.getSelection(), function (opt) {
                 return opt.question_index === index;
-              }).length + cell.length - cell.selected > scope.election.questions[index].max)
+              }).length + cell.length - cell.selected > groupQuestions[index].max)
             {
               canSelect = false;
             }
@@ -88,9 +124,10 @@ angular.module('avBooth')
         scope.clearSelectionWarnings();
       };
 
-      scope.toggleCell = function (team, question_index) {
+      scope.toggleCell = function (team, index) {
         // if cell is totally selected, deselect it all
-        var cell = team.options[question_index];
+        var question_index = groupQuestions[index].question_index;
+        var cell = team.options[index];
         if (cell.selected === cell.length) {
           _.each(cell, function(option) {
             option.selected = -1;
@@ -105,9 +142,9 @@ angular.module('avBooth')
           // the maximum number of selected items for this question
           if (_.filter(scope.getSelection(), function (opt) {
               return opt.question_index === question_index;
-            }).length + cell.length - cell.selected > scope.election.questions[question_index].max)
+            }).length + cell.length - cell.selected > groupQuestions[index].max)
           {
-            // if cell is not open.. open it
+            // if cell is not open.. open it. DISABLED
 //             if (!team["isOpen" + question_index]) {
 //               if ($window.innerHeight < 768) {
 //                 team["isOpen" + question_index] = true;
@@ -135,11 +172,11 @@ angular.module('avBooth')
 
       scope.toggleCandidate = function (team, candidate) {
         // if not selected --> try to select it
-        var cell = team.options[candidate.question_index];
+        var cell = team.options[candidate.group_index];
         if (candidate.selected === -1) {
           if (_.filter(scope.getSelection(), function (opt) {
               return opt.question_index === candidate.question_index;
-            }).length + 1 > scope.election.questions[candidate.question_index].max)
+            }).length + 1 > groupQuestions[candidate.group_index].max)
           {
             return scope.showWarning(scope.warningEnum.cannotSelectAll);
           }
@@ -161,14 +198,14 @@ angular.module('avBooth')
         return $filter('avbSelectedOptions')(scope.allOptions);
       };
 
-      scope.numSelectedByQuestionIndex = function (question_index) {
+      scope.numSelectedByQuestionIndex = function (index) {
         return _.filter(scope.getSelection(), function (opt) {
-            return opt.question_index === question_index;
+            return opt.group_index === index;
           }).length;
       };
 
-      scope.numTotalByQuestionIndex = function (question_index) {
-        return scope.election.questions[question_index].max;
+      scope.numTotalByQuestionIndex = function (index) {
+        return groupQuestions[index].max;
       };
 
       scope.showWarning = function (warn) {
@@ -185,15 +222,18 @@ angular.module('avBooth')
           }, 150);
         }
       };
+
       // reduce all the options of all questions in only one list, but each
       // answer is tagged with its question_slug (apart from the tag of the
       // category) This kind of list is good for filtering/searching
-      _.each(scope.election.questions, function(question, index) {
-        question.question_index = index;
+      _.each(groupQuestions, function(question, index) {
+        question.question_index = question.num;
+        question.group_index = index;
       });
-      scope.allOptions = _.reduce(scope.election.questions, function(memo, question) {
+      scope.allOptions = _.reduce(groupQuestions, function(memo, question) {
         var taggedAnswers = _.map(question.answers, function (answer) {
           answer.question_index = question.question_index;
+          answer.group_index = question.group_index;
           answer.title = answer.text;
           if (answer.selected === undefined) {
             answer.selected = -1;
@@ -223,7 +263,7 @@ angular.module('avBooth')
           _.each(groupedByQuestion, function(l, key, list) {
             l.sort(function (item1, item2) { return item1.sort_order - item2.sort_order; });
           });
-          _.each(scope.election.questions, function(val, index) {
+          _.each(groupQuestions, function(q, index) {
             groupedByQuestion["isOpen" + index] = false;
             groupedByQuestion["isOpen" + index + "Dropdown"] = false;
           });
@@ -232,7 +272,7 @@ angular.module('avBooth')
             isSelected: $filter("avbHasSelectedOptions")(group),
             title: group[0].category,
             group: group,
-            options: _.map(scope.election.questions, function (question) {
+            options: _.map(groupQuestions, function (question) {
               if (groupedByQuestion[question.question_index] !== undefined) {
                 return groupedByQuestion[question.question_index];
               } else {
@@ -244,20 +284,20 @@ angular.module('avBooth')
 
       scope.toggleOpen = function (team) {
           var current = team["isOpen0"];
-          _.each(scope.election.questions, function(val, index) {
+          _.each(groupQuestions, function(q, index) {
             team["isOpen" + index] = !current;
           });
       };
 
       scope.toggleOpenDropdown = function (team) {
         var current = team["isOpen0Dropdown"];
-          _.each(scope.election.questions, function(val, index) {
+          _.each(groupQuestions, function(q, index) {
             team["isOpen" + index + "Dropdown"] = !current;
           });
       };
 
       // randomize by column, or randomly by no column if question_index is -1
-      scope.randomizeByColumn = function (question_index) {
+      scope.randomizeByColumn = function (index) {
         var max = scope.groupedOptions.length;
 
         // we can't just sample the groupedOptions list because we need to
@@ -271,15 +311,15 @@ angular.module('avBooth')
 
         for (i = 0; i < max; i++) {
           var team = scope.groupedOptions[i];
-          if (question_index === -1 || team.options[question_index].length > 0) {
+          if (index === -1 || team.options[index].length > 0) {
             team.sortOrder = randomList[i];
           } else {
             var found = false;
             /* jshint ignore:start */
-            _.each(scope.election.questions, function(val, index) {
+            _.each(groupQuestions, function(q, index) {
               if (team.options[index].length > 0) {
                 found = true;
-                team.sortOrder = randomList[i] + max*(1+index);
+                team.sortOrder = randomList[i] + max*(1 + index);
               }
             });
             /* jshint ignore:end */
@@ -327,7 +367,7 @@ angular.module('avBooth')
             return true;
           }
           /* jshint ignore:start */
-          for (var i = 0; i < scope.election.questions.length; i++) {
+          for (var i = 0; i < groupQuestions.length; i++) {
             if (_.find(team.options[i], function (candidate) {
                 return hasMatch(candidate.text, filter);
               }) !== undefined) {
