@@ -46,13 +46,21 @@ angular.module('jm.i18next').config(function ($i18nextProvider, ConfigServicePro
 });
 
 angular.module('agora-core-view').config(
-  function($stateProvider, $urlRouterProvider, $httpProvider) {
-
+  function(
+    $stateProvider,
+    $urlRouterProvider,
+    $httpProvider,
+    $locationProvider,
+    ConfigServiceProvider)
+  {
     // CSRF verification
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-    $urlRouterProvider.otherwise("/admin/login");
+    $urlRouterProvider.otherwise(ConfigServiceProvider.defaultRoute);
+
+    // use the HTML5 History API
+    $locationProvider.html5Mode(ConfigServiceProvider.locationHtml5mode);
 
     /* App states and urls are defined here */
     // Admin interface

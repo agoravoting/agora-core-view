@@ -68,6 +68,18 @@ var avConfigData = {
     // domain: 'foobar',
   },
 
+  // configure $locationProvider.html5Mode
+  // see https://code.angularjs.org/1.2.28/docs/guide/$location
+  //
+  // Default: false
+  // locationHtml5mode: false,
+  locationHtml5mode: true,
+
+  // If no Route is set, this is the route that will be loaded
+  //
+  // Default: '/admin/login'
+  defaultRoute: '/admin/login',
+
   timeoutSeconds: 3600,
 
   publicURL: "http://agora.dev/elections/public/",

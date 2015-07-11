@@ -155,14 +155,14 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<!--[if lte IE 8]><script src="libcompat-v3.0-b1.min.js"></script><![endif]--><!--[if gte IE 9]><script src="libnocompat-v3.0-b1.min.js"></script><![endif]--><!--[if !IE]><!--><script src="libnocompat-v3.0-b1.min.js"></script><!--<![endif]-->'},
+            {selector:'body',html:'<!--[if lte IE 8]><script src="/libcompat-v3.0.1.min.js"></script><![endif]--><!--[if gte IE 9]><script src="/libnocompat-v3.0.1.min.js"></script><![endif]--><!--[if !IE]><!--><script src="/libnocompat-v3.0.1.min.js"></script><!--<![endif]-->'},
             {selector:'body',html:'<!--All the source code of this program under copyright. Take a look at the license details at https://github.com/agoravoting/agora-core-view/blob/master/README.md -->'},
-            {selector:'body',html:'<script src="lib-v3.0-b1.min.js"></script>'},
-            {selector:'body',html:'<script src="avConfig-v3.0-b1.js"></script>'},
-            {selector:'body',html:'<script src="avThemes-v3.0-b1.js"></script>'},
-            {selector:'body',html:'<script src="app-v3.0-b1.min.js"></script>'},
-            {selector:'body',html:'<script src="avPlugins-v3.0-b1.js"></script>'},
-            {selector:'head',html:'<link rel="stylesheet" id="theme" href="themes/default/app.min.css">'}
+            {selector:'body',html:'<script src="/lib-v3.0.1.min.js"></script>'},
+            {selector:'body',html:'<script src="/avConfig-v3.0.1.js"></script>'},
+            {selector:'body',html:'<script src="/avThemes-v3.0.1.js"></script>'},
+            {selector:'body',html:'<script src="/app-v3.0.1.min.js"></script>'},
+            {selector:'body',html:'<script src="/avPlugins-v3.0.1.js"></script>'},
+            {selector:'head',html:'<link rel="stylesheet" id="theme" href="/themes/default/app.min.css">'}
           ]
         },
         src:'index.html',
@@ -192,9 +192,9 @@ module.exports = function (grunt) {
           'temp/libnocompat.js': ['<%= dom_munger.data.libnocompatjs %>'],
           'temp/lib.js': ['<%= dom_munger.data.libjs %>'],
           'temp/app.js': ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
-          'dist/avConfig-v3.0-b1.js': ['avConfig.js'],
-          'dist/avThemes-v3.0-b1.js': ['avThemes.js'],
-          'dist/avPlugins-v3.0-b1.js': ['plugins/**/*.js']
+          'dist/avConfig-v3.0.1.js': ['avConfig.js'],
+          'dist/avThemes-v3.0.1.js': ['avThemes.js'],
+          'dist/avPlugins-v3.0.1.js': ['plugins/**/*.js']
         }
       }
     },
@@ -226,10 +226,10 @@ module.exports = function (grunt) {
           beautify: true
         },
         files: {
-          'dist/app-v3.0-b1.min.js': 'temp/app.js',
-          'dist/lib-v3.0-b1.min.js': 'temp/lib.js',
-          'dist/libnocompat-v3.0-b1.min.js': 'temp/libnocompat.js',
-          'dist/libcompat-v3.0-b1.min.js': 'temp/libcompat.js',
+          'dist/app-v3.0.1.min.js': 'temp/app.js',
+          'dist/lib-v3.0.1.min.js': 'temp/lib.js',
+          'dist/libnocompat-v3.0.1.min.js': 'temp/libnocompat.js',
+          'dist/libcompat-v3.0.1.min.js': 'temp/libcompat.js',
           'dist/avWidgets.min.js': 'avWidgets.js',
 
           "dist/locales/moment/es.js": "bower_components/moment/lang/es.js",
