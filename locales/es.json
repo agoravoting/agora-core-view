@@ -326,33 +326,27 @@
         "contact": "Contacto",
         "contactsupport": "Contacto de soporte",
         "contactsales": "Contacto de ventas",
-        "callsales": "Llamar a ventas",
-
-        "whatwedo": "Qué hacemos",
-        "pricing": "Precios",
-        "overview": "Resumen",
-        "featurestour": "Tour de funcionalidad",
-        "casestudies": "Casos de estudio",
-
-        "community": "Comunidad",
-        "blog": "Blog",
-        "mailinglist": "Lista de correo",
-        "sourcecode": "Código fuente",
-        "events": "Eventos",
-        "communitywebsite": "Web de comunidad",
-
-        "support": "Soporte",
-        "helpcenter": "Help center",
-        "systemstatus": "Estado del sistema",
-        "videos": "Vídeos",
-        "developers": "Desarrolladores",
+        "callsales": "Ventas: ",
 
         "aboutus": "Acerca de",
-        "ourteam": "Nuestro equipo",
-        "electionauthorities": "Autoridades de votación",
-        "tos": "Términos del servicio",
-        "presscenter": "Centro de prensa",
-        "privacy": "Privacidad y seguridad"
+        "pricing": "Precios",
+        "technology": "Tecnología",
+        "solutions": "Soluciones",
+        "adminManual": "Manual de admin",
+
+        "electionTypes": "Tipos de votación",
+        "primaries": "Primarias y elecciones de candidatos",
+        "participatoryBudgeting": "Presupuestos participativos",
+        "referendums": "Referéndums y consultas",
+        "professional": "Elecciones profesionales y sindicales",
+        "universities": "Universidades",
+
+        "legal": "Legal",
+        "tos": "Condiciones de uso",
+        "cookies": "Política de Cookies",
+        "privacy": "Política de Privacidad",
+        "securitycontact": "Contacto de seguridad",
+        "communitywebsite": "Sitio web del proyecto"
     },
     "sidebar": {
         "elections": "Votaciones",

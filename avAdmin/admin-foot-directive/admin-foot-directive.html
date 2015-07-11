@@ -4,9 +4,9 @@
             <div class="col-md-2 col-md-offset-1">
                 <h3 ng-i18next="avAdmin.foot.contact"></h3>
                 <ul>
-                    <li><a href="" ng-i18next="avAdmin.foot.contactsupport"></a></li>
-                    <li><a href="" ng-i18next="avAdmin.foot.contactsales"></a></li>
-                    <li><span ng-i18next="avAdmin.foot.callsales"></span><br/>{{contact.tlf}}</li>
+                    <li><a href="support@agoravoting.com" ng-i18next="avAdmin.foot.contactsupport"></a></li>
+                    <li><a href="sales@agoravoting.com" ng-i18next="avAdmin.foot.contactsales"></a></li>
+                    <li><span ng-i18next="avAdmin.foot.callsales"></span>{{contact.tlf}}</li>
                 </ul>
                 <!-- social links -->
                 <div class="social">
@@ -19,45 +19,87 @@
             </div>
 
             <div class="col-md-2">
-                <h3 ng-i18next="avAdmin.foot.whatwedo"></h3>
+                <h3 ng-i18next="avAdmin.foot.technology"></h3>
                 <ul>
-                    <li><a href="https://agoravoting.com/#/pricing" ng-i18next="avAdmin.foot.pricing">Pricing</a></li>
-                    <li><a href="https://agoravoting.com/#/overview" ng-i18next="avAdmin.foot.overview">Overview</a></li>
-                    <li><a href="https://agoravoting.com/#/tour" ng-i18next="avAdmin.foot.featurestour">Features tour</a></li>
-                    <li><a href="https://agoravoting.com/#/case-studies" ng-i18next="avAdmin.foot.casestudies">Case studies</a></li>
+                    <li><a href="https://agoravoting.com/#aboutus" ng-i18next="avAdmin.foot.aboutus">About us</a></li>
+                    <li><a href="https://agoravoting.com/#pricing" ng-i18next="avAdmin.foot.pricing">Pricing</a></li>
+                    <li><a href="https://agoravoting.com/overview/" ng-i18next="avAdmin.foot.technology">Technology</a></li>
+                    <li><a href="https://agoravoting.com/solutions/" ng-i18next="avAdmin.foot.solutions">Solutions</a></li>
+                    <li><a href="https://bit.ly/avguiadeuso" ng-i18next="avAdmin.foot.adminManual"></a></li>
                 </ul>
             </div>
 
-            <div class="col-md-2">
-                <h3 ng-i18next="avAdmin.foot.community">Community</h3>
-                <ul>
-                    <li><a href="https://blog.agoravoting.org/" ng-i18next="avAdmin.foot.blog">Blog</a></li>
-                    <li><a href="https://groups.google.com/forum/#!forum/agora-voting" ng-i18next="avAdmin.foot.mailinglist">Mailing list</a></li>
-                    <li><a href="https://github.com/agoravoting/" ng-i18next="avAdmin.foot.sourcecode">Source code</a></li>
-                    <li><a href="https://agoravoting.org" ng-i18next="avAdmin.foot.events">Events</a></li>
-                    <li><a href="https://agoravoting.org" ng-i18next="avAdmin.foot.communitywebsite">Community website</a></li>
-                </ul>
+            <div class="col-md-3">
+              <h3 ng-i18next="avAdmin.foot.electionTypes">Election types</h3>
+              <ul>
+                <li>
+                  <a
+                    href="https://agoravoting.com/primaries/"
+                    ng-i18next="avAdmin.foot.primaries">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://agoravoting.com/participatory_budgeting/"
+                    ng-i18next="avAdmin.foot.participatoryBudgeting">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://agoravoting.com/referendums/"
+                    ng-i18next="avAdmin.foot.referendums">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://agoravoting.com/professional/"
+                    ng-i18next="avAdmin.foot.professional">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://agoravoting.com/universities/"
+                    ng-i18next="avAdmin.foot.universities">
+                  </a>
+                </li>
+              </ul>
             </div>
 
             <div class="col-md-2">
-                <h3 ng-i18next="avAdmin.foot.support">Support</h3>
-                <ul>
-                    <li><a href="https://groups.google.com/forum/#!forum/agora-voting" ng-i18next="avAdmin.foot.helpcenter">Help center</a></li>
-                    <li><a href="https://twitter.com/agoravoting" ng-i18next="avAdmin.foot.systemstatus">System status</a></li>
-                    <li><a href="https://agoravoting.com" ng-i18next="avAdmin.foot.videos">Videos</a></li>
-                    <li><a href="https://github.com/agoravoting" ng-i18next="avAdmin.foot.developers">Developers</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-2">
-                <h3 ng-i18next="avAdmin.foot.aboutus">About us</h3>
-                <ul>
-                    <li><a href="https://agoravoting.com/#/team" ng-i18next="avAdmin.foot.ourteam">Our team</a></li>
-                    <li><a href="https://agoravoting.com/#/authorities" ng-i18next="avAdmin.foot.electionauthorities">Election authorities</a></li>
-                    <li><a href="https://agoravoting.com/#/tos" ng-i18next="avAdmin.foot.tos">Term of service</a></li>
-                    <li><a href="https://agoravoting.com/#/press" ng-i18next="avAdmin.foot.presscenter">Press center</a></li>
-                    <li><a href="https://agoravoting.com/#/privacy-security" ng-i18next="avAdmin.foot.privacy">Privacy &amp; security</a></li>
-                </ul>
+              <h3 ng-i18next="avAdmin.foot.legal"></h3>
+              <ul>
+                <li>
+                  <a
+                    href="https://agoravoting.com/tos/"
+                    ng-i18next="avAdmin.foot.tos">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://agoravoting.com/cookies/"
+                    ng-i18next="avAdmin.foot.cookies">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://agoravoting.com/privacy/"
+                    ng-i18next="avAdmin.foot.privacy">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://agoravoting.com/security_contact/"
+                    ng-i18next="avAdmin.foot.securitycontact">
+                  </a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://agoravoting.org"
+                    ng-i18next="avAdmin.foot.communitywebsite">
+                  </a>
+                </li>
+              </ul>
             </div>
         </div>
     </div>

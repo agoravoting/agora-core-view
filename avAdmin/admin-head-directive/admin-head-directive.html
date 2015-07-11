@@ -14,8 +14,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li ng-if="!admin"><a ng-i18next="avAdmin.topbar.home"></a></li>
-            <li ng-if="!admin"><a ng-i18next="avAdmin.topbar.features"></a></li>
+            <li ng-if="!admin">
+              <a
+                href="https://agoravoting.com/overview/"
+                target="_blank"
+                ng-i18next="avAdmin.topbar.features">
+              </a>
+            </li>
 
             <li>
               <a
