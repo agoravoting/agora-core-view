@@ -243,8 +243,18 @@ angular.module('avBooth')
         return _.union(memo, taggedAnswers);
       }, []);
 
-      // change sort_order of "Candidatura no agrupada" options
-      var filtered = _.filter(scope.allOptions, function(opt) { return opt.category === "Candidaturas no agrupadas"; });
+      // change sort_order of "Candidatura no agrupadas" options, or use any
+      // other categories if specified as an extra_options.shuffled_categories.
+      var shuffledCategories = [];
+      var scats = scope.stateData.question.extra_options.shuffled_categories;
+      if (angular.isDefined(scats)) {
+        shuffledCategories = scats.split(",");
+      }
+
+      var filtered = _.filter(
+        scope.allOptions,
+        function(opt) { return _.contains(shuffledCategories, opt.category); });
+
       // we can't just sample the groupedOptions list because we need to
       // 1. use the same list object
       // 2. generate a specific ordering for all the options
@@ -297,6 +307,8 @@ angular.module('avBooth')
       };
 
       // randomize by column, or randomly by no column if question_index is -1
+      // randomize by no column but if all columns are set show first
+      // if question_index is -2.
       scope.randomizeByColumn = function (index) {
         var max = scope.groupedOptions.length;
 
@@ -311,15 +323,23 @@ angular.module('avBooth')
 
         for (i = 0; i < max; i++) {
           var team = scope.groupedOptions[i];
-          if (index === -1 || team.options[index].length > 0) {
+
+          if (index === -2) {
+            team.sortOrder = randomList[i]+ max*groupQuestions.length;
+            /* jshint ignore:start */
+            _.each(groupQuestions, function(q, gqi) {
+              if (team.options[gqi].length > 0) {
+                team.sortOrder -= max;
+              }
+            });
+            /* jshint ignore:end */
+          } else if (index === -1 || team.options[index].length > 0) {
             team.sortOrder = randomList[i];
           } else {
-            var found = false;
             /* jshint ignore:start */
-            _.each(groupQuestions, function(q, index) {
-              if (team.options[index].length > 0) {
-                found = true;
-                team.sortOrder = randomList[i] + max*(1 + index);
+            _.each(groupQuestions, function(q, gqi) {
+              if (team.options[gqi].length > 0) {
+                team.sortOrder = randomList[i] + max*(1 + gqi);
               }
             });
             /* jshint ignore:end */
@@ -329,8 +349,12 @@ angular.module('avBooth')
         updateFilteredOptions();
       };
 
-      // sort randomly, by no column
-      scope.randomizeByColumn(-1);
+      if (scope.stateData.question.extra_options.shuffling_policy === 'categories-with-all-columns-first-but-random') {
+        scope.randomizeByColumn(-2);
+      } else {
+        // by default sort randomly, by no column
+        scope.randomizeByColumn(-1);
+      }
 
       scope.numSelectedOptions = function () {
         return _.filter(

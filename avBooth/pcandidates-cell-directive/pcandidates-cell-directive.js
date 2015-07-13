@@ -20,6 +20,12 @@ angular.module('avBooth')
         scope.team["isOpen" + scope.question_index] =
           !scope.team["isOpen" + scope.question_index];
       };
+
+      scope.getUrl = function(candidate, title) {
+        return _.filter(candidate.urls, function (url) {
+          return url.title === title;
+        })[0];
+      };
     };
 
     return {
