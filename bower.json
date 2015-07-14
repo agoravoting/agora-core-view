@@ -33,7 +33,8 @@
     "ng-autofocus": "~0.0.1",
     "angular-load": "~0.2.0",
     "css-element-queries": "~0.0.2",
-    "rng-js": "~1.0.1"
+    "rng-js": "~1.0.1",
+    "angular-cookie": "~4.0.9"
   },
   "resolutions": {
     "angular": "1.2.28"
