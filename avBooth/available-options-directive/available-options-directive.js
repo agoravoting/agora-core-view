@@ -7,7 +7,28 @@ angular.module('avBooth')
   .directive('avbAvailableOptions', function($filter) {
 
     var link = function(scope, element, attrs) {
-        // initialize selection, only if needed
+        scope.options = scope.question.answers;
+        scope.tagMax = null;
+        if (angular.isDefined(scope.question.extra_options.restrict_choices_by_tag__max)) {
+          scope.tagMax = parseInt(scope.question.extra_options.restrict_choices_by_tag__max, 10);
+        }
+
+        scope.getUrl = function(option, title) {
+          return _.filter(option.urls, function (url) {
+            return url.title === title;
+          })[0];
+        };
+
+        scope.getTag = function(option) {
+          var url = scope.getUrl(option, "Tag");
+          if (!url) {
+            return null;
+          }
+          return url.url.replace("https://agoravoting.com/api/tag/", "");
+        };
+
+        // initialize selection
+        scope.tagName = scope.question.extra_options.restrict_choices_by_tag__name;
         _.each(scope.options, function (element) {
           if (element.selected === undefined) {
             element.selected = -1;
@@ -63,8 +84,18 @@ angular.module('avBooth')
 
             // can't select more, flash info
             if (numSelected === parseInt(scope.max,10)) {
-              $("#maxSelectedLimitReached").flash();
               return;
+            }
+
+            // check that number of tagged selected does not exceed max
+            if (!!scope.tagName && option.tag === scope.tagName) {
+              var numTaggedSelected = _.filter(scope.options, function (element) {
+                return element.tag === scope.tagName && element.selected > -1;
+              }).length;
+
+              if (numTaggedSelected === scope.tagMax) {
+                return;
+              }
             }
 
             option.selected = numSelected;
@@ -112,7 +143,7 @@ angular.module('avBooth')
         min: '=',
 
         // list of options
-        options: '=',
+        question: '=',
 
         // layout, changes the way the options are rendered
         layout: '=',

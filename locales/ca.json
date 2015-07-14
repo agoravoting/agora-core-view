@@ -62,6 +62,7 @@
     "selectMoreOpts": "Has de seleccionar almenys __min__ candidatures.",
     "selectMoreOpts_plural": "Has de seleccionar almenys __min__ candidatures.",
     "maxSelectedLimitReached": "No pots seleccionar més candidatures (màxim __max__). Per seleccionar una opció, desselecciona'n una altra primer.",
+    "maxSelectedTagLimitReached": "No pots seleccionar més candidatures de tipo __tagName__ (màxim __max__). Per seleccionar una, desselecciona'n una altra primer.",
     "alreadySelectedDocumentType": "No pots seleccionar dos documents del mateix tipus, desselecciona'ls primer abans.",
     "alreadySelectedPack": "Has seleccionat una opció vinculada a altres documents. No és possible seleccionar-ho de forma aïllada.",
     "cantSelectPack": "Has provat de seleccionar una opció vinculada que no es pot seleccionar de forma aïllada, i ja en tens una altra seleccionada.",

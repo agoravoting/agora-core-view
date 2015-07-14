@@ -83,7 +83,7 @@
           layout="stateData.question.layout"
           max="stateData.question.max"
           min="stateData.question.min"
-          options="stateData.question.answers"
+          question="stateData.question"
           filter="{{stateData.filter}}"
           ng-class="{hidden: stateData.affixIsSet && stateData.affixDropDownShown}">
         </div>
@@ -128,17 +128,23 @@
         </span>
         <span
           class="text-brand-primary"
+          id="maxSelectedLimitTagReached"
+          ng-i18next="[i18next]({max: tagMax, tagName: tagName})avBooth.maxSelectedTagLimitReached"
+          ng-if="numSelectedOptions() !== stateData.question.max && numTaggedSelectedOptions() === tagMax">
+        </span>
+        <span
+          class="text-brand-primary"
           id="maxSelectedLimitReached"
           ng-i18next="[i18next]({max: stateData.question.max})avBooth.maxSelectedLimitReached"
           ng-if="numSelectedOptions() === stateData.question.max">
         </span>
         <span
           ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numOptionsSelected"
-          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
+          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min && numTaggedSelectedOptions() !== tagMax">
         </span>
         <span
           ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"
-          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min">
+          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min && numTaggedSelectedOptions() !== tagMax">
         </span>
       </p>
       <button

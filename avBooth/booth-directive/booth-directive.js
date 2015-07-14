@@ -36,7 +36,6 @@ angular.module('avBooth')
         pairwiseBeta: 'pairwiseBeta',
         draftsElectionScreen: 'draftsElectionScreen',
         auditBallotScreen: 'auditBallotScreen',
-        ahoramPrimariesScreen: 'ahoramPrimariesScreen',
         pcandidatesElectionScreen: 'pcandidatesElectionScreen',
         "2questionsConditionalScreen": '2questionsConditionalScreen',
         conditionalAccordionScreen: 'conditionalAccordionScreen',
@@ -59,12 +58,6 @@ angular.module('avBooth')
         if (question.layout === "conditional-accordion") {
           return {
             state: stateEnum.conditionalAccordionScreen,
-            sorted: true,
-            ordered: true
-          };
-        } else if  (question.layout === "ahoram-primaries") {
-          return {
-            state: stateEnum.ahoramPrimariesScreen,
             sorted: true,
             ordered: true
           };
@@ -137,7 +130,6 @@ angular.module('avBooth')
       function next() {
         var questionStates = [
           stateEnum.multiQuestion,
-          stateEnum.ahoramPrimariesScreen,
           stateEnum.pcandidatesElectionScreen
         ];
         if (scope.state === stateEnum.startScreen)

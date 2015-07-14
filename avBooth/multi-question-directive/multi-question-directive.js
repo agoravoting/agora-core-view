@@ -11,6 +11,29 @@ angular.module('avBooth')
       scope.stateData.affixDropDownShown = false;
       scope.hideSelection = false;
 
+      scope.getUrl = function(option, title) {
+        return _.filter(option.urls, function (url) {
+          return url.title === title;
+        })[0];
+      };
+
+      scope.getTag = function(option) {
+        var url = scope.getUrl(option, "Tag");
+        if (!url) {
+          return null;
+        }
+        return url.url.replace("https://agoravoting.com/api/tag/", "");
+      };
+
+      // set options' tag
+      scope.tagName = scope.stateData.question.extra_options.restrict_choices_by_tag__name;
+      _.each(scope.stateData.question.answers, function (element) {
+        element.tag = null;
+        if (angular.isDefined(scope.tagName) && scope.getTag(element) === scope.tagName) {
+          element.tag = scope.tagName;
+        }
+      });
+
       scope.numSelectedOptions = function () {
         return _.filter(
           scope.stateData.question.answers,
@@ -18,6 +41,23 @@ angular.module('avBooth')
             return element.selected > -1 || element.isSelected === true;
           }).length;
       };
+
+      scope.numTaggedSelectedOptions = function() {
+        var val = _.filter(
+          scope.stateData.question.answers,
+          function (element) {
+            return (element.selected > -1 || element.isSelected === true) &&
+              element.tag === scope.tagName;
+          }).length;
+        return val;
+      };
+
+      scope.tagMax = null;
+      if (angular.isDefined(scope.stateData.question.extra_options.restrict_choices_by_tag__max)) {
+        scope.tagMax = parseInt(scope.stateData.question.extra_options.restrict_choices_by_tag__max, 10);
+      }
+      scope.tagName = scope.stateData.question.extra_options.restrict_choices_by_tag__name;
+
 
       var question = scope.stateData.question;
       if (question.layout === "") {
