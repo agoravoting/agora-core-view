@@ -9,7 +9,9 @@ angular.module('avBooth')
     var link = function(scope, element, attrs) {
         scope.options = scope.question.answers;
         scope.tagMax = null;
-        if (angular.isDefined(scope.question.extra_options.restrict_choices_by_tag__max)) {
+        if (angular.isDefined(scope.question.extra_options) &&
+          angular.isDefined(scope.question.extra_options.restrict_choices_by_tag__max))
+        {
           scope.tagMax = parseInt(scope.question.extra_options.restrict_choices_by_tag__max, 10);
         }
 
@@ -28,7 +30,10 @@ angular.module('avBooth')
         };
 
         // initialize selection
-        scope.tagName = scope.question.extra_options.restrict_choices_by_tag__name;
+        scope.tagName = undefined;
+        if (scope.question.extra_options) {
+          scope.tagName = scope.question.extra_options.restrict_choices_by_tag__name;
+        }
         _.each(scope.options, function (element) {
           if (element.selected === undefined) {
             element.selected = -1;

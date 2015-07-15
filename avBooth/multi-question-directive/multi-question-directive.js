@@ -26,7 +26,10 @@ angular.module('avBooth')
       };
 
       // set options' tag
-      scope.tagName = scope.stateData.question.extra_options.restrict_choices_by_tag__name;
+      scope.tagName = undefined;
+      if (angular.isDefined(scope.stateData.question.extra_options)) {
+        scope.tagName = scope.stateData.question.extra_options.restrict_choices_by_tag__name;
+      }
       _.each(scope.stateData.question.answers, function (element) {
         element.tag = null;
         if (angular.isDefined(scope.tagName) && scope.getTag(element) === scope.tagName) {
@@ -53,11 +56,11 @@ angular.module('avBooth')
       };
 
       scope.tagMax = null;
-      if (angular.isDefined(scope.stateData.question.extra_options.restrict_choices_by_tag__max)) {
+      if (angular.isDefined(scope.stateData.question.extra_options) &&
+        angular.isDefined(scope.stateData.question.extra_options.restrict_choices_by_tag__max))
+      {
         scope.tagMax = parseInt(scope.stateData.question.extra_options.restrict_choices_by_tag__max, 10);
       }
-      scope.tagName = scope.stateData.question.extra_options.restrict_choices_by_tag__name;
-
 
       var question = scope.stateData.question;
       if (question.layout === "") {

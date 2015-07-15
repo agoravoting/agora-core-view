@@ -10,7 +10,10 @@ angular.module('avBooth')
     var link = function(scope, element, attrs) {
       // group by category
       var categories = _.groupBy(scope.options, "category");
-      scope.folding_policy = scope.question.extra_options.accordion_folding_policy;
+      scope.folding_policy = undefined;
+      if (angular.isDefined(scope.question.extra_options)) {
+        scope.folding_policy = scope.question.extra_options.accordion_folding_policy;
+      }
 
       // convert this associative array to a list of objects with title and
       // options attributes
