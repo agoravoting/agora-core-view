@@ -97,7 +97,13 @@ angular.module('avCrypto')
           // get the selected sorted options as a list of int ids
           var answers = _.pluck(sorted, "id");
 
-          if (answers.length > question.max || answers.length < question.min) {
+          var forceAllowBlankVote = (angular.isDefined(question.extra_options) &&
+            question.extra_options.force_allow_blank_vote === "TRUE");
+
+          if (answers.length > question.max ||
+            (answers.length < question.min &&
+              (!forceAllowBlankVote || answers.length > 0))
+          ) {
             throw "error in the number of selected answers";
           }
 
