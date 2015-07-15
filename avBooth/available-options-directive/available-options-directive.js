@@ -9,10 +9,17 @@ angular.module('avBooth')
     var link = function(scope, element, attrs) {
         scope.options = scope.question.answers;
         scope.tagMax = null;
-        if (angular.isDefined(scope.question.extra_options) &&
-          angular.isDefined(scope.question.extra_options.restrict_choices_by_tag__max))
+        scope.noTagMax = null;
+        if (angular.isDefined(scope.question.extra_options))
         {
-          scope.tagMax = parseInt(scope.question.extra_options.restrict_choices_by_tag__max, 10);
+          if (angular.isDefined(scope.question.extra_options.restrict_choices_by_tag__max))
+          {
+            scope.tagMax = parseInt(scope.question.extra_options.restrict_choices_by_tag__max, 10);
+          }
+          if (angular.isDefined(scope.question.extra_options.restrict_choices_by_no_tag__max))
+          {
+            scope.noTagMax = parseInt(scope.question.extra_options.restrict_choices_by_no_tag__max, 10);
+          }
         }
 
         scope.getUrl = function(option, title) {
@@ -93,12 +100,14 @@ angular.module('avBooth')
             }
 
             // check that number of tagged selected does not exceed max
-            if (!!scope.tagName && option.tag === scope.tagName) {
+            if (!!scope.tagName) {
               var numTaggedSelected = _.filter(scope.options, function (element) {
                 return element.tag === scope.tagName && element.selected > -1;
               }).length;
 
-              if (numTaggedSelected === scope.tagMax) {
+              if ((option.tag === scope.tagName && numTaggedSelected === scope.tagMax) ||
+                (option.tag !== scope.tagName && numSelected - numTaggedSelected === scope.noTagMax))
+              {
                 return;
               }
             }
