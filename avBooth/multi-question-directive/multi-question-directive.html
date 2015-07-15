@@ -134,17 +134,23 @@
         </span>
         <span
           class="text-brand-primary"
+          id="maxSelectedLimitNoTagReached"
+          ng-i18next="[i18next]({max: noTagMax, tagName: tagName})avBooth.maxSelectedLimitNoTagReached"
+          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() - numTaggedSelectedOptions() === noTagMax">
+        </span>
+        <span
+          class="text-brand-primary"
           id="maxSelectedLimitReached"
           ng-i18next="[i18next]({max: stateData.question.max})avBooth.maxSelectedLimitReached"
           ng-if="numSelectedOptions() === stateData.question.max">
         </span>
         <span
           ng-i18next="[i18next]({count: numSelectedOptions()})avBooth.numOptionsSelected"
-          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min && numTaggedSelectedOptions() !== tagMax">
+          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min && numTaggedSelectedOptions() !== tagMax && (!noTagMax || numSelectedOptions() - numTaggedSelectedOptions() !== noTagMax)">
         </span>
         <span
           ng-i18next="[i18next]({min:stateData.question.min, max:stateData.question.max})avBooth.numOptionsLimits"
-          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min && numTaggedSelectedOptions() !== tagMax">
+          ng-if="numSelectedOptions() !== stateData.question.max && numSelectedOptions() >= stateData.question.min && (!noTagMax || numSelectedOptions() - numTaggedSelectedOptions() !== noTagMax) && numTaggedSelectedOptions() !== tagMax">
         </span>
       </p>
       <button

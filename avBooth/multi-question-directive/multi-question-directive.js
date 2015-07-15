@@ -56,10 +56,17 @@ angular.module('avBooth')
       };
 
       scope.tagMax = null;
-      if (angular.isDefined(scope.stateData.question.extra_options) &&
-        angular.isDefined(scope.stateData.question.extra_options.restrict_choices_by_tag__max))
+      scope.noTagMax = null;
+      if (angular.isDefined(scope.stateData.question.extra_options))
       {
-        scope.tagMax = parseInt(scope.stateData.question.extra_options.restrict_choices_by_tag__max, 10);
+        if (angular.isDefined(scope.stateData.question.extra_options.restrict_choices_by_tag__max))
+        {
+          scope.tagMax = parseInt(scope.stateData.question.extra_options.restrict_choices_by_tag__max, 10);
+        }
+        if (angular.isDefined(scope.stateData.question.extra_options.restrict_choices_by_no_tag__max))
+        {
+          scope.noTagMax = parseInt(scope.stateData.question.extra_options.restrict_choices_by_no_tag__max, 10);
+        }
       }
 
       var question = scope.stateData.question;
@@ -88,9 +95,15 @@ angular.module('avBooth')
       // If not, then it flashes the #selectMoreOptsWarning div so that user
       // notices.
       scope.questionNext = function() {
-        if (scope.numSelectedOptions() < scope.stateData.question.min) {
-          $("#selectMoreOptsWarning").flash();
-          return;
+        if (scope.numSelectedOptions() < scope.stateData.question.min)
+        {
+          if (scope.numSelectedOptions() > 0 ||
+            !angular.isDefined(scope.stateData.question.extra_options) ||
+            scope.stateData.question.extra_options.force_allow_blank_vote !== "TRUE")
+          {
+            $("#selectMoreOptsWarning").flash();
+            return;
+          }
         }
 
         // show null vote warning

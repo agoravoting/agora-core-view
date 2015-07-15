@@ -63,6 +63,8 @@
     "selectMoreOpts": "Debes seleccionar polo menos __min__ candidaturas.",
     "selectMoreOpts_plural": "Debes seleccionar polo menos __min__ candidaturas.",
     "maxSelectedLimitReached": "Non podes seleccionar máis candidaturas (máximo __max__). Para seleccionar unha opción, deselecciona outra primeiro.",
+    "maxSelectedLimitTagReached": "No puedes seleccionar más candidaturas de tipo __tagName__ (máximo __max__). Para seleccionar una, deselecciona otra primero.",
+    "maxSelectedLimitNoTagReached": "No puedes seleccionar más candidaturas que no sean __tagName__ (máximo __max__). Para seleccionar una, deselecciona otra primero.",
     "alreadySelectedDocumentType": "Non podes seleccionar dous documentos do mesmo tipo, deselecciónao primeiro antes.",
     "alreadySelectedPack": "Seleccionaches unha opción vinculada a outros documentos máis. Non é posible seleccionalo de forma illada.",
     "cantSelectPack": "Tentaches seleccionar unha opción vinculada que non se pode seleccionar de forma illada, e xa tes outra seleccionada.",
