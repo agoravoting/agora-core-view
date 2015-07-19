@@ -5,7 +5,7 @@
  * some unique details.
  */
 angular.module('avBooth')
-  .directive('avbPcandidatesElectionScreen', function($i18next, $filter, $interpolate, $timeout, $window) {
+  .directive('avbPcandidatesElectionScreen', function($i18next, $filter, $interpolate, $timeout, $window, $modal) {
 
     var link = function(scope, element, attrs) {
       scope.warningEnum = {
@@ -94,7 +94,7 @@ angular.module('avBooth')
           _.each(team.options, function (cell, index) {
             // the maximum number of selected items for this question
             if (_.filter(scope.getSelection(), function (opt) {
-                return opt.question_index === index;
+                return opt.group_index === index;
               }).length + cell.length - cell.selected > groupQuestions[index].max)
             {
               canSelect = false;
@@ -412,7 +412,16 @@ angular.module('avBooth')
 
 
       scope.showNext = function() {
-        scope.next();
+        // show null vote warning
+        if (scope.numSelectedOptions() === 0) {
+          $modal.open({
+            templateUrl: "avBooth/confirm-null-vote-controller/confirm-null-vote-controller.html",
+            controller: "ConfirmNullVoteController",
+            size: 'md'
+          }).result.then(scope.next);
+        } else {
+          scope.next();
+        }
       };
 
       // watch for changes in selection, changing the warning if need be
