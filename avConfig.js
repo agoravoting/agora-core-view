@@ -94,6 +94,11 @@ var avConfigData = {
     tlf: "-no tlf-"
   },
 
+  verifier: {
+    link: "",
+    hash: ""
+  },
+
   help: {
     info:""
   },

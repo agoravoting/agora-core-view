@@ -6,6 +6,7 @@ angular.module('avBooth')
 
     function link(scope, element, attrs) {
       scope.publicURL = ConfigService.publicURL;
+      scope.verifier = ConfigService.verifier;
       scope.noHeader = (attrs.noHeader !== undefined);
       scope.electionId = $stateParams.id;
     }
