@@ -271,6 +271,9 @@ angular.module('avBooth')
         function (group) {
           var groupedByQuestion = _.groupBy(group, "question_index");
           _.each(groupedByQuestion, function(l, key, list) {
+            if (l === undefined) {
+              return;
+            }
             l.sort(function (item1, item2) { return item1.sort_order - item2.sort_order; });
           });
           _.each(groupQuestions, function(q, index) {
