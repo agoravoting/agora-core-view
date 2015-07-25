@@ -184,7 +184,7 @@
             ng-class="{'glyphicon-unchecked': stateData.question.presetSelected !== true,
                        'glyphicon-check': stateData.question.presetSelected === true}">
           </span>
-          <span ng-i18next="yes"></span>
+          <span ng-bind-html="stateData.question.extra_options.recommended_preset__accept_text"></span>
         </div>
       </div>
       <div class="col-xs-6 left-border">
@@ -193,7 +193,7 @@
             ng-class="{'glyphicon-unchecked': stateData.question.presetSelected !== false,
                        'glyphicon-check': stateData.question.presetSelected === false}">
           </span>
-          <span ng-i18next="no"></span>
+          <span ng-bind-html="stateData.question.extra_options.recommended_preset__deny_text"></span>
         </div>
       </div>
     </div>

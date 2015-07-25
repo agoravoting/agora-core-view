@@ -2,8 +2,8 @@
   class="opt-data vertilize-wrapper"
   ng-class="{
     'hide-link': !urls.URL,
-    'show-category': showCategory && !!option.category}
-    'preset': isPreset"
+    'show-category': showCategory && !!option.category,
+    'preset': isPreset}"
   ng-click="!isPreset && toggleSelectItem(option)">
 
   <span class="label label-default" ng-if="showCategory && !!option.category">

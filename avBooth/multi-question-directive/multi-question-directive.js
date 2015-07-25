@@ -210,6 +210,9 @@ angular.module('avBooth')
             function (answer) {
               return scope.getTag(answer) !== scope.stateData.question.extra_options.recommended_preset__tag;
             });
+          if (scope.stateData.question.presetSelectedSize === scope.stateData.question.max) {
+            scope.next();
+          }
         }
       };
 
