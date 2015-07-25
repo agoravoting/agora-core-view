@@ -87,9 +87,13 @@ angular.module('avBooth')
         }
       };
 
+      function isExtraDefined(extra) {
+        return angular.isDefined(scope.stateData.question.extra_options) && angular.isDefined(scope.stateData.question.extra_options[extra]);
+      }
+
       // presets support
       scope.stateData.question.presetSelectedSize = 0;
-      scope.stateData.question.showPreset = angular.isDefined(scope.stateData.question.extra_options.recommended_preset__tag);
+      scope.stateData.question.showPreset = isExtraDefined("recommended_preset__tag");
       scope.showingPreset = scope.stateData.question.showPreset;
       if (!angular.isDefined(scope.stateData.question.presetSelected)) {
         scope.stateData.question.presetSelected = null;
