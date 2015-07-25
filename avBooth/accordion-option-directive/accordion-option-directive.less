@@ -100,6 +100,25 @@
     }
   }
 
+
+  &.selected.preset {
+    color: #777;
+    cursor: auto !important;
+
+    strong.show-value {
+      font-weight: 300;
+    }
+
+    &:hover {
+      color: #777;
+      background-color: transparent !important;
+
+      .show-remove {
+        opacity: 0 !important;
+      }
+    }
+  }
+
   &.selected:hover {
     background-color: @brand-danger;
     color: white;

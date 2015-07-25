@@ -36,6 +36,14 @@ angular.module('avBooth')
           return url.url.replace("https://agoravoting.com/api/tag/", "");
         };
 
+        if (scope.question.presetSelected === true) {
+          scope.options = _.filter(
+            scope.question.answers,
+            function (answer) {
+              return scope.getTag(answer) !== scope.question.extra_options.recommended_preset__tag;
+            });
+        }
+
         // initialize selection
         scope.tagName = undefined;
         if (scope.question.extra_options) {
@@ -71,7 +79,7 @@ angular.module('avBooth')
          */
         scope.toggleSelectItem = function(option) {
           if (option.selected > -1) {
-            _.each(scope.options, function (element) {
+            _.each(scope.question.answers, function (element) {
               if (element.selected > option.selected) {
                 element.selected -= 1;
               }
@@ -81,7 +89,7 @@ angular.module('avBooth')
             // if max options selectable is 1, deselect any other and select
             // this
             if (scope.max === 1) {
-              _.each(scope.options, function (element) {
+              _.each(scope.question.answers, function (element) {
                 if (element.selected > option.selected) {
                   element.selected -= 1;
                 }
@@ -90,7 +98,7 @@ angular.module('avBooth')
               return;
             }
 
-            var numSelected = _.filter(scope.options, function (element) {
+            var numSelected = _.filter(scope.question.answers, function (element) {
               return element.selected > -1;
             }).length;
 
@@ -101,7 +109,7 @@ angular.module('avBooth')
 
             // check that number of tagged selected does not exceed max
             if (!!scope.tagName) {
-              var numTaggedSelected = _.filter(scope.options, function (element) {
+              var numTaggedSelected = _.filter(scope.question.answers, function (element) {
                 return element.tag === scope.tagName && element.selected > -1;
               }).length;
 

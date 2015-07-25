@@ -8,6 +8,9 @@ angular.module('avBooth')
 
     var link = function(scope, element, attrs) {
 
+        if (!angular.isDefined(scope.presetSelectedSize)) {
+          scope.presetSelectedSize = 0;
+        }
         /*
          * Toggles selection, if possible.
          */
@@ -44,7 +47,7 @@ angular.module('avBooth')
       scope.moveOption = function (moved, newPos) {
         var oldPos = moved.selected;
         newPos -= 1;
-        if (oldPos === newPos) {
+        if (oldPos === newPos || scope.presetSelectedSize > 0 && newPos < scope.presetSelectedSize) {
           return false;
         }
 
@@ -222,6 +225,7 @@ angular.module('avBooth')
         max: '=',
         min: '=',
         options: '=',
+        presetSelectedSize: '=',
         layout: '=',
         sorted: "=",
         ordered: "="

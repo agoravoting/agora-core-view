@@ -18,6 +18,8 @@ angular.module('avBooth')
       if (!!attrs.showSelectedPos) {
         scope.showSelectedPos = true;
       }
+
+      scope.isPreset = (scope.showSelectedPos && scope.presetSelectedSize > 0 && scope.option.selected - scope.presetSelectedSize < 0);
     };
 
     return {

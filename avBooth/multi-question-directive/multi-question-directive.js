@@ -37,6 +37,78 @@ angular.module('avBooth')
         }
       });
 
+      /*
+        * Toggles selection, if possible.
+        */
+      scope.toggleSelectItem = function(option) {
+        if (option.selected > -1) {
+          _.each(scope.stateData.question.answers, function (element) {
+            if (element.selected > option.selected) {
+              element.selected -= 1;
+            }
+          });
+          option.selected = -1;
+        } else {
+          // if max options selectable is 1, deselect any other and select
+          // this
+          if (scope.max === 1) {
+            _.each(scope.stateData.question.answers, function (element) {
+              if (element.selected > option.selected) {
+                element.selected -= 1;
+              }
+            });
+            option.selected = 0;
+            return;
+          }
+
+          var numSelected = _.filter(scope.stateData.question.answers, function (element) {
+            return element.selected > -1;
+          }).length;
+
+          // can't select more, flash info
+          if (numSelected === parseInt(scope.max,10)) {
+            return;
+          }
+
+          // check that number of tagged selected does not exceed max
+          if (!!scope.tagName) {
+            var numTaggedSelected = _.filter(scope.stateData.question.answers, function (element) {
+              return element.tag === scope.tagName && element.selected > -1;
+            }).length;
+
+            if ((option.tag === scope.tagName && numTaggedSelected === scope.tagMax) ||
+              (option.tag !== scope.tagName && numSelected - numTaggedSelected === scope.noTagMax))
+            {
+              return;
+            }
+          }
+
+          option.selected = numSelected;
+        }
+      };
+
+      // presets support
+      scope.stateData.question.presetSelectedSize = 0;
+      scope.stateData.question.showPreset = angular.isDefined(scope.stateData.question.extra_options.recommended_preset__tag);
+      scope.showingPreset = scope.stateData.question.showPreset;
+      if (!angular.isDefined(scope.stateData.question.presetSelected)) {
+        scope.stateData.question.presetSelected = null;
+      } else {
+        scope.stateData.question.presetList = _.filter(
+          scope.stateData.question.answers,
+          function (answer) {
+            return scope.getTag(answer) === scope.stateData.question.extra_options.recommended_preset__tag;
+          });
+
+        scope.stateData.question.presetSelected = _.filter(
+          scope.stateData.question.presetList,
+          function (answer) {
+            return answer.selected !== answer.id;
+          }).length === 0;
+
+        scope.stateData.question.presetSelectedSize = scope.stateData.question.presetList.length;
+      }
+
       scope.numSelectedOptions = function () {
         return _.filter(
           scope.stateData.question.answers,
@@ -90,6 +162,56 @@ angular.module('avBooth')
           answers.sort(function (item1, item2) { return item1.sort_order - item2.sort_order; });
           scope.stateData.question.answers = answers;
       }
+
+      scope.selectPresets = function () {
+        scope.unselectPresets();
+        scope.stateData.question.presetSelected = true;
+        _.each(
+          scope.stateData.question.answers,
+          function (answer) {
+            if (scope.getTag(answer) === scope.stateData.question.extra_options.recommended_preset__tag) {
+              scope.stateData.question.presetSelectedSize += 1;
+              scope.toggleSelectItem(answer);
+            }
+          });
+      };
+
+      scope.unselectPresets = function() {
+        scope.stateData.question.presetSelectedSize = 0;
+        scope.stateData.question.presetSelected = false;
+        _.each(
+          scope.stateData.question.answers,
+          function (answer) {
+            answer.selected = -1;
+          });
+      };
+
+      scope.presetNext = function() {
+        // show null vote warning
+        if (scope.stateData.question.presetSelected === null) {
+          $modal.open({
+            templateUrl: "avBooth/confirm-null-vote-controller/confirm-null-vote-controller.html",
+            controller: "ConfirmNullVoteController",
+            size: 'md'
+          }).result.then(function () {
+            scope.showingPreset = false;
+          });
+          return;
+        }
+
+        scope.showingPreset = false;
+        if (!scope.stateData.question.presetSelected) {
+          return;
+        }
+
+        if (scope.stateData.question.presetSelected === true) {
+          scope.filteredOptions = _.filter(
+            scope.stateData.question.answers,
+            function (answer) {
+              return scope.getTag(answer) !== scope.stateData.question.extra_options.recommended_preset__tag;
+            });
+        }
+      };
 
       // questionNext calls to scope.next() if user selected enough options.
       // If not, then it flashes the #selectMoreOptsWarning div so that user

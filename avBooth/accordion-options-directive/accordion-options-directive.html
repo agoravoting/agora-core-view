@@ -1,5 +1,5 @@
 <!-- shown when no filter is being applied (i.e. by default) -->
-<div ng-if="filter.length == 0" class="accordion-mode">
+<div ng-if="!question.presetSelected && filter.length == 0" class="accordion-mode">
   <div avb-accordion-option
     ng-repeat="option in emptyCategory.options"
     class="animate-repeat highlight-selected"
@@ -29,7 +29,7 @@
 </div>
 
 <!-- shown when user has entered a filter -->
-<div ng-if="filter.length > 0" class="filter-mode">
+<div ng-if="question.presetSelected || filter.length > 0" class="filter-mode">
   <div avb-accordion-option
     ng-repeat="option in filteredOptions"
     show-category="true"
