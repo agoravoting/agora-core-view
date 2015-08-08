@@ -136,7 +136,7 @@
     "locatorFoundStatus": "<span class=\"text-success\">Localitzador trobat!</span>",
     "locatorNotFoundStatus": "<span class=\"text-danger\">Localitzador no trobat</span>",
     "locatorInfoText": "Exemple de localitzador: 78a319dbd699c5d6ff08ca08990b395e593bcb8282a7660417a50d0ee470503f",
-    "thisisADemoNotification": "<span class=\"glyphicon glyphicon-info-sign\" aria-hidden=\"true\"></span> <strong>¡Atención!</strong> Cabina de votación de prueba, los votos emitidos aquí no cuentan.",
+    "thisisADemoNotification": "<span class=\"glyphicon glyphicon-info-sign\" aria-hidden=\"true\"></span> <strong>¡Atención!</strong> Cabina de votació de prueba, los votos emitidos aquí no cuentan.",
     "successBallotHash": "Enhorabona! Has emès el teu vot amb <strong><a href=\"https://agoravoting.com\" target=\"_blank\">Agora Voting</a></strong>. El localitzador del teu vot és:<br/><br/></h3><p> <strong>__ballotHash__</strong><br/><br/>Pots fer servir el localitzador per <a href=\"__ballotLocatorUrl__\" target=\"_blank\">verificar que el teu vot ha quedat registrat</a>. Mentre la votació estigui en curs, pots votar un altre cop, sobreescrivint i invalidant qualsevol vot que hagis emès anteriorment en aquesta votació.",
     "relatedLinksText": "Per a més informació sobre la votació:",
     "circleOptionExternalLink": "Mostra'n els detalls",
@@ -144,7 +144,7 @@
   },
   "avElection": {
     "resultsLoadingText": "Cargando resultados",
-    "errorLoadingText": "Error cargando resultados. Puede que el recuento aun no se haya publicado, que no tengas permisos o incluso que la votación no exista",
+    "errorLoadingText": "Error cargando resultados. Puede que el recuento aun no se haya publicado, que no tengas permisos o incluso que la votació no exista",
     "defaultShareText": "Vota en __title__ con @agoravoting __url__",
 
     "resultsHeader": "__title__: Resultados",
@@ -163,17 +163,17 @@
     "public": {
       "homeText": "Portada",
       "resultsTitle": "Resultados",
-      "loadingText": "Cargando votación",
+      "loadingText": "Cargando votació",
       "voteLink": "Vota",
       "loadingDataText": "Cargando datos..",
-      "shareLink": "¡Twitea esta votación!",
+      "shareLink": "¡Twittea aquesta votació!",
       "errorNotFoundText": "Error cargando la información.",
-      "errorLoadingText": "Error cargando la votación. Puede que esta votación no exista o no se haya publicado todavía.",
+      "errorLoadingText": "Error cargando la votació. Puede que esta votació no exista o no se haya publicado todavía.",
       "faqsLink": "Preguntas frecuentes",
-      "authoritiesLink": "Autoridades",
+      "authoritiesLink": "Autoritats",
       "overviewLink": "Esquema general",
       "technicalOverviewLink": "Análisis técnico",
-      "demoVotingBoothLink": "Demo cabina de votación",
+      "demoVotingBoothLink": "Demo cabina de votació",
       "voteNowLink": "Vota ahora",
       "answers": "__count__ candidaturas",
       "answers_plural": "__count__ candidaturas",
@@ -181,9 +181,9 @@
       "answersRandomized_plural": "__count__ candidaturas (en orden aleatorio)",
       "questionsTitle": "Preguntas",
       "questionInfoText": "Los votantes seleccionarán entre <strong>__min__</strong> y <strong>__max__</strong> candidaturas. <strong>__numWinners__</strong> ganadores.",
-      "votingSystemText": "Sistema de votación: <strong>__method__</strong>.",
-      "status-registered": "Estado: <strong>votación registrada</strong>",
-      "status-created": "Estado: <strong>votación creada</strong>",
+      "votingSystemText": "Sistema de votació: <strong>__method__</strong>.",
+      "status-registered": "Estado: <strong>votació registrada</strong>",
+      "status-created": "Estado: <strong>votació creada</strong>",
       "status-started": "Estado: <strong>votando</strong>",
       "status-stopped": "Estado: <strong>periodo de voto finalizado</strong>",
       "status-doing_tally": "Estado: <strong>haciendo recuento</strong>",
@@ -193,46 +193,46 @@
     },
 
     "authorities": {
-      "loading": "Cargando autoridades..",
-      "loading": "Error cargando autoridades.",
-      "title": "Autoridades de votación",
-      "intro": "Las autoridades de la votación juegan un papel fundamental. La fortaleza del sistema de seguridad usado en esta votación reside en un sistema de seguridad compartida análogo a los apoderados e interventores en las elecciones tradicionales, donde la clave cifrada de la votación se genera de forma distribuida por un conjunto de autoridades independientes de la votación, que velan por el secreto del voto y son las que ejecutan el recuento. Son las siguientes:"
+      "loading": "Cargando autoritats..",
+      "loading": "Error cargando autoritats.",
+      "title": "Autoritats de votació",
+      "intro": "Les autoritats de la votació juguen un paper fonamental. La fortalesa del sistema de seguretat usat en aquesta votació resideix en un sistema de seguretat compartida anàleg als apoderats/ade i interventors/es en les eleccions tradicionals, on la clau xifrada de la votació es genera de forma distribuïda per un conjunt d'autoritats independents de la votació, que vetllen pel secret del vot i són les que executen el recompte. Són les següents:"
     },
 
     "errorLoadingQuestionTest": "Disposición de pregunta desconocida",
 
     "verifyResults": {
-      "title": "Recuento verificable de la votación",
+      "title": "Recuento verificable de la votació",
       "subtitle": "Votación: __title__",
-      "stateNotPublished": "Lo sentimos. No se puede verificar el recuento de la votación porque los resultados aun no han sido publicados.",
-      "stateLoading": "Cargando votación: espera un momento por favor..",
-      "verifyText": "<p>En esta página describimos el proceso por el cual se puede verificar que el resultado de la votación es el correcto. Cada votante pueda verificar que su papeleta de voto está incluída en el recuento, y también puede verificar matemáticamente el resultado del recuento.</p><p>\n\n<strong>Para realizar dicha verificación es necesario tener suficientes conocimientos técnicos. Si no los tienes, recomendamos que realices este proceso de verificación con la ayuda de alguien que si los tenga.</strong></p><p>\n\nLo primero que necesitas para verificar el recuento es descargarte el software de &quot;agora-verifier&quot;. Este es el software que realiza las verificaciones pertinentes sobre una votación realizada con Agora Voting. Puedes descargarte agora-verifier ya desde aqui:<p>\n\n<p><a href=\"{{verifier.link}}\" target=\"_blank\">agora-verifier</a><span class=\"special\"> (md5sum: {{verifier.hash}})</span></p>\n\n<p>o bien puedes <a href=\"https://github.com/agoravoting/agora-verifier\">instalártelo manualmente a partir del código fuente, siguiendo las instrucciones del proyecto en github</a>.</p><p>\n\nagora-verifier ha sido probado en Linux, y requiere de:</p>\n<ul>\n<li>Sistema operativo linux de 64 bits.</li>\n<li>Python 3.3 o superior</li>\n<li>Java v7 o superior instalado.</li>\n<li>uuencode (&quot;sudo apt-get install sharutils&quot; en Debian/Ubuntu).</li>\n</ul>\n\n<p>El fichero que contiene todos los datos de la votación, que nosotros solemos llamar \"tally.tar\" es el siguiente:</p>\n\n<p><a class=\"tally-link\" href=\"{{publicURL}}{{electionId}}/{{electionId}}.tar\" target=\"_blank\">Recuento votación ({{electionId}}.tar)</a></p>\n\n<p>Para verificar el recuento, puedes simplemente ejecutar:</p>\n\n<p>\n<code>\nsh agora-verifier {{electionId}}.tar\n</code>\n</p>\n\n<p>El output de dicha ejecución será algo parecido a esto:</p>\n\n<code>\nsh agora-verifier {{electionId}}.tar<br/><br/>\n\n* extracted to /tmp/tmp9c2r5e3jtally<br/>\n* extracted raw tally to /tmp/tmp9c2r5e3jtally/tally-raw-0<br/>\n* running ['./agora-results', '-t', '/tmp/tmp9c2r5e3jtally/0.tar.gz', '-c', '/tmp/tmp9c2r5e3jtally/config.json', '-s', '-o', 'json']<br/>\n* results hash verification OK<br/>\n* processing /tmp/tmp9c2r5e3jtally/tally-raw-0<br/>\n# Results ##########################################<br/>\ntotal number of votes (including blank/invalid votes): 37<br/>\nQuestion #1: Secretario General<br/>\n<br/>\nnumber of options available: 2<br/>\n<br/>\nRaw winning options (position):<br/>\n...<br/>\n<br/>\n<br/>\n####################################################<br/>\n<br/>\n* verifying proofs of knowledge of the plaintexts...<br/>\n* ..finished. Verified 37 votes (0 invalid)<br/>\n* proofs of knowledge of plaintexts OK (0 invalid)<br/>\n* running './pverify.sh .rnd /tmp/tmp9c2r5e3jtally/tally-raw-0'<br/>\n* initializing random source..Successfully initialized random source!<br/>\n* begin proof verification on '/tmp/tmp9c2r5e3jtally/tally-raw-0'<br/>\n* processing /tmp/tmp9c2r5e3jtally/tally-raw-0/0-089b56b3-3ffc-4f91-ace5-eef571162d8c..<br/>\n*<br/>\n* ============ Read and derive common values. ====================<br/>\n* 150101 18:46:10 Read joint public key... * done.<br/>\n* 150101 18:46:11 Read individual El Gamal public keys... * done.<br/>\n* 150101 18:46:11 Verify relation between public keys... * done.<br/>\n* 150101 18:46:11 Read input ciphertexts... * done.<br/>\n* 150101 18:46:11 Derive independent generators... * done.<br/>\n*<br/>\n* ============ Verify shuffle of Party 1. ========================<br/>\n* 150101 18:46:11 Read output of Party 1... * done.<br/>\n* 150101 18:46:11 Verify proof of shuffle... * done.<br/>\n*<br/>\n* ============ Verify shuffle of Party 2. ========================<br/>\n* 150101 18:46:12 Read output of Party 2... * done.<br/>\n* 150101 18:46:12 Verify proof of shuffle... * done.<br/>\n*<br/>\n* ============ Verify decryption of Party 1. =====================<br/>\n* 150101 18:46:12 Read decryption factors... * done.<br/>\n* 150101 18:46:12 Verify decryption proof... * done.<br/>\n*<br/>\n* ============ Verify decryption of Party 2. =====================<br/>\n* 150101 18:46:13 Read decryption factors... * done.<br/>\n* 150101 18:46:13 Verify decryption proof... * done.<br/>\n*<br/>\n* ============ Verify finalization. ==============================<br/>\n* 150101 18:46:13 Decrypt using verified decryption factors... * done.<br/>\n* 150101 18:46:13 Read and verify plaintexts... * done.<br/>\n*<br/>\n* Verification completed SUCCESSFULLY after 0h 0m 4s.<br/>\n* verification is OK<br/>\n* processing question_dir 0-089b56b3-3ffc-4f91-ace5-eef571162d8c<br/>\n* running '/tmp/tmp.J9d7GWUECw/agora-verifier/vmnc.sh .rnd -plain -outi json proofs/PlaintextElements.bt plaintexts_json2'<br/>\n* initializing random source..Successfully initialized random source!<br/>\n* calling mixnet interface with vmnc .rnd  -plain -outi json proofs/PlaintextElements.bt plaintexts_json2..<br/>\n* vmnc call succeeded<br/>\n* plaintexts_json verification OK<br/>\n* running '/tmp/tmp.J9d7GWUECw/agora-verifier/vmnc.sh .rnd -ciphs -ini json ciphertexts_json ciphertexts_raw'<br/>\n* calling mixnet interface with vmnc .rnd  -ciphs -ini json ciphertexts_json ciphertexts_raw..<br/>\n* vmnc call succeeded<br/>\n* ciphertexts_json verification OK<br/>\n<br/>\n</code>\n\n<p></p>\n<p>Lo más importante es que el comando termine diciendo &quot;OK&quot;. Si existen algún fallo, el comando no termina diciendo OK sino FAILED. A continuación listamos los pasos del proceso de verificación. Por razones técnicas el comando no sigue exactamente el mismo orden que mostramos aqui a efectos de mayor claridad:</p>\n<ol>\n<li>Extraer el fichero en un directorio que imprime por pantalla</li><li>\nMostrar en pantalla someramente los datos más importantes del recuento: el numero total de votos, y la lista de candidatures ganadoras (NO ordenadas).</li><li>\nLeer el fichero result_json correspondiente a los resultados del recuento mostrados en el paso anterior y hacerle un hash.</li><li>\nLeer la claves públicas con la que se cifraron los votos (fichero pubkeys_json)</li><li>\nLeer los votos del fichero ciphertexts_json y comprobar que son válidas las pruebas matemáticas de Cero Conocimiento (ZKP) que demuestran que el que emitió el voto cifrado conocía el contenido en texto plano de dicho voto. </li><li>\nEl siguiente paso es verificar una serie de elementos de cada pregunta. Cada pregunta se cifra por separado, y por tanto se hace el recuento y algunas verificaciones del mismo por separado:<ol><li>\nVerificar que a partir de los votos del fichero &quot;ciphertexts_json&quot; se obtienen los votos cifrados en formato raw. Se hace un hash de ambos ficheros y se comprueba si es el mismo. Si esta comprobacion falla, el script imprime &quot;ciphertexts_json verification FAILED&quot;.</li><li>\nLeer las pruebas ZKP que matemáticamente demuestran que a partir de los votos cifrados de esta pregunta, el resultado son los votos descifrados en formato raw . Si estas pruebas fallan, el script imprime &quot;verification FAILED&quot;.</li><li>\nVerificar que a partir de los votos descifrados en formato raw, el resultado es el fichero de votos descifrados &quot;plaintexts_json&quot;. Se hace un hash de ambos ficheros y se comprueba si es el mismo. Si esta comprobacion falla, el script imprime &quot;plaintexts_json verification FAILED&quot;.</li>\n</ol><li>\nLeer los ficheros que contienen los votos descifrados, y calcular el resultado de la votación a partir de dichos votos descifrados.</li><li>\nComparar dicho hash con el hash del result_json que obtuvimos en el paso 3. Si la comparación falla, el script devuelve un &quot;tally verification FAILED&quot;.</li>\n</p>\n<p>Como puede observarse, <strong>se comprueba matemática e unívocamente</strong> que a partir de los votos cifrados, el resultado de la votación es el mencionado. Pero puede surgir una duda ¿de donde salen los votos? ¿y está mi voto ahí incluído?</p><p>\n\nEn primer lugar, hemos de decir que el sistema de votación implica que hay que tener una cierta confianza en las organizaciones que están realizando la votación, en particular se asumo que se confía que no han metido votos de más. Esto es una limitación (reflejada en el <a href=\"/doc/tech_overview.pdf\">tecnical overview</a>, apartado 6.3.3) que deriva del hecho de que los votos no están firmados digitalmente, y no lo están debido a que muy poca gente tiene un certificado digital que pueda utilizar fácilmente en una votación de estas características en España. Es por tanto una limitación externa a Agora Voting. En otros países europeos como Estonia por ejemplo, <a href=\"http://www.vvk.ee/voting-methods-in-estonia/engindex/statistics\">el eID parece que sí que tiene un amplio uso y por tanto el 24,3% de los votantes votaron por Internet en las elecciones de 2011</a>.</p><p>\n\nNo obstante, si qué se puede verificar matemáticamente que tu voto, el voto que tú emitiste, está incluído en esa lista de votos cifrados, esa lista que hemos verificado que genera el resultado correcto. Para verificar tu voto, debes de haberte guardado el localizador del voto, que no es más que un hash del voto. </p><p>\n\nEste localizador aparece en pantalla al terminar el proceso de voto en la cabina de votación. Si no tienes tu localizador, apréndete que tienes que guardártelo si quieres poder realizar esta comprobación. </p><p>\n\nPara comprobar que tu localizador está incluído en el recuento, simplemente has de ejecutar el mismo comando que antes, agregando como nuevo parámetro el localizador de tu voto:</p>\n\n<code>\nsh agora-verifier {{electionId}}.tar [localizador]\n</code>\n"
+      "stateNotPublished": "Lo sentimos. No se puede verificar el recuento de la votació porque los resultados aun no han sido publicados.",
+      "stateLoading": "Cargando votació: espera un momento por favor..",
+      "verifyText": "<p>En esta página describimos el proceso por el cual se puede verificar que el resultado de la votació es el correcto. Cada votante pueda verificar que su papereta de voto está incluída en el recuento, y también puede verificar matemáticamente el resultado del recuento.</p><p>\n\n<strong>Para realizar dicha verificación es necesario tener suficientes conocimientos técnicos. Si no los tienes, recomendamos que realices este proceso de verificación con la ayuda de alguien que si los tenga.</strong></p><p>\n\nLo primero que necesitas para verificar el recuento es descargarte el software de &quot;agora-verifier&quot;. Este es el software que realiza las verificaciones pertinentes sobre una votació realizada con Agora Voting. Puedes descargarte agora-verifier ya desde aqui:<p>\n\n<p><a href=\"{{verifier.link}}\" target=\"_blank\">agora-verifier</a><span class=\"special\"> (md5sum: {{verifier.hash}})</span></p>\n\n<p>o bien puedes <a href=\"https://github.com/agoravoting/agora-verifier\">instalártelo manualmente a partir del código fuente, siguiendo las instrucciones del proyecto en github</a>.</p><p>\n\nagora-verifier ha sido probado en Linux, y requiere de:</p>\n<ul>\n<li>Sistema operativo linux de 64 bits.</li>\n<li>Python 3.3 o superior</li>\n<li>Java v7 o superior instalado.</li>\n<li>uuencode (&quot;sudo apt-get install sharutils&quot; en Debian/Ubuntu).</li>\n</ul>\n\n<p>El fichero que contiene todos los datos de la votació, que nosotros solemos llamar \"tally.tar\" es el siguiente:</p>\n\n<p><a class=\"tally-link\" href=\"{{publicURL}}{{electionId}}/{{electionId}}.tar\" target=\"_blank\">Recuento votació ({{electionId}}.tar)</a></p>\n\n<p>Para verificar el recuento, puedes simplemente ejecutar:</p>\n\n<p>\n<code>\nsh agora-verifier {{electionId}}.tar\n</code>\n</p>\n\n<p>El output de dicha ejecución será algo parecido a esto:</p>\n\n<code>\nsh agora-verifier {{electionId}}.tar<br/><br/>\n\n* extracted to /tmp/tmp9c2r5e3jtally<br/>\n* extracted raw tally to /tmp/tmp9c2r5e3jtally/tally-raw-0<br/>\n* running ['./agora-results', '-t', '/tmp/tmp9c2r5e3jtally/0.tar.gz', '-c', '/tmp/tmp9c2r5e3jtally/config.json', '-s', '-o', 'json']<br/>\n* results hash verification OK<br/>\n* processing /tmp/tmp9c2r5e3jtally/tally-raw-0<br/>\n# Results ##########################################<br/>\ntotal number of votes (including blank/invalid votes): 37<br/>\nQuestion #1: Secretario General<br/>\n<br/>\nnumber of options available: 2<br/>\n<br/>\nRaw winning options (position):<br/>\n...<br/>\n<br/>\n<br/>\n####################################################<br/>\n<br/>\n* verifying proofs of knowledge of the plaintexts...<br/>\n* ..finished. Verified 37 votes (0 invalid)<br/>\n* proofs of knowledge of plaintexts OK (0 invalid)<br/>\n* running './pverify.sh .rnd /tmp/tmp9c2r5e3jtally/tally-raw-0'<br/>\n* initializing random source..Successfully initialized random source!<br/>\n* begin proof verification on '/tmp/tmp9c2r5e3jtally/tally-raw-0'<br/>\n* processing /tmp/tmp9c2r5e3jtally/tally-raw-0/0-089b56b3-3ffc-4f91-ace5-eef571162d8c..<br/>\n*<br/>\n* ============ Read and derive common values. ====================<br/>\n* 150101 18:46:10 Read joint public key... * done.<br/>\n* 150101 18:46:11 Read individual El Gamal public keys... * done.<br/>\n* 150101 18:46:11 Verify relation between public keys... * done.<br/>\n* 150101 18:46:11 Read input ciphertexts... * done.<br/>\n* 150101 18:46:11 Derive independent generators... * done.<br/>\n*<br/>\n* ============ Verify shuffle of Party 1. ========================<br/>\n* 150101 18:46:11 Read output of Party 1... * done.<br/>\n* 150101 18:46:11 Verify proof of shuffle... * done.<br/>\n*<br/>\n* ============ Verify shuffle of Party 2. ========================<br/>\n* 150101 18:46:12 Read output of Party 2... * done.<br/>\n* 150101 18:46:12 Verify proof of shuffle... * done.<br/>\n*<br/>\n* ============ Verify decryption of Party 1. =====================<br/>\n* 150101 18:46:12 Read decryption factors... * done.<br/>\n* 150101 18:46:12 Verify decryption proof... * done.<br/>\n*<br/>\n* ============ Verify decryption of Party 2. =====================<br/>\n* 150101 18:46:13 Read decryption factors... * done.<br/>\n* 150101 18:46:13 Verify decryption proof... * done.<br/>\n*<br/>\n* ============ Verify finalization. ==============================<br/>\n* 150101 18:46:13 Decrypt using verified decryption factors... * done.<br/>\n* 150101 18:46:13 Read and verify plaintexts... * done.<br/>\n*<br/>\n* Verification completed SUCCESSFULLY after 0h 0m 4s.<br/>\n* verification is OK<br/>\n* processing question_dir 0-089b56b3-3ffc-4f91-ace5-eef571162d8c<br/>\n* running '/tmp/tmp.J9d7GWUECw/agora-verifier/vmnc.sh .rnd -plain -outi json proofs/PlaintextElements.bt plaintexts_json2'<br/>\n* initializing random source..Successfully initialized random source!<br/>\n* calling mixnet interface with vmnc .rnd  -plain -outi json proofs/PlaintextElements.bt plaintexts_json2..<br/>\n* vmnc call succeeded<br/>\n* plaintexts_json verification OK<br/>\n* running '/tmp/tmp.J9d7GWUECw/agora-verifier/vmnc.sh .rnd -ciphs -ini json ciphertexts_json ciphertexts_raw'<br/>\n* calling mixnet interface with vmnc .rnd  -ciphs -ini json ciphertexts_json ciphertexts_raw..<br/>\n* vmnc call succeeded<br/>\n* ciphertexts_json verification OK<br/>\n<br/>\n</code>\n\n<p></p>\n<p>Lo más importante es que el comando termine diciendo &quot;OK&quot;. Si existen algún fallo, el comando no termina diciendo OK sino FAILED. A continuación listamos los pasos del proceso de verificación. Por razones técnicas el comando no sigue exactamente el mismo orden que mostramos aqui a efectos de mayor claridad:</p>\n<ol>\n<li>Extraer el fichero en un directorio que imprime por pantalla</li><li>\nMostrar en pantalla someramente los datos más importantes del recuento: el numero total de votos, y la lista de candidatures ganadoras (NO ordenadas).</li><li>\nLeer el fichero result_json correspondiente a los resultados del recuento mostrados en el paso anterior y hacerle un hash.</li><li>\nLeer la claves públicas con la que se cifraron los votos (fichero pubkeys_json)</li><li>\nLeer los votos del fichero ciphertexts_json y comprobar que son válidas las pruebas matemáticas de Cero Conocimiento (ZKP) que demuestran que el que emitió el voto cifrado conocía el contenido en texto plano de dicho voto. </li><li>\nEl siguiente paso es verificar una serie de elementos de cada pregunta. Cada pregunta se cifra por separado, y por tanto se hace el recuento y algunas verificaciones del mismo por separado:<ol><li>\nVerificar que a partir de los votos del fichero &quot;ciphertexts_json&quot; se obtienen los votos cifrados en formato raw. Se hace un hash de ambos ficheros y se comprueba si es el mismo. Si esta comprobacion falla, el script imprime &quot;ciphertexts_json verification FAILED&quot;.</li><li>\nLeer las pruebas ZKP que matemáticamente demuestran que a partir de los votos cifrados de esta pregunta, el resultado son los votos descifrados en formato raw . Si estas pruebas fallan, el script imprime &quot;verification FAILED&quot;.</li><li>\nVerificar que a partir de los votos descifrados en formato raw, el resultado es el fichero de votos descifrados &quot;plaintexts_json&quot;. Se hace un hash de ambos ficheros y se comprueba si es el mismo. Si esta comprobacion falla, el script imprime &quot;plaintexts_json verification FAILED&quot;.</li>\n</ol><li>\nLeer los ficheros que contienen los votos descifrados, y calcular el resultado de la votació a partir de dichos votos descifrados.</li><li>\nComparar dicho hash con el hash del result_json que obtuvimos en el paso 3. Si la comparación falla, el script devuelve un &quot;tally verification FAILED&quot;.</li>\n</p>\n<p>Como puede observarse, <strong>se comprueba matemática e unívocamente</strong> que a partir de los votos cifrados, el resultado de la votació es el mencionado. Pero puede surgir una duda ¿de donde salen los votos? ¿y está mi voto ahí incluído?</p><p>\n\nEn primer lugar, hemos de decir que el sistema de votació implica que hay que tener una cierta confianza en las organizaciones que están realizando la votació, en particular se asumo que se confía que no han metido votos de más. Esto es una limitación (reflejada en el <a href=\"/doc/tech_overview.pdf\">tecnical overview</a>, apartado 6.3.3) que deriva del hecho de que los votos no están firmados digitalmente, y no lo están debido a que muy poca gente tiene un certificado digital que pueda utilizar fácilmente en una votació de estas características en España. Es por tanto una limitación externa a Agora Voting. En otros países europeos como Estonia por ejemplo, <a href=\"http://www.vvk.ee/voting-methods-in-estonia/engindex/statistics\">el eID parece que sí que tiene un amplio uso y por tanto el 24,3% de los votantes votaron por Internet en las elecciones de 2011</a>.</p><p>\n\nNo obstante, si qué se puede verificar matemáticamente que tu voto, el voto que tú emitiste, está incluído en esa lista de votos cifrados, esa lista que hemos verificado que genera el resultado correcto. Para verificar tu voto, debes de haberte guardado el localizador del voto, que no es más que un hash del voto. </p><p>\n\nEste localizador aparece en pantalla al terminar el proceso de voto en la cabina de votació. Si no tienes tu localizador, apréndete que tienes que guardártelo si quieres poder realizar esta comprobación. </p><p>\n\nPara comprobar que tu localizador está incluído en el recuento, simplemente has de ejecutar el mismo comando que antes, agregando como nuevo parámetro el localizador de tu voto:</p>\n\n<code>\nsh agora-verifier {{electionId}}.tar [localizador]\n</code>\n"
     },
 
     "resultsDirective": {
-      "ballotLocatorLink": "Localizar papeleta",
+      "ballotLocatorLink": "Localitzar papereta",
       "verifiableResultsLink": "Recuento verificable"
     }
   },
   "avRegistration": {
     "loginHeader": "Entrar en tu cuenta de Agora Voting",
-    "helpRegisterForm": "Para poder votar, tienes que registrarte primero mediante este formulario. Algunos de los campos son obligatorios: lee bien la información de ayuda",
+    "helpRegisterForm": "Per poder votar, has de registrar-te abans mitjançant aquest formulari. Alguns dels camps són obligatoris: llegeix bé la informació d'ajuda",
     "helpAdminRegisterForm": "Para poder crear votaciones tienes que registrarte primero mediante este formulario. Lee bien la información de ayuda",
     "registerFormHelpTitle": "Registrándote para votar",
     "registerAdminFormHelpTitle": "Registrándote para crear votaciones",
-    "fillValidFormText": "Para poder enviar el formulario, primero rellena correctamente todos los campos.",
-    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. Por favor, revísalos, o ponte en contacto con los administradores de la votación,",
+    "fillValidFormText": "Per poder enviar el formulari, emplena correctament tots els camps.",
+    "invalidRegisterData": "No ha sido posible registrarte con los datos aportados. Por favor, revísalos, o ponte en contacto con los administradores de la votació,",
     "logout": "Salir",
     "codeLabel": "Código de Autenticación",
     "emailLabel": "Correo electrónico",
-    "telLabel": "Teléfono",
+    "telLabel": "Telèfon",
     "emailPlaceholder": "fulanito@ejemplo.com",
     "passwordLabel": "Contraseña",
     "passwordPlaceholder": "contraseña",
-    "notRegisteredYet": "¿Aún no te has registrado?",
+    "notRegisteredYet": "Ya estás registrado/a?",
     "registerHere": "Regístrate aquí",
     "fewMinutes": "Sólo te llevará unos minutos",
-    "createElection": "¿Buscas crear una votación?",
+    "createElection": "¿Buscas crear una votació?",
     "takeLook": "Echa un vistazo a la",
     "step": "guia paso a paso",
     "forgotPassword": "¿Olvidaste tu contraseña?",
@@ -245,6 +245,9 @@
     "surnamePlaceholder": "apellido",
     "tlfPlaceholder": "teléfono",
     "dniPlaceholder": "DNI",
+    "alreadyRegistered": "Ja estàs registrat/da?",
+    "helpAlreadyRegisteredForm": "Pot ser que ja estiguis registrat/da i el que necessites en realitat és autenticar-te.",
+    "loginHere": "Accedir usant les meves credencials, Ja m'he registrat amb anterioritat.",
 
     "tlfError": "Teléfono incorrecto",
     "dniError": "DNI ejemplo 12345678H",
@@ -259,7 +262,10 @@
     "successRegistration": "Exitoso",
     "errorRegistration": "Error",
 
-    "invalidCredentials": "Credenciales no válidas"
+    "invalidCredentials": "Credenciales no válidas",
+    "invalidDataRegEx": "dades no vàlids",
+    "invalidDni": "DNI/NIE no vàlids",
+    "dniHelp": "Especifica un DNI/NIE vàlid. Exemples: 1234567R o X0123456R"
   },
 
   "avAdmin": {
@@ -284,7 +290,7 @@
         "solutions": "Soluciones",
         "adminManual": "Manual de admin",
 
-        "electionTypes": "Tipos de votación",
+        "electionTypes": "Tipos de votació",
         "primaries": "Primarias y elecciones de candidatos",
         "participatoryBudgeting": "Presupuestos participativos",
         "referendums": "Referéndums y consultas",
@@ -300,7 +306,7 @@
     },
     "sidebar": {
         "elections": "Votaciones",
-        "newel": "Nueva votación",
+        "newel": "Nueva votació",
         "import": "Importar",
         "currentel": "Votación actual",
         "dashboard": "Panel de control",
@@ -329,7 +335,7 @@
         "publish": "publicar"
     },
     "import": {
-        "desc": "Importar una votación desde csv te permite administrar y automatizar la creación de votaciones de forma externa. <a href=\"#\">Lee más acerca de el formato de votación CSV aquí</a>. Si quieres crear varias votaciones a la vez, puedes user la API o contactar con nosotros.",
+        "desc": "Importar una votació desde csv te permite administrar y automatizar la creación de votaciones de forma externa. <a href=\"#\">Lee más acerca de el formato de votació CSV aquí</a>. Si quieres crear varias votaciones a la vez, puedes user la API o contactar con nosotros.",
         "file": "Selecciona un fichero",
         "dropFilesHere": "Drop CSV file here"
     },
@@ -342,11 +348,11 @@
         "answers": "Respuestas",
         "status": "Estado",
         "authentication": "Autenticación",
-        "electionid": "Id de votación",
-        "authorities": "Autoridades",
+        "electionid": "Id de votació",
+        "authorities": "Autoritats",
         "create": "Crear",
-        "start": "Comenzar votación",
-        "stop": "Terminar votación",
+        "start": "Comenzar votació",
+        "stop": "Terminar votació",
         "tally": "Hacer recuento",
         "publish": "Publicar resultados",
         "doingtally": "Haciendo el recuento",
@@ -358,9 +364,9 @@
         "votes": "Votos",
         "winner": "Posición ganadora",
         "publicResultsUrl": "Url pública de resultados",
-        "electionPublic": "Url pública de la votación",
+        "electionPublic": "Url pública de la votació",
         "censussend": "Se ha enviado el censo correctamente",
-        "preview": "Demo de cabina de votación",
+        "preview": "Demo cabina de votació",
         "modals": {
           "createHeader": "Create election",
           "createBody": "To create the election, its configuration is sent to the election authorities and they create election public encryption keys. After that, the election is no longer editable. Before doing this, please check that the configuration is correct (for example taking a look at the demo voting booth). If you need to change the election after this, you will have to create a new one.",
@@ -385,13 +391,13 @@
         }
     },
     "basic": {
-        "intro": "Crear una votación conlleva varios pasos, pero no es difícil. No te pongas nerviso y adelante, sólo te llevará 5 minutos",
+        "intro": "Crear una votació conlleva varios pasos, pero no es difícil. No te pongas nerviso y adelante, sólo te llevará 5 minutos",
         "title": { "label": "Título", "placeholder": "ej.Nueva junta de dirección", "labelH3": "__index__. Votación titulada: __title__" },
         "description": { "label": "Descripción", "placeholder": "Descripción que se mostrará" },
         "share": { "label": "Texto para compartir", "placeholder": "Texto para usar en los enlaces a redes sociales" },
-        "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votación" },
+        "layout": { "label": "Disposición", "placeholder": "Especifica cómo se va a mostrar toda la votació" },
         "layouts": { "simple": "Simple", "2questions-conditional": "Sí/No", "pcandidates-election": "Table Candidates" },
-        "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votación?" },
+        "theme": { "label": "Tema", "placeholder": "¿Cómo se verá la votació?" },
         "themes": { "default": "Por defecto", "podemos": "Purple" },
         "questionOptionsSummary": "<strong>__num_answers__</strong> candidates. Voters select between <strong>__min__</strong> and <strong>__max__</strong> options (randomize: <strong>__random__</strong>) and there are <strong>__num_winners__</strong> winners. The tally method is <strong>__tally_method__</strong>.",
         "censusSize": "__num__ personas",
@@ -399,12 +405,12 @@
     },
     "questions": {
         "new": "Nueva pregunta",
-        "votingSystem": "Sistema de votación",
+        "votingSystem": "Sistema de votació",
         "votings": {"plurality-at-large": "Plurality at large", "borda-nauru": "Borda Dowdall o de Nauru (1/n)", "borda": "Borda tradicional"},
         "winners": {"label": "Número de ganadores", "placeholder": "¿Cuántos ganadores debe haber? El mínimo es 1 y el máximo es el número de candidatures"},
         "min": {"label": "Mínimo de candidatures seleccionadas", "placeholder": "¿Cuántas candidatures debe seleccionar un votante? El mínimo es cero lo que premite el voto en blanco"},
         "max": {"label": "Máximo de candidatures seleccionadas", "placeholder": "¿Cuántas candidatures puede un votante seleccionar?"},
-        "random": {"label": "Orden aleatorio de candidatures", "placeholder": "Cuando está activo las candidatures aparecerán en un orden diferente a cada votante en la cabina de votación"},
+        "random": {"label": "Orden aleatorio de candidatures", "placeholder": "Cuando está activo las candidatures aparecerán en un orden diferente a cada votante en la cabina de votació"},
         "candidates": {"label": "Candidatos", "placeholder": "Respuestas que podrán ser votadas en esta pregunta"},
         "newopt": "Nueva opción"
     },
@@ -461,10 +467,10 @@
         "auths": {"email": "Correo electrónico", "sms": "SMS"},
         "sms": "Mensaje SMS",
         "smstemp": "Plantilla usada en el SMS a enviar al usuario. Usa %(code)s para insertar el código SMS",
-        "smsdef": "Este es tu código de votación %(code)s",
+        "smsdef": "Este es tu código de votació %(code)s",
         "email": "Mensaje por correo elelectrónico",
         "emailsub": "Asúnto del correo",
-        "emailtemp": "Plantilla usada en el correo para enviar a los usuarios. Usa %(code)s para añadir el código de acceso y %(url)s para insertar el enlace de votación",
+        "emailtemp": "Plantilla usada en el correo para enviar a los usuarios. Usa %(code)s para añadir el código de acceso y %(url)s para insertar el enlace de votació",
         "emaildef": "Vota siguiendo este enlace %(url)s\nEste es tu código de autenticación: %(code)s"
     },
     "create": {
@@ -472,10 +478,10 @@
         "summary__plural": "Resumen: creando __num__ votaciones",
         "create": "Crear las votaciones",
         "create__plural": "Crear las votaciones",
-        "creating": "Creando la autenticación de la votación __title__",
+        "creating": "Creando la autenticación de la votació __title__",
         "census": "Añadiendo el censo (id: __id__) __title__",
-        "reg": "Registrando la votación (id: __id__) __title__",
-        "creatingEl": "Creando la votación (id: __id__) __title__",
+        "reg": "Registrando la votació (id: __id__) __title__",
+        "creatingEl": "Creando la votació (id: __id__) __title__",
         "logHeader": "Log"
     }
   }
