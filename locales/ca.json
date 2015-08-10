@@ -128,7 +128,7 @@
     "ballotLocatorTitle": "Troba la teva papereta",
     "ballotLocatorSubtitle": "Election: __title__",
     "inputLocatorPlaceholder": "Introdueix aquí el localitzador",
-    "ballotLocatorPTitle": "Localizador de la papereta",
+    "ballotLocatorPTitle": "Localitzador de la papereta",
     "searchLocatorButton": "Troba la papereta",
     "locatorDescription": "Quan emets el teu vot, t'apareix el localitzador de la teva papereta perquè puguis seguir-li el rastre sense desvetllar-ne el sentit del vot. Aquí pots introduir aquest localitzador i comprovar que efectivament aquesta papereta xifrada ha estat emesa i registrada correctament.",
     "locatorFoundText": "¡Papereta trobada! Efectivament, la papereta amb el localitzador <strong>__locator__</strong> ha estat emesa i registrada correctament. El text de la papereta xifrada és:",
