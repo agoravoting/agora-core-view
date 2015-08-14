@@ -58,8 +58,10 @@
       </div>
       <h2 class="text-center" ng-if="!!election.presentation.share_text">
         <a
-          href="{{'https://twitter.com/intent/tweet?text=' + encodeURIComponent(election.presentation.share_text) + '&source=webclient'}}"
+          ng-i18next
+          href="{{tweetLink}}"
           target="_blank">
+          avElection.public.shareLink
         </a>
       </h2>
     </div>

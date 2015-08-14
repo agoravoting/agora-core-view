@@ -7,6 +7,7 @@ angular.module('avBooth')
     function link(scope, element, attrs) {
       var text = $interpolate(ConfigService.success.text);
 
+      scope.tweetLink = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(scope.election.presentation.share_text) + '&source=webclient';
       scope.successText = text({electionId: scope.election.id});
     }
 
