@@ -253,7 +253,15 @@ angular.module('avAdmin')
                     extra_fields: [ ],
                     config: {
                         "msg": $i18next('avAdmin.auth.emaildef'),
-                        "subject": $i18next('avAdmin.auth.emailsubdef')
+                        "subject": $i18next('avAdmin.auth.emailsubdef'),
+                        "authentication-action": {
+                          "mode": "vote",
+                          "mode-config": null
+                        },
+                        "registration-action": {
+                          "mode": "vote",
+                          "mode-config": null
+                        }
                     }
                 },
                 questions: []

@@ -5,6 +5,7 @@ angular.module('avRegistration')
                                  $state,
                                  $cookies,
                                  $i18next,
+                                 $window,
                                  $timeout,
                                  ConfigService) {
     // we use it as something similar to a controller here
@@ -94,12 +95,19 @@ angular.module('avRegistration')
                         $cookies.auth = rcvData['auth-token'];
                         $cookies.isAdmin = scope.isAdmin;
                         Authmethod.setAuth($cookies.auth, scope.isAdmin);
-                        if (scope.isAdmin) {
+                        if (scope.isAdmin)
+                        {
                             Authmethod.getUserInfo().success(function(d) {
                                 $cookies.user = d.email;
                                 $state.go('admin.elections');
                             }).error(function(error) { $state.go("admin.elections"); });
-                        } else {
+                        }
+                        else if (angular.isDefined(rcvData['redirect-to-url']))
+                        {
+                            $window.location.href = rcvData['redirect-to-url'];
+                        }
+                        else
+                        {
                             // redirecting to vote link
                             Authmethod.getPerm("vote", "AuthEvent", autheventid)
                                 .success(function(rcvData2) {
