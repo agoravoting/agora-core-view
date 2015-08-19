@@ -54,6 +54,10 @@ angular.module('avUi')
   .service('CheckerService', function() {
     function checker(d) {
 
+      /*
+       * Used to eval the expressions given by the programmer in the checker
+       * script
+       */
       function evalValue(code, $value) {
         if (angular.isString(code)) {
           /* jshint ignore:start */
@@ -102,6 +106,11 @@ angular.module('avUi')
         } else if (item.check === "is-array") {
           pass = angular.isArray(d.data[item.key], item.postfix);
           if (!pass) {
+            error(item.check, {key: item.key}, item.postfix);
+          }
+
+        } else if (item.check === "lambda") {
+          if (!item.validator(d.data[item.key])) {
             error(item.check, {key: item.key}, item.postfix);
           }
 

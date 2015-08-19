@@ -314,6 +314,7 @@
         "questions": "Preguntas",
         "censusConfig": "Configuración Censal",
         "census": "Datos censales",
+        "successAction": "Acción al entrar",
         "auth": "Autorización",
         "tally": "Recuento",
         "create": "Crear Votación",
@@ -482,7 +483,53 @@
         "census": "Añadiendo el censo (id: __id__) __title__",
         "reg": "Registrando la votació (id: __id__) __title__",
         "creatingEl": "Creando la votació (id: __id__) __title__",
-        "logHeader": "Log"
+        "logHeader": "Log",
+        "errors": {
+          "election-is-array-questions": "Votación '__eltitle__': a lista de pregunta non é un array",
+          "election-lambda-success-action-url-mode": "Votación '__eltitle__': url de redirección en 'Acción de éxito' inválida",
+          "election-array-length-min-questions": "Votación '__eltitle__': debe haber polo menos __min__ preguntas, pero só hai  __num__",
+          "election-array-length-max-questions": "Votación '__eltitle__': debe haber como moito __max__ preguntas, pero hai __num__",
+          "election-question-is-array-answers": "Votación '__eltitle__': a lista de candidaturas non é un array",
+
+-          "election-array-length-max-description": "Votación '__eltitle__': a descrición ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-is-string-description": "Votación '__eltitle__': a descrición non é unha cadea de texto",
+          "election-array-length-max-title": "Votación '__eltitle__': o título ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-is-string-title": "Votación '__eltitle__': o título non é unha cadea de texto",
+          "election-question-array-length-max-description": "Votación '__eltitle__', pregunta '__qtitle__': a descrición ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-question-is-string-description": "Votación '__eltitle__', pregunta '__qtitle__': a descrición non é unha cadea de texto",
+          "election-question-array-length-max-title": "Votación '__eltitle__', pregunta '__qtitle__': o título ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-question-is-string-title": "Votación '__eltitle__', pregunta '__qtitle__': o título non é unha cadea de texto",
+          "election-question-answer-array-length-max-text": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': o texto ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-question-answer-is-string-description": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': a descrición non é unha cadea de texto",
+          "election-question-answer-array-length-min-text": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': o texto ten unha lonxitude de __num__ caracteres, pero debe ter polo menos __min__ caracteres",
+          "election-question-answer-is-string-text": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': o texto non é unha cadea de texto",
+          "election-question-answer-array-length-max-description": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': a descrición ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-question-answer-array-length-max-category": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': a categoría ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-question-answer-is-string-category": "Votación '__eltitle__', pregunta '__qtitle__', candidatura '__atext__': a categoría non é unha cadea de texto",
+          "election-question-is-int-min": "Votación '__eltitle__', pregunta '__qtitle__': o mínimo número de candidaturas que pode seleccionar un votante non é un número enteiro",
+          "election-question-is-int-max": "Votación '__eltitle__', pregunta '__qtitle__': o máximo número de candidaturas que pode seleccionar un votante non é un número enteiro",
+          "election-question-is-int-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': o número de gañadores non é un número enteiro",
+          "election-question-array-length-min-answers": "Votación '__eltitle__', pregunta '__qtitle__': debe haber polo menos  __min__ candidaturas, pero só hai __num__",
+          "election-question-array-length-max-answers": "Votación '__eltitle__', pregunta '__qtitle__': debe haber como moito __max__ candidaturas, pero hai __num__",
+          "election-question-int-size-min-min": "Votación '__eltitle__', pregunta '__qtitle__': o mínimo número de candidaturas que pode seleccionar un votante debe ser un número positivo, pero é __value__",
+          "election-question-int-size-max-min": "Votación '__eltitle__', pregunta '__qtitle__': o mínimo número de candidaturas que pode seleccionar un votante é __value__, pero non debe ser maior que o máximo, que é __max__",
+          "election-question-int-size-min-max": "Votación '__eltitle__', pregunta '__qtitle__': o máximo número de candidaturas que pode seleccionar un votante é __value__, pero debe ser maior ou igual que o mínimo, que é __min__",
+          "election-question-int-size-max-max": "Votación '__eltitle__', pregunta '__qtitle__': o máximo número de candidaturas que pode seleccionar un votante é __value__, pero non debe ser maior que o número total de candidaturas, que é __max__",
+          "election-question-int-size-min-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': debe haber polo menos un gañador, pero hai __value__",
+          "election-question-int-size-max-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': o número de gañadores é __value__, pero non pode ser maior que o número total de candidaturas, que é __max__"
+        }
+    },
+
+    "successAction": {
+      "modeIntro": "Once an user registers or authenticates, an action should be executed. Usually, it's redirected to the corresponding election voting booth, but it can also be configured to load an external url. This is useful if you are using this  just to register census and not for any active election.",
+
+      "voteModeTitle": "Load the election's voting booth",
+      "voteModeDescription": "Load the corresponding the corresponding election voting booth so that the person can vote.",
+
+      "urlModeTitle": "Redirect to URL",
+      "urlModeDescription": "Load an URL that you can specify:",
+      "urlModePlaceholder": "https://example.com/foo/bar",
+      "invalidUrl": "Invalid url. Example of a valid URL: https://example.com/foo/bar"
     }
   }
 }

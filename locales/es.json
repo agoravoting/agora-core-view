@@ -360,6 +360,7 @@
         "questions": "Preguntas",
         "censusConfig": "Configuración Censal",
         "census": "Datos censales",
+        "successAction": "Acción al entrar",
         "auth": "Autenticación",
         "tally": "Recuento",
         "create": "Crear Votación",
@@ -638,6 +639,7 @@
         "logHeader": "Log",
         "errors": {
           "election-is-array-questions": "Votación '__eltitle__': la lista de pregunta no es un array",
+          "election-lambda-success-action-url-mode": "Votación '__eltitle__': url de redirección en 'Acción de éxito' inválida",
           "election-array-length-min-questions": "Votación '__eltitle__': debe haber al menos __min__ preguntas, pero solo hay  __num__",
           "election-array-length-max-questions": "Votación '__eltitle__': debe haber como mucho __max__ preguntas, pero hay __num__",
           "election-question-is-array-answers": "Votación '__eltitle__': la lista de candidaturas no es un array",
@@ -669,6 +671,18 @@
           "election-question-int-size-min-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': debe haber al menos un ganador, pero hay __value__",
           "election-question-int-size-max-num-winners": "Votación '__eltitle__', pregunta '__qtitle__': el número de ganadores es __value__, pero no puede ser mayor que el número total de candidaturas, que es __max__"
         }
+    },
+
+    "successAction": {
+      "modeIntro": "Once an user registers or authenticates, an action should be executed. Usually, it's redirected to the corresponding election voting booth, but it can also be configured to load an external url. This is useful if you are using this  just to register census and not for any active election.",
+
+      "voteModeTitle": "Load the election's voting booth",
+      "voteModeDescription": "Load the corresponding the corresponding election voting booth so that the person can vote.",
+
+      "urlModeTitle": "Redirect to URL",
+      "urlModeDescription": "Load an URL that you can specify:",
+      "urlModePlaceholder": "https://example.com/foo/bar",
+      "invalidUrl": "Invalid url. Example of a valid URL: https://example.com/foo/bar"
     }
   }
 }

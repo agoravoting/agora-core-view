@@ -358,6 +358,7 @@
         "questions": "Questions",
         "censusConfig": "Census Configuration",
         "census": "Census Data",
+        "successAction": "Success Action",
         "auth": "Authentication",
         "tally": "Tally",
         "create": "Create Election",
@@ -634,6 +635,7 @@
         "logHeader": "Log",
         "errors": {
           "election-is-array-questions": "Election '__eltitle__': list of questions is not an array",
+          "election-lambda-success-action-url-mode": "Election '__eltitle__': invalid success action url",
           "election-array-length-min-questions": "Election '__eltitle__': there must be at least __min__ questions but there are only __num__",
           "election-array-length-max-questions": "Election '__eltitle__': there must be at most __max__ questions but there are __num__",
           "election-array-length-max-description": "Election '__eltitle__': description length is __num__, exceeding the maximum of __max__",
@@ -664,6 +666,18 @@
           "election-question-int-size-min-num-winners": "Election '__eltitle__', question '__qtitle__': there must be at least one winner, but it is __value__ instead",
           "election-question-int-size-max-num-winners": "Election '__eltitle__', question '__qtitle__': the number of winners is __value__, but cannot be bigger than the number of answers that is __max__"
         }
+    },
+
+    "successAction": {
+      "modeIntro": "Once an user registers or authenticates, an action should be executed. Usually, it's redirected to the corresponding election voting booth, but it can also be configured to load an external url. This is useful if you are using this  just to register census and not for any active election.",
+
+      "voteModeTitle": "Load the election's voting booth",
+      "voteModeDescription": "Load the corresponding the corresponding election voting booth so that the person can vote.",
+
+      "urlModeTitle": "Redirect to URL",
+      "urlModeDescription": "Load an URL that you can specify:",
+      "urlModePlaceholder": "https://example.com/foo/bar",
+      "invalidUrl": "Invalid url. Example of a valid URL: https://example.com/foo/bar"
     }
   }
 }

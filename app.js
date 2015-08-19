@@ -120,6 +120,11 @@ angular.module('agora-core-view').config(
         templateUrl: 'avAdmin/admin-controller/admin-controller.html',
         controller: 'AdminController'
       })
+      .state('admin.successAction', {
+        url: '/success-action/:id',
+        templateUrl: 'avAdmin/admin-controller/admin-controller.html',
+        controller: 'AdminController'
+      })
       .state('admin.auth', {
         url: '/auth/:id',
         templateUrl: 'avAdmin/admin-controller/admin-controller.html',

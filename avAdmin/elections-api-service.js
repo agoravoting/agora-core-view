@@ -83,6 +83,7 @@ angular.module('avAdmin')
 
                     // updating census
                     el.census.auth_method = data.events.auth_method;
+                    el.census.config = data.events.auth_method_config.config;
                     el.census.extra_fields = data.events.extra_fields;
                     el.census.census = data.events.census;
 
@@ -256,7 +257,9 @@ angular.module('avAdmin')
                         "subject": $i18next('avAdmin.auth.emailsubdef'),
                         "authentication-action": {
                           "mode": "vote",
-                          "mode-config": null
+                          "mode-config": {
+                            "url": ""
+                          }
                         },
                         "registration-action": {
                           "mode": "vote",

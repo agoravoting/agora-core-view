@@ -36,6 +36,20 @@ angular.module('avAdmin')
               {check: "array-length", key: "description", min: 0, max: 3000, postfix: "-description"},
               {check: "array-length", key: "title", min: 0, max: 3000, postfix: "-title"},
               {check: "is-string", key: "description", postfix: "-description"},
+              {
+                check: "lambda",
+                key: "census",
+                validator: function (census) {
+                  var authAction = census.config['authentication-action'];
+                  if (authAction.mode !== 'go-to-url') {
+                    return true;
+                  }
+
+                  var urlRe = /^(https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
+                  return urlRe.test(authAction['mode-config'].url);
+                },
+                postfix: "-success-action-url-mode"
+              },
               {check: "is-string", key: "title", postfix: "-title"},
               {
                 check: "array-key-group-chain",
@@ -135,8 +149,14 @@ angular.module('avAdmin')
             // Creating the authentication
             logInfo($i18next('avAdmin.create.creating', {title: el.title}));
 
+            // sanitize some unneeded values that might still be there. This
+            // needs to be done because how we use ng-model
             if (el.census.config.subject && el.census.auth_method !== 'email') {
               delete el.census.config.subject;
+            }
+            var authAction = el.census.config['authentication-action'];
+            if (authAction.mode === 'vote') {
+              authAction["mode-config"] = null;
             }
 
             var d = {
