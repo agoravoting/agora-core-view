@@ -668,7 +668,7 @@
       "voteModeDescription": "Load the corresponding the corresponding election voting booth so that the person can vote.",
 
       "urlModeTitle": "Redirect to URL",
-      "urlModeDescription": "Load an URL that you can specify:",
+      "urlModeDescription": "Load an URL that you can specify. Only https urls allowed.",
       "urlModePlaceholder": "https://example.com/foo/bar",
       "invalidUrl": "Invalid url. Example of a valid URL: https://example.com/foo/bar"
     }
