@@ -491,7 +491,7 @@
           "election-array-length-max-questions": "Votación '__eltitle__': debe haber como moito __max__ preguntas, pero hai __num__",
           "election-question-is-array-answers": "Votación '__eltitle__': a lista de candidaturas non é un array",
 
--          "election-array-length-max-description": "Votación '__eltitle__': a descrición ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
+          "election-array-length-max-description": "Votación '__eltitle__': a descrición ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
           "election-is-string-description": "Votación '__eltitle__': a descrición non é unha cadea de texto",
           "election-array-length-max-title": "Votación '__eltitle__': o título ten unha lonxitude de __num__ caracteres, excedendo o máximo de __max__ caracteres",
           "election-is-string-title": "Votación '__eltitle__': o título non é unha cadea de texto",
