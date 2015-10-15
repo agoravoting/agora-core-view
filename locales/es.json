@@ -311,7 +311,8 @@
     "invalidCredentials": "Credenciales no válidas",
     "invalidDataRegEx": "Datos inválidos",
     "invalidDni": "DNI/NIE inválido",
-    "dniHelp": "Introduce un DNI/NIE válido. Ejemplos: 12343567R o X01234356R"
+    "dniHelp": "Introduce un DNI/NIE válido. Ejemplos: 12343567R o X01234356R",
+    "imageHelp": "Introduce una imagen en formato jpg, o png"
   },
 
   "avAdmin": {
@@ -600,7 +601,10 @@
         "nonEditableField": "(Requerido por método de autenticación)",
         "massive1": "Fichero CSV, usa punto y coma para separar lo campos",
         "massive2": "un votante por línea, mantén el orden de los campos",
-        "export": "Exportar"
+        "export": "Exportar",
+        "image": "Ver imagen",
+        "imageModalTitle": "Imagen",
+        "imageModalClose": "Cerrar"
     },
     "auth": {
         "intro": "La autenticación se usa para asegurar que un elector es quien dice ser. Aquí tienes que llegar a un compromiso entre seguridad, usabilidad y coste",

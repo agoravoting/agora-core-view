@@ -4,6 +4,7 @@ angular.module('avRegistration')
         var backendUrl = ConfigService.authAPI;
         var authId = ConfigService.freeAuthId;
         var authmethod = {};
+
         authmethod.captcha_code = null;
         authmethod.captcha_image_url = "";
         authmethod.captcha_status = "";
@@ -57,6 +58,10 @@ angular.module('avRegistration')
               return data;
             }
             return $http.get(backendUrl + 'auth-event/'+authId+'/ping/');
+        };
+
+        authmethod.getImage = function(ev, uid) {
+            return $http.get(backendUrl + 'auth-event/'+ev+'/census/img/'+uid+'/');
         };
 
         authmethod.login = function(data, authevent) {

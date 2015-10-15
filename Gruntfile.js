@@ -222,7 +222,7 @@ module.exports = function (grunt) {
       main: {
         options:{
           mangle: false,
-          compress: true,
+          compress: {},
           beautify: true
         },
         files: {

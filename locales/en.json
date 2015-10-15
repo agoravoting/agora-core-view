@@ -309,7 +309,8 @@
     "invalidCredentials": "Invalid credentials",
     "invalidDataRegEx": "Invalid data",
     "invalidDni": "Invalid DNI/NIE",
-    "dniHelp": "Specify a valid  DNI/NIE. Examples: 12343567R or X01234356R"
+    "dniHelp": "Specify a valid  DNI/NIE. Examples: 12343567R or X01234356R",
+    "imageHelp": "Add an image in jpg or png format"
   },
 
   "avAdmin": {
@@ -597,7 +598,10 @@
         "add": "Add a new field",
         "nonEditableField": "(Required by auth method)",
         "manualAdd": "Manual add",
-        "export": "Export"
+        "export": "Export",
+        "image": "View image",
+        "imageModalTitle": "View image",
+        "imageModalClose": "Close"
     },
     "auth": {
         "intro": "Authentication is the means used to ensure that an elector is who he sais he is. Here you need to find a balance between security, usability an cost",
