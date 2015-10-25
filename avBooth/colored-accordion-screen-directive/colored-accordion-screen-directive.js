@@ -62,6 +62,7 @@ angular.module('avBooth')
             if (spt.length > 1) {
                 var parent_cat = spt[0];
                 c.subcat = true;
+                c.subtitle = spt[1];
                 for (var j=0; j<scope.categories.length; j++) {
                     var c1 = scope.categories[j];
                     if (c1.title === parent_cat) {

@@ -37,6 +37,75 @@
 
 <div class="content avb-content" ng-if="!showingPreset">
   <div class="container">
+      <div class="row">
+      <!-- show available options and filter -->
+      <div class="col-xs-12">
+        <div class="pull-left hidden-xs">
+          <h4 class="text-brand-success" ng-i18next="avBooth.questionAvailableOptionsTitle"></h4>
+        </div>
+        <div class="pull-right filter-input hidden-xs">
+          <input type="text"
+            class="filter-input"
+            id="filter-input"
+            ng-model="stateData.filter"
+            ng-model-options="{debounce: 500}"
+            ng-i18next="[placeholder]avBooth.filterOptionsPlaceholder"
+            />
+          <span class="glyphicon glyphicon-search"></span>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="accordion-mode">
+          <div avb-accordion-option
+            ng-repeat="option in emptyCategory.options"
+            class="animate-repeat highlight-selected"
+            ng-class="{selected: option.selected > -1}">
+          </div>
+          <div accordion close-others="folding_policy !== 'unfold-all'">
+            <div accordion-group ng-repeat="category in categories" is-open="category.isOpen"
+                ng-class="{'in': category.isOpen}">
+              <div accordion-heading>
+                <span>{{category.title}}</span>
+                <span
+                  class="pull-right glyphicon"
+                  ng-class="{'glyphicon-chevron-down': category.isOpen, 'glyphicon-chevron-right': !category.isOpen}">
+                </span>
+                <span class="accordion-num-label pull-right label label-primary"
+                  ng-if="(category.options | avbSelectedOptions).length > 0">
+                  {{(category.options | avbSelectedOptions).length }}
+                </span>
+              </div>
+              <div avb-accordion-option
+                ng-repeat="option in category.options"
+                ng-if="!option.subcat"
+                class="coloredopt animate-repeat highlight-selected"
+                ng-class="{selected: option.selected > -1, support: option.support}">
+              </div>
+
+              <div ng-repeat="subc in category.options" ng-if="subc.subcat">
+                  <div class="subh">
+                    <span>{{subc.subtitle}}</span>
+                    <span class="accordion-num-label pull-right label label-primary"
+                      ng-if="(subc.options | avbSelectedOptions).length > 0">
+                      {{(subc.options | avbSelectedOptions).length }}
+                    </span>
+                  </div>
+
+                  <div avb-accordion-option
+                    ng-repeat="option in subc.options"
+                    ng-if="!option.subcat"
+                    class="coloredopt animate-repeat highlight-selected"
+                    ng-class="{selected: option.selected > -1, support: option.support}">
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      </div>
   </div>
 </div>
 
