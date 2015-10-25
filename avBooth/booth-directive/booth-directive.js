@@ -62,12 +62,12 @@ angular.module('avBooth')
             sorted: true,
             ordered: true
           };
-        } else if  (question.layout === "colored-accordion") {
-          return {
-            state: stateEnum.coloredAccordionScreen,
-            sorted: true,
-            ordered: true
-          };
+//         } else if  (question.layout === "colored-accordion") {
+//           return {
+//             state: stateEnum.coloredAccordionScreen,
+//             sorted: true,
+//             ordered: true
+//           };
         } else if  (question.layout === "pcandidates-election") {
           return {
             state: stateEnum.pcandidatesElectionScreen,

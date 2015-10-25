@@ -176,6 +176,12 @@
       "header": "Voto en blanco",
       "body": "No has seleccionado ninguna opción, lo que equivale a votar en blanco en esta pregunta.",
       "confirm": "Sí, quiero votar en blanco en esta pregunta"
+    },
+
+    "coloredAccordion": {
+      "selectAll": "Seleccionar todas",
+      "colorExplain": "En este color figuran las propuestas avaladas por el CCE.",
+      "colorExplainRest": "En este color el resto."
     }
   },
   "avElection": {
