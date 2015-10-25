@@ -32,6 +32,16 @@ angular.module('avBooth')
           };
         });
 
+        function optIsSupported(opt) {
+            if (!opt.subcat) {
+                opt.urls.forEach(function(u) {
+                    if (u.title === 'support' && u.url.split('/').slice(-1)[0] === 'true') {
+                        opt.support = true;
+                    }
+                });
+            }
+        }
+
         // getting subcat inside the corresponding cat
         // scope.categories has this structure:
         //
@@ -42,7 +52,11 @@ angular.module('avBooth')
         //      - option1
         //      - option2
         for (var i=0; i<scope.categories.length; i++) {
+
             var c = scope.categories[i];
+            // adding support opt to each option using the url support
+            c.options.forEach(optIsSupported);
+
             var t = c.title;
             var spt = t.split(' > ');
             if (spt.length > 1) {
