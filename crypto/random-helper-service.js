@@ -24,7 +24,7 @@ angular.module('avUi')
       {
         var length = l.length;
         for (var index = length - 1, rand, item; index >= 0; index--) {
-          rand = prng.random(0, index);
+          rand = prng.random(0, index+1);
           if (rand !== index) {
             item = l[index];
             l[index] = l[rand];
