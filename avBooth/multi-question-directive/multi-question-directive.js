@@ -4,7 +4,7 @@
  * Shows a question and its possible answers to the user.
  */
 angular.module('avBooth')
-  .directive('avbMultiQuestion', function($modal) {
+  .directive('avbMultiQuestion', function($modal, RandomHelper, $location) {
 
     var link = function(scope, element, attrs) {
       scope.stateData.affixIsSet = false;
@@ -153,18 +153,14 @@ angular.module('avBooth')
         scope.hideSelection = true;
       }
       if (question.randomize_answer_order) {
-          // we can't just sample the groupedOptions list because we need to
-          // 1. use the same list object
-          // 2. generate a specific ordering for all the options
+          // shuffles answers in a repeatable way if a seed is given as a query
+          // param
           var i = -1;
-          var answers = question.answers;
-          var shuffledNumbers = _.shuffle(_.map(answers, function () { i += 1; return i;}));
-          // map different sort orders
-          var shuffledAnswers = _.map(shuffledNumbers, function (index) { return answers[index].sort_order;});
-          // now, assign
-          _.each(answers, function (opt, index) { opt.sort_order = shuffledAnswers[index];});
-          answers.sort(function (item1, item2) { return item1.sort_order - item2.sort_order; });
-          scope.stateData.question.answers = answers;
+          var seedQuery = $location.search()['seed'];
+          var seed = (!!seedQuery) ? seedQuery : Math.random;
+
+          RandomHelper.shuffle(question.answers, RandomHelper.prng(seed));
+          scope.stateData.question.answers = question.answers;
       }
 
       scope.selectPresets = function () {
