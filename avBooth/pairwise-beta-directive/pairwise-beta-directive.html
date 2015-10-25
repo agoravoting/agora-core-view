@@ -50,15 +50,15 @@
         <div class="clickable" ng-click="selectAnswer(1)">
           <div class="img-wrapper">
             <iframe
-              ng-if="isYoutube(one)"
+              ng-if="!!isYoutube(one)"
               width="560"
               height="315"
-              ng-src="{{getUrls(one)['Image URL']}}"
+              src="{{isYoutube(one)}}"
               frameborder="0"
               allowfullscreen>
             </iframe>
             <img
-              ng-if="!isYoutube(one)"
+              ng-if="!isYoutube(one) && !!getUrls(one)['Image URL']"
               alt="{{one.text}}"
               ng-if="!!getUrls(one)['Image URL']"
               ng-src="{{getUrls(one)['Image URL']}}" />
@@ -70,8 +70,7 @@
               target="_blank"
               ng-if="!!getUrls(one)['URL']"
               href="{{getUrls(one)['URL']}}"
-              ng-click="$event.stopPropagation(); window.open(getUrls(one)['URL'],'_blank')"
-              ng-i18next>
+              ng-click="$event.stopPropagation(); window.open(getUrls(one)['URL'],'_blank')">
               avBooth.pairwiseBeta.web
             </a>
             <div
@@ -89,15 +88,15 @@
         <div class="clickable" ng-click="selectAnswer(2)">
           <div class="img-wrapper">
             <iframe
-              ng-if="isYoutube(two)"
+              ng-if="!!isYoutube(two)"
               width="560"
               height="315"
-              ng-src="{{getUrls(two)['Image URL']}}"
+              src="{{isYoutube(two)}}"
               frameborder="0"
               allowfullscreen>
             </iframe>
             <img
-              ng-if="!isYoutube(two)"
+              ng-if="!isYoutube(two) && !!getUrls(two)['Image URL']"
               alt="{{two.text}}"
               ng-if="!!getUrls(two)['Image URL']"
               ng-src="{{getUrls(two)['Image URL']}}" />
@@ -109,8 +108,7 @@
               target="_blank"
               ng-if="!!getUrls(two)['URL']"
               href="{{getUrls(two)['URL']}}"
-              ng-click="$event.stopPropagation(); window.open(getUrls(two)['URL'],'_blank')"
-              ng-i18next>
+              ng-click="$event.stopPropagation(); window.open(getUrls(two)['URL'],'_blank')">
               avBooth.pairwiseBeta.web
             </a>
             <div

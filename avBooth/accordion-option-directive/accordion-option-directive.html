@@ -10,6 +10,17 @@
     {{option.category}}
   </span>
 
+  <div
+    ng-if="!!isYoutube(option)"
+    class="videoWrapper">
+    <iframe
+      width="560"
+      height="315"
+      src="{{isYoutube(option)}}"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
   <div class="vertilize">
     <div class="vertilize-col vert-align-top">
       <img
@@ -19,7 +30,7 @@
         sibling-selector=".text-sibling"
 
         parent
-        ng-if="!!urls['Image URL']"
+        ng-if="!isYoutube(option) && !!urls['Image URL']"
         ng-src="{{urls['Image URL']}}"
         alt="{{option.text}}" />
     </div>

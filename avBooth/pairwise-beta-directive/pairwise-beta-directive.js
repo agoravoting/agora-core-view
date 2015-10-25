@@ -5,7 +5,7 @@
  * ordered pairs, where the first element of each pair is the preferred.
  */
 angular.module('avBooth')
-  .directive('avbPairwiseBeta', function(RandomHelper, $location) {
+  .directive('avbPairwiseBeta', function(RandomHelper, $location, $sce) {
 
     var link = function(scope, element, attrs) {
       // handy reference
@@ -68,7 +68,27 @@ angular.module('avBooth')
 
       scope.isYoutube = function (answer) {
         var url = scope.getUrls(answer)['Image URL'];
-        return !!url && url.indexOf("https://youtube.com") === 0;
+        if (!url) {
+          return false;
+        }
+
+        if (url.indexOf("https://youtube.com/embed/") === 0) {
+          return $sce.trustAsResourceUrl(url);
+        }
+
+        if (url.indexOf("https://www.youtube.com/watch?v=") === 0) {
+          return $sce.trustAsResourceUrl(url
+          .replace("/watch?v=", "/embed/")
+          .replace("&feature=youtu.be", ""));
+        }
+
+        if (url.indexOf("https://youtu.be/") === 0) {
+          return $sce.trustAsResourceUrl(url
+          .replace("https://youtu.be/", "https://youtube.com/embed/")
+          .replace("&feature=youtu.be", ""));
+        }
+
+        return false;
       };
 
       /**
