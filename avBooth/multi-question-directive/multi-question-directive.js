@@ -95,7 +95,7 @@ angular.module('avBooth')
       scope.stateData.question.presetSelectedSize = 0;
       scope.stateData.question.showPreset = isExtraDefined("recommended_preset__tag");
       scope.showingPreset = scope.stateData.question.showPreset;
-      if (!angular.isDefined(scope.stateData.question.presetSelected)) {
+      if (!angular.isDefined(scope.stateData.question.presetSelected) || scope.stateData.question.presetSelected === null) {
         scope.stateData.question.presetSelected = null;
       } else {
         scope.stateData.question.presetList = _.filter(
