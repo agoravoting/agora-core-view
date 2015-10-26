@@ -8,6 +8,23 @@
     border-radius: 3px;
   }
 
+  [avb-accordion-option] {
+    padding-left: 0 !important;
+
+    .opt-data strong.show-value {
+      color: #999;
+      font-weight: bold;
+    }
+
+    &.supported .opt-data strong.show-value {
+      color: @brand-primary;
+    }
+
+    &.selected .opt-data strong.show-value {
+      color: white;
+    }
+  }
+
   [accordion], [avb-accordion-option] {
 
     .btn {
@@ -32,32 +49,46 @@
     }
 
     .subcategory-heading {
-      color: @brand-primary;
-      padding: 10px 0;
+      color: @brand-success;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 15px 0 10px 0;
     }
 
     .panel {
       border: 0 none;
       border-radius: 0 !important;
+      box-shadow: none;
+      background: white;
 
       .panel-heading {
         border: 0 none;
         border-radius: 0;
+        background: white;
         padding: 0;
 
-        .panel-title a {
-          display: block;
-          padding: 10px 15px;
-          cursor: pointer;
-          display: block;
-          min-height: 37px;
-          width: 100%;
-          transition: all .4s ease;
+        .panel-title {
+          a {
+            display: block;
+            padding: 10px 15px 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            min-height: 37px;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: @brand-primary;
+            width: 100%;
+            transition: all .4s ease;
 
-          &:hover {
-            text-decoration: none;
-            background-color: @brand-success;
-            color: white;
+            &:hover {
+              text-decoration: none;
+              background-color: @gray-lighter;
+            }
+
+            .glyphicon {
+              color: black;
+            }
           }
         }
       }
@@ -67,12 +98,8 @@
       }
 
       &.in {
-        border-left: 1px solid @brand-success;
-
-        .panel-heading .panel-title a {
-          text-decoration: none;
-          background-color: @brand-success;
-          color: white;
+        .panel-heading {
+          border-bottom: 0;
         }
 
         .panel-body {

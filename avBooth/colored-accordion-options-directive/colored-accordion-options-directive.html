@@ -21,7 +21,7 @@
   <div avb-accordion-option
     ng-repeat="option in emptyCategory.options"
     class="animate-repeat highlight-selected"
-    ng-class="{selected: option.selected > -1}">
+    ng-class="{selected: option.selected > -1, supported: option.supported}">
   </div>
   <div accordion close-others="folding_policy !== 'unfold-all'">
     <div accordion-group ng-repeat="category in nonEmptyCategories" is-open="category.isOpen"
@@ -40,7 +40,7 @@
       <div avb-accordion-option
         ng-repeat="option in category.topOptions"
         class="animate-repeat highlight-selected"
-        ng-class="{selected: option.selected > -1}">
+        ng-class="{selected: option.selected > -1, supported: option.supported}">
       </div>
 
       <!-- subcategories and their options -->
@@ -50,7 +50,7 @@
         <div avb-accordion-option
           ng-repeat="option in subCategory.answers"
           class="animate-repeat highlight-selected"
-          ng-class="{selected: option.selected > -1}">
+          ng-class="{selected: option.selected > -1, supported: option.supported}">
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
     ng-repeat="option in filteredOptions"
     show-category="true"
     class="animate-repeat highlight-selected"
-    ng-class="{selected: option.selected > -1}">
+    ng-class="{selected: option.selected > -1, , supported: option.supported}">
   </div>
   <div
     class="animate-repeat padded-left"
