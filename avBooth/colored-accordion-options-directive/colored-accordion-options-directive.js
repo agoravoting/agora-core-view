@@ -12,8 +12,9 @@ angular.module('avBooth')
       _.each(scope.options, function (option) {
         option.supported = angular.isUndefined(
           _.find(option.urls, function(u) {
-            return u.title === 'support' && u.url.split('/').slice(-1)[0] === 'true';
+            return u.title.toLowerCase() === 'support' && u.url.split('/').slice(-1)[0] === 'FALSE';
           }));
+        console.log(option.text, option.supported);
         var splittedCat = option.category.split(' > ');
         option.topCategory = splittedCat[0];
         if (splittedCat.length > 1) {
@@ -92,6 +93,12 @@ angular.module('avBooth')
           function (element) {
             return element.selected > -1 || element.isSelected === true;
           }).length;
+      };
+
+      scope.selectColored = function() {
+        $(".supported").each(function() {
+            $(this).children()[0].click();
+        });
       };
     };
 
