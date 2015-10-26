@@ -5,7 +5,7 @@
  * category. Used by avbAvailableOptions directive.
  */
 angular.module('avBooth')
-  .directive('avbColoredAccordionOptions', function() {
+  .directive('avbColoredAccordionOptions', function($timeout) {
 
     var link = function(scope, element, attrs) {
       // set supported flag
@@ -95,9 +95,11 @@ angular.module('avBooth')
       };
 
       scope.selectColored = function() {
-        $(".supported").each(function() {
-            $(this).children()[0].click();
-        });
+        $timeout(function() {
+            $(".supported").each(function() {
+                $(this).children()[0].click();
+            });
+        }, 0);
       };
     };
 
