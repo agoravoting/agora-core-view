@@ -20,6 +20,17 @@ var avConfigData = {
   authorities: [ "local-auth2" ],
   director: "local-auth1",
 
+  resourceUrlWhitelist: [
+    // Allow same origin resource loads.
+    'self',
+
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    // Uncomment the following to allow youtube videos
+    //
+    // 'https://www.youtube.com/**',
+    // 'https://youtube.com/**'
+  ],
+
   // i18next language options, see http://i18next.com/pages/doc_init.html for
   // details
   i18nextInitOptions: {
