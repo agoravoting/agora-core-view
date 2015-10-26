@@ -212,6 +212,11 @@ angular.module('avBooth')
           return;
         }
 
+        if (angular.isDefined(scope.stateData.oldState.data.questionNum)) {
+          var n = scope.stateData.oldState.data.questionNum;
+          scope.stateData.oldState.data.question = scope.election.questions[n];
+        }
+
         scope.setState(
           scope.stateData.oldState.name,
           scope.stateData.oldState.data);
