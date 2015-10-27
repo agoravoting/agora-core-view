@@ -8,12 +8,31 @@ angular.module('avBooth')
   .directive('avbColoredAccordionOptions', function($timeout) {
 
     var link = function(scope, element, attrs) {
+
+      function getUrl(option, title) {
+        return _.filter(option.urls, function (url) {
+          return url.title === title;
+        })[0];
+      }
+
+      function getTag(option) {
+        var url = getUrl(option, "Tag");
+        if (!url) {
+          return null;
+        }
+        return url.url.replace("https://agoravoting.com/api/tag/", "");
+      }
+
       // set supported flag
       _.each(scope.options, function (option) {
+
         option.supported = angular.isUndefined(
           _.find(option.urls, function(u) {
             return u.title.toLowerCase() === 'support' && u.url.split('/').slice(-1)[0] === 'FALSE';
           }));
+
+        option.tag = getTag(option);
+
         var splittedCat = option.category.split(' > ');
         option.topCategory = splittedCat[0];
         if (splittedCat.length > 1) {

@@ -42,7 +42,7 @@
           <span ng-if="ordered && showSelectedPos && option.selected > -1">
             {{option.selected + 1}}.
           </span>
-          <span ng-if="option.tag">{{option.tag}}:</span>
+          <span ng-if="option.tag" class="opttag">{{option.tag}}:</span>
           <span>{{option.text}}</span>
         </strong>
         <p class="details" ng-if="option.details && option.details.length > 1" ng-bind-html="option.details">
