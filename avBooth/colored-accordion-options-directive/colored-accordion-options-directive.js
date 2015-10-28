@@ -20,7 +20,7 @@ angular.module('avBooth')
         if (!url) {
           return null;
         }
-        return url.url.replace("https://agoravoting.com/api/tag/", "");
+        return url.url.replace("https://agoravoting.com/api/tag/", "").replace("_", " ");
       }
 
       // set supported flag
@@ -58,22 +58,29 @@ angular.module('avBooth')
           answers: pair[1]
         };
       });
-      var topCategories = _.filter(categories, function(category) {
-        return category.answers[0].subCategory === null;
-      });
+
+      var topCategories = _.uniq(_.map(
+        categories, function(cat) { return cat.title.split(' > ')[0]; }));
+      window.topCategories = topCategories;
+      window.categories = categories;
 
       // convert this associative array to a list of objects with title and
       // options attributes
-      scope.categories = _.map(topCategories, function(cat) {
+      scope.categories = _.map(topCategories, function(catTitle) {
+        var opts = _.find(categories, function(cat) {
+          return cat.title === catTitle;
+        });
+
         return {
-          title: cat.title,
+          title: catTitle,
           options: _.filter(scope.options, function(opt) {
-            return cat.title === opt.topCategory;
+            return catTitle === opt.topCategory;
           }),
-          topOptions: cat.answers,
+          topOptions: opts ? opts.answers : [],
+
           subCategories: [].concat(_.filter(
             categories, function(subcat) {
-              return (subcat.title.indexOf(cat.title + ' > ') !== -1);
+              return (subcat.title.indexOf(catTitle + ' > ') !== -1);
             })),
           isOpen: (scope.folding_policy === "unfold-all")
         };
