@@ -46,7 +46,7 @@
   <div class="container">
     <div class="row pairs">
       <!-- first item of the pair -->
-      <div class="col-xs-6 col-sm-offset-1 col-sm-5">
+      <div class="col-xs-6">
         <div class="clickable" ng-click="selectAnswer(1)">
           <div
             ng-if="getYoutubeEmbed(one)"
@@ -56,7 +56,7 @@
               height="315"
               ng-src="{{getYoutubeEmbed(one)}}"
               frameborder="0"
-              allowfullscreen>
+              allowfullscreen="true">
             </iframe>
           </div>
           <div class="img-wrapper">
@@ -87,7 +87,7 @@
       </div>
 
       <!-- second item of the pair -->
-      <div class="col-xs-6 col-sm-5">
+      <div class="col-xs-6">
         <div class="clickable" ng-click="selectAnswer(2)">
           <div
             ng-if="getYoutubeEmbed(two)"
@@ -97,7 +97,7 @@
               height="315"
               ng-src="{{getYoutubeEmbed(two)}}"
               frameborder="0"
-              allowfullscreen>
+              allowfullscreen="true">
             </iframe>
           </div>
           <div class="img-wrapper">
