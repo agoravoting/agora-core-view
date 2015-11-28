@@ -29,11 +29,8 @@
     }
 
     .videoWrapper {
-      padding-top: 10px;
       position: relative;
-      margin-top: 20px;
       padding-bottom: 50%;
-      padding-top: 25px;
       height: 0;
 
       iframe, object, embed {
@@ -47,10 +44,10 @@
 
     .img-wrapper {
       width: 100%;
-      max-height: 200px;
+      max-height: 56.25vw; /* 315/560 = .5625 */
       overflow: hidden;
 
-      img, iframe {
+      img {
         width: 100%;
         height: auto;
         max-height: 56.25vw; /* 315/560 = .5625 */
@@ -97,7 +94,7 @@
         margin: 0;
 
         .img-wrapper {
-          max-height: 100px;
+          max-height: 25vw;
         }
       }
 
