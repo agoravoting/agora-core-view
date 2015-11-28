@@ -48,15 +48,18 @@
       <!-- first item of the pair -->
       <div class="col-xs-6 col-sm-offset-1 col-sm-5">
         <div class="clickable" ng-click="selectAnswer(1)">
-          <div class="img-wrapper">
+          <div
+            ng-if="getYoutubeEmbed(one)"
+            class="videoWrapper">
             <iframe
-              ng-if="getYoutubeEmbed(one)"
               width="560"
               height="315"
               ng-src="{{getYoutubeEmbed(one)}}"
               frameborder="0"
               allowfullscreen>
             </iframe>
+          </div>
+          <div class="img-wrapper">
             <img
               ng-if="!getYoutubeEmbed(one) && !!getUrls(one)['Image URL']"
               alt="{{one.text}}"
@@ -86,15 +89,18 @@
       <!-- second item of the pair -->
       <div class="col-xs-6 col-sm-5">
         <div class="clickable" ng-click="selectAnswer(2)">
-          <div class="img-wrapper">
+          <div
+            ng-if="getYoutubeEmbed(two)"
+            class="videoWrapper">
             <iframe
-              ng-if="getYoutubeEmbed(two)"
               width="560"
               height="315"
               ng-src="{{getYoutubeEmbed(two)}}"
               frameborder="0"
               allowfullscreen>
             </iframe>
+          </div>
+          <div class="img-wrapper">
             <img
               ng-if="!getYoutubeEmbed(two) && !!getUrls(two)['Image URL']"
               alt="{{two.text}}"
