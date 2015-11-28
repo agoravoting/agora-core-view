@@ -12,6 +12,10 @@ angular.module('avBooth')
       // when we are not inside an iframe and voter id is not set, this is a
       // demo booth
       scope.isDemo = !InsideIframeService() && !scope.voterId;
+      if (!!ConfigService.unauthenticatedElections, &&
+          _.contains(ConfigService.unauthenticatedElections, scope.electionId)) {
+        scope.isDemo = false;
+      }
 
       function updateWidth() {
         $timeout.cancel(timeoutWidth);

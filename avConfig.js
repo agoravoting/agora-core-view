@@ -62,6 +62,9 @@ var avConfigData = {
     // lngWhitelist: ['en', 'es', 'gl', 'ca'],
   },
 
+  // unathenticated elections do not require any kind of auth token
+  unauthenticatedElections: [],
+
   // specifies the language cookie options,
   // see https://github.com/ivpusic/angular-cookie#options
   i18nextCookieOptions: {
