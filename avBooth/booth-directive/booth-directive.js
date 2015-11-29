@@ -15,7 +15,7 @@ angular.module('avBooth')
       if (!!ConfigService.unauthenticatedElections &&
           _.contains(ConfigService.unauthenticatedElections, scope.electionId)) {
         scope.isDemo = false;
-        scope.voterId = "poll";
+        scope.voterId = "";
       }
 
       function updateWidth() {

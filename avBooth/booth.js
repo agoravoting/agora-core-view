@@ -11,7 +11,7 @@ angular.module('avBooth').controller('BoothController',
     $scope.hmacHash = $stateParams.hmac || "";
     $scope.hmacMessage = $stateParams.message || "";
     $scope.baseUrl = ConfigService.baseUrl;
-    $scope.voterId = "";
+    $scope.voterId = "poll";
     $scope.config = $filter('json')(ConfigService);
 
     // checks that the general format of the input data (hmac hash & message)
