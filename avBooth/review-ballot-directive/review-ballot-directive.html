@@ -5,7 +5,7 @@
 
   <!-- title -->
   <h3 class="text-brand-success">
-    {{$index + 1}}. {{question.title}}
+    {{$index + 1}}. <span ng-bind-html="question.title | addTargetBlank"></span>
     <div class="pull-right">
       <span class="glyphicon glyphicon-edit"></span>
     </div>
