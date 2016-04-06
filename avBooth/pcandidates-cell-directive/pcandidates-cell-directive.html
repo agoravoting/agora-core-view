@@ -28,7 +28,7 @@
   <span class="label label-default label-category">{{question_title}}</span>
   <div
     class="has-data-wrapper"
-    ng-click="toggleCell(team, question_index)">
+    ng-click="toggleOpen(team)">
     <span
       class="first-candidate"
       ng-i18next="[i18next]({name: candidates[0].text})avBooth.firstCandidateOfMany">
@@ -40,7 +40,7 @@
   <button
     class="btn btn-default btn-right"
     ng-class="{'in': isOpenCell()}"
-    ng-click="toggleOpenCell()">
+    ng-click="toggleOpen(team)">
     <span ng-i18next="avBooth.dropdownOptionView">
     </span>
     <span
@@ -54,7 +54,7 @@
     <span class="label label-default label-category">{{question_title}}</span>
     <h4
       ng-i18next="avBooth.candidatesTitle"
-      ng-click="toggleCell(team, question_index)">
+      ng-click="toggleOpen(team)">
     </h4>
     <div
       class="candidate"
